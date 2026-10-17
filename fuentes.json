@@ -1,0 +1,17 @@
+{
+  "_ayuda": "Lista de medios de los que se sacan las noticias. Para quitar uno, borra su bloque. Para añadir otro, copia un bloque y cambia nombre, url (su RSS) y categoria ('videojuegos' o 'cine').",
+  "noticias_por_categoria": 10,
+  "maximo_por_medio": 3,
+  "dias_maximos": 3,
+  "fuentes": [
+    { "nombre": "Vandal",        "url": "https://vandal.elespanol.com/xml.cgi",        "categoria": "videojuegos" },
+    { "nombre": "3DJuegos",      "url": "https://www.3djuegos.com/feedburner.xml",     "categoria": "videojuegos" },
+    { "nombre": "VidaExtra",     "url": "https://www.vidaextra.com/feedburner.xml",    "categoria": "videojuegos" },
+    { "nombre": "HobbyConsolas", "url": "https://www.hobbyconsolas.com/rss",           "categoria": "videojuegos" },
+    { "nombre": "Eurogamer",     "url": "https://www.eurogamer.es/feed",               "categoria": "videojuegos" },
+    { "nombre": "Espinof",       "url": "https://www.espinof.com/feedburner.xml",      "categoria": "cine" },
+    { "nombre": "SensaCine",     "url": "https://www.sensacine.com/rss/noticias-cine.xml",   "categoria": "cine" },
+    { "nombre": "SensaCine Series", "url": "https://www.sensacine.com/rss/noticias-series.xml", "categoria": "cine" },
+    { "nombre": "Decine21",      "url": "https://decine21.com/feed",                   "categoria": "cine" }
+  ]
+}
