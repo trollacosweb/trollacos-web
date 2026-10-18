@@ -4,14 +4,70 @@
   "maximo_por_medio": 3,
   "dias_maximos": 3,
   "fuentes": [
-    { "nombre": "Vandal",        "url": "https://vandal.elespanol.com/xml.cgi",        "categoria": "videojuegos" },
-    { "nombre": "3DJuegos",      "url": "https://www.3djuegos.com/feedburner.xml",     "categoria": "videojuegos" },
-    { "nombre": "VidaExtra",     "url": "https://www.vidaextra.com/feedburner.xml",    "categoria": "videojuegos" },
-    { "nombre": "HobbyConsolas", "url": "https://www.hobbyconsolas.com/rss",           "categoria": "videojuegos" },
-    { "nombre": "Eurogamer",     "url": "https://www.eurogamer.es/feed",               "categoria": "videojuegos" },
-    { "nombre": "Espinof",       "url": "https://www.espinof.com/feedburner.xml",      "categoria": "cine" },
-    { "nombre": "SensaCine",     "url": "https://www.sensacine.com/rss/noticias-cine.xml",   "categoria": "cine" },
-    { "nombre": "SensaCine Series", "url": "https://www.sensacine.com/rss/noticias-series.xml", "categoria": "cine" },
-    { "nombre": "Decine21",      "url": "https://decine21.com/feed",                   "categoria": "cine" }
-  ]
+    {
+      "nombre": "Vandal",
+      "url": "https://vandal.elespanol.com/xml.cgi",
+      "categoria": "videojuegos"
+    },
+    {
+      "nombre": "3DJuegos",
+      "url": "https://www.3djuegos.com/feedburner.xml",
+      "categoria": "videojuegos"
+    },
+    {
+      "nombre": "VidaExtra",
+      "url": "https://www.vidaextra.com/feedburner.xml",
+      "categoria": "videojuegos"
+    },
+    {
+      "nombre": "HobbyConsolas",
+      "url": "https://www.hobbyconsolas.com/rss",
+      "categoria": "videojuegos"
+    },
+    {
+      "nombre": "Eurogamer",
+      "url": "https://www.eurogamer.es/feed",
+      "categoria": "videojuegos"
+    },
+    {
+      "nombre": "Espinof",
+      "url": "https://www.espinof.com/feedburner.xml",
+      "categoria": "cine"
+    },
+    {
+      "nombre": "SensaCine",
+      "url": "https://www.sensacine.com/rss/noticias-cine.xml",
+      "categoria": "cine"
+    },
+    {
+      "nombre": "SensaCine Series",
+      "url": "https://www.sensacine.com/rss/noticias-series.xml",
+      "categoria": "cine"
+    },
+    {
+      "nombre": "Decine21",
+      "url": "https://decine21.com/feed",
+      "categoria": "cine"
+    },
+    {
+      "nombre": "Google Noticias",
+      "url": "https://news.google.com/rss/search?q=%22GTA+6%22+OR+%22GTA+VI%22&hl=es&gl=ES&ceid=ES:es",
+      "categoria": "especial"
+    }
+  ],
+  "especial": {
+    "_ayuda": "Noticias destacadas arriba del todo. Se eligen las que contienen alguna de estas palabras. Para cambiar de tema, cambia las palabras (o vacía la lista para quitar la sección).",
+    "palabras": [
+      "gta vi",
+      "gta 6",
+      "gta6",
+      "grand theft auto",
+      "rockstar games",
+      "vice city",
+      "leonida"
+    ],
+    "noticias": 8,
+    "maximo_por_medio": 2,
+    "dias_maximos": 7
+  }
 }

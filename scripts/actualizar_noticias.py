@@ -30,6 +30,9 @@ FUENTES = Path(sys.argv[1]) if len(sys.argv) > 1 else RAIZ / "fuentes.json"
 INDEX = Path(sys.argv[2]) if len(sys.argv) > 2 else RAIZ / "index.html"
 
 INICIO, FIN = "<!--NOTICIAS:INICIO-->", "<!--NOTICIAS:FIN-->"
+GTA_INICIO, GTA_FIN = "<!--GTA:INICIO-->", "<!--GTA:FIN-->"
+RSS = INDEX.parent / "rss.xml"
+WEB = "https://trollacos.com"
 NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -129,12 +132,21 @@ def parsear(xml_bytes, fuente):
         for it in items:
             desc = texto_de(it, "description")
             contenido = texto_de(it, "content:encoded")
+            titulo = texto_limpio(texto_de(it, "title"), 400)
+            medio_origen = texto_de(it, "source")  # agregadores tipo Google Noticias
+            resumen = texto_limpio(desc or contenido)
+            if medio_origen:
+                sufijo = " - " + medio_origen
+                if titulo.endswith(sufijo):
+                    titulo = titulo[: -len(sufijo)]
+                resumen = ""
             noticias.append({
-                "titulo": texto_limpio(texto_de(it, "title"), 140),
+                "titulo": texto_limpio(titulo, 140),
                 "enlace": texto_de(it, "link") or texto_de(it, "guid"),
-                "resumen": texto_limpio(desc or contenido),
+                "resumen": resumen,
                 "imagen": imagen_de(it, desc, contenido),
                 "fecha": leer_fecha(texto_de(it, "pubDate", "dc:date")),
+                "medio_origen": medio_origen,
             })
     else:  # Atom
         for en in raiz.findall("atom:entry", NS):
@@ -151,13 +163,15 @@ def parsear(xml_bytes, fuente):
                 "resumen": texto_limpio(desc or contenido),
                 "imagen": imagen_de(en, desc, contenido),
                 "fecha": leer_fecha(texto_de(en, "atom:published", "atom:updated")),
+                "medio_origen": "",
             })
     validas = []
     for n in noticias:
         n["enlace"] = url_valida(n["enlace"])
         n["imagen"] = url_valida(n["imagen"])
         if n["titulo"] and n["enlace"]:
-            n["medio"] = fuente["nombre"]
+            origen = n.pop("medio_origen", "")
+            n["medio"] = texto_limpio(origen, 40) if origen else fuente["nombre"]
             n["categoria"] = fuente["categoria"]
             validas.append(n)
     return validas
@@ -178,17 +192,26 @@ def tarjeta(n):
             f'{img}<div><span class="src">{e(n["medio"])}{cuando}</span><h4>{e(n["titulo"])}</h4>{resumen}</div></a></article>')
 
 
-def elegir(noticias, cfg):
+def clave_de(n):
+    return re.sub(r"\W+", "", n["titulo"].lower())[:60]
+
+
+def menciona(n, palabras):
+    texto = " " + re.sub(r"\s+", " ", (n["titulo"] + " " + n["resumen"]).lower()) + " "
+    return any(re.search(r"(?<![a-z0-9])" + re.escape(p.lower()) + r"(?![a-z0-9])", texto) for p in palabras)
+
+
+def elegir(noticias, cfg, excluir=()):
     ahora = datetime.now(timezone.utc)
     limite = ahora - timedelta(days=cfg.get("dias_maximos", 3))
-    vistos, por_medio, elegidas = set(), {}, []
+    vistos, por_medio, elegidas = set(excluir), {}, []
     viejo = datetime(1970, 1, 1, tzinfo=timezone.utc)
     for n in sorted(noticias, key=lambda n: n["fecha"] or viejo, reverse=True):
         if n["fecha"] and n["fecha"] < limite:
             continue
         if n["fecha"] and n["fecha"] > ahora + timedelta(hours=2):
             n["fecha"] = ahora
-        clave = re.sub(r"\W+", "", n["titulo"].lower())[:60]
+        clave = clave_de(n)
         if clave in vistos or n["enlace"] in vistos:
             continue
         if por_medio.get(n["medio"], 0) >= cfg.get("maximo_por_medio", 3):
@@ -196,9 +219,40 @@ def elegir(noticias, cfg):
         vistos.update({clave, n["enlace"]})
         por_medio[n["medio"]] = por_medio.get(n["medio"], 0) + 1
         elegidas.append(n)
-        if len(elegidas) >= cfg.get("noticias_por_categoria", 10):
+        if len(elegidas) >= cfg.get("noticias", cfg.get("noticias_por_categoria", 10)):
             break
     return elegidas
+
+
+def escribir_rss(noticias, sello):
+    """Feed propio de Trollacos (lo usa el boletin de correo)."""
+    from email.utils import format_datetime
+    e = lambda t: html.escape(t or "", quote=True)
+    items = []
+    for n in noticias:
+        fecha = format_datetime(n["fecha"]) if n["fecha"] else format_datetime(sello)
+        desc = f'{n["medio"]}. {n["resumen"]}' if n["resumen"] else n["medio"]
+        img = (f'\n      <enclosure url="{e(n["imagen"])}" type="image/jpeg" length="0"/>') if n["imagen"] else ""
+        items.append(f"""    <item>
+      <title>{e(n["titulo"])}</title>
+      <link>{e(n["enlace"])}</link>
+      <guid isPermaLink="false">{e(n["enlace"])}</guid>
+      <pubDate>{fecha}</pubDate>
+      <description>{e(desc)}</description>{img}
+    </item>""")
+    RSS.write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trollacos · Lo último</title>
+    <link>{WEB}/</link>
+    <atom:link href="{WEB}/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
+    <language>es-es</language>
+    <lastBuildDate>{format_datetime(sello)}</lastBuildDate>
+{chr(10).join(items)}
+  </channel>
+</rss>
+""", encoding="utf-8")
 
 
 def main():
@@ -217,9 +271,16 @@ def main():
         print("No se ha podido leer ninguna fuente: dejo la web como estaba.")
         return 0
 
-    columnas = []
+    # --- Especial (p. ej. GTA VI): lo que mencione las palabras clave, de cualquier medio ---
+    esp_cfg = cfg.get("especial") or {}
+    palabras = esp_cfg.get("palabras") or []
+    especiales = elegir([n for n in todas if menciona(n, palabras)], esp_cfg) if palabras else []
+    usados = {clave_de(n) for n in especiales} | {n["enlace"] for n in especiales}
+
+    columnas, publicadas = [], list(especiales)
     for clave, titulo in CATEGORIAS:
-        elegidas = elegir([n for n in todas if n["categoria"] == clave], cfg)
+        elegidas = elegir([n for n in todas if n["categoria"] == clave], cfg, excluir=usados)
+        publicadas += elegidas
         if elegidas:
             cuerpo = '    <div class="news-list">\n' + "\n".join(tarjeta(n) for n in elegidas) + "\n    </div>"
         else:
@@ -235,7 +296,17 @@ def main():
         print("ERROR: no encuentro las marcas de noticias en index.html")
         return 1
     nueva = re.sub(re.escape(INICIO) + r".*?" + re.escape(FIN), lambda _: bloque, pagina, flags=re.S)
+
+    if GTA_INICIO in nueva and GTA_FIN in nueva:
+        if especiales:
+            cuerpo = '    <div class="news-list">\n' + "\n".join(tarjeta(n) for n in especiales) + "\n    </div>"
+        else:
+            cuerpo = '    <p class="news-empty">Sin noticias nuevas de Vice City en los últimos días. Volverán pronto.</p>'
+        nueva = re.sub(re.escape(GTA_INICIO) + r".*?" + re.escape(GTA_FIN),
+                       lambda _: f"{GTA_INICIO}\n{cuerpo}\n{GTA_FIN}", nueva, flags=re.S)
+
     INDEX.write_text(nueva, encoding="utf-8")
+    escribir_rss(publicadas, sello)
     print(f"Web actualizada. Fuentes con fallo: {', '.join(fallos) or 'ninguna'}")
     return 0
 
