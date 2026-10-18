@@ -215,6 +215,14 @@
   .arsenal-card h3{font-family:'Righteous',sans-serif;font-size:21px;color:#fff;margin:6px 0 4px}
   .arsenal-card p{font-size:15px;line-height:1.3;color:var(--muted);margin-bottom:10px}
   .arsenal-card .ver{margin-top:auto;white-space:nowrap;font-family:'VT323',monospace;font-size:18px;color:var(--yellow);text-shadow:0 0 6px rgba(255,210,63,.6)}
+
+  /* ---------- TWITCH ---------- */
+  .tv{max-width:1000px}
+  .tv-frame{position:relative;width:100%;aspect-ratio:16/9;border:2px solid var(--cyan);border-radius:10px;overflow:hidden;
+    box-shadow:0 0 24px rgba(31,242,255,.35),0 0 60px rgba(255,43,214,.2);background:#000}
+  .tv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .tv-cta{text-align:center;margin-top:18px}
+  footer .social{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
 </style>
 </head>
@@ -233,6 +241,7 @@
   <div class="cta">
     <a class="btn" href="#gta">▶ ESPECIAL GTA VI</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
+    <a class="btn alt" href="#directo">DIRECTO</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#arsenal">ARSENAL</a>
   </div>
@@ -320,6 +329,15 @@
   </div>
 <!--NOTICIAS:FIN-->
   <p class="small">Titulares enlazados a sus medios originales. Pulsa para leer la noticia completa en su web.</p>
+</section>
+
+<section class="block tv" id="directo">
+  <h2>TrollacosTV en directo</h2>
+  <p class="small" style="margin:-14px 0 24px">Cuando estamos emitiendo, lo ves aquí mismo.</p>
+  <div class="tv-frame">
+    <iframe src="https://player.twitch.tv/?channel=trollacostv&amp;parent=trollacos.com&amp;parent=www.trollacos.com&amp;muted=true&amp;autoplay=false" allowfullscreen loading="lazy" title="TrollacosTV en Twitch"></iframe>
+  </div>
+  <div class="tv-cta"><a class="btn alt" href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">SEGUIR EN TWITCH</a></div>
 </section>
 
 <section class="block arsenal" id="videojuegos">
@@ -419,6 +437,12 @@
 
 
 <footer>
+  <div class="social">
+    <a href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">TWITCH</a>
+    <a href="https://www.youtube.com/@Trollacos" target="_blank" rel="noopener">YOUTUBE</a>
+    <a href="https://www.instagram.com/trollacostv" target="_blank" rel="noopener">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@trollacostv" target="_blank" rel="noopener">TIKTOK</a>
+  </div>
   © 2012–2026 TROLLACOS · Hecho con nostalgia y neón<br>
   <small>Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</small>
 </footer>
