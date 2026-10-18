@@ -203,6 +203,17 @@
     box-shadow:0 0 14px rgba(255,157,60,.6);border:2px solid #ffd23f;transition:.2s}
   .btn-amz:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(255,157,60,.9)}
   .afil{text-align:center;font-size:13px;color:var(--muted);margin:0 0 22px}
+
+  /* ---------- ARSENAL ---------- */
+  .arsenal{max-width:1100px}
+  .arsenal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px}
+  .arsenal-card{display:block;text-decoration:none;padding:18px 16px;border-radius:8px;border:1px solid rgba(255,157,60,.45);
+    background:linear-gradient(160deg,rgba(255,157,60,.10),rgba(255,43,214,.06));transition:.2s}
+  .arsenal-card:hover{border-color:#ffd23f;box-shadow:0 0 18px rgba(255,157,60,.45);transform:translateY(-2px)}
+  .arsenal-card .ico-a{font-size:30px}
+  .arsenal-card h3{font-family:'Righteous',sans-serif;font-size:21px;color:#fff;margin:6px 0 4px}
+  .arsenal-card p{font-size:15px;line-height:1.3;color:var(--muted);margin-bottom:10px}
+  .arsenal-card .ver{font-family:'VT323',monospace;font-size:19px;color:var(--yellow);text-shadow:0 0 6px rgba(255,210,63,.6)}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
 </style>
 </head>
@@ -221,6 +232,7 @@
   <div class="cta">
     <a class="btn" href="#gta">▶ ESPECIAL GTA VI</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
+    <a class="btn alt" href="#arsenal">ARSENAL</a>
   </div>
 </header>
 
@@ -307,6 +319,38 @@
 <!--NOTICIAS:FIN-->
   <p class="small">Titulares enlazados a sus medios originales. Pulsa para leer la noticia completa en su web.</p>
 </section>
+
+<section class="block arsenal" id="arsenal">
+  <h2>El arsenal del Trollaco</h2>
+  <p class="small" style="margin:-14px 0 24px">Lo que necesitas para jugar como es debido. Enlaces de afiliado: si compras desde aquí, Trollacos se lleva una pequeña comisión sin que te cueste más.</p>
+  <div class="arsenal-grid">
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=PlayStation+5+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">🕹️</span><h3>PlayStation 5</h3><p>La consola para estrenar GTA VI el 19 de noviembre.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=Xbox+Series+X+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">🟩</span><h3>Xbox Series X</h3><p>La alternativa verde, ideal si vives en Game Pass.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=Nintendo+Switch+2+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">🍄</span><h3>Nintendo Switch 2</h3><p>Para jugar en el sofá, en el tren o en la guardia.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=mando+DualSense+PS5&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">🎮</span><h3>Mandos extra</h3><p>DualSense, mandos de Xbox y Pro Controller para el pique en casa.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=auriculares+gaming&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">🎧</span><h3>Auriculares gaming</h3><p>Para oír a Vice City entera sin despertar a nadie.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=silla+gaming&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">💺</span><h3>Sillas gaming</h3><p>Porque tu espalda también juega maratones.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=SSD+PS5+NVMe+disipador&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">💾</span><h3>Discos SSD para consola</h3><p>GTA VI va a ocupar lo suyo. Haz hueco.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+      <a class="arsenal-card" href="https://www.amazon.es/s?k=monitor+gaming+4K+144Hz&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
+        <span class="ico-a">📺</span><h3>Monitores y teles 4K</h3><p>Si vas a ver atardeceres en Leonida, que sea en grande.</p><span class="ver">VER EN AMAZON ›</span>
+      </a>
+  </div>
+</section>
+
 
 <section class="block">
   <h2>Hemos vuelto</h2>
