@@ -206,14 +206,15 @@
 
   /* ---------- ARSENAL ---------- */
   .arsenal{max-width:1100px}
-  .arsenal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px}
-  .arsenal-card{display:block;text-decoration:none;padding:18px 16px;border-radius:8px;border:1px solid rgba(255,157,60,.45);
+  .arsenal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media (min-width:760px){.arsenal-grid{grid-template-columns:repeat(4,1fr);gap:16px}}
+  .arsenal-card{display:flex;flex-direction:column;text-decoration:none;padding:18px 16px;border-radius:8px;border:1px solid rgba(255,157,60,.45);
     background:linear-gradient(160deg,rgba(255,157,60,.10),rgba(255,43,214,.06));transition:.2s}
   .arsenal-card:hover{border-color:#ffd23f;box-shadow:0 0 18px rgba(255,157,60,.45);transform:translateY(-2px)}
   .arsenal-card .ico-a{font-size:30px}
   .arsenal-card h3{font-family:'Righteous',sans-serif;font-size:21px;color:#fff;margin:6px 0 4px}
   .arsenal-card p{font-size:15px;line-height:1.3;color:var(--muted);margin-bottom:10px}
-  .arsenal-card .ver{font-family:'VT323',monospace;font-size:19px;color:var(--yellow);text-shadow:0 0 6px rgba(255,210,63,.6)}
+  .arsenal-card .ver{margin-top:auto;white-space:nowrap;font-family:'VT323',monospace;font-size:18px;color:var(--yellow);text-shadow:0 0 6px rgba(255,210,63,.6)}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
 </style>
 </head>
@@ -322,7 +323,7 @@
 
 <section class="block arsenal" id="arsenal">
   <h2>El arsenal del Trollaco</h2>
-  <p class="small" style="margin:-14px 0 24px">Lo que necesitas para jugar como es debido. Enlaces de afiliado: si compras desde aquí, Trollacos se lleva una pequeña comisión sin que te cueste más.</p>
+  <p class="small" style="margin:-14px 0 24px">Lo que necesitas para jugar como es debido.</p>
   <div class="arsenal-grid">
       <a class="arsenal-card" href="https://www.amazon.es/s?k=PlayStation+5+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
         <span class="ico-a">🕹️</span><h3>PlayStation 5</h3><p>La consola para estrenar GTA VI el 19 de noviembre.</p><span class="ver">VER EN AMAZON ›</span>
