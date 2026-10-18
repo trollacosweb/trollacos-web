@@ -196,6 +196,13 @@
   .cd span{font-family:'VT323',monospace;font-size:clamp(13px,3.6vw,16px);letter-spacing:.12em;color:var(--cyan)}
   .gta-out{text-align:center;font-family:'Righteous',sans-serif;font-size:clamp(26px,7vw,44px);color:var(--yellow);text-shadow:0 0 14px var(--pink)}
   .gta .news-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px}
+
+  .gta-shop{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 10px}
+  .btn-amz{font-family:'VT323',monospace;font-size:clamp(20px,5vw,24px);text-decoration:none;color:#1a0b00;
+    padding:10px 20px;border-radius:6px;background:linear-gradient(180deg,#ffe45c,#ff9d3c);
+    box-shadow:0 0 14px rgba(255,157,60,.6);border:2px solid #ffd23f;transition:.2s}
+  .btn-amz:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(255,157,60,.9)}
+  .afil{text-align:center;font-size:13px;color:var(--muted);margin:0 0 22px}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
 </style>
 </head>
@@ -227,6 +234,11 @@
       <div class="cd"><b id="cd-m">--</b><span>MIN</span></div>
       <div class="cd"><b id="cd-s">--</b><span>SEG</span></div>
     </div>
+    <div class="gta-shop">
+      <a class="btn-amz" href="https://www.amazon.es/s?k=Grand+Theft+Auto+VI+PS5&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">🎮 Reservar para PS5</a>
+      <a class="btn-amz" href="https://www.amazon.es/s?k=Grand+Theft+Auto+VI+Xbox+Series+X&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">🎮 Reservar para Xbox</a>
+    </div>
+    <p class="afil">Enlaces de afiliado: si reservas desde aquí, Trollacos se lleva una pequeña comisión sin que a ti te cueste nada más. ¡Gracias por apoyar!</p>
 <!--GTA:INICIO-->
     <div class="news-list">
       <article class="news-card"><a href="https://www.3djuegos.com/juegos/grand-theft-auto-vi/guias-y-trucos/que-trata-historia-grand-theft-auto-6" target="_blank" rel="noopener nofollow"><img src="https://i.blogs.es/d9d4e7/historia-gta-6/1024_2000.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><div><span class="src">3DJuegos · 18 oct, 18:03</span><h4>¿De qué trata la historia de Grand Theft Auto 6?</h4><p>Si hay algo que ha conseguido mantener en vilo a los fans de Rockstar Games durante años, es descubrir qué nos espera en Grand Theft Auto 6 . Después del viaje…</p></div></a></article>
@@ -330,7 +342,8 @@
 
 
 <footer>
-  © 2012–2026 TROLLACOS · Hecho con nostalgia y neón
+  © 2012–2026 TROLLACOS · Hecho con nostalgia y neón<br>
+  <small>Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</small>
 </footer>
 </body>
 </html>
