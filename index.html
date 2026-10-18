@@ -9,9 +9,12 @@
 <link rel="alternate" type="application/rss+xml" title="Trollacos" href="/rss.xml">
 <meta property="og:image" content="https://trollacos.com/icono-512.png">
 <link rel="apple-touch-icon" href="icono.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=VT323&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Righteous';src:url(fuentes/righteous.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'VT323';src:url(fuentes/vt323.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(fuentes/rajdhani-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(fuentes/rajdhani-700.woff2) format('woff2');font-weight:700;font-display:swap}
+</style>
 <style>
   :root{
     --bg:#07021a;
@@ -221,6 +224,12 @@
   .tv-frame{position:relative;width:100%;aspect-ratio:16/9;border:2px solid var(--cyan);border-radius:10px;overflow:hidden;
     box-shadow:0 0 24px rgba(31,242,255,.35),0 0 60px rgba(255,43,214,.2);background:#000}
   .tv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .tv-play{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000;color:#fff}
+  .tv-play img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.7)}
+  .tv-boton{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'VT323',monospace;font-size:clamp(22px,5vw,34px);
+    padding:10px 24px;border:2px solid var(--pink);background:rgba(7,2,26,.75);box-shadow:0 0 16px var(--pink);text-shadow:0 0 8px var(--pink);white-space:nowrap}
+  .tv-play:hover .tv-boton{background:var(--pink);color:#000;text-shadow:none}
+  .tv-aviso{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:#cfc8ff;padding:0 8px}
   .tv-cta{text-align:center;margin-top:18px}
   footer .social{display:flex;gap:18px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
@@ -334,9 +343,19 @@
 <section class="block tv" id="directo">
   <h2>TrollacosTV en directo</h2>
   <p class="small" style="margin:-14px 0 24px">Cuando estamos emitiendo, lo ves aquí mismo.</p>
-  <div class="tv-frame">
-    <iframe src="https://player.twitch.tv/?channel=trollacostv&amp;parent=trollacos.com&amp;parent=www.trollacos.com&amp;muted=true&amp;autoplay=false" allowfullscreen loading="lazy" title="TrollacosTV en Twitch"></iframe>
+  <div class="tv-frame" id="tv-frame">
+    <button class="tv-play" type="button" onclick="cargarTwitch()" aria-label="Cargar el reproductor de Twitch">
+      <img src="banner-twitch.jpg" alt="TrollacosTV" loading="lazy">
+      <span class="tv-boton">▶ VER EL DIRECTO</span>
+      <span class="tv-aviso">Al pulsar se cargará el reproductor de Twitch, que puede usar cookies propias.</span>
+    </button>
   </div>
+  <script>
+  function cargarTwitch(){
+    var f=document.getElementById('tv-frame');
+    f.innerHTML='<iframe src="https://player.twitch.tv/?channel=trollacostv&parent=trollacos.com&parent=www.trollacos.com&autoplay=true" allowfullscreen title="TrollacosTV en Twitch"></iframe>';
+  }
+  </script>
   <div class="tv-cta"><a class="btn alt" href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">SEGUIR EN TWITCH</a></div>
 </section>
 
@@ -373,7 +392,7 @@
 
 <section class="block arsenal" id="arsenal">
   <h2>El arsenal del Trollaco</h2>
-  <p class="small" style="margin:-14px 0 24px">Lo que necesitas para jugar como es debido.</p>
+  <p class="small" style="margin:-14px 0 24px">Lo que necesitas para trollear como es debido.</p>
   <div class="arsenal-grid">
       <a class="arsenal-card" href="https://www.amazon.es/s?k=PlayStation+5+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
         <span class="ico-a">🕹️</span><h3>PlayStation 5</h3><p>La consola para estrenar GTA VI el 19 de noviembre.</p><span class="ver">VER EN AMAZON ›</span>
