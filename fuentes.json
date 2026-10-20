@@ -61,7 +61,7 @@
     },
     {
       "nombre": "Google Noticias Salseo",
-      "url": "https://news.google.com/rss/search?q=Ibai+OR+Xokas+OR+%22La+Velada%22+OR+TheGrefg+OR+Auronplay+OR+Rubius+OR+%22Kings+League%22+OR+streamer+when:3d&hl=es&gl=ES&ceid=ES:es",
+      "url": "https://news.google.com/rss/search?q=Ibai+OR+Xokas+OR+%22La+Velada+del+A%C3%B1o%22+OR+TheGrefg+OR+Auronplay+OR+Rubius+OR+Illojuan+OR+%22Kings+League%22+when:3d&hl=es&gl=ES&ceid=ES:es",
       "categoria": "salseo"
     }
   ],
