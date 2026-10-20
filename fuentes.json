@@ -1,7 +1,7 @@
 {
-  "_ayuda": "Lista de medios de los que se sacan las noticias. Para quitar uno, borra su bloque. Para añadir otro, copia un bloque y cambia nombre, url (su RSS) y categoria ('videojuegos' o 'cine').",
-  "noticias_por_categoria": 10,
-  "maximo_por_medio": 3,
+  "_ayuda": "Lista de medios de los que se sacan las noticias. Para quitar uno, borra su bloque. Para añadir otro, copia un bloque y cambia nombre, url (su RSS) y categoria ('videojuegos', 'cine', 'futbol' o 'salseo').",
+  "noticias_por_categoria": 6,
+  "maximo_por_medio": 2,
   "dias_maximos": 3,
   "fuentes": [
     {
@@ -53,6 +53,16 @@
       "nombre": "Google Noticias",
       "url": "https://news.google.com/rss/search?q=%22GTA+6%22+OR+%22GTA+VI%22&hl=es&gl=ES&ceid=ES:es",
       "categoria": "especial"
+    },
+    {
+      "nombre": "Google Noticias Fútbol",
+      "url": "https://news.google.com/rss/search?q=%22Champions+League%22+OR+%22Premier+League%22+OR+LaLiga+OR+%22Serie+A%22+OR+Bundesliga+when:3d&hl=es&gl=ES&ceid=ES:es",
+      "categoria": "futbol"
+    },
+    {
+      "nombre": "Google Noticias Salseo",
+      "url": "https://news.google.com/rss/search?q=Ibai+OR+Xokas+OR+%22La+Velada%22+OR+TheGrefg+OR+Auronplay+OR+Rubius+OR+%22Kings+League%22+OR+streamer+when:3d&hl=es&gl=ES&ceid=ES:es",
+      "categoria": "salseo"
     }
   ],
   "especial": {

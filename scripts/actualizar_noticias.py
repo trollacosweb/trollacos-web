@@ -38,7 +38,7 @@ NS = {
     "content": "http://purl.org/rss/1.0/modules/content/",
     "atom": "http://www.w3.org/2005/Atom",
 }
-CATEGORIAS = [("videojuegos", "// VIDEOJUEGOS"), ("cine", "// CINE Y SERIES")]
+CATEGORIAS = [("videojuegos", "// VIDEOJUEGOS"), ("cine", "// CINE Y SERIES"), ("futbol", "// FÚTBOL EUROPEO"), ("salseo", "// SALSEO")]
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 
 
