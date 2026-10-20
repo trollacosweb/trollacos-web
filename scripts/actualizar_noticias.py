@@ -267,6 +267,10 @@ def main():
             fallos.append(f["nombre"])
             print(f"FALLO {f['nombre']}: {ex}")
 
+    excluir = [w.lower() for w in cfg.get("excluir_palabras", [])]
+    if excluir:
+        todas = [n for n in todas if not menciona(n, excluir)]
+
     if not todas:
         print("No se ha podido leer ninguna fuente: dejo la web como estaba.")
         return 0

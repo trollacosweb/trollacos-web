@@ -79,5 +79,14 @@
     "noticias": 8,
     "maximo_por_medio": 2,
     "dias_maximos": 7
-  }
+  },
+  "excluir_palabras": [
+    "apuestas",
+    "apuesta deportiva",
+    "cuotas",
+    "pronóstico",
+    "casino",
+    "bet365",
+    "codere"
+  ]
 }
