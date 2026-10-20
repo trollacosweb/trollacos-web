@@ -38,7 +38,8 @@ NS = {
     "content": "http://purl.org/rss/1.0/modules/content/",
     "atom": "http://www.w3.org/2005/Atom",
 }
-CATEGORIAS = [("videojuegos", "// VIDEOJUEGOS"), ("cine", "// CINE Y SERIES"), ("futbol", "// FÚTBOL EUROPEO"), ("salseo", "// SALSEO")]
+CATEGORIAS = [("videojuegos", "// VIDEOJUEGOS"), ("salseo", "// SALSEO"), ("futbol", "// FÚTBOL EUROPEO"), ("cine", "// CINE Y SERIES")]
+ICONOS = {"videojuegos": "🎮", "salseo": "🍿", "futbol": "⚽", "cine": "🎬", "especial": "🌴"}
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 
 
@@ -184,8 +185,13 @@ def fecha_bonita(d):
 
 def tarjeta(n):
     e = lambda s: html.escape(s or "", quote=True)
-    img = (f'<img src="{e(n["imagen"])}" alt="" loading="lazy" referrerpolicy="no-referrer" '
-           f'onerror="this.remove()">') if n["imagen"] else ""
+    cat = n.get("categoria", "videojuegos")
+    if n["imagen"]:
+        img = (f'<img src="{e(n["imagen"])}" alt="" loading="lazy" referrerpolicy="no-referrer" '
+               f'onerror="this.remove()">')
+    else:
+        img = f'<span class="mini mini-{e(cat)}" aria-hidden="true">{ICONOS.get(cat, "🕹️")}</span>'
+    
     cuando = f' · {fecha_bonita(n["fecha"])}' if n["fecha"] else ""
     resumen = f'<p>{e(n["resumen"])}</p>' if n["resumen"] else ""
     return (f'      <article class="news-card"><a href="{e(n["enlace"])}" target="_blank" rel="noopener nofollow">'
