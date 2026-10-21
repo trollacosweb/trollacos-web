@@ -55,6 +55,21 @@
       "categoria": "especial"
     },
     {
+      "nombre": "MARCA",
+      "url": "https://e00-marca.uecdn.es/rss/futbol/primera-division.xml",
+      "categoria": "futbol"
+    },
+    {
+      "nombre": "MARCA Champions",
+      "url": "https://e00-marca.uecdn.es/rss/futbol/champions-league.xml",
+      "categoria": "futbol"
+    },
+    {
+      "nombre": "MARCA Premier",
+      "url": "https://e00-marca.uecdn.es/rss/futbol/premier-league.xml",
+      "categoria": "futbol"
+    },
+    {
       "nombre": "Google Noticias Fútbol",
       "url": "https://news.google.com/rss/search?q=%22Champions+League%22+OR+%22Premier+League%22+OR+LaLiga+OR+%22Serie+A%22+OR+Bundesliga+when:3d&hl=es&gl=ES&ceid=ES:es",
       "categoria": "futbol"

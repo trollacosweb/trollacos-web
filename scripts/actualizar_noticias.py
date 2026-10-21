@@ -203,7 +203,7 @@ def enlace_real_google(url):
     firma = sello = None
     for intento, base in enumerate(("articles", "rss/articles", "articles")):
         try:
-            _, pagina = pedir(f"https://news.google.com/{base}/{gid}")
+            _, pagina = pedir(f"https://news.google.com/{base}/{gid}?hl=es&gl=ES&ceid=ES:es")
             firma = re.search(r'data-n-a-sg="([^"]+)"', pagina)
             sello = re.search(r'data-n-a-ts="([^"]+)"', pagina)
             if firma and sello:
@@ -378,13 +378,20 @@ def main():
     usados = {clave_de(n) for n in especiales} | {n["enlace"] for n in especiales}
 
     columnas, publicadas = [], list(especiales)
+    # Se cogen el doble de candidatas, se les busca foto y se prefieren las que tienen
+    cuantas = cfg.get("noticias_por_categoria", 6)
+    amplio = dict(cfg, noticias_por_categoria=cuantas * 2)
+    candidatas = [(t, elegir([n for n in todas if n["categoria"] == c], amplio, excluir=usados))
+                  for c, t in CATEGORIAS]
+    completar_fotos(especiales + [n for _, lista in candidatas for n in lista])
+
+    viejo = datetime(1970, 1, 1, tzinfo=timezone.utc)
     por_columna = []
-    for clave, titulo in CATEGORIAS:
-        elegidas = elegir([n for n in todas if n["categoria"] == clave], cfg, excluir=usados)
+    for titulo, lista in candidatas:
+        elegidas = ([n for n in lista if n["imagen"]] + [n for n in lista if not n["imagen"]])[:cuantas]
+        elegidas.sort(key=lambda n: n["fecha"] or viejo, reverse=True)
         publicadas += elegidas
         por_columna.append((titulo, elegidas))
-
-    completar_fotos(publicadas)
 
     for titulo, elegidas in por_columna:
         if elegidas:
