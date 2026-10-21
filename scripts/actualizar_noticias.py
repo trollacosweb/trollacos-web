@@ -13,6 +13,7 @@ import html
 import json
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -199,9 +200,17 @@ def enlace_real_google(url):
     if not m:
         return url
     gid = m.group(1)
-    _, pagina = pedir(f"https://news.google.com/rss/articles/{gid}")
-    firma = re.search(r'data-n-a-sg="([^"]+)"', pagina)
-    sello = re.search(r'data-n-a-ts="([^"]+)"', pagina)
+    firma = sello = None
+    for intento, base in enumerate(("articles", "rss/articles", "articles")):
+        try:
+            _, pagina = pedir(f"https://news.google.com/{base}/{gid}")
+            firma = re.search(r'data-n-a-sg="([^"]+)"', pagina)
+            sello = re.search(r'data-n-a-ts="([^"]+)"', pagina)
+            if firma and sello:
+                break
+        except Exception:
+            pass
+        time.sleep(1.5 * (intento + 1))
     if not firma or not sello:
         return ""
     peticion = ('["garturlreq",[["X","X",["X","X"],null,null,1,1,"ES:es",null,1,null,null,null,null,null,0,1],'
@@ -209,9 +218,14 @@ def enlace_real_google(url):
                 f'"{gid}",{sello.group(1)},"{firma.group(1)}"]')
     freq = json.dumps([[["Fbv4je", peticion, None, "generic"]]])
     datos = urllib.parse.urlencode({"f.req": freq}).encode()
-    _, resp = pedir("https://news.google.com/_/DotsSplashUi/data/batchexecute", datos)
-    bloque = json.loads(resp.split("\n\n", 1)[1])[:-2]
-    return json.loads(bloque[0][2])[1]
+    for intento in range(3):
+        try:
+            _, resp = pedir("https://news.google.com/_/DotsSplashUi/data/batchexecute", datos)
+            bloque = json.loads(resp.split("\n\n", 1)[1])[:-2]
+            return json.loads(bloque[0][2])[1]
+        except Exception:
+            time.sleep(2 * (intento + 1))
+    return ""
 
 
 def foto_de_pagina(url):
@@ -244,7 +258,7 @@ def completar_fotos(noticias):
         except Exception as ex:
             print(f"  sin foto: {n['titulo'][:50]}... ({type(ex).__name__})")
 
-    with ThreadPoolExecutor(max_workers=8) as pool:
+    with ThreadPoolExecutor(max_workers=3) as pool:
         list(pool.map(una, sin_foto))
     print(f"Fotos encontradas: {sum(1 for n in sin_foto if n['imagen'])} de {len(sin_foto)}")
 
