@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Wed, 21 Oct 2026 17:21:13 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 17:22:29 +0200</lastBuildDate>
     <item>
       <title>Rockstar retira GTA V y Red Dead Redemption 2 de PlayStation Plus justo antes de la llegada de GTA 6</title>
       <link>https://www.avpasion.com/gta-v-red-dead-redemption-2-ps-plus-gta-6/</link>
@@ -122,6 +122,7 @@
       <guid isPermaLink="false">https://www.extradigital.es/netflix-emitira-en-exclusiva-las-tres-proximas-ediciones-de-la-velada-de-ibai-medios/</guid>
       <pubDate>Wed, 21 Oct 2026 12:01:00 +0000</pubDate>
       <description>EXTRADIGITAL</description>
+      <enclosure url="https://www.extradigital.es/wp-content/uploads/2026/10/La-Velada-NETFLIX-EXTRADIGITAL-1024x576-1-e1792569755121.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Ibai Llanos anuncia el salto de La Velada del Año a Netflix: «Ahora viene lo mejor»</title>
@@ -174,6 +175,22 @@
       <enclosure url="https://e00-us-marca.uecdn.es/assets/amp/AMP-DIRECTO-futbol-es.png" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>Como - M. United LIVE. Champions League latest updates</title>
+      <link>https://www.marca.com/en/soccer/champions-league/como-m-united/2026/10/21/01_0103_20261021_1065_1-live.html</link>
+      <guid isPermaLink="false">https://www.marca.com/en/soccer/champions-league/como-m-united/2026/10/21/01_0103_20261021_1065_1-live.html</guid>
+      <pubDate>Wed, 21 Oct 2026 15:15:00 +0000</pubDate>
+      <description>MARCA</description>
+      <enclosure url="https://objetos.estaticos-marca.com/assets/amp/AMP-DIRECTO-futbol-en.png" type="image/jpeg" length="0"/>
+    </item>
+    <item>
+      <title>Lille - Galatasaray LIVE. Champions League latest updates</title>
+      <link>https://www.marca.com/en/soccer/champions-league/lille-galatasaray/2026/10/21/01_0103_20261021_429_208-live.html</link>
+      <guid isPermaLink="false">https://www.marca.com/en/soccer/champions-league/lille-galatasaray/2026/10/21/01_0103_20261021_429_208-live.html</guid>
+      <pubDate>Wed, 21 Oct 2026 15:15:00 +0000</pubDate>
+      <description>MARCA</description>
+      <enclosure url="https://objetos.estaticos-marca.com/assets/amp/AMP-DIRECTO-futbol-en.png" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>🗓️LaLiga oficializa la programación para la Jornada 13</title>
       <link>https://onefootball.com/es/noticias/laliga-oficializa-la-programacion-para-la-jornada-13-43648583</link>
       <guid isPermaLink="false">https://onefootball.com/es/noticias/laliga-oficializa-la-programacion-para-la-jornada-13-43648583</guid>
@@ -187,21 +204,6 @@
       <guid isPermaLink="false">https://www.eldesmarque.com/futbol/liga-1a-division/20261021/fechas-horarios-partidos-jornada-13-laliga_18_020499599.html</guid>
       <pubDate>Wed, 21 Oct 2026 14:50:48 +0000</pubDate>
       <description>El Desmarque</description>
-    </item>
-    <item>
-      <title>A qué hora y dónde ver el partido de Champions League entre el Real Madrid y el Leipzig: Vinícius Jr busca su reválida antes del Clásico</title>
-      <link>https://news.google.com/rss/articles/CBMilgJBVV95cUxNSXNFeE9ac0hTa1RxQTVMRHd0WkZNU1RZUTZsVzFFTXFRX1I0bUlPRGN1Z1ZERV9sMU5fNDdVV29PQzhacXEzWGZub0ZsUkFxSWlVYzRyOUJwbHVzVW1iRVdjbmdDVGNRZjVVaE83M0YtV29UUEJKZEVsZWlfa0d1T2IwWWlwdlJyN0pzUWdCd1ZVc2pzYmxaaWxMaXJrZHNYa3l6ZWNwU0F6YXJDTWgwV0RMTUxFNG5qTVNvZ3Zsenc5WkN4aXo3dFF0S2ozOW1wN1VIRDlOSDMyU0t5Q2RNazRsNXo4cThtc3JlX2hpMXpiSmtEUXNGa2tKTFdrdkIwellqaDh5UXFYZGhaMTRxOUNvTE9vUdIBsAJBVV95cUxOTnZSUnVON1c1Rkc3bXBGVW1MM3VjMmZId00wY002cHotd0ZtWXdDcjdOY0x6eVluWG5nUUdFWG4tOFpSR2s5bnQyZWp5TWdsOHRpWmVIX2ltajA0eFptbnowMFRoQjUzUzEtazJNc0c5M04tVEF0UEZaSWd1YVdlY0VjX2NDanBUaENWZDR3WC1FMzFLX0V5aXVpTTJZVXE3dXhNeDV0U2NRM1hHa1JqdXo2b0xsckc1VUltdlNHRGZmdEpxdnI1dG1pdzBkQ3NHU1VCV213VlRERC16OHBzRkpIT1EzcjFKNmVpLUxwRjBqTjNaSDFXVURfbXlfVE5LNEtfMU9hdzBXaU5rLVBYUU1rdHVuU3dMcW9HbEF0SHVJT1lmWUJCSTl3cVZSZDNF?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMilgJBVV95cUxNSXNFeE9ac0hTa1RxQTVMRHd0WkZNU1RZUTZsVzFFTXFRX1I0bUlPRGN1Z1ZERV9sMU5fNDdVV29PQzhacXEzWGZub0ZsUkFxSWlVYzRyOUJwbHVzVW1iRVdjbmdDVGNRZjVVaE83M0YtV29UUEJKZEVsZWlfa0d1T2IwWWlwdlJyN0pzUWdCd1ZVc2pzYmxaaWxMaXJrZHNYa3l6ZWNwU0F6YXJDTWgwV0RMTUxFNG5qTVNvZ3Zsenc5WkN4aXo3dFF0S2ozOW1wN1VIRDlOSDMyU0t5Q2RNazRsNXo4cThtc3JlX2hpMXpiSmtEUXNGa2tKTFdrdkIwellqaDh5UXFYZGhaMTRxOUNvTE9vUdIBsAJBVV95cUxOTnZSUnVON1c1Rkc3bXBGVW1MM3VjMmZId00wY002cHotd0ZtWXdDcjdOY0x6eVluWG5nUUdFWG4tOFpSR2s5bnQyZWp5TWdsOHRpWmVIX2ltajA0eFptbnowMFRoQjUzUzEtazJNc0c5M04tVEF0UEZaSWd1YVdlY0VjX2NDanBUaENWZDR3WC1FMzFLX0V5aXVpTTJZVXE3dXhNeDV0U2NRM1hHa1JqdXo2b0xsckc1VUltdlNHRGZmdEpxdnI1dG1pdzBkQ3NHU1VCV213VlRERC16OHBzRkpIT1EzcjFKNmVpLUxwRjBqTjNaSDFXVURfbXlfVE5LNEtfMU9hdzBXaU5rLVBYUU1rdHVuU3dMcW9HbEF0SHVJT1lmWUJCSTl3cVZSZDNF?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 14:45:11 +0000</pubDate>
-      <description>Infobae</description>
-    </item>
-    <item>
-      <title>Horarios de la decimotercera jornada de LALIGA EA SPORTS 2026/27</title>
-      <link>https://www.laliga.com/es-US/noticias/horarios-de-la-decimotercera-jornada-de-laliga-ea-sports-2026-27</link>
-      <guid isPermaLink="false">https://www.laliga.com/es-US/noticias/horarios-de-la-decimotercera-jornada-de-laliga-ea-sports-2026-27</guid>
-      <pubDate>Wed, 21 Oct 2026 14:44:38 +0000</pubDate>
-      <description>LALIGA official website</description>
-      <enclosure url="https://assets.laliga.com/assets/2026/10/21/medium/0f908327bd69a60278636186ab30dfc6.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>&quot;Una delicada y precisa fábula sobre el descubrimiento del dolor&quot;: se estrena en cines &#x27;Moscas&#x27;, alabada por la crítica</title>
