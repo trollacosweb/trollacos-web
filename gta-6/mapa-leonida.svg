@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" font-family="Righteous, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Mapa ilustrativo de Leonida, el estado de GTA VI</title>
+  <desc id="d">Mapa dibujado por Trollacos con las seis zonas confirmadas: Mount Kalaga al norte, Port Gellhorn al oeste, Ambrosia en el centro junto al lago Leonida, Grassrivers al suroeste, Vice City en la costa este y los Cayos de Leonida al sur.</desc>
+  <defs>
+    <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0430"/><stop offset="1" stop-color="#1a0640"/></linearGradient>
+    <linearGradient id="tierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3b2b"/><stop offset="1" stop-color="#16302a"/></linearGradient>
+    <pattern id="rej" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ff2bd6" stroke-opacity=".12"/></pattern>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="r1"><stop offset="0" stop-color="#ff2bd6" stop-opacity=".55"/><stop offset="1" stop-color="#ff2bd6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="r2"><stop offset="0" stop-color="#1ff2ff" stop-opacity=".4"/><stop offset="1" stop-color="#1ff2ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="r3"><stop offset="0" stop-color="#86cc6c" stop-opacity=".45"/><stop offset="1" stop-color="#86cc6c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="r4"><stop offset="0" stop-color="#ff9d3c" stop-opacity=".45"/><stop offset="1" stop-color="#ff9d3c" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="600" height="720" fill="url(#mar)"/>
+  <rect width="600" height="720" fill="url(#rej)"/>
+  <!-- tierra -->
+  <path d="M28 112 L118 96 L228 102 L330 86 L432 80 L474 92 L486 146 L506 226 L534 322 L556 418 L562 498 L548 560 L522 604 L474 614 L434 584 L402 522 L372 452 L346 384 L320 334 L288 292 L250 254 L200 218 L150 192 L98 178 L48 168 L28 150 Z"
+        fill="url(#tierra)" stroke="#1ff2ff" stroke-width="3" filter="url(#neon)" stroke-linejoin="round"/>
+  <!-- zonas (manchas de color) -->
+  <ellipse cx="320" cy="135" rx="140" ry="55" fill="url(#r3)"/>
+  <ellipse cx="120" cy="145" rx="95" ry="45" fill="url(#r2)"/>
+  <ellipse cx="440" cy="320" rx="90" ry="95" fill="url(#r4)"/>
+  <ellipse cx="430" cy="540" rx="80" ry="70" fill="url(#r3)"/>
+  <ellipse cx="530" cy="470" rx="55" ry="90" fill="url(#r1)"/>
+  <!-- lago Leonida -->
+  <ellipse cx="458" cy="388" rx="26" ry="34" fill="#0b0430" stroke="#1ff2ff" stroke-width="2"/>
+  <text x="458" y="392" font-size="10" fill="#1ff2ff" text-anchor="middle" font-family="VT323, monospace">LAGO</text>
+  <!-- rascacielos de Vice City -->
+  <g fill="#ff2bd6" filter="url(#neon)">
+    <rect x="532" y="440" width="6" height="26"/><rect x="541" y="432" width="7" height="34"/><rect x="551" y="446" width="5" height="20"/><rect x="523" y="452" width="6" height="14"/>
+  </g>
+  <!-- cayos -->
+  <g fill="url(#tierra)" stroke="#1ff2ff" stroke-width="2" filter="url(#neon)">
+    <ellipse cx="500" cy="636" rx="16" ry="6" transform="rotate(-25 500 636)"/>
+    <ellipse cx="468" cy="654" rx="18" ry="6" transform="rotate(-18 468 654)"/>
+    <ellipse cx="432" cy="668" rx="16" ry="5" transform="rotate(-10 432 668)"/>
+    <ellipse cx="396" cy="676" rx="14" ry="5"/>
+    <ellipse cx="362" cy="680" rx="12" ry="4"/>
+    <ellipse cx="330" cy="682" rx="10" ry="4"/>
+  </g>
+  <path d="M514 626 L486 645 L450 661 L414 672 L378 678 L346 681" fill="none" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <!-- etiquetas -->
+  <g font-size="19" fill="#fff" text-anchor="middle">
+    <g><circle cx="320" cy="112" r="13" fill="#86cc6c"/><text x="320" y="119" font-size="16" fill="#07021a">6</text><text x="320" y="152">MOUNT KALAGA</text></g>
+    <g><circle cx="110" cy="122" r="13" fill="#1ff2ff"/><text x="110" y="129" font-size="16" fill="#07021a">4</text><text x="112" y="160">PORT GELLHORN</text></g>
+    <g><circle cx="420" cy="268" r="13" fill="#ff9d3c"/><text x="420" y="275" font-size="16" fill="#07021a">5</text><text x="420" y="306">AMBROSIA</text></g>
+    <g><circle cx="420" cy="528" r="13" fill="#86cc6c"/><text x="420" y="535" font-size="16" fill="#07021a">3</text><text x="430" y="566">GRASSRIVERS</text></g>
+    <g><circle cx="542" cy="410" r="13" fill="#ff2bd6"/><text x="542" y="417" font-size="16" fill="#07021a">1</text><text x="516" y="488" fill="#ff8be9" text-anchor="end">VICE CITY</text></g>
+    <g><circle cx="300" cy="664" r="13" fill="#ffd23f"/><text x="300" y="671" font-size="16" fill="#07021a">2</text><text x="420" y="708" fill="#ffd23f">CAYOS DE LEONIDA</text></g>
+  </g>
+  <text x="170" y="430" font-size="22" fill="#1ff2ff" fill-opacity=".45" text-anchor="middle" font-family="VT323, monospace" letter-spacing="4">GOLFO</text>
+  <text x="586" y="250" font-size="22" fill="#1ff2ff" fill-opacity=".45" text-anchor="middle" font-family="VT323, monospace" letter-spacing="4" transform="rotate(90 586 250)">OCÉANO</text>
+  <text x="20" y="34" font-size="26" fill="#ffd23f">LEONIDA</text>
+  <text x="20" y="56" font-size="15" fill="#a59dd0" font-family="VT323, monospace">MAPA ILUSTRATIVO · TROLLACOS.COM</text>
+</svg>
