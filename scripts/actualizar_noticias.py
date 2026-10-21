@@ -212,7 +212,7 @@ def enlace_real_google(url):
             pagina = f"{type(ex).__name__} {ex}"
         time.sleep(1.5 * (intento + 1))
     if not firma or not sello:
-        raise RuntimeError("sin firma: " + re.sub(r"\s+", " ", pagina[:60] if 'pagina' in dir() else "")) 
+        raise RuntimeError("sin firma: " + " ".join(sorted(set(re.findall(r"data-n-a-\w+|consent\.google|jsdata|c-wiz|<title>[^<]{0,40}", pagina))))[:200])
     peticion = ('["garturlreq",[["X","X",["X","X"],null,null,1,1,"ES:es",null,1,null,null,null,null,null,0,1],'
                 '"X","X",1,[1,1,1],1,1,null,0,0,null,0],'
                 f'"{gid}",{sello.group(1)},"{firma.group(1)}"]')
