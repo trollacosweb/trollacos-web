@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Wed, 21 Oct 2026 15:42:36 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 15:59:49 +0200</lastBuildDate>
     <item>
       <title>PS5 recibe una actualización en pleno revuelo por el jailbreak y GTA VI</title>
       <link>https://news.google.com/rss/articles/CBMihgFBVV95cUxOQTNrUkVOUG1kbDk2eFNZVlNGN0k1WEpmc2JwWC05cTBaeVlfMzZja3BXTjBkWGRPYjJqbW4zaXBHSjBXdWdsRWxSWWxkcnY4QXhmX1dhN09uaWVoRFdOdlFHVjJDZDZObzRMT3g1SE9YTUtES1NlVjQ1aDRMa0ZpT2pHOVVxZw?oc=5</link>
@@ -65,20 +65,28 @@
       <description>iXBT.games</description>
     </item>
     <item>
+      <title>En 2 días deja Netflix una película bélica tan única que le robó el Óscar a la segunda cinta más taquillera de la historia</title>
+      <link>https://www.3djuegos.com/tv-series/noticias/2-dias-deja-netflix-pelicula-belica-unica-que-le-robo-oscar-a-segunda-cinta-taquillera-historia</link>
+      <guid isPermaLink="false">https://www.3djuegos.com/tv-series/noticias/2-dias-deja-netflix-pelicula-belica-unica-que-le-robo-oscar-a-segunda-cinta-taquillera-historia</guid>
+      <pubDate>Wed, 21 Oct 2026 13:45:40 +0000</pubDate>
+      <description>3DJuegos. Lo bueno del cine bélico es que puede abarcar prácticamente todo tipo de conceptos: desde el drama hasta el romance, pasando por el terror, como ya hizo…</description>
+      <enclosure url="https://i.blogs.es/b2cdb2/en-tierra-hostil-1-/1024_2000.jpeg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
+      <title>Ordinary Oddness, el nuevo gacha de mundo abierto que viene de China y en el que lo extraño es lo normal, muestra 22 minutos de su…</title>
+      <link>https://www.hobbyconsolas.com/videojuegos/ordinary-oddness-nuevo-gacha-mundo-abierto-que-viene-china-que-extrano-es-normal-muestra-22-minutos-su-jugabilidad-abre-los-registros_7051622_0.html</link>
+      <guid isPermaLink="false">https://www.hobbyconsolas.com/videojuegos/ordinary-oddness-nuevo-gacha-mundo-abierto-que-viene-china-que-extrano-es-normal-muestra-22-minutos-su-jugabilidad-abre-los-registros_7051622_0.html</guid>
+      <pubDate>Wed, 21 Oct 2026 13:42:08 +0000</pubDate>
+      <description>HobbyConsolas. Ordinary Oddness es un loco RPG de acción gacha que viene de una filial de Tencent, y cuyos registros ya está abiertos en PC, a la espera de PS5 y Xbox: ¿os…</description>
+      <enclosure url="https://imagenes.hobbyconsolas.com/files/image_1920_1080/uploads/imagenes/2026/10/21/6ad8ba4d69e9f9-97183123.jpeg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Harry Potter saca a subasta 20 varitas usadas en las películas, y la de saúco no es la más codiciada</title>
       <link>https://www.hobbyconsolas.com/hobbycine/harry-potter-saca-subasta-20-varitas-usadas-las-peliculas-sauco-no-es-mas-codiciada_7051492_0.html</link>
       <guid isPermaLink="false">https://www.hobbyconsolas.com/hobbycine/harry-potter-saca-subasta-20-varitas-usadas-las-peliculas-sauco-no-es-mas-codiciada_7051492_0.html</guid>
       <pubDate>Wed, 21 Oct 2026 13:30:00 +0000</pubDate>
       <description>HobbyConsolas. Lord Voldemort estará decepcionado al ver cómo esos despreciables muggles menosprecian la varita más poderosa del mundo en favor de la de una &#x27;asquerosa&#x27;…</description>
       <enclosure url="https://imagenes.hobbyconsolas.com/files/image_1920_1080/uploads/imagenes/2026/03/28/69c7d4bb3d1232-41747543.jpeg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>Xbox planea nuevos recortes hasta el mes de enero, para así llegar a la prometida cifra de 3200 despidos en junio de 2027, según fuentes…</title>
-      <link>https://www.hobbyconsolas.com/videojuegos/xbox-planea-nuevos-recortes-hasta-mes-enero-para-asi-llegar-prometida-cifra-3200-despidos-junio-2027-segun-fuentes-cercanas-microsoft_7051611_0.html</link>
-      <guid isPermaLink="false">https://www.hobbyconsolas.com/videojuegos/xbox-planea-nuevos-recortes-hasta-mes-enero-para-asi-llegar-prometida-cifra-3200-despidos-junio-2027-segun-fuentes-cercanas-microsoft_7051611_0.html</guid>
-      <pubDate>Wed, 21 Oct 2026 13:04:13 +0000</pubDate>
-      <description>HobbyConsolas. Asha Sharma, CEO de Xbox, planea acometer nuevas rondas de despidos este mes, en noviembre y en enero, con el fin de llegar a la cifra de 3.200 trabajadores en…</description>
-      <enclosure url="https://imagenes.hobbyconsolas.com/files/image_1920_1080/uploads/imagenes/2026/10/21/6ad8b460076543-55047136.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Kojima cree que los que llaman &quot;simulador de caminar&quot; a Death Stranding sin jugarlo son la prueba del drama de las redes sociales</title>
@@ -95,14 +103,6 @@
       <pubDate>Wed, 21 Oct 2026 12:05:38 +0000</pubDate>
       <description>3DJuegos. Pensar en Robert De Niro es hacerlo, irremediablemente, en Martin Scorsese. Gracias al director, le vimos protagonizar Taxi Driver, Toro salvaje o Uno de los…</description>
       <enclosure url="https://i.blogs.es/09c04f/-22una-obra-maestra-22-leonardo-dicaprio-matt-damon-y-ben-affleck-elogian-esta-pelicula-de-culto-de-los-anos-80/1024_2000.jpeg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>Hace 22 años un juego de estrategia cambió mi vida. He pasado 12 horas con su secuela y te garantizo que Dawn of War 4 es el juego que…</title>
-      <link>https://www.3djuegos.com/juegos/warhammer-40000-dawn-of-war-iv/noticias/hace-22-anos-juego-estrategia-cambio-mi-vida-he-pasado-12-horas-su-secuela-te-garantizo-que-dawn-of-war-4-juego-que-mereciamos</link>
-      <guid isPermaLink="false">https://www.3djuegos.com/juegos/warhammer-40000-dawn-of-war-iv/noticias/hace-22-anos-juego-estrategia-cambio-mi-vida-he-pasado-12-horas-su-secuela-te-garantizo-que-dawn-of-war-4-juego-que-mereciamos</guid>
-      <pubDate>Wed, 21 Oct 2026 12:01:39 +0000</pubDate>
-      <description>3DJuegos. Como niño que creció en los 80 y 90, tuve mi propio set de Warhammer Fantasy (ahora, Old World) que pintaba junto a mi padre, pero ni estaba puesto en la…</description>
-      <enclosure url="https://i.blogs.es/b03001/warhammer-bolt2/1024_2000.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Jamie Dornan habla por primera vez sobre su papel como Aragorn en la próxima película de El Señor de los Anillos: &quot;Siempre será Viggo&quot;</title>
@@ -127,13 +127,6 @@
       <description>ABC</description>
     </item>
     <item>
-      <title>¡Ibai lleva La Velada del Año a Netflix!</title>
-      <link>https://news.google.com/rss/articles/CBMijgFBVV95cUxNVnFGcDgxNXdKZG5RVEV3dUs3bkxTZzVWVk93RXFQal9naVJleExrX1pwVndJajJQVGVodGlCWmJqT2puaTJIS0F0SG9pM1hJcXJDeWYwa3kwaGJGalI5al9WZWp4VEd4ZkpMUGVBOWJRT3ZZb0R2cUlvRUZrTHNheTNNb21neU5XTVpmYlln?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMijgFBVV95cUxNVnFGcDgxNXdKZG5RVEV3dUs3bkxTZzVWVk93RXFQal9naVJleExrX1pwVndJajJQVGVodGlCWmJqT2puaTJIS0F0SG9pM1hJcXJDeWYwa3kwaGJGalI5al9WZWp4VEd4ZkpMUGVBOWJRT3ZZb0R2cUlvRUZrTHNheTNNb21neU5XTVpmYlln?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 08:03:06 +0000</pubDate>
-      <description>Noticias de Querétaro</description>
-    </item>
-    <item>
       <title>Los microobjetivos de Ibai Gómez para lograr el ascenso con el Real Zaragoza</title>
       <link>https://news.google.com/rss/articles/CBMiywFBVV95cUxQNnlRbjFSYTlVX3NFa0V6ZS14VWlzX21VdnJOMnIzUmZFUTA4Wi1WYUkzczVoVkpVTEVObVI1LVpQc01QbmItbjFTU0Y1NTczbWlCT0NjZ09MbnkwQ3gyYVhzRFNmQnkyd2l2M21aUVZtdlI1dXcxb1pOQTUxcERKXzBiVFlkNU9FUXBYS1BwZlhRdDdGR0UyZGdZOEhIVzlWYmVBM1M2RUNxOHlhWUtnc2xWUzNVMmlwWDBobTZMWFlabHBTSTZLS1Nubw?oc=5</link>
       <guid isPermaLink="false">https://news.google.com/rss/articles/CBMiywFBVV95cUxQNnlRbjFSYTlVX3NFa0V6ZS14VWlzX21VdnJOMnIzUmZFUTA4Wi1WYUkzczVoVkpVTEVObVI1LVpQc01QbmItbjFTU0Y1NTczbWlCT0NjZ09MbnkwQ3gyYVhzRFNmQnkyd2l2M21aUVZtdlI1dXcxb1pOQTUxcERKXzBiVFlkNU9FUXBYS1BwZlhRdDdGR0UyZGdZOEhIVzlWYmVBM1M2RUNxOHlhWUtnc2xWUzNVMmlwWDBobTZMWFlabHBTSTZLS1Nubw?oc=5</guid>
@@ -155,46 +148,53 @@
       <description>navarratelevision.es</description>
     </item>
     <item>
-      <title>Ofensiva por Fikayo Tomori</title>
-      <link>https://news.google.com/rss/articles/CBMifEFVX3lxTE9yYTlfOEtJeXRpbGhBTlFIRUo3cWRfekFMT0tqN1JjaThGZVlRRnhRQk5ueVg5dXFvYXRYTUFHd09MYzMxLTQxb0R5eThGMmgwSzdMNDZZV1JiaXV6UUZGT1lTSTdBMFYzUWtUcDVTQXBqS0RiUDhNaGJRMVk?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMifEFVX3lxTE9yYTlfOEtJeXRpbGhBTlFIRUo3cWRfekFMT0tqN1JjaThGZVlRRnhRQk5ueVg5dXFvYXRYTUFHd09MYzMxLTQxb0R5eThGMmgwSzdMNDZZV1JiaXV6UUZGT1lTSTdBMFYzUWtUcDVTQXBqS0RiUDhNaGJRMVk?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:27:28 +0000</pubDate>
-      <description>Fichajes.com</description>
+      <title>El Córdoba CF se mide al Éibar de Aranbarri, el técnico que impulsó a Ibai Sanz y Eder García</title>
+      <link>https://news.google.com/rss/articles/CBMiqAFBVV95cUxQeWdiTFFBWlQycmFWclNvOHRZTWR2OEk3V1p1dkxPbC1MZFFnU0Fzb0NqbnBGd1RxXy1MdG1wV1BNMThUay1LT0xWblJYY1IwWFh3c2IzcHctYm0zM1d2YXFWcXpwWUU4TmRZQlZXNHg0eHh2dlAzX1dheVJKRkFqbXpKZG5mR1pSRHZsS05fQmlCMjBCXzZrNW9BUDFyRFR1U0F1b2UtanLSAa4BQVVfeXFMTUZqYWh2eFhSVy0wNGl2M1ZYNWpYakd2bTBBNzJZWENyR0FQbnppbnA3NEs0TnhzTlN3emhPYllPcEdBNGtzS3ZVS3d4ZjQyWHZSTWhycVpfeTVTUlNVbDBjbWZyRXVMdTZnM0dULWNYRnNSS1dCODY0ZWpGa0k5YW9nazR6SExwdHlrR0M1UDNfNFRkdGtZSEpiVGo0Y0ZCdkp0UFctTTJYVWllVGhB?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMiqAFBVV95cUxQeWdiTFFBWlQycmFWclNvOHRZTWR2OEk3V1p1dkxPbC1MZFFnU0Fzb0NqbnBGd1RxXy1MdG1wV1BNMThUay1LT0xWblJYY1IwWFh3c2IzcHctYm0zM1d2YXFWcXpwWUU4TmRZQlZXNHg0eHh2dlAzX1dheVJKRkFqbXpKZG5mR1pSRHZsS05fQmlCMjBCXzZrNW9BUDFyRFR1U0F1b2UtanLSAa4BQVVfeXFMTUZqYWh2eFhSVy0wNGl2M1ZYNWpYakd2bTBBNzJZWENyR0FQbnppbnA3NEs0TnhzTlN3emhPYllPcEdBNGtzS3ZVS3d4ZjQyWHZSTWhycVpfeTVTUlNVbDBjbWZyRXVMdTZnM0dULWNYRnNSS1dCODY0ZWpGa0k5YW9nazR6SExwdHlrR0M1UDNfNFRkdGtZSEpiVGo0Y0ZCdkp0UFctTTJYVWllVGhB?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 04:01:11 +0000</pubDate>
+      <description>Diario Córdoba</description>
     </item>
     <item>
-      <title>«¡No llamé nazi a nadie!»: Javier Tebas, máximo responsable de LaLiga, responde al Real Madrid en la polémica por la «propaganda»</title>
-      <link>https://news.google.com/rss/articles/CBMigwJBVV95cUxOTHpnWlZTakJnR250RU9xSXhrX1VTZU53UThlY0thQWNxdDh1MmQtYzlnaGpnS1c0ZnN0LUJ6RmNRaGlBV1czZnBMZzBQT0lUbTJZSUhKd19hRkdBVHFFOWlRalJEc3ZrQndqZHgyXzktcHQ4Zmx4ejhuUkZleC1oOWgwY21FODFCbWVLc0dCT0RQVGRWVno5cFU2a09ZOFI0MFpNR3Q3eHZ5Mm5yU292MXAtVExlVEhPZHR0M3hBNUtZY2JlS2NjX1V2TEg3eXd0NGtIZGdaZlRnVURLeUdBVTAweEViUTNmLUw2ODBBQ1RTUThZbVp3LV92SjAwTWIyeGhR?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMigwJBVV95cUxOTHpnWlZTakJnR250RU9xSXhrX1VTZU53UThlY0thQWNxdDh1MmQtYzlnaGpnS1c0ZnN0LUJ6RmNRaGlBV1czZnBMZzBQT0lUbTJZSUhKd19hRkdBVHFFOWlRalJEc3ZrQndqZHgyXzktcHQ4Zmx4ejhuUkZleC1oOWgwY21FODFCbWVLc0dCT0RQVGRWVno5cFU2a09ZOFI0MFpNR3Q3eHZ5Mm5yU292MXAtVExlVEhPZHR0M3hBNUtZY2JlS2NjX1V2TEg3eXd0NGtIZGdaZlRnVURLeUdBVTAweEViUTNmLUw2ODBBQ1RTUThZbVp3LV92SjAwTWIyeGhR?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:26:12 +0000</pubDate>
+      <title>Betis - Feyenoord, en directo: última hora del partido de la Champions League hoy en vivo</title>
+      <link>https://news.google.com/rss/articles/CBMi1gFBVV95cUxPd2gxdEl3R1gtYlNUNzN5cVhFTHFBekJWd0c4Qm0wU0J2VHBnYURlalZCT2ZtQXp5ZXhyTDI3RDdZQjkyNi03N1ZiaVJsQjM2X0hCUFZFZzEzYVIzeERmZVQ2V3hfYXlZZl9XMlRpMU9ULXYxZEI3eDMtWUV1TWd2eFBiTWhUSm1xVjJzRlZyQXBQeldhdFRBRzg5dVhyZ0xhQXBZS3JDTjZwanp4cDI2WWlBWllxT2l1QUZLZ1dtR2t6Q2tmblZEcWpDSmRON3ZYRy1BRFJ30gHbAUFVX3lxTE82UnJ6M3dTNC1yY1JmdzlJTDlEYjIzeEE3NExJMjNjRDBhUFkwNDdmR1FrQjhzbDR4OUZsLUo1ZWtYX0U0UjQ5cmxVYldMcE1MXy1qTE9BYndtYk1MWnF5RVpqWWk3b0J4QWtUYnhzLWd0dHRyd1JCMWxLWklFNXE0LWxoc3JQa2VsVmN5a29FLWV5Z2NDbGxJLTBJcTk4TjhoYmVLMk1SYnZzNm9OUFd6aDE4T1NyLTA4cDRnZm5DbEoxbEQyamdvYUdSNmYzeURwZ0tBeFRVUmVRYw?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi1gFBVV95cUxPd2gxdEl3R1gtYlNUNzN5cVhFTHFBekJWd0c4Qm0wU0J2VHBnYURlalZCT2ZtQXp5ZXhyTDI3RDdZQjkyNi03N1ZiaVJsQjM2X0hCUFZFZzEzYVIzeERmZVQ2V3hfYXlZZl9XMlRpMU9ULXYxZEI3eDMtWUV1TWd2eFBiTWhUSm1xVjJzRlZyQXBQeldhdFRBRzg5dVhyZ0xhQXBZS3JDTjZwanp4cDI2WWlBWllxT2l1QUZLZ1dtR2t6Q2tmblZEcWpDSmRON3ZYRy1BRFJ30gHbAUFVX3lxTE82UnJ6M3dTNC1yY1JmdzlJTDlEYjIzeEE3NExJMjNjRDBhUFkwNDdmR1FrQjhzbDR4OUZsLUo1ZWtYX0U0UjQ5cmxVYldMcE1MXy1qTE9BYndtYk1MWnF5RVpqWWk3b0J4QWtUYnhzLWd0dHRyd1JCMWxLWklFNXE0LWxoc3JQa2VsVmN5a29FLWV5Z2NDbGxJLTBJcTk4TjhoYmVLMk1SYnZzNm9OUFd6aDE4T1NyLTA4cDRnZm5DbEoxbEQyamdvYUdSNmYzeURwZ0tBeFRVUmVRYw?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:52:46 +0000</pubDate>
+      <description>ABC</description>
+    </item>
+    <item>
+      <title>FC Bayern vs Arsenal: cuándo y dónde ver EN VIVO el juego de la UEFA Champions League desde México</title>
+      <link>https://news.google.com/rss/articles/CBMi4wFBVV95cUxPU2hYczVfbEFybVI4WHZBX0liVE9Fd0ZKNjJMcmtrUkhlMW9yMkpuc3VmZXMzTmRrWkdyb3NHMEx4cGhjMm5DZUJIRUVycUczREcxekM3X0FtNm1CUWVMTUdycGdhSW1ncjE0a1pSM3Nady1WZHIyOUdtY0U4VUd3WGtOcHlWQ2ZOQVQ4cmZKRTRwbHNTMUlLVTZqRW5hUFhyb2ZpVzF4ZmgwcG5JQ2lfR2diLVB4MDRSWklKMlN1Tm1FLTFkd01Ub3UtYVRSUkhvdXhYdDFnTjlPMTkxVVRtMU0yMNIB_gFBVV95cUxOaUtTUVhrcktfZHBiRVVaVlJfVUZEdnlPUzB2UjZWSzhhSG1UUkhCT1luWXJtYkJLY0w1Z2FvWTd5M2gtWXZmYzYyRGZvbmE5MDZtSmJhZE1ObmE2dEp1RFJXd2FRUWxxLWVJc2pZUkhvWDV4c09XTlAxd0dEOWU3eFJETEZ2SElrZGd6ZXcyX1k4bzhLVWpWYncxQVRIeHA2dFpWTW1CUUN3cDRoeXBUWGIzWkR4ajU0dEt3bzF1TnNPX01vbFBFOXN6VFZ6ZWlleTJVUHdhbVFQRFI0LUpENE5GQ2dPcm01b3hQa19ZRnJ6VFhuS3QtcTBXWDFDdw?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi4wFBVV95cUxPU2hYczVfbEFybVI4WHZBX0liVE9Fd0ZKNjJMcmtrUkhlMW9yMkpuc3VmZXMzTmRrWkdyb3NHMEx4cGhjMm5DZUJIRUVycUczREcxekM3X0FtNm1CUWVMTUdycGdhSW1ncjE0a1pSM3Nady1WZHIyOUdtY0U4VUd3WGtOcHlWQ2ZOQVQ4cmZKRTRwbHNTMUlLVTZqRW5hUFhyb2ZpVzF4ZmgwcG5JQ2lfR2diLVB4MDRSWklKMlN1Tm1FLTFkd01Ub3UtYVRSUkhvdXhYdDFnTjlPMTkxVVRtMU0yMNIB_gFBVV95cUxOaUtTUVhrcktfZHBiRVVaVlJfVUZEdnlPUzB2UjZWSzhhSG1UUkhCT1luWXJtYkJLY0w1Z2FvWTd5M2gtWXZmYzYyRGZvbmE5MDZtSmJhZE1ObmE2dEp1RFJXd2FRUWxxLWVJc2pZUkhvWDV4c09XTlAxd0dEOWU3eFJETEZ2SElrZGd6ZXcyX1k4bzhLVWpWYncxQVRIeHA2dFpWTW1CUUN3cDRoeXBUWGIzWkR4ajU0dEt3bzF1TnNPX01vbFBFOXN6VFZ6ZWlleTJVUHdhbVFQRFI0LUpENE5GQ2dPcm01b3hQa19ZRnJ6VFhuS3QtcTBXWDFDdw?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:44:45 +0000</pubDate>
+      <description>Infobae</description>
+    </item>
+    <item>
+      <title>A qué hora y dónde ver el Betis vs. Feyenoord de Champions League</title>
+      <link>https://news.google.com/rss/articles/CBMiygFBVV95cUxOX1NRb0NqQjA5bGVwTVhzQlIyTEVHcGc2UFo5TE0tVUIwTE5TVU1UUWxLTkgxWlloY1VLeXc2ME1jNmFOeVZzYXFmbjg4emdyYVp1NHozRDhfQWZKeXc4U2RBWlFzeGdiMmN2NWJLTlM5djV3RTZPQlVaeEc1WjVGTEo5MnhmYTBYQ1ZwRFlYZmViSWRWOWtZUlZ6dG9BOGhQQW5sTDJBMVZYeTFrYUV6MzQ5cTFxVmk3YzY4N2ZCaTExX0dBWjBtd0RR?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMiygFBVV95cUxOX1NRb0NqQjA5bGVwTVhzQlIyTEVHcGc2UFo5TE0tVUIwTE5TVU1UUWxLTkgxWlloY1VLeXc2ME1jNmFOeVZzYXFmbjg4emdyYVp1NHozRDhfQWZKeXc4U2RBWlFzeGdiMmN2NWJLTlM5djV3RTZPQlVaeEc1WjVGTEo5MnhmYTBYQ1ZwRFlYZmViSWRWOWtZUlZ6dG9BOGhQQW5sTDJBMVZYeTFrYUV6MzQ5cTFxVmk3YzY4N2ZCaTExX0dBWjBtd0RR?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:42:52 +0000</pubDate>
+      <description>TUDN</description>
+    </item>
+    <item>
+      <title>A qué hora y dónde ver el Bayern Múnich vs. Arsenal de Champions League</title>
+      <link>https://news.google.com/rss/articles/CBMi0gFBVV95cUxNX3Zac2c4VzV4dHlRZzNCSDZqZExrb0xoR3ZHbjl0b2tUY3NseXBxeFJOTmJFcllZbGxRZTRGOWRUVmlKa1k1ZkhYWU1aUUw4alJjNTQ0dlRWOWEwQXJ5aUtBdTd6UHM1YTMtbWhhZzc3NTA1U251dHM1WDg2bWRMTGg3QzF5MjVZTkdlSUpUeWlQakFEZy1zOG9IVEhReWlycGZVdXViV2xJd0diMUxnMDFnb0R6OVZhb0dVZGtuUmxzLUQyZWJpcnB6dHBTOWd5TUE?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi0gFBVV95cUxNX3Zac2c4VzV4dHlRZzNCSDZqZExrb0xoR3ZHbjl0b2tUY3NseXBxeFJOTmJFcllZbGxRZTRGOWRUVmlKa1k1ZkhYWU1aUUw4alJjNTQ0dlRWOWEwQXJ5aUtBdTd6UHM1YTMtbWhhZzc3NTA1U251dHM1WDg2bWRMTGg3QzF5MjVZTkdlSUpUeWlQakFEZy1zOG9IVEhReWlycGZVdXViV2xJd0diMUxnMDFnb0R6OVZhb0dVZGtuUmxzLUQyZWJpcnB6dHBTOWd5TUE?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:42:52 +0000</pubDate>
+      <description>TUDN</description>
+    </item>
+    <item>
+      <title>Real Madrid vs Red Bull Leipzig 2026 live stream: Time, TV channels and how to watch Champions League online</title>
+      <link>https://news.google.com/rss/articles/CBMifEFVX3lxTFBDTE5UQnpMX3FkVWFwVTAxR2thandsM0tQWENEZlVockR4NnlSQkZBTlBxbXRWYU9XLTRNLWhscWRRNlEySG51RWl3MmZfUkNBeTl3ajJmWUhQNjBOcV82U01wd19Pcm44bGlLajZyZ2VjaHpxQUVjQlNjX00?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMifEFVX3lxTFBDTE5UQnpMX3FkVWFwVTAxR2thandsM0tQWENEZlVockR4NnlSQkZBTlBxbXRWYU9XLTRNLWhscWRRNlEySG51RWl3MmZfUkNBeTl3ajJmWUhQNjBOcV82U01wd19Pcm44bGlLajZyZ2VjaHpxQUVjQlNjX00?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:38:46 +0000</pubDate>
+      <description>Yahoo Sports</description>
+    </item>
+    <item>
+      <title>Cómo conseguir entradas para los partidos del Bayern de Múnich en la Champions League 2026/27: calendario de la fase de liga, precios y más</title>
+      <link>https://news.google.com/rss/articles/CBMirwJBVV95cUxQTzFieWluX1VHeXpSakplbmxKZ25vXzByTVZYeVF3ZWpBanBMT1VXY0VEaVJmeXlOYVFpbGFoaDdFbnZXOVhtc01xTllzMGxBT1VjZXU1X2RoY0NLc1ZuNlpYVWN1bXFHdUxIVU9KdkdiRHJmamE0SDRFZHVVcFo5OUhNQ2ZtOENKQjJ6NnpFRHdXZEZWaW1rclY0TTdEeTZUT3hKblYtV0lkOTBTbVNTLWV5R3hfNEtMa3JhS2tnOU9hN3Y4OGtRUWFSTWJHbHF4dTlYUVZwRGVGOWtEZVVMUnNjZG9ySW1ScHduQk1pY2VjcE5penRHZ003ektQSGhGVG83SmlkQm5MUUh0aHU0ajd0cmhtWkVhbGphV0xtek9aTHhEUTlBd2RZNWRVcXc?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMirwJBVV95cUxQTzFieWluX1VHeXpSakplbmxKZ25vXzByTVZYeVF3ZWpBanBMT1VXY0VEaVJmeXlOYVFpbGFoaDdFbnZXOVhtc01xTllzMGxBT1VjZXU1X2RoY0NLc1ZuNlpYVWN1bXFHdUxIVU9KdkdiRHJmamE0SDRFZHVVcFo5OUhNQ2ZtOENKQjJ6NnpFRHdXZEZWaW1rclY0TTdEeTZUT3hKblYtV0lkOTBTbVNTLWV5R3hfNEtMa3JhS2tnOU9hN3Y4OGtRUWFSTWJHbHF4dTlYUVZwRGVGOWtEZVVMUnNjZG9ySW1ScHduQk1pY2VjcE5penRHZ003ektQSGhGVG83SmlkQm5MUUh0aHU0ajd0cmhtWkVhbGphV0xtek9aTHhEUTlBd2RZNWRVcXc?oc=5</guid>
+      <pubDate>Wed, 21 Oct 2026 13:38:12 +0000</pubDate>
       <description>Goal.com</description>
-    </item>
-    <item>
-      <title>Real Madrid vs Leipzig en vivo en español: horarios en USA, canales y transmisión de la Champions League 2026/27 en Estados Unidos</title>
-      <link>https://news.google.com/rss/articles/CBMi2gFBVV95cUxQQlVOQlc2VXRGQnhzYjRvQWdPWXFaVzZIbGxyTnVkUHpDVE41SVNEVWcyMW81UDJrUTZ2dFdSa01zenR3andFc3JVd2Q0ckNPMG1CcjdQMGJyUG5SRkNudUVaeEVCQlpFX1pnOHdubFJWalhjNGF2b2xOeDhPZlFpQW5GQTZkZjdyTnNMSk4tS2UzMFlpQ1dHVmRnWHN1dnpPZ3RXQXdPbnc0aHNBNnpnTlA4WGItbkRMWkdhb0hQVFZ0TWluOUFoLVJLWDhYdzJLZUprT1ZBMk01UQ?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi2gFBVV95cUxQQlVOQlc2VXRGQnhzYjRvQWdPWXFaVzZIbGxyTnVkUHpDVE41SVNEVWcyMW81UDJrUTZ2dFdSa01zenR3andFc3JVd2Q0ckNPMG1CcjdQMGJyUG5SRkNudUVaeEVCQlpFX1pnOHdubFJWalhjNGF2b2xOeDhPZlFpQW5GQTZkZjdyTnNMSk4tS2UzMFlpQ1dHVmRnWHN1dnpPZ3RXQXdPbnc0aHNBNnpnTlA4WGItbkRMWkdhb0hQVFZ0TWluOUFoLVJLWDhYdzJLZUprT1ZBMk01UQ?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:25:29 +0000</pubDate>
-      <description>DAZN</description>
-    </item>
-    <item>
-      <title>Steven Caulker, ex jugador de la Premier League, pide trabajo en redes sociales: &quot;Ser desempleado es estresante&quot;</title>
-      <link>https://news.google.com/rss/articles/CBMi-wFBVV95cUxNcE8xVGtTQVlRTDBIb0Y5YVFCQU9EQkJJOS1OTkUxSVJaT3VxZTF2X2lvZVFDLWJDOTBsUW94dEMwMDNQTWZzZERlS3VjUS1aYlJjQjlndWJuWXl6emJfMzV2ZWJfODlwcUVCWms1UDZtcE43M0l4OElOSmZqMUFNQjNyUWxIc0hjUkVIR01NSGQtaDhUNXBHQWVJRDdIaDA4dDhuUi1yOTRuQllNQ3JzVVlsTG5ZNW1WVjVQbDN0NmVIX0kwck5GYS1PT0ctclc1SVZHZGljZUt1ZDVOd0FNZlg5bUFKRHN3TGR4Y21zWGVqamlOWXhhZ1J5WQ?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi-wFBVV95cUxNcE8xVGtTQVlRTDBIb0Y5YVFCQU9EQkJJOS1OTkUxSVJaT3VxZTF2X2lvZVFDLWJDOTBsUW94dEMwMDNQTWZzZERlS3VjUS1aYlJjQjlndWJuWXl6emJfMzV2ZWJfODlwcUVCWms1UDZtcE43M0l4OElOSmZqMUFNQjNyUWxIc0hjUkVIR01NSGQtaDhUNXBHQWVJRDdIaDA4dDhuUi1yOTRuQllNQ3JzVVlsTG5ZNW1WVjVQbDN0NmVIX0kwck5GYS1PT0ctclc1SVZHZGljZUt1ZDVOd0FNZlg5bUFKRHN3TGR4Y21zWGVqamlOWXhhZ1J5WQ?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:19:50 +0000</pubDate>
-      <description>Telecinco</description>
-    </item>
-    <item>
-      <title>¿Por qué Real Madrid vs. RB Leipzig por la Champions League 2026-27 no va por TV abierta en México?</title>
-      <link>https://news.google.com/rss/articles/CBMi0gFBVV95cUxQSUVDZmlDWW9fRFo4WkRKaHZhZXpIOVhVRzVOdkVyYlhaQjZnQ1FIM3RkYXpOZ1dmMlVfRmY0dXFlS1VnVDJBMGEzTXE0Qm1nRFpCdGNMWHRWYTVfY0p0czNIUmoxMlhwLTkzcWVVNFV6WVpFWGp5NnA0WDMyenU1U3BNX3NNRkJNdXdPWUF4dFFsNEdRUHRUd2xQd25CUE1wbHNnUXhmZ0I3MnN5aTlNcFgxSEkwUTdEcjlJZmZKZ1lUMC1nMUsydUtmeU5ZWVJYa1HSAdcBQVVfeXFMTXFJaHBYblZacUItLUZTNFVOMzRWVjVtX2JqME9NV3N1WVZJb2d3dmhySzdPdlhBRG83aUpMLXVNSW1tb1NaVHd0WHVGaHFmODVwMEVvYnNMOHoxUnF3T3FmcVFtQ1kwT202UTVONFhzX1d5eGZCZ2ZoQXd6S2pUTldTWGRRM0ptRllQdFNmU0RxYURqbVZWSS1Zc2xEV2VGN1lvN0ItVkFfeVFQZ0ZLMzdQTjhiTE8yVDRQQjVMa080X2Y4QVZibERqZFYwbEJSQzlCQmVfNHM?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMi0gFBVV95cUxQSUVDZmlDWW9fRFo4WkRKaHZhZXpIOVhVRzVOdkVyYlhaQjZnQ1FIM3RkYXpOZ1dmMlVfRmY0dXFlS1VnVDJBMGEzTXE0Qm1nRFpCdGNMWHRWYTVfY0p0czNIUmoxMlhwLTkzcWVVNFV6WVpFWGp5NnA0WDMyenU1U3BNX3NNRkJNdXdPWUF4dFFsNEdRUHRUd2xQd25CUE1wbHNnUXhmZ0I3MnN5aTlNcFgxSEkwUTdEcjlJZmZKZ1lUMC1nMUsydUtmeU5ZWVJYa1HSAdcBQVVfeXFMTXFJaHBYblZacUItLUZTNFVOMzRWVjVtX2JqME9NV3N1WVZJb2d3dmhySzdPdlhBRG83aUpMLXVNSW1tb1NaVHd0WHVGaHFmODVwMEVvYnNMOHoxUnF3T3FmcVFtQ1kwT202UTVONFhzX1d5eGZCZ2ZoQXd6S2pUTldTWGRRM0ptRllQdFNmU0RxYURqbVZWSS1Zc2xEV2VGN1lvN0ItVkFfeVFQZ0ZLMzdQTjhiTE8yVDRQQjVMa080X2Y4QVZibERqZFYwbEJSQzlCQmVfNHM?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:19:10 +0000</pubDate>
-      <description>Bolavip México</description>
-    </item>
-    <item>
-      <title>CHAMPIONS LEAGUE: Los ultras del Feyernoord provocan altercados en el centro de Sevilla</title>
-      <link>https://news.google.com/rss/articles/CBMirAFBVV95cUxOMnVVVWJTZDNjUXhXVkZ4ckFGT3lKWmVEck1jeUpjbFppVFNrVzVYQ3EwODhwZjV4N2dtcndMMU4tNWpsWVR0cGM1bi1tYjZfZ1BrWHpRejk2empoQjY5Mi1nTS1pWkNhc2dxODVvVWVLZmhWSkpzbDFicnpBWndaazgydUNJWG5teHZ4NVp3REZhVlRXdF91aUR2a2lETWk4X2FOUndvdVMzalI0?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMirAFBVV95cUxOMnVVVWJTZDNjUXhXVkZ4ckFGT3lKWmVEck1jeUpjbFppVFNrVzVYQ3EwODhwZjV4N2dtcndMMU4tNWpsWVR0cGM1bi1tYjZfZ1BrWHpRejk2empoQjY5Mi1nTS1pWkNhc2dxODVvVWVLZmhWSkpzbDFicnpBWndaazgydUNJWG5teHZ4NVp3REZhVlRXdF91aUR2a2lETWk4X2FOUndvdVMzalI0?oc=5</guid>
-      <pubDate>Wed, 21 Oct 2026 13:14:00 +0000</pubDate>
-      <description>Canal Sur</description>
     </item>
     <item>
       <title>Los tres minutos que convirtieron a &#x27;El Padrino&#x27; en la obra más grande jamás filmada</title>
@@ -205,12 +205,28 @@
       <enclosure url="https://i.blogs.es/bac0e9/el-padrino-guion-minutos/1024_2000.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>“Ese puto bolígrafo”: esta película de James Bond dependía de que aprendiera a hacer un truco y se buscó un mago para hacerlo</title>
+      <link>https://www.sensacine.com/noticias/cine/noticia-1000228475/</link>
+      <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000228475/</guid>
+      <pubDate>Wed, 21 Oct 2026 13:30:00 +0000</pubDate>
+      <description>SensaCine. Aun así, el rodaje se complicó cuando le dieron un material diferente</description>
+      <enclosure url="https://es.web.img3.acsta.net/img/6e/a9/6ea985b772da5304ac15250cdd681289.png" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Brays Efe, la estrella de &#x27;Paquita Salas&#x27;, se pronuncia sobre el éxito de &#x27;La bola negra&#x27; y la nueva etapa de los Javis en Hollywood: &quot;Son…</title>
       <link>https://www.espinof.com/actores-y-actrices/brays-efe-estrella-paquita-salas-se-pronuncia-exito-bola-negra-nueva-etapa-javis-hollywood-mios</link>
       <guid isPermaLink="false">https://www.espinof.com/actores-y-actrices/brays-efe-estrella-paquita-salas-se-pronuncia-exito-bola-negra-nueva-etapa-javis-hollywood-mios</guid>
       <pubDate>Wed, 21 Oct 2026 13:01:44 +0000</pubDate>
       <description>Espinof. Esta temporada los Javis han saltado a la fama internacional gracias a &#x27; La bola negra &#x27;, pero para muchos nuestro primer gran punto de contacto con los…</description>
       <enclosure url="https://i.blogs.es/80cd9c/paquita-salas/1024_2000.jpeg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
+      <title>El doble de Sylvester Stallone tarda 2 horas y media cada día para ser igual que él. El resultado es impactante</title>
+      <link>https://www.sensacine.com/noticias/series/noticia-1000228407/</link>
+      <guid isPermaLink="false">https://www.sensacine.com/noticias/series/noticia-1000228407/</guid>
+      <pubDate>Wed, 21 Oct 2026 12:30:00 +0000</pubDate>
+      <description>SensaCine Series. Lleva 14 años trabajando a su lado, y Freddie Poole no tiene ninguna pinta de que lo vaya a dejar pronto: solo necesita paciencia, dedicación y tiempo para…</description>
+      <enclosure url="https://es.web.img3.acsta.net/img/4b/bb/4bbb8f1d2ddc1245e34cddaa754f33e8.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>&#x27;El Langui&#x27; conquista su primer oro en el Campeonato Internacional de boccia en Olbia: &quot;con ganas de seguir sumando puntos para los Juegos…</title>
@@ -221,28 +237,12 @@
       <enclosure url="https://es.web.img2.acsta.net/img/54/cd/54cd17d995d3cd1669c909ddd345e96e.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
-      <title>&#x27;200 vidas, Paco Rabal&#x27;, un documental inédito contado con la propia voz del gran actor a partir de más de 80 cintas de casete</title>
-      <link>https://www.sensacine.com/noticias/cine/noticia-1000228398/</link>
-      <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000228398/</guid>
-      <pubDate>Wed, 21 Oct 2026 10:20:25 +0000</pubDate>
-      <description>SensaCine. Uno de nuestros mejores actores, a través de grabaciones inéditas en casetes y películas Super 8, nos cuenta su vida y contradicciones</description>
-      <enclosure url="https://es.web.img2.acsta.net/img/5a/0f/5a0fe98525837ce5f86cbcc4ef631d5d.jpg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
       <title>1.600 millones de minutos vistos en su primera semana: hace 4 años esta serie solo fue superada por &#x27;Stranger Things&#x27; y hoy regresa con su…</title>
       <link>https://www.sensacine.com/noticias/series/noticia-1000228333/</link>
       <guid isPermaLink="false">https://www.sensacine.com/noticias/series/noticia-1000228333/</guid>
       <pubDate>Wed, 21 Oct 2026 07:15:00 +0000</pubDate>
       <description>SensaCine Series. Los 8 episodios de la serie protagonizada por Chris Pratt ya están al completo en la plataforma de &#x27;streaming&#x27; Prime Video</description>
       <enclosure url="https://es.web.img3.acsta.net/img/dd/80/dd8043b6dc9ec28157b149704b9e195b.jpg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>Charlie Sheen, sobre su infancia: &quot;No teníamos niñeras ni cuidadores ni nadie, si alguien ayudaba era mi tía Carmen, que vive en Madrid&quot;</title>
-      <link>https://www.sensacine.com/noticias/series/noticia-1000228268/</link>
-      <guid isPermaLink="false">https://www.sensacine.com/noticias/series/noticia-1000228268/</guid>
-      <pubDate>Wed, 21 Oct 2026 06:15:00 +0000</pubDate>
-      <description>SensaCine Series. El actor ha hablado acerca de sus raíces españolas en el podcast de Jordi Wild y ha recordado a su tía, la única que sigue afincada en España</description>
-      <enclosure url="https://es.web.img2.acsta.net/img/8e/38/8e381297a89abd42cd45ebda7ff759b2.jpg" type="image/jpeg" length="0"/>
     </item>
   </channel>
 </rss>
