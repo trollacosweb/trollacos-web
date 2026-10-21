@@ -1,21 +1,25 @@
-name: Actualizar noticias
+name: Actualizar noticias y publicar
 
 on:
   schedule:
     # Dos veces al dia: 07:00 y 19:00 hora de Madrid (05:00 y 17:00 UTC en horario de verano)
     - cron: "0 5,17 * * *"
-  workflow_dispatch: {}   # boton "Run workflow" para lanzarlo a mano
+  push:
+    branches: [main]     # cuando cambiamos algo de la web, se publica al momento
+  workflow_dispatch: {}  # boton "Run workflow" para lanzarlo a mano
 
 permissions:
   contents: write
 
 concurrency:
-  group: noticias
-  cancel-in-progress: true
+  group: publicar
+  cancel-in-progress: false
 
 jobs:
-  actualizar:
+  publicar:
     runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,7 +30,7 @@ jobs:
       - name: Leer las noticias y regenerar la web
         run: python scripts/actualizar_noticias.py
 
-      - name: Guardar los cambios (Netlify publica solo)
+      - name: Guardar las noticias en GitHub
         run: |
           git config user.name "Trollacos Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -34,6 +38,27 @@ jobs:
           if git diff --staged --quiet; then
             echo "Sin cambios"
           else
-            git commit -m "Noticias actualizadas"
+            git commit -m "Noticias actualizadas [skip netlify]"
+            git pull --rebase origin main
             git push
           fi
+
+      - name: Subir la web al hosting de DonDominio (FTP seguro)
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            scripts/**
+            fuentes.json
+            LEEME.md
+            **/node_modules/**
