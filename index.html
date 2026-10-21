@@ -30,6 +30,10 @@
   .bocadillo::after{content:"";position:absolute;right:-12px;bottom:12px;border:8px solid transparent;border-left-color:#14063a}
   @media (max-width:640px){.troll-hero{width:88px;right:3%;bottom:12px}.troll-hero .bocadillo{bottom:122px;right:70%;font-size:17px}}
   .gta-box{position:relative}
+  .guia-cta{display:block;max-width:620px;margin:18px auto 6px;padding:14px 18px;text-align:center;text-decoration:none;color:#fff;font-size:19px;font-weight:700;
+    border:2px solid var(--cyan);border-radius:8px;background:rgba(31,242,255,.08);box-shadow:0 0 16px rgba(31,242,255,.35);transition:.2s}
+  .guia-cta span{display:block;font-family:'VT323',monospace;font-weight:400;font-size:22px;color:var(--cyan);letter-spacing:.08em}
+  .guia-cta:hover{background:rgba(31,242,255,.18);transform:translateY(-2px)}
   .troll-asoma{position:absolute;left:28px;top:-84px;width:96px;height:84px;overflow:hidden;pointer-events:none}
   .troll-asoma img{width:96px;display:block;transform:translateY(84px);animation:asoma 9s ease-in-out infinite}
   @keyframes asoma{0%,55%{transform:translateY(84px)}63%,85%{transform:translateY(0)}93%,100%{transform:translateY(84px)}}
@@ -324,7 +328,7 @@
   <p class="trolloween hw">🎃 ESPECIAL TROLLOWEEN · el Trollaco anda suelto 🦇</p>
 
   <div class="cta">
-    <a class="btn" href="#gta">▶ ESPECIAL GTA VI</a>
+    <a class="btn" href="/gta-6/">▶ GUÍA GTA VI</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
     <a class="btn alt" href="#directo">DIRECTO</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
@@ -352,6 +356,7 @@
       <a class="btn-amz" href="https://www.amazon.es/dp/B0GZH9BJYD?tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">🎮 Reservar para PS5</a>
       <a class="btn-amz" href="https://www.amazon.es/dp/B0GZVXB4DX?tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">🎮 Reservar para Xbox</a>
     </div>
+    <a class="guia-cta" href="/gta-6/"><span>📖 NUEVA · GUÍA COMPLETA</span>Personajes, mapa de Leonida, ediciones y todo lo confirmado ›</a>
     <p class="afil">Enlaces de afiliado: si reservas desde aquí, Trollacos se lleva una pequeña comisión sin que a ti te cueste nada más. ¡Gracias por apoyar!</p>
 <!--GTA:INICIO-->
     <div class="news-list">
@@ -388,6 +393,7 @@
 <section class="block news-wrap" id="noticias">
   <div class="troll-colgado" aria-hidden="true"><img class="px troll" src="img/trollaco-colgado.png" data-hw="img/trollaco-colgado-hw.png" alt=""></div>
   <h2>Lo último</h2>
+  <p class="small" style="margin:-14px 0 18px">Lo más fresco del día, en pocas líneas.</p>
 <!--NOTICIAS:INICIO-->
   <p class="news-meta">&gt; Actualizado el 21 oct, 19:23_</p>
   <div class="news-cols">
@@ -538,8 +544,8 @@
   <div class="cards">
     <div class="card">
       <div class="ico">[01]</div>
-      <h3>Humor gamer</h3>
-      <p>Memes, piques y momentos absurdos del mundillo de los videojuegos.</p>
+      <h3>Guías a fondo</h3>
+      <p>Contenido propio, claro y sin paja. Empezamos con la <a href="/gta-6/" style="color:var(--cyan)">guía completa de GTA VI</a>.</p>
     </div>
     <div class="card">
       <div class="ico">[02]</div>

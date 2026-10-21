@@ -1,6 +1,6 @@
 {
   "_ayuda": "Lista de medios de los que se sacan las noticias. Para quitar uno, borra su bloque. Para añadir otro, copia un bloque y cambia nombre, url (su RSS) y categoria ('videojuegos', 'cine', 'futbol' o 'salseo').",
-  "noticias_por_categoria": 6,
+  "noticias_por_categoria": 4,
   "maximo_por_medio": 2,
   "dias_maximos": 3,
   "fuentes": [
@@ -91,7 +91,7 @@
       "vice city",
       "leonida"
     ],
-    "noticias": 8,
+    "noticias": 4,
     "maximo_por_medio": 2,
     "dias_maximos": 7
   },
