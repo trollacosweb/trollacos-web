@@ -13,11 +13,13 @@ import html
 import json
 import re
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 
 try:
     from zoneinfo import ZoneInfo
@@ -178,6 +180,75 @@ def parsear(xml_bytes, fuente):
     return validas
 
 
+# ---------- Fotos para noticias que llegan sin imagen (p. ej. Google Noticias) ----------
+NAVEGADOR = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+
+
+def pedir(url, datos=None, timeout=12):
+    cab = {"User-Agent": NAVEGADOR, "Accept-Language": "es-ES,es;q=0.9"}
+    if datos is not None:
+        cab["Content-Type"] = "application/x-www-form-urlencoded;charset=UTF-8"
+    req = urllib.request.Request(url, data=datos, headers=cab)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.geturl(), r.read(600_000).decode("utf-8", "replace")
+
+
+def enlace_real_google(url):
+    """Convierte un enlace news.google.com/rss/articles/... en el enlace del medio."""
+    m = re.search(r"news\.google\.com/(?:rss/)?articles/([^?/#]+)", url)
+    if not m:
+        return url
+    gid = m.group(1)
+    _, pagina = pedir(f"https://news.google.com/rss/articles/{gid}")
+    firma = re.search(r'data-n-a-sg="([^"]+)"', pagina)
+    sello = re.search(r'data-n-a-ts="([^"]+)"', pagina)
+    if not firma or not sello:
+        return ""
+    peticion = ('["garturlreq",[["X","X",["X","X"],null,null,1,1,"ES:es",null,1,null,null,null,null,null,0,1],'
+                '"X","X",1,[1,1,1],1,1,null,0,0,null,0],'
+                f'"{gid}",{sello.group(1)},"{firma.group(1)}"]')
+    freq = json.dumps([[["Fbv4je", peticion, None, "generic"]]])
+    datos = urllib.parse.urlencode({"f.req": freq}).encode()
+    _, resp = pedir("https://news.google.com/_/DotsSplashUi/data/batchexecute", datos)
+    bloque = json.loads(resp.split("\n\n", 1)[1])[:-2]
+    return json.loads(bloque[0][2])[1]
+
+
+def foto_de_pagina(url):
+    final, pagina = pedir(url)
+    cabeza = pagina[: pagina.lower().find("</head>") if "</head>" in pagina.lower() else 200_000]
+    for prop in ("og:image", "twitter:image", "og:image:url", "twitter:image:src"):
+        for patron in (rf'<meta[^>]+(?:property|name)=["\']{prop}["\'][^>]*content=["\']([^"\']+)["\']',
+                       rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\']{prop}["\']'):
+            m = re.search(patron, cabeza, re.I)
+            if m:
+                u = urllib.parse.urljoin(final, html.unescape(m.group(1)).strip())
+                if url_valida(u) and not re.search(r"logo|favicon|default|placeholder", u, re.I):
+                    return u
+    return ""
+
+
+def completar_fotos(noticias):
+    """Busca la foto de portada de cada noticia sin imagen (en paralelo y sin romper nada si falla)."""
+    sin_foto = [n for n in noticias if not n["imagen"]]
+    if not sin_foto:
+        return
+
+    def una(n):
+        try:
+            real = enlace_real_google(n["enlace"])
+            if real:
+                if "news.google.com" in n["enlace"]:
+                    n["enlace"] = real  # enlace directo al medio, mas limpio
+                n["imagen"] = foto_de_pagina(real)
+        except Exception as ex:
+            print(f"  sin foto: {n['titulo'][:50]}... ({type(ex).__name__})")
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(una, sin_foto))
+    print(f"Fotos encontradas: {sum(1 for n in sin_foto if n['imagen'])} de {len(sin_foto)}")
+
+
 def fecha_bonita(d):
     d = d.astimezone(MADRID)
     return f"{d.day} {MESES[d.month - 1]}, {d:%H:%M}"
@@ -288,9 +359,15 @@ def main():
     usados = {clave_de(n) for n in especiales} | {n["enlace"] for n in especiales}
 
     columnas, publicadas = [], list(especiales)
+    por_columna = []
     for clave, titulo in CATEGORIAS:
         elegidas = elegir([n for n in todas if n["categoria"] == clave], cfg, excluir=usados)
         publicadas += elegidas
+        por_columna.append((titulo, elegidas))
+
+    completar_fotos(publicadas)
+
+    for titulo, elegidas in por_columna:
         if elegidas:
             cuerpo = '    <div class="news-list">\n' + "\n".join(tarjeta(n) for n in elegidas) + "\n    </div>"
         else:
