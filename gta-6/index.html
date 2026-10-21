@@ -69,6 +69,14 @@ th{font-family:'VT323',monospace;font-size:20px;color:var(--cyan);font-weight:40
 .zona{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;padding:14px 16px;border-left:3px solid var(--orange);background:rgba(255,157,60,.06);border-radius:0 8px 8px 0}
 .zona .n{font-size:30px;line-height:1}
 .fig-mapa{margin:10px 0 22px}.mapa{width:100%;max-width:600px;height:auto;display:block;margin:0 auto;border:1px solid rgba(31,242,255,.4);border-radius:10px}
+.mapa-caja{position:relative;max-width:600px;margin:0 auto}
+.mapa-btn{display:block;margin:14px auto 0;font-family:'VT323',monospace;font-size:24px;color:#07021a;background:linear-gradient(180deg,#1ff2ff,#7f6bff);border:0;border-radius:8px;padding:10px 20px;cursor:pointer;box-shadow:0 0 18px rgba(31,242,255,.7);white-space:nowrap}
+.mapa-caja iframe{width:100%;height:min(80vh,640px);border:1px solid rgba(31,242,255,.5);border-radius:10px;display:block;background:#0b0430}
+.mapa-caja.abierto{max-width:none}
+.postal{display:block;width:min(100%,260px);height:auto;margin:12px 0 2px;border:6px solid #fff;border-radius:3px;box-shadow:4px 6px 0 rgba(0,0,0,.45);transform:rotate(-1.5deg)}
+.zona:nth-child(even) .postal{transform:rotate(1.5deg)}
+.fig-mapa figcaption a{color:var(--cyan)}
+.yt{display:inline-block;margin-top:8px;font-size:15px;color:var(--cyan)}
 .fig-mapa figcaption{text-align:center;font-size:15px;color:var(--muted);margin-top:8px}
 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#07021a;font-size:16px;margin-right:8px;vertical-align:2px}
 .zona small{display:block;font-family:'VT323',monospace;font-size:18px;color:var(--orange)}
@@ -190,6 +198,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <h2 id="mapa">El mapa: Leonida y Vice City</h2>
   <p>El juego no se queda en la ciudad: se juega en todo el <strong>estado de Leonida</strong>, la versión de Rockstar de Florida. Estas son las seis grandes zonas presentadas, con su número en el mapa:</p>
   <figure class="fig-mapa">
+  <div class="mapa-caja" id="mapa-caja">
   <svg class="mapa" viewBox="0 0 600 720" font-family="Righteous, sans-serif" role="img" aria-labelledby="t d">
   <title id="t">Mapa ilustrativo de Leonida, el estado de GTA VI</title>
   <desc id="d">Mapa dibujado por Trollacos con las seis zonas confirmadas: Mount Kalaga al norte, Port Gellhorn al oeste, Ambrosia en el centro junto al lago Leonida, Grassrivers al suroeste, Vice City en la costa este y los Cayos de Leonida al sur.</desc>
@@ -245,16 +254,19 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <text x="20" y="34" font-size="26" fill="#ffd23f">LEONIDA</text>
   <text x="20" y="56" font-size="15" fill="#a59dd0" font-family="VT323, monospace">MAPA ILUSTRATIVO · TROLLACOS.COM</text>
 </svg>
-  <figcaption>Mapa ilustrativo dibujado por Trollacos a partir de lo que ha enseñado Rockstar. No es el mapa oficial: las distancias y formas son aproximadas.</figcaption>
+  <button type="button" class="mapa-btn" id="mapa-btn">🗺️ ABRIR EL MAPA INTERACTIVO</button>
+  </div>
+  <figcaption>Mapa interactivo de <a href="https://map.stateofleonida.net" target="_blank" rel="noopener">State of Leonida</a>, hecho por su comunidad de fans con las localizaciones vistas en tráilers y capturas (no está relacionado con Rockstar). Si no se carga aquí, <a href="https://map.stateofleonida.net" target="_blank" rel="noopener">ábrelo en pantalla completa</a>. El dibujo de portada es de Trollacos.</figcaption>
   </figure>
   <div class="zonas">
-    <div class="zona"><span class="n">🌴</span><div><h3><span class="num">1</span>Vice City</h3><small>INSPIRADA EN MIAMI</small><p>La gran ciudad: playas, rascacielos, fiesta y crimen. Rockstar la define como el lado más oscuro del lugar más soleado de Estados Unidos.</p></div></div>
-    <div class="zona"><span class="n">🏝️</span><div><h3><span class="num">2</span>Cayos de Leonida (Leonida Keys)</h3><small>INSPIRADOS EN LOS CAYOS DE FLORIDA</small><p>Islas unidas por puentes al sur del mapa. Es la zona de Jason y de Brian, entre barcos, contrabando y casas junto al mar.</p></div></div>
-    <div class="zona"><span class="n">🐊</span><div><h3><span class="num">3</span>Grassrivers</h3><small>INSPIRADO EN LOS EVERGLADES</small><p>Pantanos, manglares y caimanes. Territorio de hidrodeslizadores y de gente que prefiere que no la encuentren.</p></div></div>
-    <div class="zona"><span class="n">🎡</span><div><h3><span class="num">4</span>Port Gellhorn</h3><small>COSTA OESTE</small><p>Un pueblo de costa venido a menos, con moteles, centros comerciales medio vacíos y un puerto con mucho movimiento.</p></div></div>
-    <div class="zona"><span class="n">🏭</span><div><h3><span class="num">5</span>Ambrosia</h3><small>INTERIOR DEL ESTADO</small><p>El corazón industrial junto al lago Leonida, dominado por una enorme refinería de azúcar.</p></div></div>
-    <div class="zona"><span class="n">⛰️</span><div><h3><span class="num">6</span>Parque Nacional Mount Kalaga</h3><small>EL NORTE SALVAJE</small><p>Bosques, cañones y ríos en el norte. Naturaleza salvaje para cuando quieras huir de todo (o de la policía).</p></div></div>
+    <div class="zona"><span class="n">🌴</span><div><h3><span class="num">1</span>Vice City</h3><small>INSPIRADA EN MIAMI</small><p>La gran ciudad: playas, rascacielos, fiesta y crimen. Rockstar la define como el lado más oscuro del lugar más soleado de Estados Unidos.</p><img class="postal" src="postales/vice-city.jpg" alt="Postal oficial de Vice City en GTA VI" loading="lazy" width="230" height="148"></div></div>
+    <div class="zona"><span class="n">🏝️</span><div><h3><span class="num">2</span>Cayos de Leonida (Leonida Keys)</h3><small>INSPIRADOS EN LOS CAYOS DE FLORIDA</small><p>Islas unidas por puentes al sur del mapa. Es la zona de Jason y de Brian, entre barcos, contrabando y casas junto al mar.</p><img class="postal" src="postales/leonida-keys.jpg" alt="Postal oficial de Cayos de Leonida (Leonida Keys) en GTA VI" loading="lazy" width="230" height="148"></div></div>
+    <div class="zona"><span class="n">🐊</span><div><h3><span class="num">3</span>Grassrivers</h3><small>INSPIRADO EN LOS EVERGLADES</small><p>Pantanos, manglares y caimanes. Territorio de hidrodeslizadores y de gente que prefiere que no la encuentren.</p><img class="postal" src="postales/grassrivers.jpg" alt="Postal oficial de Grassrivers en GTA VI" loading="lazy" width="230" height="148"></div></div>
+    <div class="zona"><span class="n">🎡</span><div><h3><span class="num">4</span>Port Gellhorn</h3><small>COSTA OESTE</small><p>Un pueblo de costa venido a menos, con moteles, centros comerciales medio vacíos y un puerto con mucho movimiento.</p><img class="postal" src="postales/port-gellhorn.jpg" alt="Postal oficial de Port Gellhorn en GTA VI" loading="lazy" width="230" height="148"></div></div>
+    <div class="zona"><span class="n">🏭</span><div><h3><span class="num">5</span>Ambrosia</h3><small>INTERIOR DEL ESTADO</small><p>El corazón industrial junto al lago Leonida, dominado por una enorme refinería de azúcar.</p><img class="postal" src="postales/ambrosia.jpg" alt="Postal oficial de Ambrosia en GTA VI" loading="lazy" width="230" height="148"></div></div>
+    <div class="zona"><span class="n">⛰️</span><div><h3><span class="num">6</span>Parque Nacional Mount Kalaga</h3><small>EL NORTE SALVAJE</small><p>Bosques, cañones y ríos en el norte. Naturaleza salvaje para cuando quieras huir de todo (o de la policía).</p><img class="postal" src="postales/mount-kalaga.jpg" alt="Postal oficial de Parque Nacional Mount Kalaga en GTA VI" loading="lazy" width="230" height="148"></div></div>
   </div>
+  <p class="afil">Postales oficiales "Visit Leonida" de Rockstar Games.</p>
   <p><strong>¿Cómo de grande es?</strong> Rockstar no ha dado una cifra oficial. Todo lo que leas sobre "el doble que GTA V" son estimaciones de la comunidad a partir de los tráilers.</p>
   <p>Para disfrutar de los atardeceres de Leonida como merecen, ayuda mucho una buena pantalla:
     <a class="amz" href="https://www.amazon.es/s?k=televisor+4K+gaming+120Hz&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">📺 Teles 4K para jugar</a></p>
@@ -263,13 +275,13 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <p>Todos los vídeos oficiales de Rockstar en orden. Pulsa en cualquiera para verlo aquí mismo.</p>
   <div class="vids">
     <div class="vid"><button type="button" class="vid-play" data-id="QdBZY2fkU-0" aria-label="Ver Tráiler 1 de GTA VI"><img src="https://i.ytimg.com/vi/QdBZY2fkU-0/hqdefault.jpg" alt="Tráiler 1 de GTA VI" loading="lazy" referrerpolicy="no-referrer"><span>▶</span></button>
-      <div class="vid-txt"><span class="rol">5 dic 2023</span><h3>Tráiler 1</h3><p>Presenta a Lucía y la vuelta a Vice City. Batió récords de visualizaciones en YouTube.</p></div></div>
+      <div class="vid-txt"><span class="rol">5 dic 2023</span><h3>Tráiler 1</h3><p>Presenta a Lucía y la vuelta a Vice City. Batió récords de visualizaciones en YouTube.</p><a class="yt" href="https://www.youtube.com/watch?v=QdBZY2fkU-0" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube ↗</a></div></div>
     <div class="vid"><button type="button" class="vid-play" data-id="VQRLujxTm3c" aria-label="Ver Tráiler 2 de GTA VI"><img src="https://i.ytimg.com/vi/VQRLujxTm3c/hqdefault.jpg" alt="Tráiler 2 de GTA VI" loading="lazy" referrerpolicy="no-referrer"><span>▶</span></button>
-      <div class="vid-txt"><span class="rol">6 may 2025</span><h3>Tráiler 2</h3><p>Llega días después del primer retraso. Presenta a Jason y a buena parte del reparto.</p></div></div>
+      <div class="vid-txt"><span class="rol">6 may 2025</span><h3>Tráiler 2</h3><p>Llega días después del primer retraso. Presenta a Jason y a buena parte del reparto.</p><a class="yt" href="https://www.youtube.com/watch?v=VQRLujxTm3c" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube ↗</a></div></div>
     <div class="vid"><button type="button" class="vid-play" data-id="tJbzMqJGH4k" aria-label="Ver Un vistazo extendido de GTA VI"><img src="https://i.ytimg.com/vi/tJbzMqJGH4k/hqdefault.jpg" alt="Un vistazo extendido de GTA VI" loading="lazy" referrerpolicy="no-referrer"><span>▶</span></button>
-      <div class="vid-txt"><span class="rol">27 ago 2026</span><h3>Un vistazo extendido</h3><p>Unos 26 minutos de juego real grabado en PS5. Se estrenó en Netflix y después llegó gratis a YouTube.</p></div></div>
+      <div class="vid-txt"><span class="rol">27 ago 2026</span><h3>Un vistazo extendido</h3><p>Unos 26 minutos de juego real grabado en PS5. Se estrenó en Netflix y después llegó gratis a YouTube.</p><a class="yt" href="https://www.youtube.com/watch?v=tJbzMqJGH4k" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube ↗</a></div></div>
     <div class="vid"><button type="button" class="vid-play" data-id="rz1B4B2yBZY" aria-label="Ver Tráiler de lanzamiento de GTA VI"><img src="https://i.ytimg.com/vi/rz1B4B2yBZY/hqdefault.jpg" alt="Tráiler de lanzamiento de GTA VI" loading="lazy" referrerpolicy="no-referrer"><span>▶</span></button>
-      <div class="vid-txt"><span class="rol">15 oct 2026</span><h3>Tráiler de lanzamiento</h3><p>Unos 90 segundos con escenas y gameplay grabados en PS5, con un tema de Justice.</p></div></div>
+      <div class="vid-txt"><span class="rol">15 oct 2026</span><h3>Tráiler de lanzamiento</h3><p>Unos 90 segundos con escenas y gameplay grabados en PS5, con un tema de Justice.</p><a class="yt" href="https://www.youtube.com/watch?v=rz1B4B2yBZY" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube ↗</a></div></div>
   </div>
   <p class="afil">Los vídeos se cargan desde YouTube solo al pulsar. Son propiedad de Rockstar Games. También los tienes en la <a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">web oficial de GTA VI</a>.</p>
 
@@ -310,6 +322,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <small>Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</small>
 </footer>
 <script>
+document.getElementById('mapa-btn').addEventListener('click',function(){var c=document.getElementById('mapa-caja');
+  c.classList.add('abierto');c.innerHTML='<iframe src="https://map.stateofleonida.net" title="Mapa interactivo de Leonida (State of Leonida)" allowfullscreen></iframe>'});
 document.querySelectorAll('.vid-play').forEach(function(b){b.addEventListener('click',function(){
   var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-id')+'?autoplay=1&rel=0';
   f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=b.getAttribute('aria-label');b.replaceWith(f)})});
