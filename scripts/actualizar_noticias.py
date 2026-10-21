@@ -208,11 +208,11 @@ def enlace_real_google(url):
             sello = re.search(r'data-n-a-ts="([^"]+)"', pagina)
             if firma and sello:
                 break
-        except Exception:
-            pass
+        except Exception as ex:
+            pagina = f"{type(ex).__name__} {ex}"
         time.sleep(1.5 * (intento + 1))
     if not firma or not sello:
-        return ""
+        raise RuntimeError("sin firma: " + re.sub(r"\s+", " ", pagina[:60] if 'pagina' in dir() else "")) 
     peticion = ('["garturlreq",[["X","X",["X","X"],null,null,1,1,"ES:es",null,1,null,null,null,null,null,0,1],'
                 '"X","X",1,[1,1,1],1,1,null,0,0,null,0],'
                 f'"{gid}",{sello.group(1)},"{firma.group(1)}"]')
@@ -223,9 +223,10 @@ def enlace_real_google(url):
             _, resp = pedir("https://news.google.com/_/DotsSplashUi/data/batchexecute", datos)
             bloque = json.loads(resp.split("\n\n", 1)[1])[:-2]
             return json.loads(bloque[0][2])[1]
-        except Exception:
+        except Exception as ex:
+            ultimo = f"{type(ex).__name__} {str(ex)[:40]} {resp[:60] if 'resp' in dir() else ''}"
             time.sleep(2 * (intento + 1))
-    return ""
+    raise RuntimeError("batch: " + ultimo)
 
 
 def foto_de_pagina(url):
