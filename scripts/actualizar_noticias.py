@@ -249,14 +249,18 @@ def completar_fotos(noticias):
         return
 
     def una(n):
+        paso = "google"
         try:
             real = enlace_real_google(n["enlace"])
+            paso = "pagina " + (real or "")[:70]
             if real:
                 if "news.google.com" in n["enlace"]:
                     n["enlace"] = real  # enlace directo al medio, mas limpio
                 n["imagen"] = foto_de_pagina(real)
+            if not n["imagen"]:
+                print(f"::warning::sin foto ({paso or 'google vacio'}): {n['titulo'][:40]}")
         except Exception as ex:
-            print(f"  sin foto: {n['titulo'][:50]}... ({type(ex).__name__})")
+            print(f"::warning::sin foto ({paso}): {type(ex).__name__} {str(ex)[:80]}")
 
     with ThreadPoolExecutor(max_workers=3) as pool:
         list(pool.map(una, sin_foto))
