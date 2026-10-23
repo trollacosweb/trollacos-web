@@ -50,6 +50,7 @@ main{max-width:860px;margin:0 auto;padding:0 18px 60px;position:relative}
 h2.sec{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(28px,6vw,40px);color:var(--verde);text-shadow:0 0 12px rgba(124,255,178,.5);margin:46px 0 10px;scroll-margin-top:10px}
 #mapa-madrid{height:min(70vh,520px);border:2px solid var(--verde);border-radius:12px;box-shadow:0 0 26px rgba(124,255,178,.25);background:#0b0b14}
 .leaflet-container{font-family:'Rajdhani',sans-serif}
+.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.8) contrast(.95) saturate(.6)}
 .pin{font-size:26px;line-height:1;filter:drop-shadow(0 0 6px #7cffb2) drop-shadow(0 2px 2px #000);animation:latido 2.4s ease-in-out infinite}
 @keyframes latido{50%{transform:scale(1.15)}}
 .leaflet-popup-content-wrapper{background:#0c0a1c;color:var(--text);border:1px solid var(--verde);border-radius:10px}
@@ -318,7 +319,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-de
     <button type="button" id="copiar">Copiar enlace</button>
   </div>
 
-  <p class="nota">Textos e ilustraciones de Trollacos, basados en la historia documentada y en las leyendas populares de cada lugar. Si vas a visitar algún sitio, respeta horarios y propiedad privada. Mapa: © colaboradores de OpenStreetMap, © CARTO.</p>
+  <p class="nota">Textos e ilustraciones de Trollacos, basados en la historia documentada y en las leyendas populares de cada lugar. Si vas a visitar algún sitio, respeta horarios y propiedad privada. Mapa: © colaboradores de OpenStreetMap.</p>
 </main>
 
 <footer>
@@ -334,8 +335,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-de
   var b=document.getElementById('copiar');b.onclick=function(){try{navigator.clipboard.writeText('https://trollacos.com/misterio/').then(function(){b.textContent='¡Copiado!'})}catch(e){}};
   if(!window.L){document.getElementById('mapa-madrid').innerHTML='<p style="padding:20px">No se ha podido cargar el mapa. Usa la lista de abajo.</p>';return}
   var mapa=L.map('mapa-madrid',{scrollWheelZoom:false,zoomControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(mapa);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapa);
   var grupo=[];
   PUNTOS.forEach(function(p){
     var ic=L.divIcon({className:'',html:'<div class="pin">'+p.i+'</div>',iconSize:[30,30],iconAnchor:[15,15]});
