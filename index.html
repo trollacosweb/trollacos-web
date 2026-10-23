@@ -56,6 +56,12 @@
   .ab-s{display:block;font-size:18px;color:var(--muted)}
   .ab-btn{font-family:'VT323',monospace;font-size:28px;padding:8px 18px;border:2px solid var(--yellow);border-radius:8px;color:var(--yellow);white-space:nowrap}
   @media (max-width:640px){.arcade-banner{flex-wrap:wrap;gap:12px;padding:14px}.arcade-banner img{width:48px}.ab-btn{width:100%;text-align:center}}
+  .misterio-banner{border-color:#7cffb2;background:linear-gradient(135deg,rgba(124,255,178,.14),rgba(7,2,26,.6));box-shadow:0 0 24px rgba(124,255,178,.3)}
+  .misterio-banner:hover{box-shadow:0 0 34px rgba(124,255,178,.55)}
+  .misterio-banner .ab-k{color:#7cffb2}.misterio-banner .ab-txt b{color:#eafff3;text-shadow:0 0 12px rgba(124,255,178,.6)}
+  .misterio-banner .ab-btn{border-color:#7cffb2;color:#7cffb2}
+  .misterio-banner img{width:80px}
+  section#misterio{padding-top:0;padding-bottom:20px}
   section#arcade{padding-top:20px;padding-bottom:20px}
   .tienda-cab{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px}
   .tienda-cab h2{margin:0}
@@ -348,6 +354,7 @@
     <a class="btn alt" href="#noticias">NOTICIAS</a>
     <a class="btn alt" href="#directo">DIRECTO</a>
     <a class="btn alt" href="/arcade/">🕹️ ARCADE</a>
+    <a class="btn alt" href="/misterio/">👻 MISTERIO</a>
   </div>
 
   <button class="troll-hero" id="trollaco" type="button" aria-label="El Trollaco: pulsa para que diga otra cosa">
@@ -489,6 +496,14 @@
     <img class="px troll" src="/img/trollaco.png" data-hw="/img/trollaco-calabaza-hw.png" alt="" width="34" height="56">
     <span class="ab-txt"><span class="ab-k">&gt; NUEVO · ARCADE_</span><b>TROLLACO RUN</b><span class="ab-s">Salta el lag, esquiva los drones y coge fichas. ¿Cuánto aguantas?</span></span>
     <span class="ab-btn">▶ JUGAR</span>
+  </a>
+</section>
+
+<section class="block" id="misterio">
+  <a class="arcade-banner misterio-banner" href="/misterio/">
+    <img class="px" src="/misterio/img/trollaco-linterna.png" alt="" width="64" height="64">
+    <span class="ab-txt"><span class="ab-k">&gt; ARCHIVO CLASIFICADO_</span><b>EXPEDIENTE TROLLACO</b><span class="ab-s">El Madrid que da miedo: 7 casos paranormales con mapa interactivo.</span></span>
+    <span class="ab-btn">▶ ENTRAR</span>
   </a>
 </section>
 
