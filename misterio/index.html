@@ -335,6 +335,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-de
   var b=document.getElementById('copiar');b.onclick=function(){try{navigator.clipboard.writeText('https://trollacos.com/misterio/').then(function(){b.textContent='¡Copiado!'})}catch(e){}};
   if(!window.L){document.getElementById('mapa-madrid').innerHTML='<p style="padding:20px">No se ha podido cargar el mapa. Usa la lista de abajo.</p>';return}
   var mapa=L.map('mapa-madrid',{scrollWheelZoom:false,zoomControl:true});
+  mapa.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapa);
   var grupo=[];
