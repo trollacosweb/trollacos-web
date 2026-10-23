@@ -44,7 +44,33 @@ jobs:
           fi
 
       - name: Subir la web al hosting de DonDominio (FTP seguro)
+        id: ftp1
         if: env.FTP_SERVER != ''
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            scripts/**
+            fuentes.json
+            LEEME.md
+            **/node_modules/**
+
+      - name: Esperar un minuto antes de reintentar
+        if: env.FTP_SERVER != '' && steps.ftp1.outcome == 'failure'
+        run: sleep 60
+
+      - name: Subir la web al hosting de DonDominio (segundo intento si el primero falla)
+        if: env.FTP_SERVER != '' && steps.ftp1.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
