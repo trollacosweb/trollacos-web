@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Fri, 23 Oct 2026 21:33:28 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 21:35:04 +0200</lastBuildDate>
     <item>
       <title>Así perjudicará a la economía estadounidense la llegada de GTA VI</title>
       <link>https://www.metroecuador.com.ec/entretenimiento/2026/10/23/asi-perjudicara-a-la-economia-estadounidense-la-llegada-de-gta-vi/</link>
@@ -102,18 +102,19 @@
       <enclosure url="https://cordobadeporte.com/wp-content/uploads/2026/10/IBAISANZ_MINUTOS_CORDOBA.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>Atlético-Deportivo: El ‘Clásico’ día para no fallar</title>
+      <link>https://www.marca.com/futbol/atletico/2026/10/23/atletico-deportivo-clasico-dia-fallar.html</link>
+      <guid isPermaLink="false">https://www.marca.com/futbol/atletico/2026/10/23/atletico-deportivo-clasico-dia-fallar.html</guid>
+      <pubDate>Fri, 23 Oct 2026 19:29:21 +0000</pubDate>
+      <description>MARCA. Los de Simeone pueden dormir a dos puntos del líder antes del Barça-Madrid, mientras los de Hidalgo ven en el Metropolitano una motivación para volver a ganar…</description>
+      <enclosure url="https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2026/10/23/17927837530715.jpg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Atlético de Madrid - RC Deportivo: Este es el posible once titular de Hidalgo en la jornada 10 de LaLiga EA Sports</title>
       <link>https://news.google.com/rss/articles/CBMipgFBVV95cUxOazBvaGtfdkFwMTh3NE5YWVBENUEtUkpqSEN4c3JoOC1VNlBfblhic0pFR3ZoazMxcnVVVzFsOUswRDA3MVJEem9IdzV3LVlKQmJ0akM3SW55ZWZUU3VPMHAtSFM2cEdzU1R1YkY3eXV4WGFpaDNBNHNNSUw5c3RuQVB2X3kzNHljejhmOVlVYzYzZ2RvcTcyS2RBejBTVXUtNlhuRGJ30gGrAUFVX3lxTE1GTVlDMFB3YTVMa1NvbzFzWTVtMlBtaWROVXQxdDkzbEZONG1lOU1vNXd6RnI4YzFZSGZhNFZoZHYxOE9ISDY4eFk4YkJpX0VEUGs4SjNWZ0JYdGs5QW82VzVNcDMtWVZpMmFLeUZVa0Ezc3RwYW9sZ3ZGMXRHOS16Znh3Q3B4R1ZzWkh0dFRUX0xQVFVSRjMzMlBQMEdfSHlGOWh1R0pwb2VHRQ?oc=5</link>
       <guid isPermaLink="false">https://news.google.com/rss/articles/CBMipgFBVV95cUxOazBvaGtfdkFwMTh3NE5YWVBENUEtUkpqSEN4c3JoOC1VNlBfblhic0pFR3ZoazMxcnVVVzFsOUswRDA3MVJEem9IdzV3LVlKQmJ0akM3SW55ZWZUU3VPMHAtSFM2cEdzU1R1YkY3eXV4WGFpaDNBNHNNSUw5c3RuQVB2X3kzNHljejhmOVlVYzYzZ2RvcTcyS2RBejBTVXUtNlhuRGJ30gGrAUFVX3lxTE1GTVlDMFB3YTVMa1NvbzFzWTVtMlBtaWROVXQxdDkzbEZONG1lOU1vNXd6RnI4YzFZSGZhNFZoZHYxOE9ISDY4eFk4YkJpX0VEUGs4SjNWZ0JYdGs5QW82VzVNcDMtWVZpMmFLeUZVa0Ezc3RwYW9sZ3ZGMXRHOS16Znh3Q3B4R1ZzWkh0dFRUX0xQVFVSRjMzMlBQMEdfSHlGOWh1R0pwb2VHRQ?oc=5</guid>
       <pubDate>Fri, 23 Oct 2026 18:50:20 +0000</pubDate>
       <description>La Opinión A Coruña</description>
-    </item>
-    <item>
-      <title>Ver Inter - Fiorentina Online en Directo | DAZN ES</title>
-      <link>https://www.dazn.com/es-ES/home/r7y6fub5iwxi1nd4u19gg2e57/en2qr9rotf0cd5kpd06ejrpw2</link>
-      <guid isPermaLink="false">https://www.dazn.com/es-ES/home/r7y6fub5iwxi1nd4u19gg2e57/en2qr9rotf0cd5kpd06ejrpw2</guid>
-      <pubDate>Fri, 23 Oct 2026 18:28:17 +0000</pubDate>
-      <description>DAZN</description>
     </item>
     <item>
       <title>Stuttgart-Gladbach: onces confirmados para abrir la jornada 8 de Bundesliga</title>
@@ -124,11 +125,12 @@
       <enclosure url="https://photobooth-api.onefootball.com/api/screenshot/%2Fv2%2Fphotobooth%2Fcms%2Fes%2F43661374%3Fdate=2026-10-23" type="image/jpeg" length="0"/>
     </item>
     <item>
-      <title>Chelsea vs Tottenham: estadísticas previas y datos en directo | Premier League 2026/2027</title>
-      <link>https://as.com/resultados/futbol/inglaterra/2026_2027/directo/regular_a_8_6a38cde9456bb40/amp/</link>
-      <guid isPermaLink="false">https://as.com/resultados/futbol/inglaterra/2026_2027/directo/regular_a_8_6a38cde9456bb40/amp/</guid>
-      <pubDate>Fri, 23 Oct 2026 18:10:21 +0000</pubDate>
-      <description>Diario AS</description>
+      <title>Aston Villa vs M. City: estadísticas previas y datos | Premier League 2026/2027</title>
+      <link>https://elpais.com/deportes/resultados/futbol/inglaterra/2026_2027/directo/regular-a-8-6a38cde9456ba51/</link>
+      <guid isPermaLink="false">https://elpais.com/deportes/resultados/futbol/inglaterra/2026_2027/directo/regular-a-8-6a38cde9456ba51/</guid>
+      <pubDate>Fri, 23 Oct 2026 18:00:42 +0000</pubDate>
+      <description>EL PAÍS</description>
+      <enclosure url="https://imagenes.elpais.com/resizer/ml47sIkEKn0_fWj64xFx9vSB98Q=/arc-anglerfish-eu-central-1-prod-prisa/public/DS6BXTAC4BEUTFQXKEWIOKDSWA.png" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>&#x27;Cyberpunk Edgerunners 2&#x27; deslumbra a nivel visual, pero me apena que el anime de Netflix no me haya enganchado tanto como la anterior…</title>
@@ -137,14 +139,6 @@
       <pubDate>Fri, 23 Oct 2026 19:00:10 +0000</pubDate>
       <description>Espinof. Después de cuatro años de espera ya ha llegado a Netflix la segunda temporada de &#x27; Cyberpunk: Edgerunners &#x27;. Aunque ojo, que &#x27;Cyberpunk: Edgerunners 2&#x27; vuela…</description>
       <enclosure url="https://i.blogs.es/3d884f/cyberpunk-edgerunns-2/1024_2000.jpeg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>&#x27;Clayface&#x27; dará un respiro a DC si se cumplen las previsiones: son mejores que la de &#x27;Supergirl&#x27;</title>
-      <link>https://www.sensacine.com/noticias/cine/noticia-1000228830/</link>
-      <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000228830/</guid>
-      <pubDate>Fri, 23 Oct 2026 19:00:00 +0000</pubDate>
-      <description>SensaCine. Son buenas noticias para la franquicia que dirigen Peter Safran y James Gunn, que ha experimentado este año su mayor fracaso en taquilla</description>
-      <enclosure url="https://es.web.img2.acsta.net/img/fe/d0/fed0ec32fdff94cbe06c67ecc7aea05f.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Becca Tobin, Kitty Wilde, sobre el regreso &#x27;Glee&#x27;: &quot;Me provoca diarrea&quot;</title>
@@ -161,6 +155,14 @@
       <pubDate>Fri, 23 Oct 2026 18:00:07 +0000</pubDate>
       <description>Espinof. Este año toca doblete de Jane Austen . En diciembre se estrena la miniserie de &#x27;Orgullo y prejuicio&#x27; de Netflix protagonizada por Emma Corrin, pero un poquito…</description>
       <enclosure url="https://i.blogs.es/e4028f/sentido-y-sensibilidad/1024_2000.jpeg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
+      <title>Nº1 en 105 países: La exitosa serie de terror de Prime Video consigue ser renovada por una temporada 2</title>
+      <link>https://www.sensacine.com/noticias/series/noticia-1000228824/</link>
+      <guid isPermaLink="false">https://www.sensacine.com/noticias/series/noticia-1000228824/</guid>
+      <pubDate>Fri, 23 Oct 2026 18:00:00 +0000</pubDate>
+      <description>SensaCine Series. Los fans de &#x27;Carrie&#x27; conocerán qué ocurre tras el famoso baile de graduación</description>
+      <enclosure url="https://es.web.img3.acsta.net/img/22/07/2207da25da60f2068f9fa4ca68a5f6d8.jpg" type="image/jpeg" length="0"/>
     </item>
   </channel>
 </rss>
