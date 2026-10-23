@@ -95,4 +95,4 @@ jobs:
         run: |
           curl -s -o /dev/null -w "IndexNow: %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json; charset=utf-8" \
-            -d '{"host":"trollacos.com","key":"02219449dd6d548a6e7b643f1c17a331","keyLocation":"https://trollacos.com/02219449dd6d548a6e7b643f1c17a331.txt","urlList":["https://trollacos.com/","https://trollacos.com/gta-6/"]}'
+            -d '{"host":"trollacos.com","key":"02219449dd6d548a6e7b643f1c17a331","keyLocation":"https://trollacos.com/02219449dd6d548a6e7b643f1c17a331.txt","urlList":["https://trollacos.com/","https://trollacos.com/gta-6/","https://trollacos.com/gta-6/musica/"]}'
