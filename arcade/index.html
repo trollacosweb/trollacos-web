@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'})()</script>
+<title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
+<meta name="description" content="Corre con el Trollaco por la rejilla synthwave, salta el lag, esquiva los drones y recoge fichas. Juego arcade gratis en el navegador, sin descargas.">
+<link rel="canonical" href="https://trollacos.com/arcade/">
+<meta property="og:title" content="Trollaco Run: el arcade de Trollacos">
+<meta property="og:description" content="¿Cuántas fichas aguantas? Juego gratis en el navegador.">
+<meta property="og:url" content="https://trollacos.com/arcade/">
+<meta property="og:image" content="https://trollacos.com/arcade/portada.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icono.png">
+<style>
+@font-face{font-family:'Righteous';src:url(/fuentes/righteous.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'VT323';src:url(/fuentes/vt323.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(/fuentes/rajdhani-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(/fuentes/rajdhani-700.woff2) format('woff2');font-weight:700;font-display:swap}
+:root{--bg:#07021a;--pink:#ff2bd6;--cyan:#1ff2ff;--yellow:#ffd23f;--orange:#ff9d3c;--text:#e9e6ff;--muted:#a59dd0}
+*{box-sizing:border-box;margin:0;padding:0}
+@media (max-width:640px){main{padding:16px 6px 40px}.maquina{padding:6px;border-radius:10px}}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-weight:500;font-size:19px;line-height:1.5;overflow-x:hidden}
+a{color:var(--cyan)}
+.px{image-rendering:pixelated;image-rendering:crisp-edges}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:2px solid var(--pink);box-shadow:0 4px 20px rgba(255,43,214,.25)}
+.top a{font-family:'VT323',monospace;font-size:22px;text-decoration:none;color:#fff;text-shadow:0 0 6px var(--pink)}
+.top img{height:26px;width:auto;display:block}
+main{max-width:980px;margin:0 auto;padding:22px 12px 50px}
+h1{font-family:'Righteous',sans-serif;font-size:clamp(34px,8vw,58px);text-align:center;line-height:1;
+  background:linear-gradient(90deg,#ff9d3c,#ff2bd6 50%,#1ff2ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin:6px 0 4px}
+.sub{text-align:center;font-family:'VT323',monospace;font-size:22px;color:var(--cyan);margin-bottom:16px}
+.maquina{position:relative;border:3px solid var(--pink);border-radius:14px;padding:10px;background:#120530;
+  box-shadow:0 0 30px rgba(255,43,214,.45),inset 0 0 30px rgba(31,242,255,.15)}
+canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manipulation;cursor:pointer;background:#07021a;
+  image-rendering:pixelated}
+.botones{display:flex;justify-content:space-between;gap:10px;margin-top:10px;flex-wrap:wrap}
+.botones button{font-family:'VT323',monospace;font-size:21px;color:#fff;background:none;border:2px solid var(--cyan);border-radius:6px;padding:4px 14px;cursor:pointer}
+.botones button:hover{background:rgba(31,242,255,.15)}
+.como{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:22px}
+.como div{border:1px solid rgba(31,242,255,.35);border-radius:8px;padding:12px 14px;background:rgba(31,242,255,.05)}
+.como b{display:block;font-family:'VT323',monospace;font-size:22px;color:var(--yellow);font-weight:400}
+.como span{font-size:17px;color:var(--muted)}
+.compartir{display:none;margin-top:14px;text-align:center}
+.compartir.ver{display:block}
+.compartir a{display:inline-block;margin:4px;padding:7px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:17px}
+.mas{margin-top:26px;text-align:center}
+.mas a{font-family:'VT323',monospace;font-size:23px}
+footer{border-top:2px solid var(--pink);text-align:center;padding:24px 16px 32px;color:var(--muted);font-size:16px;margin-top:30px}
+footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-decoration:none;margin:0 8px}
+</style>
+</head>
+<body>
+<nav class="top">
+  <a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a>
+  <a href="/">‹ PORTADA</a>
+</nav>
+<main>
+  <h1>TROLLACO RUN</h1>
+  <p class="sub">&gt; INSERT COIN · PULSA PARA EMPEZAR_</p>
+  <div class="maquina">
+    <canvas id="juego" width="800" height="320" aria-label="Juego Trollaco Run. Pulsa o toca para saltar."></canvas>
+    <div class="botones">
+      <button type="button" id="sonido">🔊 SONIDO</button>
+      <button type="button" id="pantalla">⛶ PANTALLA COMPLETA</button>
+    </div>
+  </div>
+  <div class="compartir" id="compartir">
+    <a id="sh-wa" href="#" target="_blank" rel="noopener">Reta a tus colegas por WhatsApp</a>
+    <a id="sh-x" href="#" target="_blank" rel="noopener">Publicarlo en X</a>
+  </div>
+  <div class="como">
+    <div><b>⬆ SALTAR</b><span>Toca la pantalla, haz clic o pulsa ESPACIO. En el aire puedes saltar otra vez.</span></div>
+    <div><b>🪙 FICHAS</b><span>Cada ficha suma 10 puntos. Cuanto más corres, más rápido va todo.</span></div>
+    <div><b>⚠ CUIDADO</b><span>Salta las cajas y los pinchos de lag. Los drones vuelan bajo: si saltas cuando pasan, te pillan.</span></div>
+  </div>
+  <p class="mas"><a href="/gta-6/">¿Te has cansado? Lee la guía de GTA VI ›</a></p>
+</main>
+<footer>
+  <a href="/">PORTADA</a><a href="/gta-6/">GUÍA GTA VI</a><a href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">TWITCH</a><br><br>
+  © 2012–2026 TROLLACOS
+</footer>
+<script>
+(function(){
+var cv=document.getElementById('juego'),cx=cv.getContext('2d');
+var W=(window.innerWidth<640)?540:800,H=320,SUELO=262;
+cv.width=W;
+var HW=document.documentElement.className.indexOf('halloween')>-1;
+cx.imageSmoothingEnabled=false;
+
+// ---------- sprites ----------
+var spr=new Image(); spr.src=HW?'/img/trollaco-hw.png':'/img/trollaco.png';
+var murc=new Image(); murc.src='/img/murcielago.png';
+var calab=new Image(); calab.src='/img/calabaza.png';
+
+// ---------- record (solo en este navegador) ----------
+var record=0; try{record=parseInt(localStorage.getItem('trollacoRunRecord')||'0',10)||0}catch(e){}
+function guardarRecord(){try{localStorage.setItem('trollacoRunRecord',String(record))}catch(e){}}
+
+// ---------- sonido (8 bits con WebAudio) ----------
+var ac=null,mudo=false;
+try{mudo=localStorage.getItem('trollacoRunMudo')==='1'}catch(e){}
+var bSon=document.getElementById('sonido');
+function pintaSon(){bSon.textContent=mudo?'🔇 SIN SONIDO':'🔊 SONIDO'} pintaSon();
+bSon.onclick=function(){mudo=!mudo;pintaSon();try{localStorage.setItem('trollacoRunMudo',mudo?'1':'0')}catch(e){}};
+function pitido(f1,f2,dur,tipo,vol){
+  if(mudo)return;
+  try{ if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();
+    var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;
+    o.type=tipo||'square';o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+    g.gain.setValueAtTime(vol||.08,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);
+    o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+dur);
+  }catch(e){}
+}
+
+// ---------- estado ----------
+var estado='menu',t0=0,vel,dist,puntos,fichas,obst,monedas,parts,sigObst,sigMon,jug,temblor,nuevoRecord;
+function reiniciar(){
+  vel=340;dist=0;puntos=0;fichas=0;obst=[];monedas=[];parts=[];sigObst=520;sigMon=300;temblor=0;nuevoRecord=false;
+  jug={x:96,y:SUELO,vy:0,saltos:0,anim:0};
+}
+reiniciar();
+
+// ---------- controles ----------
+function accion(){
+  if(estado==='menu'){estado='juego';reiniciar();pitido(440,880,.15);return}
+  if(estado==='fin'){ if(performance.now()-t0>500){estado='juego';reiniciar();ocultaCompartir();pitido(440,880,.15)} return}
+  if(jug.saltos<2){ jug.vy=jug.saltos===0?-760:-640; jug.saltos++; pitido(jug.saltos===1?300:420,jug.saltos===1?700:900,.12) }
+}
+cv.addEventListener('pointerdown',function(e){e.preventDefault();accion()});
+document.addEventListener('keydown',function(e){
+  if(e.code==='Space'||e.code==='ArrowUp'||e.code==='KeyW'){
+    var r=cv.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight)return;
+    e.preventDefault(); if(!e.repeat)accion();
+  }
+});
+document.getElementById('pantalla').onclick=function(){
+  var m=document.querySelector('.maquina');
+  try{ if(document.fullscreenElement)document.exitFullscreen(); else (m.requestFullscreen||m.webkitRequestFullscreen).call(m) }catch(e){}
+};
+
+// ---------- compartir ----------
+function muestraCompartir(){
+  var txt=encodeURIComponent('He hecho '+puntos+' puntos en TROLLACO RUN 🕹️ ¿Me superas? https://trollacos.com/arcade/');
+  document.getElementById('sh-wa').href='https://wa.me/?text='+txt;
+  document.getElementById('sh-x').href='https://twitter.com/intent/tweet?text='+txt;
+  document.getElementById('compartir').classList.add('ver');
+}
+function ocultaCompartir(){document.getElementById('compartir').classList.remove('ver')}
+
+// ---------- generación ----------
+function nuevoObstaculo(){
+  var r=Math.random(), o;
+  var nivel=Math.min(1,(vel-340)/400);
+  if(r<.38) o={tipo:'caja',w:34,h:34};
+  else if(r<.58) o={tipo:'caja2',w:34,h:62};
+  else if(r<.80) o={tipo:'lag',w:56,h:24};
+  else o={tipo:'dron',w:46,h:22,vuelo:true};
+  o.x=W+20; o.y=o.vuelo?SUELO-78-o.h:SUELO-o.h; o.fase=Math.random()*6;
+  obst.push(o);
+  // a veces, pareja de cajas cuando ya vas rápido
+  if(nivel>.4&&!o.vuelo&&Math.random()<.25){obst.push({tipo:'caja',w:34,h:34,x:W+20+o.w+150+vel*.12,y:SUELO-34,fase:0})}
+  sigObst=Math.max(230,380+Math.random()*360-nivel*120)+vel*.25;
+}
+function nuevaMoneda(){
+  var alto=[SUELO-30,SUELO-95,SUELO-150][Math.floor(Math.random()*3)];
+  var n=1+Math.floor(Math.random()*4);
+  for(var i=0;i<n;i++) monedas.push({x:W+20+i*36,y:alto,r:10,fase:i*.6});
+  sigMon=260+Math.random()*420;
+}
+
+// ---------- dibujo ----------
+var K='#160828';
+function rect(x,y,w,h,c){cx.fillStyle=c;cx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h))}
+function fondo(tt){
+  var g=cx.createLinearGradient(0,0,0,SUELO);
+  if(HW){g.addColorStop(0,'#07021a');g.addColorStop(.6,'#2a0730');g.addColorStop(1,'#5a1020')}
+  else {g.addColorStop(0,'#07021a');g.addColorStop(.6,'#1a0640');g.addColorStop(1,'#3b0a5c')}
+  cx.fillStyle=g;cx.fillRect(0,0,W,SUELO);
+  // estrellas
+  cx.fillStyle='rgba(255,255,255,.7)';
+  for(var i=0;i<40;i++){var sx=(i*137.5-dist*.02)%W;if(sx<0)sx+=W;cx.fillRect(sx,(i*53)%150,(i%3===0)?2:1,(i%3===0)?2:1)}
+  // sol a rayas
+  var sx2=W*.66,sy=SUELO-8,R=96;
+  for(var y=-R;y<0;y+=2){
+    var franja=(Math.floor((y+R)/2))%7; if(y>-R*.55&&franja<2)continue;
+    var w=Math.sqrt(R*R-y*y), k=(y+R)/R;
+    cx.fillStyle=HW?('rgb(255,'+Math.round(210-k*170)+','+Math.round(60-k*40)+')'):('rgb(255,'+Math.round(228-k*185)+','+Math.round(92+k*122)+')');
+    cx.fillRect(sx2-w,sy+y,w*2,2);
+  }
+  // montañas
+  cx.fillStyle=HW?'#1a0612':'#14063a';
+  for(var m=0;m<6;m++){
+    var mx=((m*190-dist*.15)%(W+200)); if(mx<-200)mx+=W+200; mx-=100;
+    cx.beginPath();cx.moveTo(mx,SUELO);cx.lineTo(mx+95,SUELO-58-(m%3)*18);cx.lineTo(mx+190,SUELO);cx.fill();
+  }
+  // suelo con rejilla en perspectiva
+  cx.fillStyle='#07021a';cx.fillRect(0,SUELO,W,H-SUELO);
+  var col=HW?'#ff7a1a':'#ff2bd6';
+  cx.strokeStyle=col;cx.lineWidth=2;cx.globalAlpha=.8;
+  cx.beginPath();cx.moveTo(0,SUELO);cx.lineTo(W,SUELO);cx.stroke();
+  cx.globalAlpha=.45;cx.lineWidth=1.5;
+  var off=(dist*.9)%40;
+  for(var j=-30;j<=50;j++){var xb=j*40-off; cx.beginPath();cx.moveTo(W/2+(xb-W/2)*.25,SUELO);cx.lineTo(xb*1.6-W*.3,H);cx.stroke()}
+  for(var l=1;l<6;l++){var yy=SUELO+Math.pow(l/5,1.7)*(H-SUELO);cx.beginPath();cx.moveTo(0,yy);cx.lineTo(W,yy);cx.stroke()}
+  cx.globalAlpha=1;
+}
+var ESC=1.3; // escala del sprite
+function trollaco(){
+  var s=ESC, x=jug.x, yb=jug.y; // yb = pies
+  var alto=54*s, top=yb-alto;
+  var enAire=jug.y<SUELO-0.5;
+  var bote=enAire?0:(Math.floor(jug.anim)%2?-2:0);
+  if(spr.complete&&spr.naturalWidth){
+    cx.drawImage(spr,0,0,32,40,x,top+bote,32*s,40*s);
+  }
+  // piernas animadas (vaqueros + zapatillas)
+  var fase=Math.floor(jug.anim)%2;
+  function pierna(px0,sube){
+    var py=top+40*s+bote-(sube?3*s:0);
+    rect(x+px0*s,py,6*s,10*s,'#7fb3ff');rect(x+px0*s,py,1*s,10*s,'#5082d6');
+    rect(x+(px0-1)*s,py+10*s,8*s,3*s,'#f5f5fa');rect(x+(px0-1)*s,py+11*s,8*s,1*s,'#ff2bd6');rect(x+(px0-1)*s,py+13*s,8*s,1*s,K);
+  }
+  if(enAire){pierna(10,true);pierna(16,true)}
+  else {pierna(10,fase===0);pierna(16,fase===1)}
+}
+function obstaculo(o,tt){
+  var x=o.x,y=o.y;
+  if(o.tipo==='caja'||o.tipo==='caja2'){
+    var n=o.tipo==='caja'?1:2;
+    for(var i=0;i<n;i++){
+      var yy=y+i*(o.h/n), hh=o.h/n;
+      if(HW&&i===n-1&&calab.complete){cx.drawImage(calab,x-3,yy-4,o.w+6,hh+6);continue}
+      rect(x,yy,o.w,hh,K);rect(x+2,yy+2,o.w-4,hh-4,'#b0703a');rect(x+2,yy+2,o.w-4,3,'#d89a5c');
+      rect(x+o.w/2-2,yy+2,4,hh-4,'#8a5228');rect(x+2,yy+hh/2-2,o.w-4,4,'#8a5228');
+      if(n===1||i===0){cx.fillStyle='#ffd23f';cx.font='bold 9px monospace';cx.fillText('PS?',x+6,yy+12)}
+    }
+  } else if(o.tipo==='lag'){
+    for(var p=0;p<4;p++){
+      cx.fillStyle=K;cx.beginPath();cx.moveTo(x+p*14,y+o.h);cx.lineTo(x+p*14+7,y-2);cx.lineTo(x+p*14+14,y+o.h);cx.fill();
+      cx.fillStyle=(p%2?'#1ff2ff':'#ff2bd6');cx.beginPath();cx.moveTo(x+p*14+2,y+o.h);cx.lineTo(x+p*14+7,y+3);cx.lineTo(x+p*14+12,y+o.h);cx.fill();
+    }
+    cx.fillStyle='#fff';cx.font='bold 10px monospace';cx.fillText('LAG',x+17,y-6);
+  } else if(o.tipo==='dron'){
+    var bob=Math.sin(tt*6+o.fase)*4;
+    if(HW&&murc.complete){cx.drawImage(murc,x-4,y+bob-6,o.w+8,o.h+10);return}
+    rect(x+8,y+8+bob,o.w-16,10,K);rect(x+10,y+10+bob,o.w-20,6,'#5a5a78');
+    rect(x+o.w/2-3,y+12+bob,6,3,'#ff2828');
+    var hel=(Math.floor(tt*30)%2)?14:8;
+    rect(x+4-hel/2+6,y+2+bob,hel,3,'#e9e6ff');rect(x+o.w-10-hel/2+4,y+2+bob,hel,3,'#e9e6ff');
+    rect(x+8,y+4+bob,3,5,K);rect(x+o.w-11,y+4+bob,3,5,K);
+  }
+}
+function moneda(m,tt){
+  var esc=Math.abs(Math.cos(tt*4+m.fase));
+  var w=Math.max(3,m.r*2*esc);
+  cx.fillStyle=K;cx.beginPath();cx.ellipse(m.x,m.y,w/2+2,m.r+2,0,0,Math.PI*2);cx.fill();
+  cx.fillStyle='#ffd23f';cx.beginPath();cx.ellipse(m.x,m.y,w/2,m.r,0,0,Math.PI*2);cx.fill();
+  if(esc>.5){cx.fillStyle='#b07a00';cx.font='bold 12px monospace';cx.fillText('T',m.x-3.5,m.y+4)}
+}
+function texto(t,x,y,tam,col,alin,sombra){
+  cx.font=tam+'px VT323, monospace';cx.textAlign=alin||'left';
+  cx.fillStyle=sombra||K;cx.fillText(t,x+2,y+2);cx.fillStyle=col;cx.fillText(t,x,y);cx.textAlign='left';
+}
+function hud(){
+  texto('PUNTOS '+puntos,14,28,26,'#fff');
+  texto('🪙 '+fichas,14,52,22,'#ffd23f');
+  texto('RÉCORD '+record,W-14,28,24,'#1ff2ff','right');
+}
+
+// ---------- bucle ----------
+var ultimo=performance.now();
+function bucle(ahora){
+  var dt=Math.min(.033,(ahora-ultimo)/1000); ultimo=ahora;
+  var tt=ahora/1000;
+  if(estado==='juego'){
+    vel=Math.min(820,vel+9*dt);
+    var dx=vel*dt; dist+=dx; puntos=Math.floor(dist/10)+fichas*10;
+    // jugador
+    jug.vy+=2100*dt; jug.y+=jug.vy*dt;
+    if(jug.y>=SUELO){jug.y=SUELO;jug.vy=0;jug.saltos=0}
+    jug.anim+=dt*vel/38;
+    // generar
+    sigObst-=dx; if(sigObst<=0)nuevoObstaculo();
+    sigMon-=dx; if(sigMon<=0)nuevaMoneda();
+    // mover
+    obst.forEach(function(o){o.x-=dx}); obst=obst.filter(function(o){return o.x>-80});
+    monedas.forEach(function(m){m.x-=dx}); monedas=monedas.filter(function(m){return m.x>-30&&!m.cogida});
+    // colisiones (caja de choque algo más pequeña que el dibujo, para ser justos)
+    var jx=jug.x+9,jw=32*ESC-18,jy=jug.y-54*ESC+8,jh=54*ESC-10;
+    for(var i=0;i<obst.length;i++){var o=obst[i];
+      var oy=o.y+(o.tipo==='dron'?Math.sin(tt*6+o.fase)*4+6:4), oh=o.tipo==='dron'?o.h-6:o.h-4;
+      if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){fin();break}
+    }
+    monedas.forEach(function(m){
+      if(!m.cogida&&jx<m.x+m.r&&jx+jw>m.x-m.r&&jy<m.y+m.r&&jy+jh>m.y-m.r){m.cogida=true;fichas++;pitido(988,1976,.09,'square',.06);
+        for(var k=0;k<6;k++)parts.push({x:m.x,y:m.y,vx:(Math.random()-.5)*200,vy:-Math.random()*200,v:.5})}
+    });
+  }
+  parts.forEach(function(p){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=500*dt;p.v-=dt}); parts=parts.filter(function(p){return p.v>0});
+  if(temblor>0)temblor-=dt;
+
+  // pintar
+  cx.save();
+  if(temblor>0)cx.translate((Math.random()-.5)*8,(Math.random()-.5)*8);
+  fondo(tt);
+  obst.forEach(function(o){obstaculo(o,tt)});
+  monedas.forEach(function(m){moneda(m,tt)});
+  trollaco();
+  parts.forEach(function(p){rect(p.x,p.y,3,3,'#ffd23f')});
+  cx.restore();
+  if(estado!=='menu')hud();
+  if(estado==='menu'){
+    cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
+    texto('TROLLACO RUN',W/2,110,64,'#ff2bd6','center');
+    texto(HW?'🎃 EDICIÓN TROLLOWEEN 🎃':'SALTA EL LAG · COGE LAS FICHAS',W/2,148,26,HW?'#ffb347':'#1ff2ff','center');
+    if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,206,28,'#ffd23f','center');
+    if(record)texto('RÉCORD: '+record,W/2,240,24,'#fff','center');
+  } else if(estado==='fin'){
+    cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
+    texto('GAME OVER',W/2,100,64,'#ff2bd6','center');
+    texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,140,30,'#fff','center');
+    if(nuevoRecord)texto('¡NUEVO RÉCORD!',W/2,176,30,'#ffd23f','center');
+    else texto('RÉCORD: '+record,W/2,176,26,'#1ff2ff','center');
+    if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA VOLVER A JUGAR',W/2,226,26,'#ffd23f','center');
+  }
+  requestAnimationFrame(bucle);
+}
+function fin(){
+  estado='fin';t0=performance.now();temblor=.25;
+  pitido(400,60,.45,'sawtooth',.1);
+  if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
+  muestraCompartir();
+}
+document.addEventListener('visibilitychange',function(){ultimo=performance.now()});
+requestAnimationFrame(bucle);
+})();
+</script>
+</body>
+</html>

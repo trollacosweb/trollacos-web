@@ -47,6 +47,16 @@
   .halloween .trolloween-ofertas{display:block}
   .tw-tit{text-align:center;font-family:'VT323',monospace;font-size:28px;color:#ffb347;text-shadow:0 0 10px #ff7a1a;margin-bottom:14px;letter-spacing:.06em}
   .arsenal-card.tw{border-color:rgba(255,122,26,.7);background:linear-gradient(180deg,rgba(255,122,26,.14),rgba(120,20,60,.12))}
+  .arcade-banner{display:flex;align-items:center;gap:20px;text-decoration:none;color:#fff;padding:18px 22px;border:3px solid var(--pink);border-radius:14px;
+    background:linear-gradient(135deg,rgba(255,43,214,.18),rgba(31,242,255,.08));box-shadow:0 0 24px rgba(255,43,214,.35);transition:.2s}
+  .arcade-banner:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(255,43,214,.6)}
+  .arcade-banner img{width:64px;height:auto;flex:none}
+  .ab-txt{flex:1}.ab-k{display:block;font-family:'VT323',monospace;font-size:20px;color:var(--cyan)}
+  .ab-txt b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(28px,6vw,40px);line-height:1.05;color:var(--yellow);text-shadow:0 0 12px rgba(255,210,63,.6)}
+  .ab-s{display:block;font-size:18px;color:var(--muted)}
+  .ab-btn{font-family:'VT323',monospace;font-size:28px;padding:8px 18px;border:2px solid var(--yellow);border-radius:8px;color:var(--yellow);white-space:nowrap}
+  @media (max-width:640px){.arcade-banner{flex-wrap:wrap;gap:12px;padding:14px}.arcade-banner img{width:48px}.ab-btn{width:100%;text-align:center}}
+  section#arcade{padding-top:20px;padding-bottom:20px}
   .tienda-cab{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px}
   .tienda-cab h2{margin:0}
   .tienda-cab img{width:68px;height:auto;flex:none}
@@ -337,6 +347,7 @@
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
     <a class="btn alt" href="#directo">DIRECTO</a>
+    <a class="btn alt" href="/arcade/">🕹️ ARCADE</a>
   </div>
 
   <button class="troll-hero" id="trollaco" type="button" aria-label="El Trollaco: pulsa para que diga otra cosa">
@@ -471,6 +482,14 @@
         <span class="ico-a">📦</span><h3>Ediciones coleccionista</h3><p>Cajas, figuras y extras para los que lo quieren todo.</p><span class="ver">VER EN AMAZON ›</span>
       </a>
   </div>
+</section>
+
+<section class="block" id="arcade">
+  <a class="arcade-banner" href="/arcade/">
+    <img class="px troll" src="/img/trollaco.png" data-hw="/img/trollaco-calabaza-hw.png" alt="" width="34" height="56">
+    <span class="ab-txt"><span class="ab-k">&gt; NUEVO · ARCADE_</span><b>TROLLACO RUN</b><span class="ab-s">Salta el lag, esquiva los drones y coge fichas. ¿Cuánto aguantas?</span></span>
+    <span class="ab-btn">▶ JUGAR</span>
+  </a>
 </section>
 
 <section class="block news-wrap" id="noticias">
