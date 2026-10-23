@@ -44,6 +44,27 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .como div{border:1px solid rgba(31,242,255,.35);border-radius:8px;padding:12px 14px;background:rgba(31,242,255,.05)}
 .como b{display:block;font-family:'VT323',monospace;font-size:22px;color:var(--yellow);font-weight:400}
 .como span{font-size:17px;color:var(--muted)}
+.guardar{position:absolute;left:10px;right:10px;top:10px;aspect-ratio:var(--ar,2.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:rgba(7,2,26,.9);border-radius:8px;text-align:center;padding:10px}
+.guardar[hidden]{display:none}
+@media (max-width:640px){.guardar{inset:0;aspect-ratio:auto;gap:4px;padding:6px;border-radius:10px}.guardar b{font-size:24px}.guardar span{font-size:18px}.guardar input{font-size:20px;padding:3px 8px}.guardar button{font-size:18px;padding:3px 10px}.guardar p{font-size:14px}}
+.guardar b{font-family:'VT323',monospace;font-weight:400;font-size:clamp(26px,5vw,40px);color:var(--yellow);text-shadow:0 0 12px var(--orange)}
+.guardar span{font-family:'VT323',monospace;font-size:22px;color:#fff}
+.guardar input{font-family:'VT323',monospace;font-size:26px;width:min(320px,80%);padding:6px 10px;background:#120530;color:#fff;border:2px solid var(--cyan);border-radius:6px;text-align:center}
+.guardar button{font-family:'VT323',monospace;font-size:22px;margin:0 4px;padding:5px 14px;border-radius:6px;cursor:pointer;border:2px solid var(--pink);background:var(--pink);color:#07021a}
+.guardar button+button{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
+.guardar p{font-size:16px;color:#ff8b8b;min-height:1.2em}
+.fama{margin-top:22px;border:2px solid var(--yellow);border-radius:12px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,210,63,.08),rgba(255,43,214,.05))}
+.fama h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(24px,5vw,32px);color:var(--yellow);text-align:center;margin-bottom:10px;text-shadow:0 0 12px rgba(255,210,63,.5)}
+.fama ol{list-style:none;max-width:520px;margin:0 auto;counter-reset:p}
+.fama li{display:flex;gap:10px;align-items:baseline;font-family:'VT323',monospace;font-size:24px;padding:3px 8px;border-bottom:1px dashed rgba(233,230,255,.15);counter-increment:p}
+.fama li::before{content:counter(p) ".";width:2.2em;color:var(--cyan)}
+.fama li:nth-child(1)::before{content:"🥇"}.fama li:nth-child(2)::before{content:"🥈"}.fama li:nth-child(3)::before{content:"🥉"}
+.fama li .n{flex:1;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fama li .p{color:var(--yellow)}
+.fama li.yo{background:rgba(255,43,214,.2);border-radius:4px}
+.fama li.vacio{justify-content:center;color:var(--muted);font-size:20px}.fama li.vacio::before{content:none}
+.fama-nota{text-align:center;font-size:15px;color:var(--muted);margin-top:8px}
 .compartir{display:none;margin-top:14px;text-align:center}
 .compartir.ver{display:block}
 .compartir a{display:inline-block;margin:4px;padding:7px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:17px}
@@ -63,11 +84,23 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <p class="sub">&gt; INSERT COIN · PULSA PARA EMPEZAR_</p>
   <div class="maquina">
     <canvas id="juego" width="800" height="320" aria-label="Juego Trollaco Run. Pulsa o toca para saltar."></canvas>
+    <form class="guardar" id="guardar" hidden>
+      <b id="g-tit">¡ENTRAS EN EL TOP 10!</b>
+      <span id="g-pts"></span>
+      <input id="g-nombre" maxlength="14" placeholder="Tu nombre" autocomplete="nickname" aria-label="Tu nombre para el ranking">
+      <div><button type="submit">GUARDAR</button><button type="button" id="g-no">NO, GRACIAS</button></div>
+      <p id="g-msg" role="status"></p>
+    </form>
     <div class="botones">
       <button type="button" id="sonido">🔊 SONIDO</button>
       <button type="button" id="pantalla">⛶ PANTALLA COMPLETA</button>
     </div>
   </div>
+  <section class="fama" id="fama">
+    <h2>🏆 SALÓN DE LA FAMA</h2>
+    <ol id="fama-lista"><li class="vacio">Cargando...</li></ol>
+    <p class="fama-nota">Los 10 mejores de todos los que juegan en trollacos.com. Nombres ofensivos no permitidos.</p>
+  </section>
   <div class="compartir" id="compartir">
     <a id="sh-wa" href="#" target="_blank" rel="noopener">Reta a tus colegas por WhatsApp</a>
     <a id="sh-x" href="#" target="_blank" rel="noopener">Publicarlo en X</a>
@@ -90,6 +123,52 @@ var W=(window.innerWidth<640)?540:800,H=320,SUELO=262;
 cv.width=W;
 var HW=document.documentElement.className.indexOf('halloween')>-1;
 cx.imageSmoothingEnabled=false;
+document.querySelector('.maquina').style.setProperty('--ar',String(W/H));
+
+// ---------- marcador global ----------
+var API='/api/marcadores.php',famaOK=false,famaTop=[],fichaPartida=null,ultimoGuardado=null;
+var fForm=document.getElementById('guardar'),fNombre=document.getElementById('g-nombre'),fMsg=document.getElementById('g-msg');
+try{fNombre.value=localStorage.getItem('trollacoRunNombre')||''}catch(e){}
+function pintaFama(lista,mio){
+  var ol=document.getElementById('fama-lista');ol.innerHTML='';
+  if(!lista.length){var li=document.createElement('li');li.className='vacio';li.textContent='Nadie todavía. ¡El primer puesto es tuyo!';ol.appendChild(li);return}
+  lista.forEach(function(e,i){
+    var li=document.createElement('li'),n=document.createElement('span'),p=document.createElement('span');
+    n.className='n';n.textContent=e.nombre;p.className='p';p.textContent=e.puntos+' pts';
+    li.appendChild(n);li.appendChild(p);if(mio&&i+1===mio)li.className='yo';ol.appendChild(li);
+  });
+}
+function cargaFama(){
+  fetch(API+'?accion=lista',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
+    if(!j||!j.top)throw 0;famaOK=true;famaTop=j.top;pintaFama(famaTop);
+  }).catch(function(){famaOK=false;document.getElementById('fama-lista').innerHTML='<li class="vacio">El ranking no está disponible ahora mismo.</li>'});
+}
+function pideFicha(){
+  fichaPartida=null;if(!famaOK)return;
+  fetch(API+'?accion=empezar',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){fichaPartida=j.ficha||null}).catch(function(){});
+}
+function entraEnTop(p){return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
+function abreGuardar(){
+  document.getElementById('g-tit').textContent='¡ENTRAS EN EL TOP 10!';
+  document.getElementById('g-pts').textContent=puntos+' PUNTOS · '+fichas+' FICHAS';
+  fMsg.textContent='';fForm.hidden=false;setTimeout(function(){fNombre.focus()},50);
+}
+function cierraGuardar(){fForm.hidden=true;fNombre.blur()}
+document.getElementById('g-no').onclick=cierraGuardar;
+fForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var nom=fNombre.value.replace(/\s+/g,' ').trim();
+  if(nom.length<2){fMsg.textContent='Pon al menos 2 letras.';return}
+  fMsg.style.color='#a59dd0';fMsg.textContent='Guardando...';
+  fetch(API+'?accion=enviar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:ultimoGuardado.puntos,fichas:ultimoGuardado.fichas,ficha:ultimoGuardado.ficha})})
+  .then(function(r){return r.json()}).then(function(j){
+    if(j.ok){try{localStorage.setItem('trollacoRunNombre',nom)}catch(e){}
+      famaTop=j.top;pintaFama(famaTop,j.puesto);cierraGuardar();
+      if(j.puesto&&j.puesto<=10){document.getElementById('fama').scrollIntoView({behavior:'smooth',block:'center'})}
+    } else {fMsg.style.color='#ff8b8b';fMsg.textContent=j.mensaje||'No se ha podido guardar.'}
+  }).catch(function(){fMsg.style.color='#ff8b8b';fMsg.textContent='No se ha podido guardar. Prueba otra vez.'});
+});
+cargaFama();
 
 // ---------- sprites ----------
 var spr=new Image(); spr.src=HW?'/img/trollaco-hw.png':'/img/trollaco.png';
@@ -126,12 +205,14 @@ reiniciar();
 
 // ---------- controles ----------
 function accion(){
-  if(estado==='menu'){estado='juego';reiniciar();pitido(440,880,.15);return}
-  if(estado==='fin'){ if(performance.now()-t0>500){estado='juego';reiniciar();ocultaCompartir();pitido(440,880,.15)} return}
+  if(!fForm.hidden)return;
+  if(estado==='menu'){estado='juego';reiniciar();pideFicha();pitido(440,880,.15);return}
+  if(estado==='fin'){ if(performance.now()-t0>500){estado='juego';reiniciar();pideFicha();ocultaCompartir();pitido(440,880,.15)} return}
   if(jug.saltos<2){ jug.vy=jug.saltos===0?-760:-640; jug.saltos++; pitido(jug.saltos===1?300:420,jug.saltos===1?700:900,.12) }
 }
 cv.addEventListener('pointerdown',function(e){e.preventDefault();accion()});
 document.addEventListener('keydown',function(e){
+  if(document.activeElement===fNombre)return;
   if(e.code==='Space'||e.code==='ArrowUp'||e.code==='KeyW'){
     var r=cv.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight)return;
     e.preventDefault(); if(!e.repeat)accion();
@@ -184,19 +265,15 @@ function fondo(tt){
   cx.fillStyle='rgba(255,255,255,.7)';
   for(var i=0;i<40;i++){var sx=(i*137.5-dist*.02)%W;if(sx<0)sx+=W;cx.fillRect(sx,(i*53)%150,(i%3===0)?2:1,(i%3===0)?2:1)}
   // sol a rayas
-  var sx2=W*.66,sy=SUELO-8,R=96;
+  var sx2=W*.66,sy=SUELO-60,R=96;
   for(var y=-R;y<0;y+=2){
     var franja=(Math.floor((y+R)/2))%7; if(y>-R*.55&&franja<2)continue;
     var w=Math.sqrt(R*R-y*y), k=(y+R)/R;
     cx.fillStyle=HW?('rgb(255,'+Math.round(210-k*170)+','+Math.round(60-k*40)+')'):('rgb(255,'+Math.round(228-k*185)+','+Math.round(92+k*122)+')');
     cx.fillRect(sx2-w,sy+y,w*2,2);
   }
-  // montañas
-  cx.fillStyle=HW?'#1a0612':'#14063a';
-  for(var m=0;m<6;m++){
-    var mx=((m*190-dist*.15)%(W+200)); if(mx<-200)mx+=W+200; mx-=100;
-    cx.beginPath();cx.moveTo(mx,SUELO);cx.lineTo(mx+95,SUELO-58-(m%3)*18);cx.lineTo(mx+190,SUELO);cx.fill();
-  }
+  // ciudad (dos capas con paralaje)
+  ciudad(LEJOS,.12,tt); ciudad(CERCA,.32,tt);
   // suelo con rejilla en perspectiva
   cx.fillStyle='#07021a';cx.fillRect(0,SUELO,W,H-SUELO);
   var col=HW?'#ff7a1a':'#ff2bd6';
@@ -207,6 +284,44 @@ function fondo(tt){
   for(var j=-30;j<=50;j++){var xb=j*40-off; cx.beginPath();cx.moveTo(W/2+(xb-W/2)*.25,SUELO);cx.lineTo(xb*1.6-W*.3,H);cx.stroke()}
   for(var l=1;l<6;l++){var yy=SUELO+Math.pow(l/5,1.7)*(H-SUELO);cx.beginPath();cx.moveTo(0,yy);cx.lineTo(W,yy);cx.stroke()}
   cx.globalAlpha=1;
+}
+// ---------- ciudad tipo Vice City (se genera una vez y se repite) ----------
+function azar(semilla){return function(){semilla=(semilla*16807)%2147483647;return (semilla-1)/2147483646}}
+function generaCapa(semilla,largo,hMin,hMax,wMin,wMax,lejos){
+  var r=azar(semilla),x=0,edif=[];
+  while(x<largo){
+    var w=Math.round(wMin+r()*(wMax-wMin)),h=Math.round(hMin+r()*(hMax-hMin)),hueco=Math.round(r()*(lejos?6:22));
+    var e={x:x,w:w,h:h,ven:[],ant:r()<.25,neon:r()<.5?0:1,palmera:!lejos&&r()<.35,tejado:r()<.3};
+    var cols=Math.floor((w-8)/9),filas=Math.floor((h-12)/12);
+    for(var f=0;f<filas;f++)for(var c=0;c<cols;c++){var v=r();if(v<(lejos?.28:.4))e.ven.push([c,f,v<.06?1:0])}
+    edif.push(e);x+=w+hueco;
+  }
+  return {edif:edif,largo:x};
+}
+var LEJOS=generaCapa(7,1300,60,140,34,80,true), CERCA=generaCapa(42,1500,70,175,50,110,false);
+function palmera(x,y,esc){
+  cx.strokeStyle=K;cx.lineWidth=4*esc;cx.beginPath();cx.moveTo(x,y);cx.quadraticCurveTo(x+8*esc,y-35*esc,x+4*esc,y-70*esc);cx.stroke();
+  cx.strokeStyle=HW?'#2a1a10':'#1d3b2b';cx.lineWidth=3*esc;
+  var hx=x+4*esc,hy=y-70*esc;
+  [[-30,8],[-22,-10],[28,6],[22,-12],[2,-20],[-8,14],[14,14]].forEach(function(h){cx.beginPath();cx.moveTo(hx,hy);cx.quadraticCurveTo(hx+h[0]*esc*.5,hy-12*esc,hx+h[0]*esc,hy+h[1]*esc);cx.stroke()});
+}
+function ciudad(capa,par,tt){
+  var lejos=capa===LEJOS, off=(dist*par)%capa.largo;
+  for(var k=0;k<2;k++){
+    capa.edif.forEach(function(e){
+      var x=e.x-off+k*capa.largo; if(x>W||x+e.w<0)return;
+      var y=SUELO-e.h;
+      cx.fillStyle=lejos?(HW?'#24081c':'#1e0b4a'):(HW?'#14040e':'#100426');
+      cx.fillRect(x,y,e.w,e.h);
+      if(e.tejado){cx.fillRect(x+e.w*.25,y-10,e.w*.5,10)}
+      if(e.ant){cx.fillRect(x+e.w/2-1,y-(e.tejado?28:18),2,18);if(Math.floor(tt*2+e.x)%2){cx.fillStyle='#ff2828';cx.fillRect(x+e.w/2-2,y-(e.tejado?30:20),4,4)}}
+      if(!lejos){cx.fillStyle=e.neon?'#1ff2ff':(HW?'#ff7a1a':'#ff2bd6');cx.globalAlpha=.85;cx.fillRect(x,y,e.w,2);cx.globalAlpha=1}
+      for(var v=0;v<e.ven.length;v++){var q=e.ven[v];
+        cx.fillStyle=q[2]?(HW?'#ff7a1a':'#1ff2ff'):(lejos?'rgba(255,210,63,.35)':'rgba(255,210,63,.75)');
+        cx.fillRect(x+5+q[0]*9,y+8+q[1]*12,lejos?4:5,lejos?5:6)}
+      if(e.palmera)palmera(x+e.w+8,SUELO,.9);
+    });
+  }
 }
 var ESC=1.3; // escala del sprite
 function trollaco(){
@@ -334,6 +449,9 @@ function fin(){
   pitido(400,60,.45,'sawtooth',.1);
   if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
   muestraCompartir();
+  if(famaOK&&fichaPartida&&puntos>0&&entraEnTop(puntos)){
+    ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida};fichaPartida=null;setTimeout(abreGuardar,600);
+  }
 }
 document.addEventListener('visibilitychange',function(){ultimo=performance.now()});
 requestAnimationFrame(bucle);
