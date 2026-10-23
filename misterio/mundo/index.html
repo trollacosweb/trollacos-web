@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'})()</script>
+<title>Los casos ovni más famosos del mundo: Roswell, Rendlesham, el Tic Tac y Phoenix | Expediente Trollaco</title>
+<meta name="description" content="Roswell, el bosque de Rendlesham, el "Tic Tac" de la Marina de EE. UU. y las luces de Phoenix. Los grandes casos ovni del mundo, contados con intriga y con mapa interactivo.">
+<link rel="canonical" href="https://trollacos.com/misterio/mundo/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Expediente Trollaco: ovnis del mundo">
+<meta property="og:description" content="Roswell, Rendlesham, el Tic Tac del Pentágono y las luces de Phoenix, en un mapa. ¿Te atreves?">
+<meta property="og:url" content="https://trollacos.com/misterio/mundo/">
+<meta property="og:image" content="https://trollacos.com/misterio/mundo/portada.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icono.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+@font-face{font-family:'Righteous';src:url(/fuentes/righteous.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'VT323';src:url(/fuentes/vt323.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(/fuentes/rajdhani-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Rajdhani';src:url(/fuentes/rajdhani-700.woff2) format('woff2');font-weight:700;font-display:swap}
+:root{--bg:#04020c;--verde:#7cffb2;--pink:#ff2bd6;--cyan:#1ff2ff;--yellow:#ffd23f;--orange:#ff9d3c;--text:#e6e3f5;--muted:#9f98c4;--papel:#d9c9a0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-weight:500;font-size:19.5px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+a{color:var(--verde)}
+.px{image-rendering:pixelated;image-rendering:crisp-edges}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:2px solid var(--verde);box-shadow:0 4px 22px rgba(124,255,178,.18);position:relative;z-index:5;background:var(--bg)}
+.top a{font-family:'VT323',monospace;font-size:22px;text-decoration:none;color:#fff;text-shadow:0 0 6px var(--verde)}
+.top img{height:26px;width:auto;display:block}
+/* portada */
+.cab{position:relative;text-align:center;padding:70px 16px 60px;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,#173b2c 0%,#081a14 30%,var(--bg) 70%)}
+.niebla{position:absolute;left:-20%;right:-20%;bottom:-10px;height:160px;background:radial-gradient(ellipse at 30% 60%,rgba(190,220,210,.18),transparent 60%),radial-gradient(ellipse at 75% 70%,rgba(190,220,210,.14),transparent 60%);animation:niebla 18s ease-in-out infinite alternate;pointer-events:none}
+@keyframes niebla{to{transform:translateX(8%)}}
+.cab .k{font-family:'VT323',monospace;font-size:22px;letter-spacing:.2em;color:var(--verde);text-shadow:0 0 10px var(--verde)}
+.cab h1{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(38px,9vw,74px);line-height:1;margin:12px auto 16px;color:#eafff3;text-shadow:0 0 18px rgba(124,255,178,.55),0 0 40px rgba(124,255,178,.25);animation:parpadeo 7s infinite}
+@keyframes parpadeo{0%,91%,100%{opacity:1}92%{opacity:.4}93%{opacity:1}95%{opacity:.6}96%{opacity:1}}
+.cab .ent{max-width:680px;margin:0 auto;font-size:21px;color:#d8d4ee}
+.cab .tr-cab{position:absolute;left:6%;bottom:18px;width:120px}
+.cab .ovni-cab{position:absolute;top:30px;width:90px;animation:sobrevuela 16s linear infinite}
+@keyframes sobrevuela{0%{left:-120px;transform:translateY(0)}50%{transform:translateY(24px)}100%{left:110%;transform:translateY(0)}}
+@media (max-width:760px){.cab .tr-cab{position:static;display:block;margin:20px auto 0;width:84px}}
+main{max-width:860px;margin:0 auto;padding:0 18px 60px;position:relative}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
+.tabs a{font-family:'VT323',monospace;font-size:22px;text-decoration:none;color:#fff;padding:6px 16px;border:2px solid rgba(124,255,178,.4);border-radius:8px}
+.tabs a.on,.tabs a:hover{background:rgba(124,255,178,.18);border-color:var(--verde)}
+.aviso{margin:28px 0 0;padding:14px 18px;border-left:4px solid var(--orange);background:rgba(255,157,60,.08);font-size:17px;color:#e8dcc8}
+/* mapa */
+h2.sec{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(28px,6vw,40px);color:var(--verde);text-shadow:0 0 12px rgba(124,255,178,.5);margin:46px 0 10px;scroll-margin-top:10px}
+#mapa-madrid{height:min(70vh,520px);border:2px solid var(--verde);border-radius:12px;box-shadow:0 0 26px rgba(124,255,178,.25);background:#0b0b14}
+.leaflet-container{font-family:'Rajdhani',sans-serif}
+.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.8) contrast(.95) saturate(.6)}
+.pin{font-size:26px;line-height:1;filter:drop-shadow(0 0 6px #7cffb2) drop-shadow(0 2px 2px #000);animation:latido 2.4s ease-in-out infinite}
+@keyframes latido{50%{transform:scale(1.15)}}
+.leaflet-popup-content-wrapper{background:#0c0a1c;color:var(--text);border:1px solid var(--verde);border-radius:10px}
+.leaflet-popup-tip{background:#0c0a1c}
+.leaflet-popup-content b{font-family:'Righteous',sans-serif;font-weight:400;font-size:18px;color:#eafff3;display:block}
+.leaflet-popup-content i{display:block;color:var(--muted);margin:2px 0 8px}
+.leaflet-popup-content a{font-family:'VT323',monospace;font-size:20px;color:var(--verde)}
+.indice{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;list-style:none;margin:14px 0 0}
+.indice a{display:flex;gap:10px;align-items:center;padding:9px 12px;border:1px solid rgba(124,255,178,.3);border-radius:8px;text-decoration:none;color:#fff;background:rgba(124,255,178,.04)}
+.indice a:hover{background:rgba(124,255,178,.12)}
+/* casos */
+.caso{position:relative;margin:70px 0 0;padding-top:10px;scroll-margin-top:10px}
+.sello{display:inline-block;font-family:'VT323',monospace;font-size:20px;letter-spacing:.15em;color:#ff5a5a;border:2px solid #ff5a5a;padding:0 10px;transform:rotate(-3deg);opacity:.85}
+.caso h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(30px,6.5vw,44px);line-height:1.08;color:#fff;margin:10px 0 2px;text-shadow:0 0 14px rgba(124,255,178,.3)}
+.subt{font-family:'VT323',monospace;font-size:24px;color:var(--verde);margin-bottom:14px}
+.ilus img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(124,255,178,.25);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.ficha{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 16px;margin:16px 0 18px;padding:14px 16px;background:var(--papel);color:#2a1f10;border-radius:4px;box-shadow:4px 4px 0 rgba(0,0,0,.4);font-size:17px}
+.ficha b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:18px;color:#7a1c1c}
+.nivel .off{filter:grayscale(1);opacity:.25}
+.relato p{margin:0 0 16px}
+.relato p:first-child::first-letter{font-family:'Righteous',sans-serif;float:left;font-size:58px;line-height:.9;margin:6px 10px 0 0;color:var(--verde);text-shadow:0 0 12px rgba(124,255,178,.6)}
+.relato strong{color:#fff}
+.esceptico{margin:20px 0 14px;padding:14px 16px;border:1px dashed rgba(31,242,255,.55);border-radius:8px;background:rgba(31,242,255,.05)}
+.esceptico b{font-family:'VT323',monospace;font-weight:400;font-size:21px;color:var(--cyan)}
+.esceptico p{margin:6px 0 0;font-size:17.5px;color:#cfd9ea}
+.opina{display:flex;gap:14px;align-items:center;padding:12px 16px;border:2px dashed rgba(124,255,178,.5);border-radius:8px;background:rgba(124,255,178,.06)}
+.opina img{width:40px;height:auto;flex:none}
+.opina p{margin:0;font-family:'VT323',monospace;font-size:21px;line-height:1.15;color:#c9ffd4}
+.volver{text-align:right;margin-top:10px;font-family:'VT323',monospace;font-size:20px}
+.volver a{text-decoration:none}
+/* Trollaco en los márgenes */
+.margen{position:absolute;top:130px;width:140px;z-index:2;pointer-events:none}
+.margen.izq{left:-200px}.margen.der{right:-200px}
+.margen img.tr{width:140px;height:auto;display:block}
+@media (max-width:1300px){.margen{position:relative;top:auto;left:auto!important;right:auto!important;float:right;width:72px;margin:0 0 6px 12px}.margen img.tr{width:72px}.margen.izq{float:left;margin:0 12px 6px 0}}
+.tiembla{animation:tiembla .25s linear infinite}
+@keyframes tiembla{25%{transform:translate(-1px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,-1px)}}
+.flota{animation:flota 3s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-12px)}}
+.mira{animation:mira 4s ease-in-out infinite}
+@keyframes mira{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px) rotate(-3deg)}}
+.lee{animation:lee 5s ease-in-out infinite}
+@keyframes lee{0%,80%,100%{transform:none}85%{transform:translateY(-3px)}}
+.flash{animation:flash 3.5s infinite}
+@keyframes flash{0%,88%,100%{filter:none}90%{filter:brightness(2.4) drop-shadow(0 0 20px #fff)}}
+.luz{filter:drop-shadow(0 0 8px rgba(255,236,120,.6))}
+.margen.der .luz{transform:scaleX(-1)}
+.margen.der:has(.luz)::after{content:"";position:absolute;top:34%;right:100%;width:160px;height:90px;transform:translateY(-30%);
+  background:linear-gradient(270deg,rgba(255,236,120,.35),rgba(255,236,120,0));clip-path:polygon(100% 42%,0 0,0 100%,100% 58%);animation:linterna 3s ease-in-out infinite}
+@keyframes linterna{50%{opacity:.5}}
+@media (max-width:1300px){.margen.der:has(.luz)::after{display:none}}
+.abduccion{position:relative;width:140px;height:250px}
+.abduccion .ovni{position:absolute;top:0;left:0;width:140px;z-index:1}
+.abduccion .rayo{position:absolute;top:56px;left:32px;width:76px;height:190px;background:linear-gradient(180deg,rgba(159,246,255,.55),rgba(159,246,255,.05));clip-path:polygon(35% 0,65% 0,100% 100%,0 100%)}
+.abduccion .sube{position:absolute;left:24px;bottom:0;width:92px;animation:sube 4s ease-in-out infinite}
+@keyframes sube{0%,100%{transform:translateY(0)}50%{transform:translateY(-60px) rotate(8deg)}}
+@media (max-width:1300px){.abduccion{width:72px;height:140px}.abduccion .ovni{width:72px}.abduccion .rayo{top:28px;left:16px;width:40px;height:110px}.abduccion .sube{width:54px;left:9px}}
+/* próximamente */
+.prox-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:10px}
+.prox-col h3{font-family:'VT323',monospace;font-weight:400;font-size:24px;color:var(--orange);margin-bottom:8px}
+.prox{display:block;text-decoration:none;color:var(--text);padding:12px 16px;margin-bottom:8px;border:1px solid rgba(255,157,60,.35);border-radius:8px;background:rgba(255,157,60,.05)}
+.prox b{display:block;color:#fff}.prox span{font-size:16px;color:var(--muted)}
+.compartir{margin:40px 0 0;padding:16px;border:2px solid var(--verde);border-radius:8px;text-align:center;background:rgba(124,255,178,.05)}
+.compartir b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:21px;color:var(--verde);margin-bottom:10px}
+.compartir a,.compartir button{display:inline-block;margin:4px;padding:7px 14px;border:1px solid var(--verde);border-radius:6px;color:#fff;text-decoration:none;background:none;font:inherit;font-size:17px;cursor:pointer}
+.nota{font-size:15px;color:var(--muted);margin-top:30px;border-top:1px solid rgba(233,230,255,.12);padding-top:14px}
+footer{border-top:2px solid var(--verde);text-align:center;padding:26px 16px 36px;color:var(--muted);font-size:16px}
+footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-decoration:none;margin:0 8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Los casos ovni más famosos del mundo: Roswell, Rendlesham, el Tic Tac y Phoenix", "datePublished": "2026-10-23", "dateModified": "2026-10-23", "inLanguage": "es", "author": {"@type": "Organization", "name": "Trollacos"}, "publisher": {"@type": "Organization", "name": "Trollacos", "logo": {"@type": "ImageObject", "url": "https://trollacos.com/icono-512.png"}}, "mainEntityOfPage": "https://trollacos.com/misterio/mundo/", "about": ["Roswell", "Rendlesham: el \"Roswell británico\"", "El \"Tic Tac\" del Nimitz", "Las luces de Phoenix"]}</script>
+</head>
+<body>
+<nav class="top">
+  <a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a>
+  <a href="/">‹ PORTADA</a>
+</nav>
+
+<header class="cab">
+  <img class="px ovni-cab" src="/misterio/img/ovni.png" alt="" aria-hidden="true">
+  <div class="k">&gt; ARCHIVO CLASIFICADO_</div>
+  <h1>EXPEDIENTE TROLLACO<br>Ovnis del mundo</h1>
+  <p class="ent">Un "platillo" que el ejército anunció y luego negó. Militares persiguiendo luces en un bosque. Un vídeo publicado por el Pentágono. <strong>Los casos que siguen sin cerrarse.</strong></p>
+  <img class="px tr-cab" src="/misterio/img/trollaco-linterna.png" alt="El Trollaco con una linterna">
+  <div class="niebla"></div>
+</header>
+
+<main>
+  <nav class="tabs" aria-label="Expedientes">
+  <a href="/misterio/">📍 MADRID</a><a href="/misterio/espana/">🇪🇸 ESPAÑA</a><a href="/misterio/mundo/" class="on">🌍 EL MUNDO</a>
+</nav>
+  <p class="aviso">⚠️ Contamos cada caso como lo cuenta la leyenda y, al final, lo que dicen los escépticos.</p>
+
+  <h2 class="sec" id="mapa">🗺️ El mapa del miedo</h2>
+  <p>Pincha en cada icono para abrir su expediente. Mueve el mapa: estos casos están repartidos por el planeta.</p>
+  <div id="mapa-madrid" role="application" aria-label="Mapa de Madrid con los lugares de cada caso"></div>
+  <ul class="indice">
+      <li><a href="#roswell"><span>👽</span>Roswell</a></li>
+      <li><a href="#rendlesham"><span>🌲</span>Rendlesham: el "Roswell británico"</a></li>
+      <li><a href="#tic-tac-nimitz"><span>💊</span>El "Tic Tac" del Nimitz</a></li>
+      <li><a href="#luces-de-phoenix"><span>🔺</span>Las luces de Phoenix</a></li>
+  </ul>
+
+
+<article class="caso" id="roswell">
+  <div class="margen izq" aria-hidden="true"><img class="px tr mira" src="/misterio/img/trollaco-lupa.png" alt=""></div>
+  <div class="sello">EXPEDIENTE 01</div>
+  <h2>Roswell</h2>
+  <p class="subt">El "platillo volante" que el ejército anunció... y luego desmintió</p>
+  <figure class="ilus"><img src="/misterio/img/roswell.svg" alt="Ilustración de Roswell" loading="lazy" width="600" height="340"></figure>
+  <ul class="ficha">
+    <li><b>📍 Dónde</b>Roswell y Corona, Nuevo México (Estados Unidos)</li>
+    <li><b>🕰️ Cuándo</b>Julio de 1947</li>
+    
+    <li><b>Nivel de misterio</b><span class="nivel" aria-label="4 de 5"><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="off">👽</span></span></li>
+  </ul>
+  <div class="relato">
+<p>Verano de 1947. Un rancho perdido en el desierto de Nuevo México. Tras una noche de tormenta, el ranchero <strong>Mac Brazel</strong> encuentra sus tierras sembradas de restos extraños: láminas brillantes como papel de aluminio, varillas ligeras, cinta, goma. Nada que hubiera visto antes.</p>
+<p>Lo que pasó después es lo que convirtió a un pueblo desconocido en <strong>el nombre más famoso de la ufología</strong>. El 8 de julio, la base aérea del ejército de Roswell emitió un comunicado de prensa increíble: <strong>habían recuperado un "disco volador"</strong>. Los periódicos lo publicaron en portada.</p>
+<p>Y al día siguiente, todo cambió. El ejército rectificó: no era un platillo, era <strong>un globo meteorológico</strong>. Fotos de un oficial posando con restos de goma y papel de aluminio. Caso cerrado.</p>
+<p>¿Caso cerrado? Treinta años después, uno de los militares que recogieron los restos aseguró que aquello no era ningún globo. Empezaron a aparecer testigos que hablaban de <strong>cuerpos pequeños</strong>, de una autopsia secreta, de una nave escondida en una base militar. Desde entonces, Roswell vive de su misterio: tiene museo ovni, festival anual y extraterrestres en cada farola.</p></div>
+  <div class="esceptico"><b>🔬 LO QUE DICEN LOS ESCÉPTICOS</b><p>En 1994, la Fuerza Aérea de EE. UU. reconoció que había mentido... pero no sobre extraterrestres: los restos eran de <strong>Mogul, un proyecto secreto de globos</strong> para detectar pruebas nucleares soviéticas. En 1997 añadió que los "cuerpos" que recordaban algunos testigos podían ser <strong>maniquíes</strong> que se lanzaban en paracaídas en pruebas de los años 50.</p></div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> Un globo meteorológico, dicen. Yo he perdido muchos globos en cumpleaños y nunca me ha montado nadie un museo.</p></div>
+  <p class="volver"><a href="#mapa">↑ Volver al mapa</a></p>
+</article>
+<article class="caso" id="rendlesham">
+  <div class="margen der" aria-hidden="true"><img class="px tr luz" src="/misterio/img/trollaco-linterna.png" alt=""></div>
+  <div class="sello">EXPEDIENTE 02</div>
+  <h2>Rendlesham: el "Roswell británico"</h2>
+  <p class="subt">Luces en el bosque junto a una base militar</p>
+  <figure class="ilus"><img src="/misterio/img/rendlesham.svg" alt="Ilustración de Rendlesham: el &quot;Roswell británico&quot;" loading="lazy" width="600" height="340"></figure>
+  <ul class="ficha">
+    <li><b>📍 Dónde</b>Bosque de Rendlesham, Suffolk (Reino Unido)</li>
+    <li><b>🕰️ Cuándo</b>Finales de diciembre de 1980</li>
+    
+    <li><b>Nivel de misterio</b><span class="nivel" aria-label="4 de 5"><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="off">👽</span></span></li>
+  </ul>
+  <div class="relato">
+<p>Navidades de 1980. En el este de Inglaterra, junto al bosque de Rendlesham, hay dos bases de la Real Fuerza Aérea británica utilizadas por la aviación de Estados Unidos. Es de madrugada cuando una patrulla de seguridad ve algo entre los árboles: <strong>luces de colores</strong>, rojas, azules, blancas, que parpadean y se mueven por el bosque.</p>
+<p>Creen que puede haberse estrellado un avión. Entran a pie. Lo que cuentan después nunca lo han olvidado: hablan de <strong>un objeto brillante</strong> entre los pinos, de animales enloquecidos en las granjas cercanas, de una luz que se alejaba cuando se acercaban.</p>
+<p>Un par de noches después, el subcomandante de la base, el teniente coronel <strong>Charles Halt</strong>, entra en el bosque con un grupo de hombres, una grabadora y un medidor de radiación. Su grabación es escalofriante: hombres nerviosos describiendo luces que se mueven en el cielo. Encuentran <strong>marcas en el suelo</strong> y lecturas de radiación algo más altas de lo normal. Halt lo dejó todo por escrito en un informe oficial que se hizo público años después.</p>
+<p>Militares, de servicio, con informe firmado. Por eso Rendlesham es para muchos <strong>el mejor caso ovni de Europa</strong>.</p></div>
+  <div class="esceptico"><b>🔬 LO QUE DICEN LOS ESCÉPTICOS</b><p>A pocos kilómetros, en la costa, está <strong>el faro de Orford Ness</strong>, cuyo haz giratorio se ve parpadear entre los árboles justo en la dirección en la que los militares veían "la luz". La primera noche, además, cruzó el cielo un meteoro muy brillante. Las marcas del suelo podían ser madrigueras de conejo.</p></div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> Militares de élite persiguiendo un faro durante toda la noche. Que levante la mano quien no se haya peleado alguna vez con una luz de Navidad.</p></div>
+  <p class="volver"><a href="#mapa">↑ Volver al mapa</a></p>
+</article>
+<article class="caso" id="tic-tac-nimitz">
+  <div class="margen izq" aria-hidden="true"><img class="px tr tiembla" src="/misterio/img/trollaco-asustado.png" alt=""></div>
+  <div class="sello">EXPEDIENTE 03</div>
+  <h2>El "Tic Tac" del Nimitz</h2>
+  <p class="subt">El ovni que grabó la Marina y publicó el Pentágono</p>
+  <figure class="ilus"><img src="/misterio/img/nimitz.svg" alt="Ilustración de El &quot;Tic Tac&quot; del Nimitz" loading="lazy" width="600" height="340"></figure>
+  <ul class="ficha">
+    <li><b>📍 Dónde</b>Océano Pacífico, frente a San Diego (Estados Unidos)</li>
+    <li><b>🕰️ Cuándo</b>14 de noviembre de 2004</li>
+    
+    <li><b>Nivel de misterio</b><span class="nivel" aria-label="5 de 5"><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span></span></li>
+  </ul>
+  <div class="relato">
+<p>Noviembre de 2004. Un grupo de combate del portaaviones <strong>USS Nimitz</strong> hace maniobras frente a la costa de California. Desde hace días, el radar de uno de los buques detecta algo raro: objetos que aparecen a gran altura y <strong>caen miles de metros en segundos</strong>.</p>
+<p>El 14 de noviembre mandan a dos cazas a echar un vistazo. Uno lo pilota el comandante <strong>David Fravor</strong>, un piloto veterano. Cuando llega a la zona, ve el agua del mar agitándose como si hubiera algo debajo. Y justo encima, algo blanco, liso, de unos doce metros, <strong>con forma de caramelo Tic Tac</strong>. Sin alas. Sin motores. Sin humo.</p>
+<p>Fravor baja a por él. El objeto parece darse cuenta, sube hacia él... y de repente <strong>desaparece a una velocidad imposible</strong>. Segundos después, el radar lo detecta a decenas de kilómetros, justo en el punto donde los cazas tenían que reunirse. Como si supiera adónde iban.</p>
+<p>Otro piloto lo grabó con la cámara infrarroja del avión. El vídeo salió a la luz en 2017 en <em>The New York Times</em>, y en 2020 <strong>el Pentágono lo publicó oficialmente</strong> junto a otros dos. Fue la primera vez que el gobierno de Estados Unidos reconocía en público vídeos de "fenómenos aéreos no identificados" grabados por sus propios pilotos.</p></div>
+  <div class="esceptico"><b>🔬 LO QUE DICEN LOS ESCÉPTICOS</b><p>Nadie ha dado todavía una explicación oficial definitiva. Algunos analistas creen que <strong>los vídeos pueden explicarse por efectos de las cámaras</strong> y por aviones lejanos, pero los testimonios de los pilotos y los datos de radar siguen siendo un misterio sin resolver. Estados Unidos tiene hoy una oficina dedicada solo a estudiar estos casos.</p></div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> Un Tic Tac de doce metros. Si lo encuentro, me quedo sin aliento... pero fresquito.</p></div>
+  <p class="volver"><a href="#mapa">↑ Volver al mapa</a></p>
+</article>
+<article class="caso" id="luces-de-phoenix">
+  <div class="margen der" aria-hidden="true"><img class="px tr lee" src="/misterio/img/trollaco-expediente.png" alt=""></div>
+  <div class="sello">EXPEDIENTE 04</div>
+  <h2>Las luces de Phoenix</h2>
+  <p class="subt">La noche que miles de personas vieron una "V" sobre Arizona</p>
+  <figure class="ilus"><img src="/misterio/img/phoenix.svg" alt="Ilustración de Las luces de Phoenix" loading="lazy" width="600" height="340"></figure>
+  <ul class="ficha">
+    <li><b>📍 Dónde</b>Phoenix, Arizona (Estados Unidos)</li>
+    <li><b>🕰️ Cuándo</b>13 de marzo de 1997</li>
+    
+    <li><b>Nivel de misterio</b><span class="nivel" aria-label="3 de 5"><span class="on">👽</span><span class="on">👽</span><span class="on">👽</span><span class="off">👽</span><span class="off">👽</span></span></li>
+  </ul>
+  <div class="relato">
+<p>13 de marzo de 1997. Una noche despejada en Arizona. Primero llegan llamadas desde el norte del estado. Luego desde Phoenix. Luego desde Tucson. Todas cuentan lo mismo: <strong>unas luces enormes, en forma de "V"</strong>, cruzando el cielo en completo silencio.</p>
+<p>Miles de personas salen a la calle. Hay quien dice que las luces iban unidas a <strong>un objeto gigantesco</strong>, tan grande que tapaba las estrellas al pasar. Otros las graban con sus cámaras de vídeo. Más tarde, sobre las diez de la noche, aparece otra hilera de luces quietas, flotando sobre las montañas de Phoenix. Las imágenes dan la vuelta al mundo.</p>
+<p>Lo más curioso vino después. El gobernador de Arizona, Fife Symington, convocó una rueda de prensa y presentó al "culpable": <strong>un ayudante disfrazado de extraterrestre</strong>. Una broma para calmar los ánimos. Diez años más tarde, ya fuera del cargo, confesó algo que nadie esperaba: <strong>él también lo había visto</strong>. Y dijo que no era nada de este mundo.</p></div>
+  <div class="esceptico"><b>🔬 LO QUE DICEN LOS ESCÉPTICOS</b><p>Las luces de las diez de la noche se explicaron como <strong>bengalas lanzadas por aviones militares</strong> en unas maniobras en un campo de tiro cercano: al caer detrás de las montañas, parecían flotar y apagarse una a una. La "V" de primera hora se ha atribuido a aviones volando en formación.</p></div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> Un gobernador disfrazando a su ayudante de alien. Así se gestiona una crisis. Toma nota, Europa.</p></div>
+  <p class="volver"><a href="#mapa">↑ Volver al mapa</a></p>
+</article>
+
+  <h2 class="sec" id="proximamente">🛸 Más expedientes</h2>
+  <div class="prox-wrap"><a class="prox" href="/misterio/"><b>📍 El Madrid que da miedo</b><span>Linares, Siete Chimeneas, Chamberí, Ummo, La Barranca y más.</span></a><a class="prox" href="/misterio/espana/"><b>🇪🇸 La España del misterio</b><span>Manises, Bélmez, la esfera de Canarias y el Hospital del Tórax.</span></a></div>
+
+  <div class="compartir">
+    <b>&gt; ¿TIENES UN AMIGO QUE NO CREE EN NADA? MÁNDASELO_</b>
+    <a href="https://wa.me/?text=Expediente%20Trollaco%3A%20los%20lugares%20encantados%20de%20Madrid%2C%20con%20mapa%20%F0%9F%91%BB%20https%3A%2F%2Ftrollacos.com%2Fmisterio%2Fmundo%2F" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://t.me/share/url?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2Fmundo%2F&amp;text=Expediente%20Trollaco%3A%20el%20Madrid%20que%20da%20miedo" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2Fmundo%2F&amp;text=Expediente%20Trollaco%3A%20el%20Madrid%20que%20da%20miedo%20%F0%9F%91%BB" target="_blank" rel="noopener">X</a>
+    <button type="button" id="copiar">Copiar enlace</button>
+  </div>
+
+  <p class="nota">Textos e ilustraciones de Trollacos, basados en la historia documentada y en las leyendas populares de cada lugar. Si vas a visitar algún sitio, respeta horarios y propiedad privada. Mapa: © colaboradores de OpenStreetMap.</p>
+</main>
+
+<footer>
+  <a href="/">PORTADA</a><a href="/arcade/">ARCADE</a><a href="/gta-6/">GUÍA GTA VI</a><br><br>
+  © 2012–2026 TROLLACOS
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  var PUNTOS=[{"id": "roswell", "t": "Roswell", "s": "El \"platillo volante\" que el ejército anunció... y luego desmintió", "lat": 33.3943, "lng": -104.523, "i": "👽", "aprox": false, "f": false}, {"id": "rendlesham", "t": "Rendlesham: el \"Roswell británico\"", "s": "Luces en el bosque junto a una base militar", "lat": 52.0909, "lng": 1.4413, "i": "🌲", "aprox": false, "f": false}, {"id": "tic-tac-nimitz", "t": "El \"Tic Tac\" del Nimitz", "s": "El ovni que grabó la Marina y publicó el Pentágono", "lat": 31.8, "lng": -117.6, "i": "💊", "aprox": false, "f": false}, {"id": "luces-de-phoenix", "t": "Las luces de Phoenix", "s": "La noche que miles de personas vieron una \"V\" sobre Arizona", "lat": 33.4484, "lng": -112.074, "i": "🔺", "aprox": false, "f": false}];
+  if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}
+  var b=document.getElementById('copiar');b.onclick=function(){try{navigator.clipboard.writeText('https://trollacos.com/misterio/mundo/').then(function(){b.textContent='¡Copiado!'})}catch(e){}};
+  if(!window.L){document.getElementById('mapa-madrid').innerHTML='<p style="padding:20px">No se ha podido cargar el mapa. Usa la lista de abajo.</p>';return}
+  var mapa=L.map('mapa-madrid',{scrollWheelZoom:false,zoomControl:true});
+  mapa.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapa);
+  var grupo=[];
+  PUNTOS.forEach(function(p){
+    var ic=L.divIcon({className:'',html:'<div class="pin">'+p.i+'</div>',iconSize:[30,30],iconAnchor:[15,15]});
+    var m=L.marker([p.lat,p.lng],{icon:ic,title:p.t}).addTo(mapa);
+    if(p.aprox)L.circle([p.lat,p.lng],{radius:900,color:'#7cffb2',weight:1,fillOpacity:.06,dashArray:'4 6'}).addTo(mapa);
+    m.bindPopup('<b>'+p.t+'</b><i>'+p.s+(p.aprox?' (zona aproximada)':'')+'</i><a href="#'+p.id+'">Abrir expediente ↓</a>');
+    if(!p.f)grupo.push([p.lat,p.lng]);
+  });
+  if(!grupo.length)PUNTOS.forEach(function(p){grupo.push([p.lat,p.lng])});
+  if(grupo.length===1)mapa.setView(grupo[0],12);else mapa.fitBounds(grupo,{padding:[30,30]});
+  mapa.on('click',function(){mapa.scrollWheelZoom.enable()});
+  document.getElementById('mapa-madrid').addEventListener('mouseleave',function(){mapa.scrollWheelZoom.disable()});
+})();
+</script>
+</body>
+</html>
