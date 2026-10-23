@@ -30,11 +30,23 @@ function responder($datos, $codigo = 200) {
     exit;
 }
 
+// Cambiar este número borra el ranking (empieza una temporada nueva)
+const TEMPORADA = 2;
+
 function leer($f, $cab) {
-    if (!file_exists($f)) { return ['top' => [], 'usadas' => [], 'ips' => []]; }
-    $t = file_get_contents($f);
-    $j = json_decode(substr($t, strlen($cab)), true);
-    return is_array($j) ? $j + ['top' => [], 'usadas' => [], 'ips' => []] : ['top' => [], 'usadas' => [], 'ips' => []];
+    $vacio = ['temporada' => TEMPORADA, 'top' => [], 'usadas' => [], 'ips' => []];
+    if (!file_exists($f)) { return $vacio; }
+    $j = json_decode(substr(file_get_contents($f), strlen($cab)), true);
+    if (!is_array($j)) { return $vacio; }
+    if (($j['temporada'] ?? 1) !== TEMPORADA) { $j['top'] = []; $j['temporada'] = TEMPORADA; }
+    $j += $vacio;
+    // nombres vetados a mano (api/bloqueados.php) desaparecen del ranking
+    $vetados = @include __DIR__ . '/bloqueados.php';
+    if (is_array($vetados) && $vetados) {
+        $v = array_map('strtoupper', $vetados);
+        $j['top'] = array_values(array_filter($j['top'], function ($e) use ($v) { return !in_array(strtoupper($e['n']), $v, true); }));
+    }
+    return $j;
 }
 
 function top10($d) {
@@ -107,10 +119,15 @@ if ($accion === 'enviar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $fichas = (int)($in['fichas'] ?? 0);
     $ficha  = (string)($in['ficha'] ?? '');
 
-    // Formato del nombre: 2-14 caracteres, letras, números, espacio, punto, guion y guion bajo
+    // Estilo recreativa: una sola palabra de 2 a 5 letras o números, en mayúsculas
+    $nombre = strtoupper(strtr($nombre, ['á'=>'Á','é'=>'É','í'=>'Í','ó'=>'Ó','ú'=>'Ú','ñ'=>'Ñ','ü'=>'Ü']));
     $largo = preg_match_all('/./u', $nombre);
-    if ($largo < 2 || $largo > 14 || !preg_match('/^[\p{L}\p{N} ._-]+$/u', $nombre)) {
-        responder(['error' => 'formato', 'mensaje' => 'El nombre debe tener entre 2 y 14 letras o números.'], 400);
+    if ($largo < 2 || $largo > 5 || !preg_match('/^[\p{L}\p{N}]+$/u', $nombre)) {
+        responder(['error' => 'formato', 'mensaje' => 'Una sola palabra de 2 a 5 letras o números, sin espacios.'], 400);
+    }
+    $vetados = @include __DIR__ . '/bloqueados.php';
+    if (is_array($vetados) && in_array($nombre, array_map('strtoupper', $vetados), true)) {
+        responder(['error' => 'nombre', 'mensaje' => 'Ese nombre no está permitido. Prueba con otro.'], 400);
     }
     if (!nombre_valido($nombre)) {
         responder(['error' => 'nombre', 'mensaje' => 'Ese nombre no está permitido. Prueba con otro.'], 400);

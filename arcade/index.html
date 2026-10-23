@@ -87,7 +87,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <form class="guardar" id="guardar" hidden>
       <b id="g-tit">¡ENTRAS EN EL TOP 10!</b>
       <span id="g-pts"></span>
-      <input id="g-nombre" maxlength="14" placeholder="Tu nombre" autocomplete="nickname" aria-label="Tu nombre para el ranking">
+      <input id="g-nombre" maxlength="5" placeholder="AAAAA" style="text-transform:uppercase;letter-spacing:.3em" autocomplete="nickname" aria-label="Tu nombre para el ranking">
       <div><button type="submit">GUARDAR</button><button type="button" id="g-no">NO, GRACIAS</button></div>
       <p id="g-msg" role="status"></p>
     </form>
@@ -128,7 +128,8 @@ document.querySelector('.maquina').style.setProperty('--ar',String(W/H));
 // ---------- marcador global ----------
 var API='/api/marcadores.php',famaOK=false,famaTop=[],fichaPartida=null,ultimoGuardado=null;
 var fForm=document.getElementById('guardar'),fNombre=document.getElementById('g-nombre'),fMsg=document.getElementById('g-msg');
-try{fNombre.value=localStorage.getItem('trollacoRunNombre')||''}catch(e){}
+try{fNombre.value=(localStorage.getItem('trollacoRunNombre')||'').replace(/\s+/g,'').slice(0,5)}catch(e){}
+fNombre.addEventListener('input',function(){var v=fNombre.value.replace(/[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,5);if(v!==fNombre.value)fNombre.value=v});
 function pintaFama(lista,mio){
   var ol=document.getElementById('fama-lista');ol.innerHTML='';
   if(!lista.length){var li=document.createElement('li');li.className='vacio';li.textContent='Nadie todavía. ¡El primer puesto es tuyo!';ol.appendChild(li);return}
@@ -157,8 +158,8 @@ function cierraGuardar(){fForm.hidden=true;fNombre.blur()}
 document.getElementById('g-no').onclick=cierraGuardar;
 fForm.addEventListener('submit',function(e){
   e.preventDefault();
-  var nom=fNombre.value.replace(/\s+/g,' ').trim();
-  if(nom.length<2){fMsg.textContent='Pon al menos 2 letras.';return}
+  var nom=fNombre.value.replace(/\s+/g,'').toUpperCase();
+  if(nom.length<2||nom.length>5){fMsg.style.color='#ff8b8b';fMsg.textContent='De 2 a 5 letras o números, sin espacios.';return}
   fMsg.style.color='#a59dd0';fMsg.textContent='Guardando...';
   fetch(API+'?accion=enviar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:ultimoGuardado.puntos,fichas:ultimoGuardado.fichas,ficha:ultimoGuardado.ficha})})
   .then(function(r){return r.json()}).then(function(j){
