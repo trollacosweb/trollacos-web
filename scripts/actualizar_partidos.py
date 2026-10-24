@@ -89,17 +89,34 @@ def num(x):
 
 
 def desde_tsdb():
+    import time
     temp = temporada_actual()
-    tabla = (get_json(f"{TSDB}lookuptable.php?l={LIGA}&s={temp}") or {}).get("table") or []
-    fz = {t.get("idTeam"): fuerza(num(t.get("intPoints")) or 0, num(t.get("intPlayed")) or 0) for t in tabla}
-    jugados = sorted(num(t.get("intPlayed")) or 0 for t in tabla)
-    base = jugados[len(jugados) // 2] if jugados else 1
-    rondas = {}
-    for r in range(max(1, base - 2), min(38, base + 3) + 1):
+    rondas, sin_jugar = {}, 0
+    # se recorren las jornadas desde la 1 hasta dos jornadas sin empezar (la API gratis admite ~30 consultas/min)
+    for r in range(1, 39):
         ev = (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
         rondas[r] = ev
+        if ev and all(estado_tsdb(e) == "TIMED" for e in ev):
+            sin_jugar += 1
+        if sin_jugar >= 2 or (not ev and r > 3):
+            break
+        time.sleep(2.2)
     if not any(rondas.values()):
-        raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp}, jornadas {min(rondas)}-{max(rondas)})")
+        raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp})")
+    # clasificación propia con los resultados de la temporada
+    pts, pj = {}, {}
+    for evs in rondas.values():
+        for e in evs:
+            if estado_tsdb(e) != "FINISHED":
+                continue
+            gl, gv = num(e.get("intHomeScore")), num(e.get("intAwayScore"))
+            if gl is None or gv is None:
+                continue
+            h, a = e.get("idHomeTeam"), e.get("idAwayTeam")
+            pj[h] = pj.get(h, 0) + 1; pj[a] = pj.get(a, 0) + 1
+            pts[h] = pts.get(h, 0) + (3 if gl > gv else 1 if gl == gv else 0)
+            pts[a] = pts.get(a, 0) + (3 if gv > gl else 1 if gl == gv else 0)
+    fz = {t: fuerza(pts.get(t, 0), pj[t]) for t in pj}
     partidos = []
     for r, evs in rondas.items():
         for e in evs:
