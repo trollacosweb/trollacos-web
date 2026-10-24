@@ -124,6 +124,13 @@ def desde_tsdb():
             pts[h] = pts.get(h, 0) + (3 if gl > gv else 1 if gl == gv else 0)
             pts[a] = pts.get(a, 0) + (3 if gv > gl else 1 if gl == gv else 0)
     fz = {t: fuerza(pts.get(t, 0), pj[t]) for t in pj}
+    nombres = {}
+    for evs in rondas.values():
+        for e in evs:
+            nombres[e.get("idHomeTeam")] = e.get("strHomeTeam"); nombres[e.get("idAwayTeam")] = e.get("strAwayTeam")
+    tabla = sorted(pj, key=lambda t: -pts.get(t, 0))
+    print("::notice::Porra tabla: " + ", ".join(f"{nombres.get(t)} {pts.get(t,0)}/{pj[t]}" for t in tabla)
+          + " | jornadas leídas: " + ",".join(f"{r}:{len(v)}" for r, v in rondas.items()))
     partidos = []
     for r, evs in rondas.items():
         for e in evs:
