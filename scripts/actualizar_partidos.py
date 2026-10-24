@@ -17,9 +17,16 @@ LIGA = "4335"   # LaLiga en TheSportsDB
 
 
 def get_json(url, cab=None):
-    req = urllib.request.Request(url, headers={"User-Agent": "TrollacosBot/1.0", **(cab or {})})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode("utf-8"))
+    import time, urllib.error
+    for intento in range(4):
+        req = urllib.request.Request(url, headers={"User-Agent": "TrollacosBot/1.0", **(cab or {})})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as ex:
+            if ex.code != 429 or intento == 3:
+                raise
+            time.sleep(35)   # demasiadas consultas: esperar y reintentar
 
 
 def cuotas(fl, fv):
@@ -100,7 +107,7 @@ def desde_tsdb():
             sin_jugar += 1
         if sin_jugar >= 2 or (not ev and r > 3):
             break
-        time.sleep(2.2)
+        time.sleep(3)
     if not any(rondas.values()):
         raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp})")
     # clasificación propia con los resultados de la temporada
