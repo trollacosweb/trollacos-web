@@ -98,16 +98,20 @@ def num(x):
 def desde_tsdb():
     import time
     temp = temporada_actual()
-    rondas, sin_jugar = {}, 0
-    # se recorren las jornadas desde la 1 hasta dos jornadas sin empezar (la API gratis admite ~30 consultas/min)
-    for r in range(1, 39):
-        ev = (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
-        rondas[r] = ev
-        if ev and all(estado_tsdb(e) == "TIMED" for e in ev):
-            sin_jugar += 1
-        if sin_jugar >= 2 or (not ev and r > 3):
-            break
+    rondas = {}
+    # 1 consulta: la temporada entera (la API gratis da los ~100 primeros partidos), para la clasificación
+    for e in (get_json(f"{TSDB}eventsseason.php?id={LIGA}&s={temp}") or {}).get("events") or []:
+        r = num(e.get("intRound"))
+        if r:
+            rondas.setdefault(r, []).append(e)
+    abiertas = [r for r, v in rondas.items() if any(estado_tsdb(e) not in ("FINISHED", "POSTPONED", "CANCELLED", "SUSPENDED") for e in v)]
+    actual = min(abiertas) if abiertas else (max(rondas) + 1 if rondas else 1)
+    # 3 consultas más: la jornada anterior, la actual y la siguiente, con datos frescos
+    for r in range(max(1, actual - 1), min(38, actual + 1) + 1):
         time.sleep(3)
+        ev = (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
+        if ev:
+            rondas[r] = ev
     if not any(rondas.values()):
         raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp})")
     # clasificación propia con los resultados de la temporada
