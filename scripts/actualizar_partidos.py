@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-La Porra Trollaca - descarga el calendario y los resultados de LaLiga (football-data.org)
-y escribe api/partidos.json con la jornada en juego y unas cuotas propias, calculadas
-a partir de la clasificación (no son cuotas de ninguna casa de apuestas).
+La Porra Trollaca - descarga el calendario y los resultados de LaLiga y escribe api/partidos.json
+con la jornada en juego y unas cuotas propias, calculadas a partir de la clasificación
+(no son cuotas de ninguna casa de apuestas).
 
-Necesita la variable de entorno FOOTBALL_DATA_KEY (secreto de GitHub). Si no está, no hace nada.
+Fuente: TheSportsDB (gratis, sin registro). Si falla y existe FOOTBALL_DATA_KEY, prueba football-data.org.
 """
 import json, math, os, sys, urllib.request
 from datetime import datetime, timezone
@@ -12,23 +12,14 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "api" / "partidos.json"
-API = "https://api.football-data.org/v4/competitions/PD"
+TSDB = "https://www.thesportsdb.com/api/v1/json/123/"
+LIGA = "4335"   # LaLiga en TheSportsDB
 
 
-def pedir(ruta, clave):
-    req = urllib.request.Request(API + ruta, headers={"X-Auth-Token": clave, "User-Agent": "TrollacosBot/1.0"})
+def get_json(url, cab=None):
+    req = urllib.request.Request(url, headers={"User-Agent": "TrollacosBot/1.0", **(cab or {})})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.loads(r.read().decode("utf-8"))
-
-
-def fuerza(clasif):
-    """Puntos por partido de cada equipo (con un poco de 'colchón' al principio de temporada)."""
-    f = {}
-    for t in clasif:
-        pj = t.get("playedGames") or 0
-        pts = t.get("points") or 0
-        f[t["team"]["id"]] = (pts + 1.4 * 3) / (pj + 3)   # se parte de 1,4 pts/partido para no exagerar con pocas jornadas
-    return f
 
 
 def cuotas(fl, fv):
@@ -42,57 +33,139 @@ def cuotas(fl, fv):
     return {"1": q(p_loc), "X": q(p_emp), "2": q(p_vis)}
 
 
-def equipo(t):
-    return {"n": t.get("shortName") or t.get("name") or "?", "c": t.get("crest") or "", "tla": t.get("tla") or ""}
+def fuerza(pts, pj):
+    """Puntos por partido (con un poco de 'colchón' al principio de temporada)."""
+    return (pts + 1.4 * 3) / (pj + 3)
+
+
+def temporada_actual():
+    h = datetime.now(timezone.utc)
+    return f"{h.year}-{h.year + 1}" if h.month >= 7 else f"{h.year - 1}-{h.year}"
+
+
+def tla(nombre):
+    letras = "".join(c for c in nombre.upper() if c.isalpha())
+    return letras[:3] or "?"
+
+
+# ---------------- TheSportsDB ----------------
+def estado_tsdb(e):
+    st = (e.get("strStatus") or "").strip().upper()
+    if (e.get("strPostponed") or "").lower() == "yes" or st in ("POSTPONED", "PST"):
+        return "POSTPONED"
+    if st in ("CANC", "CANCELLED", "ABD", "ABANDONED"):
+        return "CANCELLED"
+    if st in ("SUSP", "SUSPENDED", "INT"):
+        return "SUSPENDED"
+    if st in ("MATCH FINISHED", "FT", "AET", "PEN", "AWD", "FINISHED"):
+        return "FINISHED"
+    if st in ("1H", "2H", "ET", "BT", "P", "LIVE", "IN PLAY"):
+        return "IN_PLAY"
+    if st in ("HT",):
+        return "PAUSED"
+    hl, hv = e.get("intHomeScore"), e.get("intAwayScore")
+    fecha = fecha_tsdb(e)
+    # sin estado claro: si tiene marcador y empezó hace más de 3 horas, lo damos por terminado
+    if hl not in (None, "") and hv not in (None, "") and fecha:
+        if (datetime.now(timezone.utc) - datetime.fromisoformat(fecha.replace("Z", "+00:00"))).total_seconds() > 3 * 3600:
+            return "FINISHED"
+    return "TIMED"
+
+
+def fecha_tsdb(e):
+    ts = (e.get("strTimestamp") or "").strip()
+    if ts:
+        ts = ts.replace(" ", "T").split("+")[0].rstrip("Z")
+        return ts[:19] + "Z"
+    d, t = e.get("dateEvent"), (e.get("strTime") or "00:00:00")
+    return f"{d}T{t[:8]}Z" if d else ""
+
+
+def num(x):
+    try:
+        return int(x)
+    except (TypeError, ValueError):
+        return None
+
+
+def desde_tsdb():
+    temp = temporada_actual()
+    tabla = (get_json(f"{TSDB}lookuptable.php?l={LIGA}&s={temp}") or {}).get("table") or []
+    fz = {t.get("idTeam"): fuerza(num(t.get("intPoints")) or 0, num(t.get("intPlayed")) or 0) for t in tabla}
+    jugados = sorted(num(t.get("intPlayed")) or 0 for t in tabla)
+    base = jugados[len(jugados) // 2] if jugados else 1
+    rondas = {}
+    for r in range(max(1, base - 2), min(38, base + 3) + 1):
+        ev = (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
+        rondas[r] = ev
+    if not any(rondas.values()):
+        raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp}, jornadas {min(rondas)}-{max(rondas)})")
+    partidos = []
+    for r, evs in rondas.items():
+        for e in evs:
+            est = estado_tsdb(e)
+            gl, gv = num(e.get("intHomeScore")), num(e.get("intAwayScore"))
+            if est in ("TIMED", "POSTPONED", "CANCELLED"):
+                gl = gv = None
+            hn, an = e.get("strHomeTeam") or "?", e.get("strAwayTeam") or "?"
+            partidos.append({
+                "id": str(e.get("idEvent")), "j": num(e.get("intRound")) or r, "fecha": fecha_tsdb(e), "estado": est,
+                "local": {"n": hn, "c": e.get("strHomeTeamBadge") or "", "tla": tla(hn)},
+                "visit": {"n": an, "c": e.get("strAwayTeamBadge") or "", "tla": tla(an)},
+                "gl": gl, "gv": gv,
+                "cuotas": cuotas(fz.get(e.get("idHomeTeam"), 1.4), fz.get(e.get("idAwayTeam"), 1.4)),
+            })
+    return temp, partidos
+
+
+# ---------------- football-data.org (respaldo) ----------------
+def desde_football_data(clave):
+    api = "https://api.football-data.org/v4/competitions/PD"
+    cab = {"X-Auth-Token": clave}
+    datos = get_json(api + "/matches", cab)
+    tabla = get_json(api + "/standings", cab)
+    fz = {}
+    for s in tabla.get("standings", []):
+        if s.get("type") == "TOTAL":
+            for t in s.get("table", []):
+                fz[t["team"]["id"]] = fuerza(t.get("points") or 0, t.get("playedGames") or 0)
+    eq = lambda t: {"n": t.get("shortName") or t.get("name") or "?", "c": t.get("crest") or "", "tla": t.get("tla") or ""}
+    partidos = []
+    for m in datos.get("matches", []):
+        ft = (m.get("score") or {}).get("fullTime") or {}
+        h, a = m["homeTeam"], m["awayTeam"]
+        partidos.append({"id": str(m["id"]), "j": m.get("matchday"), "fecha": m["utcDate"], "estado": m.get("status"),
+                         "local": eq(h), "visit": eq(a), "gl": ft.get("home"), "gv": ft.get("away"),
+                         "cuotas": cuotas(fz.get(h.get("id"), 1.4), fz.get(a.get("id"), 1.4))})
+    return str((datos.get("filters") or {}).get("season") or ""), partidos
 
 
 def main():
-    clave = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
-    if not clave:
-        print("::warning::Porra: no hay FOOTBALL_DATA_KEY, no se actualizan los partidos.")
-        return 0
+    fuente, temp, partidos = "", "", []
     try:
-        datos = pedir("/matches", clave)
-        tabla = pedir("/standings", clave)
+        temp, partidos = desde_tsdb()
+        fuente = "TheSportsDB"
     except Exception as ex:
-        cuerpo = ""
-        try:
-            cuerpo = ex.read().decode("utf-8", "replace")[:200]
-        except Exception:
-            pass
-        print(f"::warning::Porra: no se han podido leer los partidos: {ex} {cuerpo} (clave de {len(clave)} caracteres)")
-        return 0
-    clasif = []
-    for s in tabla.get("standings", []):
-        if s.get("type") == "TOTAL":
-            clasif = s.get("table", [])
-    f = fuerza(clasif)
-    partidos = datos.get("matches", [])
+        print(f"::warning::Porra: TheSportsDB ha fallado: {ex}")
+        clave = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
+        if clave:
+            try:
+                temp, partidos = desde_football_data(clave)
+                fuente = "football-data.org"
+            except Exception as ex2:
+                print(f"::warning::Porra: football-data.org también ha fallado: {ex2}")
+    partidos = [p for p in partidos if p.get("j") and p.get("fecha")]
     if not partidos:
-        print("::warning::Porra: la API no ha devuelto partidos.")
+        print("::warning::Porra: no hay partidos, se deja el fichero como estaba.")
         return 0
-    # jornada en juego = la primera que aún tiene partidos sin terminar
-    pend = [m["matchday"] for m in partidos if m.get("status") not in ("FINISHED", "AWARDED")]
-    jornada = min(pend) if pend else max(m["matchday"] for m in partidos)
-    salida = []
-    for m in partidos:
-        j = m.get("matchday")
-        if j is None or not (jornada - 2 <= j <= jornada + 1):
-            continue
-        h, a = m["homeTeam"], m["awayTeam"]
-        ft = (m.get("score") or {}).get("fullTime") or {}
-        salida.append({
-            "id": m["id"], "j": j, "fecha": m["utcDate"], "estado": m.get("status"),
-            "local": equipo(h), "visit": equipo(a),
-            "gl": ft.get("home"), "gv": ft.get("away"),
-            "cuotas": cuotas(f.get(h.get("id"), 1.4), f.get(a.get("id"), 1.4)),
-        })
-    salida.sort(key=lambda p: (p["j"], p["fecha"]))
-    temporada = (datos.get("filters") or {}).get("season") or (salida[0]["fecha"][:4] if salida else "")
-    doc = {"actualizado": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "temporada": temporada,
-           "jornada": jornada, "partidos": salida}
+    pend = [p["j"] for p in partidos if p["estado"] not in ("FINISHED", "AWARDED", "CANCELLED", "POSTPONED", "SUSPENDED")]
+    jornada = min(pend) if pend else max(p["j"] for p in partidos)
+    salida = sorted((p for p in partidos if jornada - 2 <= p["j"] <= jornada + 1), key=lambda p: (p["j"], p["fecha"]))
+    doc = {"actualizado": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "fuente": fuente,
+           "temporada": temp, "jornada": jornada, "partidos": salida}
     SALIDA.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"::notice::Porra: jornada {jornada}, {len(salida)} partidos guardados.")
+    ej = next((p for p in salida if p["j"] == jornada), salida[0])
+    print(f"::notice::Porra ({fuente}): jornada {jornada}, {len(salida)} partidos. Ej: {ej['local']['n']} - {ej['visit']['n']} {ej['fecha']} {ej['estado']} {ej['cuotas']}")
     return 0
 
 
