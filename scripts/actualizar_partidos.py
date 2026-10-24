@@ -55,7 +55,12 @@ def main():
         datos = pedir("/matches", clave)
         tabla = pedir("/standings", clave)
     except Exception as ex:
-        print(f"::warning::Porra: no se han podido leer los partidos: {ex}")
+        cuerpo = ""
+        try:
+            cuerpo = ex.read().decode("utf-8", "replace")[:200]
+        except Exception:
+            pass
+        print(f"::warning::Porra: no se han podido leer los partidos: {ex} {cuerpo} (clave de {len(clave)} caracteres)")
         return 0
     clasif = []
     for s in tabla.get("standings", []):
