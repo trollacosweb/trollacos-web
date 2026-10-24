@@ -98,20 +98,33 @@ def num(x):
 def desde_tsdb():
     import time
     temp = temporada_actual()
-    rondas = {}
-    # 1 consulta: la temporada entera (la API gratis da los ~100 primeros partidos), para la clasificación
-    for e in (get_json(f"{TSDB}eventsseason.php?id={LIGA}&s={temp}") or {}).get("events") or []:
-        r = num(e.get("intRound"))
-        if r:
-            rondas.setdefault(r, []).append(e)
-    abiertas = [r for r, v in rondas.items() if any(estado_tsdb(e) not in ("FINISHED", "POSTPONED", "CANCELLED", "SUSPENDED") for e in v)]
-    actual = min(abiertas) if abiertas else (max(rondas) + 1 if rondas else 1)
-    # 3 consultas más: la jornada anterior, la actual y la siguiente, con datos frescos
-    for r in range(max(1, actual - 1), min(38, actual + 1) + 1):
+    # Las jornadas ya terminadas se guardan en scripts/liga_cache.json: cada una se descarga una sola vez
+    fcache = RAIZ / "scripts" / "liga_cache.json"
+    try:
+        cache = json.loads(fcache.read_text(encoding="utf-8"))
+    except Exception:
+        cache = {}
+    if cache.get("temporada") != temp:
+        cache = {"temporada": temp, "rondas": {}}
+    def ronda(r):
         time.sleep(3)
-        ev = (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
+        return (get_json(f"{TSDB}eventsround.php?id={LIGA}&r={r}&s={temp}") or {}).get("events") or []
+    # última jornada con partidos jugados, según los últimos resultados de la liga (1 consulta)
+    pasados = (get_json(f"{TSDB}eventspastleague.php?id={LIGA}") or {}).get("events") or []
+    ultima = max([num(e.get("intRound")) or 0 for e in pasados if (e.get("strSeason") or temp) == temp] or [1])
+    rondas = {}
+    for r in range(1, min(38, ultima + 2) + 1):
+        if str(r) in cache["rondas"] and r < ultima - 1:
+            rondas[r] = cache["rondas"][str(r)]
+            continue
+        ev = ronda(r)
         if ev:
             rondas[r] = ev
+            if len(ev) >= 10 and all(estado_tsdb(e) in ("FINISHED", "CANCELLED") for e in ev):
+                cache["rondas"][str(r)] = [{k: e.get(k) for k in ("idEvent", "intRound", "idHomeTeam", "idAwayTeam", "strHomeTeam", "strAwayTeam",
+                    "intHomeScore", "intAwayScore", "strStatus", "strPostponed", "strTimestamp", "dateEvent", "strTime",
+                    "strHomeTeamBadge", "strAwayTeamBadge")} for e in ev]
+    fcache.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
     if not any(rondas.values()):
         raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp})")
     # clasificación propia con los resultados de la temporada

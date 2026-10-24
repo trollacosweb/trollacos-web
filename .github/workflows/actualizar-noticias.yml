@@ -44,6 +44,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html rss.xml
           if [ -f api/partidos.json ]; then git add api/partidos.json; fi
+          if [ -f scripts/liga_cache.json ]; then git add scripts/liga_cache.json; fi
           if git diff --staged --quiet; then
             echo "Sin cambios"
           else
