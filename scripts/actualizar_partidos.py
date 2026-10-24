@@ -49,13 +49,13 @@ def equipo(t):
 def main():
     clave = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
     if not clave:
-        print("Sin FOOTBALL_DATA_KEY: no se actualizan los partidos.")
+        print("::warning::Porra: no hay FOOTBALL_DATA_KEY, no se actualizan los partidos.")
         return 0
     try:
         datos = pedir("/matches", clave)
         tabla = pedir("/standings", clave)
     except Exception as ex:
-        print(f"No se han podido leer los partidos: {ex}")
+        print(f"::warning::Porra: no se han podido leer los partidos: {ex}")
         return 0
     clasif = []
     for s in tabla.get("standings", []):
@@ -64,7 +64,7 @@ def main():
     f = fuerza(clasif)
     partidos = datos.get("matches", [])
     if not partidos:
-        print("La API no ha devuelto partidos.")
+        print("::warning::Porra: la API no ha devuelto partidos.")
         return 0
     # jornada en juego = la primera que aún tiene partidos sin terminar
     pend = [m["matchday"] for m in partidos if m.get("status") not in ("FINISHED", "AWARDED")]
@@ -87,7 +87,7 @@ def main():
     doc = {"actualizado": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "temporada": temporada,
            "jornada": jornada, "partidos": salida}
     SALIDA.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"Partidos actualizados: jornada {jornada}, {len(salida)} partidos.")
+    print(f"::notice::Porra: jornada {jornada}, {len(salida)} partidos guardados.")
     return 0
 
 
