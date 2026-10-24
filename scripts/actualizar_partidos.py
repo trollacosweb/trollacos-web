@@ -31,9 +31,9 @@ def get_json(url, cab=None):
 
 def cuotas(fl, fv):
     """Probabilidades sencillas: diferencia de nivel + ventaja de jugar en casa. Cuotas redondeadas."""
-    dif = (fl - fv) + 0.30
+    dif = (fl - fv) + 0.20
     p_emp = max(0.18, min(0.30, 0.28 - 0.06 * abs(dif)))
-    p_loc = (1 - p_emp) / (1 + math.exp(-2.2 * dif))
+    p_loc = (1 - p_emp) / (1 + math.exp(-1.4 * dif))
     p_vis = 1 - p_emp - p_loc
     def q(p):
         return round(max(1.15, min(9.0, 0.95 / max(p, 0.01))) * 20) / 20
