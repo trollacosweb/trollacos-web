@@ -54,6 +54,7 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .guardar button{font-family:'VT323',monospace;font-size:22px;margin:0 4px;padding:5px 14px;border-radius:6px;cursor:pointer;border:2px solid var(--pink);background:var(--pink);color:#07021a}
 .guardar button+button{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
 .guardar p{font-size:16px;color:#ff8b8b;min-height:1.2em}
+.monedero{margin:14px 0 0;text-align:center;font-family:'VT323',monospace;font-size:22px;color:#ffd23f}.monedero a{color:var(--cyan)}
 .fama{margin-top:22px;border:2px solid var(--yellow);border-radius:12px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,210,63,.08),rgba(255,43,214,.05))}
 .fama h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(24px,5vw,32px);color:var(--yellow);text-align:center;margin-bottom:10px;text-shadow:0 0 12px rgba(255,210,63,.5)}
 .fama ol{list-style:none;max-width:520px;margin:0 auto;counter-reset:p}
@@ -96,6 +97,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
       <button type="button" id="pantalla">⛶ PANTALLA COMPLETA</button>
     </div>
   </div>
+  <p class="monedero" id="monedero"></p>
   <section class="fama" id="fama">
     <h2>🏆 SALÓN DE LA FAMA</h2>
     <ol id="fama-lista"><li class="vacio">Cargando...</li></ol>
@@ -145,7 +147,7 @@ function cargaFama(){
   }).catch(function(){famaOK=false;document.getElementById('fama-lista').innerHTML='<li class="vacio">El ranking no está disponible ahora mismo.</li>'});
 }
 function pideFicha(){
-  fichaPartida=null;if(!famaOK)return;
+  fichaPartida=null;
   fetch(API+'?accion=empezar',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){fichaPartida=j.ficha||null}).catch(function(){});
 }
 function entraEnTop(p){return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
@@ -170,6 +172,22 @@ fForm.addEventListener('submit',function(e){
   }).catch(function(){fMsg.style.color='#ff8b8b';fMsg.textContent='No se ha podido guardar. Prueba otra vez.'});
 });
 cargaFama();
+
+// ---------- La Porra Trollaca: las fichas del juego van al monedero ----------
+var cuentaPorra=null;try{cuentaPorra=JSON.parse(localStorage.getItem('porraCuenta')||'null')}catch(e){}
+var mPorra=document.getElementById('monedero');
+function pintaMonedero(t){if(mPorra)mPorra.innerHTML=t}
+if(cuentaPorra&&cuentaPorra.nombre){pintaMonedero('🪙 Las fichas que cojas irán al monedero de <b>'+cuentaPorra.nombre.replace(/[<>&]/g,'')+'</b> en <a href="/porra/">La Porra Trollaca</a>.')}
+else{pintaMonedero('🪙 ¿Sabías que las fichas valen para <a href="/porra/">La Porra Trollaca</a>? Crea tu cuenta y no pierdas ni una.')}
+function sumaAlMonedero(ficha){
+  if(!cuentaPorra||!ficha||fichas<1)return;
+  fetch('/api/porra.php?accion=arcade',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({nombre:cuentaPorra.nombre,codigo:cuentaPorra.codigo,ficha:ficha,puntos:puntos,fichas:fichas})})
+  .then(function(r){return r.json()}).then(function(j){
+    if(j.ok)pintaMonedero('🪙 <b>+'+j.sumadas+' fichas</b> a tu monedero. Ya tienes <b>'+j.fichas+'</b>. <a href="/porra/">Ir a La Porra ›</a>');
+    else if(j.mensaje)pintaMonedero('🪙 '+j.mensaje.replace(/[<>&]/g,''));
+  }).catch(function(){});
+}
 
 // ---------- sprites ----------
 var spr=new Image(); spr.src=HW?'/img/trollaco-hw.png':'/img/trollaco.png';
@@ -450,6 +468,7 @@ function fin(){
   pitido(400,60,.45,'sawtooth',.1);
   if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
   muestraCompartir();
+  sumaAlMonedero(fichaPartida);
   if(famaOK&&fichaPartida&&puntos>0&&entraEnTop(puntos)){
     ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida};fichaPartida=null;setTimeout(abreGuardar,600);
   }

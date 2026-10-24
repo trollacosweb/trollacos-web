@@ -4,39 +4,19 @@
  *   GET  ?accion=lista     -> los 10 mejores
  *   GET  ?accion=empezar   -> ficha firmada para la partida que empieza
  *   POST ?accion=enviar    -> {nombre, puntos, fichas, ficha}
- * Los datos se guardan en api/datos/ (protegida). No se guardan IPs: solo un
- * resumen cifrado y temporal para limitar envíos seguidos.
  */
-header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: no-store');
-header('X-Content-Type-Options: nosniff');
+require __DIR__ . '/comun.php';
 
-$DIR = __DIR__ . '/datos';
-if (!is_dir($DIR)) { @mkdir($DIR, 0750, true); }
-if (!file_exists("$DIR/.htaccess")) { @file_put_contents("$DIR/.htaccess", "Require all denied\nDeny from all\n"); }
-if (!file_exists("$DIR/index.html")) { @file_put_contents("$DIR/index.html", ''); }
-
-$fsec = "$DIR/secreto.php";
-if (!file_exists($fsec)) { @file_put_contents($fsec, "<?php return '" . bin2hex(random_bytes(32)) . "';\n"); }
-$SECRETO = @include $fsec;
-if (!is_string($SECRETO) || strlen($SECRETO) < 32) { responder(['error' => 'config'], 500); }
-
-$FDATOS = "$DIR/marcadores.php";   // .php con exit al principio: nadie puede leerlo desde fuera
-$CABECERA = "<?php exit; ?>\n";
-
-function responder($datos, $codigo = 200) {
-    http_response_code($codigo);
-    echo json_encode($datos, JSON_UNESCAPED_UNICODE);
-    exit;
-}
+$FDATOS = "$DIR/marcadores.php";
 
 // Cambiar este número borra el ranking (empieza una temporada nueva)
 const TEMPORADA = 2;
 
-function leer($f, $cab) {
+function leer_marcador($f) {
+    global $CABECERA;
     $vacio = ['temporada' => TEMPORADA, 'top' => [], 'usadas' => [], 'ips' => []];
     if (!file_exists($f)) { return $vacio; }
-    $j = json_decode(substr(file_get_contents($f), strlen($cab)), true);
+    $j = json_decode(substr(file_get_contents($f), strlen($CABECERA)), true);
     if (!is_array($j)) { return $vacio; }
     if (($j['temporada'] ?? 1) !== TEMPORADA) { $j['top'] = []; $j['temporada'] = TEMPORADA; }
     $j += $vacio;
@@ -54,122 +34,47 @@ function top10($d) {
         array_slice($d['top'], 0, 10));
 }
 
-/* ---------- filtro de nombres ---------- */
-function normalizar($s) {
-    $s = strtolower(strtr($s, [
-        'Á'=>'a','À'=>'a','Ä'=>'a','Â'=>'a','á'=>'a','à'=>'a','ä'=>'a','â'=>'a',
-        'É'=>'e','È'=>'e','Ë'=>'e','Ê'=>'e','é'=>'e','è'=>'e','ë'=>'e','ê'=>'e',
-        'Í'=>'i','Ì'=>'i','Ï'=>'i','Î'=>'i','í'=>'i','ì'=>'i','ï'=>'i','î'=>'i',
-        'Ó'=>'o','Ò'=>'o','Ö'=>'o','Ô'=>'o','ó'=>'o','ò'=>'o','ö'=>'o','ô'=>'o',
-        'Ú'=>'u','Ù'=>'u','Ü'=>'u','Û'=>'u','ú'=>'u','ù'=>'u','ü'=>'u','û'=>'u',
-        'Ñ'=>'n','ñ'=>'n','Ç'=>'c','ç'=>'c']));
-    $s = strtr($s, ['0'=>'o','1'=>'i','3'=>'e','4'=>'a','5'=>'s','7'=>'t','8'=>'b','9'=>'g','@'=>'a','$'=>'s','!'=>'i','|'=>'i','€'=>'e']);
-    return preg_replace('/[^a-z]/', '', $s);
-}
-function colapsar($s, $max) {   // "puuutaa" -> "puta" (max 1) o "puutaa" (max 2)
-    return preg_replace('/(.)\1{' . $max . ',}/', str_repeat('$1', $max), $s);
-}
-
-function nombre_valido($n) {
-    // Palabras que no pueden aparecer en ningún sitio del nombre
-    $prohibidas = [
-        'puta','puto','putit','zorra','guarra','cabron','cabrona','gilipoll','imbecil','subnormal','retrasad','mongol',
-        'maricon','zorr','bollera','travelo','sudaca','panchit','moromier','negrat','gitanoasq','polla',
-        'chocho','follar','follad','folla','mamada','corrida','culo','ojete','mierda','cagar','joder','jodid','hostia',
-        'malparid','hijoput','hdp','gonorrea','pendej','verga','chinga','perra','idiota','tonto','tonta','capullo',
-        'mamon','pajer','violad','violar','nazi','hitler','terroris','pedofil','pederast',
-        'fuck','shit','bitch','cunt','dick','cock','pussy','whore','slut','nigg','fag','retard','porn','sex',
-        'admin','moderador','trollacos','rockstar'
-    ];
-    // Palabras cortas que solo se bloquean si son el nombre entero (para no pillar nombres normales)
-    $exactas = ['ano','ass','gay','teta','tetas','nabo','cipote','facha','moro','negro','chino','gordo','gorda',
-        'pene','cono','paja','marica','rape','eta','kkk','puta','puto'];
-    $base = normalizar($n);
-    if ($base === '') { return false; }
-    $n1 = colapsar($base, 1); $n2 = colapsar($base, 2);
-    foreach ($prohibidas as $p) {
-        $pn = normalizar($p);
-        if ($pn === '') { continue; }
-        $doble = (bool)preg_match('/(.)\1/', $pn);
-        // si la palabra lleva letras dobles (polla, zorra) se compara sin quitarlas, para no bloquear "Polanco"
-        if ($doble ? strpos($n2, $pn) !== false : strpos($n1, $pn) !== false) { return false; }
-    }
-    foreach ($exactas as $p) { if ($n1 === colapsar(normalizar($p), 1)) { return false; } }
-    return true;
-}
-
-/* ---------- peticiones ---------- */
 $accion = $_GET['accion'] ?? '';
 
 if ($accion === 'lista') {
-    responder(['top' => top10(leer($FDATOS, $CABECERA))]);
+    responder(['top' => top10(leer_marcador($FDATOS))]);
 }
 
 if ($accion === 'empezar') {
-    $ts = time();
-    $azar = bin2hex(random_bytes(8));
-    responder(['ficha' => "$ts.$azar." . hash_hmac('sha256', "$ts.$azar", $SECRETO)]);
+    responder(['ficha' => ficha_nueva()]);
 }
 
 if ($accion === 'enviar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $in = json_decode(file_get_contents('php://input'), true);
-    if (!is_array($in)) { responder(['error' => 'datos'], 400); }
-    $nombre = trim(preg_replace('/\s+/u', ' ', (string)($in['nombre'] ?? '')));
+    $in = entrada();
+    $nombre = nombre_o_error($in['nombre'] ?? '');
     $puntos = (int)($in['puntos'] ?? 0);
     $fichas = (int)($in['fichas'] ?? 0);
-    $ficha  = (string)($in['ficha'] ?? '');
-
-    // Estilo recreativa: una sola palabra de 2 a 5 letras o números, en mayúsculas
-    $nombre = strtoupper(strtr($nombre, ['á'=>'Á','é'=>'É','í'=>'Í','ó'=>'Ó','ú'=>'Ú','ñ'=>'Ñ','ü'=>'Ü']));
-    $largo = preg_match_all('/./u', $nombre);
-    if ($largo < 2 || $largo > 5 || !preg_match('/^[\p{L}\p{N}]+$/u', $nombre)) {
-        responder(['error' => 'formato', 'mensaje' => 'Una sola palabra de 2 a 5 letras o números, sin espacios.'], 400);
-    }
-    $vetados = @include __DIR__ . '/bloqueados.php';
-    if (is_array($vetados) && in_array($nombre, array_map('strtoupper', $vetados), true)) {
-        responder(['error' => 'nombre', 'mensaje' => 'Ese nombre no está permitido. Prueba con otro.'], 400);
-    }
-    if (!nombre_valido($nombre)) {
-        responder(['error' => 'nombre', 'mensaje' => 'Ese nombre no está permitido. Prueba con otro.'], 400);
-    }
-
-    // Ficha firmada de la partida
-    $partes = explode('.', $ficha);
-    if (count($partes) !== 3 || !hash_equals(hash_hmac('sha256', "$partes[0].$partes[1]", $SECRETO), $partes[2])) {
-        responder(['error' => 'ficha', 'mensaje' => 'Partida no válida.'], 400);
-    }
-    $duracion = time() - (int)$partes[0];
-    if ($duracion < 1 || $duracion > 7200) { responder(['error' => 'ficha', 'mensaje' => 'Partida caducada.'], 400); }
-
-    // ¿Es posible esa puntuación en ese tiempo? (velocidad máxima del juego + margen)
-    if ($puntos < 1 || $puntos > 1000000 || $fichas < 0 || $fichas > 5 * $duracion + 5
-        || ($puntos - $fichas * 10) > 90 * $duracion + 60 || ($puntos - $fichas * 10) < 0) {
-        responder(['error' => 'trampa', 'mensaje' => 'Esa puntuación no cuadra. El Trollaco lo ha visto todo.'], 400);
-    }
+    if ($puntos < 1) { responder(['error' => 'trampa', 'mensaje' => 'Esa puntuación no cuadra. El Trollaco lo ha visto todo.'], 400); }
+    $id = partida_valida($in['ficha'] ?? '', $puntos, $fichas);
 
     $fl = fopen("$DIR/.cerrojo", 'c');
     flock($fl, LOCK_EX);
-    $d = leer($FDATOS, $CABECERA);
+    $d = leer_marcador($FDATOS);
     $ahora = time();
 
     // Ficha de un solo uso
-    if (in_array($partes[1], $d['usadas'], true)) { flock($fl, LOCK_UN); responder(['error' => 'ficha', 'mensaje' => 'Esa partida ya se guardó.'], 400); }
-    $d['usadas'][] = $partes[1];
+    if (in_array($id, $d['usadas'], true)) { flock($fl, LOCK_UN); responder(['error' => 'ficha', 'mensaje' => 'Esa partida ya se guardó.'], 400); }
+    $d['usadas'][] = $id;
     $d['usadas'] = array_slice($d['usadas'], -2000);
 
-    // Un envío cada 10 segundos por conexión (se guarda un resumen cifrado, nunca la IP)
-    $quien = substr(hash_hmac('sha256', $_SERVER['REMOTE_ADDR'] ?? '', $SECRETO), 0, 16);
+    // Un envío cada 10 segundos por conexión
+    $q = quien();
     foreach ($d['ips'] as $k => $t) { if ($ahora - $t > 3600) { unset($d['ips'][$k]); } }
-    if (isset($d['ips'][$quien]) && $ahora - $d['ips'][$quien] < 10) {
+    if (isset($d['ips'][$q]) && $ahora - $d['ips'][$q] < 10) {
         flock($fl, LOCK_UN); responder(['error' => 'rapido', 'mensaje' => 'Espera unos segundos.'], 429);
     }
-    $d['ips'][$quien] = $ahora;
+    $d['ips'][$q] = $ahora;
 
     $d['top'][] = ['n' => $nombre, 'p' => $puntos, 'f' => $fichas, 'd' => date('Y-m-d')];
     usort($d['top'], function ($a, $b) { return $b['p'] <=> $a['p']; });
     $d['top'] = array_slice($d['top'], 0, 100);
 
-    file_put_contents($FDATOS, $CABECERA . json_encode($d, JSON_UNESCAPED_UNICODE), LOCK_EX);
+    guardar_json($FDATOS, $d);
     flock($fl, LOCK_UN);
 
     $pos = 0;
