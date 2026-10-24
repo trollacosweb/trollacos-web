@@ -112,19 +112,39 @@ def desde_tsdb():
     # última jornada con partidos jugados, según los últimos resultados de la liga (1 consulta)
     pasados = (get_json(f"{TSDB}eventspastleague.php?id={LIGA}") or {}).get("events") or []
     ultima = max([num(e.get("intRound")) or 0 for e in pasados if (e.get("strSeason") or temp) == temp] or [1])
+    def guardar_cache():
+        fcache.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    def a_cache(r, ev):
+        if len(ev) >= 10 and all(estado_tsdb(e) in ("FINISHED", "CANCELLED") for e in ev):
+            cache["rondas"][str(r)] = [{k: e.get(k) for k in ("idEvent", "intRound", "idHomeTeam", "idAwayTeam", "strHomeTeam", "strAwayTeam",
+                "intHomeScore", "intAwayScore", "strStatus", "strPostponed", "strTimestamp", "dateEvent", "strTime",
+                "strHomeTeamBadge", "strAwayTeamBadge")} for e in ev]
+            guardar_cache()
+    # primero, lo imprescindible: la jornada anterior, la actual y la siguiente (si falla, no se toca nada)
     rondas = {}
-    for r in range(1, min(38, ultima + 2) + 1):
-        if str(r) in cache["rondas"] and r < ultima - 1:
-            rondas[r] = cache["rondas"][str(r)]
-            continue
+    for r in range(max(1, ultima - 1), min(38, ultima + 1) + 1):
         ev = ronda(r)
         if ev:
             rondas[r] = ev
-            if len(ev) >= 10 and all(estado_tsdb(e) in ("FINISHED", "CANCELLED") for e in ev):
-                cache["rondas"][str(r)] = [{k: e.get(k) for k in ("idEvent", "intRound", "idHomeTeam", "idAwayTeam", "strHomeTeam", "strAwayTeam",
-                    "intHomeScore", "intAwayScore", "strStatus", "strPostponed", "strTimestamp", "dateEvent", "strTime",
-                    "strHomeTeamBadge", "strAwayTeamBadge")} for e in ev]
-    fcache.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+            a_cache(r, ev)
+    # después, como mucho 5 jornadas antiguas que falten (para la clasificación); el resto en la siguiente actualización
+    nuevas = 0
+    for r in range(1, max(1, ultima - 1)):
+        if str(r) in cache["rondas"]:
+            rondas[r] = cache["rondas"][str(r)]
+        elif nuevas < 5:
+            nuevas += 1
+            try:
+                ev = ronda(r)
+            except Exception as ex:
+                print(f"::warning::Porra: jornada {r} pendiente para la próxima vez ({ex})")
+                nuevas = 99
+                continue
+            if ev:
+                rondas[r] = ev
+                a_cache(r, ev)
+    guardar_cache()
+    print(f"::notice::Porra: jornadas guardadas {len(cache['rondas'])}, última jugada {ultima}")
     if not any(rondas.values()):
         raise RuntimeError(f"TheSportsDB no ha devuelto partidos (temporada {temp})")
     # clasificación propia con los resultados de la temporada
