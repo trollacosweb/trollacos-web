@@ -1,9 +1,239 @@
 {
- "actualizado": "2026-10-24T18:09:39Z",
+ "actualizado": "2026-10-24T18:11:35Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 10,
  "partidos": [
+  {
+   "id": "2506240",
+   "j": 8,
+   "fecha": "2026-10-09T19:00:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Málaga",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
+    "tla": "MÁL"
+   },
+   "visit": {
+    "n": "Espanyol",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "tla": "ESP"
+   },
+   "gl": 1,
+   "gv": 1,
+   "cuotas": {
+    "1": 2.7,
+    "X": 3.4,
+    "2": 2.6
+   }
+  },
+  {
+   "id": "2506246",
+   "j": 8,
+   "fecha": "2026-10-10T12:00:00Z",
+   "estado": "CANCELLED",
+   "local": {
+    "n": "Rayo Vallecano",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "tla": "RAY"
+   },
+   "visit": {
+    "n": "Athletic Bilbao",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
+    "tla": "ATH"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.45,
+    "X": 3.45,
+    "2": 2.8
+   }
+  },
+  {
+   "id": "2506243",
+   "j": 8,
+   "fecha": "2026-10-10T14:15:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Deportivo Alavés",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
+    "tla": "DEP"
+   },
+   "visit": {
+    "n": "Atlético Madrid",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+    "tla": "ATL"
+   },
+   "gl": 1,
+   "gv": 2,
+   "cuotas": {
+    "1": 4.75,
+    "X": 4.05,
+    "2": 1.7
+   }
+  },
+  {
+   "id": "2506239",
+   "j": 8,
+   "fecha": "2026-10-10T16:30:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Barcelona",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
+    "tla": "BAR"
+   },
+   "visit": {
+    "n": "Getafe",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
+    "tla": "GET"
+   },
+   "gl": 3,
+   "gv": 0,
+   "cuotas": {
+    "1": 1.25,
+    "X": 5.3,
+    "2": 9.0
+   }
+  },
+  {
+   "id": "2506242",
+   "j": 8,
+   "fecha": "2026-10-10T19:00:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Real Madrid",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
+    "tla": "REA"
+   },
+   "visit": {
+    "n": "Villarreal",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+    "tla": "VIL"
+   },
+   "gl": 1,
+   "gv": 0,
+   "cuotas": {
+    "1": 1.4,
+    "X": 4.55,
+    "2": 7.65
+   }
+  },
+  {
+   "id": "2506247",
+   "j": 8,
+   "fecha": "2026-10-11T12:00:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Elche",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "tla": "ELC"
+   },
+   "visit": {
+    "n": "Celta Vigo",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "tla": "CEL"
+   },
+   "gl": 0,
+   "gv": 0,
+   "cuotas": {
+    "1": 2.6,
+    "X": 3.4,
+    "2": 2.7
+   }
+  },
+  {
+   "id": "2506245",
+   "j": 8,
+   "fecha": "2026-10-11T14:15:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Real Sociedad",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
+    "tla": "REA"
+   },
+   "visit": {
+    "n": "Deportivo de A Coruña",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
+    "tla": "DEP"
+   },
+   "gl": 3,
+   "gv": 2,
+   "cuotas": {
+    "1": 1.8,
+    "X": 3.9,
+    "2": 4.25
+   }
+  },
+  {
+   "id": "2506244",
+   "j": 8,
+   "fecha": "2026-10-11T16:30:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Real Betis",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+    "tla": "REA"
+   },
+   "visit": {
+    "n": "Osasuna",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "tla": "OSA"
+   },
+   "gl": 5,
+   "gv": 2,
+   "cuotas": {
+    "1": 1.6,
+    "X": 4.15,
+    "2": 5.35
+   }
+  },
+  {
+   "id": "2506248",
+   "j": 8,
+   "fecha": "2026-10-11T19:00:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Racing de Santander",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
+    "tla": "RAC"
+   },
+   "visit": {
+    "n": "Valencia",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+    "tla": "VAL"
+   },
+   "gl": 2,
+   "gv": 2,
+   "cuotas": {
+    "1": 1.9,
+    "X": 3.8,
+    "2": 3.9
+   }
+  },
+  {
+   "id": "2506241",
+   "j": 8,
+   "fecha": "2026-10-12T19:00:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Levante",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "tla": "LEV"
+   },
+   "visit": {
+    "n": "Sevilla",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
+    "tla": "SEV"
+   },
+   "gl": 3,
+   "gv": 3,
+   "cuotas": {
+    "1": 2.9,
+    "X": 3.5,
+    "2": 2.4
+   }
+  },
   {
    "id": "2506256",
    "j": 9,
@@ -22,9 +252,9 @@
    "gl": 1,
    "gv": 1,
    "cuotas": {
-    "1": 1.5,
-    "X": 4.05,
-    "2": 7.65
+    "1": 2.15,
+    "X": 3.6,
+    "2": 3.2
    }
   },
   {
@@ -45,9 +275,9 @@
    "gl": 0,
    "gv": 1,
    "cuotas": {
-    "1": 5.0,
-    "X": 3.8,
-    "2": 1.7
+    "1": 6.45,
+    "X": 4.35,
+    "2": 1.5
    }
   },
   {
@@ -68,9 +298,9 @@
    "gl": 0,
    "gv": 0,
    "cuotas": {
-    "1": 2.4,
-    "X": 3.45,
-    "2": 2.85
+    "1": 2.25,
+    "X": 3.55,
+    "2": 3.05
    }
   },
   {
@@ -91,9 +321,9 @@
    "gl": 2,
    "gv": 5,
    "cuotas": {
-    "1": 4.15,
-    "X": 3.7,
-    "2": 1.85
+    "1": 3.7,
+    "X": 3.75,
+    "2": 1.95
    }
   },
   {
@@ -114,9 +344,9 @@
    "gl": 0,
    "gv": 0,
    "cuotas": {
-    "1": 4.15,
-    "X": 3.7,
-    "2": 1.85
+    "1": 2.9,
+    "X": 3.5,
+    "2": 2.35
    }
   },
   {
@@ -137,9 +367,9 @@
    "gl": 2,
    "gv": 0,
    "cuotas": {
-    "1": 1.75,
-    "X": 3.75,
-    "2": 4.75
+    "1": 2.15,
+    "X": 3.6,
+    "2": 3.25
    }
   },
   {
@@ -160,9 +390,9 @@
    "gl": 2,
    "gv": 1,
    "cuotas": {
-    "1": 2.9,
-    "X": 3.45,
-    "2": 2.4
+    "1": 2.25,
+    "X": 3.55,
+    "2": 3.05
    }
   },
   {
@@ -183,9 +413,9 @@
    "gl": 2,
    "gv": 5,
    "cuotas": {
-    "1": 4.05,
-    "X": 3.65,
-    "2": 1.9
+    "1": 4.9,
+    "X": 4.05,
+    "2": 1.65
    }
   },
   {
@@ -206,9 +436,9 @@
    "gl": 4,
    "gv": 1,
    "cuotas": {
-    "1": 1.4,
-    "X": 4.15,
-    "2": 9.0
+    "1": 1.65,
+    "X": 4.1,
+    "2": 4.95
    }
   },
   {
@@ -229,9 +459,9 @@
    "gl": 1,
    "gv": 1,
    "cuotas": {
-    "1": 1.65,
-    "X": 3.8,
-    "2": 5.2
+    "1": 2.3,
+    "X": 3.55,
+    "2": 3.0
    }
   },
   {
@@ -252,9 +482,9 @@
    "gl": 1,
    "gv": 1,
    "cuotas": {
-    "1": 1.35,
-    "X": 4.3,
-    "2": 9.0
+    "1": 1.7,
+    "X": 4.05,
+    "2": 4.75
    }
   },
   {
@@ -275,9 +505,9 @@
    "gl": 0,
    "gv": 3,
    "cuotas": {
-    "1": 2.15,
+    "1": 2.25,
     "X": 3.55,
-    "2": 3.3
+    "2": 3.05
    }
   },
   {
@@ -298,9 +528,9 @@
    "gl": 2,
    "gv": 1,
    "cuotas": {
-    "1": 1.6,
-    "X": 3.9,
-    "2": 5.95
+    "1": 1.95,
+    "X": 3.75,
+    "2": 3.6
    }
   },
   {
@@ -321,9 +551,9 @@
    "gl": 1,
    "gv": 1,
    "cuotas": {
-    "1": 2.15,
-    "X": 3.55,
-    "2": 3.25
+    "1": 2.7,
+    "X": 3.45,
+    "2": 2.55
    }
   },
   {
@@ -344,9 +574,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.55,
-    "X": 3.95,
-    "2": 6.3
+    "1": 1.45,
+    "X": 4.45,
+    "2": 6.95
    }
   },
   {
@@ -367,9 +597,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.65,
-    "X": 3.8,
-    "2": 5.25
+    "1": 2.15,
+    "X": 3.65,
+    "2": 3.25
    }
   },
   {
@@ -390,9 +620,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 4.15,
-    "X": 3.7,
-    "2": 1.85
+    "1": 3.7,
+    "X": 3.75,
+    "2": 1.95
    }
   },
   {
@@ -413,9 +643,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.55,
-    "X": 3.95,
-    "2": 6.3
+    "1": 1.7,
+    "X": 4.0,
+    "2": 4.55
    }
   },
   {
@@ -436,9 +666,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.55,
-    "X": 3.95,
-    "2": 6.3
+    "1": 1.7,
+    "X": 4.0,
+    "2": 4.55
    }
   },
   {
@@ -460,8 +690,8 @@
    "gv": null,
    "cuotas": {
     "1": 1.95,
-    "X": 3.65,
-    "2": 3.8
+    "X": 3.75,
+    "2": 3.65
    }
   },
   {
@@ -482,9 +712,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 2.7,
-    "X": 3.4,
-    "2": 2.6
+    "1": 2.05,
+    "X": 3.7,
+    "2": 3.4
    }
   },
   {
@@ -505,9 +735,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 4.9,
-    "X": 3.8,
-    "2": 1.7
+    "1": 5.05,
+    "X": 4.1,
+    "2": 1.65
    }
   },
   {
@@ -528,9 +758,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 2.4,
-    "X": 3.45,
-    "2": 2.9
+    "1": 2.55,
+    "X": 3.4,
+    "2": 2.7
    }
   },
   {
@@ -551,8 +781,8 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.25,
-    "X": 4.7,
+    "1": 1.35,
+    "X": 4.9,
     "2": 9.0
    }
   },
@@ -574,8 +804,8 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.25,
-    "X": 4.65,
+    "1": 1.3,
+    "X": 5.1,
     "2": 9.0
    }
   },
@@ -597,8 +827,8 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 3.1,
-    "X": 3.5,
+    "1": 3.05,
+    "X": 3.55,
     "2": 2.25
    }
   },
@@ -620,9 +850,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 4.45,
-    "X": 3.7,
-    "2": 1.8
+    "1": 4.7,
+    "X": 4.0,
+    "2": 1.7
    }
   },
   {
@@ -643,9 +873,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.55,
-    "X": 3.9,
-    "2": 6.3
+    "1": 1.95,
+    "X": 3.75,
+    "2": 3.65
    }
   },
   {
@@ -666,9 +896,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 2.15,
-    "X": 3.55,
-    "2": 3.25
+    "1": 3.2,
+    "X": 3.6,
+    "2": 2.15
    }
   },
   {
@@ -689,9 +919,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.95,
-    "X": 3.65,
-    "2": 3.8
+    "1": 2.3,
+    "X": 3.55,
+    "2": 3.0
    }
   }
  ]

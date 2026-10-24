@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Sat, 24 Oct 2026 20:09:13 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 20:11:16 +0200</lastBuildDate>
     <item>
       <title>GTA VI vende vinilo y CD, pero el juego va sin disco</title>
       <link>https://ecosistemastartup.com/gta-vi-vende-vinilo-y-cd-pero-el-juego-va-sin-disco/</link>
@@ -138,6 +138,14 @@
       <enclosure url="https://i.blogs.es/9b80bf/dual-2022---aaron-paul-as-trent---imdb/1024_2000.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>Ninguno la esperábamos, pero se convirtió en una de las miniseries más vistas de Netflix: 10 capítulos emocionantes que ver en un finde</title>
+      <link>https://www.sensacine.com/noticias/series/noticia-1000228996/</link>
+      <guid isPermaLink="false">https://www.sensacine.com/noticias/series/noticia-1000228996/</guid>
+      <pubDate>Sat, 24 Oct 2026 18:00:00 +0000</pubDate>
+      <description>SensaCine Series. La miniserie, protagonizada por Margaret Qualley, se estrenó con la boca pequeña para acabar convirtiéndose en una de las series más vistas aquel año en la…</description>
+      <enclosure url="https://es.web.img2.acsta.net/img/ee/01/ee018145dc2bd89b12d160e170b30d72.jpg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Guitarricadelafuente está emocionando al mundo con la canción principal de &#x27;La bola negra&#x27;: &quot;Me inspiraron las palabras de la última carta…</title>
       <link>https://www.sensacine.com/noticias/cine/noticia-1000228915/</link>
       <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000228915/</guid>
@@ -152,14 +160,6 @@
       <pubDate>Sat, 24 Oct 2026 17:00:00 +0000</pubDate>
       <description>SensaCine. Una de las franquicias de referencia del terror recibe un giro de lo más impresionante</description>
       <enclosure url="https://es.web.img2.acsta.net/img/7a/3e/7a3e5435fe4ff61782b251d9af232dc8.jpg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>Las 4 mejores películas nuevas de Amazon Prime Video en octubre de 2026. Una joya indiscutible de Peter Jackson, un entretenidísimo…</title>
-      <link>https://www.espinof.com/listas/4-mejores-peliculas-nuevas-amazon-prime-video-octubre-2026-joya-indiscutible-peter-jackson-entretenidisimo-thriller-accion</link>
-      <guid isPermaLink="false">https://www.espinof.com/listas/4-mejores-peliculas-nuevas-amazon-prime-video-octubre-2026-joya-indiscutible-peter-jackson-entretenidisimo-thriller-accion</guid>
-      <pubDate>Sat, 24 Oct 2026 16:00:11 +0000</pubDate>
-      <description>Espinof. En Espinos hemos iniciado la tradición mensual de repasar el mejor cine que llega a Prime Video y ahora es el momento de centrar nuestra atención en las 4…</description>
-      <enclosure url="https://i.blogs.es/70109e/normal_ver2_xxlg/1024_2000.jpeg" type="image/jpeg" length="0"/>
     </item>
   </channel>
 </rss>
