@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-25T19:50:30Z",
+ "actualizado": "2026-10-25T20:41:02Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 10,
@@ -652,7 +652,7 @@
    "id": "2506259",
    "j": 10,
    "fecha": "2026-10-25T20:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Barcelona",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
@@ -663,8 +663,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
     "tla": "REA"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 0,
+   "gv": 0,
    "cuotas": {
     "1": 1.7,
     "X": 4.0,
