@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-25T17:18:36Z",
+ "actualizado": "2026-10-25T17:40:59Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 10,
@@ -629,7 +629,7 @@
    "id": "2506266",
    "j": 10,
    "fecha": "2026-10-25T17:30:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Real Sociedad",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
@@ -640,8 +640,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
     "tla": "LEV"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 1,
+   "gv": 0,
    "cuotas": {
     "1": 1.7,
     "X": 4.0,
