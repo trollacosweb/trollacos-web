@@ -72,6 +72,14 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .fama li:nth-child(1)::before{content:"🥇"}.fama li:nth-child(2)::before{content:"🥈"}.fama li:nth-child(3)::before{content:"🥉"}
 .fama li .n{flex:1;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fama li .p{color:var(--yellow)}
+.fama li:nth-child(-n+3){font-size:28px}
+.fama li:nth-child(1){font-size:34px;padding:8px 10px;margin-bottom:4px;border:2px solid #ff9d3c;border-radius:10px;
+  background:linear-gradient(90deg,rgba(255,60,0,.35),rgba(255,157,60,.18),rgba(255,210,63,.3));animation:fuego 1.2s ease-in-out infinite alternate}
+.fama li:nth-child(1) .n::after{content:' 🔥';}
+.fama li:nth-child(1) .n,.fama li:nth-child(1) .p{color:#fff3c4;text-shadow:0 0 8px #ff7a1a,0 0 16px #ff3c00}
+.fama li:nth-child(2) .n{color:#e6e9f5}.fama li:nth-child(3) .n{color:#ffcf9e}
+@keyframes fuego{from{box-shadow:0 0 10px #ff3c00,inset 0 0 8px rgba(255,120,0,.4)}to{box-shadow:0 0 26px #ff9d3c,0 -6px 22px rgba(255,60,0,.6),inset 0 0 14px rgba(255,210,63,.5)}}
+@media (prefers-reduced-motion:reduce){.fama li:nth-child(1){animation:none}}
 .fama li.yo{background:rgba(255,43,214,.2);border-radius:4px}
 .fama li.vacio{justify-content:center;color:var(--muted);font-size:20px}.fama li.vacio::before{content:none}
 .fama-nota{text-align:center;font-size:15px;color:var(--muted);margin-top:8px}
@@ -93,8 +101,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <h1>TROLLACO RUN</h1>
   <p class="sub">&gt; INSERT COIN · PULSA PARA EMPEZAR_</p>
   <div class="modos" role="tablist">
-    <button type="button" class="on" data-modo="run">🏃 CARRERA INFINITA</button>
     <button type="button" data-modo="c1">📖 MODO HISTORIA</button>
+    <button type="button" class="on" data-modo="run">🔥 SUPERA EL RÉCORD</button>
   </div>
   <div class="maquina">
     <canvas id="juego" width="800" height="320" aria-label="Juego Trollaco Run. Pulsa o toca para saltar."></canvas>
@@ -128,7 +136,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   </div>
   <div class="como">
     <div><b>⬆ SALTAR</b><span>Toca la pantalla, haz clic o pulsa ESPACIO. En el aire puedes saltar otra vez.</span></div>
-    <div><b>🪙 FICHAS</b><span>Cada ficha suma 10 puntos. Cuanto más corres, más rápido va todo.</span></div>
+    <div><b>🔥 SUPERA EL RÉCORD</b><span>Carrera sin fin: cada ficha suma 10 puntos y todo va cada vez más rápido. Si pasas al número 1, el Trollaco arde.</span></div>
     <div><b>💫 MODO HISTORIA</b><span>Tienes 3 vidas. Cae encima de los zombis para dejarlos KO con estrellitas y pajaritos: +2 fichas.</span></div>
     <div><b>⚠ CUIDADO</b><span>Salta las cajas y los pinchos de lag. Los drones vuelan bajo: si saltas cuando pasan, te pillan.</span></div>
   </div>
@@ -278,9 +286,10 @@ document.querySelectorAll('.modos button').forEach(function(b){b.onclick=functio
   modo=b.dataset.modo;
   document.querySelectorAll('.modos button').forEach(function(x){x.classList.toggle('on',x===b)});
   document.getElementById('capitulos').hidden=modo==='run';
-  document.getElementById('fama-tit').textContent=modo==='run'?'🏆 SALÓN DE LA FAMA':'🏆 SALÓN DE LA FAMA · CAPÍTULO 1';
+  document.getElementById('fama-tit').textContent=modo==='run'?'🔥 SALÓN DE LA FAMA · SUPERA EL RÉCORD':'🏆 SALÓN DE LA FAMA · CAPÍTULO 1';
   ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();
 }});
+document.querySelector('.modos button[data-modo="c1"]').click(); // se entra por el modo historia
 
 // ---------- compartir ----------
 function muestraCompartir(){
@@ -440,10 +449,26 @@ function texto(t,x,y,tam,col,alin,sombra){
   cx.font=tam+'px VT323, monospace';cx.textAlign=alin||'left';
   cx.fillStyle=sombra||K;cx.fillText(t,x+2,y+2);cx.fillStyle=col;cx.fillText(t,x,y);cx.textAlign='left';
 }
-function hud(){
+function numero1(){return (famaTop&&famaTop[0])?famaTop[0]:null}
+function hud(tt){
   texto('PUNTOS '+puntos,14,28,26,'#fff');
   texto('🪙 '+fichas,14,52,22,'#ffd23f');
-  texto('RÉCORD '+record,W-14,28,24,'#1ff2ff','right');
+  var n1=numero1();
+  if(n1&&puntos>n1.puntos){
+    if(Math.floor(tt*4)%2)texto('🔥 ¡ERES EL NÚMERO 1! 🔥',W/2,30,W<600?26:32,'#ffd23f','center','#b81d00');
+    texto('RÉCORD '+puntos,W-14,28,24,'#ff9d3c','right');
+  } else {
+    if(n1)texto('A BATIR: '+n1.nombre+' '+n1.puntos,W-14,28,22,'#ff9d3c','right');
+    texto('TU RÉCORD '+record,W-14,52,20,'#1ff2ff','right');
+    if(record&&puntos>record&&Math.floor(tt*3)%2)texto('¡SUPERAS TU RÉCORD!',W/2,30,24,'#1ff2ff','center');
+  }
+}
+// llamas detrás del Trollaco cuando supera el número 1 (o su propio récord, más flojito)
+function llamas(dt){
+  var n1=numero1(),top=n1&&puntos>n1.puntos,mio=record&&puntos>record;
+  if(estado!=='juego'||!(top||mio))return;
+  var n=top?6:2;
+  for(var i=0;i<n;i++)parts.push({x:jug.x+4+Math.random()*10,y:jug.y-8-Math.random()*(top?60:30),vx:-120-Math.random()*160,vy:-40-Math.random()*90,v:.35+Math.random()*.25,fuego:1,g:-120});
 }
 
 
@@ -578,7 +603,8 @@ function bucle(ahora){
         for(var k=0;k<6;k++)parts.push({x:m.x,y:m.y,vx:(Math.random()-.5)*200,vy:-Math.random()*200,v:.5})}
     });
   }
-  parts.forEach(function(p){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=500*dt;p.v-=dt}); parts=parts.filter(function(p){return p.v>0});
+  if(modo==='run')llamas(dt);
+  parts.forEach(function(p){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=(p.fuego?p.g:500)*dt;p.v-=dt}); parts=parts.filter(function(p){return p.v>0});
   if(temblor>0)temblor-=dt;
   if(inv>0)inv-=dt;
 
@@ -590,9 +616,9 @@ function bucle(ahora){
   if(modo!=='run')verjaFinal();
   monedas.forEach(function(m){moneda(m,tt)});
   if(!(inv>0&&Math.floor(tt*14)%2))trollaco();
-  parts.forEach(function(p){rect(p.x,p.y,3,3,'#ffd23f')});
+  parts.forEach(function(p){if(p.fuego){var c=p.v>.4?'#fff3a0':p.v>.25?'#ffb000':p.v>.12?'#ff5a00':'#b81d00';var t=p.v>.3?6:4;rect(p.x,p.y,t,t,c)}else rect(p.x,p.y,3,3,'#ffd23f')});
   cx.restore();
-  if(estado!=='menu'){if(modo==='run')hud();else hudC1()}
+  if(estado!=='menu'){if(modo==='run')hud(tt);else hudC1()}
   if(estado==='menu'&&modo!=='run'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
     texto('CAPÍTULO 1',W/2,78,30,'#1ff2ff','center');
@@ -610,15 +636,20 @@ function bucle(ahora){
     if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA JUGAR OTRA VEZ',W/2,246,24,'#ffd23f','center');
   } else if(estado==='menu'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
-    texto('TROLLACO RUN',W/2,110,64,'#ff2bd6','center');
-    texto(HW?'🎃 EDICIÓN TROLLOWEEN 🎃':'SALTA EL LAG · COGE LAS FICHAS',W/2,148,26,HW?'#ffb347':'#1ff2ff','center');
-    if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,206,28,'#ffd23f','center');
-    if(record)texto('RÉCORD: '+record,W/2,240,24,'#fff','center');
+    texto('🔥 SUPERA EL RÉCORD 🔥',W/2,96,W<600?44:58,'#ff9d3c','center','#7a1000');
+    var n1m=numero1();
+    texto(n1m?'EL NÚMERO 1: '+n1m.nombre+' · '+n1m.puntos+' PTS':'SALTA EL LAG · COGE LAS FICHAS',W/2,140,W<600?24:28,'#ffd23f','center');
+    texto('Carrera sin fin: cada vez más rápido',W/2,170,W<600?18:22,'#1ff2ff','center');
+    if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,214,W<600?22:28,'#fff','center');
+    if(record)texto('TU RÉCORD: '+record,W/2,248,22,'#a59dd0','center');
   } else if(estado==='fin'){
     cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
     texto(modo==='run'?'GAME OVER':'¡TE HAN PILLADO!',W/2,100,modo==='run'?64:52,'#ff2bd6','center');
     texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,140,30,'#fff','center');
-    if(nuevoRecord)texto('¡NUEVO RÉCORD!',W/2,176,30,'#ffd23f','center');
+    var n1f=numero1();
+    if(modo==='run'&&n1f&&puntos>n1f.puntos)texto('🔥 ¡ERES EL NUEVO NÚMERO 1! 🔥',W/2,176,30,'#ff9d3c','center','#7a1000');
+    else if(nuevoRecord)texto('¡NUEVO RÉCORD PERSONAL!',W/2,176,30,'#ffd23f','center');
+    else if(modo==='run'&&n1f)texto('Te faltan '+(n1f.puntos-puntos+1)+' para el número 1',W/2,176,24,'#ff9d3c','center');
     else texto('RÉCORD: '+record,W/2,176,26,'#1ff2ff','center');
     if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA VOLVER A JUGAR',W/2,226,26,'#ffd23f','center');
   }
