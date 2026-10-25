@@ -34,9 +34,39 @@ function leer_marcador($f) {
     return $j;
 }
 
+// Jugadores de relleno del modo "Supera el récord" (como las recreativas de antes): no se guardan,
+// solo completan la lista. Cuando un jugador real les supera, desaparecen solos.
+const RELLENO = [
+    ['n' => 'PIXEL', 'p' => 3874, 'f' => 74], ['n' => 'ZETA', 'p' => 3512, 'f' => 66], ['n' => 'KIKO', 'p' => 3290, 'f' => 61],
+    ['n' => 'LUNA', 'p' => 2985, 'f' => 55], ['n' => 'MAXX', 'p' => 2741, 'f' => 50], ['n' => 'TITO', 'p' => 2468, 'f' => 44],
+    ['n' => 'BYTE', 'p' => 2203, 'f' => 39], ['n' => 'CHUSO', 'p' => 1957, 'f' => 34], ['n' => 'NURIA', 'p' => 1720, 'f' => 29],
+];
+
+// Los 10 mejores, una sola vez por nombre (su mejor marca)
+function lista_final($d) {
+    global $modo;
+    $reales = $d['top'];
+    usort($reales, function ($a, $b) { return $b['p'] <=> $a['p']; });
+    $vistos = []; $lista = [];
+    foreach ($reales as $e) {
+        $k = strtoupper($e['n']);
+        if (isset($vistos[$k])) { continue; }
+        $vistos[$k] = true; $lista[] = $e;
+        if (count($lista) === 10) { break; }
+    }
+    // el relleno solo ocupa huecos libres: nunca echa a un jugador real
+    if ($modo === 'run') {
+        foreach (RELLENO as $r) {
+            if (count($lista) >= 10) { break; }
+            if (!isset($vistos[$r['n']])) { $lista[] = $r + ['d' => '2026-10-20']; }
+        }
+        usort($lista, function ($a, $b) { return $b['p'] <=> $a['p']; });
+    }
+    return $lista;
+}
 function top10($d) {
     return array_map(function ($e) { return ['nombre' => $e['n'], 'puntos' => $e['p'], 'fichas' => $e['f'], 'fecha' => $e['d']]; },
-        array_slice($d['top'], 0, 10));
+        lista_final($d));
 }
 
 $accion = $_GET['accion'] ?? '';
@@ -83,7 +113,7 @@ if ($accion === 'enviar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     flock($fl, LOCK_UN);
 
     $pos = 0;
-    foreach ($d['top'] as $i => $e) { if ($e['n'] === $nombre && $e['p'] === $puntos) { $pos = $i + 1; break; } }
+    foreach (lista_final($d) as $i => $e) { if ($e['n'] === $nombre && $e['p'] === $puntos) { $pos = $i + 1; break; } }
     responder(['ok' => true, 'puesto' => $pos, 'top' => top10($d)]);
 }
 
