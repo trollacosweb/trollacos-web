@@ -132,6 +132,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <h2 id="fama-tit">🏆 SALÓN DE LA FAMA</h2>
     <ol id="fama-lista"><li class="vacio">Cargando...</li></ol>
     <p class="fama-nota">Los 10 mejores gamers de la historia juegan en trollacos.</p>
+    <p class="fama-nota" id="jugador"></p>
   </section>
   <div class="compartir" id="compartir">
     <a id="sh-wa" href="#" target="_blank" rel="noopener">Reta a tus colegas por WhatsApp</a>
@@ -182,7 +183,10 @@ function pideFicha(){
   fichaPartida=null;
   fetch(API+'?accion=empezar',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){fichaPartida=j.ficha||null}).catch(function(){});
 }
-function entraEnTop(p){return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
+function entraEnTop(p){
+  var yo=cuentaSinNombre?'':nombreGuardado();
+  for(var i=0;i<famaTop.length;i++){if(yo&&famaTop[i].nombre===yo&&famaTop[i].puntos>=p)return false} // ya tienes una marca mejor
+  return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
 function abreGuardar(){
   if(!ultimoGuardado||ultimoGuardado.modo!==modo||estado==='menu'||estado==='juego')return;
   document.getElementById('g-tit').textContent='¡ENTRAS EN EL TOP 10!';
@@ -191,23 +195,46 @@ function abreGuardar(){
 }
 function cierraGuardar(){fForm.hidden=true;fNombre.blur()}
 document.getElementById('g-no').onclick=cierraGuardar;
+// El nombre se pide una sola vez: después cada récord se guarda solo
+var avisoRanking='';
+function nombreGuardado(){
+  var n='';try{n=(localStorage.getItem('trollacoRunNombre')||'').replace(/\s+/g,'').toUpperCase()}catch(e){}
+  if(!n&&cuentaPorra&&cuentaPorra.nombre)n=String(cuentaPorra.nombre).toUpperCase();
+  return (n.length>=2&&n.length<=5)?n:'';
+}
+function pintaJugador(){
+  var el=document.getElementById('jugador'),n=nombreGuardado();if(!el)return;
+  if(n){el.innerHTML='Juegas como <b></b> · <a href="#" id="cambia-nombre">cambiar nombre</a>';el.querySelector('b').textContent=n;
+    document.getElementById('cambia-nombre').onclick=function(ev){ev.preventDefault();try{localStorage.removeItem('trollacoRunNombre')}catch(e){}
+      fNombre.value='';cuentaSinNombre=true;el.textContent='La próxima vez que entres en el top 10 te pediremos un nombre nuevo.'}}
+  else el.textContent='';
+}
+var cuentaSinNombre=false;
+function enviaRanking(nom,desdeForm){
+  var g=ultimoGuardado;if(!g)return;
+  if(desdeForm){fMsg.style.color='#a59dd0';fMsg.textContent='Guardando...'}else avisoRanking='Guardando en el ranking...';
+  fetch(API+'?accion=enviar&modo='+g.modo,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:g.puntos,fichas:g.fichas,ficha:g.ficha})})
+  .then(function(r){return r.json()}).then(function(j){
+    if(j.ok){try{localStorage.setItem('trollacoRunNombre',nom)}catch(e){}cuentaSinNombre=false;
+      if(g.modo===modo){famaTop=j.top;pintaFama(famaTop,j.puesto)}
+      ultimoGuardado=null;pintaJugador();
+      avisoRanking=j.puesto?'🏆 GUARDADO COMO '+nom+' · PUESTO '+j.puesto:'';
+      if(desdeForm){cierraGuardar();if(j.puesto&&j.puesto<=10)document.getElementById('fama').scrollIntoView({behavior:'smooth',block:'center'})}
+    } else if(desdeForm){fMsg.style.color='#ff8b8b';fMsg.textContent=j.mensaje||'No se ha podido guardar.'}
+    else{avisoRanking='';abreGuardar()} // si el nombre guardado ya no vale, se pide otro
+  }).catch(function(){if(desdeForm){fMsg.style.color='#ff8b8b';fMsg.textContent='No se ha podido guardar. Prueba otra vez.'}else avisoRanking='No se ha podido guardar el récord.'});
+}
 fForm.addEventListener('submit',function(e){
   e.preventDefault();
   var nom=fNombre.value.replace(/\s+/g,'').toUpperCase();
   if(nom.length<2||nom.length>5){fMsg.style.color='#ff8b8b';fMsg.textContent='De 2 a 5 letras o números, sin espacios.';return}
-  fMsg.style.color='#a59dd0';fMsg.textContent='Guardando...';
-  fetch(API+'?accion=enviar&modo='+ultimoGuardado.modo,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:ultimoGuardado.puntos,fichas:ultimoGuardado.fichas,ficha:ultimoGuardado.ficha})})
-  .then(function(r){return r.json()}).then(function(j){
-    if(j.ok){try{localStorage.setItem('trollacoRunNombre',nom)}catch(e){}
-      famaTop=j.top;pintaFama(famaTop,j.puesto);cierraGuardar();
-      if(j.puesto&&j.puesto<=10){document.getElementById('fama').scrollIntoView({behavior:'smooth',block:'center'})}
-    } else {fMsg.style.color='#ff8b8b';fMsg.textContent=j.mensaje||'No se ha podido guardar.'}
-  }).catch(function(){fMsg.style.color='#ff8b8b';fMsg.textContent='No se ha podido guardar. Prueba otra vez.'});
+  enviaRanking(nom,true);
 });
 cargaFama();
 
 // ---------- La Porra Trollaca: las fichas del juego van al monedero ----------
 var cuentaPorra=null;try{cuentaPorra=JSON.parse(localStorage.getItem('porraCuenta')||'null')}catch(e){}
+pintaJugador();
 var mPorra=document.getElementById('monedero');
 function pintaMonedero(t){if(mPorra)mPorra.innerHTML=t}
 if(cuentaPorra&&cuentaPorra.nombre){pintaMonedero('🪙 Las fichas que cojas irán al monedero de <b>'+cuentaPorra.nombre.replace(/[<>&]/g,'')+'</b> en <a href="/porra/">La Porra Trollaca</a>.')}
@@ -262,6 +289,7 @@ function pitido(f1,f2,dur,tipo,vol){
 var estado='menu',t0=0,vel,dist,puntos,fichas,obst,monedas,parts,sigObst,sigMon,jug,temblor,nuevoRecord,vidas=3,inv=0;
 var META=30000; // distancia del capítulo 1 hasta la mansión
 function reiniciar(){
+  avisoRanking='';
   if(CAPS&&CAPS[modo])META=CAPS[modo].meta;
   vel=modo==='run'?340:320;dist=0;puntos=0;fichas=0;obst=[];monedas=[];parts=[];sigObst=520;sigMon=300;temblor=0;nuevoRecord=false;vidas=3;inv=0;
   jug={x:96,y:SUELO,vy:0,saltos:0,anim:0};
@@ -986,6 +1014,7 @@ function bucle(ahora){
     else texto('RÉCORD: '+record,W/2,176,26,'#1ff2ff','center');
     if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA VOLVER A JUGAR',W/2,226,26,'#ffd23f','center');
   }
+  if((estado==='fin'||estado==='victoria')&&avisoRanking)texto(avisoRanking,W/2,H-14,W<600?18:22,'#ffd23f','center');
   requestAnimationFrame(bucle);
 }
 function fin(gana){
@@ -997,7 +1026,8 @@ function fin(gana){
   muestraCompartir();
   sumaAlMonedero(fichaPartida);
   if(famaOK&&fichaPartida&&puntos>0&&entraEnTop(puntos)){
-    ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida,modo:modo};fichaPartida=null;setTimeout(abreGuardar,600);
+    ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida,modo:modo};fichaPartida=null;
+    var yaNombre=cuentaSinNombre?'':nombreGuardado();if(yaNombre)enviaRanking(yaNombre,false);else setTimeout(abreGuardar,600);
   }
 }
 document.addEventListener('visibilitychange',function(){ultimo=performance.now()});
