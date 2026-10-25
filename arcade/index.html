@@ -98,7 +98,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 <body>
 <nav class="top">
   <a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a>
-  <a href="/">‹ PORTADA</a>
+  <a href="/cuenta/">👤 MI CUENTA</a>
 </nav>
 <main>
   <h1>TROLLACO RUN</h1>
@@ -144,7 +144,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div><b>💫 MODO HISTORIA</b><span>Tienes 3 vidas. Cae encima de los zombis para dejarlos KO con estrellitas y pajaritos: +2 fichas.</span></div>
     <div><b>⚠ CUIDADO</b><span>Salta las cajas y los pinchos de lag. Los drones vuelan bajo: si saltas cuando pasan, te pillan.</span></div>
   </div>
-  <p class="mas"><a href="/gta-6/">¿Te has cansado? Lee la guía de GTA VI ›</a></p>
+  <p class="mas"><a href="/cuenta/">👤 Mi cuenta: todas tus estadísticas ›</a><br><a href="/gta-6/">¿Te has cansado? Lee la guía de GTA VI ›</a></p>
 </main>
 <footer>
   <a href="/">PORTADA</a><a href="/gta-6/">GUÍA GTA VI</a><a href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">TWITCH</a><br><br>
@@ -235,16 +235,24 @@ cargaFama();
 // ---------- La Porra Trollaca: las fichas del juego van al monedero ----------
 var cuentaPorra=null;try{cuentaPorra=JSON.parse(localStorage.getItem('porraCuenta')||'null')}catch(e){}
 pintaJugador();
+// con cuenta, los capítulos superados se recuperan en cualquier dispositivo
+if(cuentaPorra&&cuentaPorra.nombre){
+  fetch('/api/porra.php?accion=yo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cuentaPorra)})
+  .then(function(r){return r.json()}).then(function(j){
+    if(j.ok&&j.capitulos>progreso){progreso=j.capitulos;try{localStorage.setItem('trollacoHistoria',String(progreso))}catch(e){}
+      pintaCapitulos();if(estado==='menu'&&modo!=='run')cambiaModo(capituloActual())}
+  }).catch(function(){});
+}
 var mPorra=document.getElementById('monedero');
 function pintaMonedero(t){if(mPorra)mPorra.innerHTML=t}
 if(cuentaPorra&&cuentaPorra.nombre){pintaMonedero('🪙 Las fichas que cojas irán al monedero de <b>'+cuentaPorra.nombre.replace(/[<>&]/g,'')+'</b> en <a href="/porra/">La Porra Trollaca</a>.')}
-else{pintaMonedero('🪙 ¿Sabías que las fichas valen para <a href="/porra/">La Porra Trollaca</a>? Crea tu cuenta y no pierdas ni una.')}
-function sumaAlMonedero(ficha){
-  if(!cuentaPorra||!ficha||fichas<1)return;
+else{pintaMonedero('🪙 ¿Sabías que las fichas valen para <a href="/porra/">La Porra Trollaca</a>? <a href="/cuenta/">Crea tu cuenta</a> y no pierdas ni una.')}
+function sumaAlMonedero(ficha,gana){
+  if(!cuentaPorra||!ficha||puntos<1)return;
   fetch('/api/porra.php?accion=arcade',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({nombre:cuentaPorra.nombre,codigo:cuentaPorra.codigo,ficha:ficha,puntos:puntos,fichas:fichas})})
+    body:JSON.stringify({nombre:cuentaPorra.nombre,codigo:cuentaPorra.codigo,ficha:ficha,puntos:puntos,fichas:fichas,modo:modo,gana:!!gana})})
   .then(function(r){return r.json()}).then(function(j){
-    if(j.ok)pintaMonedero('🪙 <b>+'+j.sumadas+' fichas</b> a tu monedero. Ya tienes <b>'+j.fichas+'</b>. <a href="/porra/">Ir a La Porra ›</a>');
+    if(j.ok)pintaMonedero((j.sumadas?'🪙 <b>+'+j.sumadas+' fichas</b> a tu monedero. Ya tienes <b>'+j.fichas+'</b>. ':'🕹️ Partida guardada en tu cuenta. ')+'<a href="/cuenta/">Ver mis estadísticas ›</a>');
     else if(j.mensaje)pintaMonedero('🪙 '+j.mensaje.replace(/[<>&]/g,''));
   }).catch(function(){});
 }
@@ -1024,7 +1032,7 @@ function fin(gana){
   else{temblor=.25;pitido(400,60,.45,'sawtooth',.1)}
   if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
   muestraCompartir();
-  sumaAlMonedero(fichaPartida);
+  sumaAlMonedero(fichaPartida,gana);
   if(famaOK&&fichaPartida&&puntos>0&&entraEnTop(puntos)){
     ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida,modo:modo};fichaPartida=null;
     var yaNombre=cuentaSinNombre?'':nombreGuardado();if(yaNombre)enviaRanking(yaNombre,false);else setTimeout(abreGuardar,600);

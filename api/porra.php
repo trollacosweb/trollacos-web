@@ -8,10 +8,12 @@
  *   POST ?accion=apostar    {nombre, codigo, partido, tipo: "1x2"|"exacto", seleccion, cantidad}
  *   POST ?accion=arcade     {nombre, codigo, ficha, puntos, fichas}  -> suma las fichas de una partida
  *   POST ?accion=cancelar   {nombre, codigo, id}          -> anula un pronóstico pendiente y devuelve las fichas
+ *   POST ?accion=perfil     {nombre, codigo}              -> todas las estadísticas del jugador (cuenta)
  *   GET  ?accion=ranking                                  -> los 10 con más fichas
  *   GET  ?accion=partidos                                 -> jornada con cuotas (lee partidos.json)
  */
 require __DIR__ . '/comun.php';
+require __DIR__ . '/arcade_lib.php';
 
 const BONO_BIENVENIDA = 10;   // fichas al crear la cuenta
 const BONO_JORNADA    = 10;   // fichas por participar en cada jornada (al hacer el primer pronóstico)
@@ -102,7 +104,7 @@ function resumen($d, $nombre) {
     usort($mias, function ($a, $b) { return $b['ts'] <=> $a['ts']; });
     $mias = array_map(function ($a) { return ['id' => $a['id'], 'partido' => $a['p'], 'jornada' => $a['j'], 'tipo' => $a['t'], 'seleccion' => $a['s'],
         'cantidad' => $a['c'], 'cuota' => $a['q'], 'estado' => $a['e'], 'premio' => $a['g'] ?? 0]; }, array_slice($mias, 0, 40));
-    return ['nombre' => $nombre, 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0, 'jornadas' => $u['jb'] ?? [], 'pronosticos' => $mias];
+    return ['nombre' => $nombre, 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0, 'jornadas' => $u['jb'] ?? [], 'capitulos' => $u['caps'] ?? 0, 'pronosticos' => $mias];
 }
 
 $accion = $_GET['accion'] ?? '';
@@ -155,9 +157,41 @@ if ($accion === 'arcade' && $post) {
     if (!$nombre) { cerrar($d, $fl); responder(['error' => 'login', 'mensaje' => $err], 401); }
     if (in_array($id, $d['arcade'], true)) { cerrar($d, $fl, false); responder(['error' => 'ficha', 'mensaje' => 'Esas fichas ya se sumaron.'], 400); }
     $d['arcade'][] = $id; $d['arcade'] = array_slice($d['arcade'], -5000);
-    $d['usuarios'][$nombre]['f'] += $fichas;
+    $u = &$d['usuarios'][$nombre];
+    $u['f'] += $fichas;
+    // estadísticas para la cuenta
+    $m = (string)($in['modo'] ?? 'run'); if (!isset($MODOS[$m])) { $m = 'run'; }
+    $u['pa'] = ($u['pa'] ?? 0) + 1; $u['fa'] = ($u['fa'] ?? 0) + $fichas;
+    $u['pm'][$m] = ($u['pm'][$m] ?? 0) + 1;
+    $dur = time() - (int)explode('.', (string)$in['ficha'])[0];
+    if (!empty($in['gana']) && preg_match('/^c([1-4])$/', $m, $mm) && $dur >= 35) { $u['caps'] = max($u['caps'] ?? 0, (int)$mm[1]); }
+    unset($u);
     cerrar($d, $fl);
-    responder(['ok' => true, 'sumadas' => $fichas, 'fichas' => $d['usuarios'][$nombre]['f']]);
+    responder(['ok' => true, 'sumadas' => $fichas, 'fichas' => $d['usuarios'][$nombre]['f'], 'capitulos' => $d['usuarios'][$nombre]['caps'] ?? 0]);
+}
+
+if ($accion === 'perfil' && $post) {
+    $in = entrada();
+    [$d, $fl] = abrir();
+    [$nombre, $err] = usuario($d, $in);
+    cerrar($d, $fl);
+    if (!$nombre) { responder(['error' => 'login', 'mensaje' => $err], 401); }
+    $u = $d['usuarios'][$nombre];
+    $st = ['total' => 0, 'ganada' => 0, 'perdida' => 0, 'pendiente' => 0, 'devuelta' => 0, 'apostadas' => 0, 'mayor' => 0, 'exactos' => 0];
+    foreach ($d['apuestas'] as $a) {
+        if ($a['u'] !== $nombre) { continue; }
+        $st['total']++; $st[$a['e']] = ($st[$a['e']] ?? 0) + 1; $st['apostadas'] += $a['c'];
+        if ($a['e'] === 'ganada') { $st['mayor'] = max($st['mayor'], $a['g'] ?? 0); if ($a['t'] === 'exacto') { $st['exactos']++; } }
+    }
+    // puesto en el ranking de fichas
+    $puestoF = 1; foreach ($d['usuarios'] as $o) { if ($o['f'] > $u['f']) { $puestoF++; } }
+    $arcade = [];
+    foreach ($MODOS as $m => $f) { $arcade[$m] = marca_jugador($m, $nombre); }
+    responder(['ok' => true] + resumen($d, $nombre) + [
+        'alta' => date('Y-m-d', $u['c'] ?? time()), 'puesto_fichas' => $puestoF, 'jugadores' => count($d['usuarios']),
+        'porra' => $st, 'partidas' => $u['pa'] ?? 0, 'fichas_arcade' => $u['fa'] ?? 0, 'partidas_modo' => $u['pm'] ?? (object)[],
+        'arcade' => $arcade,
+    ]);
 }
 
 if ($accion === 'apostar' && $post) {
