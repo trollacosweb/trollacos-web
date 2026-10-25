@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-25T11:50:19Z",
+ "actualizado": "2026-10-25T14:42:49Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 10,
@@ -583,7 +583,7 @@
    "id": "2506261",
    "j": 10,
    "fecha": "2026-10-25T13:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Athletic Bilbao",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
@@ -594,8 +594,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
     "tla": "GET"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 3,
+   "gv": 0,
    "cuotas": {
     "1": 2.15,
     "X": 3.65,
