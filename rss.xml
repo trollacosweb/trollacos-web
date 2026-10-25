@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Sun, 25 Oct 2026 12:41:51 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 12:50:09 +0100</lastBuildDate>
     <item>
       <title>GTA 6 esconde una referencia al primer juego de la saga que podría dar pistas de la conexión entre Jason y Lucía</title>
       <link>https://news.google.com/rss/articles/CBMi8wFBVV95cUxQc3E5RnppLUdSekxUSlNDcm9Wc293YmdNZzJDZ3BnZU9aVmI4SXZtRTdCemlEdEIxcElfQV8yaFk0SlBVNy05T0JVaThRSGVwS0dHYk1wbVN4Q0pxY3F1VlhrRzJLM0Z0a0cyUjBQcEo5OVotOXBIemNiWlNZcWdOaHR1ZkQxU0pMT2xIY3AtLTZldXJzVzR3TkJobHhPTlI3MFF5N09KM3NxOG1hTUhZb3hibHR0NzAzeHZHZk8xLXV4NnFIWkNtUER2S3RkTk1ydG5jbExHWExJa19nREo4aDR5bDE4YUJZeUNCYThJbDFkN03SAfgBQVVfeXFMTTZnNU9HcDdrMWR1X2ttVmxZN2dQcmVDZzNRUGdPQkJfT3QxLTdkZjBQY2wyb3UxeDBmN1IzbmdOZ2VLR1FjM25zc2JDb1hNYVY2dml5Y0Q0b3VfalJFa3NJWVltMzZ6UzNJRU5fa0dXNmNfcE5ocWI5ejFTU2NqRHpDMExQNzNXZm9qS0hCYWgwRVhuYVdZdWZUUkwyNVNXcGNrWGgtUk1Bajdoc2JZMHJWeDNQX0tYbERHXzg3enN6VzJKbVhCY1ZfNXpuRHBJTHBVbFpmRFI3RTZoX2t2V3laM05nYklSV2ZRZE5KRTc5WjRadDJPWjk?oc=5</link>
@@ -100,6 +100,14 @@
       <enclosure url="https://media.elperiodico.digital/uploads/2026/10/Ibai-Real-Zaragoza-fytbol.jpg.webp" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>Serie A en directo: Inter-Fiorentina, Lecce-Juventus, Udinese-Milan y más</title>
+      <link>https://onefootball.com/es/noticias/serie-a-en-directo-inter-fiorentina-lecce-juventus-udinese-milan-y-mas-43669288</link>
+      <guid isPermaLink="false">https://onefootball.com/es/noticias/serie-a-en-directo-inter-fiorentina-lecce-juventus-udinese-milan-y-mas-43669288</guid>
+      <pubDate>Sun, 25 Oct 2026 11:44:29 +0000</pubDate>
+      <description>OneFootball</description>
+      <enclosure url="https://photobooth-api.onefootball.com/api/screenshot/%2Fv2%2Fphotobooth%2Fcms%2Fes%2F43669288%3Fdate=2026-10-25" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Alineaciones R. Sociedad vs Levante, LALIGA EA Sports 2026/2027</title>
       <link>https://as.com/resultados/futbol/primera/2026_2027/directo/regular_a_10_6a4496c62a79854/alineaciones/</link>
       <guid isPermaLink="false">https://as.com/resultados/futbol/primera/2026_2027/directo/regular_a_10_6a4496c62a79854/alineaciones/</guid>
@@ -122,14 +130,6 @@
       <pubDate>Sun, 25 Oct 2026 10:31:43 +0000</pubDate>
       <description>OneFootball</description>
       <enclosure url="https://photobooth-api.onefootball.com/api/screenshot/%2Fv2%2Fphotobooth%2Fcms%2Fes%2F43668980%3Fdate=2026-10-25" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>«¡Ahora soy alemán!»: la estrella emergente de la Bundesliga se decanta por la DFB</title>
-      <link>https://www.goal.com/es/noticias/ahora-soy-aleman-la-estrella-emergente-de-la-bundesliga-se-decanta-por-la-dfb/blt8a90994e0c114ca4</link>
-      <guid isPermaLink="false">https://www.goal.com/es/noticias/ahora-soy-aleman-la-estrella-emergente-de-la-bundesliga-se-decanta-por-la-dfb/blt8a90994e0c114ca4</guid>
-      <pubDate>Sun, 25 Oct 2026 10:19:00 +0000</pubDate>
-      <description>Goal.com</description>
-      <enclosure url="https://assets.goal.com/images/v3/getty-2298687689/crop/MM5DINBVGM5DENJQGU5G433XMU5DAORSGMZA====/GettyImages-2298687689.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>La razón por la que Brad Pitt estuvo a punto de abandonar &#x27;Leyendas de pasión&#x27;: &quot;Cuanto más intentaba que se abriera, más se resistía&quot;</title>
@@ -156,12 +156,12 @@
       <enclosure url="https://es.web.img2.acsta.net/img/10/27/1027817aecae6a0b715105b47e9b642e.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
-      <title>Hace 41 años, nadie entendía que el título de esta película de Star Wars en realidad estaba revelando el final</title>
-      <link>https://www.sensacine.com/noticias/cine/noticia-1000228443/</link>
-      <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000228443/</guid>
-      <pubDate>Sun, 25 Oct 2026 07:30:00 +0000</pubDate>
-      <description>SensaCine. George Lucas sabía perfectamente cómo jugar con las expectativas del público de la época</description>
-      <enclosure url="https://es.web.img2.acsta.net/img/94/44/94448ec22564db56e4428b834a6299cc.jpg" type="image/jpeg" length="0"/>
+      <title>Hace más de medio siglo que logró su primer papel gracias a un &quot;enchufe&quot; en &#x27;La casa de la pradera&#x27;. Ahora tiene tres premios Oscar</title>
+      <link>https://www.sensacine.com/noticias/cine/noticia-1000229004/</link>
+      <guid isPermaLink="false">https://www.sensacine.com/noticias/cine/noticia-1000229004/</guid>
+      <pubDate>Sat, 24 Oct 2026 20:00:00 +0000</pubDate>
+      <description>SensaCine. Es uno de los actores más conocidos del mundo, pero ¿habría llegado a tanto sin aquella primera oportunidad?</description>
+      <enclosure url="https://es.web.img3.acsta.net/img/36/a3/36a3879304401ceeb748ab4568c23b4f.jpg" type="image/jpeg" length="0"/>
     </item>
   </channel>
 </rss>
