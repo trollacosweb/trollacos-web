@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'})()</script>
 <title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
-<meta name="description" content="Corre con el Trollaco por la rejilla synthwave, salta el lag, esquiva los drones y recoge fichas. Juego arcade gratis en el navegador, sin descargas.">
+<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (el primero, la noche Trolloween entre zombis y calabazas). Juego arcade gratis en el navegador.">
 <link rel="canonical" href="https://trollacos.com/arcade/">
 <meta property="og:title" content="Trollaco Run: el arcade de Trollacos">
 <meta property="og:description" content="¿Cuántas fichas aguantas? Juego gratis en el navegador.">
@@ -54,6 +54,15 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .guardar button{font-family:'VT323',monospace;font-size:22px;margin:0 4px;padding:5px 14px;border-radius:6px;cursor:pointer;border:2px solid var(--pink);background:var(--pink);color:#07021a}
 .guardar button+button{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
 .guardar p{font-size:16px;color:#ff8b8b;min-height:1.2em}
+.modos{display:flex;gap:8px;margin:0 0 12px}
+.modos button{flex:1;font-family:'VT323',monospace;font-size:22px;padding:6px 8px;border-radius:8px;border:2px solid rgba(31,242,255,.4);background:none;color:#fff;cursor:pointer}
+.modos button.on{background:rgba(255,43,214,.25);border-color:var(--pink);box-shadow:0 0 14px rgba(255,43,214,.4)}
+.capitulos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
+.capitulos[hidden]{display:none}
+.cap{border:1px solid rgba(255,157,60,.5);border-radius:8px;padding:8px 10px;font-size:15px;color:var(--muted);background:rgba(255,122,26,.06)}
+.cap b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:21px;color:#ffb347}
+.cap.cerrado{opacity:.5;border-color:rgba(255,255,255,.2);background:none}.cap.cerrado b{color:#fff}
+.cap.hecho b::after{content:' ✔';color:#9dffb5}
 .monedero{margin:14px 0 0;text-align:center;font-family:'VT323',monospace;font-size:22px;color:#ffd23f}.monedero a{color:var(--cyan)}
 .fama{margin-top:22px;border:2px solid var(--yellow);border-radius:12px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,210,63,.08),rgba(255,43,214,.05))}
 .fama h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(24px,5vw,32px);color:var(--yellow);text-align:center;margin-bottom:10px;text-shadow:0 0 12px rgba(255,210,63,.5)}
@@ -83,6 +92,10 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 <main>
   <h1>TROLLACO RUN</h1>
   <p class="sub">&gt; INSERT COIN · PULSA PARA EMPEZAR_</p>
+  <div class="modos" role="tablist">
+    <button type="button" class="on" data-modo="run">🏃 CARRERA INFINITA</button>
+    <button type="button" data-modo="c1">📖 MODO HISTORIA</button>
+  </div>
   <div class="maquina">
     <canvas id="juego" width="800" height="320" aria-label="Juego Trollaco Run. Pulsa o toca para saltar."></canvas>
     <form class="guardar" id="guardar" hidden>
@@ -97,9 +110,15 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
       <button type="button" id="pantalla">⛶ PANTALLA COMPLETA</button>
     </div>
   </div>
+  <div class="capitulos" id="capitulos" hidden>
+    <div class="cap" id="cap1"><b>1 · La noche Trolloween</b>Cementerio, zombis y calabazas. Llega a la mansión encantada.</div>
+    <div class="cap cerrado"><b>🔒 2 · La taberna pirata</b>Rejas, camareros y bandejas voladoras. Próximamente.</div>
+    <div class="cap cerrado"><b>🔒 3 · La discoteca</b>Luces de neón y malotes en la pista. Próximamente.</div>
+    <div class="cap cerrado"><b>🔒 4 · El edificio abandonado</b>Pasillos oscuros y algo que no debería estar ahí.</div>
+  </div>
   <p class="monedero" id="monedero"></p>
   <section class="fama" id="fama">
-    <h2>🏆 SALÓN DE LA FAMA</h2>
+    <h2 id="fama-tit">🏆 SALÓN DE LA FAMA</h2>
     <ol id="fama-lista"><li class="vacio">Cargando...</li></ol>
     <p class="fama-nota">Los 10 mejores de todos los que juegan en trollacos.com. Nombres ofensivos no permitidos.</p>
   </section>
@@ -110,6 +129,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <div class="como">
     <div><b>⬆ SALTAR</b><span>Toca la pantalla, haz clic o pulsa ESPACIO. En el aire puedes saltar otra vez.</span></div>
     <div><b>🪙 FICHAS</b><span>Cada ficha suma 10 puntos. Cuanto más corres, más rápido va todo.</span></div>
+    <div><b>💫 MODO HISTORIA</b><span>Tienes 3 vidas. Cae encima de los zombis para dejarlos KO con estrellitas y pajaritos: +2 fichas.</span></div>
     <div><b>⚠ CUIDADO</b><span>Salta las cajas y los pinchos de lag. Los drones vuelan bajo: si saltas cuando pasan, te pillan.</span></div>
   </div>
   <p class="mas"><a href="/gta-6/">¿Te has cansado? Lee la guía de GTA VI ›</a></p>
@@ -128,6 +148,7 @@ cx.imageSmoothingEnabled=false;
 document.querySelector('.maquina').style.setProperty('--ar',String(W/H));
 
 // ---------- marcador global ----------
+var modo='run';
 var API='/api/marcadores.php',famaOK=false,famaTop=[],fichaPartida=null,ultimoGuardado=null;
 var fForm=document.getElementById('guardar'),fNombre=document.getElementById('g-nombre'),fMsg=document.getElementById('g-msg');
 try{fNombre.value=(localStorage.getItem('trollacoRunNombre')||'').replace(/\s+/g,'').slice(0,5)}catch(e){}
@@ -142,7 +163,7 @@ function pintaFama(lista,mio){
   });
 }
 function cargaFama(){
-  fetch(API+'?accion=lista',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
+  fetch(API+'?accion=lista&modo='+modo,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
     if(!j||!j.top)throw 0;famaOK=true;famaTop=j.top;pintaFama(famaTop);
   }).catch(function(){famaOK=false;document.getElementById('fama-lista').innerHTML='<li class="vacio">El ranking no está disponible ahora mismo.</li>'});
 }
@@ -152,8 +173,9 @@ function pideFicha(){
 }
 function entraEnTop(p){return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
 function abreGuardar(){
+  if(!ultimoGuardado||ultimoGuardado.modo!==modo||estado==='menu'||estado==='juego')return;
   document.getElementById('g-tit').textContent='¡ENTRAS EN EL TOP 10!';
-  document.getElementById('g-pts').textContent=puntos+' PUNTOS · '+fichas+' FICHAS';
+  document.getElementById('g-pts').textContent=ultimoGuardado.puntos+' PUNTOS · '+ultimoGuardado.fichas+' FICHAS';
   fMsg.textContent='';fForm.hidden=false;setTimeout(function(){fNombre.focus()},50);
 }
 function cierraGuardar(){fForm.hidden=true;fNombre.blur()}
@@ -163,7 +185,7 @@ fForm.addEventListener('submit',function(e){
   var nom=fNombre.value.replace(/\s+/g,'').toUpperCase();
   if(nom.length<2||nom.length>5){fMsg.style.color='#ff8b8b';fMsg.textContent='De 2 a 5 letras o números, sin espacios.';return}
   fMsg.style.color='#a59dd0';fMsg.textContent='Guardando...';
-  fetch(API+'?accion=enviar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:ultimoGuardado.puntos,fichas:ultimoGuardado.fichas,ficha:ultimoGuardado.ficha})})
+  fetch(API+'?accion=enviar&modo='+ultimoGuardado.modo,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:ultimoGuardado.puntos,fichas:ultimoGuardado.fichas,ficha:ultimoGuardado.ficha})})
   .then(function(r){return r.json()}).then(function(j){
     if(j.ok){try{localStorage.setItem('trollacoRunNombre',nom)}catch(e){}
       famaTop=j.top;pintaFama(famaTop,j.puesto);cierraGuardar();
@@ -191,12 +213,19 @@ function sumaAlMonedero(ficha){
 
 // ---------- sprites ----------
 var spr=new Image(); spr.src=HW?'/img/trollaco-hw.png':'/img/trollaco.png';
+var sprHW=new Image(); sprHW.src='/img/trollaco-hw.png';
 var murc=new Image(); murc.src='/img/murcielago.png';
 var calab=new Image(); calab.src='/img/calabaza.png';
 
 // ---------- record (solo en este navegador) ----------
-var record=0; try{record=parseInt(localStorage.getItem('trollacoRunRecord')||'0',10)||0}catch(e){}
-function guardarRecord(){try{localStorage.setItem('trollacoRunRecord',String(record))}catch(e){}}
+var record=0;
+function claveRecord(){return modo==='run'?'trollacoRunRecord':'trollacoRecord_'+modo}
+function cargaRecord(){record=0;try{record=parseInt(localStorage.getItem(claveRecord())||'0',10)||0}catch(e){}}
+function guardarRecord(){try{localStorage.setItem(claveRecord(),String(record))}catch(e){}}
+cargaRecord();
+var progreso=0;try{progreso=parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0}catch(e){}
+function pintaCapitulos(){document.getElementById('cap1').classList.toggle('hecho',progreso>=1)}
+pintaCapitulos();
 
 // ---------- sonido (8 bits con WebAudio) ----------
 var ac=null,mudo=false;
@@ -215,9 +244,10 @@ function pitido(f1,f2,dur,tipo,vol){
 }
 
 // ---------- estado ----------
-var estado='menu',t0=0,vel,dist,puntos,fichas,obst,monedas,parts,sigObst,sigMon,jug,temblor,nuevoRecord;
+var estado='menu',t0=0,vel,dist,puntos,fichas,obst,monedas,parts,sigObst,sigMon,jug,temblor,nuevoRecord,vidas=3,inv=0;
+var META=30000; // distancia del capítulo 1 hasta la mansión
 function reiniciar(){
-  vel=340;dist=0;puntos=0;fichas=0;obst=[];monedas=[];parts=[];sigObst=520;sigMon=300;temblor=0;nuevoRecord=false;
+  vel=modo==='run'?340:320;dist=0;puntos=0;fichas=0;obst=[];monedas=[];parts=[];sigObst=520;sigMon=300;temblor=0;nuevoRecord=false;vidas=3;inv=0;
   jug={x:96,y:SUELO,vy:0,saltos:0,anim:0};
 }
 reiniciar();
@@ -226,7 +256,7 @@ reiniciar();
 function accion(){
   if(!fForm.hidden)return;
   if(estado==='menu'){estado='juego';reiniciar();pideFicha();pitido(440,880,.15);return}
-  if(estado==='fin'){ if(performance.now()-t0>500){estado='juego';reiniciar();pideFicha();ocultaCompartir();pitido(440,880,.15)} return}
+  if(estado==='fin'||estado==='victoria'){ if(performance.now()-t0>500){estado='juego';reiniciar();pideFicha();ocultaCompartir();pitido(440,880,.15)} return}
   if(jug.saltos<2){ jug.vy=jug.saltos===0?-760:-640; jug.saltos++; pitido(jug.saltos===1?300:420,jug.saltos===1?700:900,.12) }
 }
 cv.addEventListener('pointerdown',function(e){e.preventDefault();accion()});
@@ -242,9 +272,19 @@ document.getElementById('pantalla').onclick=function(){
   try{ if(document.fullscreenElement)document.exitFullscreen(); else (m.requestFullscreen||m.webkitRequestFullscreen).call(m) }catch(e){}
 };
 
+// ---------- selector de modo ----------
+document.querySelectorAll('.modos button').forEach(function(b){b.onclick=function(){
+  if(b.dataset.modo===modo)return;
+  modo=b.dataset.modo;
+  document.querySelectorAll('.modos button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.getElementById('capitulos').hidden=modo==='run';
+  document.getElementById('fama-tit').textContent=modo==='run'?'🏆 SALÓN DE LA FAMA':'🏆 SALÓN DE LA FAMA · CAPÍTULO 1';
+  ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();
+}});
+
 // ---------- compartir ----------
 function muestraCompartir(){
-  var txt=encodeURIComponent('He hecho '+puntos+' puntos en TROLLACO RUN 🕹️ ¿Me superas? https://trollacos.com/arcade/');
+  var txt=encodeURIComponent((modo==='run'?'He hecho '+puntos+' puntos en TROLLACO RUN':(estado==='victoria'?'¡He llegado a la mansión encantada':'Me han pillado los zombis')+' en el Capítulo 1 de TROLLACO RUN con '+puntos+' puntos')+' 🕹️ ¿Me superas? https://trollacos.com/arcade/');
   document.getElementById('sh-wa').href='https://wa.me/?text='+txt;
   document.getElementById('sh-x').href='https://twitter.com/intent/tweet?text='+txt;
   document.getElementById('compartir').classList.add('ver');
@@ -348,8 +388,9 @@ function trollaco(){
   var alto=54*s, top=yb-alto;
   var enAire=jug.y<SUELO-0.5;
   var bote=enAire?0:(Math.floor(jug.anim)%2?-2:0);
-  if(spr.complete&&spr.naturalWidth){
-    cx.drawImage(spr,0,0,32,40,x,top+bote,32*s,40*s);
+  var im=modo==='c1'?sprHW:spr;
+  if(im.complete&&im.naturalWidth){
+    cx.drawImage(im,0,0,32,40,x,top+bote,32*s,40*s);
   }
   // piernas animadas (vaqueros + zapatillas)
   var fase=Math.floor(jug.anim)%2;
@@ -405,30 +446,133 @@ function hud(){
   texto('RÉCORD '+record,W-14,28,24,'#1ff2ff','right');
 }
 
+
+// ================= MODO HISTORIA · CAPÍTULO 1: LA NOCHE TROLLOWEEN =================
+var CEM=(function(){var r=azar(99),x=0,c=[];while(x<1600){var t=r();c.push({x:x,tipo:t<.45?'lapida':t<.68?'arbol':t<.84?'cruz':'verja',h:Math.round(16+r()*20),w:Math.round(14+r()*10)});x+=Math.round(45+r()*95)}return{c:c,largo:x}})();
+var COL=(function(){var r=azar(5),p=[],x=0;while(x<1400){p.push([x,Math.round(36+r()*55)]);x+=Math.round(60+r()*80)}p.push([x,p[0][1]]);return{p:p,largo:x}})();
+function decorado(c,x){
+  var y=SUELO;
+  if(c.tipo==='lapida'){rect(x,y-c.h,c.w,c.h,'#2a1f3a');cx.fillStyle='#2a1f3a';cx.beginPath();cx.arc(x+c.w/2,y-c.h,c.w/2,Math.PI,0);cx.fill();rect(x+c.w/2-4,y-c.h+4,8,2,'#4a3d5e')}
+  else if(c.tipo==='cruz'){rect(x+c.w/2-2,y-c.h-8,4,c.h+8,'#2a1f3a');rect(x+c.w/2-7,y-c.h-2,14,4,'#2a1f3a')}
+  else if(c.tipo==='arbol'){cx.strokeStyle='#14061c';cx.lineWidth=5;cx.beginPath();cx.moveTo(x,y);cx.lineTo(x+3,y-70);cx.stroke();cx.lineWidth=3;
+    [[-22,-92],[18,-98],[-14,-58],[20,-66]].forEach(function(r,i){cx.beginPath();cx.moveTo(x+2,y-50-i*6);cx.lineTo(x+r[0],y+r[1]);cx.stroke()})}
+  else {cx.strokeStyle='#14061c';cx.lineWidth=2;for(var i=0;i<6;i++){cx.beginPath();cx.moveTo(x+i*7,y);cx.lineTo(x+i*7,y-30);cx.stroke();rect(x+i*7-1,y-33,3,3,'#14061c')}rect(x,y-22,36,2,'#14061c')}
+}
+function mansion(tt){
+  var mx=W*.56+(META-dist)*.12; if(mx>W+10)return; var b=SUELO;
+  cx.fillStyle='#10031a';cx.fillRect(mx,b-125,140,125);cx.fillRect(mx+10,b-165,30,40);cx.fillRect(mx+100,b-175,30,50);
+  cx.beginPath();cx.moveTo(mx+4,b-165);cx.lineTo(mx+25,b-198);cx.lineTo(mx+46,b-165);cx.fill();
+  cx.beginPath();cx.moveTo(mx+94,b-175);cx.lineTo(mx+115,b-212);cx.lineTo(mx+136,b-175);cx.fill();
+  cx.beginPath();cx.moveTo(mx-8,b-125);cx.lineTo(mx+70,b-160);cx.lineTo(mx+148,b-125);cx.fill();
+  var parp=Math.floor(tt*1.5)%3;
+  for(var i=0;i<4;i++)for(var j=0;j<2;j++)rect(mx+16+i*30,b-108+j*36,12,16,(i+j+parp)%3?'#ffb347':'#3a1a08');
+  rect(mx+60,b-38,20,38,'#2a0c10');
+}
+function fondoC1(tt){
+  var g=cx.createLinearGradient(0,0,0,SUELO);g.addColorStop(0,'#0b0420');g.addColorStop(.55,'#2b0b3a');g.addColorStop(1,'#6a1f1a');
+  cx.fillStyle=g;cx.fillRect(0,0,W,SUELO);
+  cx.fillStyle='rgba(255,255,255,.6)';for(var i=0;i<30;i++){var sx=(i*151.3-dist*.01)%W;if(sx<0)sx+=W;cx.fillRect(sx,(i*47)%120,1,1)}
+  var lx=W*.74,ly=74;cx.fillStyle='rgba(255,180,80,.16)';cx.beginPath();cx.arc(lx,ly,64,0,7);cx.fill();
+  cx.fillStyle='#ffd98a';cx.beginPath();cx.arc(lx,ly,44,0,7);cx.fill();
+  cx.fillStyle='#ecc06c';[[-14,-10,9],[12,8,7],[-4,17,5],[17,-14,4]].forEach(function(c){cx.beginPath();cx.arc(lx+c[0],ly+c[1],c[2],0,7);cx.fill()});
+  cx.fillStyle='#0b0420';
+  for(var b=0;b<4;b++){var bx=(W+60)-((tt*42+b*230)%(W+120)),by=46+b*22+Math.sin(tt*3+b)*8,al=Math.floor(tt*8+b)%2?4:-3;
+    cx.beginPath();cx.moveTo(bx-9,by+al);cx.lineTo(bx-3,by);cx.lineTo(bx,by+3);cx.lineTo(bx+3,by);cx.lineTo(bx+9,by+al);cx.lineTo(bx+3,by+3);cx.lineTo(bx,by+6);cx.lineTo(bx-3,by+3);cx.fill()}
+  var off=(dist*.1)%COL.largo;cx.fillStyle='#1a0726';
+  for(var k=0;k<2;k++){var bx0=-off+k*COL.largo;cx.beginPath();cx.moveTo(bx0,SUELO);COL.p.forEach(function(q){cx.lineTo(q[0]+bx0,SUELO-q[1])});cx.lineTo(COL.largo+bx0,SUELO);cx.fill()}
+  mansion(tt);
+  var o2=(dist*.35)%CEM.largo;
+  for(var k2=0;k2<2;k2++)CEM.c.forEach(function(c){var x=c.x-o2+k2*CEM.largo;if(x<-60||x>W+60)return;decorado(c,x)});
+  cx.fillStyle='rgba(200,170,255,.07)';for(var n=0;n<3;n++){var nx=W-((dist*.5+n*300)%(W+400));cx.beginPath();cx.ellipse(nx,SUELO-8,220,18,0,0,7);cx.fill()}
+  rect(0,SUELO,W,H-SUELO,'#170a12');rect(0,SUELO,W,4,'#2f5a2a');
+  var o3=dist%24;for(var h=-1;h<W/24+1;h++){rect(h*24-o3+4,SUELO-3,2,3,'#3d7a34');rect(h*24-o3+12,SUELO-2,2,2,'#3d7a34')}
+  for(var p=0;p<W/40+1;p++)rect(p*40-(dist%40)+8,SUELO+16+(p%3)*10,6,3,'#2a1220');
+}
+function verjaFinal(){
+  var gx=jug.x-50+(META-dist); if(gx>W+40)return;
+  rect(gx,SUELO-130,16,130,'#3a2a4a');rect(gx+124,SUELO-130,16,130,'#3a2a4a');rect(gx-2,SUELO-136,20,8,'#4a3a5a');rect(gx+122,SUELO-136,20,8,'#4a3a5a');
+  cx.strokeStyle='#4a3a5a';cx.lineWidth=4;cx.beginPath();cx.arc(gx+70,SUELO-120,56,Math.PI,0);cx.stroke();
+  cx.lineWidth=2;cx.strokeStyle='#2a1f3a';for(var i=0;i<3;i++){cx.beginPath();cx.moveTo(gx+18+i*8,SUELO);cx.lineTo(gx+22+i*8,SUELO-100);cx.stroke();cx.beginPath();cx.moveTo(gx+122-i*8,SUELO);cx.lineTo(gx+118-i*8,SUELO-100);cx.stroke()}
+  texto('MANSIÓN',gx+70,SUELO-150,24,'#ffb347','center');
+}
+function nuevoObstaculoC1(){
+  if(dist>META-1500){sigObst=1e9;return}
+  var p=dist/META,r=Math.random(),o;
+  if(r<.24)o={tipo:'calabaza',w:34,h:30};
+  else if(r<.40)o={tipo:'lapida',w:30,h:46};
+  else if(r<.70)o={tipo:'zombi',w:28,h:50,andar:25+Math.random()*35};
+  else o={tipo:'murci',w:40,h:22,vuelo:true,alto:(Math.random()<.65?78:150)};
+  o.x=W+20;o.y=o.vuelo?SUELO-o.alto-o.h:SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
+  if(p>.3&&!o.vuelo&&Math.random()<.32){
+    var z=Math.random()<.55;obst.push(z?{tipo:'zombi',w:28,h:50,andar:20,x:W+20+o.w+170+vel*.12,y:SUELO-50,fase:1}:{tipo:'calabaza',w:34,h:30,x:W+20+o.w+150+vel*.12,y:SUELO-30,fase:0});
+  }
+  sigObst=Math.max(230,370+Math.random()*320-p*140)+vel*.22;
+}
+function estrella(x,y){rect(x-2,y-7,4,14,K);rect(x-7,y-2,14,4,K);rect(x-1,y-6,2,12,'#ffd23f');rect(x-6,y-1,12,2,'#ffd23f');rect(x-2,y-2,4,4,'#ffd23f');rect(x-1,y-1,2,2,'#fff')}
+function pajarito(x,y,tt){var al=Math.floor(tt*10)%2?-4:2;rect(x-6,y-3,13,8,K);rect(x-5,y-2,11,6,'#7fd3ff');rect(x+6,y,4,2,'#ffb000');rect(x-7,y-4+al,6,3,'#2f7fc0');rect(x+1,y-5+al,6,3,'#2f7fc0');rect(x+3,y-1,2,2,K)}
+function mareo(x,y,tt,f){for(var i=0;i<4;i++){var a=tt*4+f+i*Math.PI/2,ex=x+Math.cos(a)*24,ey=y-4+Math.sin(a)*7;if(i%2)pajarito(ex,ey,tt);else estrella(ex,ey)}}
+function zombi(o,tt){
+  var x=o.x,ko=o.ko,h=ko?32:o.h,top=SUELO-h,f=Math.floor(tt*6+o.fase)%2;
+  if(!ko){rect(x+6,top+h-14,6,14,'#3a2a5a');rect(x+16,top+h-14,6,14,'#3a2a5a');rect(x+(f?5:15),top+h-3,9,3,K)}
+  rect(x+3,top+15,22,h-15-(ko?0:14),'#6b4a2a');rect(x+3,top+15,22,3,'#4a3018');rect(x+9,top+22,4,4,'#8fae6a');rect(x+17,top+h-(ko?6:20),5,4,'#4a3018');
+  rect(x+4,top,20,16,'#8fae6a');rect(x+4,top,20,3,'#6e8c4e');rect(x+20,top+3,4,5,'#6e8c4e');
+  if(ko){rect(x-8,top+h-6,12,5,'#8fae6a');rect(x+24,top+h-6,12,5,'#8fae6a');
+    cx.strokeStyle=K;cx.lineWidth=2;[[x+7,top+4],[x+15,top+4]].forEach(function(e){cx.beginPath();cx.moveTo(e[0],e[1]);cx.lineTo(e[0]+4,e[1]+4);cx.moveTo(e[0]+4,e[1]);cx.lineTo(e[0],e[1]+4);cx.stroke()});
+    rect(x+9,top+11,8,2,K);mareo(x+14,top-8,tt,o.fase);
+  } else {var br=Math.sin(tt*5+o.fase)*2;rect(x-11,top+19+br,15,5,'#8fae6a');rect(x-11,top+27-br,15,5,'#8fae6a');
+    rect(x+7,top+5,4,4,'#ff3030');rect(x+15,top+5,4,4,'#ff3030');rect(x+8,top+11,10,2,K);rect(x+10,top+11,2,3,'#f5f5fa')}
+}
+function obstaculoC1(o,tt){
+  var x=o.x,y=o.y;
+  if(o.tipo==='calabaza'){if(calab.complete&&calab.naturalWidth)cx.drawImage(calab,x-3,y-4,o.w+6,o.h+6);else{rect(x,y,o.w,o.h,'#ff7a1a');rect(x+o.w/2-2,y-5,4,6,'#2f5a2a')}}
+  else if(o.tipo==='lapida'){rect(x,y+8,o.w,o.h-8,'#5a4d6e');cx.fillStyle='#5a4d6e';cx.beginPath();cx.arc(x+o.w/2,y+9,o.w/2,Math.PI,0);cx.fill();
+    rect(x,y+o.h-4,o.w,4,'#3a2f4a');cx.fillStyle='#2a1f3a';cx.font='bold 9px monospace';cx.fillText('RIP',x+6,y+20);rect(x+20,y+24,2,8,'#3a2f4a');rect(x+18,y+30,2,6,'#3a2f4a')}
+  else if(o.tipo==='zombi')zombi(o,tt);
+  else if(o.tipo==='murci'){var bob=Math.sin(tt*6+o.fase)*5;if(murc.complete&&murc.naturalWidth)cx.drawImage(murc,x-4,y+bob-6,o.w+8,o.h+10);else rect(x,y+bob,o.w,o.h,'#2a0b3a')}
+}
+function hudC1(){
+  texto('CAP. 1 · TROLLOWEEN',14,28,22,'#ffb347');
+  var c='';for(var i=0;i<3;i++)c+=i<vidas?'♥ ':'♡ ';texto(c,14,54,26,'#ff4d6d');
+  var bw=Math.min(240,W*.34),bx=W/2-bw/2+20;rect(bx-1,13,bw+2,10,K);rect(bx,14,bw,8,'#2a0b3a');rect(bx,14,bw*Math.min(1,dist/META),8,'#ff7a1a');
+  texto('META',bx+bw+6,24,18,'#ffb347');
+  texto('🪙 '+fichas,W-14,28,22,'#ffd23f','right');texto(puntos+' PTS',W-14,52,20,'#fff','right');
+}
+
 // ---------- bucle ----------
 var ultimo=performance.now();
 function bucle(ahora){
   var dt=Math.min(.033,(ahora-ultimo)/1000); ultimo=ahora;
   var tt=ahora/1000;
   if(estado==='juego'){
-    vel=Math.min(820,vel+9*dt);
+    vel=modo==='run'?Math.min(820,vel+9*dt):Math.min(600,vel+6*dt);
     var dx=vel*dt; dist+=dx; puntos=Math.floor(dist/10)+fichas*10;
     // jugador
     jug.vy+=2100*dt; jug.y+=jug.vy*dt;
     if(jug.y>=SUELO){jug.y=SUELO;jug.vy=0;jug.saltos=0}
     jug.anim+=dt*vel/38;
     // generar
-    sigObst-=dx; if(sigObst<=0)nuevoObstaculo();
+    sigObst-=dx; if(sigObst<=0){if(modo==='run')nuevoObstaculo();else nuevoObstaculoC1()}
     sigMon-=dx; if(sigMon<=0)nuevaMoneda();
     // mover
-    obst.forEach(function(o){o.x-=dx}); obst=obst.filter(function(o){return o.x>-80});
+    obst.forEach(function(o){o.x-=dx+((o.tipo==='zombi'&&!o.ko)?o.andar*dt:0)}); obst=obst.filter(function(o){return o.x>-80});
     monedas.forEach(function(m){m.x-=dx}); monedas=monedas.filter(function(m){return m.x>-30&&!m.cogida});
     // colisiones (caja de choque algo más pequeña que el dibujo, para ser justos)
     var jx=jug.x+9,jw=32*ESC-18,jy=jug.y-54*ESC+8,jh=54*ESC-10;
-    for(var i=0;i<obst.length;i++){var o=obst[i];
-      var oy=o.y+(o.tipo==='dron'?Math.sin(tt*6+o.fase)*4+6:4), oh=o.tipo==='dron'?o.h-6:o.h-4;
-      if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){fin();break}
+    for(var i=0;i<obst.length;i++){var o=obst[i]; if(o.ko)continue;
+      var vuela=o.tipo==='dron'||o.tipo==='murci';
+      var oy=o.y+(vuela?Math.sin(tt*6+o.fase)*4+6:4), oh=vuela?o.h-6:o.h-4;
+      if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){
+        // ¡pisotón! cayendo encima de un zombi lo dejas KO
+        if(o.tipo==='zombi'&&jug.vy>0&&jug.y-jug.vy*dt<=o.y+14){
+          o.ko=true;jug.vy=-560;jug.saltos=1;fichas+=2;pitido(200,900,.18,'square',.08);
+          for(var k=0;k<10;k++)parts.push({x:o.x+14,y:o.y,vx:(Math.random()-.5)*260,vy:-Math.random()*220,v:.5});
+          continue;
+        }
+        if(modo==='run'){fin();break}
+        if(inv<=0){vidas--;inv=1.6;temblor=.25;pitido(320,90,.3,'sawtooth',.09);if(vidas<=0){fin();break}}
+      }
     }
+    if(modo!=='run'&&dist>=META&&estado==='juego'){fin(true)}
     monedas.forEach(function(m){
       if(!m.cogida&&jx<m.x+m.r&&jx+jw>m.x-m.r&&jy<m.y+m.r&&jy+jh>m.y-m.r){m.cogida=true;fichas++;pitido(988,1976,.09,'square',.06);
         for(var k=0;k<6;k++)parts.push({x:m.x,y:m.y,vx:(Math.random()-.5)*200,vy:-Math.random()*200,v:.5})}
@@ -436,18 +580,35 @@ function bucle(ahora){
   }
   parts.forEach(function(p){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=500*dt;p.v-=dt}); parts=parts.filter(function(p){return p.v>0});
   if(temblor>0)temblor-=dt;
+  if(inv>0)inv-=dt;
 
   // pintar
   cx.save();
   if(temblor>0)cx.translate((Math.random()-.5)*8,(Math.random()-.5)*8);
-  fondo(tt);
-  obst.forEach(function(o){obstaculo(o,tt)});
+  if(modo==='run')fondo(tt);else fondoC1(tt);
+  obst.forEach(function(o){if(modo==='run')obstaculo(o,tt);else obstaculoC1(o,tt)});
+  if(modo!=='run')verjaFinal();
   monedas.forEach(function(m){moneda(m,tt)});
-  trollaco();
+  if(!(inv>0&&Math.floor(tt*14)%2))trollaco();
   parts.forEach(function(p){rect(p.x,p.y,3,3,'#ffd23f')});
   cx.restore();
-  if(estado!=='menu')hud();
-  if(estado==='menu'){
+  if(estado!=='menu'){if(modo==='run')hud();else hudC1()}
+  if(estado==='menu'&&modo!=='run'){
+    cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
+    texto('CAPÍTULO 1',W/2,78,30,'#1ff2ff','center');
+    texto('LA NOCHE TROLLOWEEN',W/2,124,W<600?44:56,'#ff7a1a','center');
+    texto('Cruza el cementerio y llega a la mansión encantada',W/2,160,W<600?20:24,'#fff','center');
+    texto('Cae encima de los zombis para dejarlos KO · 3 vidas',W/2,188,W<600?18:22,'#ffb347','center');
+    if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,232,W<600?22:28,'#ffd23f','center');
+    if(record)texto('RÉCORD: '+record,W/2,266,22,'#fff','center');
+  } else if(estado==='victoria'){
+    cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
+    texto('¡CAPÍTULO 1 SUPERADO!',W/2,92,W<600?40:54,'#ffd23f','center');
+    texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,134,28,'#fff','center');
+    texto(nuevoRecord?'¡NUEVO RÉCORD!':'RÉCORD: '+record,W/2,168,26,nuevoRecord?'#ffd23f':'#1ff2ff','center');
+    texto('Próximo: Capítulo 2 · La taberna pirata (muy pronto)',W/2,204,W<600?18:22,'#ffb347','center');
+    if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA JUGAR OTRA VEZ',W/2,246,24,'#ffd23f','center');
+  } else if(estado==='menu'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
     texto('TROLLACO RUN',W/2,110,64,'#ff2bd6','center');
     texto(HW?'🎃 EDICIÓN TROLLOWEEN 🎃':'SALTA EL LAG · COGE LAS FICHAS',W/2,148,26,HW?'#ffb347':'#1ff2ff','center');
@@ -455,7 +616,7 @@ function bucle(ahora){
     if(record)texto('RÉCORD: '+record,W/2,240,24,'#fff','center');
   } else if(estado==='fin'){
     cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
-    texto('GAME OVER',W/2,100,64,'#ff2bd6','center');
+    texto(modo==='run'?'GAME OVER':'¡TE HAN PILLADO!',W/2,100,modo==='run'?64:52,'#ff2bd6','center');
     texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,140,30,'#fff','center');
     if(nuevoRecord)texto('¡NUEVO RÉCORD!',W/2,176,30,'#ffd23f','center');
     else texto('RÉCORD: '+record,W/2,176,26,'#1ff2ff','center');
@@ -463,14 +624,16 @@ function bucle(ahora){
   }
   requestAnimationFrame(bucle);
 }
-function fin(){
-  estado='fin';t0=performance.now();temblor=.25;
-  pitido(400,60,.45,'sawtooth',.1);
+function fin(gana){
+  estado=gana?'victoria':'fin';t0=performance.now();
+  if(gana){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){pitido(f,f*1.01,.18,'square',.07)},i*140)});
+    if(progreso<1){progreso=1;try{localStorage.setItem('trollacoHistoria','1')}catch(e){}pintaCapitulos()}}
+  else{temblor=.25;pitido(400,60,.45,'sawtooth',.1)}
   if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
   muestraCompartir();
   sumaAlMonedero(fichaPartida);
   if(famaOK&&fichaPartida&&puntos>0&&entraEnTop(puntos)){
-    ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida};fichaPartida=null;setTimeout(abreGuardar,600);
+    ultimoGuardado={puntos:puntos,fichas:fichas,ficha:fichaPartida,modo:modo};fichaPartida=null;setTimeout(abreGuardar,600);
   }
 }
 document.addEventListener('visibilitychange',function(){ultimo=performance.now()});

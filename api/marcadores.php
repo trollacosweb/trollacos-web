@@ -4,10 +4,15 @@
  *   GET  ?accion=lista     -> los 10 mejores
  *   GET  ?accion=empezar   -> ficha firmada para la partida que empieza
  *   POST ?accion=enviar    -> {nombre, puntos, fichas, ficha}
+ *   &modo=run|c1           -> ranking de la carrera infinita o del capítulo 1
  */
 require __DIR__ . '/comun.php';
 
-$FDATOS = "$DIR/marcadores.php";
+// Un ranking por modo: "run" (carrera infinita) y los capítulos del modo historia
+$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php'];
+$modo = $_GET['modo'] ?? 'run';
+if (!isset($MODOS[$modo])) { $modo = 'run'; }
+$FDATOS = "$DIR/" . $MODOS[$modo];
 
 // Cambiar este número borra el ranking (empieza una temporada nueva)
 const TEMPORADA = 2;
