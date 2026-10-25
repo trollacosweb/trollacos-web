@@ -157,6 +157,7 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
 .ranking li .n{flex:1;color:#fff}.ranking li .p{color:var(--yellow)}
 .vacio{text-align:center;color:var(--muted);padding:14px}
 .check{padding-left:0;list-style:none}.check li{position:relative;padding:6px 0 6px 30px;font-size:18px}.check li::before{content:'▶';position:absolute;left:4px;color:var(--pink)}
+.cancelar{margin-left:6px;font-family:'VT323',monospace;font-size:17px;padding:1px 8px;border-radius:6px;border:1px solid #ff8b8b;background:none;color:#ff8b8b;cursor:pointer}
 .jornada-sel{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}
 .jornada-sel button{font-family:'VT323',monospace;font-size:19px;padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;cursor:pointer}
 .jornada-sel button.on{background:rgba(255,43,214,.3);border-color:var(--pink)}
@@ -221,6 +222,7 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
     <li><b>Ganas fichas jugando a <a href="/arcade/">Trollaco Run</a></b>: cada ficha que recoges en una partida va a tu monedero.</li>
     <li>Por <b>participar en cada jornada</b> te llevas <b>10 fichas extra</b> con tu primer pronóstico.</li>
     <li>En cada partido puedes jugar fichas al <b>1, X o 2</b> y, si te atreves, al <b>resultado exacto</b>, que paga x8.</li>
+    <li>¿Te has arrepentido? Puedes <b>cancelar un pronóstico</b> y recuperar tus fichas hasta 5 minutos antes del partido.</li>
     <li>Los pronósticos se cierran 5 minutos antes de cada partido. Cuando termina, las fichas se reparten solas.</li>
     <li>Las cuotas las calculamos nosotros según la clasificación. No son de ninguna casa de apuestas.</li>
   </ul>
@@ -287,7 +289,7 @@ function pintaPartidos(j){
   var mias={};if(j&&j.pronosticos)j.pronosticos.forEach(function(a){(mias[a.partido]=mias[a.partido]||[]).push(a)});
   cont.innerHTML=datos.partidos.filter(function(p){return p.j===jornadaVista}).map(function(p){
     var ab=abierto(p),res=(p.gl!=null&&p.gv!=null)?p.gl+' - '+p.gv:'vs',m=mias[p.id]||[];
-    var hecho=m.map(function(a){return '<div class="estado-p">Tu pronóstico: <b>'+esc(a.tipo==='1x2'?(a.seleccion==='1'?p.local.n:a.seleccion==='2'?p.visit.n:'Empate'):'exacto '+a.seleccion)+'</b> · '+a.cantidad+' fichas · <span class="e-'+a.estado+'">'+a.estado+(a.estado==='ganada'?' (+'+a.premio+')':'')+'</span></div>'}).join('');
+    var hecho=m.map(function(a){return '<div class="estado-p">Tu pronóstico: <b>'+esc(a.tipo==='1x2'?(a.seleccion==='1'?p.local.n:a.seleccion==='2'?p.visit.n:'Empate'):'exacto '+a.seleccion)+'</b> · '+a.cantidad+' fichas · <span class="e-'+a.estado+'">'+a.estado+(a.estado==='ganada'?' (+'+a.premio+')':'')+'</span>'+((ab&&a.estado==='pendiente')?' <button type="button" class="cancelar" data-cancel="'+esc(a.id)+'">✖ Cancelar</button>':'')+'</div>'}).join('');
     var tiene1=m.some(function(a){return a.tipo==='1x2'}),tieneE=m.some(function(a){return a.tipo==='exacto'});
     var form='';
     if(ab&&yo){form=(tiene1?'':'<div class="op">'+['1','X','2'].map(function(s){return '<button type="button" data-s="'+s+'">'+(s==='1'?esc(p.local.n):s==='2'?esc(p.visit.n):'Empate')+'<b>x'+p.cuotas[s].toFixed(2)+'</b></button>'}).join('')+'</div>')+
@@ -313,6 +315,12 @@ function pintaPartidos(j){
     };
   });
 }
+document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('[data-cancel]');if(!b||!yo)return;
+  b.disabled=true;b.textContent='Cancelando...';
+  post('cancelar',{nombre:yo.nombre,codigo:yo.codigo,id:b.dataset.cancel}).then(function(j){
+    if(!j.ok){b.disabled=false;b.textContent='✖ Cancelar';alert(j.mensaje||'No se ha podido cancelar.');return}
+    ultimoYo=j;pintaYo(j);cargaRanking();var a=$('bono');a.textContent='↩️ Pronóstico cancelado: te devolvemos '+j.devueltas+' fichas';a.hidden=false;setTimeout(function(){a.hidden=true},4000);
+  }).catch(function(){b.disabled=false;b.textContent='✖ Cancelar'})});
 function alertaBono(b){var a=$('bono');a.textContent='🎁 +'+b+' fichas por participar en esta jornada';a.hidden=false;setTimeout(function(){a.hidden=true},5000)}
 
 // ---------- mis pronósticos y ranking ----------

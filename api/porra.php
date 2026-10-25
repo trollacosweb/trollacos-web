@@ -7,6 +7,7 @@
  *   POST ?accion=yo         {nombre, codigo}              -> fichas, pronósticos y movimientos
  *   POST ?accion=apostar    {nombre, codigo, partido, tipo: "1x2"|"exacto", seleccion, cantidad}
  *   POST ?accion=arcade     {nombre, codigo, ficha, puntos, fichas}  -> suma las fichas de una partida
+ *   POST ?accion=cancelar   {nombre, codigo, id}          -> anula un pronóstico pendiente y devuelve las fichas
  *   GET  ?accion=ranking                                  -> los 10 con más fichas
  *   GET  ?accion=partidos                                 -> jornada con cuotas (lee partidos.json)
  */
@@ -99,7 +100,7 @@ function resumen($d, $nombre) {
     $u = $d['usuarios'][$nombre];
     $mias = array_values(array_filter($d['apuestas'], function ($a) use ($nombre) { return $a['u'] === $nombre; }));
     usort($mias, function ($a, $b) { return $b['ts'] <=> $a['ts']; });
-    $mias = array_map(function ($a) { return ['partido' => $a['p'], 'jornada' => $a['j'], 'tipo' => $a['t'], 'seleccion' => $a['s'],
+    $mias = array_map(function ($a) { return ['id' => $a['id'], 'partido' => $a['p'], 'jornada' => $a['j'], 'tipo' => $a['t'], 'seleccion' => $a['s'],
         'cantidad' => $a['c'], 'cuota' => $a['q'], 'estado' => $a['e'], 'premio' => $a['g'] ?? 0]; }, array_slice($mias, 0, 40));
     return ['nombre' => $nombre, 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0, 'jornadas' => $u['jb'] ?? [], 'pronosticos' => $mias];
 }
@@ -198,6 +199,29 @@ if ($accion === 'apostar' && $post) {
     unset($u);
     cerrar($d, $fl);
     responder(['ok' => true, 'bono' => $bono] + resumen($d, $nombre));
+}
+
+if ($accion === 'cancelar' && $post) {
+    $in = entrada();
+    $id = (string)($in['id'] ?? '');
+    [$d, $fl] = abrir();
+    [$nombre, $err] = usuario($d, $in);
+    if (!$nombre) { cerrar($d, $fl); responder(['error' => 'login', 'mensaje' => $err], 401); }
+    $pp = partidos();
+    foreach ($d['apuestas'] as $i => $a) {
+        if ($a['id'] !== $id || $a['u'] !== $nombre) { continue; }
+        if ($a['e'] !== 'pendiente') { cerrar($d, $fl, false); responder(['error' => 'cerrado', 'mensaje' => 'Ese pronóstico ya está resuelto.'], 400); }
+        $p = partido_por_id($pp, $a['p']);
+        if (!$p || !in_array($p['estado'], ['SCHEDULED', 'TIMED'], true) || time() > strtotime($p['fecha']) - CIERRE_SEG) {
+            cerrar($d, $fl, false); responder(['error' => 'cerrado', 'mensaje' => 'El partido ya está cerrado: no se puede cancelar.'], 400);
+        }
+        $d['usuarios'][$nombre]['f'] += $a['c'];
+        array_splice($d['apuestas'], $i, 1);
+        cerrar($d, $fl);
+        responder(['ok' => true, 'devueltas' => $a['c']] + resumen($d, $nombre));
+    }
+    cerrar($d, $fl, false);
+    responder(['error' => 'datos', 'mensaje' => 'No encuentro ese pronóstico.'], 400);
 }
 
 responder(['error' => 'accion'], 400);
