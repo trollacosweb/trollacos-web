@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'})()</script>
 <title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
-<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (el primero, la noche Trolloween entre zombis y calabazas). Juego arcade gratis en el navegador.">
+<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (la noche Trolloween entre zombis y el Bar La Verja con camareros enfadados). Juego arcade gratis en el navegador.">
 <link rel="canonical" href="https://trollacos.com/arcade/">
 <meta property="og:title" content="Trollaco Run: el arcade de Trollacos">
 <meta property="og:description" content="¿Cuántas fichas aguantas? Juego gratis en el navegador.">
@@ -63,6 +63,9 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .cap b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:21px;color:#ffb347}
 .cap.cerrado{opacity:.5;border-color:rgba(255,255,255,.2);background:none}.cap.cerrado b{color:#fff}
 .cap.hecho b::after{content:' ✔';color:#9dffb5}
+.cap[data-cap]{cursor:pointer}.cap[data-cap].cerrado{cursor:default}
+.cap.sel{border-color:var(--pink);box-shadow:0 0 14px rgba(255,43,214,.45);background:rgba(255,43,214,.12)}
+.cap .bloq{display:none;color:#ff8b8b}.cap.cerrado .bloq{display:inline}
 .monedero{margin:14px 0 0;text-align:center;font-family:'VT323',monospace;font-size:22px;color:#ffd23f}.monedero a{color:var(--cyan)}
 .fama{margin-top:22px;border:2px solid var(--yellow);border-radius:12px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,210,63,.08),rgba(255,43,214,.05))}
 .fama h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(24px,5vw,32px);color:var(--yellow);text-align:center;margin-bottom:10px;text-shadow:0 0 12px rgba(255,210,63,.5)}
@@ -101,7 +104,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <h1>TROLLACO RUN</h1>
   <p class="sub">&gt; INSERT COIN · PULSA PARA EMPEZAR_</p>
   <div class="modos" role="tablist">
-    <button type="button" data-modo="c1">📖 MODO HISTORIA</button>
+    <button type="button" data-modo="historia">📖 MODO HISTORIA</button>
     <button type="button" class="on" data-modo="run">🔥 SUPERA EL RÉCORD</button>
   </div>
   <div class="maquina">
@@ -119,8 +122,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     </div>
   </div>
   <div class="capitulos" id="capitulos" hidden>
-    <div class="cap" id="cap1"><b>1 · La noche Trolloween</b>Cementerio, zombis y calabazas. Llega a la mansión encantada.</div>
-    <div class="cap cerrado"><b>🔒 2 · La taberna pirata</b>Rejas, camareros y bandejas voladoras. Próximamente.</div>
+    <div class="cap" data-cap="c1"><b>1 · La noche Trolloween</b>Cementerio, zombis y calabazas. Llega a la mansión encantada.</div>
+    <div class="cap" data-cap="c2"><b>2 · Bar La Verja</b><span class="bloq">🔒 Supera el capítulo 1 para entrar. </span>Camareros enfadados, bandejas voladoras y rejas.</div>
     <div class="cap cerrado"><b>🔒 3 · La discoteca</b>Luces de neón y malotes en la pista. Próximamente.</div>
     <div class="cap cerrado"><b>🔒 4 · El edificio abandonado</b>Pasillos oscuros y algo que no debería estar ahí.</div>
   </div>
@@ -232,8 +235,12 @@ function cargaRecord(){record=0;try{record=parseInt(localStorage.getItem(claveRe
 function guardarRecord(){try{localStorage.setItem(claveRecord(),String(record))}catch(e){}}
 cargaRecord();
 var progreso=0;try{progreso=parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0}catch(e){}
-function pintaCapitulos(){document.getElementById('cap1').classList.toggle('hecho',progreso>=1)}
-pintaCapitulos();
+function pintaCapitulos(){
+  document.querySelectorAll('.cap[data-cap]').forEach(function(c){
+    var n=parseInt(c.dataset.cap.slice(1),10);
+    c.classList.toggle('hecho',progreso>=n);c.classList.toggle('cerrado',progreso<n-1);c.classList.toggle('sel',c.dataset.cap===modo);
+  });
+}
 
 // ---------- sonido (8 bits con WebAudio) ----------
 var ac=null,mudo=false;
@@ -255,6 +262,7 @@ function pitido(f1,f2,dur,tipo,vol){
 var estado='menu',t0=0,vel,dist,puntos,fichas,obst,monedas,parts,sigObst,sigMon,jug,temblor,nuevoRecord,vidas=3,inv=0;
 var META=30000; // distancia del capítulo 1 hasta la mansión
 function reiniciar(){
+  if(CAPS&&CAPS[modo])META=CAPS[modo].meta;
   vel=modo==='run'?340:320;dist=0;puntos=0;fichas=0;obst=[];monedas=[];parts=[];sigObst=520;sigMon=300;temblor=0;nuevoRecord=false;vidas=3;inv=0;
   jug={x:96,y:SUELO,vy:0,saltos:0,anim:0};
 }
@@ -264,6 +272,7 @@ reiniciar();
 function accion(){
   if(!fForm.hidden)return;
   if(estado==='menu'){estado='juego';reiniciar();pideFicha();pitido(440,880,.15);return}
+  if(estado==='victoria'&&CAPS[modo]&&CAPS[modo].siguiente&&performance.now()-t0>500){cambiaModo(CAPS[modo].siguiente);return}
   if(estado==='fin'||estado==='victoria'){ if(performance.now()-t0>500){estado='juego';reiniciar();pideFicha();ocultaCompartir();pitido(440,880,.15)} return}
   if(jug.saltos<2){ jug.vy=jug.saltos===0?-760:-640; jug.saltos++; pitido(jug.saltos===1?300:420,jug.saltos===1?700:900,.12) }
 }
@@ -281,19 +290,25 @@ document.getElementById('pantalla').onclick=function(){
 };
 
 // ---------- selector de modo ----------
-document.querySelectorAll('.modos button').forEach(function(b){b.onclick=function(){
-  if(b.dataset.modo===modo)return;
-  modo=b.dataset.modo;
-  document.querySelectorAll('.modos button').forEach(function(x){x.classList.toggle('on',x===b)});
+function cambiaModo(m){
+  if(m===modo&&estado!=='victoria')return;
+  modo=m;
+  document.querySelectorAll('.modos button').forEach(function(x){x.classList.toggle('on',(x.dataset.modo==='run')===(modo==='run'))});
   document.getElementById('capitulos').hidden=modo==='run';
-  document.getElementById('fama-tit').textContent=modo==='run'?'🔥 SALÓN DE LA FAMA · SUPERA EL RÉCORD':'🏆 SALÓN DE LA FAMA · CAPÍTULO 1';
-  ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();
+  document.getElementById('fama-tit').textContent=modo==='run'?'🔥 SALÓN DE LA FAMA · SUPERA EL RÉCORD':'🏆 SALÓN DE LA FAMA · CAPÍTULO '+CAPS[modo].n;
+  ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();pintaCapitulos();
+}
+function capituloActual(){return progreso>=1?'c2':'c1'}
+document.querySelectorAll('.modos button').forEach(function(b){b.onclick=function(){
+  if(b.dataset.modo==='run')cambiaModo('run');else if(modo==='run')cambiaModo(capituloActual());
 }});
-document.querySelector('.modos button[data-modo="c1"]').click(); // se entra por el modo historia
+document.querySelectorAll('.cap[data-cap]').forEach(function(c){c.onclick=function(){
+  if(c.classList.contains('cerrado'))return;cambiaModo(c.dataset.cap);
+}});
 
 // ---------- compartir ----------
 function muestraCompartir(){
-  var txt=encodeURIComponent((modo==='run'?'He hecho '+puntos+' puntos en TROLLACO RUN':(estado==='victoria'?'¡He llegado a la mansión encantada':'Me han pillado los zombis')+' en el Capítulo 1 de TROLLACO RUN con '+puntos+' puntos')+' 🕹️ ¿Me superas? https://trollacos.com/arcade/');
+  var txt=encodeURIComponent((modo==='run'?'He hecho '+puntos+' puntos en TROLLACO RUN':(estado==='victoria'?CAPS[modo].gana:CAPS[modo].pierde)+' en el Capítulo '+CAPS[modo].n+' de TROLLACO RUN con '+puntos+' puntos')+' 🕹️ ¿Me superas? https://trollacos.com/arcade/');
   document.getElementById('sh-wa').href='https://wa.me/?text='+txt;
   document.getElementById('sh-x').href='https://twitter.com/intent/tweet?text='+txt;
   document.getElementById('compartir').classList.add('ver');
@@ -556,12 +571,150 @@ function obstaculoC1(o,tt){
   else if(o.tipo==='murci'){var bob=Math.sin(tt*6+o.fase)*5;if(murc.complete&&murc.naturalWidth)cx.drawImage(murc,x-4,y+bob-6,o.w+8,o.h+10);else rect(x,y+bob,o.w,o.h,'#2a0b3a')}
 }
 function hudC1(){
-  texto('CAP. 1 · TROLLOWEEN',14,28,22,'#ffb347');
+  var cap=CAPS[modo];
+  texto(cap.hud,14,28,22,cap.color);
   var c='';for(var i=0;i<3;i++)c+=i<vidas?'♥ ':'♡ ';texto(c,14,54,26,'#ff4d6d');
-  var bw=Math.min(240,W*.34),bx=W/2-bw/2+20;rect(bx-1,13,bw+2,10,K);rect(bx,14,bw,8,'#2a0b3a');rect(bx,14,bw*Math.min(1,dist/META),8,'#ff7a1a');
-  texto('META',bx+bw+6,24,18,'#ffb347');
+  var bw=Math.min(240,W*.34),bx=W/2-bw/2+20;rect(bx-1,13,bw+2,10,K);rect(bx,14,bw,8,'#2a0b3a');rect(bx,14,bw*Math.min(1,dist/META),8,cap.color);
+  texto('META',bx+bw+6,24,18,cap.color);
   texto('🪙 '+fichas,W-14,28,22,'#ffd23f','right');texto(puntos+' PTS',W-14,52,20,'#fff','right');
 }
+
+
+// ================= MODO HISTORIA · CAPÍTULO 2: BAR LA VERJA =================
+var TECHO=30;
+// pared del bar: se genera una vez y se repite (ventana con la cortina caída, barra, jamones, pizarra, tele, cartel)
+var PARED=(function(){var r=azar(321),x=40,c=[],tipos=['ventana','barra','pizarra','jamones','mesa','tele','cartel','reloj','mesa'];var i=0;
+  while(x<2200){var t=tipos[i%tipos.length];i++;var w={ventana:120,barra:190,pizarra:60,jamones:70,mesa:70,tele:70,cartel:150,reloj:30}[t];c.push({x:x,tipo:t,w:w,k:r()});x+=w+Math.round(40+r()*60)}
+  return{c:c,largo:x}})();
+function zocalo(){var y0=SUELO-46;rect(0,y0-4,W,4,'#7a4a28');for(var i=0;i<W/16+1;i++)for(var j=0;j<3;j++){var xx=i*16-((dist*.45)%32),c=((i+j)%2)?'#2a5aa8':'#f4f1ea';rect(xx,y0+j*15,16,15,c);if(c==='#f4f1ea'){rect(xx+6,y0+j*15+6,4,3,'#6f95d6')}}}
+function elementoPared(e,x,tt){
+  var b=SUELO-50;
+  if(e.tipo==='ventana'){var y=56;rect(x-4,y-4,e.w+8,104,'#6b4426');rect(x,y,e.w,96,'#14204a');
+    cx.fillStyle='rgba(255,255,255,.7)';for(var s=0;s<6;s++)cx.fillRect(x+10+s*19,y+10+(s*23)%60,2,2);
+    rect(x+e.w/2-2,y,4,96,'#6b4426');rect(x,y+46,e.w,4,'#6b4426');
+    // barra de la cortina descolgada y la cortina caída en diagonal
+    cx.strokeStyle='#3a2414';cx.lineWidth=4;cx.beginPath();cx.moveTo(x-10,y-10);cx.lineTo(x+e.w+6,y+30);cx.stroke();
+    cx.fillStyle='#b8323a';cx.beginPath();cx.moveTo(x-8,y-8);cx.lineTo(x+40,y+4);cx.lineTo(x+52,y+60);cx.lineTo(x+30,y+104);cx.lineTo(x-6,y+104);cx.fill();
+    cx.fillStyle='#8a1f28';for(var p=0;p<4;p++){cx.fillRect(x+2+p*10,y+4+p*4,3,90-p*6)}
+    cx.fillStyle='#b8323a';cx.beginPath();cx.moveTo(x+e.w-30,y+22);cx.lineTo(x+e.w+6,y+30);cx.lineTo(x+e.w+4,y+104);cx.lineTo(x+e.w-24,y+104);cx.fill();
+  } else if(e.tipo==='barra'){
+    rect(x+10,52,e.w-20,6,'#6b4426');rect(x+10,86,e.w-20,6,'#6b4426');
+    for(var bt=0;bt<9;bt++){var bc=['#2e7d32','#8d2a1a','#e0c060','#3a6aa0'][bt%4];rect(x+16+bt*18,30+((bt%2)*4),8,22-((bt%2)*4),bc);rect(x+18+bt*18,26+((bt%2)*4),4,5,bc);rect(x+18+bt*18,64,6,22,['#c06030','#e8e0c0','#40a040'][bt%3])}
+    rect(x,b-30,e.w,30+50,'#8a5a32');rect(x,b-34,e.w,6,'#5a3a1e');rect(x,b+2,e.w,3,'#5a3a1e');
+    for(var g=0;g<3;g++){var gx=x+40+g*36;rect(gx,b-60,6,26,'#c8c8d4');rect(gx-4,b-64,14,6,'#e8e8f0');rect(gx+1,b-42,4,4,'#d4a020')}
+    for(var v=0;v<4;v++){var vx=x+20+v*44;rect(vx,b-48,10,14,'rgba(255,255,255,.35)');rect(vx+1,b-44,8,10,'#f2c230');rect(vx+1,b-47,8,3,'#fff')}
+    texto('LA VERJA',x+e.w/2,b-6,20,'#ffd23f','center','#3a2414');
+  } else if(e.tipo==='pizarra'){rect(x,70,e.w,70,'#6b4426');rect(x+4,74,e.w-8,62,'#1f2a22');
+    cx.fillStyle='#f4f1ea';cx.font='10px monospace';cx.fillText('MENÚ',x+16,90);cx.fillText('CAÑA',x+10,106);cx.fillText('+TAPA',x+10,118);cx.fillText('2 €',x+20,131);
+  } else if(e.tipo==='jamones'){rect(x,40,e.w,4,'#5a3a1e');for(var j=0;j<3;j++){var jx=x+8+j*22;rect(jx+5,44,2,12,'#ddd');cx.fillStyle='#8a2a1a';cx.beginPath();cx.ellipse(jx+6,74,9,18,0,0,7);cx.fill();rect(jx+3,58,6,6,'#e8d0b0');rect(jx+2,82,4,6,'#5a1a10')}}
+  else if(e.tipo==='mesa'){cx.globalAlpha=.55;rect(x+6,b+8,e.w-12,5,'#8a5a32');rect(x+12,b+13,4,30,'#6b4426');rect(x+e.w-16,b+13,4,30,'#6b4426');
+    rect(x,b+18,4,26,'#6b4426');rect(x,b+18,14,4,'#6b4426');rect(x+e.w-4,b+18,4,26,'#6b4426');rect(x+e.w-14,b+18,14,4,'#6b4426');
+    rect(x+20,b-2,8,10,'#f2c230');rect(x+20,b-4,8,3,'#fff');rect(x+38,b+4,16,4,'#f4f1ea');rect(x+40,b+1,12,3,'#c06030');cx.globalAlpha=1}
+  else if(e.tipo==='tele'){rect(x+e.w/2-2,TECHO,4,26,'#333');rect(x,56,e.w,46,'#222');rect(x+4,60,e.w-8,38,'#2e8b3a');rect(x+e.w/2-1,60,2,38,'#e8f5e8');
+    var bx2=x+10+((tt*20)%(e.w-24));rect(bx2,76,4,4,'#fff');cx.strokeStyle='#e8f5e8';cx.lineWidth=1;cx.strokeRect(x+e.w/2-8,72,16,12)}
+  else if(e.tipo==='cartel'){var on=Math.floor(tt*1.3+e.k*5)%7!==0;rect(x,50,e.w,40,'#2a1414');
+    texto('BAR LA VERJA',x+e.w/2,78,26,on?'#ff4d6d':'#5a2a2a','center',on?'#ff2bd6':'#2a1414')}
+  else if(e.tipo==='reloj'){cx.fillStyle='#f4f1ea';cx.beginPath();cx.arc(x+15,70,14,0,7);cx.fill();cx.strokeStyle='#3a2414';cx.lineWidth=3;cx.stroke();
+    cx.lineWidth=2;cx.beginPath();cx.moveTo(x+15,70);cx.lineTo(x+15,60);cx.moveTo(x+15,70);cx.lineTo(x+22,72);cx.stroke()}
+}
+function fondoC2(tt){
+  rect(0,0,W,SUELO,'#ece4d2');
+  // sombras suaves de las lámparas
+  var ol=(dist*.45)%180;
+  for(var l=-1;l<W/180+1;l++){var lx=l*180-ol+90;var g=cx.createRadialGradient(lx,TECHO+20,4,lx,TECHO+20,120);g.addColorStop(0,'rgba(255,220,140,.35)');g.addColorStop(1,'rgba(255,220,140,0)');cx.fillStyle=g;cx.fillRect(lx-120,TECHO,240,200)}
+  zocalo();
+  var off=(dist*.45)%PARED.largo;
+  for(var k=0;k<2;k++)PARED.c.forEach(function(e){var x=e.x-off+k*PARED.largo;if(x>W+20||x+e.w<-20)return;elementoPared(e,x,tt)});
+  // techo con vigas y lámparas
+  rect(0,0,W,TECHO,'#5a3a22');rect(0,TECHO-4,W,4,'#3a2414');
+  for(var v=-1;v<W/90+1;v++)rect(v*90-((dist*.45)%90),0,10,TECHO,'#3a2414');
+  for(var l2=-1;l2<W/180+1;l2++){var lx2=l2*180-ol+90;rect(lx2-1,TECHO,2,12,'#222');rect(lx2-10,TECHO+12,20,8,'#3a3a3a');rect(lx2-6,TECHO+20,12,4,'#ffe9a0')}
+  // suelo de baldosas
+  rect(0,SUELO,W,H-SUELO,'#d8d2c4');
+  var o3=dist%40;for(var i=-1;i<W/20+2;i++)for(var j=0;j<4;j++){if((i+j)%2)rect(i*20-(o3%40),SUELO+j*15,20,15,'#3a3436')}
+  rect(0,SUELO,W,3,'#5a3a22');
+}
+function nuevoObstaculoC2(){
+  if(dist>META-1500){sigObst=1e9;return}
+  var p=dist/META,r=Math.random(),o,extra=0;
+  if(r<.20)o={tipo:'mesa',w:52,h:36};
+  else if(r<.33)o={tipo:'rejaBaja',w:40,h:40};
+  else if(r<.48&&p>.08){o={tipo:'rejaAlta',w:44,h:SUELO-82-(TECHO+4),y:TECHO+4};extra=200}
+  else if(r<.75)o={tipo:'camarero',w:30,h:58,andar:25+Math.random()*35};
+  else if(p>.12)o={tipo:'lanzador',w:30,h:58,andar:0,cd:.3+Math.random()*.5};
+  else o={tipo:'camarero',w:30,h:58,andar:30};
+  o.x=W+20+(o.tipo==='rejaAlta'?160:0);if(o.y===undefined)o.y=SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
+  sigObst=Math.max(240,380+Math.random()*320-p*130)+vel*.22+extra;
+}
+function lanzaBandejas(dt){
+  obst.forEach(function(o){
+    if(o.tipo!=='lanzador'||o.ko)return;
+    if(o.brazo>0)o.brazo-=dt;
+    o.cd-=dt;
+    if(o.cd<=0&&o.x<W-30&&o.x>jug.x+170){
+      o.cd=1.2+Math.random()*1.3;o.brazo=.3;var alta=Math.random()<.45;
+      obst.push({tipo:'bandeja',w:26,h:12,andar:230,x:o.x-16,y:alta?SUELO-104:SUELO-34,fase:Math.random()*6});
+      pitido(760,320,.12,'triangle',.05);
+    }
+  });
+}
+function bocadillo(x,y,t){cx.font='16px VT323, monospace';var w=cx.measureText(t).width+12;
+  rect(x-w/2-2,y-18,w+4,22,K);rect(x-w/2,y-16,w,18,'#fff');cx.fillStyle='#fff';cx.beginPath();cx.moveTo(x+4,y+2);cx.lineTo(x+12,y+10);cx.lineTo(x+12,y+2);cx.fill();
+  cx.fillStyle='#c01818';cx.textAlign='center';cx.fillText(t,x,y-2);cx.textAlign='left'}
+function camarero(o,tt){
+  var x=o.x,ko=o.ko,h=ko?34:o.h,top=SUELO-h,f=Math.floor(tt*6+o.fase)%2,lanza=o.tipo==='lanzador';
+  if(!ko){rect(x+7,top+h-18,7,18,'#202028');rect(x+16,top+h-18,7,18,'#202028');
+    if(o.andar){rect(x+(f?5:15),top+h-3,10,3,'#111')}else{rect(x+5,top+h-3,10,3,'#111');rect(x+15,top+h-3,10,3,'#111')}}
+  var cuerpo=ko?h-18:h-18-18;
+  rect(x+4,top+18,22,cuerpo,'#f4f4f4');rect(x+4,top+18,6,cuerpo,'#1a1a1a');rect(x+20,top+18,6,cuerpo,'#1a1a1a');
+  rect(x+11,top+19,8,4,'#c01818');rect(x+14,top+20,2,2,'#7a0a0a');
+  var cara=ko?'#f0c8a0':'#f08a70';
+  rect(x+6,top+2,18,16,cara);rect(x+6,top,18,4,'#1a1a1a');rect(x+4,top+4,3,6,'#1a1a1a');
+  rect(x+8,top+12,14,3,'#1a1a1a'); // bigote
+  if(ko){
+    cx.strokeStyle=K;cx.lineWidth=2;[[x+8,top+5],[x+16,top+5]].forEach(function(e){cx.beginPath();cx.moveTo(e[0],e[1]);cx.lineTo(e[0]+4,e[1]+4);cx.moveTo(e[0]+4,e[1]);cx.lineTo(e[0],e[1]+4);cx.stroke()});
+    rect(x-8,top+h-6,12,5,'#f4f4f4');rect(x+26,top+h-6,12,5,'#f4f4f4');
+    mareo(x+15,top-8,tt,o.fase);
+  } else {
+    rect(x+8,top+5,5,2,K);rect(x+17,top+5,5,2,K);rect(x+9,top+7,3,3,K);rect(x+18,top+7,3,3,K); // cejas de enfado
+    if(lanza){var arriba=o.brazo>0;
+      rect(x-6,top+(arriba?6:22),10,5,'#f4f4f4');rect(x-8,top+(arriba?4:20),6,6,cara);
+      if(!arriba){cx.fillStyle='#c8c8d4';cx.beginPath();cx.ellipse(x-6,top+18,13,3,0,0,7);cx.fill();rect(x-12,top+9,6,9,'#f2c230');rect(x-12,top+7,6,3,'#fff')}
+    } else {var pu=Math.sin(tt*10+o.fase)*3;rect(x-6,top+20+pu,12,5,'#f4f4f4');rect(x-10,top+18+pu,6,7,cara);rect(x+24,top+22,6,12,'#f4f4f4');
+      if(o.x<W-50&&o.x>jug.x+30)bocadillo(x+10,top-12,'¡NO GRITÉIS!');}
+  }
+}
+function obstaculoC2(o,tt){
+  var x=o.x,y=o.y;
+  if(o.tipo==='mesa'){rect(x,y,o.w,7,'#8a5a32');rect(x,y+6,o.w,2,'#5a3a1e');rect(x+5,y+8,5,o.h-8,'#6b4426');rect(x+o.w-10,y+8,5,o.h-8,'#6b4426');
+    rect(x+8,y-12,9,12,'rgba(255,255,255,.4)');rect(x+9,y-9,7,9,'#f2c230');rect(x+9,y-12,7,3,'#fff');rect(x+26,y-4,20,4,'#f4f1ea');rect(x+29,y-7,14,3,'#c06030')}
+  else if(o.tipo==='rejaBaja'||o.tipo==='rejaAlta'){
+    var alta=o.tipo==='rejaAlta',n=Math.floor(o.w/8);
+    if(alta){rect(x+o.w/2-1,TECHO-4,2,8,'#55556a')}
+    for(var i=0;i<=n;i++){var bx=x+i*8;rect(bx,y,3,o.h,'#2b2b33');rect(bx,y,1,o.h,'#6a6a80');
+      cx.fillStyle='#2b2b33';cx.beginPath();if(alta){cx.moveTo(bx-2,y+o.h);cx.lineTo(bx+1.5,y+o.h+8);cx.lineTo(bx+5,y+o.h)}else{cx.moveTo(bx-2,y);cx.lineTo(bx+1.5,y-8);cx.lineTo(bx+5,y)}cx.fill()}
+    rect(x-2,y+(alta?6:8),o.w+6,4,'#2b2b33');rect(x-2,y+o.h-(alta?14:10),o.w+6,4,'#2b2b33');
+  }
+  else if(o.tipo==='camarero'||o.tipo==='lanzador')camarero(o,tt);
+  else if(o.tipo==='bandeja'){var e=Math.abs(Math.cos(tt*9+o.fase));
+    cx.fillStyle='#9a9aa8';cx.beginPath();cx.ellipse(x+13,y+8,13*Math.max(.25,e),4,0,0,7);cx.fill();cx.fillStyle='#d8d8e4';cx.beginPath();cx.ellipse(x+13,y+7,11*Math.max(.25,e),3,0,0,7);cx.fill();
+    if(e>.4){rect(x+7,y-2,5,8,'#f2c230');rect(x+7,y-3,5,2,'#fff');rect(x+15,y-1,5,7,'#c03030')}
+    cx.strokeStyle='rgba(255,255,255,.5)';cx.lineWidth=1;cx.beginPath();cx.moveTo(x+30,y+4);cx.lineTo(x+44,y+4);cx.moveTo(x+30,y+10);cx.lineTo(x+40,y+10);cx.stroke()}
+}
+function puertaFinal(){
+  var gx=jug.x-50+(META-dist); if(gx>W+40)return;
+  rect(gx-6,SUELO-150,152,150,'#6b4426');rect(gx,SUELO-144,140,144,'#1a0636');
+  var g=cx.createLinearGradient(gx,SUELO-144,gx,SUELO);g.addColorStop(0,'#ff2bd6');g.addColorStop(1,'#1ff2ff');cx.globalAlpha=.35;cx.fillStyle=g;cx.fillRect(gx,SUELO-144,140,144);cx.globalAlpha=1;
+  rect(gx+38,SUELO-178,64,22,'#1d7a2e');texto('SALIDA',gx+70,SUELO-161,20,'#fff','center','#0a3a14');
+}
+var CAPS={
+  c1:{n:1,nombre:'LA NOCHE TROLLOWEEN',hud:'CAP. 1 · TROLLOWEEN',color:'#ff7a1a',meta:30000,fondo:fondoC1,nuevo:nuevoObstaculoC1,dibuja:obstaculoC1,final:verjaFinal,
+      l1:'Cruza el cementerio y llega a la mansión encantada',l2:'Cae encima de los zombis para dejarlos KO · 3 vidas',
+      siguiente:'c2',sig:'Capítulo 2 · Bar La Verja',gana:'¡He llegado a la mansión encantada',pierde:'Me han pillado los zombis'},
+  c2:{n:2,nombre:'BAR LA VERJA',hud:'CAP. 2 · BAR LA VERJA',color:'#ffd23f',meta:32000,fondo:fondoC2,nuevo:nuevoObstaculoC2,dibuja:obstaculoC2,final:puertaFinal,
+      l1:'Cruza el bar sin que te pillen los camareros',l2:'Esquiva las bandejas · pasa bajo las rejas sin saltar',
+      siguiente:null,sig:'Capítulo 3 · La discoteca (muy pronto)',gana:'¡He salido vivo del Bar La Verja',pierde:'Me han echado del Bar La Verja'}
+};
 
 // ---------- bucle ----------
 var ultimo=performance.now();
@@ -576,10 +729,11 @@ function bucle(ahora){
     if(jug.y>=SUELO){jug.y=SUELO;jug.vy=0;jug.saltos=0}
     jug.anim+=dt*vel/38;
     // generar
-    sigObst-=dx; if(sigObst<=0){if(modo==='run')nuevoObstaculo();else nuevoObstaculoC1()}
+    sigObst-=dx; if(sigObst<=0){if(modo==='run')nuevoObstaculo();else CAPS[modo].nuevo()}
+    if(modo==='c2')lanzaBandejas(dt);
     sigMon-=dx; if(sigMon<=0)nuevaMoneda();
     // mover
-    obst.forEach(function(o){o.x-=dx+((o.tipo==='zombi'&&!o.ko)?o.andar*dt:0)}); obst=obst.filter(function(o){return o.x>-80});
+    obst.forEach(function(o){o.x-=dx+((o.andar&&!o.ko)?o.andar*dt:0)}); obst=obst.filter(function(o){return o.x>-80});
     monedas.forEach(function(m){m.x-=dx}); monedas=monedas.filter(function(m){return m.x>-30&&!m.cogida});
     // colisiones (caja de choque algo más pequeña que el dibujo, para ser justos)
     var jx=jug.x+9,jw=32*ESC-18,jy=jug.y-54*ESC+8,jh=54*ESC-10;
@@ -588,7 +742,7 @@ function bucle(ahora){
       var oy=o.y+(vuela?Math.sin(tt*6+o.fase)*4+6:4), oh=vuela?o.h-6:o.h-4;
       if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){
         // ¡pisotón! cayendo encima de un zombi lo dejas KO
-        if(o.tipo==='zombi'&&jug.vy>0&&jug.y-jug.vy*dt<=o.y+14){
+        if((o.tipo==='zombi'||o.tipo==='camarero'||o.tipo==='lanzador')&&jug.vy>0&&jug.y-jug.vy*dt<=o.y+14){
           o.ko=true;jug.vy=-560;jug.saltos=1;fichas+=2;pitido(200,900,.18,'square',.08);
           for(var k=0;k<10;k++)parts.push({x:o.x+14,y:o.y,vx:(Math.random()-.5)*260,vy:-Math.random()*220,v:.5});
           continue;
@@ -611,9 +765,9 @@ function bucle(ahora){
   // pintar
   cx.save();
   if(temblor>0)cx.translate((Math.random()-.5)*8,(Math.random()-.5)*8);
-  if(modo==='run')fondo(tt);else fondoC1(tt);
-  obst.forEach(function(o){if(modo==='run')obstaculo(o,tt);else obstaculoC1(o,tt)});
-  if(modo!=='run')verjaFinal();
+  if(modo==='run')fondo(tt);else CAPS[modo].fondo(tt);
+  obst.forEach(function(o){if(modo==='run')obstaculo(o,tt);else CAPS[modo].dibuja(o,tt)});
+  if(modo!=='run')CAPS[modo].final();
   monedas.forEach(function(m){moneda(m,tt)});
   if(!(inv>0&&Math.floor(tt*14)%2))trollaco();
   parts.forEach(function(p){if(p.fuego){var c=p.v>.4?'#fff3a0':p.v>.25?'#ffb000':p.v>.12?'#ff5a00':'#b81d00';var t=p.v>.3?6:4;rect(p.x,p.y,t,t,c)}else rect(p.x,p.y,3,3,'#ffd23f')});
@@ -621,19 +775,21 @@ function bucle(ahora){
   if(estado!=='menu'){if(modo==='run')hud(tt);else hudC1()}
   if(estado==='menu'&&modo!=='run'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
-    texto('CAPÍTULO 1',W/2,78,30,'#1ff2ff','center');
-    texto('LA NOCHE TROLLOWEEN',W/2,124,W<600?44:56,'#ff7a1a','center');
-    texto('Cruza el cementerio y llega a la mansión encantada',W/2,160,W<600?20:24,'#fff','center');
-    texto('Cae encima de los zombis para dejarlos KO · 3 vidas',W/2,188,W<600?18:22,'#ffb347','center');
+    var cm=CAPS[modo];
+    texto('CAPÍTULO '+cm.n,W/2,78,30,'#1ff2ff','center');
+    texto(cm.nombre,W/2,124,W<600?44:56,cm.color,'center');
+    texto(cm.l1,W/2,160,W<600?20:24,'#fff','center');
+    texto(cm.l2,W/2,188,W<600?18:22,'#ffb347','center');
     if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,232,W<600?22:28,'#ffd23f','center');
     if(record)texto('RÉCORD: '+record,W/2,266,22,'#fff','center');
   } else if(estado==='victoria'){
     cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
-    texto('¡CAPÍTULO 1 SUPERADO!',W/2,92,W<600?40:54,'#ffd23f','center');
+    var cv2=CAPS[modo];
+    texto('¡CAPÍTULO '+cv2.n+' SUPERADO!',W/2,92,W<600?40:54,'#ffd23f','center');
     texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,134,28,'#fff','center');
     texto(nuevoRecord?'¡NUEVO RÉCORD!':'RÉCORD: '+record,W/2,168,26,nuevoRecord?'#ffd23f':'#1ff2ff','center');
-    texto('Próximo: Capítulo 2 · La taberna pirata (muy pronto)',W/2,204,W<600?18:22,'#ffb347','center');
-    if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA JUGAR OTRA VEZ',W/2,246,24,'#ffd23f','center');
+    texto('Próximo: '+cv2.sig,W/2,204,W<600?18:22,'#ffb347','center');
+    if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto(cv2.siguiente?'TOCA PARA IR AL CAPÍTULO '+(cv2.n+1):'TOCA PARA JUGAR OTRA VEZ',W/2,246,24,'#ffd23f','center');
   } else if(estado==='menu'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
     texto('🔥 SUPERA EL RÉCORD 🔥',W/2,96,W<600?44:58,'#ff9d3c','center','#7a1000');
@@ -658,7 +814,7 @@ function bucle(ahora){
 function fin(gana){
   estado=gana?'victoria':'fin';t0=performance.now();
   if(gana){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){pitido(f,f*1.01,.18,'square',.07)},i*140)});
-    if(progreso<1){progreso=1;try{localStorage.setItem('trollacoHistoria','1')}catch(e){}pintaCapitulos()}}
+    if(progreso<CAPS[modo].n){progreso=CAPS[modo].n;try{localStorage.setItem('trollacoHistoria',String(progreso))}catch(e){}pintaCapitulos()}}
   else{temblor=.25;pitido(400,60,.45,'sawtooth',.1)}
   if(puntos>record){record=puntos;nuevoRecord=true;guardarRecord()}
   muestraCompartir();
@@ -668,6 +824,7 @@ function fin(gana){
   }
 }
 document.addEventListener('visibilitychange',function(){ultimo=performance.now()});
+cambiaModo(capituloActual()); // se entra por el modo historia, en el capítulo que toca
 requestAnimationFrame(bucle);
 })();
 </script>

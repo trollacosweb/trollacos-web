@@ -9,7 +9,7 @@
 require __DIR__ . '/comun.php';
 
 // Un ranking por modo: "run" (carrera infinita) y los capítulos del modo historia
-$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php'];
+$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php', 'c2' => 'marcadores-c2.php'];
 $modo = $_GET['modo'] ?? 'run';
 if (!isset($MODOS[$modo])) { $modo = 'run'; }
 $FDATOS = "$DIR/" . $MODOS[$modo];
