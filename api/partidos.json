@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-26T17:49:00Z",
+ "actualizado": "2026-10-26T20:47:58Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 10,
@@ -675,7 +675,7 @@
    "id": "2506263",
    "j": 10,
    "fecha": "2026-10-26T20:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Sevilla",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
@@ -686,8 +686,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
     "tla": "OSA"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 1,
+   "gv": 0,
    "cuotas": {
     "1": 1.95,
     "X": 3.75,
