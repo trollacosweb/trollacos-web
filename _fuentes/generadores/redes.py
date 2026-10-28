@@ -34,7 +34,7 @@ P={
 <div class="tit" style="font-size:250px;color:#ffd23f">210 GB</div>
 <div class="sub" style="top:405px">LO QUE OCUPARÁ GTA VI EN PS5</div>
 <img class="troll" src="{F}/img/trollaco.png" style="left:420px;top:560px;width:240px">
-<div class="sub" style="top:960px;font-size:48px;color:#fff;background:rgba(7,2,26,.7);left:150px;right:150px;border-radius:12px;padding:6px">Tu PS5 al enterarse: 💀</div>'''+pie('GUÍA DE COMPRA EN TROLLACOS.COM'),
+<div class="sub" style="top:960px;font-size:48px;color:#fff;background:rgba(7,2,26,.7);left:150px;right:150px;border-radius:12px;padding:6px">Tu PS5 al enterarse: 😱</div>'''+pie('GUÍA DE COMPRA EN TROLLACOS.COM'),
 '2-porra-jornada11':BASE+f'''<div class="etq"><span>&gt; LALIGA · JORNADA 11_</span></div>
 <div class="tit" style="font-size:118px;color:#fff">LA PORRA<br><span style="color:#ff2bd6">TROLLACA</span></div>
 <img class="troll" src="{F}/img/trollaco-mando.png" style="left:860px;top:150px;width:150px">
