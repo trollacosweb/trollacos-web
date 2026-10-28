@@ -75,6 +75,8 @@ jobs:
             fuentes.json
             LEEME.md
             api/datos/**
+            _fuentes/**
+            CLAUDE.md
             **/node_modules/**
 
       - name: Esperar un minuto antes de reintentar
@@ -101,6 +103,8 @@ jobs:
             fuentes.json
             LEEME.md
             api/datos/**
+            _fuentes/**
+            CLAUDE.md
             **/node_modules/**
 
       - name: Avisar a los buscadores (IndexNow - Bing, Yandex...)

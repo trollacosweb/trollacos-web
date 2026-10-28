@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><style>*{margin:0}body{position:relative}body{width:1080px;height:1080px;background:#07021a}</style></head><body>
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="45%" r="60%">
+    <stop offset="0" stop-color="#3b0a5c"/><stop offset=".55" stop-color="#1a0640"/><stop offset="1" stop-color="#07021a"/>
+  </radialGradient>
+  <linearGradient id="relleno" gradientUnits="userSpaceOnUse" x1="0" y1="250" x2="0" y2="830">
+    <stop offset="0" stop-color="#050505"/><stop offset=".44" stop-color="#050505"/>
+    <stop offset=".44" stop-color="#ffe45c"/><stop offset=".53" stop-color="#ff9d3c"/>
+    <stop offset=".62" stop-color="#ff2bd6"/><stop offset=".70" stop-color="#7a2bff"/>
+    <stop offset=".70" stop-color="#14063a"/><stop offset="1" stop-color="#03021a"/>
+  </linearGradient>
+  <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffe45c"/><stop offset=".45" stop-color="#ff9d3c"/><stop offset="1" stop-color="#ff2bd6"/>
+  </linearGradient>
+  <mask id="rayas" maskUnits="userSpaceOnUse">
+    <rect width="1080" height="1080" fill="#000"/>
+    <circle cx="540" cy="560" r="330" fill="#fff"/>
+    <rect x="0" y="560" width="1080" height="10" fill="#000"/><rect x="0" y="600" width="1080" height="14" fill="#000"/><rect x="0" y="642" width="1080" height="18" fill="#000"/><rect x="0" y="686" width="1080" height="22" fill="#000"/><rect x="0" y="732" width="1080" height="26" fill="#000"/><rect x="0" y="780" width="1080" height="30" fill="#000"/><rect x="0" y="830" width="1080" height="40" fill="#000"/>
+  </mask>
+  <linearGradient id="banda" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ff1e1e"/><stop offset=".2" stop-color="#ff1e1e"/>
+    <stop offset=".2" stop-color="#ff9a00"/><stop offset=".4" stop-color="#ff9a00"/>
+    <stop offset=".4" stop-color="#ffee00"/><stop offset=".6" stop-color="#ffee00"/>
+    <stop offset=".6" stop-color="#19d219"/><stop offset=".8" stop-color="#19d219"/>
+    <stop offset=".8" stop-color="#1e6bff"/><stop offset="1" stop-color="#1e6bff"/>
+  </linearGradient>
+  <linearGradient id="cromo" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#c9ccd6"/><stop offset=".7" stop-color="#8d92a3"/><stop offset="1" stop-color="#eef0f5"/>
+  </linearGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="halo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="26"/></filter>
+  <clipPath id="circulo"><circle cx="540" cy="540" r="540"/></clipPath>
+</defs>
+<g clip-path="url(#circulo)">
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <!-- sol synthwave a rayas -->
+  <rect width="1080" height="1080" fill="url(#sol)" mask="url(#rayas)" opacity=".85"/>
+  <circle cx="540" cy="560" r="330" fill="none" stroke="#ff2bd6" stroke-width="2" opacity=".0"/>
+  <!-- aro de neon -->
+  <circle cx="540" cy="540" r="470" fill="none" stroke="#ff2bd6" stroke-width="10" opacity=".9" filter="url(#glow)"/>
+  <circle cx="540" cy="540" r="448" fill="none" stroke="#1ff2ff" stroke-width="3" opacity=".55"/>
+</g>
+</svg><img src="trollaco-32.png" style="position:absolute;left:220px;top:180px;width:640px;height:640px;image-rendering:pixelated;filter:drop-shadow(0 0 18px rgba(0,0,0,.7))"></body></html>

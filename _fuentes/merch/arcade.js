@@ -1,0 +1,23 @@
+const { chromium } = require('playwright');const fs=require('fs');
+const R='file:///home/claude/trollacos-web/', M='file:///home/claude/merch/';
+const html=`<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:R;src:url(${R}fuentes/righteous.woff2)}@font-face{font-family:V;src:url(${R}fuentes/vt323.woff2)}
+*{margin:0;box-sizing:border-box}body{width:4500px;height:5400px;background:transparent;position:relative}
+.c{position:absolute;left:0;right:0;text-align:center}
+.marco{position:absolute;left:150px;top:1350px;width:4200px;height:1800px;border-radius:120px;padding:100px;background:linear-gradient(180deg,#2a1450,#120530);
+ border:40px solid #ff2bd6;box-shadow:0 0 120px rgba(255,43,214,.8),inset 0 0 80px rgba(31,242,255,.4)}
+.marco img{width:4000px;height:1600px;display:block;image-rendering:pixelated;border-radius:40px;position:absolute;left:60px;top:60px}
+.scan{position:absolute;left:60px;top:60px;width:4000px;height:1600px;border-radius:40px;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 10px,transparent 10px 25px)}
+</style></head><body>
+<div class="c" style="top:250px;font-family:V;font-size:700px;line-height:1;letter-spacing:6px;color:#ff2bd6;text-shadow:12px 12px 0 #1ff2ff,0 0 80px #ff2bd6">TROLLACO RUN</div>
+<div class="c" style="top:1050px;font-family:V;font-size:200px;letter-spacing:16px;color:#ffd23f;text-shadow:0 0 40px #ff9d3c">★ SALTA EL LAG · COGE LAS FICHAS ★</div>
+<div class="marco"><img src="${M}juego.png"><div class="scan"></div></div>
+<div class="c" style="top:3450px;font-family:V;font-size:520px;letter-spacing:50px;color:#fff;text-shadow:0 0 50px #1ff2ff">INSERT COIN ▶</div>
+<div class="c" style="top:4250px"><img src="${R}logo.webp" style="width:3200px"></div>
+<div class="c" style="top:4800px;font-family:V;font-size:250px;letter-spacing:30px;color:#1ff2ff;text-shadow:0 0 30px #1ff2ff">TROLLACOS.COM/ARCADE</div>
+</body></html>`;
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:4500,height:5400}});
+fs.writeFileSync('arc.html',html);await p.goto('file://'+__dirname+'/arc.html');await p.waitForTimeout(800);await p.screenshot({path:'espalda-3-trollaco-run.png',omitBackground:true});
+// pecho: trollaco de cuerpo entero
+fs.writeFileSync('pecho.html',`<body style="margin:0;width:1400px;height:2300px;background:transparent"><img src="${R}img/trollaco.png" style="width:1280px;height:2160px;image-rendering:pixelated;margin:70px 60px"></body>`);
+const q=await b.newPage({viewport:{width:1400,height:2300}});await q.goto('file://'+__dirname+'/pecho.html');await q.waitForTimeout(400);await q.screenshot({path:'pecho-trollaco-cuerpo-entero.png',omitBackground:true});
+await b.close();})();
