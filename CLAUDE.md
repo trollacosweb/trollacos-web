@@ -39,7 +39,9 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 
 ## Reglas que Guillermo ha fijado
 - No manejar nunca sus contraseñas. Los secretos los mete él.
-- Publicar en sus redes solo con su OK explícito para cada publicación. Instagram va por **Metricool** (conector).
+- Publicar en sus redes solo con su OK explícito para cada publicación. Instagram (@trollacostv) va por **Metricool** (conector, marca 7708546, zona Europe/Madrid). Antes de programar, mirar `getScheduledPosts` para no duplicar.
+- Semana 44 (29 oct – 3 nov) ya programada en Metricool: 6 publicaciones + 6 stories.
+- Guillermo quiere llevar todo Trollacos en un único chat.
 - Afiliado Amazon: etiqueta `trollacos-21`. No poner enlaces de afiliado en correos, y él no compra con su propio enlace.
 - Las fichas **no tienen valor real**: no se compran ni se canjean. Nada de premios ligados a la Porra (ley del juego). Si hay premios, que sean de habilidad en el arcade, con bases legales.
 - Merch: sin diseños de Halloween. Diseños finales en `_fuentes/merch/` (`spread2/` prenda oscura, `spread-blanca/` y la espalda "celeste" para prendas claras; máximo 4000 px para Spreadshop). Logo solo "TROLLACOS", sin ".com".
@@ -47,7 +49,6 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 
 ## Pendiente (a 28 oct 2026)
-- Programar en Metricool las publicaciones de `redes/semana-44/plan.md` (con OK de Guillermo).
 - Cuando Guillermo pase el nombre de su tienda de Spreadshop: crear `/merch/` con la tienda integrada, botón en portada y menú, y story de lanzamiento.
 - 19 nov 2026, sale GTA VI: ampliar la guía (misiones, consejos, música completa).
 - Arcade: "el gran final" tras el capítulo 4 (fiesta en la playa synthwave o la Trollaca ochentera, a elegir por Guillermo).
