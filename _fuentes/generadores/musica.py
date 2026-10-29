@@ -50,7 +50,7 @@ radio_html = '\n'.join(
     f'    <div class="zona"><span class="n">{e}</span><div><h3>{n}</h3><small>{gen.upper()}</small><p>Presentan: {h}</p></div></div>'
     for e, n, gen, h in radios)
 faq = [("¿Cuál es la canción principal de GTA 6?",
-        "«Flower in a Hurricane», de Justice con Tame Impala, SZA y King Gizzard & The Lizard Wizard. Justice también compone la banda sonora original del juego."),
+        "«Flower in a Hurricane», de Justice con Tame Impala, SZA y King Gizzard & The Lizard Wizard. Justice también firma la banda sonora original del juego: 50 temas que salen el 11 de diciembre, con el single «Pusher» (con Gesaffelstein) ya disponible."),
        ("¿Cuántas canciones tiene GTA VI: The Album?",
         "34 canciones originales. Sale el 19 de noviembre de 2026, el mismo día que el juego, en digital, CD y vinilo."),
        ("¿Qué canción suena en el primer tráiler de GTA 6?", "«Love Is a Long Road», de Tom Petty."),
@@ -60,7 +60,7 @@ faq = [("¿Cuál es la canción principal de GTA 6?",
 faq_html = '\n'.join(f'  <details><summary>{q}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)
 ld = {"@context": "https://schema.org", "@graph": [
     {"@type": "Article", "headline": "Canciones de GTA 6: todas las confirmadas", "datePublished": "2026-10-23",
-     "dateModified": "2026-10-23", "inLanguage": "es", "author": {"@type": "Organization", "name": "Trollacos"},
+     "dateModified": "2026-10-29", "inLanguage": "es", "author": {"@type": "Organization", "name": "Trollacos"},
      "publisher": {"@type": "Organization", "name": "Trollacos",
                    "logo": {"@type": "ImageObject", "url": "https://trollacos.com/icono-512.png"}},
      "mainEntityOfPage": "https://trollacos.com/gta-6/musica/"},
@@ -111,6 +111,7 @@ page = f'''<!doctype html>
     <b>&gt; ÍNDICE</b>
     <ol>
       <li><a href="#tema">El tema principal</a></li>
+      <li><a href="#score">La banda sonora de Justice</a></li>
       <li><a href="#album">GTA VI: The Album</a></li>
       <li><a href="#trailers">Canciones de los tráilers</a></li>
       <li><a href="#extendido">Canciones del vistazo extendido</a></li>
@@ -126,6 +127,17 @@ page = f'''<!doctype html>
     <p style="margin:6px 0 12px">De <strong>Justice</strong>, con <strong>Tame Impala, SZA y King Gizzard &amp; The Lizard Wizard</strong>. Justice, el dúo francés de electrónica, es además el encargado de la <strong>banda sonora original</strong> del juego.</p>
     <a class="yt-btn" href="{yt('Justice', 'Flower in a Hurricane')}" target="_blank" rel="noopener">▶ Escuchar en Spotify</a>
   </div>
+
+  <h2 id="score">La banda sonora de Justice <small style="font-size:.5em;color:var(--muted)">(nuevo, 29 oct)</small></h2>
+  <div class="destacado" style="border-color:var(--cyan)">
+    <span style="font-family:'VT323',monospace;font-size:19px;color:var(--cyan)">NUEVO SINGLE · YA DISPONIBLE</span>
+    <h3>Pusher</h3>
+    <p style="margin:6px 0 12px">De <strong>Justice con Gesaffelstein</strong>. Siete minutos de electrónica oscura, con bajo pulsante y sintes a todo trapo: suena a persecución por Vice City a las tres de la mañana.</p>
+    <a class="yt-btn" href="{yt('Justice Gesaffelstein', 'Pusher')}" target="_blank" rel="noopener">▶ Escuchar en Spotify</a>
+  </div>
+  <p>Rockstar ha confirmado la <strong>banda sonora original</strong> del juego, compuesta por Justice: <strong>50 temas</strong> que llegan a las plataformas de streaming el <strong>11 de diciembre</strong>, tres semanas después del juego. «Pusher» y «Flower in a Hurricane» son los dos primeros que se conocen.</p>
+  <p>Es un disco distinto de <em>GTA VI: The Album</em> (el de las 34 canciones de artistas que sale el 19 de noviembre): este es la <strong>música que suena durante el juego</strong>, la de las misiones y las persecuciones. Ya se puede reservar en <strong>vinilo y CD</strong>.</p>
+  <p><a class="amz" href="https://www.amazon.es/s?k=Justice+Grand+Theft+Auto+VI+Original+Score+vinilo&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">💿 Buscar la banda sonora de Justice en Amazon</a></p>
 
   <h2 id="album">GTA VI: The Album</h2>
   <p>Es el disco oficial del juego: <strong>34 canciones originales</strong> hechas para GTA VI. Sale el <strong>19 de noviembre</strong>, el mismo día que el juego, en digital, CD y vinilo. De momento se han publicado estos adelantos:</p>
