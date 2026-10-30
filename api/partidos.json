@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-30T17:52:25Z",
+ "actualizado": "2026-10-30T20:52:43Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -468,7 +468,7 @@
    "id": "2506271",
    "j": 11,
    "fecha": "2026-10-30T20:00:00Z",
-   "estado": "TIMED",
+   "estado": "PAUSED",
    "local": {
     "n": "Villarreal",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
@@ -479,8 +479,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
     "tla": "ESP"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 0,
+   "gv": 0,
    "cuotas": {
     "1": 1.9,
     "X": 3.8,
@@ -692,6 +692,236 @@
     "1": 2.3,
     "X": 3.55,
     "2": 3.0
+   }
+  },
+  {
+   "id": "2506283",
+   "j": 12,
+   "fecha": "2026-11-06T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Sevilla",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
+    "tla": "SEV"
+   },
+   "visit": {
+    "n": "Deportivo Alavés",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
+    "tla": "DEP"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.8,
+    "X": 3.9,
+    "2": 4.1
+   }
+  },
+  {
+   "id": "2506282",
+   "j": 12,
+   "fecha": "2026-11-07T13:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Málaga",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
+    "tla": "MÁL"
+   },
+   "visit": {
+    "n": "Racing de Santander",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
+    "tla": "RAC"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 3.15,
+    "X": 3.6,
+    "2": 2.2
+   }
+  },
+  {
+   "id": "2506285",
+   "j": 12,
+   "fecha": "2026-11-07T15:15:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Espanyol",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "tla": "ESP"
+   },
+   "visit": {
+    "n": "Deportivo de A Coruña",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
+    "tla": "DEP"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.7,
+    "X": 3.4,
+    "2": 2.6
+   }
+  },
+  {
+   "id": "2506287",
+   "j": 12,
+   "fecha": "2026-11-07T17:30:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Osasuna",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "tla": "OSA"
+   },
+   "visit": {
+    "n": "Athletic Bilbao",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
+    "tla": "ATH"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.6,
+    "X": 3.4,
+    "2": 2.65
+   }
+  },
+  {
+   "id": "2506280",
+   "j": 12,
+   "fecha": "2026-11-07T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Valencia",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+    "tla": "VAL"
+   },
+   "visit": {
+    "n": "Real Madrid",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
+    "tla": "REA"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 7.5,
+    "X": 4.55,
+    "2": 1.45
+   }
+  },
+  {
+   "id": "2506288",
+   "j": 12,
+   "fecha": "2026-11-08T13:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Elche",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "tla": "ELC"
+   },
+   "visit": {
+    "n": "Real Betis",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+    "tla": "REA"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 4.05,
+    "X": 3.85,
+    "2": 1.85
+   }
+  },
+  {
+   "id": "2506286",
+   "j": 12,
+   "fecha": "2026-11-08T15:15:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Real Sociedad",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
+    "tla": "REA"
+   },
+   "visit": {
+    "n": "Rayo Vallecano",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "tla": "RAY"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.6,
+    "X": 4.2,
+    "2": 5.45
+   }
+  },
+  {
+   "id": "2506281",
+   "j": 12,
+   "fecha": "2026-11-08T17:30:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Villarreal",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+    "tla": "VIL"
+   },
+   "visit": {
+    "n": "Getafe",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
+    "tla": "GET"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.95,
+    "X": 3.75,
+    "2": 3.6
+   }
+  },
+  {
+   "id": "2506284",
+   "j": 12,
+   "fecha": "2026-11-08T17:30:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Celta Vigo",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "tla": "CEL"
+   },
+   "visit": {
+    "n": "Levante",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "tla": "LEV"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.05,
+    "X": 3.65,
+    "2": 3.4
+   }
+  },
+  {
+   "id": "2506279",
+   "j": 12,
+   "fecha": "2026-11-08T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Atlético Madrid",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+    "tla": "ATL"
+   },
+   "visit": {
+    "n": "Barcelona",
+    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
+    "tla": "BAR"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.55,
+    "X": 3.45,
+    "2": 2.7
    }
   }
  ]
