@@ -53,6 +53,7 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Afiliado Amazon: etiqueta `trollacos-21`. No poner enlaces de afiliado en correos, y él no compra con su propio enlace.
 - Las fichas **no tienen valor real**: no se compran ni se canjean. Nada de premios ligados a la Porra (ley del juego). Si hay premios, que sean de habilidad en el arcade, con bases legales.
 - Merch: sin diseños de Halloween. Diseños finales en `_fuentes/merch/` (`spread2/` prenda oscura, `spread-blanca/` y la espalda "celeste" para prendas claras; máximo 4000 px para Spreadshop). Logo solo "TROLLACOS", sin ".com".
+- **Lucy Lag**: reportera pixel de Trollacos, personaje ficticio y siempre declarado como tal (nunca hacerla pasar por una persona real). Unos 30 años, divertida, cascos gamer con micro, gafas retro, pelo morado, chaqueta rosa con acreditación. Sprite y foto de perfil en `_fuentes/lucy/`. Cuenta de Instagram propia de Guillermo.
 - Nada de contenido sexual (descartadas la chica de la barra y la del bikini del arcade).
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 
