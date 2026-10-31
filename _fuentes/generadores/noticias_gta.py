@@ -9,9 +9,13 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 os.chdir(RAIZ)
 N = json.load(open('_fuentes/generadores/noticias_gta.json', encoding='utf-8'))
 # Danna firma las noticias. Pon aquí su usuario de Instagram (sin @) y saldrá el enlace en cada noticia.
-DANNA_IG = ''
+DANNA_IG = 'dannapixel'
+def tarjeta_danna():
+    boton = f'<a class="btn-ig" href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">📸 Sigue a Danna en Instagram · @{DANNA_IG}</a>' if DANNA_IG else ''
+    return (f'<div class="autora"><img src="/img/danna.jpg" alt="Danna" width="110" height="110"><div><span>&gt; ESTA NOTICIA TE LA HA CONTADO_</span>'
+            f'<b>Danna</b><p>Tu reportera del otro lado de la pantalla. Lo último de GTA VI, sin rodeos y con guasa. <a href="/gta-6/noticias/#danna">¿Quién es?</a></p>{boton}</div></div>')
 def firma():
-    ig = f' · <a href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">@{DANNA_IG} en Instagram</a>' if DANNA_IG else ''
+    ig = f' · <a href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">📸 @{DANNA_IG}</a>' if DANNA_IG else ''
     return f'<div class="firma"><img src="/img/danna.jpg" alt="Danna" width="56" height="56"><div><b>Por Danna</b><span>Tu reportera del otro lado de la pantalla{ig} · <a href="/gta-6/noticias/#danna">¿Quién es?</a></span></div></div>'
 N.sort(key=lambda n: n['fecha'], reverse=True)
 g = open('gta-6/index.html', encoding='utf-8').read()
@@ -45,6 +49,13 @@ extra = """
 .firma img{width:56px;height:56px;border-radius:50%;border:3px solid var(--pink);box-shadow:0 0 12px var(--pink);object-fit:cover}
 .firma b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:20px;color:#fff}
 .firma span{font-size:15px;color:var(--muted)}.firma a{color:var(--cyan)}
+.autora{display:flex;gap:18px;align-items:center;margin:28px 0;padding:18px;border:3px solid var(--pink);border-radius:16px;background:linear-gradient(135deg,rgba(255,43,214,.16),rgba(31,242,255,.08));box-shadow:0 0 24px rgba(255,43,214,.35)}
+.autora img{width:110px;height:110px;border-radius:50%;border:4px solid var(--cyan);box-shadow:0 0 18px var(--cyan);flex:none;object-fit:cover}
+.autora span{font-family:'VT323',monospace;font-size:19px;color:var(--cyan)}
+.autora b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:30px;color:#fff;line-height:1.1}
+.autora p{margin:4px 0 10px;font-size:16px;color:var(--muted)}.autora p a{color:var(--cyan)}
+.btn-ig{display:inline-block;padding:9px 16px;border-radius:10px;background:linear-gradient(90deg,#ff2bd6,#7a2bff);color:#fff;font-weight:700;text-decoration:none;font-size:16px;box-shadow:0 0 14px rgba(255,43,214,.5)}
+@media(max-width:520px){.autora{flex-direction:column;text-align:center}}
 .compartir a{display:inline-block;margin:4px 6px 4px 0;padding:6px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:16px}
 </style>"""
 style2 = style.replace('</style>', extra)
@@ -98,6 +109,7 @@ for i, n in enumerate(N):
   {firma()}
   {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
   <div class="nota"><img class="troll" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> {n["opina"]}</p></div>
+  {tarjeta_danna()}
   <a class="guia-cta" href="{n["guia"]}"><span>&gt; SIGUE LEYENDO EN LA GUÍA TROLLACOS DE GTA VI</span><b>{esc(n["guia_txt"])} ›</b></a>
   <p class="compartir"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={urllib.parse.quote(url)}" target="_blank" rel="noopener">Telegram</a></p>
   <p class="fuente">Fuente: {esc(n["fuente"])}. Noticia de Trollacos, contada con nuestras palabras.</p>
@@ -145,7 +157,7 @@ def card(n, entr=True):
 ix = open('index.html', encoding='utf-8').read()
 gta = '<!--GTA:INICIO-->\n    <div class="news-list">\n' + '\n'.join(card(n, False) for n in N[:4]) + '\n    </div>\n    <p style="text-align:center;margin-top:14px"><a href="/gta-6/noticias/">Todas las noticias de GTA VI ›</a></p>\n<!--GTA:FIN-->'
 ix = re.sub(r'<!--GTA:INICIO-->.*?<!--GTA:FIN-->', lambda m: gta, ix, flags=re.S)
-lo = ('<!--NOTICIAS:INICIO-->\n  <div class="firma-portada"><img src="/img/danna.jpg" alt="Danna" width="64" height="64"><p><b>Danna</b>, tu reportera del otro lado de la pantalla, te cuenta lo último de GTA VI con nuestras palabras. Sin rodeos y sin mandarte a otras webs.</p></div>\n'
+lo = (f'<!--NOTICIAS:INICIO-->\n  <div class="firma-portada"><img src="/img/danna.jpg" alt="Danna" width="64" height="64"><p><b>Danna</b>, tu reportera del otro lado de la pantalla, te cuenta lo último de GTA VI con nuestras palabras. Sin rodeos y sin mandarte a otras webs. <a href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">📸 @{DANNA_IG}</a></p></div>\n'
       '    <div class="news-list">\n' + '\n'.join(card(n) for n in N[:8]) + '\n    </div>\n  <p style="text-align:center;margin-top:16px"><a class="btn alt" href="/gta-6/noticias/">VER TODAS LAS NOTICIAS</a></p>\n<!--NOTICIAS:FIN-->')
 ix = re.sub(r'<!--NOTICIAS:INICIO-->.*?<!--NOTICIAS:FIN-->', lambda m: lo, ix, flags=re.S)
 ix = ix.replace('<p class="small" style="margin:-14px 0 18px">Lo más fresco del día, en pocas líneas.</p>', '<p class="small" style="margin:-14px 0 18px">Las noticias de la redacción de Trollacos.</p>')
