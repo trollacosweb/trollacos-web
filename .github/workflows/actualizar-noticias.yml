@@ -46,7 +46,7 @@ jobs:
             echo "Sin cambios"
           else
             git commit -m "Partidos actualizados [skip netlify]"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main
             git push
           fi
 
