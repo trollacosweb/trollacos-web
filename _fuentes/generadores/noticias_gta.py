@@ -12,7 +12,7 @@ N = json.load(open('_fuentes/generadores/noticias_gta.json', encoding='utf-8'))
 DANNA_IG = ''
 def firma():
     ig = f' · <a href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">@{DANNA_IG} en Instagram</a>' if DANNA_IG else ''
-    return f'<div class="firma"><img src="/img/danna.jpg" alt="Danna" width="56" height="56"><div><b>Por Danna</b><span>Reportera virtual de Trollacos{ig}</span></div></div>'
+    return f'<div class="firma"><img src="/img/danna.jpg" alt="Danna" width="56" height="56"><div><b>Por Danna</b><span>Tu reportera del otro lado de la pantalla{ig} · <a href="/gta-6/noticias/#danna">¿Quién es?</a></span></div></div>'
 N.sort(key=lambda n: n['fecha'], reverse=True)
 g = open('gta-6/index.html', encoding='utf-8').read()
 style = g[g.find('<style>'):g.find('</style>') + 8]
@@ -117,7 +117,8 @@ cuerpo = f'''<header class="cab"><div class="etq">&gt; ÚLTIMA HORA DE LEONIDA_<
 <p class="entradilla">Todo lo que va saliendo de GTA VI, contado a nuestra manera. Y cada noticia, enlazada a su sitio en la guía.</p></header>
 <main style="padding-bottom:0">{firma()}</main>
 <main><div class="lista-not">{''.join(tarjeta(n) for n in N)}</div>
-<a class="guia-cta" href="/gta-6/"><span>&gt; LA GUÍA MÁS COMPLETA EN ESPAÑOL</span><b>La Guía Trollacos de GTA VI ›</b></a></main>'''
+<a class="guia-cta" href="/gta-6/"><span>&gt; LA GUÍA MÁS COMPLETA EN ESPAÑOL</span><b>La Guía Trollacos de GTA VI ›</b></a>
+<div class="nota" id="danna"><img src="/img/danna.jpg" alt="" style="width:56px;border-radius:50%"><p><b>¿QUIÉN ES DANNA?</b> Nuestra reportera del otro lado de la pantalla: un personaje digital creado por Trollacos, como el Trollaco, que pone cara a nuestras noticias. Los textos los prepara la redacción de Trollacos.</p></div></main>'''
 ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Noticias de GTA VI", "url": url, "inLanguage": "es"}
 os.makedirs('gta-6/noticias', exist_ok=True)
 open('gta-6/noticias/index.html', 'w', encoding='utf-8').write(pagina('Noticias de GTA VI: última hora en español', 'Las últimas noticias de GTA VI contadas por Trollacos, enlazadas a la guía más completa en español.', url, cuerpo, ld, 'website'))
@@ -144,7 +145,7 @@ def card(n, entr=True):
 ix = open('index.html', encoding='utf-8').read()
 gta = '<!--GTA:INICIO-->\n    <div class="news-list">\n' + '\n'.join(card(n, False) for n in N[:4]) + '\n    </div>\n    <p style="text-align:center;margin-top:14px"><a href="/gta-6/noticias/">Todas las noticias de GTA VI ›</a></p>\n<!--GTA:FIN-->'
 ix = re.sub(r'<!--GTA:INICIO-->.*?<!--GTA:FIN-->', lambda m: gta, ix, flags=re.S)
-lo = ('<!--NOTICIAS:INICIO-->\n  <div class="firma-portada"><img src="/img/danna.jpg" alt="Danna" width="64" height="64"><p><b>Danna</b>, nuestra reportera virtual, te cuenta lo último de GTA VI con nuestras palabras. Sin rodeos y sin mandarte a otras webs.</p></div>\n'
+lo = ('<!--NOTICIAS:INICIO-->\n  <div class="firma-portada"><img src="/img/danna.jpg" alt="Danna" width="64" height="64"><p><b>Danna</b>, tu reportera del otro lado de la pantalla, te cuenta lo último de GTA VI con nuestras palabras. Sin rodeos y sin mandarte a otras webs.</p></div>\n'
       '    <div class="news-list">\n' + '\n'.join(card(n) for n in N[:8]) + '\n    </div>\n  <p style="text-align:center;margin-top:16px"><a class="btn alt" href="/gta-6/noticias/">VER TODAS LAS NOTICIAS</a></p>\n<!--NOTICIAS:FIN-->')
 ix = re.sub(r'<!--NOTICIAS:INICIO-->.*?<!--NOTICIAS:FIN-->', lambda m: lo, ix, flags=re.S)
 ix = ix.replace('<p class="small" style="margin:-14px 0 18px">Lo más fresco del día, en pocas líneas.</p>', '<p class="small" style="margin:-14px 0 18px">Las noticias de la redacción de Trollacos.</p>')
