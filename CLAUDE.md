@@ -41,6 +41,8 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Toda noticia nueva de GTA VI entra en la guía: primero en "Últimas novedades" y luego en su sección (personajes, cómo se juega, mapa, música, versiones, FAQ + su JSON-LD).
 - Solo datos oficiales o que salgan en al menos dos medios fiables; los rumores, en el recuadro de "Rumores sin confirmar".
 - Toque Trollacos: cajas "EL TROLLACO OPINA" (`.nota`) con humor, sin inventar datos.
+- **Noticias propias:** cada noticia se redacta con nuestras palabras en `_fuentes/generadores/noticias_gta.json` y se genera con `python3 _fuentes/generadores/noticias_gta.py` → `/gta-6/noticias/<slug>/` (+ portada de noticias y sitemap). Sin enlaces a otras webs: la fuente se cita por su nombre. Cada noticia lleva su "EL TROLLACO OPINA" y un enlace a su sección de la guía; en "Últimas novedades" de la guía, cada punto enlaza a su noticia ("Leer la noticia ›").
+- Redes: las publicaciones de noticias mandan a trollacos.com (enlace de la bio), nunca a otras webs. Se dejan como borrador en Metricool para que Guillermo las apruebe.
 - Objetivo final: un PDF descargable, "La Guía Trollacos de GTA VI", cuando el juego salga y la guía esté completa.
 
 ## Reglas que Guillermo ha fijado
