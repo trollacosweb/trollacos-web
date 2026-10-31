@@ -8,7 +8,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 - Repositorio: `trollacosweb/trollacos-web` (GitHub). Web estática + algo de PHP en `api/`.
 - Hosting: DonDominio (PHP), dominio trollacos.com con SSL de pago. FTP: `ftp.trollacos.com`.
 - **Despliegue automático:** `.github/workflows/actualizar-noticias.yml` se lanza en cada push a `main`, por cron y a mano (`workflow_dispatch`):
-  noticias → partidos de LaLiga → commit → subida por FTPS (con reintento) → aviso IndexNow → comprobación de los rankings (sale como `::notice::`).
+  partidos de LaLiga → commit → subida por FTPS (con reintento) → aviso IndexNow → comprobación de los rankings (sale como `::notice::`).
   Para ver resultados: anotaciones del run (`gh api repos/trollacosweb/trollacos-web/check-runs/<job>/annotations`).
 - Secretos de GitHub (los pone Guillermo, **nunca** pegarlos en el chat): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FOOTBALL_DATA_KEY` (ya no hace falta).
 - Excluidos del FTP: `.github/`, `scripts/`, `_fuentes/`, `CLAUDE.md`, `api/datos/`, `node_modules`.
@@ -16,7 +16,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 ## Secciones
 | Ruta | Qué es | Se genera con |
 |---|---|---|
-| `/` | Portada (noticias automáticas, tienda Amazon, banners) | a mano + `scripts/actualizar_noticias.py` |
+| `/` | Portada (noticias propias firmadas por Danna, tienda Amazon, banners) | a mano + `noticias_gta.py` (bloques GTA y NOTICIAS + rss.xml) |
 | `/gta-6/` | Guía GTA VI (mapa, novedades, tráilers, FAQ) | a mano |
 | `/gta-6/musica/` | Música con enlaces a Spotify | `_fuentes/generadores/musica.py` |
 | `/gta-6/que-comprar/` | Guía de compra (afiliados Amazon) | `_fuentes/generadores/compra.py` |
@@ -41,7 +41,7 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Toda noticia nueva de GTA VI entra en la guía: primero en "Últimas novedades" y luego en su sección (personajes, cómo se juega, mapa, música, versiones, FAQ + su JSON-LD).
 - Solo datos oficiales o que salgan en al menos dos medios fiables; los rumores, en el recuadro de "Rumores sin confirmar".
 - Toque Trollacos: cajas "EL TROLLACO OPINA" (`.nota`) con humor, sin inventar datos.
-- **Noticias propias:** cada noticia se redacta con nuestras palabras en `_fuentes/generadores/noticias_gta.json` y se genera con `python3 _fuentes/generadores/noticias_gta.py` → `/gta-6/noticias/<slug>/` (+ portada de noticias y sitemap). Sin enlaces a otras webs: la fuente se cita por su nombre. Cada noticia lleva su "EL TROLLACO OPINA" y un enlace a su sección de la guía; en "Últimas novedades" de la guía, cada punto enlaza a su noticia ("Leer la noticia ›").
+- **Noticias propias:** cada noticia se redacta con nuestras palabras en `_fuentes/generadores/noticias_gta.json` y se genera con `python3 _fuentes/generadores/noticias_gta.py` → `/gta-6/noticias/<slug>/` (+ portada de noticias y sitemap). Sin enlaces a otras webs (tampoco en portada: el feed RSS externo `scripts/actualizar_noticias.py` está retirado desde el 31 oct): la fuente se cita por su nombre. Cada noticia lleva su "EL TROLLACO OPINA" y un enlace a su sección de la guía; en "Últimas novedades" de la guía, cada punto enlaza a su noticia ("Leer la noticia ›").
 - Redes: las publicaciones de noticias mandan a trollacos.com (enlace de la bio), nunca a otras webs. Se dejan como borrador en Metricool para que Guillermo las apruebe.
 - Objetivo final: un PDF descargable, "La Guía Trollacos de GTA VI", cuando el juego salga y la guía esté completa.
 
@@ -53,8 +53,8 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Afiliado Amazon: etiqueta `trollacos-21`. No poner enlaces de afiliado en correos, y él no compra con su propio enlace.
 - Las fichas **no tienen valor real**: no se compran ni se canjean. Nada de premios ligados a la Porra (ley del juego). Si hay premios, que sean de habilidad en el arcade, con bases legales.
 - Merch: sin diseños de Halloween. Diseños finales en `_fuentes/merch/` (`spread2/` prenda oscura, `spread-blanca/` y la espalda "celeste" para prendas claras; máximo 4000 px para Spreadshop). Logo solo "TROLLACOS", sin ".com".
-- **Lucy Lag**: reportera pixel de Trollacos, personaje ficticio y siempre declarado como tal (nunca hacerla pasar por una persona real). Unos 30 años, divertida, cascos gamer con micro, gafas retro, pelo morado, chaqueta rosa con acreditación. Sprite y foto de perfil en `_fuentes/lucy/`. Cuenta de Instagram propia de Guillermo.
-  Versión realista: Guillermo la ha generado 100 % con IA (no es ninguna persona real). Declarada como IA en la bio ("🤖 Reportera virtual IA") + etiqueta "Información de IA" de Instagram al subir; Guillermo no quiere repetirlo en el texto/vídeo de cada post. Las sube él a mano a su cuenta. Reel de presentación en `_fuentes/lucy/reel-presentacion/`. Misma cara siempre, nada de logos de marcas reales en la ropa, nada sexual. Habla cercana, gamer, con humor y piques con el Trollaco; sus posts mandan a trollacos.com/gta-6/noticias/.
+- **Danna** (antes Lucy Lag; Guillermo la renombró el 31 oct): reportera de Trollacos. La versión pixel antigua es, personaje ficticio y siempre declarado como tal (nunca hacerla pasar por una persona real). Unos 30 años, divertida, cascos gamer con micro, gafas retro, pelo morado, chaqueta rosa con acreditación. Sprite y foto de perfil en `_fuentes/lucy/`. Cuenta de Instagram propia de Guillermo.
+  Versión realista: Guillermo la ha generado 100 % con IA (no es ninguna persona real). Declarada como IA en la bio ("🤖 Reportera virtual IA") + etiqueta "Información de IA" de Instagram al subir; Guillermo no quiere repetirlo en el texto/vídeo de cada post. Las sube él a mano a su cuenta. Reels en `_fuentes/lucy/reel-presentacion/` (`reel.html` presentación, `noticia.html#n` plantilla «Danna informa»: `node render2.js 'noticia.html#0' 15 carpeta` + `musica.py salida.wav 15 transporte 12.6` + ffmpeg). Firma todas las noticias de la web («Por Danna · Reportera virtual de Trollacos», avatar `img/danna.jpg`); su Instagram va en `DANNA_IG` de `noticias_gta.py`. Misma cara siempre, nada de logos de marcas reales en la ropa, nada sexual. Habla cercana, gamer, con humor y piques con el Trollaco; sus posts mandan a trollacos.com/gta-6/noticias/.
 - Nada de contenido sexual (descartadas la chica de la barra y la del bikini del arcade).
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 

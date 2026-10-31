@@ -29,16 +29,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Leer las noticias y regenerar la web
-        run: python scripts/actualizar_noticias.py
-
       - name: Actualizar los partidos de LaLiga (La Porra Trollaca)
         continue-on-error: true
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
         run: python scripts/actualizar_partidos.py
 
-      - name: Guardar las noticias en GitHub
+      - name: Guardar los partidos en GitHub
         run: |
           git config user.name "Trollacos Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -48,7 +45,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "Sin cambios"
           else
-            git commit -m "Noticias actualizadas [skip netlify]"
+            git commit -m "Partidos actualizados [skip netlify]"
             git pull --rebase origin main
             git push
           fi

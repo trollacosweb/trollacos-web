@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Righteous';src:url(righteous.woff2)}
+@font-face{font-family:'VT323';src:url(vt323.woff2)}
+@font-face{font-family:'Rajdhani';src:url(rajdhani-700.woff2);font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:540px;height:960px;overflow:hidden;background:#07021a}
+#esc{position:relative;width:540px;height:960px;overflow:hidden;font-family:'Rajdhani',sans-serif;color:#fff}
+#cielo{position:absolute;inset:0;background:linear-gradient(#07021a 0%,#2a0845 45%,#ff2bd6 64%,#07021a 64.2%)}
+#sol{position:absolute;left:120px;top:400px;width:300px;height:300px;border-radius:50%;background:linear-gradient(#ffd23f,#ff2bd6 75%);clip-path:inset(0 0 46% 0);opacity:.55}
+#sol::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 18px,#2a0845 18px 24px)}
+#suelo{position:absolute;left:0;top:616px}
+#oscuro{position:absolute;inset:0;background:rgba(7,2,26,.55)}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(rgba(0,0,0,.18) 0 2px,transparent 2px 4px);z-index:50}
+#cab{position:absolute;top:30px;left:0;right:0;text-align:center;font-family:'VT323';font-size:30px;color:#1ff2ff;letter-spacing:2px;text-shadow:0 0 10px #1ff2ff}
+#cab b{color:#ff2bd6;text-shadow:0 0 10px #ff2bd6}
+#foto{position:absolute;overflow:hidden;border:4px solid #ff2bd6;box-shadow:0 0 26px #ff2bd6}
+#foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+#rec{position:absolute;top:10px;left:12px;font-family:'VT323';font-size:22px;background:rgba(0,0,0,.45);padding:0 8px;border-radius:4px}
+#rec i{display:inline-block;width:11px;height:11px;border-radius:50%;background:#ff3b3b;margin-right:6px;vertical-align:1px}
+#nombre{position:absolute;top:96px;left:150px}
+#nombre .n{background:#ff2bd6;font-family:'Righteous';font-size:34px;padding:2px 14px;display:inline-block;box-shadow:4px 4px 0 #07021a}
+#nombre .c{background:#1ff2ff;color:#07021a;font-weight:700;font-size:19px;padding:2px 14px;display:inline-block;letter-spacing:1px}
+.bocadillo{position:absolute;background:#fff;color:#07021a;font-weight:700;font-size:30px;padding:12px 20px;border-radius:18px;border:4px solid #07021a;box-shadow:5px 5px 0 #ff2bd6;line-height:1.1}
+#gancho{top:400px;left:40px;right:40px;text-align:center}
+#gancho::after{content:'';position:absolute;top:-18px;left:50%;border:10px solid transparent;border-bottom-color:#07021a;border-right-color:#07021a}
+#grande{position:absolute;top:200px;left:0;right:0;text-align:center}
+#grande .g{font-family:'Righteous';font-size:150px;line-height:1;color:#ffd23f;text-shadow:5px 5px 0 #ff2bd6,0 0 40px #ff2bd6}
+#grande .s{font-family:'Righteous';font-size:34px;line-height:1.1;margin:10px 40px 0;text-shadow:0 0 14px #ff2bd6}
+#datos{position:absolute;top:440px;left:28px;right:28px;display:flex;flex-direction:column;gap:14px}
+.dato{font-size:29px;font-weight:700;line-height:1.15;padding:12px 16px;border:3px solid #1ff2ff;border-radius:14px;background:rgba(7,2,26,.85);box-shadow:0 0 14px rgba(31,242,255,.6)}
+#troll{position:absolute;width:200px;left:-6px;top:770px;image-rendering:pixelated}
+#trollb{top:745px;left:180px;right:24px;font-size:27px;box-shadow:5px 5px 0 #1ff2ff}
+#trollb::after{content:'';position:absolute;bottom:-18px;left:20px;border:10px solid transparent;border-top-color:#07021a;border-left-color:#07021a}
+#trollb small{display:block;font-family:'VT323';font-size:22px;color:#ff2bd6}
+#final{position:absolute;inset:0;background:rgba(7,2,26,.97);text-align:center;padding-top:250px}
+#final .t1{font-family:'VT323';font-size:40px;color:#1ff2ff;text-shadow:0 0 10px #1ff2ff}
+#final .t2{font-family:'Righteous';font-size:72px;line-height:1.05;margin:16px 20px;text-shadow:4px 4px 0 #ff2bd6,0 0 30px #ff2bd6}
+#final .t5{display:inline-block;margin-top:30px;font-family:'VT323';font-size:42px;color:#07021a;background:#1ff2ff;padding:4px 22px;border-radius:8px}
+#final .t6{position:absolute;bottom:70px;left:0;right:0;font-family:'Righteous';font-size:32px;color:#ff2bd6;letter-spacing:4px}
+#final .t7{margin-top:40px;font-size:30px;font-weight:700;color:#ffd23f}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+</style></head><body>
+<div id="esc">
+  <div id="cielo"></div><div id="sol"></div><svg id="suelo" width="540" height="346" viewBox="0 0 540 346"></svg><div id="oscuro"></div>
+  <div id="cab">&gt; <b>TROLLACOS</b> NEWS · GTA VI_</div>
+  <div id="foto"><img src="lucy2.jpg"><div id="rec"><i></i>REC</div></div>
+  <div id="nombre"><div class="n">DANNA</div><br><div class="c">INFORMA · TROLLACOS</div></div>
+  <div class="bocadillo" id="gancho"></div>
+  <div id="grande"><div class="g"></div><div class="s"></div></div>
+  <div id="datos"></div>
+  <img id="troll" src="trollaco-grande.png">
+  <div class="bocadillo" id="trollb"><small>EL TROLLACO OPINA:</small><span></span></div>
+  <div id="final"><div class="t1">&gt; LA NOTICIA COMPLETA_</div><div class="t2">EN NUESTRA WEB</div><div class="t5">→ ENLACE EN EL PERFIL</div><div class="t7">🌴 GTA VI · 19 NOV 🌴</div><div class="t6">TROLLACOS.COM</div></div>
+  <div id="flash"></div><div class="scan"></div>
+</div>
+<script>
+const NOT=[
+ {gancho:'¡Malas noticias para los del 60! 😬',g:'30 FPS',s:'GTA VI en PS5 y Xbox Series, de salida',
+  datos:['🎮 Lo contó Rob Nelson, de Rockstar North','❓ ¿60 fps? Ni sí ni no: está por decidir','⚡ PS5 Pro: Rockstar aún no dice qué mejora'],
+  troll:'Yo jugaba a 25 fps en la tele de tubo de mi abuela y mírame 😎'},
+ {gancho:'Haced hueco en la PS5… 😱',g:'210 GB',s:'lo que ocupará GTA VI en PS5',
+  datos:['📦 La edición en caja no trae disco: es un código','⬇️ Precarga desde el 12 de noviembre','🔧 ¿Vas justo? Borra juegos o mete un SSD'],
+  troll:'Ve despidiéndote del Fortnite de tu primo 🫡'},
+ {gancho:'No os lo vais a creer 🤣',g:'💩',s:'Gameplay nuevo de GTA VI… ¡en South Park!',
+  datos:['📺 Episodio «Guinea Pig on a Stick»','🏖️ Jason tira caca de perro en una playa de Vice City','✅ Los créditos lo confirman: imágenes de Rockstar'],
+  troll:'Es justo el humor que esperábamos. Orgullosísimos 🥲'}
+];
+const D=NOT[+location.hash.slice(1)||0];
+const $=id=>document.getElementById(id);
+$('gancho').textContent=D.gancho;document.querySelector('#grande .g').textContent=D.g;document.querySelector('#grande .s').textContent=D.s;
+$('datos').innerHTML=D.datos.map(x=>`<div class="dato">${x}</div>`).join('');$('trollb').querySelector('span').textContent=D.troll;
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));const ease=x=>{x=cl(x);return 1-Math.pow(1-x,3)};
+const back=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const vis=(t,a,d,b=99,d2=.25)=>cl((t-a)/d)*(1-cl((t-b)/d2));
+const lerp=(a,b,k)=>a+(b-a)*k;
+function set(e,op,tr){if(typeof e==='string')e=$(e);e.style.opacity=op;e.style.transform=tr||'none'}
+window.pinta=function(t){
+  let g='';const H=346,cx=270;for(let i=-9;i<=9;i++)g+=`<line x1="${cx+i*14}" y1="0" x2="${cx+i*150}" y2="${H}" stroke="#1ff2ff" stroke-width="2" opacity=".6"/>`;
+  const ph=(t*0.9)%1;for(let k=0;k<9;k++){const z=Math.pow((k+ph)/9,2.2);g+=`<line x1="0" y1="${z*H}" x2="540" y2="${z*H}" stroke="#1ff2ff" stroke-width="${1+z*2.5}" opacity="${0.3+z*0.5}"/>`}
+  $('suelo').innerHTML=g;
+  // foto: grande al principio, luego avatar redondo arriba a la izquierda
+  const k=ease((t-2.4)/.5), f=$('foto');
+  f.style.left=lerp(60,26,k)+'px';f.style.top=lerp(90,84,k)+'px';f.style.width=lerp(420,110,k)+'px';f.style.height=lerp(300,110,k)+'px';
+  f.style.borderRadius=lerp(14,55,k)+'px';f.style.opacity=cl(t/.25);
+  $('rec').style.opacity=k>.5?0:(Math.floor(t*2)%2?1:.35);
+  set('nombre',cl((t-2.7)/.2),`translateX(${(1-ease((t-2.7)/.4))*-400}px)`);
+  set('gancho',vis(t,.4,.2,2.4,.2),`scale(${back((t-.4)/.35)})`);
+  $('flash').style.opacity=Math.max(0,1-Math.abs(t-2.5)/.1)*.7+Math.max(0,1-Math.abs(t-12.6)/.1)*.8;
+  set('grande',vis(t,2.8,.1),`scale(${back((t-2.8)/.5)*(1+0.02*Math.sin(t*6))})`);
+  document.querySelectorAll('.dato').forEach((d,i)=>{const a=4.6+i*1.5;set(d,vis(t,a,.15),`translateX(${(1-ease((t-a)/.35))*500}px)`)});
+  set('troll',vis(t,9.6,.01),`translateY(${(1-back((t-9.6)/.5))*300}px) rotate(${Math.sin(t*6)*3}deg)`);
+  set('trollb',vis(t,10.0,.15),`scale(${back((t-10.0)/.35)})`);
+  set('final',vis(t,12.6,.05));
+  document.querySelector('#final .t2').style.transform=`scale(${back((t-12.7)/.45)})`;
+  document.querySelector('#final .t5').style.opacity=cl((t-13.3)/.3);
+  document.querySelector('#final .t5').style.transform=`scale(${1+0.04*Math.sin(t*7)})`;
+  document.querySelector('#final .t7').style.opacity=cl((t-13.8)/.3);
+};
+pinta(0);
+</script>
+</body></html>

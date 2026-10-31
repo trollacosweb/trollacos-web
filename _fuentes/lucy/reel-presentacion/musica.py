@@ -1,7 +1,7 @@
 import numpy as np, wave, sys
-SR = 44100; DUR = 16.5; BPM = 128; neg = 60 / BPM
+SR = 44100; DUR = float(sys.argv[2]) if len(sys.argv) > 2 else 16.5; TR = int(sys.argv[3]) if len(sys.argv) > 3 else 0; BPM = 128; neg = 60 / BPM
 N = int(SR * DUR); mix = np.zeros(N)
-f = lambda m: 440 * 2 ** ((m - 69) / 12)
+f = lambda m: 440 * 2 ** ((m + TR - 69) / 12)
 def sq(fr, d, duty=.5): t = np.arange(int(SR * d)) / SR; return np.where((t * fr) % 1 < duty, 1., -1.)
 def tri(fr, d): t = np.arange(int(SR * d)) / SR; return 2 * np.abs(2 * ((t * fr) % 1) - 1) - 1
 def env(x, a=.005, r=.08):
@@ -30,8 +30,9 @@ for r in range(2):
     for i, m in enumerate(mel):
         if m: pon(env(sq(f(m), neg / 2 * .9, .5), r=.06), 4.5 + r * 16 * neg + i * neg / 2, .11)
 # subida y golpe en el 19 NOV (12.4 s)
-pon(np.random.uniform(-1, 1, int(SR * 1.0)) * np.linspace(0, 1, int(SR * 1.0)) ** 2, 11.4, .15)
-pon(env(sq(f(45), 1.2, .5), r=1.0), 12.4, .25)
+GOLPE = float(sys.argv[4]) if len(sys.argv) > 4 else 12.4
+pon(np.random.uniform(-1, 1, int(SR * 1.0)) * np.linspace(0, 1, int(SR * 1.0)) ** 2, GOLPE - 1, .15)
+pon(env(sq(f(45), 1.2, .5), r=1.0), GOLPE, .25)
 mix[-int(SR * .8):] *= np.linspace(1, 0, int(SR * .8))
 mix = mix / np.max(np.abs(mix)) * .85
 w = wave.open(sys.argv[1], 'wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
