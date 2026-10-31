@@ -6,7 +6,7 @@
     <atom:link href="https://trollacos.com/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.</description>
     <language>es-es</language>
-    <lastBuildDate>Sat, 31 Oct 2026 11:07:53 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 11:43:54 +0100</lastBuildDate>
     <item>
       <title>NOOBERS 1: Phantom Blade brilla, GTA VI pesará 210 GB y el juego más terrorífico de la historia</title>
       <link>https://news.google.com/rss/articles/CBMi0AFBVV95cUxQZlNLaEI3Vm13bHJ0Mm1KYS1sNjVRelI4RURwYWlCcG42MGEwUzhId3dwNUhSQ01OV0dlQXR6aVI2QVdMYTdCOTdUandackd6VjlhUTBxbUprMHFRT1dxWWV5dWUzaFhid01LT1JUaGlIbzY5dXZwNkQ4OUlBRFV3azRhX3l5QjIxdnJrVFQ2STJVd0xhUXdndWdjaDh1QWNKQUhKNVpfUC14ZU5oNnpIOE5LMHpVWDZ4XzVzaVBuTEo0NEVzNzhPQnZUNUNIbHc50gHQAUFVX3lxTE1OZldJb2RWdHVIYmZ0LW1YR0lFbnFwX3JCNlVPaHNZcnJ1a0ZjaDFDdjR0UUY5aS1BUHRhc0wwT09GQW9oTE1RVHlRZUxKS2VUMmhFLXJaSlRWdWlVNk4wQlpseVZWM1RZMUdGZmFnZVMtZ0NCOE9oeTJLcUhnZ0dYR2JyX0lCejFOZHZhU001Z2ozTHlGQmVVY2M5Q0VJdnZzQVRUa09wLUJNS1VaZ3ZsVnhQTHpQMjFRRjlCanBaTW1aTlJtc3c5cEJWRTg1Mi0?oc=5</link>
@@ -37,6 +37,14 @@
       <enclosure url="https://foro3d.com/2026/octubre/imagenes/gta-6-tendra-ciclos-de-dia-y-noche-mas-largos-que-gta-5.webp" type="image/jpeg" length="0"/>
     </item>
     <item>
+      <title>Esto es alucinante. Baldur’s Gate 3 ya te deja cambiar de universo y un mod te lleva a World of Warcraft</title>
+      <link>https://www.3djuegos.com/juegos/baldurs-gate-3/noticias/esto-alucinante-baldur-s-gate-3-te-deja-cambiar-universo-mod-te-lleva-a-world-of-warcraft</link>
+      <guid isPermaLink="false">https://www.3djuegos.com/juegos/baldurs-gate-3/noticias/esto-alucinante-baldur-s-gate-3-te-deja-cambiar-universo-mod-te-lleva-a-world-of-warcraft</guid>
+      <pubDate>Sat, 31 Oct 2026 10:15:27 +0000</pubDate>
+      <description>3DJuegos. Volver a Baldur&#x27;s Gate 3 no siempre significa repetir la campaña con los mismos personajes o probar otra clase. El RPG de Larian Studios es tan profundo que…</description>
+      <enclosure url="https://i.blogs.es/7ce997/qwre/1024_2000.jpeg" type="image/jpeg" length="0"/>
+    </item>
+    <item>
       <title>Dónde encontrar a Hua, uno de los primeros grandes jefes secretos de Phantom Blade Zero y conseguir su valiosa arma</title>
       <link>https://www.hobbyconsolas.com/videojuegos/donde-encontrar-hua-uno-los-primeros-grandes-jefes-secretos-phantom-blade-zero-conseguir-su-valiosa-arma_7055244_0.html</link>
       <guid isPermaLink="false">https://www.hobbyconsolas.com/videojuegos/donde-encontrar-hua-uno-los-primeros-grandes-jefes-secretos-phantom-blade-zero-conseguir-su-valiosa-arma_7055244_0.html</guid>
@@ -59,14 +67,6 @@
       <pubDate>Sat, 31 Oct 2026 09:15:27 +0000</pubDate>
       <description>VidaExtra. Imagínate la situación. Estás en la conferencia de Apple de 1999 y Steve Jobs sale a escena para presentar algo revolucionario: los juegos exclusivos de la…</description>
       <enclosure url="https://i.blogs.es/953002/imac-playstation/1024_2000.jpeg" type="image/jpeg" length="0"/>
-    </item>
-    <item>
-      <title>Star Wars Jedi: Parte 3 está en una fase avanzada de su desarrollo y debería anunciarse pronto, según Jason Schreier</title>
-      <link>https://www.hobbyconsolas.com/videojuegos/star-wars-jedi-parte-3-esta-una-fase-avanzada-su-desarrollo-deberia-anunciarse-pronto-segun-jason-schreier_7055745_0.html</link>
-      <guid isPermaLink="false">https://www.hobbyconsolas.com/videojuegos/star-wars-jedi-parte-3-esta-una-fase-avanzada-su-desarrollo-deberia-anunciarse-pronto-segun-jason-schreier_7055745_0.html</guid>
-      <pubDate>Sat, 31 Oct 2026 09:13:18 +0000</pubDate>
-      <description>HobbyConsolas. Según el conocido periodista de Bloomberg, el desarrollo de Star Wars Jedi: Parte 3 está más avanzado de lo que pensamos y debería anunciarse oficialmente…</description>
-      <enclosure url="https://imagenes.hobbyconsolas.com/files/image_1920_1080/uploads/imagenes/2024/03/20/6903a4a2380e2.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Jugador : Ibai Sanz</title>
@@ -99,35 +99,34 @@
       <enclosure url="https://www.laprensa.hn/binrepository/1201x901/1c271/1200d630/none/11004/VMUV/la-velada-del-ano-10_15115520_20260725181631.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
-      <title>‍~!!$$☠️▷[DIRECTO/TV] Málaga contra Betis LaLiga En Directo Gratis</title>
-      <link>https://news.google.com/rss/articles/CBMinANBVV95cUxNbU9OSzZxaHhHZDAyVk82NUlqMi1hNy1faENLOUxUaWxZSFBiVk1Cb3dSQk0yZ3NEYk56OXd6cUxuVmdZemdHMDBXcF91WmJJQllVSk5jblA2WmcxNE1FRExNZWNmUWNSUi1SbTJwTU5vX3F5ZHFFcTBsTFRhZllBTHBSNjJSY1A4VjBkNkhfQXZhcExaOW9kZEF4MUhuMDVoZXpnTXFrMHAyQTdnQ2YzZlpVaFBjc2xPVG9oYUNsb2lhYVdKb1lIdGFFZWUwOFZVNWpQVHNrWGxFUWZTZ0RSeVl2a3NRekIyT1hlVl93SFBRRmpMWkNPYnR5QjRFTVR6M3kwLU91LWhfREVmT2ktbld0VHZSNVBoM0RjelY3alZfSlVNUDVhb2lmcFpQUFVpdmtLQWxzMlp3OW9BN2hwc0RHOU5nXzRfVHh2OGVVazBhZERNR0hxOVRZTkRkVnNNcHNpVGR5WXpwX3VGNHd6b2x2YzZxTzNKTDg4THdnS1k2VWRVUDdCMXp1aDY3NjFjTGNUX1dvQWhwT2Z4?oc=5</link>
-      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMinANBVV95cUxNbU9OSzZxaHhHZDAyVk82NUlqMi1hNy1faENLOUxUaWxZSFBiVk1Cb3dSQk0yZ3NEYk56OXd6cUxuVmdZemdHMDBXcF91WmJJQllVSk5jblA2WmcxNE1FRExNZWNmUWNSUi1SbTJwTU5vX3F5ZHFFcTBsTFRhZllBTHBSNjJSY1A4VjBkNkhfQXZhcExaOW9kZEF4MUhuMDVoZXpnTXFrMHAyQTdnQ2YzZlpVaFBjc2xPVG9oYUNsb2lhYVdKb1lIdGFFZWUwOFZVNWpQVHNrWGxFUWZTZ0RSeVl2a3NRekIyT1hlVl93SFBRRmpMWkNPYnR5QjRFTVR6M3kwLU91LWhfREVmT2ktbld0VHZSNVBoM0RjelY3alZfSlVNUDVhb2lmcFpQUFVpdmtLQWxzMlp3OW9BN2hwc0RHOU5nXzRfVHh2OGVVazBhZERNR0hxOVRZTkRkVnNNcHNpVGR5WXpwX3VGNHd6b2x2YzZxTzNKTDg4THdnS1k2VWRVUDdCMXp1aDY3NjFjTGNUX1dvQWhwT2Z4?oc=5</guid>
-      <pubDate>Sat, 31 Oct 2026 10:05:58 +0000</pubDate>
+      <title>‍?!![Fútbol</title>
+      <link>https://news.google.com/rss/articles/CBMipANBVV95cUxOX3JzT1pmbTdfa1M0bE5RZTNnbkVPQW9qSW5NWjFvTDBRdlU1M0FVU01XdGQxS29LWUJvaXFsTVk5cjRtdmNJY1FTeW9XS09hN0EtRXVYQXh4Q0dMRzR2N3Zfb200Q0c2UHdfQ3lsclU0SGtqVGRqQVZTMGkySjBrY3JlOUgwc0xtdlg3WF9TdEh4SS1MMFM5VV8tZlY5dVJEVDlTdERrcUhRY3M5WFFjTDBGWmpOTWd0SzVoRC1sNV9ncW5wNm1UUlRMbHRBaVUyNmVTWmpkTHp0WTVKNnlnM09WUGNuT0hHUjB2dHlBWWlOUm9XU3VPYTd5ZTFDSUlHdzF4bXBjUWFvdXFUQTFIVjUyUm8yaF9DWjkzZHVyTnJGVjlsbEJadTgxaWRSXzFCeElwamJBV2N3VWtqU0VIVURSUEZzVWR4eVBHVFF2SU9pRExJZzRDYzMwbzdEb1hLalhFT0VLRnpUVUJGNkVla0dodnBmbGZTeEFOalR1MEluS1VzTS02aEVhLXM5M1V2ZjNsSFJvRGRFc0thVWdqV1BjTmE?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMipANBVV95cUxOX3JzT1pmbTdfa1M0bE5RZTNnbkVPQW9qSW5NWjFvTDBRdlU1M0FVU01XdGQxS29LWUJvaXFsTVk5cjRtdmNJY1FTeW9XS09hN0EtRXVYQXh4Q0dMRzR2N3Zfb200Q0c2UHdfQ3lsclU0SGtqVGRqQVZTMGkySjBrY3JlOUgwc0xtdlg3WF9TdEh4SS1MMFM5VV8tZlY5dVJEVDlTdERrcUhRY3M5WFFjTDBGWmpOTWd0SzVoRC1sNV9ncW5wNm1UUlRMbHRBaVUyNmVTWmpkTHp0WTVKNnlnM09WUGNuT0hHUjB2dHlBWWlOUm9XU3VPYTd5ZTFDSUlHdzF4bXBjUWFvdXFUQTFIVjUyUm8yaF9DWjkzZHVyTnJGVjlsbEJadTgxaWRSXzFCeElwamJBV2N3VWtqU0VIVURSUEZzVWR4eVBHVFF2SU9pRExJZzRDYzMwbzdEb1hLalhFT0VLRnpUVUJGNkVla0dodnBmbGZTeEFOalR1MEluS1VzTS02aEVhLXM5M1V2ZjNsSFJvRGRFc0thVWdqV1BjTmE?oc=5</guid>
+      <pubDate>Sat, 31 Oct 2026 10:42:13 +0000</pubDate>
       <description>Port of Rotterdam</description>
     </item>
     <item>
-      <title>Lesionados y sancionados del Real Madrid para enfrentarse al Racing de Santander</title>
-      <link>https://www.si.com/es-us/lesionados-y-sancionados-del-real-madrid-para-enfrentarse-al-racing-de-santander</link>
-      <guid isPermaLink="false">https://www.si.com/es-us/lesionados-y-sancionados-del-real-madrid-para-enfrentarse-al-racing-de-santander</guid>
-      <pubDate>Sat, 31 Oct 2026 09:57:17 +0000</pubDate>
-      <description>Sports Illustrated</description>
-      <enclosure url="https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_403,w_3872,h_2178/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/GettyImages/mmsport/sports_illustrated_ftbol/01m61g30qak3q918b8nk.jpg" type="image/jpeg" length="0"/>
+      <title>‍*%[[PARTIDO==]</title>
+      <link>https://news.google.com/rss/articles/CBMivwNBVV95cUxQNHctQkhZQ09KTTlHclFSdWZXQ01VQ1F4WUlHY3R2MzV5TTlXVm5ROFJ2cm5TZWZlNUppZlU3ODRFUm1nc3FvV1czRVVXa0N4d2lRWlBQdGIxMWIwZ1E1dkZGakFEOUZFbW9wUndaUlNSWk5RRVlETGFZSFVTWXdua1J4SzFhellYSElyVWdnZWgzZTVlWmpuTkh5WFB1ZHY3d3gyT1p4b2NnR0xjdklySlpzZVZZZmptRWI1X0NBUVU4Z0VmM1VJVWNlZTIzREhtVlJBdnVOeGJib3ZWM0JmZmljd3o0dHhMazRlQ2N2VjlaSm9Wall3ZVNLTWx0WE1ZM0NXTDduZmNGVEdDQVlFZzZXRnN4cXBFNV9USGU0dHV0c2J0SDJta2VmTGVJZW5xc1dLckMtMG1NRmFiTVBFa2xLeFByQ1NPMkFFdkhTUTZmczJIY29XYmRyTEkxVmtpS240bHdOdGNISUlsdnNEWnpxNVppUWxidFI0cng0Yk1rQTFQT3FSMWhSYWVfOEZGOXhGUDJiaGx3LVFiTHFIX1dDNzJSc055N1R2eG10c09uTjl3VGotZ0YzWEFHaDg?oc=5</link>
+      <guid isPermaLink="false">https://news.google.com/rss/articles/CBMivwNBVV95cUxQNHctQkhZQ09KTTlHclFSdWZXQ01VQ1F4WUlHY3R2MzV5TTlXVm5ROFJ2cm5TZWZlNUppZlU3ODRFUm1nc3FvV1czRVVXa0N4d2lRWlBQdGIxMWIwZ1E1dkZGakFEOUZFbW9wUndaUlNSWk5RRVlETGFZSFVTWXdua1J4SzFhellYSElyVWdnZWgzZTVlWmpuTkh5WFB1ZHY3d3gyT1p4b2NnR0xjdklySlpzZVZZZmptRWI1X0NBUVU4Z0VmM1VJVWNlZTIzREhtVlJBdnVOeGJib3ZWM0JmZmljd3o0dHhMazRlQ2N2VjlaSm9Wall3ZVNLTWx0WE1ZM0NXTDduZmNGVEdDQVlFZzZXRnN4cXBFNV9USGU0dHV0c2J0SDJta2VmTGVJZW5xc1dLckMtMG1NRmFiTVBFa2xLeFByQ1NPMkFFdkhTUTZmczJIY29XYmRyTEkxVmtpS240bHdOdGNISUlsdnNEWnpxNVppUWxidFI0cng0Yk1rQTFQT3FSMWhSYWVfOEZGOXhGUDJiaGx3LVFiTHFIX1dDNzJSc055N1R2eG10c09uTjl3VGotZ0YzWEFHaDg?oc=5</guid>
+      <pubDate>Sat, 31 Oct 2026 10:41:22 +0000</pubDate>
+      <description>Port of Rotterdam</description>
     </item>
     <item>
-      <title>LaLiga EA Sports: FC Barcelona-Deportivo Alavés</title>
-      <link>https://www.mundodeportivo.com/guia-tv/programa/laliga-ea-sports-fc-barcelona-deportivo-alaves-movistar-plus-mas</link>
-      <guid isPermaLink="false">https://www.mundodeportivo.com/guia-tv/programa/laliga-ea-sports-fc-barcelona-deportivo-alaves-movistar-plus-mas</guid>
-      <pubDate>Sat, 31 Oct 2026 09:46:22 +0000</pubDate>
-      <description>Mundo Deportivo</description>
-      <enclosure url="https://www.onedata.es/acceso/imgs/TV/P0000141517_016_1920_1080.jpg" type="image/jpeg" length="0"/>
+      <title>Van Oevelen sufre un esguince de rodilla y se complica su estreno con el Valencia</title>
+      <link>https://www.marca.com/futbol/valencia/2026/10/31/oevelen-sufre-esguince-rodilla-complica-estreno-valencia.html</link>
+      <guid isPermaLink="false">https://www.marca.com/futbol/valencia/2026/10/31/oevelen-sufre-esguince-rodilla-complica-estreno-valencia.html</guid>
+      <pubDate>Sat, 31 Oct 2026 10:16:30 +0000</pubDate>
+      <description>MARCA. El portero cedido seguirá tratamiento en Paterna y el aplazamiento del duelo copero ante el Tavernes reduce sus opciones de llegar a tiempo, aunque no está…</description>
+      <enclosure url="https://objetos.estaticos-marca.com/assets/multimedia/imagenes/2026/10/31/17934417839088.jpg" type="image/jpeg" length="0"/>
     </item>
     <item>
-      <title>Los 10 clubes más valiosos del mundo - rankeados</title>
-      <link>https://www.si.com/es-us/los-10-clubes-mas-valiosos-del-mundo-rankeados</link>
-      <guid isPermaLink="false">https://www.si.com/es-us/los-10-clubes-mas-valiosos-del-mundo-rankeados</guid>
-      <pubDate>Sat, 31 Oct 2026 09:46:07 +0000</pubDate>
-      <description>Sports Illustrated</description>
-      <enclosure url="https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_5647,h_3176/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/GettyImages/mmsport/sports_illustrated_ftbol/01m61hw48s81wb78abev.jpg" type="image/jpeg" length="0"/>
+      <title>Emil Audero, nominado a la mejor parada de LaLiga del mes de octubre</title>
+      <link>https://unionrayo.es/emil-audero-nominado-a-la-mejor-parada-de-laliga-del-mes-de-octubre/</link>
+      <guid isPermaLink="false">https://unionrayo.es/emil-audero-nominado-a-la-mejor-parada-de-laliga-del-mes-de-octubre/</guid>
+      <pubDate>Sat, 31 Oct 2026 09:35:16 +0000</pubDate>
+      <description>Unión Rayo</description>
+      <enclosure url="https://unionrayo.es/wp-content/uploads/2026/10/img_9810.jpeg" type="image/jpeg" length="0"/>
     </item>
     <item>
       <title>Expertos en el salvaje oeste eligen el mejor western de la historia del cine: &quot;Ningún otro ofrece más diversión, emoción y aventura&quot;</title>
