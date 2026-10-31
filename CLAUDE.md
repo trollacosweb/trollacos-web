@@ -37,6 +37,12 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Datos en `api/datos/*.php` (protegidos, fuera de git). **Nunca se guardan IPs**, solo un resumen cifrado.
 - `api/partidos.json` lo genera `scripts/actualizar_partidos.py` desde **TheSportsDB** (gratis, sin clave; guarda jornadas en `scripts/liga_cache.json`; pocas consultas por el límite).
 
+## La guía de GTA VI (objetivo: la más completa en español)
+- Toda noticia nueva de GTA VI entra en la guía: primero en "Últimas novedades" y luego en su sección (personajes, cómo se juega, mapa, música, versiones, FAQ + su JSON-LD).
+- Solo datos oficiales o que salgan en al menos dos medios fiables; los rumores, en el recuadro de "Rumores sin confirmar".
+- Toque Trollacos: cajas "EL TROLLACO OPINA" (`.nota`) con humor, sin inventar datos.
+- Objetivo final: un PDF descargable, "La Guía Trollacos de GTA VI", cuando el juego salga y la guía esté completa.
+
 ## Reglas que Guillermo ha fijado
 - No manejar nunca sus contraseñas. Los secretos los mete él.
 - Publicar en sus redes solo con su OK explícito para cada publicación. Instagram y TikTok (ambos @trollacostv) van por **Metricool** (conector, marca 7708546, zona Europe/Madrid). Antes de programar, mirar `getScheduledPosts` para no duplicar. TikTok exige `tiktokData.title`. Lo que más alcance da: Reels/TikToks verticales (vídeos en `redes/reels/`, hechos con Playwright fotograma a fotograma + ffmpeg + música 8-bit propia en numpy); stories y fotos solo llegan a los seguidores.

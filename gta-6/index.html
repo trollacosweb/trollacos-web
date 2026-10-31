@@ -53,6 +53,12 @@ h3{font-family:'Righteous',sans-serif;font-size:23px;color:#fff;margin:0 0 4px}
 p{margin:0 0 14px}
 strong{color:#fff}
 .check{padding-left:0;list-style:none}.check li{position:relative;padding:6px 0 6px 28px}.check li::before{content:'▶';position:absolute;left:2px;color:var(--pink)}
+.nota{display:flex;gap:14px;align-items:flex-start;margin:18px 0;padding:14px 16px;border:2px dashed var(--yellow);border-radius:12px;background:rgba(255,210,63,.07)}
+.nota img{width:40px;height:auto;image-rendering:pixelated;flex:none}.nota p{margin:0;font-size:17px}.nota b{color:var(--yellow)}
+.bloques{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:10px 0}
+.bloque{border:1px solid rgba(31,242,255,.4);border-radius:10px;padding:14px 16px;background:rgba(31,242,255,.05)}
+.bloque h3{font-family:'VT323',monospace;font-weight:400;font-size:26px;color:var(--cyan);margin:0 0 6px}
+.bloque ul{margin:0;padding-left:18px}.bloque li{margin:4px 0;font-size:17px}
 .nov{list-style:none;padding:0}.nov li{padding:10px 12px;margin:8px 0;border-left:3px solid var(--cyan);background:rgba(31,242,255,.05);border-radius:0 8px 8px 0}.nov b{color:var(--yellow);font-weight:700}
 .datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:8px 0 18px}
 .dato{border:1px solid rgba(255,43,214,.45);border-radius:8px;padding:14px 16px;background:rgba(255,43,214,.06)}
@@ -121,9 +127,11 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Article","headline":"GTA 6: guía completa en español (personajes, mapa, fecha y precio)","datePublished":"2026-10-21","dateModified":"2026-10-29","inLanguage":"es","author":{"@type":"Organization","name":"Trollacos"},"publisher":{"@type":"Organization","name":"Trollacos","logo":{"@type":"ImageObject","url":"https://trollacos.com/icono-512.png"}},"mainEntityOfPage":"https://trollacos.com/gta-6/"},
+{"@type":"Article","headline":"GTA 6: guía completa en español (personajes, mapa, fecha y precio)","datePublished":"2026-10-21","dateModified":"2026-10-31","inLanguage":"es","author":{"@type":"Organization","name":"Trollacos"},"publisher":{"@type":"Organization","name":"Trollacos","logo":{"@type":"ImageObject","url":"https://trollacos.com/icono-512.png"}},"mainEntityOfPage":"https://trollacos.com/gta-6/"},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"¿Cuándo sale GTA 6?","acceptedAnswer":{"@type":"Answer","text":"El 19 de noviembre de 2026 en PS5 y Xbox Series X|S. La precarga digital empieza el 12 de noviembre."}},
+{"@type":"Question","name":"¿GTA 6 está doblado al español?","acceptedAnswer":{"@type":"Answer","text":"No. Las voces son en inglés, con textos y subtítulos en español de España y de México."}},
+{"@type":"Question","name":"¿Cuántas estrellas de búsqueda hay en GTA 6?","acceptedAnswer":{"@type":"Answer","text":"Seis, y además un perfil criminal que recuerda cómo te portas."}},
 {"@type":"Question","name":"¿Cuánto ocupa GTA 6?","acceptedAnswer":{"@type":"Answer","text":"Unos 210 GB en PS5, según la ficha de la PlayStation Store. Rockstar no lo ha anunciado oficialmente."}},
 {"@type":"Question","name":"¿Sale GTA 6 en PC?","acceptedAnswer":{"@type":"Answer","text":"Por ahora no. Rockstar solo ha anunciado PS5 y Xbox Series X|S y no ha confirmado versión de PC."}},
 {"@type":"Question","name":"¿Cuánto cuesta GTA 6?","acceptedAnswer":{"@type":"Answer","text":"La edición estándar cuesta 79,99 en dólares y en las tiendas españolas aparece a 79,99 €. La Ultimate Edition cuesta 99,99 dólares."}},
@@ -163,10 +171,12 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
       <li><a href="#novedades">Últimas novedades</a></li>
       <li><a href="#historia">De qué va la historia</a></li>
       <li><a href="#personajes">Todos los personajes</a></li>
+      <li><a href="#jugabilidad">Cómo se juega</a></li>
       <li><a href="#mapa">El mapa: Leonida y Vice City</a></li>
       <li><a href="#trailers">Los tráilers</a></li>
       <li><a href="#jugar">Qué necesitas para jugarlo</a></li>
       <li><a href="#musica">La música</a></li>
+      <li><a href="#versiones">Idiomas, PS5 Pro y PC</a></li>
       <li><a href="#faq">Preguntas rápidas</a></li>
     </ol>
   </nav>
@@ -193,28 +203,17 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   </p>
   <p class="afil">Enlaces de afiliado: si compras desde aquí, Trollacos se lleva una pequeña comisión y a ti no te cuesta nada más.</p>
 
-  <h2 id="novedades">Últimas novedades <small style="font-size:.55em;color:var(--muted)">(actualizado el 29 de octubre)</small></h2>
+  <h2 id="novedades">Últimas novedades <small style="font-size:.55em;color:var(--muted)">(actualizado el 31 de octubre)</small></h2>
   <ul class="nov">
     <li><b>29 oct · La banda sonora de Justice.</b> Rockstar confirma la banda sonora original: <b>50 temas</b> de Justice que llegan a streaming el <b>11 de diciembre</b>. Ya puedes escuchar el nuevo single, <b>«Pusher»</b>, con Gesaffelstein. Lo tienes en <a href="/gta-6/musica/#score">la página de música</a>.</li>
     <li><b>29 oct · Gameplay nuevo… en South Park.</b> El episodio <i>Guinea Pig on a Stick</i> emitió imágenes reales del juego: Jason en una playa de Vice City abarrotada <b>tirándole caca de perro a la gente</b> 💩, con los peatones reaccionando y las huellas marcándose en la arena. Los créditos lo confirman: "Grand Theft Auto VI footage courtesy of Rockstar Games". Rockstar marketing nivel dios.</li>
-    <li><b>29 oct · Especial de Edge Magazine.</b> 16 páginas desde el estudio de Rockstar en Edimburgo, más de diez capturas nuevas (Lucía en un club de neón, Jason y Lucía en moto, un tiburón martillo, el skyline de Vice City…) y un montón de detalles de cómo se juega. Te lo resumimos en <a href="#como-se-juega">cómo se juega</a>.</li>
+    <li><b>29 oct · Especial de Edge Magazine.</b> 16 páginas desde el estudio de Rockstar en Edimburgo, más de diez capturas nuevas (Lucía en un club de neón, Jason y Lucía en moto, un tiburón martillo, el skyline de Vice City…) y un montón de detalles de cómo se juega. Te lo contamos todo en <a href="#jugabilidad">cómo se juega</a>.</li>
     <li><b>27 oct · Ocupa unos 210 GB en PS5.</b> Lo ha destapado PlayStation Game Size a partir de la ficha de la PlayStation Store. Rockstar no lo ha anunciado, pero es la cifra más fiable que hay. Si vas justo de espacio, mira nuestra <a href="/gta-6/que-comprar/#espacio">guía de compra</a>.</li>
     <li><b>22 oct · Burger Shot y Cluckin' Bell en Miami.</b> Las cadenas de comida del juego han aparecido en el Kaseya Center, el pabellón de los Miami Heat, dentro de la campaña de lanzamiento.</li>
     <li><b>16 oct · Coches de GTA VI por las calles de Miami.</b> Rockstar sacó a pasear coches tematizados, entre ellos un Lamborghini de la policía de Vice Beach.</li>
     <li><b>15 oct · Tráiler de lanzamiento.</b> Unos 90 segundos que Rockstar soltó sin avisar. Con él llegaron el arte oficial de Jason y Lucía, <i>Lock and Load</i>, y una captura nueva: un hidroavión de Brian's Boat Works sobrevolando los Grassrivers al atardecer. Lo tienes en <a href="#trailers">los tráilers</a>.</li>
     <li><b>13 oct · Merchandising en Wynwood Walls.</b> El museo de arte urbano de Miami tiene ropa y artículos de GTA VI.</li>
   </ul>
-  <h3 id="como-se-juega" style="font-family:'VT323',monospace;font-weight:400;font-size:30px;color:var(--cyan);margin:26px 0 8px">&gt; Cómo se juega (lo que Rockstar contó a Edge)</h3>
-  <ul class="check">
-    <li><b>Un mapa enorme:</b> Leonida es casi tan grande como los mapas de GTA IV, GTA V y Red Dead Redemption 2 juntos.</li>
-    <li><b>Ciudad viva:</b> más interiores que nunca, autobuses y trenes que funcionan, un ciclo de día y noche más largo que en GTA V y calles más estrechas y realistas.</li>
-    <li><b>Peatones con carácter:</b> reaccionan según su forma de ser, el barrio, lo que han visto y cómo los tratas. Si llevas el arma a la vista se ponen nerviosos, y si la tiras puedes calmar la situación.</li>
-    <li><b>Policía más lista:</b> unidades caninas en las persecuciones, la búsqueda tiene en cuenta dónde estás, qué ropa llevas y con quién vas, y algunos coches llevan localizador.</li>
-    <li><b>Perfil criminal:</b> una escala que va de "Profesional" a "Irredimible". Puedes dejar fuera de combate o intimidar en vez de matar.</li>
-    <li><b>Jason y Lucía:</b> se puede cambiar entre los dos, y su relación evoluciona en cuatro niveles.</li>
-    <li><b>Detalles:</b> Scooter Bros te lleva tus vehículos, la app WAINK te dice qué coches buscan los peristas, el café da aguante y los batidos de proteínas, vida.</li>
-  </ul>
-
   <p class="ojo" style="margin-top:8px;border:0;padding-top:0"><b>Rumores sin confirmar:</b> que la versión de PC llegaría a principios de 2027 y que la prensa ya tiene copias para analizarlo. Rockstar no ha dicho nada de ninguna de las dos cosas.</p>
 
   <h2 id="historia">De qué va la historia</h2>
@@ -235,6 +234,63 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="pj"><span class="rol">DÚO DE RAP</span><h3>Real Dimez (Bae-Luxe y Roxy)</h3><p>Amigas de toda la vida que pasaron de los trapicheos a petarlo con temas virales en redes. Ahora buscan dar el salto de verdad.</p></div>
     <div class="pj"><span class="rol">ATRACADOR PROFESIONAL</span><h3>Raúl Bautista</h3><p>Ladrón de bancos con muchos años de oficio. Siempre está buscando talento nuevo dispuesto a jugársela.</p></div>
   </div>
+  <h3 style="font-family:'VT323',monospace;font-weight:400;font-size:28px;color:var(--cyan);margin:24px 0 8px">&gt; Más caras de Leonida</h3>
+  <p>Además de los ocho principales, en las fichas oficiales, el vistazo extendido y el especial de Edge han ido apareciendo estos:</p>
+  <div class="tabla"><table>
+    <tr><th>Personaje</th><th>Quién es</th></tr>
+    <tr><td><strong>Lori Heder</strong></td><td>La mujer de Brian. Lleva el astillero de los Cayos y, por lo visto, a Brian también.</td></tr>
+    <tr><td><strong>Stefanie</strong></td><td>La trabajadora social de la cárcel: la primera voz que se oye en el Tráiler 1, la que le pregunta a Lucía por su vida.</td></tr>
+    <tr><td><strong>Méndez</strong></td><td>Policía de Vice City, chaleco táctico, gafas de tiro y cara de pocos amigos. Sale en el vistazo extendido y en las capturas de Edge. Huele a corrupto desde aquí.</td></tr>
+    <tr><td><strong>Valentina</strong></td><td>Contrata a Jason y Lucía como escoltas en el vistazo extendido. Los veteranos de GTA Online la reconocerán.</td></tr>
+    <tr><td><strong>Yago</strong></td><td>Exadicto reconvertido en piloto de carreras ilegales.</td></tr>
+    <tr><td><strong>Wyman</strong></td><td>Coleccionista y conseguidor local. Es el que te encarga coches en la Ultimate Edition.</td></tr>
+    <tr><td><strong>DWNPLY</strong></td><td>El rapero que está detrás del primer pelotazo de las Real Dimez.</td></tr>
+  </table></div>
+  <p style="font-size:15px;color:var(--muted)">Voces: Rockstar no ha confirmado ningún actor. El único que lo ha dicho públicamente es Stephen Root, que asegura que sale en el juego (se le relaciona con Brian, pero sin confirmar).</p>
+  <div class="nota"><img class="troll" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> Méndez tiene más pinta de malo que de policía. Apostamos fichas de la Porra a que nos la lía en la tercera misión.</p></div>
+
+
+  <h2 id="jugabilidad">Cómo se juega</h2>
+  <p>Todo lo que se ha visto en el vistazo extendido de 26 minutos y lo que Rockstar contó a Edge. Ya sabemos bastante más de lo que parece:</p>
+  <div class="bloques">
+    <div class="bloque"><h3>👫 Jason y Lucía</h3><ul>
+      <li>Puedes <b>cambiar entre los dos</b> en cualquier momento, como en GTA V.</li>
+      <li>Su relación evoluciona en <b>cuatro niveles</b> según lo que hagáis juntos.</li>
+      <li>Pueden atracar tiendas a medias, al más puro Bonnie y Clyde, e incluso <b>ir de la mano</b>.</li></ul></div>
+    <div class="bloque"><h3>🚔 La policía</h3><ul>
+      <li>Vuelve el nivel de búsqueda de <b>seis estrellas</b>.</li>
+      <li>Te reconocen por tu <b>ropa, tu aspecto, el coche y con quién vas</b>. Cambiarte de ropa o quemar el coche ayuda a despistar.</li>
+      <li><b>Unidades caninas</b> en las persecuciones y coches con localizador.</li>
+      <li>Antes de entrar en una tienda te avisa de si hay <b>cámaras</b>.</li></ul></div>
+    <div class="bloque"><h3>😈 El perfil criminal</h3><ul>
+      <li>Una escala que va de <b>"Profesional" a "Irredimible"</b> según cómo te portes.</li>
+      <li>No se borra como las estrellas: el juego recuerda si eres de los que van liándola.</li>
+      <li>Puedes <b>intimidar o dejar fuera de combate</b> en vez de matar.</li></ul></div>
+    <div class="bloque"><h3>🚶 La gente</h3><ul>
+      <li>Los peatones reaccionan según su <b>carácter, el barrio y lo que han visto</b>.</li>
+      <li>Si llevas el arma a la vista se ponen nerviosos. Si la <b>tiras al suelo</b> puedes calmar la situación.</li>
+      <li>Puedes <b>acariciar a los perros</b>... o regañarlos.</li></ul></div>
+    <div class="bloque"><h3>💪 Tu cuerpo</h3><ul>
+      <li>Vuelve el <b>gimnasio</b> estilo San Andreas: entrenar cambia el físico.</li>
+      <li>Comer mal tiene consecuencias: abusar de las patatas fritas se nota.</li>
+      <li>El <b>café da aguante</b> y los <b>batidos de proteínas, vida</b>.</li></ul></div>
+    <div class="bloque"><h3>🏖️ Cosas que hacer</h3><ul>
+      <li>Baloncesto, pesca (con Cal), kayak, moto de agua y buceo.</li>
+      <li>Carreras de motocross y carreras ilegales de coches.</li>
+      <li>Combates de lucha y peleas en el patio de atrás.</li>
+      <li>Minigolf, billar, salto BASE... y tirar caca de perro a la gente (gracias, South Park).</li></ul></div>
+    <div class="bloque"><h3>🚗 Coches y robos</h3><ul>
+      <li>Conducción más realista, desarrollada con pilotos de verdad.</li>
+      <li>Para robar un coche puedes <b>romper la ventanilla o abrirlo con una ganzúa</b>.</li>
+      <li><b>Scooter Bros</b> te lleva tus vehículos donde estés y la app <b>WAINK</b> te dice qué coches buscan los peristas.</li>
+      <li>Puedes <b>disparar a las ruedas</b> de la policía para escapar.</li></ul></div>
+    <div class="bloque"><h3>🌆 Un mundo vivo</h3><ul>
+      <li>Más interiores que en ningún GTA: pisos, bares en azoteas, clubs subterráneos.</li>
+      <li><b>Autobuses y trenes</b> que funcionan de verdad.</li>
+      <li>Un día y noche más largos que en GTA V y calles más estrechas y realistas.</li>
+      <li>Radio y <b>podcasts</b> también a pie, con los cascos del móvil.</li></ul></div>
+  </div>
+  <div class="nota"><img class="troll" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> lo del gimnasio nos da miedo. Si Jason se pasa la partida comiendo en Cluckin' Bell como nosotros, va a acabar el juego rodando.</p></div>
 
   <h2 id="mapa">El mapa: Leonida y Vice City</h2>
   <p>El juego no se queda en la ciudad: se juega en todo el <strong>estado de Leonida</strong>, la versión de Rockstar de Florida. Estas son las seis grandes zonas presentadas (las tienes todas en el <a href="#explora">mapa interactivo</a> del principio):</p>
@@ -282,7 +338,24 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <p>El tema principal es <strong>«Flower in a Hurricane»</strong>, de Justice con Tame Impala, SZA y King Gizzard &amp; The Lizard Wizard, y el juego tendrá su propio álbum de 34 canciones. Hay seis emisoras de radio confirmadas.</p>
   <a class="guia-musica" href="/gta-6/musica/"><span>🎵 LISTA COMPLETA</span>Todas las canciones confirmadas de GTA 6, con enlace para escucharlas ›</a>
 
+  <h2 id="versiones">Idiomas, PS5 Pro y PC</h2>
+  <div class="bloques">
+    <div class="bloque"><h3>🗣️ ¿Viene en español?</h3><ul>
+      <li><b>Textos y subtítulos sí</b>, en español de España y de México.</li>
+      <li><b>Doblaje no</b>: las voces son solo en inglés, como siempre en GTA.</li>
+      <li>Lo dice la ficha de la tienda de Microsoft. Rockstar no lo ha anunciado aparte.</li></ul></div>
+    <div class="bloque"><h3>⚡ PS5 Pro</h3><ul>
+      <li>La ficha de PlayStation Store lo marca como <b>mejorado para PS5 Pro</b>.</li>
+      <li>Si irá a 60 fps o no, Rockstar <b>no lo ha confirmado</b>. Desconfía de quien te lo asegure.</li></ul></div>
+    <div class="bloque"><h3>💻 ¿Y en PC?</h3><ul>
+      <li>De momento <b>no está anunciado</b>. Solo PS5 y Xbox Series X|S.</li>
+      <li>Circula el rumor de principios de 2027, sin confirmar. Con GTA V tardó año y medio.</li></ul></div>
+  </div>
+  <div class="nota"><img class="troll" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> sin doblaje, sí. Pero a Lucía en inglés con subtítulos no le hace falta más. Y si echas de menos el castellano, siempre puedes leer esta guía en voz alta con acento de Vallecas.</p></div>
+
   <h2 id="faq">Preguntas rápidas</h2>
+  <details><summary>¿GTA 6 está doblado al español?</summary><p>No. Las voces son en inglés, con textos y subtítulos en español de España y de México, según la ficha de la tienda de Microsoft.</p></details>
+  <details><summary>¿Cuántas estrellas de búsqueda hay?</summary><p>Seis, como en los clásicos. Y además hay un perfil criminal que recuerda cómo te portas.</p></details>
   <details><summary>¿Cuánto ocupa GTA 6?</summary><p>Unos 210 GB en PS5, según la ficha de la PlayStation Store. Rockstar no lo ha anunciado oficialmente. La precarga empieza el 12 de noviembre.</p></details>
   <details><summary>¿Sale GTA 6 en PC?</summary><p>De momento no. Rockstar solo ha anunciado PS5 y Xbox Series X|S. Con GTA V el PC llegó año y medio después, pero para GTA VI no hay nada confirmado.</p></details>
   <details><summary>¿Sale en PS4 o Xbox One?</summary><p>No. Solo en PS5 y Xbox Series X|S.</p></details>
