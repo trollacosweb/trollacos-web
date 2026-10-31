@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-31T17:29:18Z",
+ "actualizado": "2026-10-31T17:35:18Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -537,7 +537,7 @@
    "id": "2506273",
    "j": 11,
    "fecha": "2026-10-31T17:30:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Real Betis",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
@@ -548,8 +548,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
     "tla": "MÁL"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 0,
+   "gv": 0,
    "cuotas": {
     "1": 1.35,
     "X": 4.8,
