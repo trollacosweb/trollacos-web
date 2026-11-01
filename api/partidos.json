@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-01T11:45:22Z",
+ "actualizado": "2026-11-01T14:47:48Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -583,7 +583,7 @@
    "id": "2506275",
    "j": 11,
    "fecha": "2026-11-01T13:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Getafe",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
@@ -594,8 +594,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
     "tla": "SEV"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 2,
+   "gv": 1,
    "cuotas": {
     "1": 3.55,
     "X": 3.7,
