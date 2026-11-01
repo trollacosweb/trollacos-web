@@ -47,6 +47,14 @@ h2{font-family:'Righteous',sans-serif;font-size:clamp(27px,6vw,38px);color:var(-
 h3{font-family:'Righteous',sans-serif;font-size:23px;color:#fff;margin:0 0 4px}
 p{margin:0 0 14px}
 strong{color:#fff}
+.check{padding-left:0;list-style:none}.check li{position:relative;padding:6px 0 6px 28px}.check li::before{content:'▶';position:absolute;left:2px;color:var(--pink)}
+.nota{display:flex;gap:14px;align-items:flex-start;margin:18px 0;padding:14px 16px;border:2px dashed var(--yellow);border-radius:12px;background:rgba(255,210,63,.07)}
+.nota img{width:40px;height:auto;image-rendering:pixelated;flex:none}.nota p{margin:0;font-size:17px}.nota b{color:var(--yellow)}
+.bloques{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:10px 0}
+.bloque{border:1px solid rgba(31,242,255,.4);border-radius:10px;padding:14px 16px;background:rgba(31,242,255,.05)}
+.bloque h3{font-family:'VT323',monospace;font-weight:400;font-size:26px;color:var(--cyan);margin:0 0 6px}
+.bloque ul{margin:0;padding-left:18px}.bloque li{margin:4px 0;font-size:17px}
+.nov{list-style:none;padding:0}.nov li{padding:10px 12px;margin:8px 0;border-left:3px solid var(--cyan);background:rgba(31,242,255,.05);border-radius:0 8px 8px 0}.nov b{color:var(--yellow);font-weight:700}
 .datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:8px 0 18px}
 .dato{border:1px solid rgba(255,43,214,.45);border-radius:8px;padding:14px 16px;background:rgba(255,43,214,.06)}
 .dato span{display:block;font-family:'VT323',monospace;font-size:18px;color:var(--pink);letter-spacing:.06em}
@@ -248,8 +256,8 @@ $('salir').onclick=function(e){e.preventDefault();guarda(null);pinta(null)};
 $('ver-codigo').onclick=function(e){e.preventDefault();var s=$('mi-codigo');s.textContent=s.textContent?'':' · Código: '+yo.codigo};
 $('cerrar-aviso').onclick=function(){$('aviso-codigo').hidden=true};
 
-var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche Trolloween',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado'};
-var CAPS=[['🧟','La noche Trolloween'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado']];
+var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche Trolloween',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
+var CAPS=[['🧟','La noche Trolloween'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30']];
 function n(x){return Number(x||0).toLocaleString('es-ES')}
 function pinta(j){
   $('sin-cuenta').hidden=!!j;$('con-cuenta').hidden=!j;$('stats').hidden=!j;
@@ -263,7 +271,7 @@ function pinta(j){
   $('cifras').innerHTML=[
     [n(j.fichas),'🪙 fichas en el monedero'],[j.puesto_fichas+'º','de '+j.jugadores+' en el ranking de fichas'],
     [n(j.partidas),'🕹️ partidas jugadas'],[n(j.fichas_arcade),'fichas ganadas en el arcade'],
-    [caps+'/4','📖 capítulos superados'],[mejorPuesto<99?mejorPuesto+'º':'—','🏆 mejor puesto en el arcade']
+    [caps+'/5','📖 capítulos superados'],[mejorPuesto<99?mejorPuesto+'º':'—','🏆 mejor puesto en el arcade']
   ].map(function(c){return '<div class="cifra"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('');
   // arcade por modo
   $('t-arcade').innerHTML='<tr><th>Modo</th><th>Mejor marca</th><th>Puesto</th><th>Partidas</th></tr>'+Object.keys(NOMBRES).map(function(m){
@@ -271,7 +279,7 @@ function pinta(j){
     return '<tr><td>'+NOMBRES[m]+'</td>'+(a?'<td class="n">'+n(a.puntos)+'</td><td>'+(a.puesto===1?'🔥 1º':a.puesto<=3?['','🥇','🥈','🥉'][a.puesto]+' '+a.puesto+'º':a.puesto+'º')+'</td>':'<td class="no">—</td><td class="no">—</td>')+'<td>'+p+'</td></tr>'}).join('');
   // capítulos
   $('caps').innerHTML=CAPS.map(function(c,i){var ok=caps>i;return '<div class="capi'+(ok?' ok':'')+'"><b>'+(ok?c[0]:'🔒')+'</b>'+(i+1)+' · '+c[1]+(ok?'<br>✔ Superado':'')+'</div>'}).join('');
-  $('barra-caps').style.width=(caps*25)+'%';
+  $('barra-caps').style.width=(caps*20)+'%';
   // porra
   $('cifras-porra').innerHTML=[
     [n(pr.total),'⚽ pronósticos'],[n(pr.ganada),'✔ aciertos'],[pct+'%','de acierto'],[n(pr.mayor),'💰 mayor premio (fichas)'],
@@ -283,7 +291,7 @@ function pinta(j){
   var ins=[
     ['🎟️','Fundador','Cuenta creada en 2026',j.alta<'2027-01-01'],
     ['🧟','Cazazombis','Supera el capítulo 1',caps>=1],['🍺','Sin gritar','Supera el capítulo 2',caps>=2],
-    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],
+    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],['👑','Salvaprincesas','Rescata a la Princesa Neón',caps>=5],
     ['🕹️','Viciado','Juega 50 partidas',j.partidas>=50],['🪙','Hucha','Llega a 100 fichas',j.fichas>=100],['💰','Ricachón','Llega a 100.000 fichas',j.fichas>=100000],
     ['🏆','Top 10','Entra en un top 10 del arcade',top10],['🔥','Número 1','Sé el primero en un ranking',uno],
     ['⚽','Primer gol','Acierta un pronóstico',pr.ganada>=1],['🔮','Adivino','Acierta 10 pronósticos',pr.ganada>=10],['🎯','Francotirador','Acierta un resultado exacto',pr.exactos>=1]

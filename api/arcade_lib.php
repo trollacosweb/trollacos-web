@@ -3,7 +3,7 @@
  * Trollaco Run - rankings del arcade (los usan marcadores.php y la cuenta del jugador en porra.php).
  */
 // Un ranking por modo: "run" (carrera infinita) y los capítulos del modo historia
-$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php', 'c2' => 'marcadores-c2.php', 'c3' => 'marcadores-c3.php', 'c4' => 'marcadores-c4.php'];
+$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php', 'c2' => 'marcadores-c2.php', 'c3' => 'marcadores-c3.php', 'c4' => 'marcadores-c4.php', 'c5' => 'marcadores-c5.php'];
 // Cambiar este número borra el ranking (empieza una temporada nueva)
 const TEMPORADA = 2;
 

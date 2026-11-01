@@ -20,7 +20,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 | `/gta-6/` | Guía GTA VI (mapa, novedades, tráilers, FAQ) | a mano |
 | `/gta-6/musica/` | Música con enlaces a Spotify | `_fuentes/generadores/musica.py` |
 | `/gta-6/que-comprar/` | Guía de compra (afiliados Amazon) | `_fuentes/generadores/compra.py` |
-| `/arcade/` | Trollaco Run: Modo historia (4 capítulos) + "Supera el récord" | a mano (canvas JS) |
+| `/arcade/` | Trollaco Run: Modo historia (5 capítulos con diálogos) + "Supera el récord" | a mano (canvas JS) |
 | `/porra/` | La Porra Trollaca (pronósticos LaLiga con fichas, sin dinero) | `_fuentes/generadores/porra.py` |
 | `/cuenta/` | Mi cuenta: estadísticas, insignias | `_fuentes/generadores/cuenta.py` |
 | `/misterio/` (+ `espana/`, `mundo/`) | Expediente Trollaco, mapas Leaflet | `_fuentes/generadores/misterio/generar.py` |
@@ -31,7 +31,7 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 
 ## API (PHP, en `api/`)
 - `comun.php`: cabeceras, secreto HMAC autogenerado, filtro de nombres (2-5 caracteres, una palabra, lista de palabras prohibidas + `bloqueados.php`), fichas de partida firmadas.
-- `arcade_lib.php`: modos `run, c1..c4`, `TEMPORADA` (cambiarla borra rankings), jugadores de relleno (solo en "run", nunca echan a reales; JAM85 debe seguir 1º), `marca_jugador()`.
+- `arcade_lib.php`: modos `run, c1..c5`, `TEMPORADA` (cambiarla borra rankings), jugadores de relleno (solo en "run", nunca echan a reales; JAM85 debe seguir 1º), `marca_jugador()`.
 - `marcadores.php?accion=lista|empezar|enviar&modo=…`: rankings del arcade (una marca por nombre).
 - `porra.php?accion=partidos|ranking|registrar|yo|perfil|arcade|apostar|cancelar`: cuentas (nombre + código de 8), fichas, pronósticos 1X2 y exacto (x8), bono 10 por alta y 10 por jornada, liquidación automática, cancelar hasta 5 min antes.
 - Datos en `api/datos/*.php` (protegidos, fuera de git). **Nunca se guardan IPs**, solo un resumen cifrado.
@@ -55,12 +55,12 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Merch: sin diseños de Halloween. Diseños finales en `_fuentes/merch/` (`spread2/` prenda oscura, `spread-blanca/` y la espalda "celeste" para prendas claras; máximo 4000 px para Spreadshop). Logo solo "TROLLACOS", sin ".com".
 - **Danna** (antes Lucy Lag; Guillermo la renombró el 31 oct): reportera de Trollacos, personaje ficticio y siempre declarado como tal (nunca hacerla pasar por una persona real). Versión pixel antigua (Lucy): unos 30 años, divertida, cascos gamer con micro, gafas retro, pelo morado, chaqueta rosa con acreditación. Sprite y foto de perfil en `_fuentes/lucy/`. Cuenta de Instagram propia de Guillermo.
   Versión realista: Guillermo la ha generado 100 % con IA (no es ninguna persona real). Declarada como IA en la bio ("🤖 Reportera virtual IA") + etiqueta "Información de IA" de Instagram al subir; Guillermo no quiere repetirlo en el texto/vídeo de cada post. Las sube él a mano a su cuenta. Reels en `_fuentes/lucy/reel-presentacion/` (`reel.html` presentación, `noticia.html#n` plantilla «Danna informa»: `node render2.js 'noticia.html#0' 15 carpeta` + `musica.py salida.wav 15 transporte 12.6` + ffmpeg). Firma todas las noticias de la web («Por Danna · Tu reportera del otro lado de la pantalla · ¿Quién es?», que lleva a la nota #danna de /gta-6/noticias/; avatar `img/danna.jpg`); Instagram @dannapixel (`DANNA_IG` en `noticias_gta.py`): enlace en la firma, en la portada y en la tarjeta grande «Esta noticia te la ha contado» al final de cada noticia. Misma cara siempre, nada de logos de marcas reales en la ropa, nada sexual. Habla cercana, gamer, con humor y piques con el Trollaco; sus posts mandan a trollacos.com/gta-6/noticias/.
-- Nada de contenido sexual (descartadas la chica de la barra y la del bikini del arcade).
+- Nada de contenido sexual (descartada la chica de la barra). La **Princesa Neón** del final del arcade sí va en bikini de playa porque lo pidió Guillermo el 1 nov: pixel, cómica (corona, gafas neón, flotador de pato), sin poses ni nada insinuante.
+- **Historia del arcade** (`HISTORIA` en `arcade/index.html`, diálogos al empezar y al acabar cada capítulo; se saltan con SALTAR o Esc): Míster Glitch secuestra a la Princesa Neón en Trolloween → nota «me la llevo al Bar La Verja» → el camarero «¡NO GRITÉIS!» y las bravas sin pagar → Trollaco Club → edificio abandonado (fantasma pide un cargador) → huida por la M-30 (cap. 5: coches y bots se pisan, las motos de la Policía Municipal no) → rescate y fiesta en la «playa» de Madrid Río.
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 
 ## Pendiente (a 28 oct 2026)
 - Cuando Guillermo pase el nombre de su tienda de Spreadshop: crear `/merch/` con la tienda integrada, botón en portada y menú, y story de lanzamiento.
 - 19 nov 2026, sale GTA VI: ampliar la guía (misiones, consejos, música completa).
-- Arcade: "el gran final" tras el capítulo 4 (fiesta en la playa synthwave o la Trollaca ochentera, a elegir por Guillermo).
 - Imágenes nuevas del tráiler de lanzamiento de GTA VI (arte "Lock and Load", hidroavión) si Guillermo las pasa.
 - Si lo pide: subir la Hucha a 10.000 fichas (Ricachón ya está en 100.000).

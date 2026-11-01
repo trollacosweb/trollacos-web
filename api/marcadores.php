@@ -4,7 +4,7 @@
  *   GET  ?accion=lista     -> los 10 mejores
  *   GET  ?accion=empezar   -> ficha firmada para la partida que empieza
  *   POST ?accion=enviar    -> {nombre, puntos, fichas, ficha}
- *   &modo=run|c1..c4       -> ranking de "Supera el récord" o de cada capítulo
+ *   &modo=run|c1..c5       -> ranking de "Supera el récord" o de cada capítulo
  */
 require __DIR__ . '/comun.php';
 
