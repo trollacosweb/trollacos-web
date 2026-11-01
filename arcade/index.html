@@ -126,7 +126,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="cap" data-cap="c2"><b>2 · Bar La Verja</b><span class="bloq">🔒 Supera el capítulo 1 para entrar. </span>Camareros enfadados, bandejas voladoras y rejas.</div>
     <div class="cap" data-cap="c3"><b>3 · Trollaco Club</b><span class="bloq">🔒 Supera el capítulo 2 para entrar. </span>Discoteca, láseres, malotes y un portero que no te deja pasar.</div>
     <div class="cap" data-cap="c4"><b>4 · El edificio abandonado</b><span class="bloq">🔒 Supera el capítulo 3 para entrar. </span>Pasillos a oscuras, linterna y algo que no debería estar ahí.</div>
-    <div class="cap" data-cap="c5"><b>5 · Túneles de la M-30</b><span class="bloq">🔒 Supera el capítulo 4 para entrar. </span>Coches, bots de Glitch y motos de la Municipal. ¡Rescata a la Princesa Neón!</div>
+    <div class="cap" data-cap="c5"><b>5 · Túneles de la M-30</b><span class="bloq">🔒 Supera el capítulo 4 para entrar. </span>Coches, bots de Glitch y motos de la Municipal. ¡Que no se escape Glitch!</div>
   </div>
   <p class="monedero" id="monedero"></p>
   <section class="fama" id="fama">
@@ -1005,7 +1005,7 @@ function obstaculoC5(o,tt){
 function salidaTunel(){
   var gx=jug.x-50+(META-dist); if(gx>W+40)return;
   var g=cx.createLinearGradient(gx,0,gx+300,0);g.addColorStop(0,'rgba(255,240,200,.0)');g.addColorStop(.3,'rgba(255,220,160,.9)');g.addColorStop(1,'#fff6d8');cx.fillStyle=g;cx.fillRect(gx,0,W,SUELO);
-  rect(gx+30,30,190,46,'#0d6b3a');texto('SALIDA 19',gx+125,50,18,'#fff','center','#063a1e');texto('MADRID RÍO · PLAYA',gx+125,68,16,'#ffd23f','center','#063a1e');
+  rect(gx+30,30,190,46,'#0d6b3a');texto('SALIDA 19',gx+125,50,18,'#fff','center','#063a1e');texto('MADRID RÍO',gx+125,68,16,'#ffd23f','center','#063a1e');
 }
 
 // ---------- la Princesa Neón y la playa de Madrid Río (gran final) ----------
@@ -1102,8 +1102,8 @@ var CAPS={
       l1:'Recorre los pasillos a oscuras hasta la azotea',l2:'Solo tienes la linterna · fantasmas, ratas y sombras',
       siguiente:'c5',sig:'Capítulo 5 · Túneles de la M-30',gana:'¡He salido del edificio abandonado',pierde:'Algo me ha pillado en el edificio abandonado'},
   c5:{n:5,nombre:'TÚNELES DE LA M-30',hud:'CAP. 5 · M-30',color:'#ffb347',meta:38000,fondo:fondoC5,nuevo:nuevoObstaculoC5,dibuja:obstaculoC5,final:salidaTunel,
-      l1:'Persigue a Míster Glitch por los túneles hasta Madrid Río',l2:'Salta los coches · pisa a los bots · ojo con las motos de la Municipal',
-      siguiente:null,sig:'¡Has salvado a la Princesa Neón!',gana:'¡He rescatado a la Princesa Neón',pierde:'Me he quedado tirado en la M-30'}
+      l1:'Persigue a Míster Glitch por los túneles de la M-30',l2:'Salta los coches · pisa a los bots · ojo con las motos de la Municipal',
+      siguiente:null,sig:'Capítulo 6… muy pronto',gana:'¡He cruzado los túneles de la M-30',pierde:'Me he quedado tirado en la M-30'}
 };
 
 // ---------- la historia: diálogos al empezar y al terminar cada capítulo ----------
@@ -1144,13 +1144,12 @@ var HISTORIA={
              ['AGENTE','¿Glitch? ¿El del coche que va a 30 por el carril de la izquierda? Lo estamos buscando.'],
              ['AGENTE','Corre, pero apártate de nuestras motos, que vamos con prisa. ¡Y nada de pisar la raya!'],
              ['TROLLACO','¡Sin pisar la raya, entendido!']],
-      outro:[['GLITCH','¡Noooo! ¡Me he quedado sin batería en la salida de Madrid Río!'],
-             ['AGENTE','Queda usted detenido por exceso de lag. Y por las bravas del Bar La Verja.'],
-             ['PRINCESA','¡Trollaco! ¡Has cruzado medio Madrid por mí!'],
-             ['TROLLACO','Por ti… y por un poco de gloria, no te voy a engañar.'],
-             ['PRINCESA','Pues esto se celebra: ¡FIESTA EN LA PLAYA DE MADRID RÍO!'],
-             ['TROLLACO','¿Madrid tiene playa?'],
-             ['PRINCESA','Hoy sí. ¡Que suene la música!']]}
+      outro:[['AGENTE','¡Alto! ¡Ese coche lleva la ITV caducada desde 2009!'],
+             ['GLITCH','¡Jejeje! Demasiado tarde, Trollaco. Salida 19… ¡y a mi escondite secreto!'],
+             ['PRINCESA','¡Trollaco! ¡No veo nada, me ha tapado los ojos con un gorro de lana!'],
+             ['AGENTE','Hemos perdido la señal. Este Glitch desaparece como el wifi del metro.'],
+             ['TROLLACO','¡Princesa! Te voy a encontrar aunque tenga que cruzar Madrid entero.'],
+             ['TROLLACO','Esto no ha acabado, Glitch. Esto no ha hecho más que empezar.']]}
 };
 
 // ---------- bucle ----------
@@ -1202,7 +1201,7 @@ function bucle(ahora){
   // pintar
   cx.save();
   if(temblor>0)cx.translate((Math.random()-.5)*8,(Math.random()-.5)*8);
-  var playa=modo==='c5'&&(estado==='victoria'||(estado==='dialogo'&&dlg&&dlg.i>=2&&dist>0));
+  var playa=false; // el gran final (playaFinal) se guarda para cuando acabe la historia
   if(playa)playaFinal(tt);else if(modo==='run')fondo(tt);else CAPS[modo].fondo(tt);
   if(!playa){
   obst.forEach(function(o){if(modo==='run')obstaculo(o,tt);else CAPS[modo].dibuja(o,tt)});
@@ -1224,10 +1223,6 @@ function bucle(ahora){
     texto(cm.l2,W/2,188,W<600?18:22,'#ffb347','center');
     if(Math.floor(tt*2)%2)texto('TOCA O PULSA ESPACIO PARA EMPEZAR',W/2,232,W<600?22:28,'#ffd23f','center');
     if(record)texto('RÉCORD: '+record,W/2,266,22,'#fff','center');
-  } else if(estado==='victoria'&&modo==='c5'){
-    texto('¡HAS SALVADO A LA PRINCESA NEÓN!',W/2,46,W<600?28:40,'#ffd23f','center','#7a1000');
-    texto('FIN · '+puntos+' PUNTOS · '+fichas+' FICHAS',W/2,78,W<600?20:24,'#fff','center');
-    if(performance.now()-t0>500&&Math.floor(tt*2)%2)texto('TOCA PARA JUGAR OTRA VEZ',W/2,108,22,'#1ff2ff','center');
   } else if(estado==='victoria'){
     cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
     var cv2=CAPS[modo];
