@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-01T17:22:27Z",
+ "actualizado": "2026-11-01T17:42:40Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -629,7 +629,7 @@
    "id": "2506277",
    "j": 11,
    "fecha": "2026-11-01T17:30:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Elche",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
@@ -640,8 +640,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
     "tla": "VAL"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 0,
+   "gv": 0,
    "cuotas": {
     "1": 1.9,
     "X": 3.8,
