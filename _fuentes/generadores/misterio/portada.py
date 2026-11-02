@@ -3,10 +3,12 @@ Caso de la semana (cambia solo cada lunes), accesos a Madrid, España y el mundo
 Uso: python3 _fuentes/generadores/misterio/portada.py   (lo llama también generar.py)"""
 import os, re, sys, json, html
 AQUI = os.path.dirname(os.path.abspath(__file__))
-RAIZ = os.path.dirname(os.path.dirname(AQUI))
-RAIZ = os.path.dirname(RAIZ) if not os.path.exists(os.path.join(RAIZ, 'index.html')) else RAIZ
+RAIZ = '/home/claude/trollacos-web'  # rutas fijas, como el resto de generadores
 sys.path.insert(0, AQUI)
 import casos as C
+
+def ilus(img):
+    return f'/misterio/img/{img}.webp' if os.path.exists(os.path.join(RAIZ, 'misterio/img', img + '.webp')) else f'/misterio/img/{img}.svg'
 
 def limpio(t): return re.sub(r'<[^>]+>', '', t).strip()
 
@@ -16,7 +18,7 @@ REG = [('📍 MADRID', '/misterio/', C.CASOS + C.SIERRA, 'Palacios malditos, ovn
 todos = []
 for nombre, url, L, _ in REG:
     for c in L:
-        todos.append(dict(u=f'{url}#{c["id"]}', i=f'/misterio/img/{c["img"]}.svg', t=c['titulo'], s=c['sub'],
+        todos.append(dict(u=f'{url}#{c["id"]}', i=ilus(c["img"]), t=c['titulo'], s=c['sub'],
                           l=limpio(c['lugar']), c=limpio(c['cuando']), n=c['nivel'], tr=limpio(c['trollaco']), r=nombre[2:].strip().title()))
 total = len(todos)
 c0 = todos[0]
@@ -24,7 +26,7 @@ c0 = todos[0]
 def miedo(n): return '👻' * n + '<span class="mi-off">' + '👻' * (5 - n) + '</span>'
 
 regiones = ''.join(
-    f'<a class="mi-reg" href="{url}"><img src="/misterio/img/{L[0]["img"]}.svg" alt="" loading="lazy">'
+    f'<a class="mi-reg" href="{url}"><img src="{ilus(L[0]["img"])}" alt="" loading="lazy">'
     f'<span><b>{nombre}</b><small>{len(L)} casos</small><em>{d}</em></span></a>'
     for nombre, url, L, d in REG)
 

@@ -1,4 +1,4 @@
-import json, html, sys
+import json, html, sys, os
 sys.path.insert(0, '/home/claude/trollaco/misterio')
 from casos import CASOS, PROXIMOS
 
@@ -23,7 +23,7 @@ for i, c in enumerate(CASOS, 1):
   <div class="sello">EXPEDIENTE {i:02d}</div>
   <h2>{c['titulo']}</h2>
   <p class="subt">{c['sub']}</p>
-  <figure class="ilus"><img src="img/{c['img']}.svg" alt="Ilustración de {html.escape(c['titulo'])}" loading="lazy" width="600" height="340"></figure>
+  <figure class="ilus"><img src="img/{c['img']}.{'webp' if os.path.exists('/home/claude/trollacos-web/misterio/img/'+c['img']+'.webp') else 'svg'}" alt="Ilustración de {html.escape(c['titulo'])}" loading="lazy" width="600" height="340"></figure>
   <ul class="ficha">
     <li><b>📍 Dónde</b>{c['lugar']}</li>
     <li><b>🕰️ Cuándo</b>{c['cuando']}</li>
