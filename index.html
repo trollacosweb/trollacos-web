@@ -322,6 +322,37 @@
   @media (min-width:1150px){.news-col .news-card .mini{width:100%;height:110px;font-size:48px}}
   @media (prefers-reduced-motion:reduce){.grid,.logo,.stars,.cursor{animation:none}}
 </style>
+<!--MISCSS:INICIO--><style>
+.mis{padding-top:10px}
+.mis-cab{display:flex;gap:16px;align-items:center;max-width:980px;margin:0 auto 18px}
+.mis-tr{width:72px;flex:none;image-rendering:pixelated;filter:drop-shadow(0 0 10px rgba(124,255,178,.6))}
+.mis-k{font-family:'VT323',monospace;font-size:20px;color:#7cffb2}
+.mis h2{text-align:left;margin:2px 0 6px;color:#eafff3;text-shadow:0 0 14px rgba(124,255,178,.7)}
+.mis-int{margin:0;font-size:17px;color:#cfe9db}
+.mis-caso{display:grid;grid-template-columns:1.15fr 1fr;max-width:980px;margin:0 auto;text-decoration:none;border:2px solid #7cffb2;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(124,255,178,.12),rgba(7,2,26,.85));box-shadow:0 0 26px rgba(124,255,178,.3);transition:box-shadow .2s}
+.mis-caso:hover{box-shadow:0 0 40px rgba(124,255,178,.6)}
+.mis-img{position:relative;background:#05010f}.mis-img img{display:block;width:100%;height:100%;object-fit:cover;min-height:220px}
+.mis-sello{position:absolute;top:12px;left:12px;padding:4px 10px;background:#b8001f;color:#fff;font-family:'VT323',monospace;font-size:19px;letter-spacing:1px;border:2px solid #fff;transform:rotate(-4deg);box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+.mis-txt{display:flex;flex-direction:column;gap:6px;padding:18px 20px}
+.mis-meta{font-family:'VT323',monospace;font-size:18px;color:#7cffb2}
+.mis-txt b{font-family:'Righteous',sans-serif;font-weight:400;font-size:26px;line-height:1.15;color:#fff}
+.mis-txt em{font-style:normal;color:#ffd23f;font-weight:700;font-size:17px}
+.mis-lugar{font-size:15px;color:#cfe9db}
+.mis-niv{font-family:'VT323',monospace;font-size:18px;color:#cfe9db}.mi-off{opacity:.2}
+.mis-dice{font-size:15px;color:#e9e6ff;font-style:italic;border-left:3px solid #7cffb2;padding-left:10px}
+.mis-btn{align-self:flex-start;margin-top:4px;padding:8px 14px;border:2px solid #7cffb2;border-radius:8px;color:#7cffb2;font-weight:700;font-size:15px}
+.mis-regs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:980px;margin:14px auto 0}
+.mi-reg{display:flex;flex-direction:column;text-decoration:none;border:1px solid rgba(124,255,178,.45);border-radius:12px;overflow:hidden;background:rgba(124,255,178,.05)}
+.mi-reg:hover{border-color:#7cffb2;box-shadow:0 0 16px rgba(124,255,178,.35)}
+.mi-reg img{width:100%;height:110px;object-fit:cover;display:block;filter:saturate(.9) brightness(.85)}
+.mi-reg span{padding:10px 12px}.mi-reg b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:18px;color:#fff}
+.mi-reg small{font-family:'VT323',monospace;font-size:17px;color:#7cffb2}.mi-reg em{display:block;font-style:normal;font-size:14px;color:#cfe9db;margin-top:4px}
+.mis-pie{max-width:980px;margin:14px auto 0;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.mis-pie a{color:#7cffb2}
+.mis-azar{cursor:pointer;padding:9px 16px;border-radius:10px;border:2px dashed #7cffb2;background:transparent;color:#eafff3;font:700 16px inherit;font-family:inherit}
+.mis-azar:hover{background:rgba(124,255,178,.12)}
+@media(max-width:760px){.mis-caso{grid-template-columns:1fr}.mis-img img{min-height:0;aspect-ratio:600/340}.mis-regs{grid-template-columns:1fr}.mi-reg{flex-direction:row}.mi-reg img{width:110px;height:auto;min-height:100%}.mis-tr{width:56px}.mis-txt b{font-size:23px}}
+</style><!--MISCSS:FIN-->
 </head>
 <body>
 <div class="scan"></div>
@@ -337,13 +368,13 @@
 
   <div class="cta">
     <a class="btn" href="/gta-6/">▶ GUÍA GTA VI</a>
+    <a class="btn alt" href="#misterio" style="border-color:#7cffb2;color:#7cffb2;box-shadow:0 0 12px rgba(124,255,178,.45)">👽 EXPEDIENTE TROLLACO</a>
     <a class="btn alt" href="#tienda">TIENDA</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#tecnologia">TECNOLOGÍA</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
     <a class="btn alt" href="#directo">DIRECTO</a>
     <a class="btn alt" href="/arcade/">🕹️ ARCADE</a>
-    <a class="btn alt" href="/misterio/">👻 MISTERIO</a>
     <a class="btn alt" href="/porra/">⚽ LA PORRA</a>
     <a class="btn alt" href="/cuenta/">👤 MI CUENTA</a>
   </div>
@@ -382,6 +413,41 @@
 <!--GTA:FIN-->
   </div>
 </section>
+
+<!--MIS:INICIO-->
+<section class="block mis" id="misterio">
+  <div class="mis-cab">
+    <img class="px mis-tr" src="/misterio/img/trollaco-linterna.png" alt="El Trollaco con una linterna" width="64" height="64">
+    <div><span class="mis-k">&gt; ARCHIVO CLASIFICADO · 17 CASOS_</span><h2>Expediente Trollaco</h2>
+    <p class="mis-int">Fantasmas, ovnis y sucesos que nadie supo explicar, de Madrid al resto del planeta. Te contamos cada caso como lo cuenta la leyenda… y luego lo que dicen los escépticos. <b>Tú decides qué creerte.</b></p></div>
+  </div>
+  <a class="mis-caso" id="mis-caso" href="/misterio/#palacio-de-linares">
+    <div class="mis-img"><img id="mis-i" src="/misterio/img/linares.svg" alt="" width="600" height="340"><span class="mis-sello">CASO DE LA SEMANA</span></div>
+    <div class="mis-txt">
+      <span class="mis-meta" id="mis-m">Madrid · Finales del siglo XIX</span>
+      <b id="mis-t">El Palacio de Linares</b>
+      <em id="mis-s">La niña que nunca se fue</em>
+      <span class="mis-lugar" id="mis-l">📍 Plaza de Cibeles, 2 (hoy Casa de América)</span>
+      <span class="mis-niv">NIVEL DE MIEDO: <span id="mis-n">👻👻👻👻<span class="mi-off">👻</span></span></span>
+      <span class="mis-dice" id="mis-d">«He estado en la cafetería de la Casa de América. El café, buenísimo. Lo de que alguien me soplara en la nuca al pagar... prefiero no hablar de ello.»</span>
+      <span class="mis-btn">🔦 ABRIR EXPEDIENTE ›</span>
+    </div>
+  </a>
+  <div class="mis-regs"><a class="mi-reg" href="/misterio/"><img src="/misterio/img/linares.svg" alt="" loading="lazy"><span><b>📍 MADRID</b><small>9 casos</small><em>Palacios malditos, ovnis en Aluche y una estación fantasma en la línea 1.</em></span></a><a class="mi-reg" href="/misterio/espana/"><img src="/misterio/img/manises.svg" alt="" loading="lazy"><span><b>🇪🇸 ESPAÑA</b><small>4 casos</small><em>Las caras de Bélmez, el avión que huyó de unas luces en Manises y la esfera de Canarias.</em></span></a><a class="mi-reg" href="/misterio/mundo/"><img src="/misterio/img/roswell.svg" alt="" loading="lazy"><span><b>🌍 EL MUNDO</b><small>4 casos</small><em>Roswell, el «Tic Tac» que grabó la Marina de EE. UU. y las luces de Phoenix.</em></span></a></div>
+  <p class="mis-pie"><button type="button" class="mis-azar" id="mis-azar">🎲 Ábreme un caso al azar</button> <a href="/misterio/#mapa">🗺️ Ver el mapa de Madrid</a></p>
+</section>
+<script>
+(function(){var C=[{"u": "/misterio/#palacio-de-linares", "i": "/misterio/img/linares.svg", "t": "El Palacio de Linares", "s": "La niña que nunca se fue", "l": "Plaza de Cibeles, 2 (hoy Casa de América)", "c": "Finales del siglo XIX", "n": 4, "tr": "He estado en la cafetería de la Casa de América. El café, buenísimo. Lo de que alguien me soplara en la nuca al pagar... prefiero no hablar de ello.", "r": "Madrid"}, {"u": "/misterio/#casa-de-las-siete-chimeneas", "i": "/misterio/img/chimeneas.svg", "t": "La Casa de las Siete Chimeneas", "s": "La dama blanca del tejado", "l": "Calle de las Infantas, 31 (plaza del Rey)", "c": "Siglo XVI", "n": 4, "tr": "Siete chimeneas y ni una barbacoa. Yo me habría quejado al casero, no al rey.", "r": "Madrid"}, {"u": "/misterio/#teatro-eslava", "i": "/misterio/img/eslava.svg", "t": "El fantasma del Teatro Eslava", "s": "Un disparo en plenos ensayos", "l": "Calle del Arenal, 11 (hoy sala Joy Eslava)", "c": "1923", "n": 3, "tr": "Si un fantasma me enciende las luces a las seis de la mañana en una discoteca, yo lo llamo \"el de seguridad\".", "r": "Madrid"}, {"u": "/misterio/#angel-caido", "i": "/misterio/img/angel.svg", "t": "El Ángel Caído del Retiro", "s": "La estatua del diablo a 666 metros", "l": "Glorieta del Ángel Caído, parque del Retiro", "c": "1877–1885", "n": 2, "tr": "Me disfracé de fantasma para hacerle compañía. Me miró de arriba abajo y creo que no le gustó la sábana.", "r": "Madrid"}, {"u": "/misterio/#estacion-chamberi", "i": "/misterio/img/chamberi.svg", "t": "La estación fantasma de Chamberí", "s": "El andén donde ningún tren se detiene", "l": "Plaza de Chamberí (hoy museo Andén 0)", "c": "1919–1966", "n": 2, "tr": "Me metí con la linterna a buscar fantasmas y solo encontré un anuncio de hace cien años. Y la verdad, el precio de aquello sí que daba miedo.", "r": "Madrid"}, {"u": "/misterio/#caso-ummo", "i": "/misterio/img/ummo.svg", "t": "Ummo: los extraterrestres de Aluche", "s": "El ovni que engañó a media España", "l": "Aluche (1966) y San José de Valderas, Alcorcón (1967)", "c": "1966–1967", "n": 3, "tr": "Yo también recibo cartas de otro planeta. Se llaman \"facturas de la luz\" y tampoco hay quien las entienda.", "r": "Madrid"}, {"u": "/misterio/#caso-vallecas", "i": "/misterio/img/vallecas.svg", "t": "El caso Vallecas", "s": "El informe policial que nadie supo explicar", "l": "Barrio de Vallecas (vivienda particular, no se indica)", "c": "1991–1992", "n": 4, "tr": "En este no hago bromas. Solo un consejo de amigo: la ouija, mejor ni tocarla. Y si estás mal, habla con alguien.", "r": "Madrid"}, {"u": "/misterio/#la-barranca", "i": "/misterio/img/barranca.svg", "t": "La Barranca: el sanatorio de Navacerrada", "s": "El edificio que ya no existe", "l": "Valle de La Barranca, Navacerrada (sierra de Guadarrama)", "c": "1941–1995 (derribo desde 2024)", "n": 4, "tr": "Fui a buscar el sanatorio y solo encontré pinos. O lo han derribado... o se ha mudado. Prefiero pensar lo primero.", "r": "Madrid"}, {"u": "/misterio/#sanatorio-de-la-marina", "i": "/misterio/img/marina.svg", "t": "El sanatorio de la Marina de Los Molinos", "s": "Los marineros que nunca volvieron al mar", "l": "Los Molinos (sierra de Guadarrama)", "c": "1949 – principios de los 2000", "n": 3, "tr": "Me llevé la cámara para pillar algo paranormal. Salieron 47 fotos de pinos y una de mi dedo. El dedo, eso sí, daba bastante miedo.", "r": "Madrid"}, {"u": "/misterio/espana/#manises", "i": "/misterio/img/manises.svg", "t": "El incidente de Manises", "s": "El avión que huyó de unas luces rojas", "l": "Aeropuerto de Manises (Valencia)", "c": "11 de noviembre de 1979", "n": 5, "tr": "109 pasajeros y ni uno sacó una foto. En 1979 no había móviles, vale. Pero una cámara de carrete, ¿nadie?", "r": "España"}, {"u": "/misterio/espana/#caras-de-belmez", "i": "/misterio/img/belmez.svg", "t": "Las caras de Bélmez", "s": "Rostros que salían del suelo de una cocina", "l": "Bélmez de la Moraleda (Jaén)", "c": "Desde 1971", "n": 4, "tr": "Yo también tengo una cara en mi cocina. Se llama \"mancha de tomate del 2019\" y tampoco hay quien la quite.", "r": "España"}, {"u": "/misterio/espana/#ovni-de-canarias", "i": "/misterio/img/canarias.svg", "t": "La esfera de Canarias", "s": "La noche que medio archipiélago miró al cielo", "l": "Islas Canarias (vista desde Gran Canaria, Tenerife, La Palma y La Gomera)", "c": "22 de junio de 1976", "n": 4, "tr": "Una pompa gigante en el cielo de Canarias. Yo apuesto a que alguien dejó el lavavajillas abierto en el Teide.", "r": "España"}, {"u": "/misterio/espana/#hospital-del-torax", "i": "/misterio/img/torax.svg", "t": "El Hospital del Tórax de Terrassa", "s": "La torre al pie de La Mola", "l": "Terrassa (Barcelona), hoy Parc Audiovisual de Catalunya", "c": "Años 50 – 1986", "n": 3, "tr": "Me disfracé de fantasma para colarme en un rodaje. Me han ofrecido un papel. De figurante. De pino.", "r": "España"}, {"u": "/misterio/mundo/#roswell", "i": "/misterio/img/roswell.svg", "t": "Roswell", "s": "El \"platillo volante\" que el ejército anunció... y luego desmintió", "l": "Roswell y Corona, Nuevo México (Estados Unidos)", "c": "Julio de 1947", "n": 4, "tr": "Un globo meteorológico, dicen. Yo he perdido muchos globos en cumpleaños y nunca me ha montado nadie un museo.", "r": "El Mundo"}, {"u": "/misterio/mundo/#rendlesham", "i": "/misterio/img/rendlesham.svg", "t": "Rendlesham: el \"Roswell británico\"", "s": "Luces en el bosque junto a una base militar", "l": "Bosque de Rendlesham, Suffolk (Reino Unido)", "c": "Finales de diciembre de 1980", "n": 4, "tr": "Militares de élite persiguiendo un faro durante toda la noche. Que levante la mano quien no se haya peleado alguna vez con una luz de Navidad.", "r": "El Mundo"}, {"u": "/misterio/mundo/#tic-tac-nimitz", "i": "/misterio/img/nimitz.svg", "t": "El \"Tic Tac\" del Nimitz", "s": "El ovni que grabó la Marina y publicó el Pentágono", "l": "Océano Pacífico, frente a San Diego (Estados Unidos)", "c": "14 de noviembre de 2004", "n": 5, "tr": "Un Tic Tac de doce metros. Si lo encuentro, me quedo sin aliento... pero fresquito.", "r": "El Mundo"}, {"u": "/misterio/mundo/#luces-de-phoenix", "i": "/misterio/img/phoenix.svg", "t": "Las luces de Phoenix", "s": "La noche que miles de personas vieron una \"V\" sobre Arizona", "l": "Phoenix, Arizona (Estados Unidos)", "c": "13 de marzo de 1997", "n": 3, "tr": "Un gobernador disfrazando a su ayudante de alien. Así se gestiona una crisis. Toma nota, Europa.", "r": "El Mundo"}];
+function esc(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function pon(c,sello){var g=function(i){return document.getElementById(i)};g('mis-caso').href=c.u;g('mis-i').src=c.i;g('mis-t').textContent=c.t;g('mis-s').textContent=c.s;
+g('mis-l').textContent='📍 '+c.l;g('mis-m').textContent=c.r+' · '+c.c;g('mis-d').textContent='«'+c.tr+'»';
+g('mis-n').innerHTML='👻'.repeat(c.n)+'<span class="mi-off">'+'👻'.repeat(5-c.n)+'</span>';
+if(sello)document.querySelector('.mis-sello').textContent=sello;}
+var sem=Math.floor((Date.now()/864e5+3)/7);pon(C[sem%C.length]);
+document.getElementById('mis-azar').addEventListener('click',function(){location.href=C[Math.floor(Math.random()*C.length)].u});
+})();
+</script>
+<!--MIS:FIN-->
 <script>
 (function(){
   var fin=new Date(2026,10,19,0,0,0); // 19 nov 2026, 00:00 hora local
@@ -513,13 +579,6 @@
   </a>
 </section>
 
-<section class="block" id="misterio">
-  <a class="arcade-banner misterio-banner" href="/misterio/">
-    <img class="px" src="/misterio/img/trollaco-linterna.png" alt="" width="64" height="64">
-    <span class="ab-txt"><span class="ab-k">&gt; ARCHIVO CLASIFICADO_</span><b>EXPEDIENTE TROLLACO</b><span class="ab-s">Madrid, España y el mundo: casos paranormales y ovnis, con mapas interactivos.</span></span>
-    <span class="ab-btn">▶ ENTRAR</span>
-  </a>
-</section>
 
 <section class="block news-wrap" id="noticias">
   <div class="troll-colgado" aria-hidden="true"><img class="px troll" src="img/trollaco-colgado.png" alt=""></div>
