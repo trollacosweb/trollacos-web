@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02T20:48:12Z",
+ "actualizado": "2026-11-02T20:54:13Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -675,7 +675,7 @@
    "id": "2506274",
    "j": 11,
    "fecha": "2026-11-02T20:00:00Z",
-   "estado": "IN_PLAY",
+   "estado": "PAUSED",
    "local": {
     "n": "Deportivo de A Coruña",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
