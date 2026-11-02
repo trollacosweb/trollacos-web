@@ -50,6 +50,18 @@ jobs:
             git push
           fi
 
+      - name: Preparar el correo (contraseña de no-reply desde el secreto SMTP_PASSWORD)
+        env:
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          if [ -n "$SMTP_PASSWORD" ]; then
+            B=$(printf '%s' "$SMTP_PASSWORD" | base64 -w0)
+            printf "<?php\n// Lo crea el despliegue. No subir a git.\nreturn ['user' => 'no-reply@trollacos.com', 'pass' => base64_decode('%s')];\n" "$B" > api/smtp.php
+            echo "::notice::Correo: contraseña SMTP preparada"
+          else
+            echo "::warning::Correo: falta el secreto SMTP_PASSWORD en GitHub"
+          fi
+
       - name: Subir la web al hosting de DonDominio (FTP seguro)
         id: ftp1
         if: env.FTP_SERVER != ''

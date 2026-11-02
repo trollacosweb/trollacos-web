@@ -52,6 +52,39 @@ function correo_html($titulo, $parrafos, $boton_txt = null, $boton_url = null, $
         . '</td></tr></table></body></html>';
 }
 
+// Envío: mail() si el hosting lo deja; si no (DonDominio lo tiene desactivado), SMTP con el buzón no-reply.
+// La contraseña la pone Guillermo como secreto de GitHub (SMTP_PASSWORD) y el despliegue crea api/smtp.php con ella (fuera de git).
+const SMTP_HOST = 'smtp.trollacos.com';
+const SMTP_PORT = 587;
+function smtp_conf() { $c = @include __DIR__ . '/smtp.php'; return (is_array($c) && !empty($c['pass'])) ? $c : null; }
+function smtp_hablar($s, $cmd, $espera) {
+    if ($cmd !== null) { fwrite($s, $cmd . "\r\n"); }
+    $resp = '';
+    while (($l = fgets($s, 1024)) !== false) { $resp .= $l; if (strlen($l) < 4 || $l[3] === ' ') { break; } }
+    if (!in_array((int)substr($resp, 0, 3), (array)$espera, true)) { throw new Exception(trim(substr($resp, 0, 120)) ?: 'sin respuesta'); }
+    return $resp;
+}
+function smtp_abrir($conf) {
+    $s = @stream_socket_client('tcp://' . SMTP_HOST . ':' . SMTP_PORT, $en, $es, 15);
+    if (!$s) { throw new Exception("conexión: $es"); }
+    stream_set_timeout($s, 20);
+    smtp_hablar($s, null, 220);
+    $ehlo = smtp_hablar($s, 'EHLO trollacos.com', 250);
+    if (stripos($ehlo, 'STARTTLS') !== false) {
+        smtp_hablar($s, 'STARTTLS', 220);
+        if (!@stream_socket_enable_crypto($s, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) { throw new Exception('TLS'); }
+        smtp_hablar($s, 'EHLO trollacos.com', 250);
+    }
+    smtp_hablar($s, 'AUTH LOGIN', 334);
+    smtp_hablar($s, base64_encode($conf['user'] ?? CORREO_DE), 334);
+    smtp_hablar($s, base64_encode($conf['pass']), 235);
+    return $s;
+}
+function smtp_probar() {   // para el diagnóstico: entra y sale sin mandar nada
+    $c = smtp_conf(); if (!$c) { return 'sin contraseña configurada'; }
+    try { $s = smtp_abrir($c); smtp_hablar($s, 'QUIT', 221); fclose($s); return 'ok'; } catch (Exception $e) { return 'error: ' . $e->getMessage(); }
+}
+
 function enviar_correo($para, $asunto, $html, $texto, $extra_cab = []) {
     if (local()) {   // en pruebas no se manda nada: se apunta en un fichero
         global $DIR;
@@ -59,11 +92,30 @@ function enviar_correo($para, $asunto, $html, $texto, $extra_cab = []) {
         return true;
     }
     $limite = 'b' . bin2hex(random_bytes(8));
+    $asuntoC = '=?UTF-8?B?' . base64_encode($asunto) . '?=';
     $cab = ['From: =?UTF-8?B?' . base64_encode('Trollacos') . '?= <' . CORREO_DE . '>', 'Reply-To: ' . CORREO_RESP,
             'MIME-Version: 1.0', 'Content-Type: multipart/alternative; boundary="' . $limite . '"'];
     $cuerpo = "--$limite\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($texto))
             . "--$limite\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html)) . "--$limite--";
-    return @mail($para, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, implode("\r\n", array_merge($cab, $extra_cab)), '-f' . CORREO_DE);
+    $df = array_map('trim', explode(',', (string)ini_get('disable_functions')));
+    if (function_exists('mail') && !in_array('mail', $df, true)) {
+        return @mail($para, $asuntoC, $cuerpo, implode("\r\n", array_merge($cab, $extra_cab)), '-f' . CORREO_DE);
+    }
+    $conf = smtp_conf(); if (!$conf) { return false; }
+    try {
+        $s = smtp_abrir($conf);
+        smtp_hablar($s, 'MAIL FROM:<' . CORREO_DE . '>', 250);
+        smtp_hablar($s, 'RCPT TO:<' . $para . '>', [250, 251]);
+        smtp_hablar($s, 'DATA', 354);
+        $todo = implode("\r\n", array_merge(['Date: ' . date('r'), 'Message-ID: <' . bin2hex(random_bytes(12)) . '@trollacos.com>', 'To: <' . $para . '>', 'Subject: ' . $asuntoC], $cab, $extra_cab))
+              . "\r\n\r\n" . $cuerpo;
+        $todo = preg_replace('/\r?\n/', "\r\n", $todo);
+        $todo = preg_replace('/^\./m', '..', $todo);
+        smtp_hablar($s, $todo . "\r\n.", 250);
+        smtp_hablar($s, 'QUIT', 221);
+        fclose($s);
+        return true;
+    } catch (Exception $e) { error_log('SMTP Trollacos: ' . $e->getMessage()); return false; }
 }
 
 // Límite de envíos: por conexión (5/hora), por email (3/hora) y en total (150/día)
