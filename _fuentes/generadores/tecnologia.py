@@ -41,6 +41,14 @@ extra = """
 .prod span{display:block;font-size:15px;color:var(--muted);margin:4px 0 8px}
 .prod i{font-style:normal;font-family:'VT323',monospace;font-size:19px;color:var(--yellow)}
 .afil{font-size:13px;color:var(--muted)}
+.galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 4px}
+.g-it{margin:0;border:2px solid rgba(31,242,255,.3);border-radius:12px;overflow:hidden;background:#000}
+.g-it video,.g-it img{display:block;width:100%;height:220px;object-fit:cover;background:#000}
+.g-it img{object-fit:contain;background:#f5f5f7;height:260px}
+.g-it.alto video,.g-it.alto img{height:100%;min-height:220px;max-height:460px;object-fit:contain}
+.g-it.alto{grid-row:span 2}
+.g-it figcaption{font-size:14px;color:#e9e6ff;padding:8px 10px;background:#140830}
+@media(max-width:560px){.galeria{grid-template-columns:1fr}.g-it.alto{grid-row:auto}.g-it.alto video{max-height:520px}}
 .portada-art{margin:0 0 20px}.portada-art img{width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:14px;background:radial-gradient(circle at 50% 40%,#2a0b4a,#07021a);border:2px solid rgba(31,242,255,.35)}
 .portada-art figcaption{font-size:13px;color:var(--muted);margin-top:4px;text-align:right}
 .tarj .mini-foto{width:84px;height:84px;object-fit:contain;flex:none;border-radius:10px;background:#14063a}
@@ -111,6 +119,18 @@ def foto(n):
         if os.path.exists(f): return '/' + f
     return None
 
+def galeria(n):
+    g = n.get('galeria') or []
+    if not g: return ''
+    def item(x):
+        if x['tipo'] == 'video':
+            m = f'<video src="{x["src"]}" poster="{x["src"][:-4]}.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{esc(x["txt"])}"></video>'
+        else:
+            m = f'<img src="{x["src"]}" alt="{esc(x["txt"])}" loading="lazy">'
+        return f'<figure class="g-it{" alto" if x.get("alto") else ""}">{m}<figcaption>{esc(x["txt"])}</figcaption></figure>'
+    return (f'<h2>📸 En imágenes</h2><div class="galeria">{"".join(item(x) for x in g)}</div>'
+            f'<p class="afil" style="text-align:right">Imágenes y vídeos: {esc(n.get("credito", "prensa oficial de la marca"))}</p>')
+
 def tarjeta(n):
     ico = f'<img class="mini-foto" src="{foto(n)}" alt="" loading="lazy">' if foto(n) else f'<span class="e" aria-hidden="true">{n.get("emoji","📱")}</span>'
     return (f'<a class="tarj" href="/tecnologia/{n["slug"]}/">{ico}<div>'
@@ -130,6 +150,7 @@ for n in N:
   {firma()}
   {(f'<figure class="portada-art"><img src="{foto(n)}" alt="{esc(n.get("alt", n["titulo"]))}" loading="lazy"><figcaption>Imagen: {esc(n.get("credito", "prensa oficial de la marca"))}</figcaption></figure>') if foto(n) else ''}
   {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
+  {galeria(n)}
   {rumor}
   <h2>🛒 Lo que te recomendamos</h2>
   <div class="prods">{prods}</div>

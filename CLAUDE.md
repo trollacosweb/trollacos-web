@@ -25,7 +25,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 | `/cuenta/` | Mi cuenta: estadísticas, insignias | `_fuentes/generadores/cuenta.py` |
 | `/misterio/` (+ `espana/`, `mundo/`) | Expediente Trollaco, mapas Leaflet | `_fuentes/generadores/misterio/generar.py` |
 | `/redes/` | Imágenes y textos para Instagram (no indexado) | `_fuentes/generadores/redes.py` |
-| `/tecnologia/` (+ artículos) | Tecnología con guasa (móviles, Alexa, gadgets; enfoque Navidad/Black Friday 27 nov), firma Danna, opinan Trollaco y Princesa Neón, productos con afiliado Amazon; foto de cada artículo en `img/tecnologia/<slug>.webp|jpg|png` (solo fotos oficiales de prensa, nunca de Amazon ni de otras webs; crédito en `credito`); bloque en portada entre `<!--TEC:INICIO-->` y `<!--TEC:FIN-->` | `_fuentes/generadores/tecnologia.py` + `tecnologia.json` |
+| `/tecnologia/` (+ artículos) | Tecnología con guasa (móviles, Alexa, gadgets; enfoque Navidad/Black Friday 27 nov), firma Danna, opinan Trollaco y Princesa Neón, productos con afiliado Amazon; foto de cada artículo en `img/tecnologia/<slug>.webp|jpg|png` (solo fotos oficiales de prensa que pasa Guillermo, nunca de Amazon ni de otras webs; crédito en `credito`; galería opcional `galeria` con fotos y vídeos comprimidos en `video/tecnologia/`); bloque en portada entre `<!--TEC:INICIO-->` y `<!--TEC:FIN-->` | `_fuentes/generadores/tecnologia.py` + `tecnologia.json` |
 | `/privacidad/`, `/aviso-legal/` | Textos legales (titular, info@trollacos.com, afiliados, RGPD) | `_fuentes/generadores/legal.py` |
 
 Los generadores tienen rutas fijas: copiar `_fuentes/generadores/` a `/home/claude/trollaco/` y el repo en `/home/claude/trollacos-web/`.

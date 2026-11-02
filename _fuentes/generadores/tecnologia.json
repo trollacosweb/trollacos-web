@@ -39,8 +39,8 @@
   "opina": "Mi móvil ideal es el que tiene batería cuando la necesito. O sea, ninguno. Pero si alguien me regala uno, que sea con funda de neón y que no me lo pase Glitch a 30 fps.",
   "princesa": "Yo pido el que haga mejores fotos de noche, que en Leonida siempre salgo a contraluz. Y Trollaco, ni se te ocurra regalarme otro cargador. Van tres.",
   "fuente": "Apple, Samsung, Google, Bloomberg y precios de tiendas españolas (Amazon, Fnac, MediaMarkt)",
-  "credito": "Apple, Samsung y Google (prensa)",
-  "alt": "iPhone 18 Pro, Galaxy S26 y Pixel 11"
+  "credito": "Apple (prensa)",
+  "alt": "iPhone 18 Pro y 18 Pro Max en burdeos"
  },
  {
   "slug": "iphone-18-pro-precio-espana",
@@ -82,7 +82,40 @@
   "princesa": "El burdeos me lo pido, que combina con mi corona. Pero el de 256 GB, que yo las fotos las subo a la nube como una persona normal.",
   "fuente": "Apple y precios oficiales en tiendas españolas",
   "credito": "Apple (prensa)",
-  "alt": "iPhone 18 Pro y 18 Pro Max"
+  "alt": "Los cuatro colores del iPhone 18 Pro: negro, plata, azul glaciar y burdeos",
+  "galeria": [
+   {
+    "tipo": "video",
+    "src": "/video/tecnologia/iphone-18-pro-camara.mp4",
+    "txt": "La cámara, con controles de apertura, balance de blancos y zoom",
+    "alto": true
+   },
+   {
+    "tipo": "video",
+    "src": "/video/tecnologia/iphone-18-pro-objetivo.mp4",
+    "txt": "La cámara principal con apertura variable"
+   },
+   {
+    "tipo": "video",
+    "src": "/video/tecnologia/iphone-18-pro-dynamic-island.mp4",
+    "txt": "La Dynamic Island, ahora más pequeña"
+   },
+   {
+    "tipo": "video",
+    "src": "/video/tecnologia/iphone-18-pro-interior.mp4",
+    "txt": "Por dentro: el chip A20 Pro y una batería que da para hasta 45 horas de vídeo (Pro Max)"
+   },
+   {
+    "tipo": "img",
+    "src": "/img/tecnologia/iphone-18-pro-funda-burdeos.webp",
+    "txt": "Funda oficial de Apple en burdeos, con correa para colgar"
+   },
+   {
+    "tipo": "img",
+    "src": "/img/tecnologia/iphone-18-pro-funda-azul.webp",
+    "txt": "Funda oficial de Apple en azul, con correa de muñeca"
+   }
+  ]
  },
  {
   "slug": "samsung-galaxy-s26-cual-comprar",
