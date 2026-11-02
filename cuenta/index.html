@@ -184,7 +184,15 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <p>Una sola cuenta para todo: el arcade, el modo historia y La Porra. Solo un nombre de 2 a 5 letras y un código secreto, sin contraseñas. Si quieres, luego añades tu email para no perderla nunca.</p>
     <div class="pestanas"><button type="button" class="on" data-t="crear">CREAR CUENTA</button><button type="button" data-t="entrar">YA TENGO CUENTA</button><button type="button" data-t="email">📧 CON MI EMAIL</button></div>
     <form id="f-crear">
-      <div class="campo"><input id="c-nombre" maxlength="5" placeholder="AAAAA" autocomplete="nickname" aria-label="Nombre"><button class="boton" type="submit">CREAR</button></div>
+      <div class="campo"><input id="c-nombre" maxlength="5" placeholder="AAAAA" autocomplete="nickname" aria-label="Nombre de jugador"></div>
+      <div class="mail" style="margin-top:12px">
+        <p style="margin-top:0">📧 <b>Tu email</b> (recomendado): te mandamos tu código para que no lo pierdas y podrás entrar desde cualquier sitio.</p>
+        <input id="c-email" type="email" maxlength="120" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email">
+        <label><input type="checkbox" id="c-edad">Tengo 14 años o más.</label>
+        <label><input type="checkbox" id="c-bol">Quiero recibir el boletín de Trollacos: noticias de GTA VI y videojuegos, novedades de la web y ofertas que nos parezcan buenas. Me puedo borrar cuando quiera.</label>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:0">¿Menos de 14 años? Deja el email en blanco y apunta bien tu código. Más info en la <a href="/privacidad/">política de privacidad</a>.</p>
+      </div>
+      <button class="boton" type="submit" style="margin-top:12px">CREAR CUENTA</button>
       <p class="msg" id="m-crear"></p>
     </form>
     <form id="f-entrar" hidden>
@@ -257,6 +265,13 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="tabla" id="ultimos"></div>
   </div>
 
+  <p style="text-align:right;font-size:14px"><a href="#" id="soy-admin" style="color:var(--muted)">🛠️ Administrador</a></p>
+  <form class="mail" id="f-admin" hidden>
+    <h3>🛠️ Recuperar una cuenta</h3>
+    <p>Genera un código nuevo para una cuenta que ha perdido el suyo y entra en ella en este dispositivo.</p>
+    <div class="campo"><input id="a-clave" type="password" placeholder="CLAVE DE ADMINISTRADOR" autocomplete="off" aria-label="Clave de administrador" style="text-transform:none"><input id="a-cuenta" maxlength="5" placeholder="CUENTA" aria-label="Nombre de la cuenta"><button class="boton" type="submit">RECUPERAR</button></div>
+    <p class="msg" id="m-admin"></p>
+  </form>
   <p class="ojo">Tu cuenta guarda tu nombre de jugador, tus fichas y tus partidas. El email es opcional y se guarda cifrado. Las fichas son de juego: no se compran ni se canjean por nada. <a href="/privacidad/">Política de privacidad</a>.</p>
 </main>
 <footer>
@@ -298,8 +313,11 @@ function alertaTop(t,ok){var m=$(yo?'m-aviso':'m-entrar');if(!yo){document.query
 function limpia(inp){inp.addEventListener('input',function(){var v=inp.value.replace(/[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,5);if(v!==inp.value)inp.value=v})}
 limpia($('c-nombre'));limpia($('e-nombre'));
 $('f-crear').onsubmit=function(e){e.preventDefault();msg('m-crear','Creando...',true);
-  post('registrar',{nombre:$('c-nombre').value}).then(function(j){
+  var em=$('c-email').value.trim();
+  if(em&&!$('c-edad').checked){msg('m-crear','Para usar email marca que tienes 14 años o más (o deja el email en blanco).');return}
+  post('registrar',{nombre:$('c-nombre').value,email:em,edad14:$('c-edad').checked,boletin:$('c-bol').checked}).then(function(j){
     if(!j.ok){msg('m-crear',j.mensaje||'No se ha podido crear.');return}
+    if(j.email_enviado)setTimeout(function(){msg('m-aviso','📧 Te hemos mandado tu código por email. Pulsa el enlace del correo para confirmarlo (mira también en spam).',true)},300);
     guarda({nombre:j.nombre,codigo:j.codigo});$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;
     try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();
   }).catch(function(){msg('m-crear','Error de conexión.')})};
@@ -309,6 +327,13 @@ $('f-entrar').onsubmit=function(e){e.preventDefault();msg('m-entrar','Entrando..
 $('salir').onclick=function(e){e.preventDefault();guarda(null);pinta(null)};
 $('ver-codigo').onclick=function(e){e.preventDefault();var s=$('mi-codigo');s.textContent=s.textContent?'':' · Código: '+yo.codigo};
 $('cerrar-aviso').onclick=function(){$('aviso-codigo').hidden=true};
+$('soy-admin').onclick=function(e){e.preventDefault();$('f-admin').hidden=!$('f-admin').hidden};
+$('f-admin').onsubmit=function(e){e.preventDefault();msg('m-admin','Comprobando...',true);
+  post('admin_recuperar',{clave:$('a-clave').value,cuenta:$('a-cuenta').value}).then(function(j){
+    if(!j.ok){msg('m-admin',j.mensaje||'Error');return}
+    guarda({nombre:j.nombre,codigo:j.codigo});$('a-clave').value='';$('f-admin').hidden=true;
+    $('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
+  }).catch(function(){msg('m-admin','Error de conexión.')})};
 
 var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche Trolloween',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
 var CAPS=[['🧟','La noche Trolloween'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30']];

@@ -18,6 +18,8 @@
  *   POST ?accion=email_quitar   {nombre, codigo}           -> borra el email de la cuenta
  *   POST ?accion=boletin        {nombre, codigo, si}       -> apuntarse o borrarse del boletín
  *   POST ?accion=baja           {u, t}                     -> baja del boletín desde el enlace del correo
+ *   POST ?accion=registrar      {nombre, email?, edad14?, boletin?} -> con email, le llegan el código y el enlace de confirmación
+ *   POST ?accion=admin_recuperar {clave, cuenta}           -> código nuevo para una cuenta perdida (solo administrador)
  */
 require __DIR__ . '/comun.php';
 require __DIR__ . '/arcade_lib.php';
@@ -144,11 +146,33 @@ if ($accion === 'registrar' && $post) {
     $d['altas'][$q] = array_values(array_filter($d['altas'][$q] ?? [], function ($t) use ($ahora) { return $ahora - $t < 86400; }));
     if (count($d['altas'][$q]) >= 3) { cerrar($d, $fl); responder(['error' => 'rapido', 'mensaje' => 'Ya has creado varias cuentas hoy. Vuelve mañana.'], 429); }
     if (isset($d['usuarios'][$nombre])) { cerrar($d, $fl, false); responder(['error' => 'ocupado', 'mensaje' => 'Ese nombre ya está cogido. Prueba con otro.'], 400); }
+    // email opcional: si viene, se le manda el código y el enlace para confirmarlo
+    $email = email_normal($in['email'] ?? '');
+    if ($email !== '') {
+        if (!email_ok($email)) { cerrar($d, $fl, false); responder(['error' => 'email', 'mensaje' => 'Ese email no parece válido.'], 400); }
+        if (empty($in['edad14'])) { cerrar($d, $fl, false); responder(['error' => 'edad', 'mensaje' => 'Para usar email tienes que tener 14 años o más. Si no, crea la cuenta sin email.'], 400); }
+        if (cuenta_por_email($d, $email)) { cerrar($d, $fl, false); responder(['error' => 'ocupado', 'mensaje' => 'Ese email ya tiene cuenta. Entra con él en la pestaña «CON MI EMAIL».'], 400); }
+    }
     $codigo = codigo_nuevo();
     $d['usuarios'][$nombre] = ['n' => $nombre, 'h' => hash_codigo($nombre, $codigo), 'f' => BONO_BIENVENIDA, 'c' => $ahora, 'jb' => [], 'ac' => 0];
     $d['altas'][$q][] = $ahora;
+    $enviado = false;
+    if ($email !== '' && puede_enviar($d, $email)) {
+        $tok = token_nuevo($d, 'v', $nombre, $email, !empty($in['boletin']));
+        $enviado = true;
+    }
     cerrar($d, $fl);
-    responder(['ok' => true, 'nombre' => $nombre, 'codigo' => $codigo, 'fichas' => BONO_BIENVENIDA]);
+    if ($enviado) {
+        $url = WEB . '/cuenta/?t=' . $tok;
+        $enviado = enviar_correo($email, 'Bienvenido a Trollacos, ' . $nombre,
+            correo_html('¡Bienvenido a Trollacos, ' . $nombre . '!', [
+                'Ya tienes cuenta para el arcade, el modo historia y La Porra Trollaca. Guarda este correo: aquí tienes tus datos.',
+                'Nombre de jugador: <b style="color:#1ff2ff;font-size:20px">' . $nombre . '</b><br>Código secreto: <b style="color:#ffd23f;font-size:22px;letter-spacing:3px">' . $codigo . '</b>',
+                'Pulsa el botón para confirmar tu email. Así podrás entrar desde cualquier móvil u ordenador sin acordarte del código.'],
+                'CONFIRMAR MI EMAIL', $url, 'El botón caduca en ' . TOKEN_MIN . ' minutos (el código no caduca). Si no has creado tú esta cuenta, ignora este correo.'),
+            "¡Bienvenido a Trollacos, $nombre!\n\nNombre de jugador: $nombre\nCódigo secreto: $codigo\n\nConfirma tu email aquí (caduca en " . TOKEN_MIN . " minutos):\n$url\n\nSi no has creado tú esta cuenta, ignora este correo.");
+    }
+    responder(['ok' => true, 'nombre' => $nombre, 'codigo' => $codigo, 'fichas' => BONO_BIENVENIDA, 'email_enviado' => $enviado]);
 }
 
 if ($accion === 'yo' && $post) {
@@ -211,6 +235,24 @@ if ($accion === 'perfil' && $post) {
         'partidas' => array_sum(array_map(function ($x) { return $x['pa'] ?? 0; }, $d['usuarios'])),
         'altas_7d' => count(array_filter($d['usuarios'], function ($x) { return ($x['c'] ?? 0) > time() - 7 * 86400; })),
     ]] : []));
+}
+
+// Recuperar una cuenta que ha perdido el código (solo el administrador, con su clave)
+if ($accion === 'admin_recuperar' && $post) {
+    $in = entrada();
+    [$d, $fl] = abrir();
+    $q = quien(); $ahora = time();
+    $d['fallos'][$q] = array_values(array_filter($d['fallos'][$q] ?? [], function ($t) use ($ahora) { return $ahora - $t < 3600; }));
+    if (count($d['fallos'][$q]) >= 10) { cerrar($d, $fl); responder(['error' => 'rapido', 'mensaje' => 'Demasiados intentos. Prueba dentro de un rato.'], 429); }
+    if (!hash_equals(ADMIN_CLAVE_HUELLA, hash('sha256', strtoupper(trim((string)($in['clave'] ?? '')))))) {
+        $d['fallos'][$q][] = $ahora; cerrar($d, $fl); responder(['error' => 'clave', 'mensaje' => 'Clave de administrador incorrecta.'], 401);
+    }
+    $nombre = strtoupper(trim((string)($in['cuenta'] ?? '')));
+    if (!isset($d['usuarios'][$nombre])) { cerrar($d, $fl, false); responder(['error' => 'cuenta', 'mensaje' => 'No existe ninguna cuenta con ese nombre.'], 404); }
+    $codigo = codigo_nuevo();
+    $d['usuarios'][$nombre]['hx'] = array_slice(array_merge($d['usuarios'][$nombre]['hx'] ?? [], [hash_codigo($nombre, $codigo)]), -8);
+    cerrar($d, $fl);
+    responder(['ok' => true, 'nombre' => $nombre, 'codigo' => $codigo]);
 }
 
 /* ================= EMAIL (opcional) ================= */

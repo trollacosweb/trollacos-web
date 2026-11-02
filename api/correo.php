@@ -12,6 +12,9 @@ const TOKEN_MIN   = 30;   // minutos que dura un enlace
 // Administradores: huella SHA-256 del email en minúsculas (el email no aparece escrito en el código)
 const ADMIN_HUELLAS = ['211ae0b0fbc48f992b063d59e0aafc1521366f89fcda34039da8128b2b4a8fde'];
 
+// Clave de administrador (la misma del arcade): solo su huella. Sirve para recuperar cuentas que han perdido el código.
+const ADMIN_CLAVE_HUELLA = 'cd4d9ff772689447fc3dea784b24b0f1acbb65c7e1144dd8cab262328154da61';
+
 function clave_email() { global $SECRETO; return hash_hmac('sha256', 'clave-email', $SECRETO, true); }
 function email_normal($e) { return strtolower(trim((string)$e)); }
 function email_ok($e) { return strlen($e) <= 120 && filter_var($e, FILTER_VALIDATE_EMAIL) && preg_match('/\.[a-z]{2,}$/', $e); }
