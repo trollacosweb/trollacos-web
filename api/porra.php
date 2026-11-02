@@ -11,9 +11,17 @@
  *   POST ?accion=perfil     {nombre, codigo}              -> todas las estadísticas del jugador (cuenta)
  *   GET  ?accion=ranking                                  -> los 10 con más fichas
  *   GET  ?accion=partidos                                 -> jornada con cuotas (lee partidos.json)
+ *   Email (opcional, sin contraseñas, ver correo.php):
+ *   POST ?accion=email_vincular {nombre, codigo, email, boletin, edad14} -> manda enlace para confirmar el email
+ *   POST ?accion=email_entrar   {email}                    -> manda enlace para entrar en otro dispositivo
+ *   POST ?accion=email_token    {token}                    -> usa un enlace (confirma email o entra)
+ *   POST ?accion=email_quitar   {nombre, codigo}           -> borra el email de la cuenta
+ *   POST ?accion=boletin        {nombre, codigo, si}       -> apuntarse o borrarse del boletín
+ *   POST ?accion=baja           {u, t}                     -> baja del boletín desde el enlace del correo
  */
 require __DIR__ . '/comun.php';
 require __DIR__ . '/arcade_lib.php';
+require __DIR__ . '/correo.php';
 
 const BONO_BIENVENIDA = 10;   // fichas al crear la cuenta
 const BONO_JORNADA    = 10;   // fichas por participar en cada jornada (al hacer el primer pronóstico)
@@ -22,7 +30,7 @@ const CIERRE_SEG      = 300;  // no se admiten pronósticos 5 minutos antes del 
 
 $FPORRA = "$DIR/porra.php";
 $FPARTIDOS = __DIR__ . '/partidos.json';
-$VACIO = ['usuarios' => [], 'apuestas' => [], 'arcade' => [], 'fallos' => [], 'altas' => []];
+$VACIO = ['usuarios' => [], 'apuestas' => [], 'arcade' => [], 'fallos' => [], 'altas' => [], 'tokens' => [], 'envios' => []];
 
 function partidos() {
     global $FPARTIDOS;
@@ -91,7 +99,9 @@ function usuario(&$d, $in) {
     $d['fallos'][$q] = array_values(array_filter($d['fallos'][$q] ?? [], function ($t) use ($ahora) { return $ahora - $t < 3600; }));
     if (count($d['fallos'][$q]) >= 10) { return [null, 'Demasiados intentos. Prueba dentro de un rato.']; }
     $u = $d['usuarios'][$nombre] ?? null;
-    if (!$u || !hash_equals($u['h'], hash_codigo($nombre, $codigo))) {
+    $hc = $u ? hash_codigo($nombre, $codigo) : '';
+    $vale = $u && (hash_equals($u['h'], $hc) || in_array($hc, $u['hx'] ?? [], true));   // hx: códigos de otros dispositivos (entrada por email)
+    if (!$vale) {
         $d['fallos'][$q][] = $ahora;
         return [null, 'Nombre o código incorrectos.'];
     }
@@ -104,7 +114,9 @@ function resumen($d, $nombre) {
     usort($mias, function ($a, $b) { return $b['ts'] <=> $a['ts']; });
     $mias = array_map(function ($a) { return ['id' => $a['id'], 'partido' => $a['p'], 'jornada' => $a['j'], 'tipo' => $a['t'], 'seleccion' => $a['s'],
         'cantidad' => $a['c'], 'cuota' => $a['q'], 'estado' => $a['e'], 'premio' => $a['g'] ?? 0]; }, array_slice($mias, 0, 40));
-    return ['nombre' => $nombre, 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0, 'jornadas' => $u['jb'] ?? [], 'capitulos' => $u['caps'] ?? 0, 'pronosticos' => $mias];
+    $em = !empty($u['ev']) ? email_descifrar($u['em'] ?? '') : null;
+    return ['nombre' => $nombre, 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0, 'jornadas' => $u['jb'] ?? [], 'capitulos' => $u['caps'] ?? 0, 'pronosticos' => $mias,
+            'email' => $em ? email_tapado($em) : null, 'boletin' => !empty($u['bo']), 'admin' => es_admin_email($em)];
 }
 
 $accion = $_GET['accion'] ?? '';
@@ -191,7 +203,110 @@ if ($accion === 'perfil' && $post) {
         'alta' => date('Y-m-d', $u['c'] ?? time()), 'puesto_fichas' => $puestoF, 'jugadores' => count($d['usuarios']),
         'porra' => $st, 'partidas' => $u['pa'] ?? 0, 'fichas_arcade' => $u['fa'] ?? 0, 'partidas_modo' => $u['pm'] ?? (object)[],
         'arcade' => $arcade,
-    ]);
+    ] + (es_admin_email(!empty($u['ev']) ? email_descifrar($u['em'] ?? '') : null) ? ['panel' => [
+        'usuarios' => count($d['usuarios']),
+        'con_email' => count(array_filter($d['usuarios'], function ($x) { return !empty($x['ev']); })),
+        'boletin' => count(array_filter($d['usuarios'], function ($x) { return !empty($x['ev']) && !empty($x['bo']); })),
+        'pronosticos' => count($d['apuestas']),
+        'partidas' => array_sum(array_map(function ($x) { return $x['pa'] ?? 0; }, $d['usuarios'])),
+        'altas_7d' => count(array_filter($d['usuarios'], function ($x) { return ($x['c'] ?? 0) > time() - 7 * 86400; })),
+    ]] : []));
+}
+
+/* ================= EMAIL (opcional) ================= */
+if ($accion === 'email_vincular' && $post) {
+    $in = entrada();
+    $email = email_normal($in['email'] ?? '');
+    if (!email_ok($email)) { responder(['error' => 'email', 'mensaje' => 'Ese email no parece válido.'], 400); }
+    if (empty($in['edad14'])) { responder(['error' => 'edad', 'mensaje' => 'Para añadir un email tienes que tener 14 años o más.'], 400); }
+    [$d, $fl] = abrir();
+    [$nombre, $err] = usuario($d, $in);
+    if (!$nombre) { cerrar($d, $fl); responder(['error' => 'login', 'mensaje' => $err], 401); }
+    $otra = cuenta_por_email($d, $email);
+    if ($otra && $otra !== $nombre) { cerrar($d, $fl, false); responder(['error' => 'ocupado', 'mensaje' => 'Ese email ya está en otra cuenta. Entra con él desde «¿Perdiste tu código?».'], 400); }
+    if (!puede_enviar($d, $email)) { cerrar($d, $fl); responder(['error' => 'rapido', 'mensaje' => 'Has pedido demasiados correos. Prueba dentro de un rato.'], 429); }
+    $tok = token_nuevo($d, 'v', $nombre, $email, !empty($in['boletin']));
+    cerrar($d, $fl);
+    $url = WEB . '/cuenta/?t=' . $tok;
+    $ok = enviar_correo($email, 'Confirma tu email en Trollacos',
+        correo_html('¡Hola, ' . $nombre . '!', ['Has pedido añadir este email a tu cuenta de Trollacos. Pulsa el botón para confirmarlo.',
+            'Con tu email podrás entrar desde cualquier móvil u ordenador sin acordarte del código.'], 'CONFIRMAR MI EMAIL', $url,
+            'El enlace caduca en ' . TOKEN_MIN . ' minutos y solo sirve una vez. Si no has sido tú, ignora este correo y no pasará nada.'),
+        "¡Hola, $nombre!\n\nPara confirmar tu email en Trollacos abre este enlace:\n$url\n\nCaduca en " . TOKEN_MIN . " minutos. Si no has sido tú, ignora este correo.");
+    if (!$ok) { responder(['error' => 'envio', 'mensaje' => 'No hemos podido mandar el correo. Prueba más tarde.'], 500); }
+    responder(['ok' => true, 'mensaje' => 'Te hemos mandado un correo a ' . email_tapado($email) . '. Pulsa el enlace para confirmarlo (mira también en spam).']);
+}
+
+if ($accion === 'email_entrar' && $post) {
+    $in = entrada();
+    $email = email_normal($in['email'] ?? '');
+    if (!email_ok($email)) { responder(['error' => 'email', 'mensaje' => 'Ese email no parece válido.'], 400); }
+    [$d, $fl] = abrir();
+    $nombre = cuenta_por_email($d, $email);
+    $enviar = $nombre && puede_enviar($d, $email);
+    $tok = $enviar ? token_nuevo($d, 'e', $nombre, $email) : null;
+    cerrar($d, $fl);
+    if ($tok) {
+        $url = WEB . '/cuenta/?t=' . $tok;
+        enviar_correo($email, 'Tu enlace para entrar en Trollacos',
+            correo_html('Entra en tu cuenta, ' . $nombre, ['Pulsa el botón y entrarás en tu cuenta de Trollacos en este dispositivo.'], 'ENTRAR EN TROLLACOS', $url,
+                'El enlace caduca en ' . TOKEN_MIN . ' minutos y solo sirve una vez. Si no lo has pedido tú, ignora este correo: sin el enlace nadie puede entrar.'),
+            "Entra en tu cuenta de Trollacos ($nombre) con este enlace:\n$url\n\nCaduca en " . TOKEN_MIN . " minutos. Si no lo has pedido tú, ignora este correo.");
+    }
+    // misma respuesta siempre, para no desvelar qué emails tienen cuenta
+    responder(['ok' => true, 'mensaje' => 'Si ese email está en una cuenta, te acabamos de mandar un enlace para entrar. Mira también en spam.']);
+}
+
+if ($accion === 'email_token' && $post) {
+    $in = entrada();
+    $h = hash('sha256', (string)($in['token'] ?? ''));
+    [$d, $fl] = abrir();
+    $t = $d['tokens'][$h] ?? null;
+    if (!$t || $t['x'] < time() || !isset($d['usuarios'][$t['u']])) { cerrar($d, $fl, false); responder(['error' => 'token', 'mensaje' => 'Este enlace ha caducado o ya se ha usado. Pide uno nuevo.'], 400); }
+    unset($d['tokens'][$h]);
+    $nombre = $t['u']; $email = email_descifrar($t['em']);
+    $u = &$d['usuarios'][$nombre];
+    if ($t['t'] === 'v') {
+        $otra = cuenta_por_email($d, $email);
+        if ($otra && $otra !== $nombre) { unset($u); cerrar($d, $fl); responder(['error' => 'ocupado', 'mensaje' => 'Ese email ya está en otra cuenta.'], 400); }
+        $u['em'] = email_cifrar($email); $u['eh'] = email_huella($email); $u['ev'] = true; $u['e14'] = true;
+        $u['bo'] = (bool)$t['bo']; if ($t['bo']) { $u['bot'] = time(); }   // fecha del consentimiento
+        unset($u); cerrar($d, $fl);
+        responder(['ok' => true, 'tipo' => 'confirmado', 'nombre' => $nombre, 'mensaje' => '¡Email confirmado! Ya puedes entrar con él desde cualquier sitio.']);
+    }
+    // entrar: código nuevo solo para este dispositivo (los demás siguen funcionando)
+    $codigo = codigo_nuevo();
+    $u['hx'] = array_slice(array_merge($u['hx'] ?? [], [hash_codigo($nombre, $codigo)]), -8);
+    unset($u); cerrar($d, $fl);
+    responder(['ok' => true, 'tipo' => 'entrar', 'nombre' => $nombre, 'codigo' => $codigo]);
+}
+
+if (in_array($accion, ['email_quitar', 'boletin'], true) && $post) {
+    $in = entrada();
+    [$d, $fl] = abrir();
+    [$nombre, $err] = usuario($d, $in);
+    if (!$nombre) { cerrar($d, $fl); responder(['error' => 'login', 'mensaje' => $err], 401); }
+    $u = &$d['usuarios'][$nombre];
+    if ($accion === 'email_quitar') { unset($u['em'], $u['eh'], $u['ev'], $u['bo'], $u['bot'], $u['e14']); $m = 'Email borrado de tu cuenta.'; }
+    else {
+        if (empty($u['ev'])) { unset($u); cerrar($d, $fl, false); responder(['error' => 'email', 'mensaje' => 'Primero añade y confirma tu email.'], 400); }
+        $u['bo'] = !empty($in['si']); if ($u['bo']) { $u['bot'] = time(); }
+        $m = $u['bo'] ? '¡Apuntado al boletín!' : 'Te has borrado del boletín.';
+    }
+    unset($u); cerrar($d, $fl);
+    responder(['ok' => true, 'mensaje' => $m]);
+}
+
+if ($accion === 'baja' && $post) {
+    $in = entrada();
+    $nombre = strtoupper((string)($in['u'] ?? ''));
+    [$d, $fl] = abrir();
+    $u = $d['usuarios'][$nombre] ?? null;
+    $em = $u && !empty($u['ev']) ? email_descifrar($u['em'] ?? '') : null;
+    if (!$em || !hash_equals(token_baja($em), (string)($in['t'] ?? ''))) { cerrar($d, $fl, false); responder(['error' => 'baja', 'mensaje' => 'Enlace de baja no válido.'], 400); }
+    $d['usuarios'][$nombre]['bo'] = false;
+    cerrar($d, $fl);
+    responder(['ok' => true, 'mensaje' => 'Listo: ya no recibirás el boletín de Trollacos.']);
 }
 
 if ($accion === 'apostar' && $post) {

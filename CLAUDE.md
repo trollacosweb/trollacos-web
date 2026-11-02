@@ -25,6 +25,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 | `/cuenta/` | Mi cuenta: estadísticas, insignias | `_fuentes/generadores/cuenta.py` |
 | `/misterio/` (+ `espana/`, `mundo/`) | Expediente Trollaco, mapas Leaflet | `_fuentes/generadores/misterio/generar.py` |
 | `/redes/` | Imágenes y textos para Instagram (no indexado) | `_fuentes/generadores/redes.py` |
+| `/privacidad/`, `/aviso-legal/` | Textos legales (titular, info@trollacos.com, afiliados, RGPD) | `_fuentes/generadores/legal.py` |
 
 Los generadores tienen rutas fijas: copiar `_fuentes/generadores/` a `/home/claude/trollaco/` y el repo en `/home/claude/trollacos-web/`.
 Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-browsers/chromium'})`. Probar PHP en local con `php -S 127.0.0.1:8099 -t .`.
@@ -34,6 +35,8 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - `arcade_lib.php`: modos `run, c1..c5`, `TEMPORADA` (cambiarla borra rankings), jugadores de relleno (solo en "run", nunca echan a reales; JAM85 debe seguir 1º), `marca_jugador()`.
 - `marcadores.php?accion=lista|empezar|enviar&modo=…`: rankings del arcade (una marca por nombre).
 - `porra.php?accion=partidos|ranking|registrar|yo|perfil|arcade|apostar|cancelar`: cuentas (nombre + código de 8), fichas, pronósticos 1X2 y exacto (x8), bono 10 por alta y 10 por jornada, liquidación automática, cancelar hasta 5 min antes.
+- **Emails (opcionales) y boletín** (`correo.php` + acciones `email_vincular|email_entrar|email_token|email_quitar|boletin|baja` en `porra.php`): sin contraseñas, enlaces mágicos de un solo uso (30 min) a `/cuenta/?t=…`; email cifrado AES-256-GCM + huella HMAC; casilla 14+ obligatoria y boletín con casilla aparte (se guarda la fecha del consentimiento); entrar por email crea un código extra solo para ese dispositivo (`hx`). Correos con `mail()` desde no-reply@trollacos.com (Reply-To info@trollacos.com, alias que llega al Gmail de Guillermo); en local se apuntan en `api/datos/correos-prueba.log`. Límite: 5/h por conexión, 3/h por email, 150/día. Administrador = cuenta con email cuya huella SHA-256 está en `ADMIN_HUELLAS` (el Gmail de Guillermo): panel en Mi cuenta + todos los capítulos del arcade.
+- **Boletín**: noticias propias de GTA VI y videojuegos, novedades de la web, la tienda. Enlaces siempre a trollacos.com (p. ej. /gta-6/que-comprar/), **nunca enlaces de afiliado de Amazon directos en el correo** (lo prohíben las normas de Amazon). Cada envío lleva el enlace de baja `/cuenta/?baja=NOMBRE.TOKEN` (`token_baja()`). Pendiente: herramienta para enviar los boletines.
 - Datos en `api/datos/*.php` (protegidos, fuera de git). **Nunca se guardan IPs**, solo un resumen cifrado.
 - `api/partidos.json` lo genera `scripts/actualizar_partidos.py` desde **TheSportsDB** (gratis, sin clave; guarda jornadas en `scripts/liga_cache.json`; pocas consultas por el límite).
 

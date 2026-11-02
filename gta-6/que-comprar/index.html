@@ -52,6 +52,14 @@ h2{font-family:'Righteous',sans-serif;font-size:clamp(27px,6vw,38px);color:var(-
 h3{font-family:'Righteous',sans-serif;font-size:23px;color:#fff;margin:0 0 4px}
 p{margin:0 0 14px}
 strong{color:#fff}
+.check{padding-left:0;list-style:none}.check li{position:relative;padding:6px 0 6px 28px}.check li::before{content:'▶';position:absolute;left:2px;color:var(--pink)}
+.nota{display:flex;gap:14px;align-items:flex-start;margin:18px 0;padding:14px 16px;border:2px dashed var(--yellow);border-radius:12px;background:rgba(255,210,63,.07)}
+.nota img{width:40px;height:auto;image-rendering:pixelated;flex:none}.nota p{margin:0;font-size:17px}.nota b{color:var(--yellow)}
+.bloques{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:10px 0}
+.bloque{border:1px solid rgba(31,242,255,.4);border-radius:10px;padding:14px 16px;background:rgba(31,242,255,.05)}
+.bloque h3{font-family:'VT323',monospace;font-weight:400;font-size:26px;color:var(--cyan);margin:0 0 6px}
+.bloque ul{margin:0;padding-left:18px}.bloque li{margin:4px 0;font-size:17px}
+.nov{list-style:none;padding:0}.nov li{padding:10px 12px;margin:8px 0;border-left:3px solid var(--cyan);background:rgba(31,242,255,.05);border-radius:0 8px 8px 0}.nov b{color:var(--yellow);font-weight:700}
 .datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:8px 0 18px}
 .dato{border:1px solid rgba(255,43,214,.45);border-radius:8px;padding:14px 16px;background:rgba(255,43,214,.06)}
 .dato span{display:block;font-family:'VT323',monospace;font-size:18px;color:var(--pink);letter-spacing:.06em}
@@ -274,6 +282,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
   <a href="/">PORTADA</a><a href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">TWITCH</a><a href="https://www.instagram.com/trollacostv" target="_blank" rel="noopener">INSTAGRAM</a><a href="https://www.tiktok.com/@trollacostv" target="_blank" rel="noopener">TIKTOK</a><br><br>
   © 2012–2026 TROLLACOS<br>
   <small>Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</small>
+<br><small><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:info@trollacos.com">info@trollacos.com</a></small>
 </footer>
 <script>
 if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}

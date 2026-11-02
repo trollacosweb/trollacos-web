@@ -41,6 +41,12 @@ extra = r"""
 .ins b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:20px;color:var(--yellow)}
 .ins span{font-size:13px;color:var(--muted)}
 .ins.no{opacity:.35;filter:grayscale(1);border-color:rgba(255,255,255,.2);background:none}
+.mail{margin:18px 0;padding:16px 18px;border:2px solid var(--cyan);border-radius:14px;background:rgba(31,242,255,.06)}
+.mail h3{margin:0 0 8px;font-family:'VT323',monospace;font-weight:400;font-size:26px;color:var(--cyan)}
+.mail p{margin:6px 0;font-size:16px}.mail label{display:block;font-size:15px;margin:8px 0;color:var(--muted)}.mail label input{width:auto;margin-right:8px;vertical-align:-2px}
+.mail input[type=email]{width:100%;max-width:360px;padding:10px 12px;border-radius:8px;border:2px solid var(--pink);background:#07021a;color:#fff;font-size:17px}
+.panel-admin{margin:22px 0;padding:16px 18px;border:2px dashed #39ff88;border-radius:14px;background:rgba(57,255,136,.06)}
+.panel-admin h3{margin:0 0 10px;font-family:'VT323',monospace;font-weight:400;font-size:26px;color:#39ff88}
 .barra-p{height:10px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:6px}.barra-p i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan))}
 </style>"""
 style2 = style.replace('</style>', extra)
@@ -58,7 +64,24 @@ function msg(id,t,ok){var m=$(id);m.textContent=t||'';m.className='msg '+(ok?'ok
 function guarda(c){yo=c;try{c?localStorage.setItem('porraCuenta',JSON.stringify(c)):localStorage.removeItem('porraCuenta')}catch(e){}}
 document.querySelectorAll('.pestanas button').forEach(function(b){b.onclick=function(){
   document.querySelectorAll('.pestanas button').forEach(function(x){x.classList.toggle('on',x===b)});
-  $('f-crear').hidden=b.dataset.t!=='crear';$('f-entrar').hidden=b.dataset.t!=='entrar';}});
+  $('f-crear').hidden=b.dataset.t!=='crear';$('f-entrar').hidden=b.dataset.t!=='entrar';$('f-email').hidden=b.dataset.t!=='email';}});
+$('f-email').onsubmit=function(e){e.preventDefault();msg('m-email','Enviando...',true);
+  post('email_entrar',{email:$('x-email').value}).then(function(j){msg('m-email',j.mensaje||'Error',!!j.ok)}).catch(function(){msg('m-email','Error de conexión.')})};
+$('f-mail').onsubmit=function(e){e.preventDefault();msg('m-mail','Enviando...',true);
+  post('email_vincular',{nombre:yo.nombre,codigo:yo.codigo,email:$('m-email-in').value,edad14:$('m-edad').checked,boletin:$('m-bol').checked})
+  .then(function(j){msg('m-mail',j.mensaje||'Error',!!j.ok);if(j.ok)$('f-mail').hidden=true}).catch(function(){msg('m-mail','Error de conexión.')})};
+$('bol-si').onchange=function(){post('boletin',{nombre:yo.nombre,codigo:yo.codigo,si:$('bol-si').checked}).then(function(j){msg('m-mail2',j.mensaje||'Error',!!j.ok)})};
+$('quitar-email').onclick=function(e){e.preventDefault();if(!confirm('¿Quitar tu email? Volverás a necesitar el código para entrar desde otro dispositivo.'))return;
+  post('email_quitar',{nombre:yo.nombre,codigo:yo.codigo}).then(function(j){msg('m-mail2',j.mensaje||'Error',!!j.ok);carga()})};
+// enlaces de los correos: ?t=... (confirmar o entrar) y ?baja=NOMBRE.TOKEN (boletín)
+(function(){var q=new URLSearchParams(location.search),t=q.get('t'),b=q.get('baja');if(!t&&!b)return;history.replaceState(null,'','/cuenta/');
+  if(b){var p=b.split('.');post('baja',{u:p[0],t:p[1]}).then(function(j){alertaTop(j.mensaje||'Error',!!j.ok)});return}
+  post('email_token',{token:t}).then(function(j){
+    if(!j.ok){alertaTop(j.mensaje||'Enlace no válido.',false);return}
+    if(j.tipo==='entrar'){guarda({nombre:j.nombre,codigo:j.codigo});try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}alertaTop('¡Hola, '+j.nombre+'! Ya has entrado en tu cuenta.',true);carga()}
+    else{alertaTop(j.mensaje,true);carga()}
+  })})();
+function alertaTop(t,ok){var m=$(yo?'m-aviso':'m-entrar');if(!yo){document.querySelector('.pestanas button[data-t=entrar]').click()}msg(yo?'m-aviso':'m-entrar',t,ok);if(!yo&&ok)return;}
 function limpia(inp){inp.addEventListener('input',function(){var v=inp.value.replace(/[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,5);if(v!==inp.value)inp.value=v})}
 limpia($('c-nombre'));limpia($('e-nombre'));
 $('f-crear').onsubmit=function(e){e.preventDefault();msg('m-crear','Creando...',true);
@@ -83,6 +106,12 @@ function pinta(j){
   var caps=Math.max(j.capitulos||0,parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0);
   try{if(caps>(parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0))localStorage.setItem('trollacoHistoria',String(caps))}catch(e){}
   $('yo-n').textContent=j.nombre;
+  $('mail-sin').hidden=!!j.email;$('mail-con').hidden=!j.email;$('f-mail').hidden=false;
+  if(j.email){$('mi-email').textContent=j.email;$('bol-si').checked=!!j.boletin}
+  if(j.admin){try{localStorage.setItem('trollacoAdmin','1')}catch(e){}}
+  $('panel-admin').hidden=!j.panel;
+  if(j.panel)$('cifras-admin').innerHTML=[[n(j.panel.usuarios),'👥 cuentas'],[n(j.panel.altas_7d),'🆕 altas en 7 días'],[n(j.panel.con_email),'📧 con email'],
+    [n(j.panel.boletin),'📰 en el boletín'],[n(j.panel.partidas),'🕹️ partidas guardadas'],[n(j.panel.pronosticos),'⚽ pronósticos']].map(function(c){return '<div class="cifra"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('');
   $('yo-alta').textContent='Jugador desde el '+new Date(j.alta+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
   var pr=j.porra,res=pr.ganada+pr.perdida,pct=res?Math.round(pr.ganada*100/res):0;
   var mejorPuesto=99;Object.keys(j.arcade).forEach(function(m){if(j.arcade[m]&&j.arcade[m].puesto<mejorPuesto)mejorPuesto=j.arcade[m].puesto});
@@ -136,8 +165,8 @@ body = """
 <main>
   <section class="panel" id="sin-cuenta">
     <h2>Entra o crea tu cuenta</h2>
-    <p>Una sola cuenta para todo: el arcade, el modo historia y La Porra. Solo un nombre de 2 a 5 letras y un código secreto. Sin correo ni contraseñas.</p>
-    <div class="pestanas"><button type="button" class="on" data-t="crear">CREAR CUENTA</button><button type="button" data-t="entrar">YA TENGO CUENTA</button></div>
+    <p>Una sola cuenta para todo: el arcade, el modo historia y La Porra. Solo un nombre de 2 a 5 letras y un código secreto, sin contraseñas. Si quieres, luego añades tu email para no perderla nunca.</p>
+    <div class="pestanas"><button type="button" class="on" data-t="crear">CREAR CUENTA</button><button type="button" data-t="entrar">YA TENGO CUENTA</button><button type="button" data-t="email">📧 CON MI EMAIL</button></div>
     <form id="f-crear">
       <div class="campo"><input id="c-nombre" maxlength="5" placeholder="AAAAA" autocomplete="nickname" aria-label="Nombre"><button class="boton" type="submit">CREAR</button></div>
       <p class="msg" id="m-crear"></p>
@@ -145,6 +174,11 @@ body = """
     <form id="f-entrar" hidden>
       <div class="campo"><input id="e-nombre" maxlength="5" placeholder="NOMBRE" aria-label="Nombre"><input id="e-codigo" maxlength="8" placeholder="CÓDIGO" aria-label="Código secreto" autocomplete="off"><button class="boton" type="submit">ENTRAR</button></div>
       <p class="msg" id="m-entrar"></p>
+    </form>
+    <form id="f-email" hidden>
+      <p style="font-size:16px;margin:0 0 8px">¿Perdiste tu código o entras desde otro móvil? Si tu cuenta tiene email, te mandamos un enlace para entrar.</p>
+      <div class="campo"><input id="x-email" type="email" maxlength="120" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email" style="text-transform:none;letter-spacing:0"><button class="boton" type="submit">ENVIAR ENLACE</button></div>
+      <p class="msg" id="m-email"></p>
     </form>
   </section>
 
@@ -160,6 +194,31 @@ body = """
       <div class="acc"><a class="boton" href="/arcade/">🕹️ JUGAR</a><a class="boton sec" href="/porra/">⚽ LA PORRA</a></div>
     </div>
     <p style="margin-top:8px;font-size:16px"><a href="#" id="ver-codigo">Ver mi código</a> · <a href="#" id="salir">Cerrar sesión en este dispositivo</a></p>
+    <p class="msg" id="m-aviso" style="margin-top:10px"></p>
+    <div class="mail" id="mail-sin" hidden>
+      <h3>📧 No pierdas tu cuenta</h3>
+      <p>Añade tu email y podrás entrar desde cualquier móvil u ordenador sin acordarte del código. Es opcional.</p>
+      <form id="f-mail">
+        <input id="m-email-in" type="email" maxlength="120" placeholder="tu@email.com" autocomplete="email" required aria-label="Tu email">
+        <label><input type="checkbox" id="m-edad" required>Tengo 14 años o más.</label>
+        <label><input type="checkbox" id="m-bol">Quiero recibir el boletín de Trollacos: noticias de GTA VI y videojuegos, novedades de la web y ofertas que nos parezcan buenas. Me puedo borrar cuando quiera.</label>
+        <p style="font-size:14px;color:var(--muted)">Tu email se guarda cifrado y solo lo usamos para tu cuenta (y para el boletín si lo marcas). Más info en la <a href="/privacidad/">política de privacidad</a>.</p>
+        <button class="boton" type="submit">AÑADIR EMAIL</button>
+      </form>
+      <p class="msg" id="m-mail"></p>
+    </div>
+    <div class="mail" id="mail-con" hidden>
+      <h3>📧 Tu email</h3>
+      <p><b id="mi-email"></b> ✔ confirmado</p>
+      <label><input type="checkbox" id="bol-si">Recibir el boletín de Trollacos (noticias de GTA VI, videojuegos y novedades de la web).</label>
+      <p style="font-size:15px"><a href="#" id="quitar-email">Quitar mi email de la cuenta</a></p>
+      <p class="msg" id="m-mail2"></p>
+    </div>
+    <div class="panel-admin" id="panel-admin" hidden>
+      <h3>🛠️ Panel de administrador</h3>
+      <div class="cifras" id="cifras-admin"></div>
+      <p style="font-size:15px;color:var(--muted)">Como administrador tienes abiertos todos los capítulos del arcade en este dispositivo.</p>
+    </div>
   </section>
 
   <div id="stats" hidden>
@@ -182,7 +241,7 @@ body = """
     <div class="tabla" id="ultimos"></div>
   </div>
 
-  <p class="ojo">Tu cuenta solo guarda tu nombre de jugador, tus fichas y tus partidas. No pedimos correo ni datos personales. Las fichas son de juego: no se compran ni se canjean por nada.</p>
+  <p class="ojo">Tu cuenta guarda tu nombre de jugador, tus fichas y tus partidas. El email es opcional y se guarda cifrado. Las fichas son de juego: no se compran ni se canjean por nada. <a href="/privacidad/">Política de privacidad</a>.</p>
 </main>"""
 
 page = f'''<!doctype html>
