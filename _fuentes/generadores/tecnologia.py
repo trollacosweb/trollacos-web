@@ -41,6 +41,9 @@ extra = """
 .prod span{display:block;font-size:15px;color:var(--muted);margin:4px 0 8px}
 .prod i{font-style:normal;font-family:'VT323',monospace;font-size:19px;color:var(--yellow)}
 .afil{font-size:13px;color:var(--muted)}
+.art h3{font-family:'Righteous',sans-serif;font-weight:400;font-size:24px;color:var(--cyan);margin:30px 0 8px;text-shadow:0 0 8px rgba(31,242,255,.5)}
+.art ul{font-size:18px;padding-left:22px}.art li{margin:6px 0}
+.precios{width:100%;border-collapse:collapse;font-size:17px;margin:8px 0 14px}.precios th,.precios td{border:1px solid rgba(233,230,255,.2);padding:8px;text-align:center}.precios th{color:var(--yellow);font-weight:700}.precios td,.precios th{white-space:nowrap}@media(max-width:600px){.precios{font-size:13px}.precios th,.precios td{padding:6px 3px}.precios td:first-child{white-space:normal}}.precios td:first-child{text-align:left;font-weight:700}
 .galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 4px}
 .g-it{margin:0;border:2px solid rgba(31,242,255,.3);border-radius:12px;overflow:hidden;background:#000}
 .g-it video,.g-it img{display:block;width:100%;height:220px;object-fit:cover;background:#000}
@@ -149,7 +152,7 @@ for n in N:
   <p class="lead">{esc(n["entradilla"])}</p>
   {firma()}
   {(f'<figure class="portada-art"><img src="{foto(n)}" alt="{esc(n.get("alt", n["titulo"]))}" loading="lazy"><figcaption>Imagen: {esc(n.get("credito", "prensa oficial de la marca"))}</figcaption></figure>') if foto(n) else ''}
-  {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
+  {''.join(p if p.startswith(('<h3','<ul','<div','<table')) else f'<p>{p}</p>' for p in n["cuerpo"])}
   {galeria(n)}
   {rumor}
   <h2>🛒 Lo que te recomendamos</h2>
