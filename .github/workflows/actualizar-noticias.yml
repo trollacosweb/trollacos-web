@@ -118,3 +118,5 @@ jobs:
         run: |
           echo "::notice::Marcador -> $(curl -s -m 20 'https://trollacos.com/api/marcadores.php?accion=lista' | head -c 300)"
           echo "::notice::Porra -> $(curl -s -m 20 'https://trollacos.com/api/porra.php?accion=ranking' | head -c 300)"
+          echo "::notice::Diag -> $(curl -s -m 20 'https://trollacos.com/api/diag.php' | head -c 400)"
+          echo "::notice::Email -> $(curl -s -m 40 -X POST 'https://trollacos.com/api/porra.php?accion=email_entrar' -H 'Content-Type: application/json' -d '{"email":"prueba-diag@trollacos.com"}' | head -c 600)"
