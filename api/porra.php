@@ -39,8 +39,8 @@ function partidos() {
     $j = @json_decode(@file_get_contents($FPARTIDOS), true);
     return is_array($j) ? $j : ['partidos' => [], 'jornada' => null, 'actualizado' => null];
 }
-function partido_por_id($pp, $id) {
-    foreach ($pp['partidos'] as $p) { if ((string)$p['id'] === (string)$id) { return $p; } }
+function partido_por_id($pp, $id) {   // LaLiga y Champions
+    foreach (array_merge($pp['partidos'] ?? [], $pp['champions']['partidos'] ?? []) as $p) { if ((string)$p['id'] === (string)$id) { return $p; } }
     return null;
 }
 function hash_codigo($nombre, $codigo) {

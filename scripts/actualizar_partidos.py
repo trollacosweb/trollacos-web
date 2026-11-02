@@ -186,6 +186,96 @@ def desde_tsdb():
     return temp, partidos
 
 
+# ---------------- Champions League (TheSportsDB, liga 4480) ----------------
+UCL = "4480"
+def desde_tsdb_champions():
+    """Jornada anterior, actual y siguiente de la Champions. Cuotas con los puntos de la fase liga (con colchón)."""
+    import time
+    temp = temporada_actual()
+    fcache = RAIZ / "scripts" / "champions_cache.json"
+    try:
+        cache = json.loads(fcache.read_text(encoding="utf-8"))
+    except Exception:
+        cache = {}
+    if cache.get("temporada") != temp:
+        cache = {"temporada": temp, "rondas": {}}
+    def ronda(r):
+        time.sleep(3)
+        return (get_json(f"{TSDB}eventsround.php?id={UCL}&r={r}&s={temp}") or {}).get("events") or []
+    time.sleep(3)
+    pasados = [e for e in (get_json(f"{TSDB}eventspastleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp]
+    try:
+        time.sleep(3)
+        proximos = [e for e in (get_json(f"{TSDB}eventsnextleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp]
+    except Exception:
+        proximos = []
+    vistas = sorted({num(e.get("intRound")) for e in pasados + proximos if num(e.get("intRound"))})
+    if not vistas:
+        raise RuntimeError("TheSportsDB no ha devuelto partidos de Champions")
+    pend = [num(e.get("intRound")) for e in pasados + proximos if num(e.get("intRound")) and estado_tsdb(e) not in ("FINISHED", "CANCELLED")]
+    actual = min(pend) if pend else max(vistas)
+    anteriores = [r for r in vistas if r < actual]
+    siguientes = [r for r in vistas if r > actual]
+    leer = ([anteriores[-1]] if anteriores else []) + [actual] + ([siguientes[0]] if siguientes else [])
+    if actual <= 8 and actual + 1 <= 8 and actual + 1 not in leer:
+        leer.append(actual + 1)
+    rondas = {}
+    for r in leer:
+        ev = ronda(r) or [e for e in pasados + proximos if num(e.get("intRound")) == r]
+        if ev:
+            rondas[r] = ev
+            if len(ev) >= 9 and all(estado_tsdb(e) in ("FINISHED", "CANCELLED") for e in ev):
+                cache["rondas"][str(r)] = [{k: e.get(k) for k in ("idEvent", "idHomeTeam", "idAwayTeam", "intHomeScore", "intAwayScore", "strStatus", "strPostponed", "strTimestamp", "dateEvent", "strTime")} for e in ev]
+    # fase liga ya jugada (para las cuotas): como mucho 3 jornadas nuevas por pasada
+    nuevas = 0
+    for r in range(1, min(actual, 9)):
+        if str(r) not in cache["rondas"] and r not in rondas and nuevas < 3:
+            nuevas += 1
+            try:
+                ev = ronda(r)
+                if ev and all(estado_tsdb(e) in ("FINISHED", "CANCELLED") for e in ev):
+                    cache["rondas"][str(r)] = [{k: e.get(k) for k in ("idEvent", "idHomeTeam", "idAwayTeam", "intHomeScore", "intAwayScore", "strStatus", "strPostponed", "strTimestamp", "dateEvent", "strTime")} for e in ev]
+            except Exception as ex:
+                print(f"::warning::Champions: jornada {r} pendiente ({ex})")
+                break
+    fcache.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    pts, pj = {}, {}
+    vistos = set()
+    for evs in list(cache["rondas"].values()) + list(rondas.values()):
+        for e in evs:
+            if e.get("idEvent") in vistos or estado_tsdb(e) != "FINISHED":
+                continue
+            vistos.add(e.get("idEvent"))
+            gl, gv = num(e.get("intHomeScore")), num(e.get("intAwayScore"))
+            if gl is None or gv is None:
+                continue
+            h, a = e.get("idHomeTeam"), e.get("idAwayTeam")
+            pj[h] = pj.get(h, 0) + 1; pj[a] = pj.get(a, 0) + 1
+            pts[h] = pts.get(h, 0) + (3 if gl > gv else 1 if gl == gv else 0)
+            pts[a] = pts.get(a, 0) + (3 if gv > gl else 1 if gl == gv else 0)
+    fz = {t: fuerza(pts.get(t, 0), pj[t]) for t in pj}
+    partidos = []
+    for r, evs in rondas.items():
+        for e in evs:
+            est = estado_tsdb(e)
+            gl, gv = num(e.get("intHomeScore")), num(e.get("intAwayScore"))
+            if est in ("TIMED", "POSTPONED", "CANCELLED"):
+                gl = gv = None
+            hn, an = e.get("strHomeTeam") or "?", e.get("strAwayTeam") or "?"
+            if not fecha_tsdb(e):
+                continue
+            partidos.append({
+                "id": str(e.get("idEvent")), "j": f"C{r}", "comp": "champions", "fecha": fecha_tsdb(e), "estado": est,
+                "local": {"n": hn, "c": e.get("strHomeTeamBadge") or "", "tla": tla(hn)},
+                "visit": {"n": an, "c": e.get("strAwayTeamBadge") or "", "tla": tla(an)},
+                "gl": gl, "gv": gv,
+                "cuotas": cuotas(fz.get(e.get("idHomeTeam"), 1.4), fz.get(e.get("idAwayTeam"), 1.4)),
+            })
+    partidos.sort(key=lambda p: (num(p["j"][1:]) or 0, p["fecha"]))
+    print(f"::notice::Champions: jornada C{actual}, {len(partidos)} partidos (rondas {leer}). Ej: " + (f"{partidos[0]['local']['n']} - {partidos[0]['visit']['n']} {partidos[0]['fecha']} {partidos[0]['cuotas']}" if partidos else "—"))
+    return {"temporada": temp, "jornada": f"C{actual}", "partidos": partidos}
+
+
 # ---------------- football-data.org (respaldo) ----------------
 def desde_football_data(clave):
     api = "https://api.football-data.org/v4/competitions/PD"
@@ -231,6 +321,17 @@ def main():
     salida = sorted((p for p in partidos if jornada - 2 <= p["j"] <= jornada + 1), key=lambda p: (p["j"], p["fecha"]))
     doc = {"actualizado": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "fuente": fuente,
            "temporada": temp, "jornada": jornada, "partidos": salida}
+    # Champions: si falla, se deja la que había
+    try:
+        doc["champions"] = desde_tsdb_champions()
+    except Exception as ex:
+        print(f"::warning::Champions: no se ha podido actualizar ({ex})")
+        try:
+            viejo = json.loads(SALIDA.read_text(encoding="utf-8"))
+            if viejo.get("champions"):
+                doc["champions"] = viejo["champions"]
+        except Exception:
+            pass
     SALIDA.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
     ej = next((p for p in salida if p["j"] == jornada), salida[0])
     print(f"::notice::Porra ({fuente}): jornada {jornada}, {len(salida)} partidos. Ej: {ej['local']['n']} - {ej['visit']['n']} {ej['fecha']} {ej['estado']} {ej['cuotas']}")

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>
-<title>La Porra Trollaca: pronósticos de LaLiga con fichas (sin dinero) | Trollacos</title>
-<meta name="description" content="Juega a pronosticar los partidos de LaLiga con las fichas que ganas en nuestro arcade. Sin dinero real: solo por el pique y el ranking.">
+<title>La Porra Trollaca: pronósticos de LaLiga y Champions con fichas (sin dinero) | Trollacos</title>
+<meta name="description" content="Juega a pronosticar los partidos de LaLiga y la Champions con las fichas que ganas en nuestro arcade. Sin dinero real: solo por el pique y el ranking.">
 <link rel="canonical" href="https://trollacos.com/porra/">
 <meta property="og:title" content="La Porra Trollaca: ¿cuánto sabes de LaLiga?">
 <meta property="og:description" content="Gana fichas en el arcade y pronostica la jornada. Sin dinero real, solo por el pique.">
@@ -169,6 +169,7 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
 .jornada-sel{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}
 .jornada-sel button{font-family:'VT323',monospace;font-size:19px;padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;cursor:pointer}
 .jornada-sel button.on{background:rgba(255,43,214,.3);border-color:var(--pink)}
+.comps{margin-bottom:6px}.comps button{font-size:20px !important;padding:8px 18px !important}
 </style>
 </head>
 <body>
@@ -214,7 +215,8 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
     <p class="msg ok" id="bono" hidden></p>
   </section>
 
-  <h2 id="jornada">⚽ La jornada de LaLiga</h2>
+  <h2 id="jornada">⚽ Los partidos</h2>
+  <div class="jornada-sel comps" id="comps" hidden><button type="button" class="on" data-c="liga">⚽ LALIGA</button><button type="button" data-c="champions">⭐ CHAMPIONS</button></div>
   <div class="jornada-sel" id="jornadas"></div>
   <div id="partidos"><p class="vacio">Cargando partidos...</p></div>
 
@@ -245,7 +247,12 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
 
 <script>
 (function(){
-var API='/api/porra.php',yo=null,datos=null,jornadaVista=null;
+var API='/api/porra.php',yo=null,datos=null,jornadaVista=null,comp='liga',vistas={};
+function L(){return !datos?[]:comp==='champions'?((datos.champions&&datos.champions.partidos)||[]):(datos.partidos||[])}
+function JA(){return comp==='champions'?(datos.champions&&datos.champions.jornada):datos.jornada}
+function jn(j){return typeof j==='string'?parseInt(j.replace(/\D/g,''),10):j}
+function etiquetaJ(j){if(typeof j==='string'&&j[0]==='C'){var n=jn(j);return n<=8?'⭐ Champions J'+n:'⭐ Champions'}return 'J'+j}
+function botonJ(j){if(comp==='champions'){var n=jn(j);return n<=8?'Jornada '+n:'Eliminatoria'}return 'Jornada '+j}
 try{yo=JSON.parse(localStorage.getItem('porraCuenta')||'null')}catch(e){}
 function guardaCuenta(c){yo=c;try{c?localStorage.setItem('porraCuenta',JSON.stringify(c)):localStorage.removeItem('porraCuenta')}catch(e){}}
 function $(id){return document.getElementById(id)}
@@ -290,13 +297,16 @@ function abierto(p){return (p.estado==='SCHEDULED'||p.estado==='TIMED')&&new Dat
 function estadoTxt(p){return {FINISHED:'Final',IN_PLAY:'En juego',PAUSED:'Descanso',POSTPONED:'Aplazado',SUSPENDED:'Suspendido',CANCELLED:'Cancelado'}[p.estado]||'Cerrado'}
 function pintaPartidos(j){
   j=j||ultimoYo;var cont=$('partidos');
-  if(!datos||!datos.partidos||!datos.partidos.length){cont.innerHTML='<p class="vacio">Los partidos de LaLiga aparecerán aquí en cuanto se conecte el calendario. ¡Vuelve pronto!</p>';$('jornadas').innerHTML='';return}
-  var js=[];datos.partidos.forEach(function(p){if(js.indexOf(p.j)<0)js.push(p.j)});js.sort(function(a,b){return a-b});
-  if(jornadaVista==null)jornadaVista=datos.jornada;
-  $('jornadas').innerHTML=js.map(function(n){return '<button type="button" data-j="'+n+'" class="'+(n===jornadaVista?'on':'')+'">Jornada '+n+'</button>'}).join('');
-  $('jornadas').querySelectorAll('button').forEach(function(b){b.onclick=function(){jornadaVista=+b.dataset.j;pintaPartidos()}});
+  var hayC=!!(datos&&datos.champions&&datos.champions.partidos&&datos.champions.partidos.length);
+  $('comps').hidden=!hayC;if(!hayC)comp='liga';
+  $('comps').querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===comp);b.onclick=function(){vistas[comp]=jornadaVista;comp=b.dataset.c;jornadaVista=vistas[comp]==null?null:vistas[comp];pintaPartidos()}});
+  if(!L().length){cont.innerHTML='<p class="vacio">Los partidos aparecerán aquí en cuanto se conecte el calendario. ¡Vuelve pronto!</p>';$('jornadas').innerHTML='';return}
+  var js=[];L().forEach(function(p){if(js.indexOf(p.j)<0)js.push(p.j)});js.sort(function(a,b){return jn(a)-jn(b)});
+  if(jornadaVista==null||js.indexOf(jornadaVista)<0)jornadaVista=js.indexOf(JA())>-1?JA():js[0];
+  $('jornadas').innerHTML=js.map(function(n){return '<button type="button" data-j="'+n+'" class="'+(n===jornadaVista?'on':'')+'">'+botonJ(n)+'</button>'}).join('');
+  $('jornadas').querySelectorAll('button').forEach(function(b){b.onclick=function(){var v=b.dataset.j;jornadaVista=/^\d+$/.test(v)?+v:v;pintaPartidos()}});
   var mias={};if(j&&j.pronosticos)j.pronosticos.forEach(function(a){(mias[a.partido]=mias[a.partido]||[]).push(a)});
-  cont.innerHTML=datos.partidos.filter(function(p){return p.j===jornadaVista}).map(function(p){
+  cont.innerHTML=L().filter(function(p){return p.j===jornadaVista}).map(function(p){
     var ab=abierto(p),res=(p.gl!=null&&p.gv!=null)?p.gl+' - '+p.gv:'vs',m=mias[p.id]||[];
     var hecho=m.map(function(a){return '<div class="estado-p">Tu pronóstico: <b>'+esc(a.tipo==='1x2'?(a.seleccion==='1'?p.local.n:a.seleccion==='2'?p.visit.n:'Empate'):'exacto '+a.seleccion)+'</b> · '+a.cantidad+' fichas · <span class="e-'+a.estado+'">'+a.estado+(a.estado==='ganada'?' (+'+a.premio+')':'')+'</span>'+((ab&&a.estado==='pendiente')?' <button type="button" class="cancelar" data-cancel="'+esc(a.id)+'">✖ Cancelar</button>':'')+'</div>'}).join('');
     var tiene1=m.some(function(a){return a.tipo==='1x2'}),tieneE=m.some(function(a){return a.tipo==='exacto'});
@@ -333,12 +343,12 @@ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.targe
 function alertaBono(b){var a=$('bono');a.textContent='🎁 +'+b+' fichas por participar en esta jornada';a.hidden=false;setTimeout(function(){a.hidden=true},5000)}
 
 // ---------- mis pronósticos y ranking ----------
-function nombrePartido(id){if(!datos)return id;for(var i=0;i<datos.partidos.length;i++){var p=datos.partidos[i];if(String(p.id)===String(id))return p.local.n+' - '+p.visit.n}return 'Partido '+id}
+function nombrePartido(id){if(!datos)return id;var t=(datos.partidos||[]).concat((datos.champions&&datos.champions.partidos)||[]);for(var i=0;i<t.length;i++){var p=t[i];if(String(p.id)===String(id))return p.local.n+' - '+p.visit.n}return 'Partido '+id}
 function pintaMios(j){var t=$('mios');
   if(!j){t.innerHTML='<p class="vacio">Entra con tu cuenta para ver tus pronósticos.</p>';return}
   if(!j.pronosticos.length){t.innerHTML='<p class="vacio">Aún no has hecho ningún pronóstico. ¡Elige un partido!</p>';return}
   t.innerHTML='<div class="tabla"><table class="mios"><tr><th>Partido</th><th>Pronóstico</th><th>Fichas</th><th>Estado</th></tr>'+j.pronosticos.map(function(a){
-    return '<tr><td>J'+a.jornada+' · '+esc(nombrePartido(a.partido))+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td class="e-'+a.estado+'">'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table></div>'}
+    return '<tr><td>'+etiquetaJ(a.jornada)+' · '+esc(nombrePartido(a.partido))+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td class="e-'+a.estado+'">'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table></div>'}
 function cargaRanking(){fetch(API+'?accion=ranking',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
   var ol=$('ranking');if(!j.top||!j.top.length){ol.innerHTML='<li class="vacio" style="list-style:none">Todavía no hay jugadores. ¡Sé el primero!</li>';return}
   ol.innerHTML=j.top.map(function(u){return '<li><span class="n">'+esc(u.nombre)+'</span><span class="p">'+u.fichas+' 🪙</span></li>'}).join('');

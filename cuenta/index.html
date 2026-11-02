@@ -387,7 +387,7 @@ function pinta(j){
   // últimos pronósticos
   var ult=(j.pronosticos||[]).slice(0,5);
   $('ultimos').innerHTML=ult.length?'<table class="modos-t"><tr><th>Jornada</th><th>Pronóstico</th><th>Fichas</th><th>Estado</th></tr>'+ult.map(function(a){
-    return '<tr><td>J'+a.jornada+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td>'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table>'
+    return '<tr><td>'+(String(a.jornada)[0]==='C'?'⭐ Champions J'+String(a.jornada).slice(1):'J'+a.jornada)+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td>'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table>'
     :'<p style="color:var(--muted)">Aún no has hecho pronósticos. <a href="/porra/">Ir a La Porra ›</a></p>';
 }
 function carga(){
