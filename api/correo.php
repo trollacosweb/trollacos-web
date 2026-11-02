@@ -56,6 +56,7 @@ function correo_html($titulo, $parrafos, $boton_txt = null, $boton_url = null, $
 // La contraseña la pone Guillermo como secreto de GitHub (SMTP_PASSWORD) y el despliegue crea api/smtp.php con ella (fuera de git).
 const SMTP_HOST = 'smtp.trollacos.com';
 const SMTP_PORT = 587;
+const SMTP_TLS_NOMBRE = 'smtp.dondominio.com';   // el certificado del servidor de correo es *.dondominio.com: se comprueba contra ese nombre
 function smtp_conf() { $c = @include __DIR__ . '/smtp.php'; return (is_array($c) && !empty($c['pass'])) ? $c : null; }
 function smtp_hablar($s, $cmd, $espera) {
     if ($cmd !== null) { fwrite($s, $cmd . "\r\n"); }
@@ -65,7 +66,8 @@ function smtp_hablar($s, $cmd, $espera) {
     return $resp;
 }
 function smtp_abrir($conf) {
-    $s = @stream_socket_client('tcp://' . SMTP_HOST . ':' . SMTP_PORT, $en, $es, 15);
+    $ctx = stream_context_create(['ssl' => ['verify_peer' => true, 'verify_peer_name' => true, 'peer_name' => SMTP_TLS_NOMBRE, 'allow_self_signed' => false]]);
+    $s = @stream_socket_client('tcp://' . SMTP_HOST . ':' . SMTP_PORT, $en, $es, 15, STREAM_CLIENT_CONNECT, $ctx);
     if (!$s) { throw new Exception("conexión: $es"); }
     stream_set_timeout($s, 20);
     smtp_hablar($s, null, 220);
