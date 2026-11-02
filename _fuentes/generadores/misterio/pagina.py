@@ -55,7 +55,7 @@ page = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){{var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'}})()</script>
+<script>(function(){{var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'}})()</script>
 <title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Expediente Trollaco</title>
 <meta name="description" content="El Palacio de Linares, la Casa de las Siete Chimeneas, el Ángel Caído, la estación fantasma de Chamberí, el caso Ummo y el caso Vallecas. Los misterios de Madrid, con mapa interactivo.">
 <link rel="canonical" href="https://trollacos.com/misterio/">

@@ -44,7 +44,7 @@ extra = r"""
 .barra-p{height:10px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:6px}.barra-p i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan))}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n<=2))document.documentElement.className+=' halloween'})()</script>"
+hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'})()</script>"
 
 js = r"""
 <script>
