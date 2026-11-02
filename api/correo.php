@@ -153,3 +153,53 @@ function cuenta_por_email($d, $email) {
     foreach ($d['usuarios'] as $n => $u) { if (($u['eh'] ?? '') === $h && !empty($u['ev'])) { return $n; } }
     return null;
 }
+
+/* ================= BOLETÍN ================= */
+// Las últimas noticias propias salen del rss.xml de la web (solo enlaces a trollacos.com)
+function noticias_rss($n = 4) {
+    $x = @simplexml_load_file(dirname(__DIR__) . '/rss.xml'); $out = [];
+    if ($x && isset($x->channel->item)) { foreach ($x->channel->item as $it) { $out[] = ['t' => (string)$it->title, 'u' => (string)$it->link, 'd' => (string)$it->description]; if (count($out) >= $n) { break; } } }
+    return $out;
+}
+function dias_gta() { return max(0, (int)ceil((strtotime('2026-11-19 00:00:00 Europe/Madrid') - time()) / 86400)); }
+function asunto_boletin_defecto() { $d = dias_gta(); return $d > 0 ? "Faltan $d días para GTA VI 🌴 Lo último de Trollacos" : 'GTA VI ya está aquí 🌴 Lo último de Trollacos'; }
+function intro_boletin_defecto() {
+    $d = dias_gta();
+    return ($d > 0 ? "Quedan <b>$d días</b> para volver a Vice City y en Trollacos no paramos." : 'GTA VI ya está en la calle y en Trollacos lo estamos destripando.')
+        . ' Aquí tienes lo último que hemos contado, la guía más completa en español y un par de retos para matar la espera.';
+}
+function boletin_html($asunto, $intro, $nombre, $url_baja) {
+    $tarjeta = function ($emoji, $tit, $txt, $url, $color) {
+        return '<tr><td style="padding:0 0 12px"><a href="' . htmlspecialchars($url) . '" style="display:block;text-decoration:none;border:2px solid ' . $color . ';border-radius:12px;padding:14px 16px;background:#0d0524">'
+             . '<span style="font-size:18px;font-weight:bold;color:' . $color . '">' . $emoji . ' ' . htmlspecialchars($tit) . ' ›</span><br><span style="font-size:15px;color:#e9e6ff;line-height:1.4">' . $txt . '</span></a></td></tr>';
+    };
+    $noti = '';
+    foreach (noticias_rss(4) as $n) {
+        $noti .= '<tr><td style="padding:0 0 12px"><a href="' . htmlspecialchars($n['u']) . '?utm_source=boletin" style="display:block;text-decoration:none;border-left:4px solid #ff2bd6;padding:6px 0 6px 12px">'
+               . '<span style="font-size:17px;font-weight:bold;color:#ffffff;line-height:1.3">' . htmlspecialchars($n['t']) . '</span><br><span style="font-size:14px;color:#a59dd0;line-height:1.4">' . htmlspecialchars($n['d']) . '</span></a></td></tr>';
+    }
+    $dias = dias_gta();
+    $cuerpo = '<p style="margin:0 0 6px;font-size:16px;color:#e9e6ff">¡Hola, <b style="color:#1ff2ff">' . htmlspecialchars($nombre) . '</b>!</p>'
+        . '<p style="margin:0 0 18px;font-size:16px;line-height:1.5;color:#e9e6ff">' . $intro . '</p>'
+        . ($dias > 0 ? '<p style="margin:0 0 20px;text-align:center"><span style="display:inline-block;padding:10px 18px;border:2px solid #ffd23f;border-radius:10px;font-size:22px;font-weight:bold;color:#ffd23f">🌴 GTA VI · faltan ' . $dias . ' días</span></p>' : '')
+        . '<h2 style="margin:0 0 12px;font-size:19px;color:#ffd23f">📰 Lo último, contado por Danna</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0">' . $noti . '</table>'
+        . '<h2 style="margin:10px 0 12px;font-size:19px;color:#ffd23f">🎮 En Trollacos</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0">'
+        . $tarjeta('📖', 'La Guía Trollacos de GTA VI', 'Personajes, mapa, cómo se juega, música… todo lo confirmado, en español.', WEB . '/gta-6/?utm_source=boletin', '#1ff2ff')
+        . $tarjeta('📺', 'GTA VI a tope: tele, monitor y consola', 'Qué necesitas para jugarlo en la máxima calidad, sin tirar el dinero.', WEB . '/gta-6/que-comprar/?utm_source=boletin#tele', '#ffd23f')
+        . $tarjeta('🕹️', 'Trollaco Run: el modo historia', 'Cinco capítulos para rescatar a la Princesa Neón… y Míster Glitch sigue suelto. ¿Superas el récord?', WEB . '/arcade/?utm_source=boletin', '#ff2bd6')
+        . $tarjeta('⚽', 'La Porra Trollaca: LaLiga y Champions', 'Pronostica los partidos con tus fichas y sube en el ranking. Sin dinero real, solo pique.', WEB . '/porra/?utm_source=boletin', '#39ff88')
+        . '</table>';
+    return '<!doctype html><html lang="es"><body style="margin:0;background:#07021a;font-family:Arial,Helvetica,sans-serif">'
+        . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#07021a"><tr><td align="center" style="padding:24px 12px">'
+        . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#140830;border:2px solid #ff2bd6;border-radius:14px">'
+        . '<tr><td style="padding:22px 24px 4px;text-align:center"><a href="' . WEB . '/?utm_source=boletin" style="font-size:30px;font-weight:bold;letter-spacing:3px;color:#1ff2ff;text-decoration:none">TROLLACOS</a><div style="font-size:13px;color:#a59dd0;letter-spacing:2px">EL BOLETÍN</div></td></tr>'
+        . '<tr><td style="padding:16px 24px 22px"><h1 style="margin:0 0 14px;font-size:22px;color:#ffffff">' . htmlspecialchars($asunto) . '</h1>' . $cuerpo . '</td></tr></table>'
+        . '<p style="font-size:12px;color:#6f6894;margin:14px 0 0;line-height:1.5">Recibes este correo porque te apuntaste al boletín de Trollacos.<br>'
+        . '<a href="' . htmlspecialchars($url_baja) . '" style="color:#a59dd0">Darme de baja</a> · ¿Dudas? Escríbenos a ' . CORREO_RESP . '</p>'
+        . '</td></tr></table></body></html>';
+}
+function boletin_texto($asunto, $intro, $nombre, $url_baja) {
+    $t = "¡Hola, $nombre!\n\n" . strip_tags($intro) . "\n\nLO ÚLTIMO\n";
+    foreach (noticias_rss(4) as $n) { $t .= "- {$n['t']}\n  {$n['u']}\n"; }
+    return $t . "\nLa guía de GTA VI: " . WEB . "/gta-6/\nGTA VI a tope (tele, monitor y consola): " . WEB . "/gta-6/que-comprar/#tele\nTrollaco Run: " . WEB . "/arcade/\nLa Porra (LaLiga y Champions): " . WEB . "/porra/\n\nDarte de baja: $url_baja\n";
+}

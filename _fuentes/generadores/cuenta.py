@@ -119,7 +119,7 @@ function pinta(j){
   $('mail-sin').hidden=!!j.email;$('mail-con').hidden=!j.email;$('f-mail').hidden=false;
   if(j.email){$('mi-email').textContent=j.email;$('bol-si').checked=!!j.boletin}
   if(j.admin){try{localStorage.setItem('trollacoAdmin','1')}catch(e){}}
-  $('panel-admin').hidden=!j.panel;
+  $('panel-admin').hidden=!j.panel;if(j.panel&&!bolCargado){bolCargado=true;cargaBoletin(false)}
   if(j.panel)$('cifras-admin').innerHTML=[[n(j.panel.usuarios),'👥 cuentas'],[n(j.panel.altas_7d),'🆕 altas en 7 días'],[n(j.panel.con_email),'📧 con email'],
     [n(j.panel.boletin),'📰 en el boletín'],[n(j.panel.partidas),'🕹️ partidas guardadas'],[n(j.panel.pronosticos),'⚽ pronósticos']].map(function(c){return '<div class="cifra"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('');
   $('yo-alta').textContent='Jugador desde el '+new Date(j.alta+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
@@ -162,6 +162,25 @@ function pinta(j){
     return '<tr><td>'+(String(a.jornada)[0]==='C'?'⭐ Champions J'+String(a.jornada).slice(1):'J'+a.jornada)+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td>'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table>'
     :'<p style="color:var(--muted)">Aún no has hecho pronósticos. <a href="/porra/">Ir a La Porra ›</a></p>';
 }
+var bolCargado=false;
+function cargaBoletin(ver){post('boletin_vista',{nombre:yo.nombre,codigo:yo.codigo,asunto:$('b-asunto').value,intro:$('b-intro').value}).then(function(j){
+  if(!j.ok){msg('m-bol',j.mensaje||'Error');return}
+  if(!$('b-asunto').value)$('b-asunto').value=j.asunto;if(!$('b-intro').value)$('b-intro').value=j.intro;
+  $('b-subs').innerHTML='📬 <b>'+j.suscriptores+'</b> '+(j.suscriptores===1?'persona apuntada':'personas apuntadas')+' al boletín.';
+  $('b-enviar').textContent='🚀 ENVIAR A '+j.suscriptores;$('b-enviar').disabled=!j.suscriptores;
+  $('b-hist').innerHTML=j.historial.length?'<p><b>Enviados:</b><br>'+j.historial.map(function(h){return esc(h.fecha)+' · '+esc(h.asunto)+' · '+h.enviados+' correos'}).join('<br>')+'</p>':'';
+  if(ver){$('b-vista').hidden=false;$('b-vista').srcdoc=j.html}})}
+$('b-ver').onclick=function(){cargaBoletin(true)};
+$('b-prueba').onclick=function(){msg('m-bol','Enviando prueba...',true);post('boletin_enviar',{nombre:yo.nombre,codigo:yo.codigo,asunto:$('b-asunto').value,intro:$('b-intro').value,prueba:true}).then(function(j){msg('m-bol',j.mensaje||'Error',!!j.ok)})};
+$('b-enviar').onclick=function(){
+  if(!confirm('¿Enviar el boletín «'+$('b-asunto').value+'» a todos los suscriptores? No se puede deshacer.'))return;
+  var b=$('b-enviar');b.disabled=true;var id=null;
+  function tanda(){post('boletin_enviar',{nombre:yo.nombre,codigo:yo.codigo,asunto:$('b-asunto').value,intro:$('b-intro').value,id:id}).then(function(j){
+    if(!j.ok){msg('m-bol',j.mensaje||'Error');b.disabled=false;return}
+    id=j.id;msg('m-bol','Enviados: '+j.enviados+(j.quedan?' · quedan '+j.quedan+'...':' · ¡listo!')+(j.fallos?' · '+j.fallos+' fallos (vuelve a pulsar ENVIAR para reintentar)':''),!j.fallos);
+    if(j.quedan)setTimeout(tanda,2500);else{b.disabled=false;cargaBoletin(false)}
+  }).catch(function(){msg('m-bol','Error de conexión. Vuelve a pulsar ENVIAR: seguirá por donde iba.');b.disabled=false})}
+  tanda()};
 function carga(){
   if(!yo){pinta(null);return}
   post('perfil',yo).then(function(j){if(j.ok)pinta(j);else{guarda(null);pinta(null)}}).catch(function(){$('cifras').innerHTML='<p>No se han podido cargar tus datos.</p>'});
@@ -236,6 +255,15 @@ body = """
       <h3>🛠️ Panel de administrador</h3>
       <div class="cifras" id="cifras-admin"></div>
       <p style="font-size:15px;color:var(--muted)">Como administrador tienes abiertos todos los capítulos del arcade en este dispositivo.</p>
+      <h3 style="margin-top:22px">📰 Boletín</h3>
+      <p id="b-subs" style="font-size:16px"></p>
+      <label style="display:block;font-size:15px;color:var(--muted)">Asunto<input id="b-asunto" maxlength="120" style="width:100%;padding:10px;border-radius:8px;border:2px solid var(--cyan);background:#07021a;color:#fff;font-size:16px;margin-top:4px"></label>
+      <label style="display:block;font-size:15px;color:var(--muted);margin-top:10px">Introducción (puedes usar &lt;b&gt;negrita&lt;/b&gt;)<textarea id="b-intro" rows="4" style="width:100%;padding:10px;border-radius:8px;border:2px solid var(--cyan);background:#07021a;color:#fff;font-size:16px;margin-top:4px"></textarea></label>
+      <p style="font-size:14px;color:var(--muted)">Debajo van solas las 4 últimas noticias, la guía, «GTA VI a tope» (tele y monitor), el arcade y La Porra. Sin enlaces de Amazon: todo lleva a trollacos.com.</p>
+      <p><button class="boton sec" type="button" id="b-ver">👁️ VISTA PREVIA</button> <button class="boton sec" type="button" id="b-prueba">📧 ENVIARME UNA PRUEBA</button> <button class="boton" type="button" id="b-enviar">🚀 ENVIAR</button></p>
+      <p class="msg" id="m-bol"></p>
+      <iframe id="b-vista" title="Vista previa del boletín" style="width:100%;height:620px;border:2px solid var(--pink);border-radius:12px;background:#07021a" hidden></iframe>
+      <div id="b-hist" style="font-size:15px;color:var(--muted)"></div>
     </div>
   </section>
 

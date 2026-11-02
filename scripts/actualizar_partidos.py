@@ -197,16 +197,19 @@ def desde_tsdb_champions():
         cache = json.loads(fcache.read_text(encoding="utf-8"))
     except Exception:
         cache = {}
-    if cache.get("temporada") != temp:
-        cache = {"temporada": temp, "rondas": {}}
+    if cache.get("temporada") != temp or cache.get("v") != 2:   # v2: sin partidos de la previa
+        cache = {"temporada": temp, "rondas": {}, "v": 2}
+    inicio = f"{temp[:4]}-09-01"   # la fase liga empieza en septiembre: lo de antes son las previas
+    def vale(e):
+        return (fecha_tsdb(e) or "")[:10] >= inicio
     def ronda(r):
         time.sleep(3)
-        return (get_json(f"{TSDB}eventsround.php?id={UCL}&r={r}&s={temp}") or {}).get("events") or []
+        return [e for e in (get_json(f"{TSDB}eventsround.php?id={UCL}&r={r}&s={temp}") or {}).get("events") or [] if vale(e)]
     time.sleep(3)
-    pasados = [e for e in (get_json(f"{TSDB}eventspastleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp]
+    pasados = [e for e in (get_json(f"{TSDB}eventspastleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp and vale(e)]
     try:
         time.sleep(3)
-        proximos = [e for e in (get_json(f"{TSDB}eventsnextleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp]
+        proximos = [e for e in (get_json(f"{TSDB}eventsnextleague.php?id={UCL}") or {}).get("events") or [] if (e.get("strSeason") or temp) == temp and vale(e)]
     except Exception:
         proximos = []
     vistas = sorted({num(e.get("intRound")) for e in pasados + proximos if num(e.get("intRound"))})

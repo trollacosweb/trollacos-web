@@ -32,7 +32,7 @@ const CIERRE_SEG      = 300;  // no se admiten pronósticos 5 minutos antes del 
 
 $FPORRA = "$DIR/porra.php";
 $FPARTIDOS = __DIR__ . '/partidos.json';
-$VACIO = ['usuarios' => [], 'apuestas' => [], 'arcade' => [], 'fallos' => [], 'altas' => [], 'tokens' => [], 'envios' => []];
+$VACIO = ['usuarios' => [], 'apuestas' => [], 'arcade' => [], 'fallos' => [], 'altas' => [], 'tokens' => [], 'env' => [], 'boletines' => []];
 
 function partidos() {
     global $FPARTIDOS;
@@ -254,6 +254,75 @@ if ($accion === 'admin_recuperar' && $post) {
     $d['usuarios'][$nombre]['hx'] = array_slice(array_merge($d['usuarios'][$nombre]['hx'] ?? [], [hash_codigo($nombre, $codigo)]), -8);
     cerrar($d, $fl);
     responder(['ok' => true, 'nombre' => $nombre, 'codigo' => $codigo]);
+}
+
+/* ================= BOLETÍN (solo administrador) ================= */
+function admin_o_error(&$d, $in) {
+    [$nombre, $err] = usuario($d, $in);
+    if (!$nombre) { return [null, null, $err]; }
+    $u = $d['usuarios'][$nombre];
+    $em = !empty($u['ev']) ? email_descifrar($u['em'] ?? '') : null;
+    if (!es_admin_email($em)) { return [null, null, 'Solo el administrador puede hacer esto.']; }
+    return [$nombre, $em, null];
+}
+function suscriptores($d) {
+    return array_keys(array_filter($d['usuarios'], function ($u) { return !empty($u['ev']) && !empty($u['bo']); }));
+}
+function boletin_campos($in) {
+    $asunto = trim(mb_substr(strip_tags((string)($in['asunto'] ?? '')), 0, 120)) ?: asunto_boletin_defecto();
+    $intro = trim(strip_tags((string)($in['intro'] ?? ''), '<b><i><br><strong><em>')) ?: intro_boletin_defecto();
+    return [$asunto, $intro];
+}
+function url_baja($nombre, $email) { return WEB . '/cuenta/?baja=' . rawurlencode($nombre) . '.' . token_baja($email); }
+
+if ($accion === 'boletin_vista' && $post) {
+    $in = entrada();
+    [$d, $fl] = abrir();
+    [$yo, $em, $err] = admin_o_error($d, $in);
+    cerrar($d, $fl, false);
+    if (!$yo) { responder(['error' => 'admin', 'mensaje' => $err], 403); }
+    [$asunto, $intro] = boletin_campos($in);
+    $hist = array_map(function ($b) { return ['asunto' => $b['a'], 'fecha' => date('Y-m-d H:i', $b['ts']), 'enviados' => count($b['env'])]; }, array_values($d['boletines'] ?? []));
+    responder(['ok' => true, 'asunto' => $asunto, 'intro' => $intro, 'suscriptores' => count(suscriptores($d)),
+               'html' => boletin_html($asunto, $intro, $yo, WEB . '/cuenta/'), 'historial' => array_slice(array_reverse($hist), 0, 10)]);
+}
+
+if ($accion === 'boletin_enviar' && $post) {
+    $in = entrada();
+    @set_time_limit(120);
+    [$d, $fl] = abrir();
+    [$yo, $em, $err] = admin_o_error($d, $in);
+    if (!$yo) { cerrar($d, $fl, false); responder(['error' => 'admin', 'mensaje' => $err], 403); }
+    [$asunto, $intro] = boletin_campos($in);
+    if (!empty($in['prueba'])) {   // prueba: solo al administrador
+        cerrar($d, $fl, false);
+        $ok = enviar_correo($em, '[PRUEBA] ' . $asunto, boletin_html($asunto, $intro, $yo, url_baja($yo, $em)), boletin_texto($asunto, $intro, $yo, url_baja($yo, $em)),
+                            ['List-Unsubscribe: <' . url_baja($yo, $em) . '>']);
+        responder($ok ? ['ok' => true, 'mensaje' => 'Prueba enviada a ' . email_tapado($em) . '.'] : ['error' => 'envio', 'mensaje' => 'No se ha podido mandar la prueba.'], $ok ? 200 : 500);
+    }
+    // envío de verdad, por tandas de 15 (la página va pidiendo tandas hasta que no quede nadie)
+    $id = preg_replace('/[^a-f0-9]/', '', (string)($in['id'] ?? ''));
+    if (!$id || !isset($d['boletines'][$id])) {   // si se cortó, se sigue el mismo boletín (mismo asunto, últimas 24 h) en vez de repetirlo
+        foreach ($d['boletines'] ?? [] as $k => $bb) { if ($bb['a'] === $asunto && time() - $bb['ts'] < 86400) { $id = $k; } }
+    }
+    if (!$id || !isset($d['boletines'][$id])) { $id = bin2hex(random_bytes(6)); $d['boletines'][$id] = ['a' => $asunto, 'i' => $intro, 'ts' => time(), 'env' => []]; }
+    $b = $d['boletines'][$id];
+    $tanda = array_slice(array_values(array_diff(suscriptores($d), $b['env'])), 0, 15);
+    $destinos = [];
+    foreach ($tanda as $n) { $e = email_descifrar($d['usuarios'][$n]['em'] ?? ''); if ($e) { $destinos[$n] = $e; } }
+    cerrar($d, $fl);   // se suelta el cerrojo mientras se mandan los correos
+    $ok = []; $fallos = 0;
+    foreach ($destinos as $n => $e) {
+        $baja = url_baja($n, $e);
+        if (enviar_correo($e, $b['a'], boletin_html($b['a'], $b['i'], $n, $baja), boletin_texto($b['a'], $b['i'], $n, $baja),
+                          ['List-Unsubscribe: <' . $baja . '>, <mailto:' . CORREO_RESP . '?subject=baja>'])) { $ok[] = $n; } else { $fallos++; }
+    }
+    [$d, $fl] = abrir();
+    $d['boletines'][$id]['env'] = array_values(array_unique(array_merge($d['boletines'][$id]['env'] ?? [], $ok, $fallos ? [] : array_diff($tanda, array_keys($destinos)))));
+    $quedan = count(array_diff(suscriptores($d), $d['boletines'][$id]['env']));
+    $total = count($d['boletines'][$id]['env']);
+    cerrar($d, $fl);
+    responder(['ok' => true, 'id' => $id, 'enviados' => $total, 'quedan' => $fallos ? 0 : $quedan, 'fallos' => $fallos]);
 }
 
 /* ================= EMAIL (opcional) ================= */
