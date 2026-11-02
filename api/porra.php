@@ -171,6 +171,7 @@ if ($accion === 'registrar' && $post) {
                 'Pulsa el botón para confirmar tu email. Así podrás entrar desde cualquier móvil u ordenador sin acordarte del código.'],
                 'CONFIRMAR MI EMAIL', $url, 'El botón caduca en ' . TOKEN_MIN . ' minutos (el código no caduca). Si no has creado tú esta cuenta, ignora este correo.'),
             "¡Bienvenido a Trollacos, $nombre!\n\nNombre de jugador: $nombre\nCódigo secreto: $codigo\n\nConfirma tu email aquí (caduca en " . TOKEN_MIN . " minutos):\n$url\n\nSi no has creado tú esta cuenta, ignora este correo.");
+        if (!$enviado) { devolver_envio($email); }
     }
     responder(['ok' => true, 'nombre' => $nombre, 'codigo' => $codigo, 'fichas' => BONO_BIENVENIDA, 'email_enviado' => $enviado]);
 }
@@ -275,7 +276,7 @@ if ($accion === 'email_vincular' && $post) {
             'Con tu email podrás entrar desde cualquier móvil u ordenador sin acordarte del código.'], 'CONFIRMAR MI EMAIL', $url,
             'El enlace caduca en ' . TOKEN_MIN . ' minutos y solo sirve una vez. Si no has sido tú, ignora este correo y no pasará nada.'),
         "¡Hola, $nombre!\n\nPara confirmar tu email en Trollacos abre este enlace:\n$url\n\nCaduca en " . TOKEN_MIN . " minutos. Si no has sido tú, ignora este correo.");
-    if (!$ok) { responder(['error' => 'envio', 'mensaje' => 'No hemos podido mandar el correo. Prueba más tarde.'], 500); }
+    if (!$ok) { devolver_envio($email); responder(['error' => 'envio', 'mensaje' => 'No hemos podido mandar el correo. Prueba más tarde.'], 500); }
     responder(['ok' => true, 'mensaje' => 'Te hemos mandado un correo a ' . email_tapado($email) . '. Pulsa el enlace para confirmarlo (mira también en spam).']);
 }
 
@@ -290,10 +291,11 @@ if ($accion === 'email_entrar' && $post) {
     cerrar($d, $fl);
     if ($tok) {
         $url = WEB . '/cuenta/?t=' . $tok;
-        enviar_correo($email, 'Tu enlace para entrar en Trollacos',
+        $ok = enviar_correo($email, 'Tu enlace para entrar en Trollacos',
             correo_html('Entra en tu cuenta, ' . $nombre, ['Pulsa el botón y entrarás en tu cuenta de Trollacos en este dispositivo.'], 'ENTRAR EN TROLLACOS', $url,
                 'El enlace caduca en ' . TOKEN_MIN . ' minutos y solo sirve una vez. Si no lo has pedido tú, ignora este correo: sin el enlace nadie puede entrar.'),
             "Entra en tu cuenta de Trollacos ($nombre) con este enlace:\n$url\n\nCaduca en " . TOKEN_MIN . " minutos. Si no lo has pedido tú, ignora este correo.");
+        if (!$ok) { devolver_envio($email); }
     }
     // misma respuesta siempre, para no desvelar qué emails tienen cuenta
     responder(['ok' => true, 'mensaje' => 'Si ese email está en una cuenta, te acabamos de mandar un enlace para entrar. Mira también en spam.']);

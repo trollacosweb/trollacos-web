@@ -120,17 +120,25 @@ function enviar_correo($para, $asunto, $html, $texto, $extra_cab = []) {
     } catch (Exception $e) { error_log('SMTP Trollacos: ' . $e->getMessage()); return false; }
 }
 
-// Límite de envíos: por conexión (5/hora), por email (3/hora) y en total (150/día)
+// Límite de envíos: por conexión (5/hora), por email (3/hora) y en total (150/día). Solo cuentan los que salen de verdad.
+function claves_envio($email) { return ['q' . quien(), 'e' . substr(email_huella($email), 0, 16), 'total']; }
 function puede_enviar(&$d, $email) {
-    $ahora = time(); $q = 'q' . quien(); $h = 'e' . substr(email_huella($email), 0, 16);
-    $env = $d['envios'] ?? [];
+    $ahora = time(); [$q, $h] = claves_envio($email);
+    $env = $d['env'] ?? [];
     foreach ($env as $k => $ts) { $env[$k] = array_values(array_filter($ts, function ($t) use ($ahora) { return $ahora - $t < 86400; })); if (!$env[$k]) { unset($env[$k]); } }
     $hora = function ($k) use ($env, $ahora) { return count(array_filter($env[$k] ?? [], function ($t) use ($ahora) { return $ahora - $t < 3600; })); };
-    $total = count($env['total'] ?? []);
-    $d['envios'] = $env;
-    if ($hora($q) >= 5 || $hora($h) >= 3 || $total >= 150) { return false; }
-    $d['envios'][$q][] = $ahora; $d['envios'][$h][] = $ahora; $d['envios']['total'][] = $ahora;
+    $d['env'] = $env; unset($d['envios']);
+    if ($hora($q) >= 5 || $hora($h) >= 3 || count($env['total'] ?? []) >= 150) { return false; }
+    foreach (claves_envio($email) as $k) { $d['env'][$k][] = $ahora; }
     return true;
+}
+// si el correo no ha salido, se devuelve el intento para no gastar el límite
+function devolver_envio($email) {
+    global $DIR, $FPORRA, $VACIO;
+    $fl = fopen("$DIR/.cerrojo-porra", 'c'); flock($fl, LOCK_EX);
+    $d = leer_json($FPORRA, $VACIO);
+    foreach (claves_envio($email) as $k) { if (!empty($d['env'][$k])) { array_pop($d['env'][$k]); } }
+    guardar_json($FPORRA, $d); flock($fl, LOCK_UN);
 }
 
 function token_nuevo(&$d, $tipo, $nombre, $email, $boletin = false) {
