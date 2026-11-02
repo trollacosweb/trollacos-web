@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02T15:09:31Z",
+ "actualizado": "2026-11-02T15:14:15Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -924,5 +924,1787 @@
     "2": 2.75
    }
   }
- ]
+ ],
+ "champions": {
+  "temporada": "2026-2027",
+  "jornada": "C4",
+  "partidos": [
+   {
+    "id": "2551402",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T16:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Ararat-Armenia",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/g396se1596470244.png",
+     "tla": "ARA"
+    },
+    "visit": {
+     "n": "Celje",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/amvs371681106952.png",
+     "tla": "CEL"
+    },
+    "gl": 2,
+    "gv": 1,
+    "cuotas": {
+     "1": 2.25,
+     "X": 3.55,
+     "2": 3.05
+    }
+   },
+   {
+    "id": "2552936",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T16:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Mjällby",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ruwqxv1430239112.png",
+     "tla": "MJÄ"
+    },
+    "visit": {
+     "n": "Slovan Bratislava",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
+     "tla": "SLO"
+    },
+    "gl": 1,
+    "gv": 2,
+    "cuotas": {
+     "1": 3.55,
+     "X": 3.75,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2552932",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T17:30:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Hapoel Be'er Sheva",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ar5zft1781239007.png",
+     "tla": "HAP"
+    },
+    "visit": {
+     "n": "Crvena Zvezda",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/osgmbz1781157114.png",
+     "tla": "CRV"
+    },
+    "gl": 1,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.35,
+     "X": 4.85,
+     "2": 9.0
+    }
+   },
+   {
+    "id": "2552935",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T17:30:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Levski Sofia",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/9krgx71781149189.png",
+     "tla": "LEV"
+    },
+    "visit": {
+     "n": "Kairat Almaty",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/sz5y1m1579285078.png",
+     "tla": "KAI"
+    },
+    "gl": 1,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.05,
+     "2": 4.9
+    }
+   },
+   {
+    "id": "2544171",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Olympiacos",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xckasq1721291508.png",
+     "tla": "OLY"
+    },
+    "visit": {
+     "n": "NEC Nijmegen",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/t5qjle1701019868.png",
+     "tla": "NEC"
+    },
+    "gl": 0,
+    "gv": 0,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2544172",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Sparta Prague",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/j00qct1718287150.png",
+     "tla": "SPA"
+    },
+    "visit": {
+     "n": "Lyon",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/blk9771656932845.png",
+     "tla": "LYO"
+    },
+    "gl": 2,
+    "gv": 1,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2544173",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Union Saint-Gilloise",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ljszp41654601742.png",
+     "tla": "UNI"
+    },
+    "visit": {
+     "n": "Bodø/Glimt",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+     "tla": "BOD"
+    },
+    "gl": 3,
+    "gv": 3,
+    "cuotas": {
+     "1": 2.5,
+     "X": 3.45,
+     "2": 2.75
+    }
+   },
+   {
+    "id": "2552934",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-04T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Dinamo Zagreb",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/zcb6f61784988620.png",
+     "tla": "DIN"
+    },
+    "visit": {
+     "n": "Kauno Žalgiris",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/yf8m3t1714153414.png",
+     "tla": "KAU"
+    },
+    "gl": 5,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.5,
+     "X": 4.4,
+     "2": 6.6
+    }
+   },
+   {
+    "id": "2552931",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-05T17:10:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "AGF Aarhus",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vxuuts1473535487.png",
+     "tla": "AGF"
+    },
+    "visit": {
+     "n": "Sabah Baku",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+     "tla": "SAB"
+    },
+    "gl": 2,
+    "gv": 1,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.5,
+     "2": 2.95
+    }
+   },
+   {
+    "id": "2552933",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-05T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Fenerbahçe",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
+     "tla": "FEN"
+    },
+    "visit": {
+     "n": "Sturm Graz",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ppg0j71578585847.png",
+     "tla": "STU"
+    },
+    "gl": 2,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.45,
+     "X": 4.45,
+     "2": 6.85
+    }
+   },
+   {
+    "id": "2552940",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T15:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Kairat Almaty",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/sz5y1m1579285078.png",
+     "tla": "KAI"
+    },
+    "visit": {
+     "n": "Levski Sofia",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/9krgx71781149189.png",
+     "tla": "LEV"
+    },
+    "gl": 0,
+    "gv": 1,
+    "cuotas": {
+     "1": 3.45,
+     "X": 3.7,
+     "2": 2.05
+    }
+   },
+   {
+    "id": "2544175",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T16:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Bodø/Glimt",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+     "tla": "BOD"
+    },
+    "visit": {
+     "n": "Union Saint-Gilloise",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ljszp41654601742.png",
+     "tla": "UNI"
+    },
+    "gl": 3,
+    "gv": 2,
+    "cuotas": {
+     "1": 2.1,
+     "X": 3.65,
+     "2": 3.35
+    }
+   },
+   {
+    "id": "2552942",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T16:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Sabah Baku",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+     "tla": "SAB"
+    },
+    "visit": {
+     "n": "AGF Aarhus",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vxuuts1473535487.png",
+     "tla": "AGF"
+    },
+    "gl": 4,
+    "gv": 0,
+    "cuotas": {
+     "1": 2.25,
+     "X": 3.55,
+     "2": 3.05
+    }
+   },
+   {
+    "id": "2552941",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T17:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Kauno Žalgiris",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/yf8m3t1714153414.png",
+     "tla": "KAU"
+    },
+    "visit": {
+     "n": "Dinamo Zagreb",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/zcb6f61784988620.png",
+     "tla": "DIN"
+    },
+    "gl": 1,
+    "gv": 2,
+    "cuotas": {
+     "1": 4.45,
+     "X": 3.95,
+     "2": 1.75
+    }
+   },
+   {
+    "id": "2544176",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T17:30:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "NEC Nijmegen",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/t5qjle1701019868.png",
+     "tla": "NEC"
+    },
+    "visit": {
+     "n": "Olympiacos",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xckasq1721291508.png",
+     "tla": "OLY"
+    },
+    "gl": 2,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2552937",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T18:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Crvena Zvezda",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/osgmbz1781157114.png",
+     "tla": "CRV"
+    },
+    "visit": {
+     "n": "Hapoel Be'er Sheva",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ar5zft1781239007.png",
+     "tla": "HAP"
+    },
+    "gl": 0,
+    "gv": 2,
+    "cuotas": {
+     "1": 6.15,
+     "X": 4.3,
+     "2": 1.5
+    }
+   },
+   {
+    "id": "2551403",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T18:15:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Celje",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/amvs371681106952.png",
+     "tla": "CEL"
+    },
+    "visit": {
+     "n": "Ararat-Armenia",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/g396se1596470244.png",
+     "tla": "ARA"
+    },
+    "gl": 2,
+    "gv": 0,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2552939",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T18:15:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Slovan Bratislava",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
+     "tla": "SLO"
+    },
+    "visit": {
+     "n": "Mjällby",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ruwqxv1430239112.png",
+     "tla": "MJÄ"
+    },
+    "gl": 2,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.1
+    }
+   },
+   {
+    "id": "2552938",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T18:30:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Sturm Graz",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ppg0j71578585847.png",
+     "tla": "STU"
+    },
+    "visit": {
+     "n": "Fenerbahçe",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
+     "tla": "FEN"
+    },
+    "gl": 0,
+    "gv": 1,
+    "cuotas": {
+     "1": 4.6,
+     "X": 4.0,
+     "2": 1.7
+    }
+   },
+   {
+    "id": "2544174",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-08-11T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Lyon",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/blk9771656932845.png",
+     "tla": "LYO"
+    },
+    "visit": {
+     "n": "Sparta Prague",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/j00qct1718287150.png",
+     "tla": "SPA"
+    },
+    "gl": 3,
+    "gv": 0,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594654",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T16:45:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Fenerbahçe",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
+     "tla": "FEN"
+    },
+    "visit": {
+     "n": "Slavia Prague",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l7kl4n1759252139.png",
+     "tla": "SLA"
+    },
+    "gl": 2,
+    "gv": 2,
+    "cuotas": {
+     "1": 1.55,
+     "X": 4.2,
+     "2": 5.55
+    }
+   },
+   {
+    "id": "2594675",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T16:45:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Sabah Baku",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+     "tla": "SAB"
+    },
+    "visit": {
+     "n": "Borussia Dortmund",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
+     "tla": "BOR"
+    },
+    "gl": 1,
+    "gv": 2,
+    "cuotas": {
+     "1": 3.45,
+     "X": 3.7,
+     "2": 2.05
+    }
+   },
+   {
+    "id": "2594542",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Liverpool",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png",
+     "tla": "LIV"
+    },
+    "visit": {
+     "n": "Villarreal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+     "tla": "VIL"
+    },
+    "gl": 4,
+    "gv": 3,
+    "cuotas": {
+     "1": 1.35,
+     "X": 4.85,
+     "2": 9.0
+    }
+   },
+   {
+    "id": "2594550",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Manchester City",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
+     "tla": "MAN"
+    },
+    "visit": {
+     "n": "AEK Athens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
+     "tla": "AEK"
+    },
+    "gl": 5,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594560",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Paris Saint-Germain",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+     "tla": "PAR"
+    },
+    "visit": {
+     "n": "Barcelona",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
+     "tla": "BAR"
+    },
+    "gl": 4,
+    "gv": 2,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594576",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Stuttgart",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png",
+     "tla": "STU"
+    },
+    "visit": {
+     "n": "Atlético Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+     "tla": "ATL"
+    },
+    "gl": 1,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594592",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Porto",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xu47rb1628855600.png",
+     "tla": "POR"
+    },
+    "visit": {
+     "n": "PSV Eindhoven",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xfsz6i1721297428.png",
+     "tla": "PSV"
+    },
+    "gl": 0,
+    "gv": 1,
+    "cuotas": {
+     "1": 4.15,
+     "X": 3.9,
+     "2": 1.8
+    }
+   },
+   {
+    "id": "2594604",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Napoli",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l8qyxv1742982541.png",
+     "tla": "NAP"
+    },
+    "visit": {
+     "n": "Bodø/Glimt",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+     "tla": "BOD"
+    },
+    "gl": 4,
+    "gv": 3,
+    "cuotas": {
+     "1": 1.95,
+     "X": 3.75,
+     "2": 3.7
+    }
+   },
+   {
+    "id": "2594610",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-20T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Roma",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/jwro2s1760820674.png",
+     "tla": "ROM"
+    },
+    "visit": {
+     "n": "Slovan Bratislava",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
+     "tla": "SLO"
+    },
+    "gl": 4,
+    "gv": 0,
+    "cuotas": {
+     "1": 2.05,
+     "X": 3.7,
+     "2": 3.45
+    }
+   },
+   {
+    "id": "2594557",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T16:45:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Lille",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+     "tla": "LIL"
+    },
+    "visit": {
+     "n": "Galatasaray",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png",
+     "tla": "GAL"
+    },
+    "gl": 2,
+    "gv": 4,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594667",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T16:45:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Como",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png",
+     "tla": "COM"
+    },
+    "visit": {
+     "n": "Manchester United",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png",
+     "tla": "MAN"
+    },
+    "gl": 4,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594554",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Aston Villa",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uwzw561787679026.png",
+     "tla": "AST"
+    },
+    "visit": {
+     "n": "Viking",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/9mzq961590148192.png",
+     "tla": "VIK"
+    },
+    "gl": 3,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.35,
+     "X": 4.85,
+     "2": 9.0
+    }
+   },
+   {
+    "id": "2594567",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Bayern Munich",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/01ogkh1716960412.png",
+     "tla": "BAY"
+    },
+    "visit": {
+     "n": "Arsenal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png",
+     "tla": "ARS"
+    },
+    "gl": 2,
+    "gv": 2,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594598",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Sporting CP",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5hiuk71783137875.png",
+     "tla": "SPO"
+    },
+    "visit": {
+     "n": "LASK",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png",
+     "tla": "LAS"
+    },
+    "gl": 2,
+    "gv": 3,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594613",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Inter Milan",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ryhu6d1617113103.png",
+     "tla": "INT"
+    },
+    "visit": {
+     "n": "Shakhtar Donetsk",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/sqrxsr1421791799.png",
+     "tla": "SHA"
+    },
+    "gl": 1,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.8,
+     "X": 3.9,
+     "2": 4.15
+    }
+   },
+   {
+    "id": "2594627",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Real Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
+     "tla": "REA"
+    },
+    "visit": {
+     "n": "RB Leipzig",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/zjgapo1594244951.png",
+     "tla": "RBL"
+    },
+    "gl": 4,
+    "gv": 1,
+    "cuotas": {
+     "1": 1.35,
+     "X": 4.85,
+     "2": 9.0
+    }
+   },
+   {
+    "id": "2594632",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Real Betis",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+     "tla": "REA"
+    },
+    "visit": {
+     "n": "Feyenoord",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uturtx1473534803.png",
+     "tla": "FEY"
+    },
+    "gl": 1,
+    "gv": 0,
+    "cuotas": {
+     "1": 1.35,
+     "X": 4.85,
+     "2": 9.0
+    }
+   },
+   {
+    "id": "2594645",
+    "j": "C3",
+    "comp": "champions",
+    "fecha": "2026-10-21T19:00:00Z",
+    "estado": "FINISHED",
+    "local": {
+     "n": "Club Brugge",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/mz8y0q1771129880.png",
+     "tla": "CLU"
+    },
+    "visit": {
+     "n": "Lens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
+     "tla": "LEN"
+    },
+    "gl": 3,
+    "gv": 0,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594635",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Shakhtar Donetsk",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/sqrxsr1421791799.png",
+     "tla": "SHA"
+    },
+    "visit": {
+     "n": "Sporting CP",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5hiuk71783137875.png",
+     "tla": "SPO"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.0,
+     "X": 3.55,
+     "2": 2.3
+    }
+   },
+   {
+    "id": "2594656",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Galatasaray",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png",
+     "tla": "GAL"
+    },
+    "visit": {
+     "n": "Stuttgart",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png",
+     "tla": "STU"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.65,
+     "X": 3.4,
+     "2": 2.65
+    }
+   },
+   {
+    "id": "2594537",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Manchester United",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png",
+     "tla": "MAN"
+    },
+    "visit": {
+     "n": "Roma",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/jwro2s1760820674.png",
+     "tla": "ROM"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.65,
+     "X": 3.4,
+     "2": 2.65
+    }
+   },
+   {
+    "id": "2594589",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Feyenoord",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uturtx1473534803.png",
+     "tla": "FEY"
+    },
+    "visit": {
+     "n": "Inter Milan",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ryhu6d1617113103.png",
+     "tla": "INT"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594599",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Bodø/Glimt",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+     "tla": "BOD"
+    },
+    "visit": {
+     "n": "Lille",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+     "tla": "LIL"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 1.85,
+     "X": 3.85,
+     "2": 3.9
+    }
+   },
+   {
+    "id": "2594616",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Barcelona",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
+     "tla": "BAR"
+    },
+    "visit": {
+     "n": "Aston Villa",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uwzw561787679026.png",
+     "tla": "AST"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594620",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Atlético Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+     "tla": "ATL"
+    },
+    "visit": {
+     "n": "Bayern Munich",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/01ogkh1716960412.png",
+     "tla": "BAY"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594624",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Villarreal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+     "tla": "VIL"
+    },
+    "visit": {
+     "n": "Paris Saint-Germain",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+     "tla": "PAR"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 6.15,
+     "X": 4.3,
+     "2": 1.5
+    }
+   },
+   {
+    "id": "2594674",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-03T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "LASK",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png",
+     "tla": "LAS"
+    },
+    "visit": {
+     "n": "Slovan Bratislava",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
+     "tla": "SLO"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594648",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "AEK Athens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
+     "tla": "AEK"
+    },
+    "visit": {
+     "n": "Real Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
+     "tla": "REA"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594651",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Fenerbahçe",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
+     "tla": "FEN"
+    },
+    "visit": {
+     "n": "Liverpool",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png",
+     "tla": "LIV"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.8,
+     "X": 3.45,
+     "2": 2.45
+    }
+   },
+   {
+    "id": "2594566",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Lens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
+     "tla": "LEN"
+    },
+    "visit": {
+     "n": "Como",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png",
+     "tla": "COM"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594573",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Borussia Dortmund",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
+     "tla": "BOR"
+    },
+    "visit": {
+     "n": "Real Betis",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+     "tla": "REA"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594579",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "RB Leipzig",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/zjgapo1594244951.png",
+     "tla": "RBL"
+    },
+    "visit": {
+     "n": "Manchester City",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
+     "tla": "MAN"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 6.15,
+     "X": 4.3,
+     "2": 1.5
+    }
+   },
+   {
+    "id": "2594586",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "PSV Eindhoven",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xfsz6i1721297428.png",
+     "tla": "PSV"
+    },
+    "visit": {
+     "n": "Club Brugge",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/mz8y0q1771129880.png",
+     "tla": "CLU"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.0,
+     "X": 3.7,
+     "2": 3.5
+    }
+   },
+   {
+    "id": "2594593",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Porto",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xu47rb1628855600.png",
+     "tla": "POR"
+    },
+    "visit": {
+     "n": "Napoli",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l8qyxv1742982541.png",
+     "tla": "NAP"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594639",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Slavia Prague",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l7kl4n1759252139.png",
+     "tla": "SLA"
+    },
+    "visit": {
+     "n": "Arsenal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png",
+     "tla": "ARS"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594666",
+    "j": "C4",
+    "comp": "champions",
+    "fecha": "2026-11-04T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Viking",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/9mzq961590148192.png",
+     "tla": "VIK"
+    },
+    "visit": {
+     "n": "Sabah Baku",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+     "tla": "SAB"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.6,
+     "X": 3.75,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594602",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Bodø/Glimt",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+     "tla": "BOD"
+    },
+    "visit": {
+     "n": "LASK",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png",
+     "tla": "LAS"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.75,
+     "X": 3.45,
+     "2": 2.5
+    }
+   },
+   {
+    "id": "2594655",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Galatasaray",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png",
+     "tla": "GAL"
+    },
+    "visit": {
+     "n": "Aston Villa",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uwzw561787679026.png",
+     "tla": "AST"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594544",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Arsenal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png",
+     "tla": "ARS"
+    },
+    "visit": {
+     "n": "Borussia Dortmund",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
+     "tla": "BOR"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.0,
+     "X": 3.55,
+     "2": 2.3
+    }
+   },
+   {
+    "id": "2594549",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Manchester City",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
+     "tla": "MAN"
+    },
+    "visit": {
+     "n": "Napoli",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l8qyxv1742982541.png",
+     "tla": "NAP"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594580",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "RB Leipzig",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/zjgapo1594244951.png",
+     "tla": "RBL"
+    },
+    "visit": {
+     "n": "Lens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
+     "tla": "LEN"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   },
+   {
+    "id": "2594588",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Feyenoord",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uturtx1473534803.png",
+     "tla": "FEY"
+    },
+    "visit": {
+     "n": "Porto",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xu47rb1628855600.png",
+     "tla": "POR"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594628",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Real Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
+     "tla": "REA"
+    },
+    "visit": {
+     "n": "PSV Eindhoven",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xfsz6i1721297428.png",
+     "tla": "PSV"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 1.8,
+     "X": 3.9,
+     "2": 4.15
+    }
+   },
+   {
+    "id": "2594661",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Slovan Bratislava",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
+     "tla": "SLO"
+    },
+    "visit": {
+     "n": "Real Betis",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+     "tla": "REA"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.45,
+     "X": 3.7,
+     "2": 2.05
+    }
+   },
+   {
+    "id": "2594670",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-24T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Como",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png",
+     "tla": "COM"
+    },
+    "visit": {
+     "n": "AEK Athens",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
+     "tla": "AEK"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.05
+    }
+   },
+   {
+    "id": "2594642",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Slavia Prague",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/l7kl4n1759252139.png",
+     "tla": "SLA"
+    },
+    "visit": {
+     "n": "Villarreal",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+     "tla": "VIL"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.0,
+     "X": 3.7,
+     "2": 3.5
+    }
+   },
+   {
+    "id": "2594677",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T17:45:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Sabah Baku",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+     "tla": "SAB"
+    },
+    "visit": {
+     "n": "Barcelona",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
+     "tla": "BAR"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.25,
+     "X": 3.55,
+     "2": 3.05
+    }
+   },
+   {
+    "id": "2594555",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Lille",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png",
+     "tla": "LIL"
+    },
+    "visit": {
+     "n": "Bayern Munich",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/01ogkh1716960412.png",
+     "tla": "BAY"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 4.15,
+     "X": 3.9,
+     "2": 1.8
+    }
+   },
+   {
+    "id": "2594559",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Paris Saint-Germain",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png",
+     "tla": "PAR"
+    },
+    "visit": {
+     "n": "Roma",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/jwro2s1760820674.png",
+     "tla": "ROM"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 1.8,
+     "X": 3.9,
+     "2": 4.15
+    }
+   },
+   {
+    "id": "2594595",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Sporting CP",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/5hiuk71783137875.png",
+     "tla": "SPO"
+    },
+    "visit": {
+     "n": "Manchester United",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png",
+     "tla": "MAN"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.3,
+     "X": 3.55,
+     "2": 3.0
+    }
+   },
+   {
+    "id": "2594612",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Inter Milan",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/ryhu6d1617113103.png",
+     "tla": "INT"
+    },
+    "visit": {
+     "n": "Stuttgart",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png",
+     "tla": "STU"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.65,
+     "X": 3.4,
+     "2": 2.65
+    }
+   },
+   {
+    "id": "2594622",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Atlético Madrid",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+     "tla": "ATL"
+    },
+    "visit": {
+     "n": "Viking",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/9mzq961590148192.png",
+     "tla": "VIK"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 2.0,
+     "X": 3.7,
+     "2": 3.5
+    }
+   },
+   {
+    "id": "2594638",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Shakhtar Donetsk",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/sqrxsr1421791799.png",
+     "tla": "SHA"
+    },
+    "visit": {
+     "n": "Fenerbahçe",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
+     "tla": "FEN"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.85,
+     "X": 3.8,
+     "2": 1.9
+    }
+   },
+   {
+    "id": "2594643",
+    "j": "C5",
+    "comp": "champions",
+    "fecha": "2026-11-25T20:00:00Z",
+    "estado": "TIMED",
+    "local": {
+     "n": "Club Brugge",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/mz8y0q1771129880.png",
+     "tla": "CLU"
+    },
+    "visit": {
+     "n": "Liverpool",
+     "c": "https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png",
+     "tla": "LIV"
+    },
+    "gl": null,
+    "gv": null,
+    "cuotas": {
+     "1": 3.5,
+     "X": 3.7,
+     "2": 2.0
+    }
+   }
+  ]
+ }
 }
