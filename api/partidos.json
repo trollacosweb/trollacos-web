@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02T20:35:14Z",
+ "actualizado": "2026-11-02T20:42:08Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -687,7 +687,7 @@
     "tla": "OSA"
    },
    "gl": 0,
-   "gv": 0,
+   "gv": 1,
    "cuotas": {
     "1": 2.3,
     "X": 3.55,
