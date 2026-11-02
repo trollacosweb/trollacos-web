@@ -184,7 +184,7 @@ function boletin_html($asunto, $intro, $nombre, $url_baja) {
         . ($dias > 0 ? '<p style="margin:0 0 20px;text-align:center"><span style="display:inline-block;padding:10px 18px;border:2px solid #ffd23f;border-radius:10px;font-size:22px;font-weight:bold;color:#ffd23f">🌴 GTA VI · faltan ' . $dias . ' días</span></p>' : '')
         . '<h2 style="margin:0 0 12px;font-size:19px;color:#ffd23f">📰 Lo último, contado por Danna</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0">' . $noti . '</table>'
         . '<h2 style="margin:10px 0 12px;font-size:19px;color:#ffd23f">🎮 En Trollacos</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0">'
-        . $tarjeta('📖', 'La Guía Trollacos de GTA VI', 'Personajes, mapa, cómo se juega, música… todo lo confirmado, en español.', WEB . '/gta-6/?utm_source=boletin', '#1ff2ff')
+        . $tarjeta('📖', 'La Guía Trollacos de GTA VI', 'Personajes, mapa, jugabilidad, música… todo lo confirmado, en español.', WEB . '/gta-6/?utm_source=boletin', '#1ff2ff')
         . $tarjeta('📺', 'GTA VI a tope: tele, monitor y consola', 'Qué necesitas para jugarlo en la máxima calidad, sin tirar el dinero.', WEB . '/gta-6/que-comprar/?utm_source=boletin#tele', '#ffd23f')
         . $tarjeta('🕹️', 'Trollaco Run: el modo historia', 'Cinco capítulos para rescatar a la Princesa Neón… y Míster Glitch sigue suelto. ¿Superas el récord?', WEB . '/arcade/?utm_source=boletin', '#ff2bd6')
         . $tarjeta('⚽', 'La Porra Trollaca: LaLiga y Champions', 'Pronostica los partidos con tus fichas y sube en el ranking. Sin dinero real, solo pique.', WEB . '/porra/?utm_source=boletin', '#39ff88')
