@@ -51,7 +51,7 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
 .jornada-sel button.on{background:rgba(255,43,214,.3);border-color:var(--pink)}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'})()</script>"
+hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
 
 js = r"""
 <script>

@@ -54,7 +54,7 @@ ld = {"@context": "https://schema.org", "@graph": [
    "mainEntityOfPage": "https://trollacos.com/gta-6/que-comprar/"},
   {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
 
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'})()</script>"
+hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
 
 body = f'''
 <main>

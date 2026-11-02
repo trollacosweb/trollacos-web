@@ -59,7 +59,7 @@ extra = """
 .compartir a{display:inline-block;margin:4px 6px 4px 0;padding:6px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:16px}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'})()</script>"
+hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
 hwjs = "<script>if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}</script>"
 
 def pagina(titulo, desc, url, cuerpo, jsonld, tipo='article'):

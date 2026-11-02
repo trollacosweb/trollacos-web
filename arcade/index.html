@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if(m===9&&n>=15)document.documentElement.className+=' halloween'})()</script>
+<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>
 <title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
 <meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (la noche Trolloween entre zombis y el Bar La Verja con camareros enfadados). Juego arcade gratis en el navegador.">
 <link rel="canonical" href="https://trollacos.com/arcade/">
@@ -128,6 +128,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="cap" data-cap="c4"><b>4 · El edificio abandonado</b><span class="bloq">🔒 Supera el capítulo 3 para entrar. </span>Pasillos a oscuras, linterna y algo que no debería estar ahí.</div>
     <div class="cap" data-cap="c5"><b>5 · Túneles de la M-30</b><span class="bloq">🔒 Supera el capítulo 4 para entrar. </span>Coches, bots de Glitch y motos de la Municipal. ¡Que no se escape Glitch!</div>
   </div>
+  <p class="fama-nota" id="admin-aviso" hidden style="color:#39ff88">🔓 Modo administrador: todos los capítulos abiertos · <a href="?admin=off">desactivar</a></p>
   <p class="monedero" id="monedero"></p>
   <section class="fama" id="fama">
     <h2 id="fama-tit">🏆 SALÓN DE LA FAMA</h2>
@@ -274,9 +275,23 @@ var progreso=0;try{progreso=parseInt(localStorage.getItem('trollacoHistoria')||'
 function pintaCapitulos(){
   document.querySelectorAll('.cap[data-cap]').forEach(function(c){
     var n=parseInt(c.dataset.cap.slice(1),10);
-    c.classList.toggle('hecho',progreso>=n);c.classList.toggle('cerrado',progreso<n-1);c.classList.toggle('sel',c.dataset.cap===modo);
+    c.classList.toggle('hecho',progreso>=n);c.classList.toggle('cerrado',!esAdmin()&&progreso<n-1);c.classList.toggle('sel',c.dataset.cap===modo);
   });
+  var av=document.getElementById('admin-aviso');if(av)av.hidden=!esAdmin();
 }
+// ---------- modo administrador: todos los capítulos abiertos ----------
+// Se activa una vez por dispositivo con /arcade/?admin=CÓDIGO (aquí solo está su huella SHA-256, no el código) y se quita con ?admin=off
+function esAdmin(){try{return localStorage.getItem('trollacoAdmin')==='1'}catch(e){return false}}
+(function(){
+  var q=new URLSearchParams(location.search).get('admin');if(q===null)return;
+  history.replaceState(null,'',location.pathname);
+  if(q==='off'){try{localStorage.removeItem('trollacoAdmin')}catch(e){}pintaCapitulos();return}
+  if(!(window.crypto&&crypto.subtle))return;
+  crypto.subtle.digest('SHA-256',new TextEncoder().encode(q.trim().toUpperCase())).then(function(b){
+    var h=Array.prototype.map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('');
+    if(h==='cd4d9ff772689447fc3dea784b24b0f1acbb65c7e1144dd8cab262328154da61'){try{localStorage.setItem('trollacoAdmin','1')}catch(e){}pintaCapitulos()}
+  });
+})();
 
 // ---------- sonido (8 bits con WebAudio) ----------
 var ac=null,mudo=false;
