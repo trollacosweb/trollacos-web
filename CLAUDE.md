@@ -16,7 +16,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 ## Secciones
 | Ruta | Qué es | Se genera con |
 |---|---|---|
-| `/` | Portada (noticias propias firmadas por Danna, tienda Amazon, banners) | a mano + `noticias_gta.py` (bloques GTA y NOTICIAS + rss.xml) |
+| `/` | Portada (noticias propias firmadas por Danna; «Tienda» con consolas/accesorios + videojuegos de Amazon; «Guías de videojuegos» = guías propias, de momento GTA VI; banners) | a mano + `noticias_gta.py` (bloques GTA y NOTICIAS + rss.xml) |
 | `/gta-6/` | Guía GTA VI (mapa, novedades, tráilers, FAQ) | a mano |
 | `/gta-6/musica/` | Música con enlaces a Spotify | `_fuentes/generadores/musica.py` |
 | `/gta-6/que-comprar/` | Guía de compra (afiliados Amazon) | `_fuentes/generadores/compra.py` |
