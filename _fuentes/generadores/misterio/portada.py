@@ -18,7 +18,7 @@ REG = [('📍 MADRID', '/misterio/', C.CASOS + C.SIERRA, 'Palacios malditos, ovn
 todos = []
 for nombre, url, L, _ in REG:
     for c in L:
-        todos.append(dict(u=f'{url}#{c["id"]}', i=ilus(c["img"]), t=c['titulo'], s=c['sub'],
+        todos.append(dict(u=f'/misterio/{c["id"]}/', i=ilus(c["img"]), t=c['titulo'], s=c['sub'],
                           l=limpio(c['lugar']), c=limpio(c['cuando']), n=c['nivel'], tr=limpio(c['trollaco']), r=nombre[2:].strip().title()))
 total = len(todos)
 c0 = todos[0]

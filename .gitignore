@@ -1,2 +1,3 @@
 api/datos/
 api/smtp.php
+__pycache__/

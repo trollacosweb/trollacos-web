@@ -1,0 +1,153 @@
+"""Páginas propias de cada caso: /misterio/<id>/ con el expediente completo.
+Usa el CSS de /misterio/index.html (generado antes por generar.py) y el texto largo de casos_largos.py.
+Uso: python3 expedientes.py   (lo llama generar.py al final)"""
+import os, re, sys, json, html
+AQUI = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, AQUI)
+import casos as C
+from casos_largos import L
+RAIZ = '/home/claude/trollacos-web'
+base = open(f'{RAIZ}/misterio/index.html', encoding='utf-8').read()
+style = base[base.find('<style>'):base.find('</style>') + 8]
+foot = base[base.find('<footer>'):base.find('</footer>') + 9]
+REG = [('Madrid', '/misterio/', C.CASOS + C.SIERRA), ('España', '/misterio/espana/', C.ESPANA), ('El mundo', '/misterio/mundo/', C.MUNDO)]
+todos = [(c, r, u) for r, u, Ls in REG for c in Ls]
+
+extra = '''
+.exp{max-width:820px;margin:0 auto;padding:0 16px}
+.exp .caso{margin-top:24px}
+.exp h1{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(32px,6vw,52px);line-height:1.08;color:#eafff3;text-shadow:0 0 18px rgba(124,255,178,.5);margin:12px 0 6px}
+.exp h2{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(23px,4vw,30px);color:var(--verde);margin:34px 0 10px;text-shadow:0 0 10px rgba(124,255,178,.4)}
+.exp .relato p,.exp .sec p{font-size:19px;line-height:1.65}
+.exp .sec p{margin:0 0 16px}.exp .sec strong{color:#fff}
+.lect{font-family:'VT323',monospace;font-size:20px;color:var(--muted);margin:0 0 10px}
+.crono{list-style:none;margin:10px 0 0;padding:0;border-left:3px solid var(--verde)}
+.crono li{position:relative;padding:4px 0 12px 22px;font-size:17.5px}
+.crono li::before{content:'';position:absolute;left:-9px;top:10px;width:14px;height:14px;border-radius:50%;background:#07021a;border:3px solid var(--verde)}
+.crono b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:21px;color:var(--verde)}
+.flipa{margin:12px 0 0;padding:16px 18px 6px;border:2px solid #ffd23f;border-radius:12px;background:rgba(255,210,63,.07)}
+.flipa ul{margin:0;padding-left:20px}.flipa li{margin:0 0 10px;font-size:18px}.flipa strong{color:#ffd23f}
+.visita{padding:14px 16px;border-left:4px solid var(--verde);background:rgba(124,255,178,.06);border-radius:6px}
+.visita p{margin:0;font-size:18px}
+.fuentes{font-size:15px;color:var(--muted);margin-top:22px}
+.comp a{display:inline-block;margin:4px 8px 4px 0;padding:7px 14px;border:1px solid var(--verde);border-radius:6px;color:#eafff3;text-decoration:none}
+.navexp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:30px 0 10px}
+.navexp a{display:block;padding:12px 14px;border:1px solid rgba(124,255,178,.45);border-radius:10px;text-decoration:none;color:#eafff3;background:rgba(124,255,178,.04)}
+.navexp a:hover{border-color:var(--verde)}.navexp small{display:block;font-family:'VT323',monospace;font-size:18px;color:var(--verde)}
+.navexp a.sig{text-align:right}
+.migas{font-family:'VT323',monospace;font-size:19px;margin:18px 0 0}.migas a{color:var(--verde)}
+@media(max-width:560px){.navexp{grid-template-columns:1fr}.navexp a.sig{text-align:left}}
+</style>'''
+
+def ilus(img):
+    return f'/misterio/img/{img}.webp' if os.path.exists(f'{RAIZ}/misterio/img/{img}.webp') else f'/misterio/img/{img}.svg'
+
+def nivel(n):
+    return ''.join('<span class="on">👽</span>' if i < n else '<span class="off">👽</span>' for i in range(5))
+
+def gancho(c):
+    # primer párrafo del relato corto como entrada; el resto lo cuentan las secciones largas
+    if c['id'] == 'caso-vallecas': return ''
+    m = re.search(r'<p>.*?</p>', c['texto'], re.S); return m.group(0) if m else ''
+
+def limpio(t): return re.sub(r'<[^>]+>', '', t)
+
+def palabras(c, x):
+    t = c['texto'] + ' '.join(h for _, h in x['secciones']) + x['esceptico'] + x['visitar'] + ' '.join(x['flipar'])
+    return len(limpio(t).split())
+
+for i, (c, reg, ureg) in enumerate(todos):
+    x = L[c['id']]; url = f'https://trollacos.com/misterio/{c["id"]}/'
+    ant = todos[i - 1][0]; sig = todos[(i + 1) % len(todos)][0]
+    mins = max(3, round(palabras(c, x) / 200))
+    secs = ''.join(f'<h2>{t}</h2><div class="sec">{h}</div>' for t, h in x['secciones'])
+    crono = ''.join(f'<li><b>{f}</b>{t}</li>' for f, t in x['cronologia'])
+    flipa = ''.join(f'<li>{t}</li>' for t in x['flipar'])
+    share = html.escape(f'{c["titulo"]}: {c["sub"]} {url}')
+    desc = html.escape(f'{c["sub"]}. Todo el expediente: la historia, la leyenda, la cronología y lo que dicen los escépticos, contado por Trollacos.')
+    ld = {"@context": "https://schema.org", "@type": "Article", "headline": f'{limpio(c["titulo"])}: {limpio(c["sub"])}',
+          "image": "https://trollacos.com" + ilus(c['img']), "inLanguage": "es", "datePublished": "2026-11-02", "dateModified": "2026-11-02",
+          "author": {"@type": "Organization", "name": "Trollacos"}, "mainEntityOfPage": url,
+          "publisher": {"@type": "Organization", "name": "Trollacos", "logo": {"@type": "ImageObject", "url": "https://trollacos.com/icono-512.png"}}}
+    page = f'''<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(limpio(c["titulo"]))}: {html.escape(limpio(c["sub"]))} | Expediente Trollaco</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{html.escape(limpio(c['titulo']))} · Expediente Trollaco">
+<meta property="og:description" content="{html.escape(limpio(c['sub']))}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="https://trollacos.com{ilus(c['img'])}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icono.png">
+{style.replace('</style>', extra)}
+<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+</head>
+<body>
+<nav class="top">
+  <a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a>
+  <a href="{ureg}">‹ {reg.upper()}</a>
+</nav>
+<main class="exp">
+<p class="migas"><a href="/misterio/">Expediente Trollaco</a> › <a href="{ureg}">{reg}</a> ›</p>
+<article class="caso" id="{c['id']}">
+  <div class="sello">EXPEDIENTE {i + 1:02d}/{len(todos)}</div>
+  <h1>{c['titulo']}</h1>
+  <p class="subt">{c['sub']}</p>
+  <p class="lect">⏱️ Lectura: {mins} min</p>
+  <figure class="ilus"><img src="{ilus(c['img'])}" alt="Ilustración de {html.escape(limpio(c['titulo']))}" width="600" height="340"></figure>
+  <ul class="ficha">
+    <li><b>📍 Dónde</b>{c['lugar']}</li>
+    <li><b>🕰️ Cuándo</b>{c['cuando']}</li>
+    {'' if c['metro'] in ('—', '') else '<li><b>🚇 Cómo llegar</b>' + c['metro'] + '</li>'}
+    <li><b>Nivel de misterio</b><span class="nivel" aria-label="{c['nivel']} de 5">{nivel(c['nivel'])}</span></li>
+  </ul>
+  <div class="relato">{gancho(c)}</div>
+  {secs}
+  <h2>🕰️ Cronología</h2>
+  <ul class="crono">{crono}</ul>
+  <h2>🤯 Datos para flipar</h2>
+  <div class="flipa"><ul>{flipa}</ul></div>
+  <h2>🔬 Lo que dicen los escépticos</h2>
+  <div class="esceptico">{x['esceptico']}</div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {c['trollaco']}</p></div>
+  <h2>📍 Cómo visitarlo</h2>
+  <div class="visita">{x['visitar']}</div>
+  <p class="comp"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={url}" target="_blank" rel="noopener">Telegram</a></p>
+  <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
+</article>
+<nav class="navexp" aria-label="Más expedientes">
+  <a href="/misterio/{ant['id']}/"><small>‹ EXPEDIENTE ANTERIOR</small>{ant['titulo']}</a>
+  <a class="sig" href="/misterio/{sig['id']}/"><small>SIGUIENTE EXPEDIENTE ›</small>{sig['titulo']}</a>
+</nav>
+<p class="volver"><a href="{ureg}#mapa">🗺️ Ver todos los casos de {reg} en el mapa</a></p>
+</main>
+{foot}
+</body>
+</html>
+'''
+    os.makedirs(f'{RAIZ}/misterio/{c["id"]}', exist_ok=True)
+    open(f'{RAIZ}/misterio/{c["id"]}/index.html', 'w', encoding='utf-8').write(page)
+
+# enlaces «Leer el expediente completo» en las páginas de región
+for _, ureg, Ls in REG:
+    p = f'{RAIZ}{ureg}index.html'; s = open(p, encoding='utf-8').read()
+    for c in Ls:
+        btn = f'<p class="leer"><a href="/misterio/{c["id"]}/">📂 LEER EL EXPEDIENTE COMPLETO ›</a></p>'
+        if btn in s: continue
+        k = s.find(f'id="{c["id"]}"'); j = s.find('<p class="volver">', k)
+        s = s[:j] + btn + '\n  ' + s[j:]
+    if '.leer a{' not in s:
+        s = s.replace('</style>', '.leer{margin:16px 0 4px}.leer a{display:inline-block;padding:11px 18px;border:2px solid var(--verde);border-radius:10px;color:#eafff3;font-family:\'VT323\',monospace;font-size:22px;text-decoration:none;background:rgba(124,255,178,.08);box-shadow:0 0 14px rgba(124,255,178,.25)}.leer a:hover{background:rgba(124,255,178,.18)}\n</style>', 1)
+    open(p, 'w', encoding='utf-8').write(s)
+
+# sitemap
+sm = open(f'{RAIZ}/sitemap.xml', encoding='utf-8').read()
+nuevos = ''.join(f'  <url><loc>https://trollacos.com/misterio/{c["id"]}/</loc><changefreq>monthly</changefreq></url>\n'
+                 for c, _, _ in todos if f'/misterio/{c["id"]}/' not in sm)
+if nuevos:
+    open(f'{RAIZ}/sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', nuevos + '</urlset>'))
+print(f'expedientes: {len(todos)} páginas')

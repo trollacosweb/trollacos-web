@@ -75,3 +75,4 @@ for R in REGIONES:
     exec(compile(s, 'pagina-' + R['tab'], 'exec'), {'__name__': '__main__'})
 
 import subprocess, os as _os; subprocess.run(['python3', _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'portada.py')])
+subprocess.run(['python3', _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'expedientes.py')])
