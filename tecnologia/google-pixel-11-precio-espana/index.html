@@ -173,6 +173,19 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 .princesa-dice{display:flex;gap:14px;align-items:center;max-width:780px;margin:0 auto 22px}
 .princesa-dice img{width:72px;image-rendering:pixelated;flex:none}
 .princesa-dice p{margin:0;padding:12px 16px;background:#fff;color:#160828;border-radius:14px;font-weight:700;font-size:17px;box-shadow:4px 4px 0 #ff5ccf}
+.fig-in{margin:24px 0;border:2px solid rgba(31,242,255,.3);border-radius:14px;overflow:hidden;background:#000}
+.fig-in video,.fig-in img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:#000}
+.fig-in img{background:#f5f5f7}
+.fig-par{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}.fig-par .fig-in{margin:0}
+@media(max-width:520px){.fig-par .fig-in figcaption i{display:none}}
+.fig-in figcaption{font-size:14px;color:#e9e6ff;padding:8px 12px;background:#140830}
+.fig-in figcaption i{font-style:normal;color:var(--muted);float:right;margin-left:8px}
+.troll{display:flex;gap:12px;align-items:flex-end;margin:22px 0 22px 8px}
+.troll img{width:58px;image-rendering:pixelated;flex:none;transform:rotate(-6deg);animation:trollbote 2.4s ease-in-out infinite}
+.troll p{position:relative;margin:0 0 14px;padding:10px 14px;background:var(--yellow);color:#160828;border-radius:14px 14px 14px 2px;font-weight:700;font-size:16px;line-height:1.4;box-shadow:4px 4px 0 var(--pink);transform:rotate(-1deg)}
+.troll p small{display:block;font-family:'VT323',monospace;font-size:16px;font-weight:400;opacity:.7}
+@keyframes trollbote{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.troll img{animation:none}}
 .compartir a{display:inline-block;margin:4px 6px 4px 0;padding:6px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:16px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Google Pixel 11: los móviles que hacen fotazas sin que toques nada", "description": "Chip Tensor G6, siete años de actualizaciones y una cámara de las que se apuntan y disparan. Esto es lo que cuestan en España.", "datePublished": "2026-11-02", "dateModified": "2026-11-02", "inLanguage": "es", "mainEntityOfPage": "https://trollacos.com/tecnologia/google-pixel-11-precio-espana/", "image": "https://trollacos.com/portada.jpg", "author": {"@type": "Organization", "name": "Trollacos"}, "publisher": {"@type": "Organization", "name": "Trollacos", "logo": {"@type": "ImageObject", "url": "https://trollacos.com/icono-512.png"}}}</script>

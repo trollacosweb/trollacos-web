@@ -73,6 +73,19 @@ extra = """
 .princesa-dice{display:flex;gap:14px;align-items:center;max-width:780px;margin:0 auto 22px}
 .princesa-dice img{width:72px;image-rendering:pixelated;flex:none}
 .princesa-dice p{margin:0;padding:12px 16px;background:#fff;color:#160828;border-radius:14px;font-weight:700;font-size:17px;box-shadow:4px 4px 0 #ff5ccf}
+.fig-in{margin:24px 0;border:2px solid rgba(31,242,255,.3);border-radius:14px;overflow:hidden;background:#000}
+.fig-in video,.fig-in img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:#000}
+.fig-in img{background:#f5f5f7}
+.fig-par{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}.fig-par .fig-in{margin:0}
+@media(max-width:520px){.fig-par .fig-in figcaption i{display:none}}
+.fig-in figcaption{font-size:14px;color:#e9e6ff;padding:8px 12px;background:#140830}
+.fig-in figcaption i{font-style:normal;color:var(--muted);float:right;margin-left:8px}
+.troll{display:flex;gap:12px;align-items:flex-end;margin:22px 0 22px 8px}
+.troll img{width:58px;image-rendering:pixelated;flex:none;transform:rotate(-6deg);animation:trollbote 2.4s ease-in-out infinite}
+.troll p{position:relative;margin:0 0 14px;padding:10px 14px;background:var(--yellow);color:#160828;border-radius:14px 14px 14px 2px;font-weight:700;font-size:16px;line-height:1.4;box-shadow:4px 4px 0 var(--pink);transform:rotate(-1deg)}
+.troll p small{display:block;font-family:'VT323',monospace;font-size:16px;font-weight:400;opacity:.7}
+@keyframes trollbote{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.troll img{animation:none}}
 .compartir a{display:inline-block;margin:4px 6px 4px 0;padding:6px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:16px}
 </style>"""
 style2 = style.replace('</style>', extra)
@@ -122,8 +135,8 @@ def foto(n):
         if os.path.exists(f): return '/' + f
     return None
 
-def galeria(n):
-    g = n.get('galeria') or []
+def galeria(n, usados=()):
+    g = [x for i, x in enumerate(n.get('galeria') or []) if i not in usados]
     if not g: return ''
     def item(x):
         if x['tipo'] == 'video':
@@ -133,6 +146,25 @@ def galeria(n):
         return f'<figure class="g-it{" alto" if x.get("alto") else ""}">{m}<figcaption>{esc(x["txt"])}</figcaption></figure>'
     return (f'<h2>📸 En imágenes</h2><div class="galeria">{"".join(item(x) for x in g)}</div>'
             f'<p class="afil" style="text-align:right">Imágenes y vídeos: {esc(n.get("credito", "prensa oficial de la marca"))}</p>')
+
+def media(x, cls):
+    if x['tipo'] == 'video':
+        m = f'<video src="{x["src"]}" poster="{x["src"][:-4]}.jpg" autoplay muted loop playsinline preload="metadata" aria-label="{esc(x["txt"])}"></video>'
+    else:
+        m = f'<img src="{x["src"]}" alt="{esc(x["txt"])}" loading="lazy">'
+    return m
+
+def bloque(p, n, usados):
+    # [[g:N]] = foto/vídeo N de la galería intercalado; [[troll:texto]] = el Trollaco metiendo cizaña
+    if p.startswith('[[g:'):
+        ids = [int(k) for k in p[4:-2].split(',')]; usados.update(ids)
+        figs = ''.join(f'<figure class="fig-in">{media(n["galeria"][i], "")}<figcaption>{esc(n["galeria"][i]["txt"])}'
+                       f'<i>{esc(n.get("credito", "prensa oficial"))}</i></figcaption></figure>' for i in ids)
+        return figs if len(ids) == 1 else f'<div class="fig-par">{figs}</div>'
+    if p.startswith('[[troll:'):
+        return f'<div class="troll"><img src="/img/trollaco.png" alt="El Trollaco"><p><small>&gt; EL TROLLACO SE COLÓ_</small>{p[8:-2]}</p></div>'
+    if p.startswith(('<h3', '<ul', '<div', '<table')): return p
+    return f'<p>{p}</p>'
 
 def tarjeta(n):
     ico = f'<img class="mini-foto" src="{foto(n)}" alt="" loading="lazy">' if foto(n) else f'<span class="e" aria-hidden="true">{n.get("emoji","📱")}</span>'
@@ -146,14 +178,16 @@ for n in N:
     prods = ''.join(f'<a class="prod" href="{amazon(q)}" target="_blank" rel="sponsored nofollow noopener"><b>{esc(t)}</b><span>{esc(d)}</span><i>VER PRECIO EN AMAZON ›</i></a>'
                     for t, d, q in n.get('productos', []))
     rumor = f'<div class="rumor"><b>🕵️ RUMORES SIN CONFIRMAR:</b> {n["rumores"]}</div>' if n.get('rumores') else ''
+    usados = set()
+    cuerpo_html = ''.join(bloque(p, n, usados) for p in n["cuerpo"])
     cuerpo = f'''<main><article class="art">
   <p class="meta">&gt; TECNOLOGÍA · {fecha_txt(n["fecha"]).upper()}_</p>
   <h1>{esc(n["titulo"])}</h1>
   <p class="lead">{esc(n["entradilla"])}</p>
   {firma()}
   {(f'<figure class="portada-art"><img src="{foto(n)}" alt="{esc(n.get("alt", n["titulo"]))}" loading="lazy"><figcaption>Imagen: {esc(n.get("credito", "prensa oficial de la marca"))}</figcaption></figure>') if foto(n) else ''}
-  {''.join(p if p.startswith(('<h3','<ul','<div','<table')) else f'<p>{p}</p>' for p in n["cuerpo"])}
-  {galeria(n)}
+  {cuerpo_html}
+  {galeria(n, usados)}
   {rumor}
   <h2>🛒 Lo que te recomendamos</h2>
   <div class="prods">{prods}</div>
