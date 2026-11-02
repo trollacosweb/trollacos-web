@@ -41,6 +41,9 @@ extra = """
 .prod span{display:block;font-size:15px;color:var(--muted);margin:4px 0 8px}
 .prod i{font-style:normal;font-family:'VT323',monospace;font-size:19px;color:var(--yellow)}
 .afil{font-size:13px;color:var(--muted)}
+.portada-art{margin:0 0 20px}.portada-art img{width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:14px;background:radial-gradient(circle at 50% 40%,#2a0b4a,#07021a);border:2px solid rgba(31,242,255,.35)}
+.portada-art figcaption{font-size:13px;color:var(--muted);margin-top:4px;text-align:right}
+.tarj .mini-foto{width:84px;height:84px;object-fit:contain;flex:none;border-radius:10px;background:#14063a}
 .fuente{font-size:15px;color:var(--muted);border-top:1px solid rgba(233,230,255,.15);padding-top:12px;margin-top:24px}
 .autora{display:flex;gap:18px;align-items:center;margin:28px 0;padding:18px;border:3px solid var(--pink);border-radius:16px;background:linear-gradient(135deg,rgba(255,43,214,.16),rgba(31,242,255,.08))}
 .autora img{width:96px;height:96px;border-radius:50%;border:4px solid var(--cyan);flex:none;object-fit:cover}
@@ -102,8 +105,15 @@ def pagina(titulo, desc, url, cuerpo, jsonld, tipo='article'):
 </html>
 '''
 
+def foto(n):
+    for ext in ('webp', 'jpg', 'png'):
+        f = f'img/tecnologia/{n["slug"]}.{ext}'
+        if os.path.exists(f): return '/' + f
+    return None
+
 def tarjeta(n):
-    return (f'<a class="tarj" href="/tecnologia/{n["slug"]}/"><span class="e" aria-hidden="true">{n.get("emoji","📱")}</span><div>'
+    ico = f'<img class="mini-foto" src="{foto(n)}" alt="" loading="lazy">' if foto(n) else f'<span class="e" aria-hidden="true">{n.get("emoji","📱")}</span>'
+    return (f'<a class="tarj" href="/tecnologia/{n["slug"]}/">{ico}<div>'
             f'<small>{fecha_txt(n["fecha"])}</small><h3>{esc(n["titulo"])}</h3><p>{esc(n["entradilla"])}</p></div></a>')
 
 for n in N:
@@ -118,6 +128,7 @@ for n in N:
   <h1>{esc(n["titulo"])}</h1>
   <p class="lead">{esc(n["entradilla"])}</p>
   {firma()}
+  {(f'<figure class="portada-art"><img src="{foto(n)}" alt="{esc(n.get("alt", n["titulo"]))}" loading="lazy"><figcaption>Imagen: {esc(n.get("credito", "prensa oficial de la marca"))}</figcaption></figure>') if foto(n) else ''}
   {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
   {rumor}
   <h2>🛒 Lo que te recomendamos</h2>
@@ -154,7 +165,8 @@ open('tecnologia/index.html', 'w', encoding='utf-8').write(pagina('Tecnología: 
 # portada: bloque de Tecnología entre <!--TEC:INICIO--> y <!--TEC:FIN-->
 ix = open('index.html', encoding='utf-8').read()
 def card_portada(n):
-    return (f'      <a class="arsenal-card" href="/tecnologia/{n["slug"]}/"><span class="ico-a">{n.get("emoji","📱")}</span>'
+    ico = f'<img src="{foto(n)}" alt="" loading="lazy" style="width:100%;height:120px;object-fit:contain;border-radius:8px;background:#14063a;margin-bottom:8px">' if foto(n) else f'<span class="ico-a">{n.get("emoji","📱")}</span>'
+    return (f'      <a class="arsenal-card" href="/tecnologia/{n["slug"]}/">{ico}'
             f'<h3>{esc(n["titulo"])}</h3><p>{esc(n["entradilla"])}</p><span class="ver">LEER ›</span></a>')
 bloque = ('<!--TEC:INICIO-->\n  <div class="princesa-portada"><img class="px" src="/img/princesa.png" alt="La Princesa Neón" width="64" height="68">'
           '<span class="pp-b">¿Qué móvil me pido para Navidad? ¡Ayuda! 👑</span></div>\n'

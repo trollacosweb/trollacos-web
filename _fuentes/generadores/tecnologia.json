@@ -15,14 +15,32 @@
   ],
   "rumores": "Según Bloomberg, el iPhone 18 básico, el iPhone Air 2 y el iPhone 18e llegarían en la primavera de 2027. Si quieres el iPhone «normal» nuevo, toca esperar. Apple no lo ha confirmado.",
   "productos": [
-   ["iPhone 18 Pro", "Lo último de Apple: chip A20 Pro y cámara con apertura variable.", "iPhone 18 Pro"],
-   ["Samsung Galaxy S26", "El Android más completo para casi todo el mundo.", "Samsung Galaxy S26"],
-   ["Google Pixel 11", "Fotazas sin complicarte y siete años de actualizaciones.", "Google Pixel 11"],
-   ["iPhone 17", "Si quieres iPhone sin pagar lo que cuesta un Pro.", "iPhone 17"]
+   [
+    "iPhone 18 Pro",
+    "Lo último de Apple: chip A20 Pro y cámara con apertura variable.",
+    "iPhone 18 Pro"
+   ],
+   [
+    "Samsung Galaxy S26",
+    "El Android más completo para casi todo el mundo.",
+    "Samsung Galaxy S26"
+   ],
+   [
+    "Google Pixel 11",
+    "Fotazas sin complicarte y siete años de actualizaciones.",
+    "Google Pixel 11"
+   ],
+   [
+    "iPhone 17",
+    "Si quieres iPhone sin pagar lo que cuesta un Pro.",
+    "iPhone 17"
+   ]
   ],
   "opina": "Mi móvil ideal es el que tiene batería cuando la necesito. O sea, ninguno. Pero si alguien me regala uno, que sea con funda de neón y que no me lo pase Glitch a 30 fps.",
   "princesa": "Yo pido el que haga mejores fotos de noche, que en Leonida siempre salgo a contraluz. Y Trollaco, ni se te ocurra regalarme otro cargador. Van tres.",
-  "fuente": "Apple, Samsung, Google, Bloomberg y precios de tiendas españolas (Amazon, Fnac, MediaMarkt)"
+  "fuente": "Apple, Samsung, Google, Bloomberg y precios de tiendas españolas (Amazon, Fnac, MediaMarkt)",
+  "credito": "Apple, Samsung y Google (prensa)",
+  "alt": "iPhone 18 Pro, Galaxy S26 y Pixel 11"
  },
  {
   "slug": "iphone-18-pro-precio-espana",
@@ -39,14 +57,32 @@
   ],
   "rumores": "Según Bloomberg, el iPhone 18 básico, el iPhone Air 2 y el iPhone 18e saldrían en la primavera de 2027. Apple no lo ha confirmado.",
   "productos": [
-   ["iPhone 18 Pro", "6,3 pulgadas, el tamaño cómodo.", "iPhone 18 Pro"],
-   ["iPhone 18 Pro Max", "6,9 pulgadas y la batería que más dura.", "iPhone 18 Pro Max"],
-   ["iPhone 17", "La opción sensata si no necesitas el Pro.", "iPhone 17"],
-   ["Fundas MagSafe", "Para que el burdeos no acabe rayado el primer día.", "funda MagSafe iPhone 18 Pro"]
+   [
+    "iPhone 18 Pro",
+    "6,3 pulgadas, el tamaño cómodo.",
+    "iPhone 18 Pro"
+   ],
+   [
+    "iPhone 18 Pro Max",
+    "6,9 pulgadas y la batería que más dura.",
+    "iPhone 18 Pro Max"
+   ],
+   [
+    "iPhone 17",
+    "La opción sensata si no necesitas el Pro.",
+    "iPhone 17"
+   ],
+   [
+    "Fundas MagSafe",
+    "Para que el burdeos no acabe rayado el primer día.",
+    "funda MagSafe iPhone 18 Pro"
+   ]
   ],
   "opina": "2.969 € por el de 2 TB. Con eso me compro una PS5 Pro, GTA VI, una tele gorda… y todavía me sobra para pagar las bravas que dejó Glitch en La Verja.",
   "princesa": "El burdeos me lo pido, que combina con mi corona. Pero el de 256 GB, que yo las fotos las subo a la nube como una persona normal.",
-  "fuente": "Apple y precios oficiales en tiendas españolas"
+  "fuente": "Apple y precios oficiales en tiendas españolas",
+  "credito": "Apple (prensa)",
+  "alt": "iPhone 18 Pro y 18 Pro Max"
  },
  {
   "slug": "samsung-galaxy-s26-cual-comprar",
@@ -62,14 +98,32 @@
    "Consejo Trollaco: no lo compres a precio de salida. El <strong>27 de noviembre es Black Friday</strong>, y los S26 son de los móviles que más suelen bajar. Y si tienes un móvil viejo, mira los planes de entrega de Samsung, que te descuentan una parte."
   ],
   "productos": [
-   ["Samsung Galaxy S26", "El que recomendaríamos a casi todo el mundo.", "Samsung Galaxy S26"],
-   ["Samsung Galaxy S26 Ultra", "Con S Pen y el mejor zoom de la casa.", "Samsung Galaxy S26 Ultra"],
-   ["Galaxy Buds", "Los auriculares que mejor se llevan con un Samsung.", "Samsung Galaxy Buds"],
-   ["Cargador rápido Samsung", "Porque en la caja ya no viene.", "cargador Samsung 45W"]
+   [
+    "Samsung Galaxy S26",
+    "El que recomendaríamos a casi todo el mundo.",
+    "Samsung Galaxy S26"
+   ],
+   [
+    "Samsung Galaxy S26 Ultra",
+    "Con S Pen y el mejor zoom de la casa.",
+    "Samsung Galaxy S26 Ultra"
+   ],
+   [
+    "Galaxy Buds",
+    "Los auriculares que mejor se llevan con un Samsung.",
+    "Samsung Galaxy Buds"
+   ],
+   [
+    "Cargador rápido Samsung",
+    "Porque en la caja ya no viene.",
+    "cargador Samsung 45W"
+   ]
   ],
   "opina": "El S Pen del Ultra sirve para tomar notas, firmar documentos y, sobre todo, para perderlo entre los cojines del sofá el primer día.",
   "princesa": "Violeta cobalto. No hay más preguntas. Bueno, una: ¿por qué Glitch tiene un S26 Ultra y yo no?",
-  "fuente": "Samsung España"
+  "fuente": "Samsung España",
+  "credito": "Samsung (prensa)",
+  "alt": "Galaxy S26, S26+ y S26 Ultra"
  },
  {
   "slug": "google-pixel-11-precio-espana",
@@ -85,14 +139,32 @@
    "¿Para quién? Para quien quiere un Android limpio, sin aplicaciones de relleno, y hacer buenas fotos sin pelearse con los ajustes. Si eso es lo que buscas, el Pixel 11 a secas es de lo más redondo del año."
   ],
   "productos": [
-   ["Google Pixel 11", "El más redondo por precio.", "Google Pixel 11"],
-   ["Google Pixel 11 Pro XL", "Pantallón, batería y la mejor cámara de Google.", "Google Pixel 11 Pro XL"],
-   ["Cargador USB-C 30 W", "Porque en la caja no viene.", "cargador USB-C 30W"],
-   ["Funda para Pixel 11", "Para que dure los siete años de actualizaciones.", "funda Google Pixel 11"]
+   [
+    "Google Pixel 11",
+    "El más redondo por precio.",
+    "Google Pixel 11"
+   ],
+   [
+    "Google Pixel 11 Pro XL",
+    "Pantallón, batería y la mejor cámara de Google.",
+    "Google Pixel 11 Pro XL"
+   ],
+   [
+    "Cargador USB-C 30 W",
+    "Porque en la caja no viene.",
+    "cargador USB-C 30W"
+   ],
+   [
+    "Funda para Pixel 11",
+    "Para que dure los siete años de actualizaciones.",
+    "funda Google Pixel 11"
+   ]
   ],
   "opina": "Siete años de actualizaciones. Mi móvil actual no aguanta ni siete horas de batería, y eso que solo lo uso para jugar al Trollaco Run.",
   "princesa": "La cámara de noche del Pixel es para mí. Si en alguna foto sale Glitch de fondo pixelado, no es culpa del móvil: es que él es así.",
-  "fuente": "Google y precios de tiendas españolas (Amazon, Fnac, MediaMarkt)"
+  "fuente": "Google y precios de tiendas españolas (Amazon, Fnac, MediaMarkt)",
+  "credito": "Google (prensa)",
+  "alt": "Pixel 11 y Pixel 11 Pro XL"
  },
  {
   "slug": "alexa-echo-cual-comprar-2026",
@@ -108,13 +180,31 @@
    "Un truco de privacidad: todos tienen un <strong>botón para apagar los micrófonos</strong>. Si te da cosa que te escuche mientras discutes por la última croqueta, ya sabes."
   ],
   "productos": [
-   ["Echo Dot Max", "El más vendido de siempre, ahora con mejor sonido.", "Echo Dot Max"],
-   ["Echo Show 8", "El rey de la cocina: recetas, videollamadas y la casa.", "Echo Show 8"],
-   ["Echo Studio", "Para escuchar música como Dios manda.", "Echo Studio"],
-   ["Bombillas inteligentes", "Lo primero que todo el mundo conecta a Alexa.", "bombilla inteligente compatible Alexa"]
+   [
+    "Echo Dot Max",
+    "El más vendido de siempre, ahora con mejor sonido.",
+    "Echo Dot Max"
+   ],
+   [
+    "Echo Show 8",
+    "El rey de la cocina: recetas, videollamadas y la casa.",
+    "Echo Show 8"
+   ],
+   [
+    "Echo Studio",
+    "Para escuchar música como Dios manda.",
+    "Echo Studio"
+   ],
+   [
+    "Bombillas inteligentes",
+    "Lo primero que todo el mundo conecta a Alexa.",
+    "bombilla inteligente compatible Alexa"
+   ]
   ],
   "opina": "Le he pedido a Alexa que me pase el capítulo 5 del arcade y me ha puesto un podcast de meditación. Igual es una indirecta.",
   "princesa": "«Alexa, apaga las luces.» «Alexa, pon synthwave.» «Alexa, dile a Glitch que me devuelva a casa.» Bueno, dos de tres no está mal.",
-  "fuente": "Amazon España"
+  "fuente": "Amazon España",
+  "credito": "Amazon (prensa)",
+  "alt": "Los nuevos Echo de Amazon"
  }
 ]
