@@ -32,7 +32,7 @@ for i, c in enumerate(CASOS, 1):
   </ul>
   <div class="relato">{c['texto']}</div>
   <div class="esceptico"><b>🔬 LO QUE DICEN LOS ESCÉPTICOS</b><p>{c['esceptico']}</p></div>
-  <div class="opina"><img class="px" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> {c['trollaco']}</p></div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {c['trollaco']}</p></div>
   <p class="volver"><a href="#mapa">↑ Volver al mapa</a></p>
 </article>''')
 
@@ -55,7 +55,6 @@ page = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){{var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'}})()</script>
 <title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Expediente Trollaco</title>
 <meta name="description" content="El Palacio de Linares, la Casa de las Siete Chimeneas, el Ángel Caído, la estación fantasma de Chamberí, el caso Ummo y el caso Vallecas. Los misterios de Madrid, con mapa interactivo.">
 <link rel="canonical" href="https://trollacos.com/misterio/">
@@ -221,7 +220,7 @@ footer a{{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-d
 
 <footer>
   <a href="/">PORTADA</a><a href="/arcade/">ARCADE</a><a href="/gta-6/">GUÍA GTA VI</a><br><br>
-  © 2012–2026 TROLLACOS
+  © 2012–2026 TROLLACOS · Todos los derechos reservados
 <br><small><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:info@trollacos.com">info@trollacos.com</a></small>
 </footer>
 
@@ -229,7 +228,6 @@ footer a{{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-d
 <script>
 (function(){{
   var PUNTOS={json.dumps(puntos, ensure_ascii=False)};
-  if(document.documentElement.className.indexOf('halloween')>-1){{document.querySelectorAll('img[data-hw]').forEach(function(i){{i.src=i.getAttribute('data-hw')}})}}
   var b=document.getElementById('copiar');b.onclick=function(){{try{{navigator.clipboard.writeText('https://trollacos.com/misterio/').then(function(){{b.textContent='¡Copiado!'}})}}catch(e){{}}}};
   if(!window.L){{document.getElementById('mapa-madrid').innerHTML='<p style="padding:20px">No se ha podido cargar el mapa. Usa la lista de abajo.</p>';return}}
   var mapa=L.map('mapa-madrid',{{scrollWheelZoom:false,zoomControl:true}});

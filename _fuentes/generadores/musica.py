@@ -68,8 +68,8 @@ ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a.replace('«', '"').replace('»', '"')}}
         for q, a in faq]}]}
 
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
-swap = "if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}"
+hw = ""
+swap = ""
 
 page = f'''<!doctype html>
 <html lang="es">
@@ -103,7 +103,7 @@ page = f'''<!doctype html>
   <h1>Canciones de GTA 6: todas las confirmadas</h1>
   <p class="entradilla">El tema principal, el álbum oficial, lo que suena en los tráilers y las emisoras de radio. {total} canciones confirmadas, cada una con su enlace para escucharla en Spotify.</p>
   <p class="fecha-act">Actualizado el 23 de octubre de 2026 · La ampliaremos el 19 de noviembre</p>
-  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco.png" data-hw="/img/trollaco-calabaza-hw.png" alt=""></div>
+  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco.png" alt=""></div>
 </header>
 <main>
   <p class="migas"><a href="/">Trollacos</a> › <a href="/gta-6/">Guía GTA VI</a> › Música</p>
@@ -152,7 +152,7 @@ page = f'''<!doctype html>
   <h2 id="extendido">Canciones del vistazo extendido</h2>
   <p>En el vídeo de unos 26 minutos de juego real que se estrenó en agosto suenan estas canciones en la radio de los coches y en los locales. Ojo: Rockstar no ha confirmado en qué emisora irá cada una.</p>
 {tabla(ext)}
-  <div class="troll-dice"><img class="px troll" src="/img/trollaco-mando.png" data-hw="/img/trollaco-mando-hw.png" alt=""><p>El Trollaco opina: Phil Collins a todo volumen en un descapotable por Vice City. No hay más preguntas, señoría.</p></div>
+  <div class="troll-dice"><img class="px troll" src="/img/trollaco-mando.png" alt=""><p>El Trollaco opina: Phil Collins a todo volumen en un descapotable por Vice City. No hay más preguntas, señoría.</p></div>
 
   <h2 id="radio">Las emisoras de radio</h2>
   <p>Rockstar ha presentado seis emisoras, cada una con sus locutores. Habrá más (rock clásico, tertulias y pódcast), pero aún no tienen nombre oficial.</p>

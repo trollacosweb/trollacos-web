@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>
 <title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
-<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (la noche Trolloween entre zombis y el Bar La Verja con camareros enfadados). Juego arcade gratis en el navegador.">
+<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (la noche de los zombis y el Bar La Verja con camareros enfadados). Juego arcade gratis en el navegador.">
 <link rel="canonical" href="https://trollacos.com/arcade/">
 <meta property="og:title" content="Trollaco Run: el arcade de Trollacos">
 <meta property="og:description" content="¿Cuántas fichas aguantas? Juego gratis en el navegador.">
@@ -122,7 +121,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     </div>
   </div>
   <div class="capitulos" id="capitulos" hidden>
-    <div class="cap" data-cap="c1"><b>1 · La noche Trolloween</b>Cementerio, zombis y calabazas. Llega a la mansión encantada.</div>
+    <div class="cap" data-cap="c1"><b>1 · La noche de los zombis</b>Cementerio, zombis y cuervos. Llega a la mansión encantada.</div>
     <div class="cap" data-cap="c2"><b>2 · Bar La Verja</b><span class="bloq">🔒 Supera el capítulo 1 para entrar. </span>Camareros enfadados, bandejas voladoras y rejas.</div>
     <div class="cap" data-cap="c3"><b>3 · Trollaco Club</b><span class="bloq">🔒 Supera el capítulo 2 para entrar. </span>Discoteca, láseres, malotes y un portero que no te deja pasar.</div>
     <div class="cap" data-cap="c4"><b>4 · El edificio abandonado</b><span class="bloq">🔒 Supera el capítulo 3 para entrar. </span>Pasillos a oscuras, linterna y algo que no debería estar ahí.</div>
@@ -150,7 +149,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 </main>
 <footer>
   <a href="/">PORTADA</a><a href="/gta-6/">GUÍA GTA VI</a><a href="https://www.twitch.tv/trollacostv" target="_blank" rel="noopener">TWITCH</a><br><br>
-  © 2012–2026 TROLLACOS
+  © 2012–2026 TROLLACOS · Todos los derechos reservados
 <br><small><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:info@trollacos.com">info@trollacos.com</a></small>
 </footer>
 <script>
@@ -158,7 +157,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
 var cv=document.getElementById('juego'),cx=cv.getContext('2d');
 var W=(window.innerWidth<640)?540:800,H=320,SUELO=262;
 cv.width=W;
-var HW=document.documentElement.className.indexOf('halloween')>-1;
+var HW=false;   // decoración de temporada desactivada
 cx.imageSmoothingEnabled=false;
 document.querySelector('.maquina').style.setProperty('--ar',String(W/H));
 
@@ -261,10 +260,7 @@ function sumaAlMonedero(ficha,gana){
 }
 
 // ---------- sprites ----------
-var spr=new Image(); spr.src=HW?'/img/trollaco-hw.png':'/img/trollaco.png';
-var sprHW=new Image(); sprHW.src='/img/trollaco-hw.png';
-var murc=new Image(); murc.src='/img/murcielago.png';
-var calab=new Image(); calab.src='/img/calabaza.png';
+var spr=new Image(); spr.src='/img/trollaco.png';
 
 // ---------- record (solo en este navegador) ----------
 var record=0;
@@ -470,7 +466,7 @@ function trollaco(){
   var alto=54*s, top=yb-alto;
   var enAire=jug.y<SUELO-0.5;
   var bote=enAire?0:(Math.floor(jug.anim)%2?-2:0);
-  var im=modo==='c1'?sprHW:spr;
+  var im=spr;
   if(im.complete&&im.naturalWidth){
     cx.drawImage(im,0,0,32,40,x,top+bote,32*s,40*s);
   }
@@ -490,7 +486,6 @@ function obstaculo(o,tt){
     var n=o.tipo==='caja'?1:2;
     for(var i=0;i<n;i++){
       var yy=y+i*(o.h/n), hh=o.h/n;
-      if(HW&&i===n-1&&calab.complete){cx.drawImage(calab,x-3,yy-4,o.w+6,hh+6);continue}
       rect(x,yy,o.w,hh,K);rect(x+2,yy+2,o.w-4,hh-4,'#b0703a');rect(x+2,yy+2,o.w-4,3,'#d89a5c');
       rect(x+o.w/2-2,yy+2,4,hh-4,'#8a5228');rect(x+2,yy+hh/2-2,o.w-4,4,'#8a5228');
       if(n===1||i===0){cx.fillStyle='#ffd23f';cx.font='bold 9px monospace';cx.fillText('PS?',x+6,yy+12)}
@@ -503,7 +498,6 @@ function obstaculo(o,tt){
     cx.fillStyle='#fff';cx.font='bold 10px monospace';cx.fillText('LAG',x+17,y-6);
   } else if(o.tipo==='dron'){
     var bob=Math.sin(tt*6+o.fase)*4;
-    if(HW&&murc.complete){cx.drawImage(murc,x-4,y+bob-6,o.w+8,o.h+10);return}
     rect(x+8,y+8+bob,o.w-16,10,K);rect(x+10,y+10+bob,o.w-20,6,'#5a5a78');
     rect(x+o.w/2-3,y+12+bob,6,3,'#ff2828');
     var hel=(Math.floor(tt*30)%2)?14:8;
@@ -545,7 +539,7 @@ function llamas(dt){
 }
 
 
-// ================= MODO HISTORIA · CAPÍTULO 1: LA NOCHE TROLLOWEEN =================
+// ================= MODO HISTORIA · CAPÍTULO 1: LA NOCHE DE LOS ZOMBIS =================
 var CEM=(function(){var r=azar(99),x=0,c=[];while(x<1600){var t=r();c.push({x:x,tipo:t<.45?'lapida':t<.68?'arbol':t<.84?'cruz':'verja',h:Math.round(16+r()*20),w:Math.round(14+r()*10)});x+=Math.round(45+r()*95)}return{c:c,largo:x}})();
 var COL=(function(){var r=azar(5),p=[],x=0;while(x<1400){p.push([x,Math.round(36+r()*55)]);x+=Math.round(60+r()*80)}p.push([x,p[0][1]]);return{p:p,largo:x}})();
 function decorado(c,x){
@@ -596,13 +590,13 @@ function verjaFinal(){
 function nuevoObstaculoC1(){
   if(dist>META-1500){sigObst=1e9;return}
   var p=dist/META,r=Math.random(),o;
-  if(r<.24)o={tipo:'calabaza',w:34,h:30};
+  if(r<.24)o={tipo:'tumba',w:34,h:30};
   else if(r<.40)o={tipo:'lapida',w:30,h:46};
   else if(r<.70)o={tipo:'zombi',w:28,h:50,andar:25+Math.random()*35};
   else o={tipo:'murci',w:40,h:22,vuelo:true,alto:(Math.random()<.65?78:150)};
   o.x=W+20;o.y=o.vuelo?SUELO-o.alto-o.h:SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
   if(p>.3&&!o.vuelo&&Math.random()<.32){
-    var z=Math.random()<.55;obst.push(z?{tipo:'zombi',w:28,h:50,andar:20,x:W+20+o.w+170+vel*.12,y:SUELO-50,fase:1}:{tipo:'calabaza',w:34,h:30,x:W+20+o.w+150+vel*.12,y:SUELO-30,fase:0});
+    var z=Math.random()<.55;obst.push(z?{tipo:'zombi',w:28,h:50,andar:20,x:W+20+o.w+170+vel*.12,y:SUELO-50,fase:1}:{tipo:'tumba',w:34,h:30,x:W+20+o.w+150+vel*.12,y:SUELO-30,fase:0});
   }
   sigObst=Math.max(230,370+Math.random()*320-p*140)+vel*.22;
 }
@@ -622,11 +616,11 @@ function zombi(o,tt){
 }
 function obstaculoC1(o,tt){
   var x=o.x,y=o.y;
-  if(o.tipo==='calabaza'){if(calab.complete&&calab.naturalWidth)cx.drawImage(calab,x-3,y-4,o.w+6,o.h+6);else{rect(x,y,o.w,o.h,'#ff7a1a');rect(x+o.w/2-2,y-5,4,6,'#2f5a2a')}}
+  if(o.tipo==='tumba'){rect(x,y+6,o.w,o.h-6,'#6a6478');rect(x+2,y+8,o.w-4,3,'#8a8498');rect(x+o.w/2-2,y-6,4,14,'#6a6478');rect(x+o.w/2-7,y-2,14,4,'#6a6478');rect(x,y+o.h-4,o.w,4,'#3a3448');rect(x+8,y+16,18,2,'#4a4458')}
   else if(o.tipo==='lapida'){rect(x,y+8,o.w,o.h-8,'#5a4d6e');cx.fillStyle='#5a4d6e';cx.beginPath();cx.arc(x+o.w/2,y+9,o.w/2,Math.PI,0);cx.fill();
     rect(x,y+o.h-4,o.w,4,'#3a2f4a');cx.fillStyle='#2a1f3a';cx.font='bold 9px monospace';cx.fillText('RIP',x+6,y+20);rect(x+20,y+24,2,8,'#3a2f4a');rect(x+18,y+30,2,6,'#3a2f4a')}
   else if(o.tipo==='zombi')zombi(o,tt);
-  else if(o.tipo==='murci'){var bob=Math.sin(tt*6+o.fase)*5;if(murc.complete&&murc.naturalWidth)cx.drawImage(murc,x-4,y+bob-6,o.w+8,o.h+10);else rect(x,y+bob,o.w,o.h,'#2a0b3a')}
+  else if(o.tipo==='murci'){var bob=Math.sin(tt*6+o.fase)*5,al=Math.floor(tt*10+o.fase)%2;rect(x+12,y+bob+8,18,9,'#121018');rect(x+28,y+bob+6,8,7,'#121018');rect(x+35,y+bob+9,6,2,'#e8a020');rect(x+31,y+bob+7,2,2,'#ff3030');rect(x+4,y+bob+(al?2:12),16,4,'#1c1828');rect(x+6,y+bob+15,6,3,'#121018')}
 }
 function hudC1(){
   var cap=CAPS[modo];
@@ -1105,7 +1099,7 @@ function pintaDialogo(tt){
 }
 
 var CAPS={
-  c1:{n:1,nombre:'LA NOCHE TROLLOWEEN',hud:'CAP. 1 · TROLLOWEEN',color:'#ff7a1a',meta:30000,fondo:fondoC1,nuevo:nuevoObstaculoC1,dibuja:obstaculoC1,final:verjaFinal,
+  c1:{n:1,nombre:'LA NOCHE DE LOS ZOMBIS',hud:'CAP. 1 · ZOMBIS',color:'#9dff6a',meta:30000,fondo:fondoC1,nuevo:nuevoObstaculoC1,dibuja:obstaculoC1,final:verjaFinal,
       l1:'Cruza el cementerio y llega a la mansión encantada',l2:'Cae encima de los zombis para dejarlos KO · 3 vidas',
       siguiente:'c2',sig:'Capítulo 2 · Bar La Verja',gana:'¡He llegado a la mansión encantada',pierde:'Me han pillado los zombis'},
   c2:{n:2,nombre:'BAR LA VERJA',hud:'CAP. 2 · BAR LA VERJA',color:'#ffd23f',meta:32000,fondo:fondoC2,nuevo:nuevoObstaculoC2,dibuja:obstaculoC2,final:puertaFinal,
@@ -1124,7 +1118,7 @@ var CAPS={
 
 // ---------- la historia: diálogos al empezar y al terminar cada capítulo ----------
 var HISTORIA={
-  c1:{intro:[['PRINCESA','¡Qué fiesta de Halloween más buena en la mansión! Trollaco, ¿bailamos?'],
+  c1:{intro:[['PRINCESA','¡Qué fiesta más buena en la mansión! Trollaco, ¿bailamos?'],
              ['GLITCH','Jejeje… Esta noche la Princesa Neón se viene conmigo. ¡LAG PARA TODOS!'],
              ['PRINCESA','¡Socorrooo! ¡Trollaco, que este pesado me secuestra!'],
              ['TROLLACO','¡Suelta a la princesa, Glitch! Esta noche no me congelas tú.'],

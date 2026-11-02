@@ -59,8 +59,8 @@ extra = """
 .compartir a{display:inline-block;margin:4px 6px 4px 0;padding:6px 14px;border:1px solid var(--pink);border-radius:6px;color:#fff;text-decoration:none;font-size:16px}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
-hwjs = "<script>if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}</script>"
+hw = ""
+hwjs = ""
 
 def pagina(titulo, desc, url, cuerpo, jsonld, tipo='article'):
     return f'''<!doctype html>
@@ -108,7 +108,7 @@ for i, n in enumerate(N):
   <p class="lead">{esc(n["entradilla"])}</p>
   {firma()}
   {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
-  <div class="nota"><img class="troll" src="/img/trollaco.png" data-hw="/img/trollaco-hw.png" alt=""><p><b>EL TROLLACO OPINA:</b> {n["opina"]}</p></div>
+  <div class="nota"><img class="troll" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {n["opina"]}</p></div>
   {tarjeta_danna()}
   <a class="guia-cta" href="{n["guia"]}"><span>&gt; SIGUE LEYENDO EN LA GUÍA TROLLACOS DE GTA VI</span><b>{esc(n["guia_txt"])} ›</b></a>
   <p class="compartir"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={urllib.parse.quote(url)}" target="_blank" rel="noopener">Telegram</a></p>

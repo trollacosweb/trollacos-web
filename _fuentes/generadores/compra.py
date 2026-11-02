@@ -38,7 +38,7 @@ def niveles(items):
     return '  <div class="niveles">\n' + '\n'.join(out) + '\n  </div>'
 
 def truco(t, pose='trollaco-mando'):
-    return f'  <div class="truco"><img class="px troll" src="/img/{pose}.png" data-hw="/img/{pose}-hw.png" alt=""><p><b>TRUCO DEL TROLLACO:</b> {t}</p></div>'
+    return f'  <div class="truco"><img class="px troll" src="/img/{pose}.png" alt=""><p><b>TRUCO DEL TROLLACO:</b> {t}</p></div>'
 
 faq = [
  ("¿Se puede jugar a GTA 6 en PS4 o Xbox One?", "No. GTA VI solo sale en PS5 y Xbox Series X|S."),
@@ -54,7 +54,7 @@ ld = {"@context": "https://schema.org", "@graph": [
    "mainEntityOfPage": "https://trollacos.com/gta-6/que-comprar/"},
   {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
 
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
+hw = ""
 
 body = f'''
 <main>
@@ -184,13 +184,10 @@ page = f'''<!doctype html>
   <h1>Qué necesitas para jugar a GTA VI (sin gastar de más)</h1>
   <p class="entradilla">Consola, espacio, tele, sonido y edición. Lo que de verdad hace falta para el 19 de noviembre y lo que es tirar el dinero, explicado para que lo entienda cualquiera.</p>
   <p class="fecha-act">Actualizado el 24 de octubre de 2026</p>
-  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco-mando.png" data-hw="/img/trollaco-mando-hw.png" alt=""></div>
+  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco-mando.png" alt=""></div>
 </header>
 {body}
 {foot}
-<script>
-if(document.documentElement.className.indexOf('halloween')>-1){{document.querySelectorAll('img.troll[data-hw]').forEach(function(i){{i.src=i.getAttribute('data-hw')}})}}
-</script>
 </body>
 </html>
 '''

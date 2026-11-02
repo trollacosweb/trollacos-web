@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>
 <title>Trollacos</title>
 <meta name="description" content="Trollacos: humor, videojuegos y cine desde 2012. Las noticias del día, con guasa.">
 <link rel="icon" href="icono.png">
@@ -54,10 +53,6 @@
   .troll-colgado img{width:64px;display:block;margin-top:70px}
   @keyframes balanceo{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-7deg)}}
   @media (max-width:640px){.troll-colgado{width:48px;right:2%}.troll-colgado img{width:48px}}
-  .trolloween-ofertas{margin:0 0 26px;padding:18px 14px;border:2px dashed #ff7a1a;border-radius:10px;background:rgba(255,122,26,.07)}
-  .halloween .trolloween-ofertas{display:block}
-  .tw-tit{text-align:center;font-family:'VT323',monospace;font-size:28px;color:#ffb347;text-shadow:0 0 10px #ff7a1a;margin-bottom:14px;letter-spacing:.06em}
-  .arsenal-card.tw{border-color:rgba(255,122,26,.7);background:linear-gradient(180deg,rgba(255,122,26,.14),rgba(120,20,60,.12))}
   .arcade-banner{display:flex;align-items:center;gap:20px;text-decoration:none;color:#fff;padding:18px 22px;border:3px solid var(--pink);border-radius:14px;
     background:linear-gradient(135deg,rgba(255,43,214,.18),rgba(31,242,255,.08));box-shadow:0 0 24px rgba(255,43,214,.35);transition:.2s}
   .arcade-banner:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(255,43,214,.6)}
@@ -81,28 +76,10 @@
   .tienda-cab .bocadillo::after{display:none}
   @media (max-width:640px){.tienda-cab{flex-direction:column;gap:6px}}
 
-  /* ---------- TROLLOWEEN (solo del 15 oct al 2 nov) ---------- */
-  .hw{display:none}
-  .halloween .hw{display:block}
-  .halloween .sun{background:linear-gradient(180deg,#ffd23f 0%,#ff7a1a 45%,#c3122e 85%);box-shadow:0 0 90px rgba(255,90,20,.6)}
-  .halloween .grid{background-image:linear-gradient(#ff7a1a 2px,transparent 2px),linear-gradient(90deg,#ff7a1a 2px,transparent 2px);box-shadow:0 0 30px #ff7a1a inset}
-  .trolloween{position:relative;z-index:2;margin-top:12px;font-family:'VT323',monospace;font-size:clamp(19px,4.6vw,24px);color:#ffb347;
     text-shadow:0 0 8px #ff7a1a;letter-spacing:.06em}
-  .murcielagos{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
-  .murcielagos img{position:absolute;width:64px;left:-70px;filter:drop-shadow(0 0 6px rgba(255,122,26,.9)) drop-shadow(0 0 14px rgba(170,30,255,.6));animation:vuelo 14s linear infinite}
-  .murcielagos img:nth-child(2){top:14%;width:44px;animation-duration:11s;animation-delay:-4s}
-  .murcielagos img:nth-child(3){top:30%;width:76px;animation-duration:17s;animation-delay:-9s}
-  .murcielagos img:nth-child(4){top:8%;width:38px;animation-duration:9s;animation-delay:-2s}
-  .murcielagos img:nth-child(1){top:22%}
   @keyframes vuelo{0%{left:-60px;transform:translateY(0)}25%{transform:translateY(-22px)}50%{transform:translateY(10px)}75%{transform:translateY(-14px)}100%{left:105%;transform:translateY(0)}}
-  .calabazas{position:absolute;left:5%;bottom:22px;z-index:2;display:flex;align-items:flex-end;gap:6px;pointer-events:none}
-  .calabazas img{width:58px;filter:drop-shadow(0 0 14px rgba(255,140,20,.8));animation:vela 2.6s ease-in-out infinite}
-  .calabazas img+img{width:40px;animation-delay:-1.2s}
   @keyframes vela{50%{filter:drop-shadow(0 0 6px rgba(255,140,20,.5))}}
-  .telarana{position:absolute;top:0;width:150px;height:150px;z-index:1;opacity:.55;pointer-events:none}
-  .telarana.izq{left:0}.telarana.der{right:0;transform:scaleX(-1)}
-  @media (max-width:640px){.calabazas img{width:40px}.calabazas img+img{width:28px}.telarana{width:90px;height:90px}}
-  @media (prefers-reduced-motion:reduce){.troll-hero img,.troll-asoma img,.troll-colgado,.murcielagos img,.calabazas img{animation:none}.troll-asoma img{transform:none}}
+  @media (prefers-reduced-motion:reduce){.troll-hero img,.troll-asoma img,.troll-colgado{animation:none}.troll-asoma img{transform:none}}
 </style>
 <style>
   :root{
@@ -350,15 +327,10 @@
   <div class="stars"></div>
   <div class="sun"></div>
   <div class="grid"></div>
-  <div class="murcielagos hw" aria-hidden="true"><img class="px" src="img/murcielago.png" alt=""><img class="px" src="img/murcielago.png" alt=""><img class="px" src="img/murcielago.png" alt=""><img class="px" src="img/murcielago.png" alt=""></div>
-  <svg class="telarana izq hw" viewBox="0 0 150 150" aria-hidden="true"><g fill="none" stroke="#e9e6ff" stroke-width="1.2"><path d="M0 0L150 150M0 0L75 150M0 0L150 75M0 0L0 150M0 0L150 0"/><path d="M0 30Q16 22 26 26Q24 16 30 0"/><path d="M0 62Q34 46 48 50Q44 30 62 0"/><path d="M0 96Q52 72 72 76Q66 46 96 0"/><path d="M0 130Q70 98 98 102Q90 62 130 0"/></g></svg>
-  <svg class="telarana der hw" viewBox="0 0 150 150" aria-hidden="true"><g fill="none" stroke="#e9e6ff" stroke-width="1.2"><path d="M0 0L150 150M0 0L75 150M0 0L150 75M0 0L0 150M0 0L150 0"/><path d="M0 30Q16 22 26 26Q24 16 30 0"/><path d="M0 62Q34 46 48 50Q44 30 62 0"/><path d="M0 96Q52 72 72 76Q66 46 96 0"/><path d="M0 130Q70 98 98 102Q90 62 130 0"/></g></svg>
-  <div class="calabazas hw" aria-hidden="true"><img class="px" src="img/calabaza.png" alt=""><img class="px" src="img/calabaza.png" alt=""></div>
 
   <h1 class="logo-img"><img src="logo.webp" alt="TROLLACOS.COM" width="1600" height="161"></h1>
   <div class="since">&gt; EST. 2012 · RELOADED 2026_</div>
   <p class="tagline">Humor · Videojuegos · Cine</p>
-  <p class="trolloween hw">🎃 ESPECIAL TROLLOWEEN · el Trollaco anda suelto 🦇</p>
 
   <div class="cta">
     <a class="btn" href="/gta-6/">▶ GUÍA GTA VI</a>
@@ -374,13 +346,13 @@
 
   <button class="troll-hero" id="trollaco" type="button" aria-label="El Trollaco: pulsa para que diga otra cosa">
     <span class="bocadillo" id="troll-dice">¿Mi mando? Lo tengo yo.</span>
-    <img class="px troll" src="img/trollaco.png" data-hw="img/trollaco-calabaza-hw.png" alt="El Trollaco, la mascota de Trollacos" width="34" height="56">
+    <img class="px troll" src="img/trollaco.png" alt="El Trollaco, la mascota de Trollacos" width="34" height="56">
   </button>
 </header>
 
 <section class="block gta" id="gta">
   <div class="gta-box">
-    <div class="troll-asoma" aria-hidden="true"><img class="px troll" src="img/trollaco-asomado.png" data-hw="img/trollaco-asomado-hw.png" alt=""></div>
+    <div class="troll-asoma" aria-hidden="true"><img class="px troll" src="img/trollaco-asomado.png" alt=""></div>
     <div class="gta-title">ESPECIAL GTA VI</div>
     <p class="gta-sub">&gt; Vuelta a Vice City · 19 de noviembre de 2026 · PS5 y Xbox Series_</p>
     <div class="countdown" id="cuenta" aria-label="Cuenta atrás para GTA VI">
@@ -426,29 +398,12 @@
 
 <section class="block arsenal" id="tienda">
   <div class="tienda-cab">
-    <img class="px troll" src="img/trollaco-mando.png" data-hw="img/trollaco-mando-hw.png" alt="El Trollaco con un mando" width="34" height="56">
+    <img class="px troll" src="img/trollaco-mando.png" alt="El Trollaco con un mando" width="34" height="56">
     <h2>La tienda del gamer</h2>
     <span class="bocadillo">¡Este me lo quedo!</span>
   </div>
   <p class="small" style="margin:-14px 0 24px">Lo que necesitas para trollear como es debido.</p>
   <a class="guia-cta" href="/gta-6/que-comprar/" style="margin:0 auto 22px;border-color:var(--yellow);box-shadow:0 0 16px rgba(255,210,63,.35)"><span style="color:var(--yellow)">🛒 ¿QUÉ NECESITAS PARA GTA VI?</span>Consola, espacio, tele y sonido: la guía de compra sin gastar de más ›</a>
-  <div class="trolloween-ofertas hw">
-    <div class="tw-tit">🎃 ESPECIAL TROLLOWEEN 🦇</div>
-    <div class="arsenal-grid">
-      <a class="arsenal-card tw" href="https://www.amazon.es/s?k=videojuegos+terror+PS5&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
-        <span class="ico-a">🧟</span><h3>Juegos de terror</h3><p>Zombis, casas encantadas y sustos para jugar con la luz apagada.</p><span class="ver">VER EN AMAZON ›</span>
-      </a>
-      <a class="arsenal-card tw" href="https://www.amazon.es/s?k=disfraz+videojuego+adulto&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
-        <span class="ico-a">🎭</span><h3>Disfraces gamer</h3><p>Para ir a la fiesta de Halloween de personaje de videojuego.</p><span class="ver">VER EN AMAZON ›</span>
-      </a>
-      <a class="arsenal-card tw" href="https://www.amazon.es/s?k=pel%C3%ADculas+terror+blu-ray&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
-        <span class="ico-a">🎬</span><h3>Pelis de miedo</h3><p>Clásicos y novedades de terror en Blu-ray para la noche del 31.</p><span class="ver">VER EN AMAZON ›</span>
-      </a>
-      <a class="arsenal-card tw" href="https://www.amazon.es/deals?tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
-        <span class="ico-a">💀</span><h3>Ofertas del día</h3><p>Los chollos que Amazon cambia cada día. Corre antes de que se acaben.</p><span class="ver">VER OFERTAS ›</span>
-      </a>
-    </div>
-  </div>
   <div class="arsenal-grid">
       <a class="arsenal-card" href="https://www.amazon.es/s?k=PlayStation+5+consola&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener">
         <span class="ico-a">🕹️</span><h3>PlayStation 5</h3><p>La consola para estrenar GTA VI el 19 de noviembre.</p><span class="ver">VER EN AMAZON ›</span>
@@ -510,12 +465,12 @@
 
 <section class="block" id="arcade">
   <a class="arcade-banner" href="/arcade/">
-    <img class="px troll" src="/img/trollaco.png" data-hw="/img/trollaco-calabaza-hw.png" alt="" width="34" height="56">
+    <img class="px troll" src="/img/trollaco.png" alt="" width="34" height="56">
     <span class="ab-txt"><span class="ab-k">&gt; NUEVO · ARCADE_</span><b>TROLLACO RUN</b><span class="ab-s">Salta el lag, esquiva los drones y coge fichas. ¿Cuánto aguantas?</span></span>
     <span class="ab-btn">▶ JUGAR</span>
   </a>
   <a class="arcade-banner porra-banner" href="/porra/" style="margin-top:16px;border-color:var(--yellow)">
-    <img class="px troll" src="/img/trollaco-mando.png" data-hw="/img/trollaco-mando-hw.png" alt="" width="34" height="56">
+    <img class="px troll" src="/img/trollaco-mando.png" alt="" width="34" height="56">
     <span class="ab-txt"><span class="ab-k">&gt; NUEVO · LALIGA_</span><b>LA PORRA TROLLACA</b><span class="ab-s">Usa las fichas del arcade para pronosticar la jornada. Sin dinero real: solo por el pique.</span></span>
     <span class="ab-btn">▶ PRONOSTICAR</span>
   </a>
@@ -530,7 +485,7 @@
 </section>
 
 <section class="block news-wrap" id="noticias">
-  <div class="troll-colgado" aria-hidden="true"><img class="px troll" src="img/trollaco-colgado.png" data-hw="img/trollaco-colgado-hw.png" alt=""></div>
+  <div class="troll-colgado" aria-hidden="true"><img class="px troll" src="img/trollaco-colgado.png" alt=""></div>
   <h2>Lo último</h2>
   <p class="small" style="margin:-14px 0 18px">Las noticias de la redacción de Trollacos.</p>
 <!--NOTICIAS:INICIO-->
@@ -611,18 +566,13 @@
     <a href="https://www.instagram.com/trollacostv" target="_blank" rel="noopener">INSTAGRAM</a>
     <a href="https://www.tiktok.com/@trollacostv" target="_blank" rel="noopener">TIKTOK</a>
   </div>
-  © 2012–2026 TROLLACOS · Hecho con nostalgia y neón<br>
+  © 2012–2026 TROLLACOS · Todos los derechos reservados · Hecho con nostalgia y neón<br>
   <small>Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</small>
 <br><small><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:info@trollacos.com">info@trollacos.com</a></small>
 </footer>
 <script>
 (function(){
-  var hw=document.documentElement.className.indexOf('halloween')>-1;
-  if(hw){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}
-  var frases=hw?[
-    '¡Truco o trolleo!','He cambiado tu partida guardada. Feliz Halloween.','No me mojes ni me des de comer después de medianoche... o sí.',
-    'Esta calabaza la he tallado con tu mando.','¿Miedo? Miedo el precio de las consolas.','Buuu. Era lag.','Me he comido tus caramelos. Y tus DLC.'
-  ]:[
+  var frases=[
     '¿Mi mando? Lo tengo yo.','¿Has reservado GTA VI? Yo tres veces.','No es lag, te estoy trolleando.','He escondido tus pilas del mando.',
     'Guardar partida: NO. Total, ¿qué puede salir mal?','Pulsa otra vez. Te reto.','Si pierdes, échale la culpa al mando.'
   ];

@@ -52,7 +52,7 @@ details.exacto{margin-top:8px}details.exacto summary{font-size:16px;color:var(--
 .comps{margin-bottom:6px}.comps button{font-size:20px !important;padding:8px 18px !important}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
+hw = ""
 
 js = r"""
 <script>
@@ -166,7 +166,6 @@ function cargaRanking(){fetch(API+'?accion=ranking',{cache:'no-store'}).then(fun
 
 fetch('/api/partidos.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){datos=j;cargaYo();pintaPartidos()}).catch(function(){datos=null;cargaYo();pintaPartidos()});
 cargaRanking();
-if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}
 })();
 </script>"""
 
@@ -255,7 +254,7 @@ page = f'''<!doctype html>
   <div class="etq">&gt; PRONÓSTICOS · LALIGA_</div>
   <h1>La Porra Trollaca</h1>
   <p class="entradilla">Gana fichas en el arcade, pronostica la jornada y presume en el ranking. Sin dinero de por medio: aquí solo se juega el orgullo.</p>
-  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco-mando.png" data-hw="/img/trollaco-mando-hw.png" alt=""></div>
+  <div class="troll-cab" aria-hidden="true"><img class="px troll" src="/img/trollaco-mando.png" alt=""></div>
 </header>
 {body}
 {foot}

@@ -50,7 +50,7 @@ extra = r"""
 .barra-p{height:10px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:6px}.barra-p i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan))}
 </style>"""
 style2 = style.replace('</style>', extra)
-hw = "<script>(function(){var d=new Date(),m=d.getMonth(),n=d.getDate();if((m===9&&n>=15)||(m===10&&n===1&&d.getHours()<23))document.documentElement.className+=' halloween'})()</script>"
+hw = ""
 
 js = r"""
 <script>
@@ -109,8 +109,8 @@ $('f-admin').onsubmit=function(e){e.preventDefault();msg('m-admin','Comprobando.
     $('aviso-txt').innerHTML='🛠️ Cuenta recuperada. Código nuevo (por si acaso):';$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
   }).catch(function(){msg('m-admin','Error de conexión.')})};
 
-var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche Trolloween',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
-var CAPS=[['🧟','La noche Trolloween'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30']];
+var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche de los zombis',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
+var CAPS=[['🧟','La noche de los zombis'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30']];
 function n(x){return Number(x||0).toLocaleString('es-ES')}
 function pinta(j){
   $('sin-cuenta').hidden=!!j;$('con-cuenta').hidden=!j;$('stats').hidden=!j;
@@ -188,7 +188,6 @@ function carga(){
   post('perfil',yo).then(function(j){if(j.ok)pinta(j);else{guarda(null);pinta(null)}}).catch(function(){$('cifras').innerHTML='<p>No se han podido cargar tus datos.</p>'});
 }
 carga();
-if(document.documentElement.className.indexOf('halloween')>-1){document.querySelectorAll('img.troll[data-hw]').forEach(function(i){i.src=i.getAttribute('data-hw')})}
 })();
 </script>"""
 
@@ -230,7 +229,7 @@ body = """
       <button type="button" class="boton" id="cerrar-aviso">Ya lo he apuntado</button>
     </div>
     <div class="ficha-jug">
-      <img class="troll" src="/img/trollaco-mando.png" data-hw="/img/trollaco-mando-hw.png" alt="">
+      <img class="troll" src="/img/trollaco-mando.png" alt="">
       <div><div class="nom" id="yo-n"></div><div class="sub2"><span id="yo-alta"></span><span id="mi-codigo"></span></div></div>
       <div class="acc"><a class="boton" href="/arcade/">🕹️ JUGAR</a><a class="boton sec" href="/porra/">⚽ LA PORRA</a></div>
     </div>
