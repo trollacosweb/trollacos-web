@@ -55,6 +55,7 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - No manejar nunca sus contraseñas. Los secretos los mete él.
 - Publicar en sus redes solo con su OK explícito para cada publicación. Instagram y TikTok (ambos @trollacostv) van por **Metricool** (conector, marca 7708546, zona Europe/Madrid). Antes de programar, mirar `getScheduledPosts` para no duplicar. TikTok exige `tiktokData.title`. Lo que más alcance da: Reels/TikToks verticales (vídeos en `redes/reels/`, hechos con Playwright fotograma a fotograma + ffmpeg + música 8-bit propia en numpy); stories y fotos solo llegan a los seguidores.
 - Semana 44 (29 oct – 3 nov) ya programada en Metricool: 6 publicaciones + 6 stories.
+- Reel «Expediente Trollaco» (`redes/reels/expediente-trollaco.mp4`, 31 s, 17 casos + música 8-bit propia; scripts en `_fuentes/misterio-originales/reel.py` y `musica_misterio.py`): BORRADOR en Metricool para Instagram + TikTok, miércoles 4 nov 20:30, con etiqueta de IA. Solo se publica si Guillermo lo aprueba.
 - Guillermo quiere llevar todo Trollacos en un único chat.
 - Afiliado Amazon: etiqueta `trollacos-21`. No poner enlaces de afiliado en correos, y él no compra con su propio enlace.
 - Las fichas **no tienen valor real**: no se compran ni se canjean. Nada de premios ligados a la Porra (ley del juego). Si hay premios, que sean de habilidad en el arcade, con bases legales.
