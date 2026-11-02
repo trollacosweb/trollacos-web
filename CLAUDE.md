@@ -25,6 +25,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 | `/cuenta/` | Mi cuenta: estadísticas, insignias | `_fuentes/generadores/cuenta.py` |
 | `/misterio/` (+ `espana/`, `mundo/`) | Expediente Trollaco, mapas Leaflet | `_fuentes/generadores/misterio/generar.py` |
 | `/redes/` | Imágenes y textos para Instagram (no indexado) | `_fuentes/generadores/redes.py` |
+| `/tecnologia/` (+ artículos) | Tecnología con guasa (móviles, Alexa, gadgets; enfoque Navidad/Black Friday 27 nov), firma Danna, opinan Trollaco y Princesa Neón, productos con afiliado Amazon; bloque en portada entre `<!--TEC:INICIO-->` y `<!--TEC:FIN-->` | `_fuentes/generadores/tecnologia.py` + `tecnologia.json` |
 | `/privacidad/`, `/aviso-legal/` | Textos legales (titular, info@trollacos.com, afiliados, RGPD) | `_fuentes/generadores/legal.py` |
 
 Los generadores tienen rutas fijas: copiar `_fuentes/generadores/` a `/home/claude/trollaco/` y el repo en `/home/claude/trollacos-web/`.
@@ -65,6 +66,8 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - **Modo administrador del arcade**: `/arcade/?admin=CÓDIGO` abre todos los capítulos en ese dispositivo (localStorage `trollacoAdmin`), `?admin=off` lo quita. En el código solo está la huella SHA-256; el código se lo di a Guillermo en el chat (no apuntarlo en el repo).
 - **Halloween eliminado del todo** (2 nov, lo pidió Guillermo): sin script de fechas, sin calabazas, murciélagos, ofertas Trolloween ni frases de miedo. El cap. 1 del arcade es «La noche de los zombis» (tumbas y cuervos). No volver a meter decoración de Halloween.
 - **Propiedad intelectual**: el aviso legal dice que la marca, el diseño, los personajes (Trollaco, Danna, Princesa Neón, Míster Glitch), los juegos (Trollaco Run, La Porra, Expediente Trollaco), textos, música y código son de Guillermo, prohibida la copia sin permiso por escrito; pie «© 2012–2026 TROLLACOS · Todos los derechos reservados».
+- **La Princesa Neón también opina en la web** (pidió Guillermo el 2 nov), como el Trollaco: cajas «LA PRINCESA NEÓN OPINA» (`.nota.pri`, rosa) en Tecnología, bocadillo en la portada y en /tecnologia/. Retrato pixel `img/princesa.png` (corona, pelo rosa, top cian; nunca en bikini fuera del gran final del arcade). Habla con gracia, coquetea con la tecnología y lanza pullas a Glitch y al Trollaco sin destripar la historia del arcade.
+- Tecnología: mismas reglas que GTA (datos oficiales o dos medios fiables, rumores en «🕵️ RUMORES SIN CONFIRMAR», sin enlaces a otras webs, fuentes por su nombre, precios con fecha de consulta).
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 
 ## Pendiente (a 28 oct 2026)
