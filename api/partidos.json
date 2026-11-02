@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02T21:01:15Z",
+ "actualizado": "2026-11-02T21:28:43Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 11,
@@ -675,7 +675,7 @@
    "id": "2506274",
    "j": 11,
    "fecha": "2026-11-02T20:00:00Z",
-   "estado": "PAUSED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Deportivo de A Coruña",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
@@ -686,7 +686,7 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
     "tla": "OSA"
    },
-   "gl": 0,
+   "gl": 1,
    "gv": 1,
    "cuotas": {
     "1": 2.3,
