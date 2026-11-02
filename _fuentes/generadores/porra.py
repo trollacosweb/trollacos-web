@@ -187,6 +187,7 @@ body = """
         <p>Pon tu nombre y tu código secreto para entrar desde este dispositivo.</p>
         <div class="campo"><input id="e-nombre" maxlength="5" placeholder="NOMBRE" aria-label="Nombre"><input id="e-codigo" maxlength="8" placeholder="CÓDIGO" aria-label="Código secreto" autocomplete="off"><button class="boton" type="submit">ENTRAR</button></div>
         <p class="msg" id="m-entrar"></p>
+        <p style="font-size:15px;margin:8px 0 0"><a href="/cuenta/">📧 ¿Tu cuenta tiene email? Entra con tu email, sin código ›</a></p>
       </form>
     </div>
     <div id="con-cuenta" hidden>

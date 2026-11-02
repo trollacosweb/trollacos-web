@@ -81,7 +81,7 @@ $('quitar-email').onclick=function(e){e.preventDefault();if(!confirm('¿Quitar t
     if(j.tipo==='entrar'){guarda({nombre:j.nombre,codigo:j.codigo});try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}alertaTop('¡Hola, '+j.nombre+'! Ya has entrado en tu cuenta.',true);carga()}
     else{alertaTop(j.mensaje,true);carga()}
   })})();
-function alertaTop(t,ok){var m=$(yo?'m-aviso':'m-entrar');if(!yo){document.querySelector('.pestanas button[data-t=entrar]').click()}msg(yo?'m-aviso':'m-entrar',t,ok);if(!yo&&ok)return;}
+function alertaTop(t,ok){if(!yo){document.querySelector('.pestanas button[data-t=email]').click()}msg(yo?'m-aviso':'m-email',t,ok);if(!yo&&ok)return;}
 function limpia(inp){inp.addEventListener('input',function(){var v=inp.value.replace(/[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,5);if(v!==inp.value)inp.value=v})}
 limpia($('c-nombre'));limpia($('e-nombre'));
 $('f-crear').onsubmit=function(e){e.preventDefault();msg('m-crear','Creando...',true);
@@ -89,8 +89,9 @@ $('f-crear').onsubmit=function(e){e.preventDefault();msg('m-crear','Creando...',
   if(em&&!$('c-edad').checked){msg('m-crear','Para usar email marca que tienes 14 años o más (o deja el email en blanco).');return}
   post('registrar',{nombre:$('c-nombre').value,email:em,edad14:$('c-edad').checked,boletin:$('c-bol').checked}).then(function(j){
     if(!j.ok){msg('m-crear',j.mensaje||'No se ha podido crear.');return}
-    if(j.email_enviado)setTimeout(function(){msg('m-aviso','📧 Te hemos mandado tu código por email. Pulsa el enlace del correo para confirmarlo (mira también en spam).',true)},300);
-    guarda({nombre:j.nombre,codigo:j.codigo});$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;
+    guarda({nombre:j.nombre,codigo:j.codigo});
+    if(j.email_enviado){emailPend=true;$('aviso-codigo').hidden=true;setTimeout(function(){msg('m-aviso','✅ ¡Cuenta creada! Ya estás dentro. Te hemos mandado un correo con tus datos: pulsa el botón del correo para confirmar tu email (mira también en spam). No tienes que apuntar nada: para entrar desde otro sitio, usa tu email.',true)},300)}
+    else{$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false}
     try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();
   }).catch(function(){msg('m-crear','Error de conexión.')})};
 $('f-entrar').onsubmit=function(e){e.preventDefault();msg('m-entrar','Entrando...',true);
@@ -99,12 +100,13 @@ $('f-entrar').onsubmit=function(e){e.preventDefault();msg('m-entrar','Entrando..
 $('salir').onclick=function(e){e.preventDefault();guarda(null);pinta(null)};
 $('ver-codigo').onclick=function(e){e.preventDefault();var s=$('mi-codigo');s.textContent=s.textContent?'':' · Código: '+yo.codigo};
 $('cerrar-aviso').onclick=function(){$('aviso-codigo').hidden=true};
+$('a-codigo').onclick=function(e){e.preventDefault();$('f-email').hidden=true;$('f-entrar').hidden=false};
 $('soy-admin').onclick=function(e){e.preventDefault();$('f-admin').hidden=!$('f-admin').hidden};
 $('f-admin').onsubmit=function(e){e.preventDefault();msg('m-admin','Comprobando...',true);
   post('admin_recuperar',{clave:$('a-clave').value,cuenta:$('a-cuenta').value}).then(function(j){
     if(!j.ok){msg('m-admin',j.mensaje||'Error');return}
     guarda({nombre:j.nombre,codigo:j.codigo});$('a-clave').value='';$('f-admin').hidden=true;
-    $('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
+    $('aviso-txt').innerHTML='🛠️ Cuenta recuperada. Código nuevo (por si acaso):';$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
   }).catch(function(){msg('m-admin','Error de conexión.')})};
 
 var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche Trolloween',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
@@ -116,7 +118,7 @@ function pinta(j){
   var caps=Math.max(j.capitulos||0,parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0);
   try{if(caps>(parseInt(localStorage.getItem('trollacoHistoria')||'0',10)||0))localStorage.setItem('trollacoHistoria',String(caps))}catch(e){}
   $('yo-n').textContent=j.nombre;
-  $('mail-sin').hidden=!!j.email;$('mail-con').hidden=!j.email;$('f-mail').hidden=false;
+  $('mail-sin').hidden=!!j.email||emailPend;$('mail-con').hidden=!j.email;$('f-mail').hidden=false;
   if(j.email){$('mi-email').textContent=j.email;$('bol-si').checked=!!j.boletin}
   if(j.admin){try{localStorage.setItem('trollacoAdmin','1')}catch(e){}}
   $('panel-admin').hidden=!j.panel;if(j.panel&&!bolCargado){bolCargado=true;cargaBoletin(false)}
@@ -162,7 +164,7 @@ function pinta(j){
     return '<tr><td>'+(String(a.jornada)[0]==='C'?'⭐ Champions J'+String(a.jornada).slice(1):'J'+a.jornada)+'</td><td>'+esc(a.tipo==='1x2'?a.seleccion:'Exacto '+a.seleccion)+' (x'+Number(a.cuota).toFixed(2)+')</td><td>'+a.cantidad+'</td><td>'+a.estado+(a.estado==='ganada'?' +'+a.premio:'')+'</td></tr>'}).join('')+'</table>'
     :'<p style="color:var(--muted)">Aún no has hecho pronósticos. <a href="/porra/">Ir a La Porra ›</a></p>';
 }
-var bolCargado=false;
+var bolCargado=false,emailPend=false;
 function cargaBoletin(ver){post('boletin_vista',{nombre:yo.nombre,codigo:yo.codigo,asunto:$('b-asunto').value,intro:$('b-intro').value}).then(function(j){
   if(!j.ok){msg('m-bol',j.mensaje||'Error');return}
   if(!$('b-asunto').value)$('b-asunto').value=j.asunto;if(!$('b-intro').value)$('b-intro').value=j.intro;
@@ -195,7 +197,7 @@ body = """
   <section class="panel" id="sin-cuenta">
     <h2>Entra o crea tu cuenta</h2>
     <p>Una sola cuenta para todo: el arcade, el modo historia y La Porra. Solo un nombre de 2 a 5 letras y un código secreto, sin contraseñas. Si quieres, luego añades tu email para no perderla nunca.</p>
-    <div class="pestanas"><button type="button" class="on" data-t="crear">CREAR CUENTA</button><button type="button" data-t="entrar">YA TENGO CUENTA</button><button type="button" data-t="email">📧 CON MI EMAIL</button></div>
+    <div class="pestanas"><button type="button" class="on" data-t="crear">CREAR CUENTA</button><button type="button" data-t="email">📧 ENTRAR</button></div>
     <form id="f-crear">
       <div class="campo"><input id="c-nombre" maxlength="5" placeholder="AAAAA" autocomplete="nickname" aria-label="Nombre de jugador"></div>
       <div class="mail" style="margin-top:12px">
@@ -203,25 +205,27 @@ body = """
         <input id="c-email" type="email" maxlength="120" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email">
         <label><input type="checkbox" id="c-edad">Tengo 14 años o más.</label>
         <label><input type="checkbox" id="c-bol">Quiero recibir el boletín de Trollacos: noticias de GTA VI y videojuegos, novedades de la web y ofertas que nos parezcan buenas. Me puedo borrar cuando quiera.</label>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:0">¿Menos de 14 años? Deja el email en blanco y apunta bien tu código. Más info en la <a href="/privacidad/">política de privacidad</a>.</p>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:0">¿Menos de 14 años? Deja el email en blanco: te daremos un código para entrar desde otros dispositivos. Más info en la <a href="/privacidad/">política de privacidad</a>.</p>
       </div>
       <button class="boton" type="submit" style="margin-top:12px">CREAR CUENTA</button>
       <p class="msg" id="m-crear"></p>
     </form>
     <form id="f-entrar" hidden>
+      <p style="font-size:15px;margin:0 0 8px;color:var(--muted)">Para cuentas antiguas sin email. Cuando entres, añade tu email y no volverás a necesitar el código.</p>
       <div class="campo"><input id="e-nombre" maxlength="5" placeholder="NOMBRE" aria-label="Nombre"><input id="e-codigo" maxlength="8" placeholder="CÓDIGO" aria-label="Código secreto" autocomplete="off"><button class="boton" type="submit">ENTRAR</button></div>
       <p class="msg" id="m-entrar"></p>
     </form>
     <form id="f-email" hidden>
-      <p style="font-size:16px;margin:0 0 8px">¿Perdiste tu código o entras desde otro móvil? Si tu cuenta tiene email, te mandamos un enlace para entrar.</p>
+      <p style="font-size:16px;margin:0 0 8px">Pon el email de tu cuenta y te mandamos un enlace para entrar. Sin contraseñas.</p>
       <div class="campo"><input id="x-email" type="email" maxlength="120" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email" style="text-transform:none;letter-spacing:0"><button class="boton" type="submit">ENVIAR ENLACE</button></div>
       <p class="msg" id="m-email"></p>
+      <p style="font-size:14px;margin:10px 0 0"><a href="#" id="a-codigo" style="color:var(--muted)">¿Tu cuenta no tiene email? Entra con tu nombre y tu código ›</a></p>
     </form>
   </section>
 
   <section id="con-cuenta" hidden>
     <div class="codigo" id="aviso-codigo" hidden>
-      <p>🔑 Este es tu <strong>código secreto</strong>. Apúntalo: lo necesitas para entrar desde otro móvil u ordenador. Si lo pierdes, no hay forma de recuperarlo.</p>
+      <p id="aviso-txt">🔑 Este es tu <strong>código secreto</strong>. Guárdalo: sin email, es la única forma de entrar desde otro móvil u ordenador. Si añades tu email abajo, ya no te hará falta.</p>
       <b id="nuevo-codigo"></b>
       <button type="button" class="boton" id="cerrar-aviso">Ya lo he apuntado</button>
     </div>
@@ -230,7 +234,7 @@ body = """
       <div><div class="nom" id="yo-n"></div><div class="sub2"><span id="yo-alta"></span><span id="mi-codigo"></span></div></div>
       <div class="acc"><a class="boton" href="/arcade/">🕹️ JUGAR</a><a class="boton sec" href="/porra/">⚽ LA PORRA</a></div>
     </div>
-    <p style="margin-top:8px;font-size:16px"><a href="#" id="ver-codigo">Ver mi código</a> · <a href="#" id="salir">Cerrar sesión en este dispositivo</a></p>
+    <p style="margin-top:8px;font-size:16px"> <a href="#" id="ver-codigo" style="color:var(--muted)">Ver mi código</a> · <a href="#" id="salir">Cerrar sesión en este dispositivo</a></p>
     <p class="msg" id="m-aviso" style="margin-top:10px"></p>
     <div class="mail" id="mail-sin" hidden>
       <h3>📧 No pierdas tu cuenta</h3>
