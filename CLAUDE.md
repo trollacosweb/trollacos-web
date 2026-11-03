@@ -73,6 +73,8 @@ Capturas y renders con Playwright: `chromium.launch({executablePath:'/opt/pw-bro
 - Antes de publicar algo nuevo: probarlo en local (móvil 390 px y PC) y comprobar el despliegue.
 
 ## Pendiente (a 28 oct 2026)
+- **Sección de Cine** (lo pidió Guillermo el 3 nov: «tenla en mente»): por definir con él.
+- **Danna nueva** (3 nov): Guillermo ha creado una versión más madura (moño, camiseta blanca de tirantes, en un setup gamer; una foto con la camiseta del logo Trollacos y guiño con la lengua fuera). Sustituye a la anterior, que le parecía demasiado infantil. El setup no le convence: falta rehacerlo sin figuras ni consolas de marcas reales (Halo, Pac-Man, Nintendo…) y con estética Trollacos. Cuando lo confirme: cambiar `img/danna.jpg` y la foto de la tarjeta de autora.
 - Merch: /merch/ hecha (2 nov). Falta la story de lanzamiento cuando Guillermo tenga productos publicados en la tienda.
 - 19 nov 2026, sale GTA VI: ampliar la guía (misiones, consejos, música completa).
 - Imágenes nuevas del tráiler de lanzamiento de GTA VI (arte "Lock and Load", hidroavión) si Guillermo las pasa.
