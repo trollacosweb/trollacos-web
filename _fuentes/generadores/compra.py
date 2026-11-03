@@ -42,7 +42,7 @@ def truco(t, pose='trollaco-mando'):
 
 faq = [
  ("¿Se puede jugar a GTA 6 en PS4 o Xbox One?", "No. GTA VI solo sale en PS5 y Xbox Series X|S."),
- ("¿Cuánto ocupa GTA 6?", "Unos 210 GB en PS5, según la ficha de la PlayStation Store que publicó PlayStation Game Size el 27 de octubre. Rockstar no lo ha anunciado oficialmente, pero ese dato suele ser fiable. Deja al menos 250 GB libres para ir sobrado con las actualizaciones."),
+ ("¿Cuánto ocupa GTA 6?", "Hasta 212 GB de espacio libre, según la consola: lo confirmó Rockstar el 3 de noviembre. Deja al menos 250 GB libres para ir sobrado con las actualizaciones."),
  ("¿Merece la pena la PS5 Pro para GTA 6?", "Rockstar ha dicho que GTA VI apunta a 30 fps en todas las consolas, también en PS5 Pro. La Pro puede ofrecer mejor calidad de imagen, pero no más fluidez. Si ya tienes PS5, no necesitas cambiarla."),
  ("¿Necesito una tele de 120 Hz para GTA 6?", "No. Si el juego va a 30 fps, los 120 Hz no se notan en GTA VI. Es más importante que sea 4K con HDR y que tenga modo juego."),
  ("¿La edición física de GTA 6 trae disco?", "No. La caja trae un código de descarga, así que necesitarás espacio libre igualmente."),
@@ -93,7 +93,7 @@ body = f'''
 {truco('Si ya tienes una PS5 normal, no te compres la Pro solo por GTA VI. Gástatelo mejor en un disco de más capacidad o en una buena tele.')}
 
   <h2 id="espacio">Espacio para el juego</h2>
-  <p>Este es el apartado que más gente va a necesitar. La versión en caja <strong>no trae disco, trae un código de descarga</strong>, y GTA VI es enorme: <strong>unos 210 GB en PS5</strong>, según la ficha de la PlayStation Store que destapó PlayStation Game Size el 27 de octubre (Rockstar no lo ha anunciado, pero ese dato suele acertar). Es más o menos <strong>un tercio del espacio útil de una PS5</strong>. La precarga empieza el <strong>12 de noviembre</strong>, así que tienes hasta entonces para hacer hueco o ampliar.</p>
+  <p>Este es el apartado que más gente va a necesitar. La versión en caja <strong>no trae disco, trae un código de descarga</strong>, y GTA VI es enorme: <strong>hasta 212 GB</strong>, según ha confirmado Rockstar. Es más o menos <strong>un tercio del espacio útil de una PS5</strong>. La precarga empieza el <strong>12 de noviembre</strong>, así que tienes hasta entonces para hacer hueco o ampliar.</p>
   <p><strong>Para PS5</strong>, la solución es un <strong>SSD M.2 interno</strong> en la ranura de ampliación. Lo que tiene que cumplir, según Sony:</p>
   <ul class="check">
     <li>Tipo <strong>M.2 NVMe PCIe Gen4</strong></li>
@@ -107,7 +107,7 @@ body = f'''
  ('A LO GRANDE', 'SSD de 4 TB', 'Para tener toda la biblioteca instalada sin borrar nada nunca.', 'SSD 4TB NVMe PCIe 4.0 disipador PS5', False)])}
   <p><strong>Para Xbox Series</strong>, el equivalente es la <strong>tarjeta de expansión de almacenamiento</strong>, que se conecta por detrás y funciona igual que el disco interno. Un disco USB también sirve para guardar juegos, pero para jugar a los de Series X|S hace falta la tarjeta.</p>
   <p><a class="amz" href="{amz('tarjeta expansión almacenamiento Xbox Series')}" target="_blank" rel="sponsored nofollow noopener">💾 Ver tarjetas de expansión para Xbox</a></p>
-{truco('Instalar un SSD en la PS5 son diez minutos y un destornillador. Hay vídeos oficiales de PlayStation que lo explican paso a paso. Hazlo antes del 12 de noviembre, que es cuando empieza la precarga.', 'trollaco')}
+{truco('Instalar un SSD en la PS5 son diez minutos y un destornillador. Hay vídeos oficiales de PlayStation que lo explican paso a paso. Hazlo antes del 10 de noviembre, que es cuando empieza la precarga.', 'trollaco')}
 
   <h2 id="tele">La tele o el monitor</h2>
   <p>Aquí también puedes ahorrar si sabes qué mirar. Como GTA VI irá a 30 fps, <strong>los 120 Hz y el HDMI 2.1 no se van a notar en este juego</strong> (sí en otros). Lo que de verdad cambia la experiencia es esto:</p>
