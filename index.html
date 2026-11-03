@@ -353,6 +353,31 @@
 .mis-azar:hover{background:rgba(124,255,178,.12)}
 @media(max-width:760px){.mis-caso{grid-template-columns:1fr}.mis-img img{min-height:0;aspect-ratio:600/340}.mis-regs{grid-template-columns:1fr}.mi-reg{flex-direction:row}.mi-reg img{width:110px;height:auto;min-height:100%}.mis-tr{width:56px}.mis-txt b{font-size:23px}}
 </style><!--MISCSS:FIN-->
+<!--RETOSCSS:INICIO--><style>
+.retos{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1100px;margin:0 auto;padding-top:26px}
+.reto{display:flex;flex-direction:column;text-decoration:none;color:#fff;border:3px solid var(--pink);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,rgba(255,43,214,.18),rgba(7,2,26,.9) 60%);box-shadow:0 0 26px rgba(255,43,214,.35);transition:transform .15s,box-shadow .15s}
+.reto:hover{transform:translateY(-3px);box-shadow:0 0 40px rgba(255,43,214,.6)}
+.r-por{border-color:var(--yellow);background:linear-gradient(160deg,rgba(255,210,63,.16),rgba(7,2,26,.9) 60%);box-shadow:0 0 26px rgba(255,210,63,.3)}
+.r-por:hover{box-shadow:0 0 40px rgba(255,210,63,.55)}
+.r-esc{position:relative;display:flex;align-items:flex-end;gap:12px;padding:20px 18px 6px;min-height:140px}
+.r-tr{width:58px;height:auto;image-rendering:pixelated;flex:none;animation:rbote 1.6s ease-in-out infinite}
+.r-pri{width:62px;image-rendering:pixelated;flex:none;margin-left:auto;animation:rbote 1.6s .8s ease-in-out infinite}
+.r-balon{font-size:44px;margin-left:auto;animation:rgira 2.4s linear infinite}
+.r-bo{position:relative;align-self:flex-start;padding:12px 14px;background:#fff;color:#160828;border-radius:14px 14px 14px 2px;font-weight:700;font-size:18px;line-height:1.3;box-shadow:4px 4px 0 var(--pink)}
+.r-por .r-bo{box-shadow:4px 4px 0 var(--yellow)}
+.r-bo b{color:#d4009f}.r-por .r-bo b{color:#b07a00}
+.r-txt{display:flex;flex-direction:column;gap:6px;padding:8px 20px 20px}
+.r-k{font-family:'VT323',monospace;font-size:20px;color:var(--cyan)}
+.r-txt b{font-family:'Righteous',sans-serif;font-weight:400;font-size:32px;line-height:1;color:#fff;text-shadow:0 0 12px rgba(255,43,214,.7)}
+.r-por .r-txt b{text-shadow:0 0 12px rgba(255,210,63,.7)}
+.r-txt em{font-style:normal;font-size:16px;color:#d9d3f5}
+.r-dato{font-family:'VT323',monospace;font-size:20px;color:var(--yellow)}
+.r-btn{align-self:flex-start;margin-top:6px;padding:11px 20px;border-radius:12px;background:linear-gradient(90deg,#ff2bd6,#7a2bff);font-weight:700;font-size:17px;box-shadow:0 0 16px rgba(255,43,214,.5)}
+.r-por .r-btn{background:linear-gradient(90deg,#ffd23f,#ff8a00);color:#160828;box-shadow:0 0 16px rgba(255,210,63,.5)}
+@keyframes rbote{50%{transform:translateY(-7px)}}@keyframes rgira{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.r-tr,.r-pri,.r-balon{animation:none}}
+@media(max-width:760px){.retos{grid-template-columns:1fr}.r-esc{min-height:0}.r-txt b{font-size:28px}.r-bo{font-size:17px}}
+</style><!--RETOSCSS:FIN-->
 </head>
 <body>
 <div class="scan"></div>
@@ -368,23 +393,57 @@
 
   <div class="cta">
     <a class="btn" href="/gta-6/">▶ GUÍA GTA VI</a>
+    <a class="btn alt" href="/arcade/" style="border-color:#ff2bd6;color:#fff;background:rgba(255,43,214,.25);box-shadow:0 0 14px rgba(255,43,214,.6)">🕹️ JUEGA: TROLLACO RUN</a>
+    <a class="btn alt" href="/porra/" style="border-color:#ffd23f;color:#ffd23f;background:rgba(255,210,63,.12);box-shadow:0 0 14px rgba(255,210,63,.5)">⚽ LA PORRA</a>
     <a class="btn alt" href="#misterio" style="border-color:#7cffb2;color:#7cffb2;box-shadow:0 0 12px rgba(124,255,178,.45)">👽 EXPEDIENTE TROLLACO</a>
-    <a class="btn alt" href="/merch/" style="border-color:#ff2bd6;color:#ff2bd6;box-shadow:0 0 12px rgba(255,43,214,.45)">👕 MERCH</a>
+    <a class="btn alt" href="/merch/" style="border-color:#ff2bd6;color:#fff;background:rgba(7,2,26,.75);box-shadow:0 0 12px rgba(255,43,214,.45)">👕 MERCH</a>
     <a class="btn alt" href="#tienda">TIENDA</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#tecnologia">TECNOLOGÍA</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
     <a class="btn alt" href="#directo">DIRECTO</a>
-    <a class="btn alt" href="/arcade/">🕹️ ARCADE</a>
-    <a class="btn alt" href="/porra/">⚽ LA PORRA</a>
     <a class="btn alt" href="/cuenta/">👤 MI CUENTA</a>
   </div>
 
   <button class="troll-hero" id="trollaco" type="button" aria-label="El Trollaco: pulsa para que diga otra cosa">
-    <span class="bocadillo" id="troll-dice">¿Mi mando? Lo tengo yo.</span>
+    <span class="bocadillo" id="troll-dice">¿Te atreves a salvar a la Princesa Neón? Abajo te espero.</span>
     <img class="px troll" src="img/trollaco.png" alt="El Trollaco, la mascota de Trollacos" width="34" height="56">
   </button>
 </header>
+
+<!--RETOS:INICIO-->
+<section class="block retos" id="retos">
+  <a class="reto r-arc" href="/arcade/">
+    <div class="r-esc">
+      <img class="px r-tr" src="/img/trollaco.png" alt="El Trollaco" width="34" height="56">
+      <span class="r-bo">¿Te atreves a salvar a la Princesa Neón? <b>¡Pincha aquí!</b></span>
+      <img class="px r-pri" src="/img/princesa.png" alt="La Princesa Neón">
+    </div>
+    <div class="r-txt"><span class="r-k">&gt; ARCADE · MODO HISTORIA_</span><b>TROLLACO RUN</b>
+      <em>Míster Glitch se la ha llevado. 5 capítulos, zombis, el Bar La Verja y la M-30. Gratis y en el navegador.</em>
+      <span class="r-dato" id="r-rec">🏆 Récord a batir: …</span>
+      <span class="r-btn">▶ JUGAR AHORA</span></div>
+  </a>
+  <a class="reto r-por" href="/porra/">
+    <div class="r-esc">
+      <img class="px r-tr" src="/img/trollaco-mando.png" alt="El Trollaco con un mando" width="34" height="56">
+      <span class="r-bo">¿Te crees el que más sabe de fútbol? <b>Demuéstralo.</b></span>
+      <span class="r-balon" aria-hidden="true">⚽</span>
+    </div>
+    <div class="r-txt"><span class="r-k">&gt; LALIGA + CHAMPIONS_</span><b>LA PORRA TROLLACA</b>
+      <em>Pronostica la jornada con las fichas del arcade y sube al ranking. Sin dinero real: solo por el pique.</em>
+      <span class="r-dato" id="r-lider">👑 Líder: …</span>
+      <span class="r-btn">▶ HACER MI PORRA</span></div>
+  </a>
+</section>
+<script>
+(function(){
+  function j(u,f){fetch(u).then(function(r){return r.json()}).then(f).catch(function(){})}
+  j('/api/marcadores.php?accion=lista&modo=run',function(d){var t=d&&d.top&&d.top[0];if(t)document.getElementById('r-rec').textContent='🏆 Récord a batir: '+t.nombre+' · '+t.puntos.toLocaleString('es-ES')+' puntos';else document.getElementById('r-rec').textContent='🏆 ¿Serás el primero del ranking?';});
+  j('/api/porra.php?accion=ranking',function(d){var t=d&&d.top&&d.top[0];if(t)document.getElementById('r-lider').textContent='👑 Líder: '+t.nombre+' con '+t.fichas.toLocaleString('es-ES')+' fichas'+(d.jugadores?' · '+d.jugadores+' jugadores':'');else document.getElementById('r-lider').textContent='👑 El trono está libre. ¿Te lo quedas?';});
+})();
+</script>
+<!--RETOS:FIN-->
 
 <section class="block gta" id="gta">
   <div class="gta-box">
@@ -572,18 +631,7 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
 <!--TEC:FIN-->
 </section>
 
-<section class="block" id="arcade">
-  <a class="arcade-banner" href="/arcade/">
-    <img class="px troll" src="/img/trollaco.png" alt="" width="34" height="56">
-    <span class="ab-txt"><span class="ab-k">&gt; NUEVO · ARCADE_</span><b>TROLLACO RUN</b><span class="ab-s">Salta el lag, esquiva los drones y coge fichas. ¿Cuánto aguantas?</span></span>
-    <span class="ab-btn">▶ JUGAR</span>
-  </a>
-  <a class="arcade-banner porra-banner" href="/porra/" style="margin-top:16px;border-color:var(--yellow)">
-    <img class="px troll" src="/img/trollaco-mando.png" alt="" width="34" height="56">
-    <span class="ab-txt"><span class="ab-k">&gt; NUEVO · LALIGA_</span><b>LA PORRA TROLLACA</b><span class="ab-s">Usa las fichas del arcade para pronosticar la jornada. Sin dinero real: solo por el pique.</span></span>
-    <span class="ab-btn">▶ PRONOSTICAR</span>
-  </a>
-</section>
+
 
 
 <section class="block news-wrap" id="noticias">
@@ -676,7 +724,7 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
 <script>
 (function(){
   var frases=[
-    '¿Mi mando? Lo tengo yo.','¿Has reservado GTA VI? Yo tres veces.','No es lag, te estoy trolleando.','He escondido tus pilas del mando.',
+    '¿Te atreves a salvar a la Princesa Neón? Abajo te espero.','¿Mi mando? Lo tengo yo.','¿Sabes más de fútbol que yo? Lo dudo. Demuéstralo en La Porra.','¿Has reservado GTA VI? Yo tres veces.','No es lag, te estoy trolleando.','He escondido tus pilas del mando.',
     'Guardar partida: NO. Total, ¿qué puede salir mal?','Pulsa otra vez. Te reto.','Si pierdes, échale la culpa al mando.'
   ];
   var b=document.getElementById('trollaco'),t=document.getElementById('troll-dice'),i=0;

@@ -17,6 +17,7 @@ Hablar con Guillermo en **español de España**, con humor y trato directo y hon
 | Ruta | Qué es | Se genera con |
 |---|---|---|
 | `/` | Portada (noticias propias firmadas por Danna; «Tienda» con consolas/accesorios + videojuegos de Amazon; «Videojuegos» = guías y noticias propias de videojuegos, de momento GTA VI; banners) | a mano + `noticias_gta.py` (bloques GTA y NOTICIAS + rss.xml) |
+| (portada) | **Retos** (3 nov, pidió más visibilidad): bloque `<!--RETOS:INICIO-->` justo debajo de la cabecera, antes de GTA: dos tarjetas grandes con el Trollaco hablando («¿Te atreves a salvar a la Princesa Neón? ¡Pincha aquí!» → /arcade/ y «¿Te crees el que más sabe de fútbol? Demuéstralo.» → /porra/), con el récord del arcade y el líder de La Porra en directo desde la API; botones «🕹️ JUEGA: TROLLACO RUN» y «⚽ LA PORRA» justo después de GUÍA GTA VI; el bocadillo del Trollaco de la cabecera invita a los retos. Los banners viejos de abajo se quitaron | a mano |
 | `/gta-6/` | Guía GTA VI (mapa, novedades, tráilers, FAQ) | a mano |
 | `/gta-6/musica/` | Música con enlaces a Spotify | `_fuentes/generadores/musica.py` |
 | `/gta-6/que-comprar/` | Guía de compra (afiliados Amazon) | `_fuentes/generadores/compra.py` |
