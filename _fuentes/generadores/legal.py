@@ -96,7 +96,7 @@ aviso = f'''
 <p>Todos los contenidos de trollacos.com son propiedad de <b>{TITULAR}</b> (Trollacos) o se usan con permiso, y están protegidos por la Ley de Propiedad Intelectual (Real Decreto Legislativo 1/1996) y por el resto de normas españolas e internacionales. Esto incluye, entre otras cosas:</p>
 <ul>
 <li>La marca y el nombre <b>Trollacos</b>, el logotipo, el estilo y el diseño de la web.</li>
-<li>Los personajes: <b>el Trollaco</b>, <b>Danna</b>, la Princesa Neón, Míster Glitch y todos los demás.</li>
+<li>Los personajes: <b>el Trollaco</b>, <b>Danna</b>, el <b>Dr. Aris V. Torres</b>, la Princesa Neón, Míster Glitch y todos los demás.</li>
 <li>Los juegos: <b>Trollaco Run</b> (el modo «Supera el récord» y el modo historia, con sus capítulos, guiones, diálogos, gráficos, música y efectos), <b>La Porra Trollaca</b> y su sistema de fichas, y el <b>Expediente Trollaco</b>.</li>
 <li>Los textos, las noticias, la guía de GTA VI, las ilustraciones, los vídeos, la música y el código fuente de la web.</li>
 </ul>
@@ -104,7 +104,7 @@ aviso = f'''
 <p>Si vemos copias de nuestros contenidos, juegos o diseños, nos reservamos el derecho a pedir su retirada y a emprender las acciones legales que correspondan.</p>
 
 <h2>Marcas de terceros</h2>
-<p>Grand Theft Auto, GTA VI y todo lo relacionado son marcas de Rockstar Games y Take-Two Interactive. Trollacos no tiene ninguna relación con ellas: es una web de fans que cuenta las noticias con sus propias palabras. Los escudos y nombres de los equipos de fútbol son de sus clubes y competiciones. Danna, nuestra reportera, es un personaje digital creado por Trollacos.</p>
+<p>Grand Theft Auto, GTA VI y todo lo relacionado son marcas de Rockstar Games y Take-Two Interactive. Trollacos no tiene ninguna relación con ellas: es una web de fans que cuenta las noticias con sus propias palabras. Los escudos y nombres de los equipos de fútbol son de sus clubes y competiciones. Danna, nuestra reportera, y el Dr. Aris V. Torres, que firma el Expediente Trollaco, son personajes digitales creados por Trollacos.</p>
 
 <h2>Responsabilidad</h2>
 <p>Intentamos que todo lo que publicamos sea correcto y citamos siempre las fuentes por su nombre, pero los datos de juegos que aún no han salido pueden cambiar. Los nombres de jugador los eligen los usuarios: si ves alguno ofensivo, escríbenos y lo quitamos.</p>

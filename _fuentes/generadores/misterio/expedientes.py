@@ -36,6 +36,16 @@ extra = '''
 .navexp a.sig{text-align:right}
 .migas{font-family:'VT323',monospace;font-size:19px;margin:18px 0 0}.migas a{color:var(--verde)}
 @media(max-width:560px){.navexp{grid-template-columns:1fr}.navexp a.sig{text-align:left}}
+.firma-a{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
+.firma-a img{width:58px;height:58px;border-radius:50%;border:3px solid var(--verde);box-shadow:0 0 12px rgba(124,255,178,.5);object-fit:cover}
+.firma-a b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:20px;color:#fff}
+.firma-a span{font-size:15px;color:var(--muted)}.firma-a a{color:var(--verde)}
+.autor-a{display:flex;gap:18px;align-items:center;margin:28px 0;padding:18px;border:3px solid var(--verde);border-radius:16px;background:linear-gradient(135deg,rgba(124,255,178,.14),rgba(7,2,26,.6))}
+.autor-a img{width:100px;height:100px;border-radius:50%;border:4px solid var(--verde);flex:none;object-fit:cover}
+.autor-a small{font-family:'VT323',monospace;font-size:19px;color:var(--verde)}
+.autor-a b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:26px;color:#fff}
+.autor-a p{margin:4px 0 8px;font-size:16px;color:#cfe9db}.autor-a a{color:var(--verde);font-weight:700}
+@media(max-width:520px){.autor-a{flex-direction:column;text-align:center}}
 </style>'''
 
 def ilus(img):
@@ -97,7 +107,7 @@ for i, (c, reg, ureg) in enumerate(todos):
   <div class="sello">EXPEDIENTE {i + 1:02d}/{len(todos)}</div>
   <h1>{c['titulo']}</h1>
   <p class="subt">{c['sub']}</p>
-  <p class="lect">⏱️ Lectura: {mins} min</p>
+  <div class="firma-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="58" height="58"><div><b>Por el Dr. Aris V. Torres</b><span>Investigador de los misterios · <a href="/misterio/aris-v-torres/">¿Quién es?</a> · ⏱️ {mins} min</span></div></div>
   <figure class="ilus"><img src="{ilus(c['img'])}" alt="Ilustración de {html.escape(limpio(c['titulo']))}" width="600" height="340"></figure>
   <ul class="ficha">
     <li><b>📍 Dónde</b>{c['lugar']}</li>
@@ -117,7 +127,8 @@ for i, (c, reg, ureg) in enumerate(todos):
   <h2>📍 Cómo visitarlo</h2>
   <div class="visita">{x['visitar']}</div>
   <p class="comp"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={url}" target="_blank" rel="noopener">Telegram</a></p>
-  <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
+  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios del Expediente Trollaco. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos; el Dr. Aris V. Torres es un personaje de ficción de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
 </article>
 <nav class="navexp" aria-label="Más expedientes">
   <a href="/misterio/{ant['id']}/"><small>‹ EXPEDIENTE ANTERIOR</small>{ant['titulo']}</a>
@@ -151,3 +162,48 @@ nuevos = ''.join(f'  <url><loc>https://trollacos.com/misterio/{c["id"]}/</loc><c
 if nuevos:
     open(f'{RAIZ}/sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', nuevos + '</urlset>'))
 print(f'expedientes: {len(todos)} páginas')
+
+# ---------- ficha del Dr. Aris V. Torres ----------
+bio = f'''<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Aris V. Torres, investigador de los misterios | Expediente Trollaco</title>
+<meta name="description" content="Quién es el Dr. Aris V. Torres, el personaje que firma los expedientes de misterio de Trollacos: arqueología, ovnis y enigmas paranormales.">
+<link rel="canonical" href="https://trollacos.com/misterio/aris-v-torres/">
+<meta property="og:image" content="https://trollacos.com/misterio/img/aris-despacho.webp">
+<link rel="icon" href="/icono.png">
+{style.replace('</style>', extra)}
+</head><body>
+<nav class="top"><a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a><a href="/misterio/">‹ EXPEDIENTE TROLLACO</a></nav>
+<main class="exp">
+<article class="caso">
+  <div class="sello">FICHA DEL INVESTIGADOR</div>
+  <h1>Dr. Aris V. Torres</h1>
+  <p class="subt">Investigación y fronteras del misterio</p>
+  <figure class="ilus"><img src="/misterio/img/aris-despacho.webp" alt="El Dr. Aris V. Torres en su despacho" width="1200" height="544"></figure>
+  <div class="sec">
+  <p>El <strong>Dr. Aris V. Torres</strong> encabeza la sección de investigación de Trollacos y firma todos los casos del <a href="/misterio/">Expediente Trollaco</a>. Aporta rigor y una mirada abierta al análisis de los grandes enigmas que han desconcertado a la humanidad, convencido de que tanto los vestigios del pasado como los fenómenos más extraños de la realidad guardan respuestas que la historia convencional aún no ha descifrado del todo.</p>
+  <h2>Rigor ante todo</h2>
+  <p>Su trayectoria se mueve entre la Historia Antigua, la Antropología y la Arqueología. Su norma es sencilla: <strong>primero las fuentes, después las conclusiones</strong>. Antes de opinar sobre cualquier hecho anómalo examina con lupa los documentos, los testimonios y las pruebas físicas. Por eso cada expediente termina con lo que dicen los escépticos: el doctor cree que un buen misterio aguanta cualquier pregunta.</p>
+  <h2>Áreas de investigación</h2>
+  <ul class="crono" style="border-left-color:var(--verde)">
+   <li><b>Arqueología y civilizaciones antiguas</b>Estructuras monumentales, vestigios precolombinos y enigmas arquitectónicos repartidos por todo el planeta.</li>
+   <li><b>Ufología y fenómenos anómalos</b>Los registros sobre fenómenos aéreos no identificados, de Manises a Roswell, y los límites de la exploración espacial.</li>
+   <li><b>Enigmas paranormales</b>Sucesos insólitos y manifestaciones que escapan a la explicación científica tradicional, del Palacio de Linares a las caras de Bélmez.</li>
+  </ul>
+  <h2>Divulgación</h2>
+  <p>Combina el trabajo de archivo con el de campo. Sus expedientes buscan acercar al lector a una comprensión más profunda y crítica de los grandes misterios, desafiando dogmas y manteniendo viva la curiosidad por lo que habita en las sombras del conocimiento. Dicen que <strong>llega del otro lado</strong> para contarnos las historias más interesantes y los casos todavía sin resolver de la historia de la humanidad.</p>
+  </div>
+  <div class="opina"><img class="px" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> Le pregunté al doctor si había visto un fantasma de verdad. Se quitó las gafas, me miró fijamente y dijo: «Depende de qué entiendas por "de verdad"». Desde entonces duermo con la luz encendida.</p></div>
+  <p class="fuentes">El Dr. Aris V. Torres es un <strong>personaje de ficción</strong> creado por Trollacos, como Danna, el Trollaco o la Princesa Neón. Los casos que firma sí son reales y están documentados con sus fuentes.</p>
+  <h2>Sus últimos expedientes</h2>
+  <nav class="navexp" style="grid-template-columns:1fr">{"".join(f'<a href="/misterio/{c["id"]}/"><small>{r.upper()}</small>{c["titulo"]}</a>' for c, r, u in todos[:6])}</nav>
+</article>
+</main>
+{foot}
+</body></html>'''
+os.makedirs(f'{RAIZ}/misterio/aris-v-torres', exist_ok=True)
+open(f'{RAIZ}/misterio/aris-v-torres/index.html', 'w', encoding='utf-8').write(bio)
+sm = open(f'{RAIZ}/sitemap.xml', encoding='utf-8').read()
+if '/misterio/aris-v-torres/' not in sm:
+    open(f'{RAIZ}/sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', '  <url><loc>https://trollacos.com/misterio/aris-v-torres/</loc><changefreq>yearly</changefreq></url>\n</urlset>'))
+print('ficha del doctor ok')
