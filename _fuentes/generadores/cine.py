@@ -2,7 +2,7 @@
 Críticas en _fuentes/generadores/cine.json. También pone el bloque de portada (<!--CINE:INICIO--> … <!--CINE:FIN-->) y el sitemap.
 Uso: python3 _fuentes/generadores/cine.py"""
 import os, re, json, html
-RAIZ = '/home/claude/trollacos-web'; os.chdir(RAIZ)
+RAIZ = os.environ.get('TROLLACOS_RAIZ', '/home/claude/trollacos-web'); os.chdir(RAIZ)
 CR = json.load(open('_fuentes/generadores/cine.json', encoding='utf-8'))
 CR.sort(key=lambda c: c['fecha'], reverse=True)
 SEC = {
@@ -12,12 +12,25 @@ SEC = {
              'Carreteras, huidas y joyas que fracasaron en su día y hoy se veneran. Gasolina, polvo y sesiones dobles.'),
     'genero': ('cine-de-genero-y-serie-b', 'Cine de género y serie B', '🧟',
                'Terror, ciencia ficción y películas hechas con cuatro duros que le dan sopas con honda a muchas superproducciones.'),
+    'espanol': ('cine-espanol-y-culto-nacional', 'Cine español y culto nacional', '🥘',
+                'De Delibes a las Torres KIO: las películas españolas que se citan en la barra del bar y que no han caducado (o sí, y el Caimán te lo dice).'),
+    'clasicos': ('clasicos-y-maestros-del-septimo-arte', 'Clásicos y maestros del séptimo arte', '🏛️',
+                 'Coppola, Scorsese, Kubrick, Leone, Wenders… Las películas de las que todo el mundo habla. El Caimán comprueba si se las merecen.'),
+    'scifi': ('ciencia-ficcion-y-mundos-distopicos', 'Ciencia ficción y mundos distópicos', '🚀',
+              'Replicantes, monolitos, agujeros negros y futuros que no apetece vivir. Ciencia ficción de la buena y alguna que vende humo.'),
+    'drama': ('drama-supervivencia-e-identidad', 'Drama, supervivencia e identidad', '🧭',
+              'Gente que se pierde, que se escapa, que naufraga o que baila contra todo. Historias para salir del cine con un nudo en la garganta.'),
+    'culto': ('cine-de-genero-culto-e-influencia-moderna', 'Cine de género, culto e influencia moderna', '🔪',
+              'Tarantino, los Coen, Fincher, Spielberg y compañía: las películas que copió todo el mundo después. Unas aguantan; otras, no tanto.'),
+    'series': ('ficcion-televisiva', 'Ficción televisiva', '📺',
+               'El Caimán despreciaba la tele hasta que llegaron ciertas series. Aquí reconoce sus errores. Con café solo.'),
 }
 MESES = 'enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre'.split()
 def ftxt(f): return f'{int(f[8:10])} de {MESES[int(f[5:7]) - 1]} de {f[:4]}'
 def esc(t): return html.escape(t, quote=True)
 def caimanes(n): return '🐊' * n + f'<span class="off">{"🐊" * (5 - n)}</span>'
 def url(c): return f'/cine/{c["slug"]}/'
+def serie(c): return c.get('tipo') == 'serie'
 
 g = open('gta-6/index.html', encoding='utf-8').read()
 style = g[g.find('<style>'):g.find('</style>') + 8]
@@ -60,8 +73,14 @@ extra = '''.cn{max-width:860px;margin:0 auto;padding:0 16px}
 .sec-c span{font-size:15px;color:#d9d0c0}
 .ficha-d{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 16px;list-style:none;padding:14px 16px;margin:16px 0;border:2px dashed #ffb347;border-radius:12px;background:rgba(255,179,71,.06)}
 .ficha-d li{font-size:17px}.ficha-d b{display:block;font-family:'VT323',monospace;font-weight:400;font-size:19px;color:#ffb347}
+.ficha-p.con-cartel{grid-template-columns:150px 1fr auto}
+.cartel-p{margin:0}.cartel-p img{display:block;width:150px;height:auto;border-radius:8px;border:2px solid #ffb347;box-shadow:0 0 18px rgba(255,179,71,.3)}
+.cartel-p figcaption{font-size:11px;color:#9b91b8;margin-top:4px;line-height:1.3}
+.tarj-c.con-cartel{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:start}
+.tarj-c.con-cartel img{width:72px;height:auto;border-radius:6px;border:1px solid rgba(255,179,71,.6)}
+.secs-mas{text-align:center;margin:10px 0 0}
 .migas{font-family:'VT323',monospace;font-size:18px;color:#bdb3d9}.migas a{color:#bdb3d9}
-@media(max-width:760px){.secs{grid-template-columns:1fr}.ficha-p{grid-template-columns:1fr}.cn p,.cn li{font-size:18px}.autor-h{flex-direction:column;text-align:center}}
+@media(max-width:760px){.secs{grid-template-columns:1fr}.ficha-p,.ficha-p.con-cartel{grid-template-columns:1fr}.cartel-p{display:flex;gap:12px;align-items:flex-end}.cartel-p img{width:120px}.cn p,.cn li{font-size:18px}.autor-h{flex-direction:column;text-align:center}}
 </style>'''
 style2 = style.replace('</style>', extra)
 
@@ -98,8 +117,12 @@ AUTOR = ('<div class="autor-h"><img src="/img/hector.jpg" alt="Héctor Varga" wi
 
 def tarjeta(c):
     s = SEC[c['seccion']]
-    return (f'<a class="tarj-c" href="{url(c)}"><small>{s[2]} {s[1].upper()} · {c["anio"]}</small><b>{esc(c["titulo"])}</b>'
-            f'<span class="cm">{caimanes(c["nota"])}</span><em>{esc(c["resumen"])}</em></a>')
+    txt = (f'<small>{s[2]} {s[1].upper()} · {c["anio"]}</small><b>{esc(c["titulo"])}</b>'
+           f'<span class="cm">{caimanes(c["nota"])}</span><em>{esc(c["resumen"])}</em>')
+    if c.get('cartel'):
+        return (f'<a class="tarj-c con-cartel" href="{url(c)}"><img src="{c["cartel"]}" alt="Cartel de {esc(c["pelicula"])}" '
+                f'width="72" height="108" loading="lazy"><span>{txt}</span></a>')
+    return f'<a class="tarj-c" href="{url(c)}">{txt}</a>'
 
 # críticas
 sm_urls = ['/cine/', '/cine/hector-varga/']
@@ -107,25 +130,33 @@ for c in CR:
     s = SEC[c['seccion']]
     fuentes = ''.join(f'<li>{esc(f)}</li>' for f in c['fuentes'])
     palabras = len(re.sub(r'<[^>]+>', ' ', c['cuerpo']).split())
+    cartel = (f'<figure class="cartel-p"><img src="{c["cartel"]}" alt="Cartel de {esc(c["pelicula"])}" width="150" height="225">'
+              f'<figcaption>Cartel © sus titulares. Imagen vía TMDB.</figcaption></figure>') if c.get('cartel') else ''
+    otras = [o for o in CR if o is not c and o['seccion'] == c['seccion']][:6]
+    if len(otras) < 4: otras += [o for o in CR if o is not c and o not in otras][:6 - len(otras)]
     cuerpo = f'''<p class="migas"><a href="/cine/">Cine</a> › <a href="/cine/{s[0]}/">{s[1]}</a></p>
 <p class="k">&gt; {s[2]} {s[1].upper()}_</p>
 <h1>{esc(c['titulo'])}</h1>
 {FIRMA.replace('</div></div>', f' · {ftxt(c["fecha"])} · {max(1, round(palabras / 220))} min de lectura</div></div>')}
-<div class="ficha-p"><dl><dt>PELÍCULA</dt><dd>{esc(c['pelicula'])} ({c['anio']})</dd><dt>ORIGINAL</dt><dd>{esc(c['original'])}</dd>
-<dt>DIRECCIÓN</dt><dd>{esc(c['direccion'])}</dd><dt>REPARTO</dt><dd>{esc(c['reparto'])}</dd></dl>
+<div class="ficha-p{' con-cartel' if c.get('cartel') else ''}">{cartel}<dl><dt>{'SERIE' if serie(c) else 'PELÍCULA'}</dt><dd>{esc(c['pelicula'])} ({c['anio']})</dd><dt>ORIGINAL</dt><dd>{esc(c['original'])}</dd>
+<dt>{'CREADOR' if serie(c) else 'DIRECCIÓN'}</dt><dd>{esc(c['direccion'])}</dd><dt>REPARTO</dt><dd>{esc(c['reparto'])}</dd></dl>
 <div class="nota-c"><span>{caimanes(c['nota'])}</span>NOTA DEL CAIMÁN: {c['nota']}/5</div></div>
 {c['cuerpo']}
 <div class="veredicto"><b>🐊 EN UNA LÍNEA:</b>{esc(c['veredicto'])}</div>
 <div class="nota"><img src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {esc(c['trollaco'])}</p></div>
 <p class="fuentes"><b>Fuentes de los datos</b> (la opinión es solo del Caimán):</p><ul class="fuentes">{fuentes}</ul>
 {AUTOR}
-<h2>Más del Caimán</h2><div class="lista-c">{''.join(tarjeta(o) for o in CR if o is not c)}</div>'''
+<h2>Más del Caimán</h2><div class="lista-c">{''.join(tarjeta(o) for o in otras)}</div>
+<p class="secs-mas"><a class="btn alt" href="/cine/{s[0]}/" style="border-color:#ffb347;color:#ffb347">{s[2]} TODA LA SECCIÓN «{s[1].upper()}»</a></p>'''
     ld = {'@context': 'https://schema.org', '@type': 'Review', 'name': c['titulo'], 'datePublished': c['fecha'],
           'author': {'@type': 'Person', 'name': 'Héctor Varga', 'url': 'https://trollacos.com/cine/hector-varga/'},
           'publisher': {'@type': 'Organization', 'name': 'Trollacos'},
-          'itemReviewed': {'@type': 'Movie', 'name': c['pelicula'], 'dateCreated': str(c['anio']), 'director': {'@type': 'Person', 'name': c['direccion'].split(' (')[0]}},
+          'itemReviewed': ({'@type': 'TVSeries', 'name': c['pelicula'], 'startDate': str(c['anio'])[:4], 'creator': {'@type': 'Person', 'name': c['direccion']}}
+                           if serie(c) else
+                           {'@type': 'Movie', 'name': c['pelicula'], 'dateCreated': str(c['anio']), 'director': {'@type': 'Person', 'name': c['direccion'].split(' (')[0]}}),
           'reviewRating': {'@type': 'Rating', 'ratingValue': c['nota'], 'bestRating': 5, 'worstRating': 1},
           'reviewBody': c['resumen']}
+    if c.get('cartel'): ld['itemReviewed']['image'] = 'https://trollacos.com' + c['cartel']
     guarda(f'cine/{c["slug"]}', pagina(c['titulo'], c['resumen'], url(c), cuerpo, ld))
     sm_urls.append(url(c))
 
@@ -147,9 +178,10 @@ cuerpo = f'''<p class="k">&gt; EL TROLLACO CINEMA_</p>
 <figure class="foto-h"><img src="/img/hector-despacho.webp" alt="Héctor Varga en su despacho de El Trollaco Cinema" width="1366" height="616"></figure>
 {FIRMA}
 <h2>Las secciones</h2><div class="secs">{secs}</div>
-<h2>Últimas críticas</h2><div class="lista-c">{''.join(tarjeta(c) for c in CR)}</div>
+<h2>Últimas críticas</h2><div class="lista-c">{''.join(tarjeta(c) for c in CR[:12])}</div>
+<p class="secs-mas">Hay {len(CR)} críticas en total: el resto, en cada sección de arriba.</p>
 <div class="nota"><img src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> Le he pedido que reseñe Trollaco Run. Me ha puesto un caimán. Uno. Dice que «por la música». Estoy estudiando denunciarle.</p></div>'''
-guarda('cine', pagina('Cine: críticas sin anestesia de Héctor «El Caimán» Varga', 'Críticas de cine con colmillo: películas basadas en hechos muy sueltos, road movies, cine de culto, género y serie B. Por Héctor «El Caimán» Varga.', '/cine/', cuerpo, volver=('/', '‹ PORTADA')))
+guarda('cine', pagina('Cine: críticas sin anestesia de Héctor «El Caimán» Varga', 'Críticas de cine con colmillo: cine español, clásicos, ciencia ficción, drama, cine de culto, road movies, serie B y series. Por Héctor «El Caimán» Varga.', '/cine/', cuerpo, volver=('/', '‹ PORTADA')))
 
 # ficha de Héctor
 cuerpo = f'''<p class="k">&gt; FICHA DE LA REDACCIÓN_</p>
@@ -171,7 +203,7 @@ cuerpo = f'''<p class="k">&gt; FICHA DE LA REDACCIÓN_</p>
 <h2>Sus reglas</h2>
 <p>Critica películas, no personas. Separa siempre los datos (que van con su fuente) de la opinión (que es solo suya). Y nunca destripa el final sin avisar. «El que destripa un final sin avisar», dice, «no merece entrar en una sala de cine. Ni en un ascensor».</p>
 <div class="nota"><img src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> Le dejé un bocadillo de chorizo en la mesa y le dio dos caimanes. Al bocadillo. «Previsible», dijo.</p></div>
-<h2>Sus últimas críticas</h2><div class="lista-c">{''.join(tarjeta(c) for c in CR)}</div>'''
+<h2>Sus últimas críticas</h2><div class="lista-c">{''.join(tarjeta(c) for c in CR[:6])}</div>'''
 guarda('cine/hector-varga', pagina('Héctor «El Caimán» Varga, crítico de cine de Trollacos', 'Quién es Héctor «El Caimán» Varga, el crítico de cine de Trollacos: cine de culto, road movies, serie B y películas basadas en hechos muy sueltos.', '/cine/hector-varga/', cuerpo))
 
 # portada de la web
