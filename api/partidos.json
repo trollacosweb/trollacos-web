@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-04T17:43:14Z",
+ "actualizado": "2026-11-04T20:02:40Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 12,
@@ -920,7 +920,7 @@
     "j": "C4",
     "comp": "champions",
     "fecha": "2026-11-04T17:45:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "AEK Athens",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
@@ -931,12 +931,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
      "tla": "REA"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 2,
+    "gv": 3,
     "cuotas": {
-     "1": 5.05,
-     "X": 4.1,
-     "2": 1.65
+     "1": 6.75,
+     "X": 4.4,
+     "2": 1.45
     }
    },
    {
@@ -944,7 +944,7 @@
     "j": "C4",
     "comp": "champions",
     "fecha": "2026-11-04T17:45:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Fenerbahçe",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png",
@@ -955,12 +955,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png",
      "tla": "LIV"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 3,
+    "gv": 2,
     "cuotas": {
-     "1": 5.95,
-     "X": 4.3,
-     "2": 1.55
+     "1": 3.45,
+     "X": 3.7,
+     "2": 2.05
     }
    },
    {
@@ -1294,9 +1294,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 1.5,
-     "X": 4.35,
-     "2": 6.4
+     "1": 1.45,
+     "X": 4.5,
+     "2": 7.2
     }
    },
    {
@@ -1342,9 +1342,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 1.7,
-     "X": 4.0,
-     "2": 4.55
+     "1": 1.6,
+     "X": 4.15,
+     "2": 5.4
     }
    },
    {
@@ -1534,9 +1534,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.1,
-     "X": 3.65,
-     "2": 3.35
+     "1": 2.55,
+     "X": 3.45,
+     "2": 2.75
     }
    },
    {
@@ -1558,9 +1558,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 3.25,
-     "X": 3.65,
-     "2": 2.15
+     "1": 2.6,
+     "X": 3.4,
+     "2": 2.65
     }
    }
   ]
