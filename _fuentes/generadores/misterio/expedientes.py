@@ -128,7 +128,7 @@ for i, (c, reg, ureg) in enumerate(todos):
   <div class="visita">{x['visitar']}</div>
   <p class="comp"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={url}" target="_blank" rel="noopener">Telegram</a></p>
   <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios del Expediente Trollaco. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
-  <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos; el Dr. Aris V. Torres es un personaje de ficción de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
+  <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
 </article>
 <nav class="navexp" aria-label="Más expedientes">
   <a href="/misterio/{ant['id']}/"><small>‹ EXPEDIENTE ANTERIOR</small>{ant['titulo']}</a>
@@ -194,7 +194,7 @@ bio = f'''<!doctype html>
   <p>Combina el trabajo de archivo con el de campo. Sus expedientes buscan acercar al lector a una comprensión más profunda y crítica de los grandes misterios, desafiando dogmas y manteniendo viva la curiosidad por lo que habita en las sombras del conocimiento. Dicen que <strong>llega del otro lado</strong> para contarnos las historias más interesantes y los casos todavía sin resolver de la historia de la humanidad.</p>
   </div>
   <div class="opina"><img class="px" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> Le pregunté al doctor si había visto un fantasma de verdad. Se quitó las gafas, me miró fijamente y dijo: «Depende de qué entiendas por "de verdad"». Desde entonces duermo con la luz encendida.</p></div>
-  <p class="fuentes">El Dr. Aris V. Torres es un <strong>personaje de ficción</strong> creado por Trollacos, como Danna, el Trollaco o la Princesa Neón. Los casos que firma sí son reales y están documentados con sus fuentes.</p>
+  <p class="fuentes">Los casos que firma el doctor están documentados con sus fuentes al final de cada expediente.</p>
   <h2>Sus últimos expedientes</h2>
   <nav class="navexp" style="grid-template-columns:1fr">{"".join(f'<a href="/misterio/{c["id"]}/"><small>{r.upper()}</small>{c["titulo"]}</a>' for c, r, u in todos[:6])}</nav>
 </article>
