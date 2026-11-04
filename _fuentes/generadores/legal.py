@@ -96,7 +96,7 @@ aviso = f'''
 <p>Todos los contenidos de trollacos.com son propiedad de <b>{TITULAR}</b> (Trollacos) o se usan con permiso, y están protegidos por la Ley de Propiedad Intelectual (Real Decreto Legislativo 1/1996) y por el resto de normas españolas e internacionales. Esto incluye, entre otras cosas:</p>
 <ul>
 <li>La marca y el nombre <b>Trollacos</b>, el logotipo, el estilo y el diseño de la web.</li>
-<li>Los personajes: <b>el Trollaco</b>, <b>Danna</b>, el <b>Dr. Aris V. Torres</b>, la Princesa Neón, Míster Glitch y todos los demás.</li>
+<li>Los personajes: <b>el Trollaco</b>, <b>Danna</b>, el <b>Dr. Aris V. Torres</b>, <b>Héctor «El Caimán» Varga</b>, la Princesa Neón, Míster Glitch y todos los demás.</li>
 <li>Los juegos: <b>Trollaco Run</b> (el modo «Supera el récord» y el modo historia, con sus capítulos, guiones, diálogos, gráficos, música y efectos), <b>La Porra Trollaca</b> y su sistema de fichas, y el <b>Expediente Trollaco</b>.</li>
 <li>Los textos, las noticias, la guía de GTA VI, las ilustraciones, los vídeos, la música y el código fuente de la web.</li>
 </ul>
