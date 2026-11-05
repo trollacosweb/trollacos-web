@@ -21,7 +21,8 @@ function top10($d) {
 $accion = $_GET['accion'] ?? '';
 
 if ($accion === 'lista') {
-    responder(['top' => top10(leer_marcador($FDATOS))]);
+    $d = leer_marcador($FDATOS);
+    responder(['top' => top10($d), 'hueco' => hay_hueco($d)]);
 }
 
 if ($accion === 'empezar') {
@@ -63,7 +64,7 @@ if ($accion === 'enviar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pos = 0;
     foreach (lista_final($d) as $i => $e) { if ($e['n'] === $nombre && $e['p'] === $puntos) { $pos = $i + 1; break; } }
-    responder(['ok' => true, 'puesto' => $pos, 'top' => top10($d)]);
+    responder(['ok' => true, 'puesto' => $pos, 'top' => top10($d), 'hueco' => hay_hueco($d)]);
 }
 
 responder(['error' => 'accion'], 400);

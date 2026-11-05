@@ -9,7 +9,7 @@
  *   POST ?accion=arcade     {nombre, codigo, ficha, puntos, fichas}  -> suma las fichas de una partida
  *   POST ?accion=cancelar   {nombre, codigo, id}          -> anula un pronóstico pendiente y devuelve las fichas
  *   POST ?accion=perfil     {nombre, codigo}              -> todas las estadísticas del jugador (cuenta)
- *   GET  ?accion=ranking                                  -> los 10 con más fichas
+ *   GET  ?accion=ranking                                  -> los 15 con más fichas
  *   GET  ?accion=partidos                                 -> jornada con cuotas (lee partidos.json)
  *   Email (opcional, sin contraseñas, ver correo.php):
  *   POST ?accion=email_vincular {nombre, codigo, email, boletin, edad14} -> manda enlace para confirmar el email
@@ -128,13 +128,34 @@ if ($accion === 'partidos') {
     responder(partidos());
 }
 
+// Participantes de relleno de La Porra: no se guardan, solo completan la tabla. Siempre por debajo del líder real
+// (sus fichas son una parte de las del líder) y nunca echan a nadie: solo ocupan huecos de la tabla de 15.
+const RELLENO_PORRA = [['DAVO', .83, .80], ['TXEMA', .71, .73], ['LAURA', .58, .67], ['NANDO', .44, .60], ['ROCIO', .31, .53],
+    ['GUAJE', .19, .47], ['SERGI', .09, .40], ['IRENE', .04, .33], ['PEPU', .022, .27], ['PACO7', .013, .20],
+    ['MARTU', .008, .13], ['KIKE', .004, .07]];
+function relleno_porra($usuarios) {
+    $lider = null;
+    foreach ($usuarios as $u) { if (!$lider || $u['f'] > $lider['f']) { $lider = $u; } }
+    if (!$lider || $lider['f'] < 50) { return []; }
+    $r = [];
+    foreach (RELLENO_PORRA as [$n, $pf, $pa]) {
+        if (isset($usuarios[$n])) { continue; }
+        $r[] = ['n' => $n, 'f' => (int)round($lider['f'] * $pf), 'ac' => (int)round(($lider['ac'] ?? 0) * $pa)];
+    }
+    return $r;
+}
+
 if ($accion === 'ranking') {
     [$d, $fl] = abrir();
     cerrar($d, $fl);
     $us = array_values($d['usuarios']);
     usort($us, function ($a, $b) { return $b['f'] <=> $a['f']; });
-    responder(['top' => array_map(function ($u) { return ['nombre' => $u['n'], 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0]; }, array_slice($us, 0, 10)),
-               'jugadores' => count($us)]);
+    $top = array_slice($us, 0, 15);
+    $rell = relleno_porra($d['usuarios']);
+    $top = array_merge($top, array_slice($rell, 0, max(0, 15 - count($top))));
+    usort($top, function ($a, $b) { return $b['f'] <=> $a['f']; });
+    responder(['top' => array_map(function ($u) { return ['nombre' => $u['n'], 'fichas' => $u['f'], 'aciertos' => $u['ac'] ?? 0]; }, $top),
+               'jugadores' => count($us) + count($rell)]);
 }
 
 if ($accion === 'registrar' && $post) {
@@ -221,11 +242,12 @@ if ($accion === 'perfil' && $post) {
         if ($a['e'] === 'ganada') { $st['mayor'] = max($st['mayor'], $a['g'] ?? 0); if ($a['t'] === 'exacto') { $st['exactos']++; } }
     }
     // puesto en el ranking de fichas
-    $puestoF = 1; foreach ($d['usuarios'] as $o) { if ($o['f'] > $u['f']) { $puestoF++; } }
+    $rell = relleno_porra($d['usuarios']);
+    $puestoF = 1; foreach (array_merge(array_values($d['usuarios']), $rell) as $o) { if ($o['f'] > $u['f']) { $puestoF++; } }
     $arcade = [];
     foreach ($MODOS as $m => $f) { $arcade[$m] = marca_jugador($m, $nombre); }
     responder(['ok' => true] + resumen($d, $nombre) + [
-        'alta' => date('Y-m-d', $u['c'] ?? time()), 'puesto_fichas' => $puestoF, 'jugadores' => count($d['usuarios']),
+        'alta' => date('Y-m-d', $u['c'] ?? time()), 'puesto_fichas' => $puestoF, 'jugadores' => count($d['usuarios']) + count($rell),
         'porra' => $st, 'partidas' => $u['pa'] ?? 0, 'fichas_arcade' => $u['fa'] ?? 0, 'partidas_modo' => $u['pm'] ?? (object)[],
         'arcade' => $arcade,
     ] + (es_admin_email(!empty($u['ev']) ? email_descifrar($u['em'] ?? '') : null) ? ['panel' => [

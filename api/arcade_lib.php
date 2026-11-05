@@ -24,12 +24,21 @@ function leer_marcador($f) {
     return $j;
 }
 
-// Jugadores de relleno del modo "Supera el récord" (como las recreativas de antes): no se guardan,
-// solo completan la lista. Cuando un jugador real les supera, desaparecen solos.
+// Jugadores de relleno (como las recreativas de antes): no se guardan, solo completan la lista de cada modo.
+// Nunca echan a un jugador real (solo ocupan huecos libres) y siempre quedan por debajo del mejor jugador real del modo.
 const RELLENO = [
-    ['n' => 'PIXEL', 'p' => 3874, 'f' => 74], ['n' => 'ZETA', 'p' => 3512, 'f' => 66], ['n' => 'KIKO', 'p' => 3290, 'f' => 61],
-    ['n' => 'LUNA', 'p' => 2985, 'f' => 55], ['n' => 'MAXX', 'p' => 2741, 'f' => 50], ['n' => 'TITO', 'p' => 2468, 'f' => 44],
-    ['n' => 'BYTE', 'p' => 2203, 'f' => 39], ['n' => 'CHUSO', 'p' => 1957, 'f' => 34], ['n' => 'NURIA', 'p' => 1720, 'f' => 29],
+    'run' => [['PIXEL', 3874, 74], ['ZETA', 3512, 66], ['KIKO', 3290, 61], ['LUNA', 2985, 55], ['MAXX', 2741, 50],
+              ['TITO', 2468, 44], ['BYTE', 2203, 39], ['CHUSO', 1957, 34], ['NURIA', 1720, 29]],
+    'c1' => [['LUNA', 3412, 41], ['DAVO', 3388, 39], ['ZETA', 3301, 33], ['TXEMA', 3215, 27], ['IRENE', 2876, 22],
+             ['KIKO', 2510, 19], ['ROCIO', 2104, 15], ['PACO7', 1688, 11], ['BYTE', 1240, 8]],
+    'c2' => [['PIXEL', 3611, 44], ['NANDO', 3540, 40], ['LUNA', 3466, 35], ['SERGI', 3290, 29], ['MAXX', 2950, 24],
+             ['GUAJE', 2533, 18], ['IRENE', 2120, 14], ['TITO', 1702, 10], ['ROCIO', 1315, 7]],
+    'c3' => [['ZETA', 3790, 46], ['DAVO', 3702, 41], ['PIXEL', 3655, 37], ['LAURA', 3401, 30], ['TXEMA', 3010, 23],
+             ['NANDO', 2602, 17], ['PEPU', 2188, 13], ['CHUSO', 1730, 9], ['KIKO', 1294, 6]],
+    'c4' => [['LUNA', 3955, 47], ['SERGI', 3871, 43], ['ZETA', 3760, 38], ['GUAJE', 3412, 29], ['LAURA', 2998, 22],
+             ['DAVO', 2570, 16], ['MAXX', 2140, 12], ['PEPU', 1702, 8], ['IRENE', 1288, 5]],
+    'c5' => [['PIXEL', 4122, 49], ['NANDO', 4010, 44], ['LUNA', 3895, 39], ['TXEMA', 3520, 30], ['ROCIO', 3080, 22],
+             ['SERGI', 2611, 16], ['ZETA', 2170, 11], ['PACO7', 1730, 8], ['CHUSO', 1302, 5]],
 ];
 
 // Los 10 mejores, una sola vez por nombre (su mejor marca)
@@ -44,15 +53,25 @@ function lista_final($d, $modo = null) {
         $vistos[$k] = true; $lista[] = $e;
         if (count($lista) === 10) { break; }
     }
-    // el relleno solo ocupa huecos libres: nunca echa a un jugador real
-    if ($modo === 'run') {
-        foreach (RELLENO as $r) {
+    // el relleno solo ocupa huecos libres y nunca supera al mejor real del modo
+    $rell = RELLENO[$modo] ?? [];
+    if ($rell && count($lista) < 10) {
+        $tope = $rell[0][1];
+        $escala = ($lista && $lista[0]['p'] <= $tope) ? ($lista[0]['p'] * 0.93) / $tope : 1;
+        foreach ($rell as $r) {
             if (count($lista) >= 10) { break; }
-            if (!isset($vistos[$r['n']])) { $lista[] = $r + ['d' => '2026-10-20']; }
+            if (isset($vistos[$r[0]])) { continue; }
+            $lista[] = ['n' => $r[0], 'p' => max(1, (int)round($r[1] * $escala)), 'f' => max(0, (int)round($r[2] * $escala)), 'd' => '2026-10-20', 'r' => 1];
         }
         usort($lista, function ($a, $b) { return $b['p'] <=> $a['p']; });
     }
     return $lista;
+}
+// ¿Queda sitio para cualquier jugador real? (hay menos de 10 reales: el relleno se aparta)
+function hay_hueco($d) {
+    $n = [];
+    foreach ($d['top'] as $e) { $n[strtoupper($e['n'])] = true; }
+    return count($n) < 10;
 }
 // Mejor marca y puesto de un jugador en un modo
 function marca_jugador($modo, $nombre) {
@@ -69,6 +88,6 @@ function marca_jugador($modo, $nombre) {
     foreach ($visibles as $i => $e) { if (strtoupper($e['n']) === $nombre) { return ['puntos' => $mejor['p'], 'fichas' => $mejor['f'], 'fecha' => $mejor['d'], 'puesto' => $i + 1]; } }
     $delante = 0;
     foreach ($nombres as $k => $p) { if ($p > $mejor['p']) { $delante++; } }
-    foreach ($visibles as $e) { if (!isset($nombres[strtoupper($e['n'])]) && $e['p'] > $mejor['p']) { $delante++; } }
+    foreach ($visibles as $e) { if (!empty($e['r']) && $e['p'] > $mejor['p']) { $delante++; } }
     return ['puntos' => $mejor['p'], 'fichas' => $mejor['f'], 'fecha' => $mejor['d'], 'puesto' => $delante + 1];
 }

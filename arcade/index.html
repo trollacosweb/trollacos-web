@@ -163,7 +163,7 @@ document.querySelector('.maquina').style.setProperty('--ar',String(W/H));
 
 // ---------- marcador global ----------
 var modo='run';
-var API='/api/marcadores.php',famaOK=false,famaTop=[],fichaPartida=null,ultimoGuardado=null;
+var API='/api/marcadores.php',famaOK=false,famaTop=[],famaHueco=false,fichaPartida=null,ultimoGuardado=null;
 var fForm=document.getElementById('guardar'),fNombre=document.getElementById('g-nombre'),fMsg=document.getElementById('g-msg');
 try{fNombre.value=(localStorage.getItem('trollacoRunNombre')||'').replace(/\s+/g,'').slice(0,5)}catch(e){}
 fNombre.addEventListener('input',function(){var v=fNombre.value.replace(/[^0-9A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,5);if(v!==fNombre.value)fNombre.value=v});
@@ -178,7 +178,7 @@ function pintaFama(lista,mio){
 }
 function cargaFama(){
   fetch(API+'?accion=lista&modo='+modo,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
-    if(!j||!j.top)throw 0;famaOK=true;famaTop=j.top;pintaFama(famaTop);
+    if(!j||!j.top)throw 0;famaOK=true;famaTop=j.top;famaHueco=!!j.hueco;pintaFama(famaTop);
   }).catch(function(){famaOK=false;document.getElementById('fama-lista').innerHTML='<li class="vacio">El ranking no está disponible ahora mismo.</li>'});
 }
 function pideFicha(){
@@ -188,7 +188,7 @@ function pideFicha(){
 function entraEnTop(p){
   var yo=cuentaSinNombre?'':nombreGuardado();
   for(var i=0;i<famaTop.length;i++){if(yo&&famaTop[i].nombre===yo&&famaTop[i].puntos>=p)return false} // ya tienes una marca mejor
-  return famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
+  return famaHueco||famaTop.length<10||p>famaTop[famaTop.length-1].puntos}
 function abreGuardar(){
   if(!ultimoGuardado||ultimoGuardado.modo!==modo||estado==='menu'||estado==='juego')return;
   document.getElementById('g-tit').textContent='¡ENTRAS EN EL TOP 10!';
@@ -218,7 +218,7 @@ function enviaRanking(nom,desdeForm){
   fetch(API+'?accion=enviar&modo='+g.modo,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nom,puntos:g.puntos,fichas:g.fichas,ficha:g.ficha})})
   .then(function(r){return r.json()}).then(function(j){
     if(j.ok){try{localStorage.setItem('trollacoRunNombre',nom)}catch(e){}cuentaSinNombre=false;
-      if(g.modo===modo){famaTop=j.top;pintaFama(famaTop,j.puesto)}
+      if(g.modo===modo){famaTop=j.top;famaHueco=!!j.hueco;pintaFama(famaTop,j.puesto)}
       ultimoGuardado=null;pintaJugador();
       avisoRanking=j.puesto?'🏆 GUARDADO COMO '+nom+' · PUESTO '+j.puesto:'';
       if(desdeForm){cierraGuardar();if(j.puesto&&j.puesto<=10)document.getElementById('fama').scrollIntoView({behavior:'smooth',block:'center'})}
