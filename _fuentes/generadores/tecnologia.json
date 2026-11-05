@@ -16,8 +16,10 @@
    "La gráfica presume de trazado de rayos por hardware y de ser compatible con funciones de <strong>Unreal Engine 5</strong>, así que para jugar va sobrado.",
    "[[troll:Refrigeración con diamantes. Mi portátil se refrigera con un libro debajo para que entre aire. Cada uno hace lo que puede.]]",
    "<h3>📱 Pantalla: 12.000 nits</h3>",
+   "[[g:1]]",
    "Pantalla <strong>Extreme AMOLED Duo de 6,78 pulgadas</strong>, con resolución 1,5K y <strong>120 Hz</strong>. La gracia está en el nombre: usa <strong>dos paneles en tándem</strong> para llegar a un brillo máximo de <strong>12.000 nits</strong>, según Motorola. Es compatible con <strong>Dolby Vision y HDR10+</strong> y la protege el <strong>Corning Gorilla Glass Ceramic 3</strong>.",
    "<h3>📸 Cámaras: 200 MP y un sensor que no tiene nadie</h3>",
+   "[[g:0]]",
    "<ul><li><b>Principal de 50 MP</b> con sensor <strong>Sony LYTIA L910</strong>, tamaño 1/1,28\", f/1.6, estabilización óptica y tecnología <strong>LOFIC</strong> para guardar detalle en luces y sombras a la vez. Graba en <strong>8K</strong>.</li><li><b>Teleobjetivo periscópico de 200 MP</b> con zoom óptico de 3x y <strong>Super Zoom Pro de hasta 100x</strong>, que usa IA generativa para mejorar la nitidez.</li><li><b>Ultra gran angular de 50 MP</b> (122°).</li><li><b>Frontal de 50 MP</b>, que graba en 4K a 60 fps.</li><li><b>Sensor de acción EVS:</b> según Motorola, el primero del mundo en un móvil, pensado para captar escenas nocturnas rápidas con menos desenfoque.</li></ul>",
    "Motorola dice que el móvil tiene la etiqueta <strong>DXOMARK Gold Label</strong>.",
    "[[troll:Cámara de 200 MP con zoom de 100x. Ahora sí que puedo vigilar desde el sofá quién se acaba el último trozo de tortilla. Danna, te estoy viendo.]]",
@@ -27,6 +29,7 @@
    "En la página principal, Motorola anuncia una <strong>batería de 7.000 mAh</strong> de silicio-carbono con <strong>hasta 77 horas</strong> de uso. Pero en la ficha técnica de la misma web pone <strong>5.500 mAh</strong>. Nosotros te contamos las dos cifras tal cual hasta que Motorola lo aclare.",
    "Lo que sí está claro es la carga: <strong>90 W por cable</strong> (energía para todo el día en <strong>12 minutos</strong>, según la marca) y <strong>50 W inalámbrica</strong>, que lo llena del 0 al 100 % en unos 80 minutos.",
    "<h3>🛡️ Resistencia, software y lo demás</h3>",
+   "[[g:2]]",
    "<ul><li><b>Resistencia:</b> IP68 e IP69, contra el polvo y el agua.</li><li><b>Tamaño y peso:</b> 162,01 × 77,04 × <strong>7,99 mm</strong> y <strong>227 gramos</strong>. Más gordito y pesado que el signature de enero, que se quedaba en 6,99 mm y 186 gramos.</li><li><b>Sistema:</b> <strong>Android 17</strong> con <strong>hasta 7 años</strong> de actualizaciones de sistema y de seguridad.</li><li><b>IA:</b> Gemini Intelligence y el asistente propio de Motorola, <strong>Qira</strong>.</li><li><b>Conectividad:</b> 5G, <strong>Wi-Fi 8</strong> y Bluetooth 7.0. Lector de huellas ultrasónico en pantalla.</li></ul>",
    "[[troll:227 gramos. Es lo que pesa mi bocadillo de chorizo. La diferencia es que el bocadillo no tiene 7 años de actualizaciones. Dura siete minutos.]]",
    "<h3>🤔 ¿Para quién es?</h3>",
@@ -53,7 +56,27 @@
   "princesa": "¡Refrigeración con diamantes! Por fin un móvil que entiende mis gustos. Lo quiero en Capulet Olive, que suena a Shakespeare. Glitch que se compre el gris, que le pega con el humor.",
   "fuente": "Motorola (ficha oficial del motorola signature 27 en motorola.com/es, consultada el 5 de noviembre de 2026). Comparación con el motorola signature de enero de 2026: Hipertextual y GSMArena",
   "credito": "Motorola (prensa)",
-  "alt": "Motorola signature 27"
+  "alt": "Motorola signature 27 en verde Capulet Olive, por delante y por detrás",
+  "galeria": [
+   {
+    "tipo": "img",
+    "src": "/img/tecnologia/motorola-signature-27-trasera.webp",
+    "txt": "La trasera: cuatro cámaras y el sello de Bang & Olufsen",
+    "alto": true
+   },
+   {
+    "tipo": "img",
+    "src": "/img/tecnologia/motorola-signature-27-frontal.webp",
+    "txt": "La pantalla Extreme AMOLED Duo de 6,78 pulgadas",
+    "alto": true
+   },
+   {
+    "tipo": "img",
+    "src": "/img/tecnologia/motorola-signature-27-perfil.webp",
+    "txt": "De perfil: 7,99 milímetros de grosor",
+    "alto": true
+   }
+  ]
  },
  {
   "slug": "que-movil-regalar-navidad-2026",
