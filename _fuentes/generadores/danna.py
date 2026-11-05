@@ -1,6 +1,6 @@
 """Ficha de Danna: /danna/. Uso: python3 _fuentes/generadores/danna.py"""
 import os, json, html
-RAIZ = '/home/claude/trollacos-web'; os.chdir(RAIZ)
+RAIZ = os.environ.get('TROLLACOS_RAIZ', '/home/claude/trollacos-web'); os.chdir(RAIZ)
 IG = 'dannapixel'
 g = open('gta-6/index.html', encoding='utf-8').read()
 style = g[g.find('<style>'):g.find('</style>') + 8]
