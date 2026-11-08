@@ -1,239 +1,9 @@
 {
- "actualizado": "2026-11-08T20:48:13Z",
+ "actualizado": "2026-11-08T22:47:18Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
- "jornada": 12,
+ "jornada": 13,
  "partidos": [
-  {
-   "id": "2506265",
-   "j": 10,
-   "fecha": "2026-10-23T19:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Deportivo Alavés",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
-    "tla": "DEP"
-   },
-   "visit": {
-    "n": "Málaga",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
-    "tla": "MÁL"
-   },
-   "gl": 1,
-   "gv": 1,
-   "cuotas": {
-    "1": 1.7,
-    "X": 4.05,
-    "2": 4.7
-   }
-  },
-  {
-   "id": "2506267",
-   "j": 10,
-   "fecha": "2026-10-24T12:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Rayo Vallecano",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
-    "tla": "RAY"
-   },
-   "visit": {
-    "n": "Elche",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
-    "tla": "ELC"
-   },
-   "gl": 0,
-   "gv": 3,
-   "cuotas": {
-    "1": 2.0,
-    "X": 3.7,
-    "2": 3.55
-   }
-  },
-  {
-   "id": "2506268",
-   "j": 10,
-   "fecha": "2026-10-24T14:15:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Racing de Santander",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
-    "tla": "RAC"
-   },
-   "visit": {
-    "n": "Espanyol",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
-    "tla": "ESP"
-   },
-   "gl": 2,
-   "gv": 1,
-   "cuotas": {
-    "1": 2.1,
-    "X": 3.65,
-    "2": 3.35
-   }
-  },
-  {
-   "id": "2506262",
-   "j": 10,
-   "fecha": "2026-10-24T16:30:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Valencia",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
-    "tla": "VAL"
-   },
-   "visit": {
-    "n": "Villarreal",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
-    "tla": "VIL"
-   },
-   "gl": 1,
-   "gv": 2,
-   "cuotas": {
-    "1": 3.0,
-    "X": 3.55,
-    "2": 2.3
-   }
-  },
-  {
-   "id": "2506260",
-   "j": 10,
-   "fecha": "2026-10-24T19:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Atlético Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
-    "tla": "ATL"
-   },
-   "visit": {
-    "n": "Deportivo de A Coruña",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
-    "tla": "DEP"
-   },
-   "gl": 1,
-   "gv": 0,
-   "cuotas": {
-    "1": 1.4,
-    "X": 4.6,
-    "2": 7.8
-   }
-  },
-  {
-   "id": "2506261",
-   "j": 10,
-   "fecha": "2026-10-25T13:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Athletic Bilbao",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
-    "tla": "ATH"
-   },
-   "visit": {
-    "n": "Getafe",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
-    "tla": "GET"
-   },
-   "gl": 4,
-   "gv": 0,
-   "cuotas": {
-    "1": 1.85,
-    "X": 3.85,
-    "2": 4.05
-   }
-  },
-  {
-   "id": "2506264",
-   "j": 10,
-   "fecha": "2026-10-25T15:15:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Celta Vigo",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
-    "tla": "CEL"
-   },
-   "visit": {
-    "n": "Real Betis",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
-    "tla": "REA"
-   },
-   "gl": 0,
-   "gv": 0,
-   "cuotas": {
-    "1": 4.45,
-    "X": 3.95,
-    "2": 1.75
-   }
-  },
-  {
-   "id": "2506266",
-   "j": 10,
-   "fecha": "2026-10-25T17:30:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Real Sociedad",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
-    "tla": "REA"
-   },
-   "visit": {
-    "n": "Levante",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
-    "tla": "LEV"
-   },
-   "gl": 2,
-   "gv": 1,
-   "cuotas": {
-    "1": 1.55,
-    "X": 4.25,
-    "2": 5.75
-   }
-  },
-  {
-   "id": "2506259",
-   "j": 10,
-   "fecha": "2026-10-25T20:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Barcelona",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
-    "tla": "BAR"
-   },
-   "visit": {
-    "n": "Real Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
-    "tla": "REA"
-   },
-   "gl": 1,
-   "gv": 2,
-   "cuotas": {
-    "1": 2.05,
-    "X": 3.7,
-    "2": 3.4
-   }
-  },
-  {
-   "id": "2506263",
-   "j": 10,
-   "fecha": "2026-10-26T20:00:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Sevilla",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
-    "tla": "SEV"
-   },
-   "visit": {
-    "n": "Osasuna",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
-    "tla": "OSA"
-   },
-   "gl": 2,
-   "gv": 0,
-   "cuotas": {
-    "1": 1.8,
-    "X": 3.9,
-    "2": 4.15
-   }
-  },
   {
    "id": "2506271",
    "j": 11,
@@ -275,9 +45,9 @@
    "gl": 0,
    "gv": 2,
    "cuotas": {
-    "1": 6.75,
-    "X": 4.4,
-    "2": 1.45
+    "1": 5.75,
+    "X": 4.25,
+    "2": 1.55
    }
   },
   {
@@ -345,7 +115,7 @@
    "gv": 1,
    "cuotas": {
     "1": 1.3,
-    "X": 5.0,
+    "X": 5.05,
     "2": 9.0
    }
   },
@@ -675,7 +445,7 @@
    "id": "2506279",
    "j": 12,
    "fecha": "2026-11-08T20:00:00Z",
-   "estado": "IN_PLAY",
+   "estado": "FINISHED",
    "local": {
     "n": "Atlético Madrid",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
@@ -687,11 +457,11 @@
     "tla": "BAR"
    },
    "gl": 1,
-   "gv": 1,
+   "gv": 2,
    "cuotas": {
-    "1": 2.55,
-    "X": 3.45,
-    "2": 2.75
+    "1": 2.9,
+    "X": 3.5,
+    "2": 2.4
    }
   },
   {
@@ -713,7 +483,7 @@
    "gv": null,
    "cuotas": {
     "1": 1.35,
-    "X": 4.8,
+    "X": 4.85,
     "2": 9.0
    }
   },
@@ -850,9 +620,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 6.3,
-    "X": 4.35,
-    "2": 1.5
+    "1": 5.35,
+    "X": 4.15,
+    "2": 1.6
    }
   },
   {
