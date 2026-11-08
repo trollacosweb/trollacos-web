@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-08T17:45:32Z",
+ "actualizado": "2026-11-08T20:48:13Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 12,
@@ -91,9 +91,9 @@
    "gl": 1,
    "gv": 2,
    "cuotas": {
-    "1": 2.75,
-    "X": 3.45,
-    "2": 2.5
+    "1": 3.0,
+    "X": 3.55,
+    "2": 2.3
    }
   },
   {
@@ -137,9 +137,9 @@
    "gl": 4,
    "gv": 0,
    "cuotas": {
-    "1": 1.9,
-    "X": 3.8,
-    "2": 3.75
+    "1": 1.85,
+    "X": 3.85,
+    "2": 4.05
    }
   },
   {
@@ -160,7 +160,7 @@
    "gl": 0,
    "gv": 0,
    "cuotas": {
-    "1": 4.4,
+    "1": 4.45,
     "X": 3.95,
     "2": 1.75
    }
@@ -252,9 +252,9 @@
    "gl": 0,
    "gv": 1,
    "cuotas": {
-    "1": 2.15,
-    "X": 3.6,
-    "2": 3.2
+    "1": 2.0,
+    "X": 3.7,
+    "2": 3.5
    }
   },
   {
@@ -298,9 +298,9 @@
    "gl": 3,
    "gv": 0,
    "cuotas": {
-    "1": 2.3,
+    "1": 2.25,
     "X": 3.55,
-    "2": 3.0
+    "2": 3.05
    }
   },
   {
@@ -367,9 +367,9 @@
    "gl": 3,
    "gv": 1,
    "cuotas": {
-    "1": 2.85,
-    "X": 3.5,
-    "2": 2.4
+    "1": 3.0,
+    "X": 3.55,
+    "2": 2.3
    }
   },
   {
@@ -629,7 +629,7 @@
    "id": "2506281",
    "j": 12,
    "fecha": "2026-11-08T17:30:00Z",
-   "estado": "IN_PLAY",
+   "estado": "FINISHED",
    "local": {
     "n": "Villarreal",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
@@ -640,19 +640,19 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
     "tla": "GET"
    },
-   "gl": 0,
+   "gl": 2,
    "gv": 0,
    "cuotas": {
-    "1": 2.3,
-    "X": 3.55,
-    "2": 3.0
+    "1": 2.0,
+    "X": 3.7,
+    "2": 3.5
    }
   },
   {
    "id": "2506284",
    "j": 12,
    "fecha": "2026-11-08T17:30:00Z",
-   "estado": "IN_PLAY",
+   "estado": "FINISHED",
    "local": {
     "n": "Celta Vigo",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
@@ -675,7 +675,7 @@
    "id": "2506279",
    "j": 12,
    "fecha": "2026-11-08T20:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Atlético Madrid",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
@@ -686,8 +686,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
     "tla": "BAR"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 1,
+   "gv": 1,
    "cuotas": {
     "1": 2.55,
     "X": 3.45,
@@ -712,8 +712,8 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.3,
-    "X": 5.0,
+    "1": 1.35,
+    "X": 4.8,
     "2": 9.0
    }
   },
@@ -806,7 +806,7 @@
    "cuotas": {
     "1": 1.35,
     "X": 4.75,
-    "2": 8.75
+    "2": 8.85
    }
   },
   {
@@ -850,9 +850,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 5.8,
-    "X": 4.25,
-    "2": 1.55
+    "1": 6.3,
+    "X": 4.35,
+    "2": 1.5
    }
   },
   {
