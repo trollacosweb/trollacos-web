@@ -208,7 +208,7 @@ guarda('cine/hector-varga', pagina('Héctor «El Caimán» Varga, crítico de ci
 
 # portada de la web
 tarjs = ''.join(f'<a class="arsenal-card" href="{url(c)}"><span class="ico-a">{SEC[c["seccion"]][2]}</span><h3>{esc(c["pelicula"])} ({c["anio"]})</h3>'
-                f'<p>{esc(c["resumen"])}</p><span class="ver">{"🐊" * c["nota"]} · LEER ›</span></a>' for c in CR[:3])
+                f'<p>{esc(c["resumen"])}</p><span class="ver">{"🐊" * c["nota"]} · LEER ›</span></a>' for c in CR[:4])
 bloque = f'''<!--CINE:INICIO-->
 <section class="block arsenal" id="cine">
   <h2>Cine</h2>
