@@ -3,7 +3,7 @@
  * Trollaco Run - rankings del arcade (los usan marcadores.php y la cuenta del jugador en porra.php).
  */
 // Un ranking por modo: "run" (carrera infinita) y los capítulos del modo historia
-$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php', 'c2' => 'marcadores-c2.php', 'c3' => 'marcadores-c3.php', 'c4' => 'marcadores-c4.php', 'c5' => 'marcadores-c5.php'];
+$MODOS = ['run' => 'marcadores.php', 'c1' => 'marcadores-c1.php', 'c2' => 'marcadores-c2.php', 'c3' => 'marcadores-c3.php', 'c4' => 'marcadores-c4.php', 'c5' => 'marcadores-c5.php', 'c6' => 'marcadores-c6.php'];
 // Cambiar este número borra el ranking (empieza una temporada nueva)
 const TEMPORADA = 2;
 
@@ -37,6 +37,8 @@ const RELLENO = [
              ['NANDO', 2602, 17], ['PEPU', 2188, 13], ['CHUSO', 1730, 9], ['KIKO', 1294, 6]],
     'c4' => [['LUNA', 3955, 47], ['SERGI', 3871, 43], ['ZETA', 3760, 38], ['GUAJE', 3412, 29], ['LAURA', 2998, 22],
              ['DAVO', 2570, 16], ['MAXX', 2140, 12], ['PEPU', 1702, 8], ['IRENE', 1288, 5]],
+    'c6' => [['ZETA', 4296, 51], ['LAURA', 4180, 46], ['DAVO', 4054, 41], ['NANDO', 3702, 32], ['IRENE', 3240, 24],
+             ['PEPU', 2745, 17], ['MAXX', 2290, 12], ['GUAJE', 1810, 8], ['TITO', 1366, 5]],
     'c5' => [['PIXEL', 4122, 49], ['NANDO', 4010, 44], ['LUNA', 3895, 39], ['TXEMA', 3520, 30], ['ROCIO', 3080, 22],
              ['SERGI', 2611, 16], ['ZETA', 2170, 11], ['PACO7', 1730, 8], ['CHUSO', 1302, 5]],
 ];

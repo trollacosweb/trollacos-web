@@ -222,7 +222,7 @@ if ($accion === 'arcade' && $post) {
     $u['pa'] = ($u['pa'] ?? 0) + 1; $u['fa'] = ($u['fa'] ?? 0) + $fichas;
     $u['pm'][$m] = ($u['pm'][$m] ?? 0) + 1;
     $dur = time() - (int)explode('.', (string)$in['ficha'])[0];
-    if (!empty($in['gana']) && preg_match('/^c([1-5])$/', $m, $mm) && $dur >= 35) { $u['caps'] = max($u['caps'] ?? 0, (int)$mm[1]); }
+    if (!empty($in['gana']) && preg_match('/^c([1-6])$/', $m, $mm) && $dur >= 35) { $u['caps'] = max($u['caps'] ?? 0, (int)$mm[1]); }
     unset($u);
     cerrar($d, $fl);
     responder(['ok' => true, 'sumadas' => $fichas, 'fichas' => $d['usuarios'][$nombre]['f'], 'capitulos' => $d['usuarios'][$nombre]['caps'] ?? 0]);

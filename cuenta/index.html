@@ -347,8 +347,8 @@ $('f-admin').onsubmit=function(e){e.preventDefault();msg('m-admin','Comprobando.
     $('aviso-txt').innerHTML='🛠️ Cuenta recuperada. Código nuevo (por si acaso):';$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
   }).catch(function(){msg('m-admin','Error de conexión.')})};
 
-var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche de los zombis',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30'};
-var CAPS=[['🧟','La noche de los zombis'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30']];
+var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche de los zombis',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30',c6:'6 · Hora punta'};
+var CAPS=[['🧟','La noche de los zombis'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30'],['🛵','Hora punta']];
 function n(x){return Number(x||0).toLocaleString('es-ES')}
 function pinta(j){
   $('sin-cuenta').hidden=!!j;$('con-cuenta').hidden=!j;$('stats').hidden=!j;
@@ -368,7 +368,7 @@ function pinta(j){
   $('cifras').innerHTML=[
     [n(j.fichas),'🪙 fichas en el monedero'],[j.puesto_fichas+'º','de '+j.jugadores+' en el ranking de fichas'],
     [n(j.partidas),'🕹️ partidas jugadas'],[n(j.fichas_arcade),'fichas ganadas en el arcade'],
-    [caps+'/5','📖 capítulos superados'],[mejorPuesto<99?mejorPuesto+'º':'—','🏆 mejor puesto en el arcade']
+    [caps+'/'+CAPS.length,'📖 capítulos superados'],[mejorPuesto<99?mejorPuesto+'º':'—','🏆 mejor puesto en el arcade']
   ].map(function(c){return '<div class="cifra"><b>'+c[0]+'</b><span>'+c[1]+'</span></div>'}).join('');
   // arcade por modo
   $('t-arcade').innerHTML='<tr><th>Modo</th><th>Mejor marca</th><th>Puesto</th><th>Partidas</th></tr>'+Object.keys(NOMBRES).map(function(m){
@@ -376,7 +376,7 @@ function pinta(j){
     return '<tr><td>'+NOMBRES[m]+'</td>'+(a?'<td class="n">'+n(a.puntos)+'</td><td>'+(a.puesto===1?'🔥 1º':a.puesto<=3?['','🥇','🥈','🥉'][a.puesto]+' '+a.puesto+'º':a.puesto+'º')+'</td>':'<td class="no">—</td><td class="no">—</td>')+'<td>'+p+'</td></tr>'}).join('');
   // capítulos
   $('caps').innerHTML=CAPS.map(function(c,i){var ok=caps>i;return '<div class="capi'+(ok?' ok':'')+'"><b>'+(ok?c[0]:'🔒')+'</b>'+(i+1)+' · '+c[1]+(ok?'<br>✔ Superado':'')+'</div>'}).join('');
-  $('barra-caps').style.width=(caps*20)+'%';
+  $('barra-caps').style.width=(caps*100/CAPS.length)+'%';
   // porra
   $('cifras-porra').innerHTML=[
     [n(pr.total),'⚽ pronósticos'],[n(pr.ganada),'✔ aciertos'],[pct+'%','de acierto'],[n(pr.mayor),'💰 mayor premio (fichas)'],
@@ -388,7 +388,7 @@ function pinta(j){
   var ins=[
     ['🎟️','Fundador','Cuenta creada en 2026',j.alta<'2027-01-01'],
     ['🧟','Cazazombis','Supera el capítulo 1',caps>=1],['🍺','Sin gritar','Supera el capítulo 2',caps>=2],
-    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],['🚔','Rey de la M-30','Supera el capítulo 5',caps>=5],
+    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],['🚔','Rey de la M-30','Supera el capítulo 5',caps>=5],['🛵','Esquivariders','Supera el capítulo 6',caps>=6],
     ['🕹️','Viciado','Juega 50 partidas',j.partidas>=50],['🪙','Hucha','Llega a 100 fichas',j.fichas>=100],['💰','Ricachón','Llega a 100.000 fichas',j.fichas>=100000],
     ['🏆','Top 10','Entra en un top 10 del arcade',top10],['🔥','Número 1','Sé el primero en un ranking',uno],
     ['⚽','Primer gol','Acierta un pronóstico',pr.ganada>=1],['🔮','Adivino','Acierta 10 pronósticos',pr.ganada>=10],['🎯','Francotirador','Acierta un resultado exacto',pr.exactos>=1]

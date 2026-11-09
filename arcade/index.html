@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Trollaco Run: el juego arcade de Trollacos | Juega gratis</title>
-<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (la noche de los zombis y el Bar La Verja con camareros enfadados). Juego arcade gratis en el navegador.">
+<meta name="description" content="Corre con el Trollaco: carrera infinita synthwave y modo historia por capítulos (zombis, el Bar La Verja, la M-30 y los riders de la Gran Vía). Juego arcade gratis en el navegador.">
 <link rel="canonical" href="https://trollacos.com/arcade/">
 <meta property="og:title" content="Trollaco Run: el arcade de Trollacos">
 <meta property="og:description" content="¿Cuántas fichas aguantas? Juego gratis en el navegador.">
@@ -126,6 +126,7 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="cap" data-cap="c3"><b>3 · Trollaco Club</b><span class="bloq">🔒 Supera el capítulo 2 para entrar. </span>Discoteca, láseres, malotes y un portero que no te deja pasar.</div>
     <div class="cap" data-cap="c4"><b>4 · El edificio abandonado</b><span class="bloq">🔒 Supera el capítulo 3 para entrar. </span>Pasillos a oscuras, linterna y algo que no debería estar ahí.</div>
     <div class="cap" data-cap="c5"><b>5 · Túneles de la M-30</b><span class="bloq">🔒 Supera el capítulo 4 para entrar. </span>Coches, bots de Glitch y motos de la Municipal. ¡Que no se escape Glitch!</div>
+    <div class="cap" data-cap="c6"><b>6 · Hora punta</b><span class="bloq">🔒 Supera el capítulo 5 para entrar. </span>De la M-30 a la Gran Vía entre riders de Glitch Express, palomas y obras.</div>
   </div>
   <p class="fama-nota" id="admin-aviso" hidden style="color:#39ff88">🔓 Modo administrador: todos los capítulos abiertos · <a href="?admin=off">desactivar</a></p>
   <p class="monedero" id="monedero"></p>
@@ -352,7 +353,7 @@ function cambiaModo(m){
   document.getElementById('fama-tit').textContent=modo==='run'?'🔥 SALÓN DE LA FAMA · SUPERA EL RÉCORD':'🏆 SALÓN DE LA FAMA · CAPÍTULO '+CAPS[modo].n;
   ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();pintaCapitulos();
 }
-function capituloActual(){return 'c'+Math.min(5,progreso+1)}
+function capituloActual(){return 'c'+Math.min(6,progreso+1)}
 document.querySelectorAll('.modos button').forEach(function(b){b.onclick=function(){
   if(b.dataset.modo==='run')cambiaModo('run');else if(modo==='run')cambiaModo(capituloActual());
 }});
@@ -1018,6 +1019,107 @@ function salidaTunel(){
   rect(gx+30,30,190,46,'#0d6b3a');texto('SALIDA 19',gx+125,50,18,'#fff','center','#063a1e');texto('MADRID RÍO',gx+125,68,16,'#ffd23f','center','#063a1e');
 }
 
+// ================= CAPÍTULO 6: HORA PUNTA (de la salida de la M-30 a la Gran Vía) =================
+var CALLE6=(function(){var r=azar(611),x=0,c=[],cols=['#d9a066','#e8c590','#c97b5a','#efe0c0','#b8835a','#e3b27a','#d6c2a0'];
+  while(x<2400){var w=Math.round(90+r()*80),h=Math.round(120+r()*90);c.push({x:x,w:w,h:h,c:cols[Math.floor(r()*cols.length)],p:Math.floor(r()*3)});x+=w+Math.round(r()*10)}
+  return{c:c,largo:x}})();
+function calle6(p){return p<.25?'CALLE DE SEGOVIA':p<.5?'CALLE DE BAILÉN':p<.75?'PLAZA DE ESPAÑA':'GRAN VÍA'}
+function placa(x,y,t,esc){esc=esc||1;cx.font=(15*esc)+'px VT323, monospace';var w=Math.max(96*esc,cx.measureText(t).width+26*esc),h=34*esc;
+  rect(x-2,y-2,w+4,h+4,'#1d3f8a');rect(x,y,w,h,'#f4efe2');rect(x+3*esc,y+3*esc,w-6*esc,h-6*esc,'#f4efe2');cx.strokeStyle='#1d3f8a';cx.lineWidth=2;cx.strokeRect(x+3*esc,y+3*esc,w-6*esc,h-6*esc);
+  texto('DISTRITO CENTRO',x+w/2,y+11*esc,10*esc,'#a0302a','center','rgba(0,0,0,0)');texto(t,x+w/2,y+26*esc,15*esc,'#1d3f8a','center','rgba(0,0,0,0)')}
+function fondoC6(tt){
+  var p=dist/META;
+  // cielo de hora punta: la tarde cae sobre Madrid
+  var g=cx.createLinearGradient(0,0,0,SUELO);g.addColorStop(0,'#2a0b5a');g.addColorStop(.55,'#ff5c8a');g.addColorStop(1,'#ffb347');cx.fillStyle=g;cx.fillRect(0,0,W,SUELO);
+  cx.fillStyle='rgba(255,230,160,.9)';cx.beginPath();cx.arc(W*.78,SUELO-120,34,0,7);cx.fill();
+  // siluetas lejanas
+  var o1=(dist*.08)%400;for(var i=-1;i<W/80+2;i++){var hx=(i*80-o1%80),hh=60+((i*37+Math.floor(dist*.08/80))%5)*14;rect(hx,SUELO-90-hh,72,hh+90,'rgba(70,20,90,.55)')}
+  // fachadas madrileñas con balcones
+  var off=(dist*.35)%CALLE6.largo;
+  for(var k=0;k<2;k++)CALLE6.c.forEach(function(e){var x=e.x-off+k*CALLE6.largo;if(x>W+20||x+e.w<-20)return;
+    var top=SUELO-e.h;rect(x,top,e.w,e.h,e.c);rect(x,top,e.w,6,'rgba(0,0,0,.25)');rect(x-3,top-4,e.w+6,5,'#7a5a40');
+    for(var fy=top+18;fy<SUELO-40;fy+=34)for(var fx=x+12;fx<x+e.w-22;fx+=28){rect(fx,fy,14,20,'#3a2a3a');if((fx+fy)%3===0)rect(fx+2,fy+2,10,16,'#ffd98a');rect(fx-3,fy+20,20,3,'#2a2a2a');for(var b=0;b<5;b++)rect(fx-2+b*4,fy+14,1,6,'#2a2a2a')}
+    rect(x+e.w/2-12,SUELO-36,24,36,'#4a2a1a');if(e.p===0)rect(x+6,SUELO-30,e.w-12,6,'#2a6b3a')});
+  cx.fillStyle='rgba(30,8,60,.38)';cx.fillRect(0,0,W,SUELO); // cae la tarde: las fachadas se oscurecen y los riders resaltan
+  // placas de las calles (cambian según avanzas hacia la Gran Vía)
+  var op=(dist*.35)%640;for(var q=-1;q<W/640+2;q++)placa(q*640-op+250,SUELO-112,calle6(p));
+  // farolas
+  var of=(dist*.6)%260;for(var l=-1;l<W/260+2;l++){var lx=l*260-of;rect(lx,SUELO-120,4,120,'#1a1a22');rect(lx-8,SUELO-128,20,10,'#1a1a22');cx.globalAlpha=.25;cx.fillStyle='#ffd98a';cx.beginPath();cx.arc(lx+2,SUELO-118,18,0,7);cx.fill();cx.globalAlpha=1}
+  // la salida del túnel de la M-30 se queda atrás
+  var bx=230-dist;if(bx>-60){rect(0,0,Math.max(0,bx),SUELO,'#16141a');rect(bx-40,0,40,SUELO,'#5a5650');rect(bx-44,0,6,SUELO,'#3a3630');texto('M-30',Math.max(20,bx-20),40,18,'#ffb347','center')}
+  // calzada con carril bici
+  rect(0,SUELO,W,H-SUELO,'#34343c');rect(0,SUELO,W,4,'#c8c4b8');rect(0,SUELO+4,W,22,'#2f6b4a');
+  var ob=dist%260;for(var m=-1;m<W/260+2;m++){var mx=m*260-ob;cx.strokeStyle='#e8f0e0';cx.lineWidth=2;cx.beginPath();cx.arc(mx+10,SUELO+18,5,0,7);cx.arc(mx+28,SUELO+18,5,0,7);cx.stroke();rect(mx+12,SUELO+12,14,2,'#e8f0e0')}
+  var od=dist%90;for(var n=-1;n<W/90+2;n++)rect(n*90-od,SUELO+40,48,3,'#f4f1e0');
+}
+function mochilaG(x,y,s,tt){ // la mochila de Glitch Express: amarilla con la «G» glitcheada
+  s=s||1;rect(x-1,y-1,22*s+2,20*s+2,K);rect(x,y,22*s,20*s,'#ffd23f');rect(x,y,22*s,3*s,'#ffe98a');
+  var j=(Math.floor(tt*8)%6===0)?2:0;texto('G',x+11*s+j,y+16*s,18*s,'#1ff2ff','center','rgba(0,0,0,0)');texto('G',x+11*s-j,y+16*s,18*s,'#ff2bd6','center','rgba(0,0,0,0)')}
+function rider(o,tt){
+  var x=o.x,y=o.y,h=o.h,f=Math.floor(tt*12+o.fase)%2;
+  // bici (viene de frente por el carril bici)
+  cx.strokeStyle=K;cx.lineWidth=3;[x+10,x+50].forEach(function(rx){cx.beginPath();cx.arc(rx,y+h-10,10,0,7);cx.stroke()});
+  cx.strokeStyle='#1ff2ff';cx.lineWidth=3;cx.beginPath();cx.moveTo(x+10,y+h-10);cx.lineTo(x+26,y+h-22);cx.lineTo(x+50,y+h-10);cx.moveTo(x+26,y+h-22);cx.lineTo(x+40,y+h-24);cx.lineTo(x+50,y+h-10);cx.moveTo(x+14,y+h-30);cx.lineTo(x+10,y+h-10);cx.stroke();
+  rect(x+10,y+h-32,10,3,K);
+  // rider
+  rect(x+28,y+h-40,8,14,'#2a2a3a');rect(x+26+(f?0:4),y+h-28,6,10,'#2a2a3a');
+  rect(x+22,y+16,14,18,'#3a3a4a');rect(x+14,y+20,12,4,'#3a3a4a');
+  rect(x+18,y+4,14,12,'#e8b890');rect(x+16,y,18,7,'#ffd23f');rect(x+18,y+8,3,3,K);
+  mochilaG(x+32,y+10,1,tt);
+  if(o.x<W-60&&o.x>jug.x+50)bocadillo(x+24,y-8,o.grito);
+}
+function patin(o,tt){
+  var x=o.x,y=o.y,h=o.h;
+  for(var i=0;i<3;i++)rect(x+44+i*10,y+20+i*10,14,2,'rgba(255,255,255,.5)');
+  rect(x+2,y+h-10,36,5,K);cx.fillStyle=K;cx.beginPath();cx.arc(x+6,y+h-4,4,0,7);cx.arc(x+34,y+h-4,4,0,7);cx.fill();rect(x+3,y+h-46,3,38,'#5a5a66');rect(x,y+h-48,10,3,K);
+  rect(x+16,y+h-30,6,20,'#2a2a3a');rect(x+24,y+h-30,6,20,'#2a2a3a');rect(x+14,y+14,16,18,'#3a3a4a');rect(x+6,y+16,10,4,'#3a3a4a');
+  rect(x+14,y+2,14,12,'#e8b890');rect(x+12,y-2,18,6,'#ffd23f');rect(x+15,y+6,3,3,K);
+  mochilaG(x+28,y+8,.8,tt);
+  if(o.x<W-60&&o.x>jug.x+50)bocadillo(x+20,y-8,'¡RIIING!');
+}
+function obstaculoC6(o,tt){
+  var x=o.x,y=o.y;
+  if(o.tipo==='rider')rider(o,tt);
+  else if(o.tipo==='patin')patin(o,tt);
+  else if(o.tipo==='bot')bot(o,tt);
+  else if(o.tipo==='bolardo'){rect(x,y,o.w,o.h,'#2a2a30');rect(x-2,y,o.w+4,5,'#3a3a44');rect(x,y+10,o.w,4,'#e8e8ec');rect(x,y+18,o.w,3,'#e8e8ec')}
+  else if(o.tipo==='valla'){rect(x+4,y+o.h-14,4,14,'#3a3a40');rect(x+o.w-8,y+o.h-14,4,14,'#3a3a40');rect(x,y,o.w,o.h-14,K);
+    for(var s=0;s<o.w;s+=12){cx.fillStyle=(s/12)%2?'#ffd23f':'#1a1a1a';cx.beginPath();cx.moveTo(x+s,y+o.h-15);cx.lineTo(x+s+12,y+1);cx.lineTo(x+s+18,y+1);cx.lineTo(x+s+6,y+o.h-15);cx.fill()}
+    texto('OBRAS',x+o.w/2,y-4,14,'#ffd23f','center')}
+  else if(o.tipo==='paloma'){var bob=Math.sin(tt*6+o.fase)*5,al=Math.floor(tt*10+o.fase)%2;rect(x+8,y+bob+6,18,10,'#8a8a9a');rect(x+2,y+bob+4,8,7,'#7a7a8c');rect(x+2,y+bob+7,3,2,'#3aa06a');rect(x,y+bob+6,3,2,'#e8a020');rect(x+4,y+bob+5,2,2,K);rect(x+24,y+bob+8,8,4,'#6a6a7a');rect(x+12,y+bob+(al?0:12),12,5,'#9a9aac')}
+  else if(o.tipo==='pedido'&&!o.ko){var bob=Math.sin(tt*5+o.fase)*3;cx.globalAlpha=.3;cx.fillStyle='#ffd23f';cx.beginPath();cx.arc(x+15,y+8+bob,20,0,7);cx.fill();cx.globalAlpha=1;
+    rect(x-1,y+bob-1,32,18,K);rect(x,y+bob,30,16,'#e8d0a0');rect(x,y+bob,30,4,'#d8b880');rect(x+9,y+bob+6,12,6,'#c0302a');texto('+3',x+15,y+bob-6,14,'#ffd23f','center')}
+}
+var GRITOS=['¡PASO, PASO!','¡VOY CON PRISA!','¡MI CARRIL!','¡PEDIDO!','¡PROPINA DOBLE!'];
+function nuevoObstaculoC6(){
+  if(dist>META-1500){sigObst=1e9;return}
+  var p=dist/META,r=Math.random(),o,extra=0;
+  if(r<.30)o={tipo:'rider',w:62,h:58,andar:110+Math.random()*80+p*70,grito:GRITOS[Math.floor(Math.random()*GRITOS.length)]};
+  else if(r<.42&&p>.12){o={tipo:'patin',w:40,h:60,andar:250+p*120};extra=120}
+  else if(r<.54)o={tipo:'bolardo',w:16,h:34};
+  else if(r<.66)o={tipo:'bot',w:32,h:44,andar:30+Math.random()*30};
+  else if(r<.78)o={tipo:'paloma',w:34,h:20,vuelo:true,alto:(Math.random()<.6?78:140),andar:40};
+  else if(r<.88&&p>.2)o={tipo:'valla',w:54,h:44};
+  else o={tipo:'pedido',w:30,h:16,vuelo:true,alto:(Math.random()<.5?6:96)};
+  o.x=W+20;o.y=o.vuelo?SUELO-o.alto-o.h:SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
+  // a veces a un rider se le cae un pedido detrás
+  if(o.tipo==='rider'&&Math.random()<.3)obst.push({tipo:'pedido',w:30,h:16,vuelo:true,alto:96,x:W+20+o.w+150+vel*.12,y:SUELO-112,fase:2});
+  sigObst=Math.max(250,390+Math.random()*320-p*130)+vel*.22+extra;
+}
+function granViaFinal(tt){
+  var gx=jug.x-50+(META-dist); if(gx>W+40)return;
+  // un edificio de cúpula, como los de la Gran Vía, y su placa
+  var bx=gx+60;rect(bx,SUELO-230,150,230,'#efe0c0');rect(bx,SUELO-230,150,6,'#c8b890');
+  cx.fillStyle='#1a1a22';cx.beginPath();cx.ellipse(bx+75,SUELO-232,52,40,0,Math.PI,0);cx.fill();rect(bx+70,SUELO-292,10,22,'#c8a040');
+  for(var fy=SUELO-210;fy<SUELO-40;fy+=34)for(var fx=bx+16;fx<bx+134;fx+=30){rect(fx,fy,14,22,'#3a2a3a');rect(fx+2,fy+2,10,18,'#ffd98a')}
+  rect(bx+55,SUELO-40,40,40,'#4a2a1a');
+  placa(gx-110,SUELO-150,'GRAN VÍA',1.4);
+  // la corona de la princesa, tirada en la acera
+  var cxp=gx+20,cyp=SUELO-10,br=Math.floor(tt*4)%2;
+  rect(cxp,cyp,26,8,'#ffd23f');rect(cxp,cyp-6,5,6,'#ffd23f');rect(cxp+10,cyp-8,6,8,'#ffd23f');rect(cxp+21,cyp-6,5,6,'#ffd23f');rect(cxp+11,cyp-5,4,4,'#ff2bd6');
+  if(br){rect(cxp-6,cyp-14,3,3,'#fff');rect(cxp+30,cyp-12,3,3,'#fff')}
+}
+
 // ---------- la Princesa Neón y la playa de Madrid Río (gran final) ----------
 function princesa(x,y,s,tt){ // y = pies; s = escala de píxel
   var p=function(a,b,w,h,c){rect(x+a*s,y-(54-b)*s,w*s,h*s,c)};
@@ -1056,7 +1158,7 @@ function playaFinal(tt){
 // ---------- diálogos del modo historia ----------
 var GENTE={
   TROLLACO:{c:'#39ff88'},PRINCESA:{c:'#ff5ccf',n:'PRINCESA NEÓN'},GLITCH:{c:'#9d4dff',n:'MÍSTER GLITCH'},CAMARERO:{c:'#ffd23f'},
-  PORTERO:{c:'#ff9d3c'},FANTASMA:{c:'#e8f0ff'},AGENTE:{c:'#7fb3ff',n:'AGENTE MUNICIPAL'},NOTA:{c:'#e8e4c8',n:'NOTA EN LA PUERTA'}};
+  PORTERO:{c:'#ff9d3c'},FANTASMA:{c:'#e8f0ff'},AGENTE:{c:'#7fb3ff',n:'AGENTE MUNICIPAL'},RIDER:{c:'#ffd23f',n:'RIDER DE GLITCH EXPRESS'},NOTA:{c:'#e8e4c8',n:'NOTA EN LA PUERTA'}};
 function retrato(q,x,y,s){
   var p=function(a,b,w,h,c){rect(x+a*s,y+b*s,w*s,h*s,c)};var t=performance.now()/1000;
   rect(x-3,y-3,32*s+6,32*s+6,K);rect(x,y,32*s,32*s,'#1a0640');
@@ -1071,6 +1173,8 @@ function retrato(q,x,y,s){
   else if(q==='FANTASMA'){p(8,5,16,24,'#e8f0ff');p(6,14,20,15,'#e8f0ff');p(11,11,4,5,K);p(18,11,4,5,K);p(13,19,6,4,K)}
   else if(q==='AGENTE'){p(9,9,14,15,'#e8b890');p(7,3,18,7,'#f4f4f8');for(var k=0;k<5;k++)p(7+k*4,8,4,3,k%2?'#2a4ab0':'#fff');p(11,13,3,3,K);p(18,13,3,3,K);p(13,19,6,2,'#a03030');
     p(6,24,20,8,'#1c2a5a');p(14,24,4,8,'#ffd23f')}
+  else if(q==='RIDER'){p(9,9,14,15,'#e8b890');p(7,3,18,8,'#ffd23f');p(7,9,18,2,'#c8a020');p(11,13,3,3,K);p(18,13,3,3,K);p(13,19,6,2,'#a03030');p(6,24,20,8,'#3a3a4a');
+    p(22,18,9,12,'#ffd23f');texto('G',x+26.5*s,y+28*s,9*s,'#ff2bd6','center','rgba(0,0,0,0)')}
   else if(q==='NOTA'){p(6,4,20,24,'#e8e4c8');for(var r=0;r<5;r++)p(9,8+r*4,14-(r%2)*4,1,'#5a5040');p(19,22,4,3,'#9d4dff')}
 }
 function partirTexto(t,ancho,tam){cx.font=tam+'px VT323, monospace';var pal=t.split(' '),l=[],a='';
@@ -1113,7 +1217,10 @@ var CAPS={
       siguiente:'c5',sig:'Capítulo 5 · Túneles de la M-30',gana:'¡He salido del edificio abandonado',pierde:'Algo me ha pillado en el edificio abandonado'},
   c5:{n:5,nombre:'TÚNELES DE LA M-30',hud:'CAP. 5 · M-30',color:'#ffb347',meta:38000,fondo:fondoC5,nuevo:nuevoObstaculoC5,dibuja:obstaculoC5,final:salidaTunel,
       l1:'Persigue a Míster Glitch por los túneles de la M-30',l2:'Salta los coches · pisa a los bots · ojo con las motos de la Municipal',
-      siguiente:null,sig:'Capítulo 6… muy pronto',gana:'¡He cruzado los túneles de la M-30',pierde:'Me he quedado tirado en la M-30'}
+      siguiente:'c6',sig:'Capítulo 6 · Hora punta',gana:'¡He cruzado los túneles de la M-30',pierde:'Me he quedado tirado en la M-30'},
+  c6:{n:6,nombre:'HORA PUNTA',hud:'CAP. 6 · HORA PUNTA',color:'#ffe14d',meta:40000,fondo:fondoC6,nuevo:nuevoObstaculoC6,dibuja:obstaculoC6,final:granViaFinal,
+      l1:'Sal de la M-30 y llega a la Gran Vía',l2:'Salta los riders · pisa los bots · coge los pedidos (+3)',
+      siguiente:null,sig:'Capítulo 7… muy pronto',gana:'¡He llegado a la Gran Vía',pierde:'Me ha atropellado un rider de Glitch Express'}
 };
 
 // ---------- la historia: diálogos al empezar y al terminar cada capítulo ----------
@@ -1159,7 +1266,19 @@ var HISTORIA={
              ['PRINCESA','¡Trollaco! ¡No veo nada, me ha tapado los ojos con un gorro de lana!'],
              ['AGENTE','Hemos perdido la señal. Este Glitch desaparece como el wifi del metro.'],
              ['TROLLACO','¡Princesa! Te voy a encontrar aunque tenga que cruzar Madrid entero.'],
-             ['TROLLACO','Esto no ha acabado, Glitch. Esto no ha hecho más que empezar.']]}
+             ['TROLLACO','Esto no ha acabado, Glitch. Esto no ha hecho más que empezar.']]},
+  c6:{intro:[['RIDER','¡Buenas! ¿Trollaco? Traigo un pedido a tu nombre: «una princesa, para llevar».'],
+             ['TROLLACO','¿¡QUÉ!? ¿Dónde está? ¡Dámela ahora mismo!'],
+             ['RIDER','Uy, perdona, que me he liado. Era una devolución. Se la ha llevado el remitente: un tal Míster Glitch.'],
+             ['GLITCH','(Mensaje de voz) ¡Jejeje! Te presento mi nueva app: Glitch Express. Te lo quito todo en menos de 30 minutos.'],
+             ['GLITCH','(Mensaje de voz) Riders, a por él. Al que lo pare, propina doble… en fichas falsas, jejeje.'],
+             ['TROLLACO','¡Pues a la Gran Vía! Y que nadie me pite, que voy con prisa.']],
+      outro:[['TROLLACO','¡La Gran Vía! Glitch tiene que estar por aquí…'],
+             ['RIDER','Oye, ¿esto es tuyo? Se le ha caído a una chica con el pelo rosa que iba en una furgoneta morada.'],
+             ['TROLLACO','¡La corona de la princesa! ¿Hacia dónde han ido?'],
+             ['RIDER','Ni idea, yo solo reparto. Pero el de la furgoneta preguntaba dónde se ven mejor las luces de Navidad…'],
+             ['GLITCH','(Mensaje de voz) Bonita corona, Trollaco. Quédatela. La princesa ya no la va a necesitar… de momento. ¡Jejeje!'],
+             ['TROLLACO','Las luces de la Gran Vía… Princesa, aguanta. Esta noche te encuentro.']]}
 };
 
 // ---------- bucle ----------
@@ -1184,9 +1303,11 @@ function bucle(ahora){
     // colisiones (caja de choque algo más pequeña que el dibujo, para ser justos)
     var jx=jug.x+9,jw=32*ESC-18,jy=jug.y-54*ESC+8,jh=54*ESC-10;
     for(var i=0;i<obst.length;i++){var o=obst[i]; if(o.ko)continue;
-      var vuela=o.tipo==='dron'||o.tipo==='murci';
+      var vuela=o.tipo==='dron'||o.tipo==='murci'||o.tipo==='paloma'||o.tipo==='pedido';
       var oy=o.y+(vuela?Math.sin(tt*6+o.fase)*4+6:4), oh=vuela?o.h-6:o.h-4;
       if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){
+        // un pedido de Glitch Express que se le ha caído a un rider: +3 fichas
+        if(o.tipo==='pedido'){o.ko=true;fichas+=3;pitido(700,1400,.12,'square',.06);for(var k2=0;k2<8;k2++)parts.push({x:o.x+15,y:o.y,vx:(Math.random()-.5)*220,vy:-Math.random()*220,v:.5});continue}
         // ¡pisotón! cayendo encima de un zombi lo dejas KO
         if((PISABLES.indexOf(o.tipo)>-1)&&jug.vy>0&&jug.y-jug.vy*dt<=o.y+14){
           o.ko=true;jug.vy=-560;jug.saltos=1;fichas+=2;pitido(200,900,.18,'square',.08);
