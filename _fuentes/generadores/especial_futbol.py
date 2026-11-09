@@ -550,7 +550,7 @@ def pagina(titulo, desc, u, cuerpo, ld=None, volver=('/', '‹ PORTADA')):
 <title>{esc(titulo)} | Trollacos</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="https://trollacos.com{u}">
-<meta property="og:title" content="{esc(titulo)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:image" content="https://trollacos.com/img/danna-setup.webp?v=3">
+<meta property="og:title" content="{esc(titulo)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:image" content="https://trollacos.com/img/danna-setup.webp?v=4">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/icono.png">
 {style2}
