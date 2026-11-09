@@ -629,6 +629,7 @@ function hudC1(){
   var c='';for(var i=0;i<3;i++)c+=i<vidas?'♥ ':'♡ ';texto(c,14,54,26,'#ff4d6d');
   var bw=Math.min(240,W*.34),bx=W/2-bw/2+20;rect(bx-1,13,bw+2,10,K);rect(bx,14,bw,8,'#2a0b3a');rect(bx,14,bw*Math.min(1,dist/META),8,cap.color);
   texto('META',bx+bw+6,24,18,cap.color);
+  if(cap.lugar)texto('📍 '+cap.lugar(),bx+bw/2,44,18,'#fff','center');
   texto('🪙 '+fichas,W-14,28,22,'#ffd23f','right');texto(puntos+' PTS',W-14,52,20,'#fff','right');
 }
 
@@ -1023,7 +1024,32 @@ function salidaTunel(){
 var CALLE6=(function(){var r=azar(611),x=0,c=[],cols=['#d9a066','#e8c590','#c97b5a','#efe0c0','#b8835a','#e3b27a','#d6c2a0'];
   while(x<2400){var w=Math.round(90+r()*80),h=Math.round(120+r()*90);c.push({x:x,w:w,h:h,c:cols[Math.floor(r()*cols.length)],p:Math.floor(r()*3)});x+=w+Math.round(r()*10)}
   return{c:c,largo:x}})();
-function calle6(p){return p<.25?'CALLE DE SEGOVIA':p<.5?'CALLE DE BAILÉN':p<.75?'PLAZA DE ESPAÑA':'GRAN VÍA'}
+// el recorrido, por tramos: cada uno con su placa y un monumento que pasa una sola vez
+var TRAMOS6=[{p:0,n:'CALLE DE SEGOVIA',m:'viaducto'},{p:.13,n:'CALLE DE BAILÉN',m:'catedral'},{p:.26,n:'PLAZA DE ESPAÑA',m:'torres'},
+  {p:.40,n:'GRAN VÍA',m:'cines'},{p:.55,n:'PLAZA DEL CALLAO',m:'callao'},{p:.70,n:'GRAN VÍA',m:'rascacielos'},{p:.85,n:'RED DE SAN LUIS',m:'luces'}];
+function tramo6(){var p=dist/META,t=TRAMOS6[0];TRAMOS6.forEach(function(e){if(p>=e.p)t=e});return t}
+function calle6(){return tramo6().n}
+function monumento6(m,x,tt){
+  var b=SUELO;
+  if(m==='viaducto'){rect(x,b-200,520,26,'#d8d0c0');rect(x,b-178,520,6,'#b8b0a0');for(var i=0;i<4;i++){var ax=x+20+i*125;rect(ax,b-174,24,174,'#cfc6b4');rect(ax+101,b-174,24,174,'#cfc6b4');cx.fillStyle='#cfc6b4';cx.beginPath();cx.moveTo(ax+24,b-174);cx.quadraticCurveTo(ax+62,b-110,ax+101,b-174);cx.fill()}
+    for(var r=0;r<520;r+=10)rect(x+r,b-210,3,10,'#b8b0a0');texto('VIADUCTO',x+260,b-212,16,'#ffd23f','center')}
+  else if(m==='catedral'){rect(x,b-170,260,170,'#e8e0d0');rect(x+90,b-210,80,40,'#e8e0d0');cx.fillStyle='#4a6a8a';cx.beginPath();cx.ellipse(x+130,b-210,46,40,0,Math.PI,0);cx.fill();rect(x+126,b-268,8,20,'#c8a040');rect(x+122,b-262,16,4,'#c8a040');
+    rect(x-40,b-150,40,150,'#e0d8c8');rect(x+260,b-150,40,150,'#e0d8c8');for(var c=0;c<7;c++)rect(x+16+c*34,b-150,14,110,'#cfc6b4');rect(x+105,b-60,50,60,'#5a3a2a')}
+  else if(m==='torres'){rect(x,b-200,120,200,'#e8dcc8');rect(x+30,b-218,60,18,'#e8dcc8');rect(x+170,b-215,90,215,'#d8d8dc');rect(x+190,b-233,50,18,'#d8d8dc');
+    for(var fy=b-190;fy<b-20;fy+=18){for(var fx=x+10;fx<x+112;fx+=16)rect(fx,fy,8,10,(fx+fy)%5?'#3a2a3a':'#ffd98a');for(var gx=x+178;gx<x+252;gx+=14)rect(gx,fy,7,10,(gx+fy)%4?'#2a2a3a':'#ffd98a')}
+    rect(x+290,b-90,70,90,'#8a8a7a');rect(x+302,b-120,10,30,'#6a6a5a');rect(x+330,b-110,8,22,'#6a6a5a');rect(x+290,b-90,70,4,'#aaa894');texto('QUIJOTE',x+325,b-96,13,'#ffd23f','center')}
+  else if(m==='cines'){for(var k=0;k<2;k++){var cx0=x+k*230;rect(cx0,b-220,200,220,'#e8dcc8');rect(cx0+20,b-150,160,46,K);rect(cx0+22,b-148,156,42,'#1a0a30');
+    var on=Math.floor(tt*4+k)%2;texto(k?'GRAN ESTRENO':'CINE',cx0+100,b-122,22,on?'#ffd23f':'#ff2bd6','center','rgba(0,0,0,0)');
+    for(var bl=0;bl<12;bl++)rect(cx0+26+bl*13,b-104,5,5,(Math.floor(tt*6)+bl)%2?'#ffd23f':'#7a5a20');rect(cx0+70,b-50,60,50,'#5a2a2a')}}
+  else if(m==='callao'){rect(x,b-212,260,212,'#e8e0d0');rect(x+20,b-200,220,62,K);rect(x+22,b-198,216,58,'#05020c');
+    var c=Math.floor(tt*2)%3;texto('CALLAO',x+130,b-158,36,['#ff2bd6','#1ff2ff','#ffd23f'][c],'center','rgba(0,0,0,0)');
+    rect(x+30,b-150,90,60,'#1ff2ff');rect(x+32,b-148,86,56,'#1a0640');texto('TROLLACO',x+75,b-116,16,'#39ff88','center','rgba(0,0,0,0)');rect(x+140,b-150,90,60,'#ff2bd6');rect(x+142,b-148,86,56,'#1a0640');texto('RUN',x+185,b-116,20,'#ffd23f','center','rgba(0,0,0,0)')}
+  else if(m==='rascacielos'){rect(x,b-235,150,235,'#d8ccb8');rect(x+40,b-255,70,20,'#d8ccb8');rect(x+66,b-270,18,15,'#c8bca8');rect(x+72,b-285,4,15,'#5a5a5a');cx.fillStyle='#ff3030';cx.beginPath();cx.arc(x+74,b-287,3,0,7);cx.fill();
+    for(var fy2=b-225;fy2<b-20;fy2+=20)for(var fx2=x+12;fx2<x+140;fx2+=18)rect(fx2,fy2,8,12,(fx2*fy2)%7?'#3a2a3a':'#ffd98a');rect(x+20,b-120,110,8,'#c8bca8')}
+  else if(m==='luces'){for(var g=0;g<3;g++){var lx=x+g*180;cx.strokeStyle='#ffd98a';cx.lineWidth=2;cx.beginPath();cx.moveTo(lx,b-230);cx.quadraticCurveTo(lx+90,b-190,lx+180,b-230);cx.stroke();
+    for(var q=0;q<10;q++){var t=q/9,px=lx+t*180,py=b-230+Math.sin(t*Math.PI)*36;cx.fillStyle=((q+Math.floor(tt*5))%3)?'#ffd98a':'#ff2bd6';cx.beginPath();cx.arc(px,py,3,0,7);cx.fill()}}
+    texto('LUCES DE NAVIDAD: PRÓXIMAMENTE',x+270,b-246,15,'#ffd98a','center')}
+}
 function placa(x,y,t,esc){esc=esc||1;cx.font=(15*esc)+'px VT323, monospace';var w=Math.max(96*esc,cx.measureText(t).width+26*esc),h=34*esc;
   rect(x-2,y-2,w+4,h+4,'#1d3f8a');rect(x,y,w,h,'#f4efe2');rect(x+3*esc,y+3*esc,w-6*esc,h-6*esc,'#f4efe2');cx.strokeStyle='#1d3f8a';cx.lineWidth=2;cx.strokeRect(x+3*esc,y+3*esc,w-6*esc,h-6*esc);
   texto('DISTRITO CENTRO',x+w/2,y+11*esc,10*esc,'#a0302a','center','rgba(0,0,0,0)');texto(t,x+w/2,y+26*esc,15*esc,'#1d3f8a','center','rgba(0,0,0,0)')}
@@ -1042,7 +1068,9 @@ function fondoC6(tt){
     rect(x+e.w/2-12,SUELO-36,24,36,'#4a2a1a');if(e.p===0)rect(x+6,SUELO-30,e.w-12,6,'#2a6b3a')});
   cx.fillStyle='rgba(30,8,60,.38)';cx.fillRect(0,0,W,SUELO); // cae la tarde: las fachadas se oscurecen y los riders resaltan
   // placas de las calles (cambian según avanzas hacia la Gran Vía)
-  var op=(dist*.35)%640;for(var q=-1;q<W/640+2;q++)placa(q*640-op+250,SUELO-112,calle6(p));
+  // monumentos del recorrido: cada uno aparece una vez, cuando pasas por su tramo
+  TRAMOS6.forEach(function(t){var mx=W*.55+(t.p*META+META*.06-dist)*.35;if(mx<W+40&&mx>-600){monumento6(t.m,mx,tt);cx.fillStyle='rgba(30,8,60,.22)';cx.fillRect(mx-60,0,660,SUELO)}});
+  var op=(dist*.35)%640;for(var q=-1;q<W/640+2;q++)placa(q*640-op+250,SUELO-112,calle6());
   // farolas
   var of=(dist*.6)%260;for(var l=-1;l<W/260+2;l++){var lx=l*260-of;rect(lx,SUELO-120,4,120,'#1a1a22');rect(lx-8,SUELO-128,20,10,'#1a1a22');cx.globalAlpha=.25;cx.fillStyle='#ffd98a';cx.beginPath();cx.arc(lx+2,SUELO-118,18,0,7);cx.fill();cx.globalAlpha=1}
   // la salida del túnel de la M-30 se queda atrás
@@ -1218,7 +1246,7 @@ var CAPS={
   c5:{n:5,nombre:'TÚNELES DE LA M-30',hud:'CAP. 5 · M-30',color:'#ffb347',meta:38000,fondo:fondoC5,nuevo:nuevoObstaculoC5,dibuja:obstaculoC5,final:salidaTunel,
       l1:'Persigue a Míster Glitch por los túneles de la M-30',l2:'Salta los coches · pisa a los bots · ojo con las motos de la Municipal',
       siguiente:'c6',sig:'Capítulo 6 · Hora punta',gana:'¡He cruzado los túneles de la M-30',pierde:'Me he quedado tirado en la M-30'},
-  c6:{n:6,nombre:'HORA PUNTA',hud:'CAP. 6 · HORA PUNTA',color:'#ffe14d',meta:40000,fondo:fondoC6,nuevo:nuevoObstaculoC6,dibuja:obstaculoC6,final:granViaFinal,
+  c6:{n:6,nombre:'HORA PUNTA',hud:'CAP. 6 · HORA PUNTA',color:'#ffe14d',meta:40000,fondo:fondoC6,nuevo:nuevoObstaculoC6,dibuja:obstaculoC6,final:granViaFinal,lugar:calle6,
       l1:'Sal de la M-30 y llega a la Gran Vía',l2:'Salta los riders · pisa los bots · coge los pedidos (+3)',
       siguiente:null,sig:'Capítulo 7… muy pronto',gana:'¡He llegado a la Gran Vía',pierde:'Me ha atropellado un rider de Glitch Express'}
 };
