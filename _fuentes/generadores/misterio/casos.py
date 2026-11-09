@@ -194,3 +194,88 @@ MUNDO = [
   esceptico='''Las luces de las diez de la noche se explicaron como <strong>bengalas lanzadas por aviones militares</strong> en unas maniobras en un campo de tiro cercano: al caer detrás de las montañas, parecían flotar y apagarse una a una. La "V" de primera hora se ha atribuido a aviones volando en formación.''',
   trollaco='Un gobernador disfrazando a su ayudante de alien. Así se gestiona una crisis. Toma nota, Europa.'),
 ]
+
+# --- Ampliación del 9 de noviembre de 2026: más ovnis en España y Latinoamérica ---
+ESPANA.append(
+ dict(id='talavera-la-real', img='talavera', titulo='El «hombre verde» de Talavera la Real', sub='La noche que tres soldados dispararon contra una luz con forma humana',
+  lugar='Base aérea de Talavera la Real, Badajoz', cuando='12 de noviembre de 1976', metro='—',
+  lat=38.8915, lng=-6.8213, nivel=5, icono='🟢', pose='asustado', lado='der',
+  texto='''
+<p>Madrugada del 12 de noviembre de 1976. En la base aérea de <strong>Talavera la Real</strong>, en Badajoz, hace frío y no pasa nada. Dos soldados, <strong>José María Trejo y Juan Carrizosa</strong>, hacen la ronda de guardia por el perímetro. Más tarde se les une un tercero con un perro.</p>
+<p>Entonces la ven. Entre los matorrales, junto a la valla, hay una <strong>luz verde con forma de persona</strong>. Pero no es una persona: mide cerca de <strong>tres metros</strong>, tiene una cabeza pequeña, como si llevara casco, y unos brazos larguísimos que no terminan en manos. Está cubierta de puntitos de luz.</p>
+<p>Los soldados no se lo piensan y abren fuego. <strong>Entre cuarenta y cincuenta disparos</strong> contra aquella cosa. Y la cosa, sencillamente, <strong>desaparece</strong>.</p>
+<p>A la mañana siguiente, medio centenar de hombres peinaron la zona. No encontraron ni rastro de la figura. Pero el Ejército del Aire dio por buena una cosa: los soldados <strong>sí habían disparado</strong>. Algo los había asustado lo suficiente como para vaciar los cargadores en plena noche.</p>''',
+  esceptico='''No hay fotos ni restos, y en el registro posterior no aparecieron impactos de bala en ninguna figura. Los escépticos creen que fue <strong>una alucinación o un ataque de pánico</strong> de unos chavales de guardia, a oscuras y muertos de sueño, que se contagiaron el miedo unos a otros.''',
+  trollaco='Tres metros, verde y sin manos. Yo solo conozco a uno así y es mi primo el del pueblo cuando sale de la piscina.'))
+
+LATAM = [
+ dict(id='varginha', img='varginha', titulo='El ET de Varginha', sub='Tres chicas, una criatura bajo la lluvia y una ciudad que nunca volvió a ser la misma',
+  lugar='Varginha, Minas Gerais (Brasil)', cuando='20 de enero de 1996', metro='—',
+  lat=-21.5513, lng=-45.4303, nivel=5, icono='👽', pose='lupa', lado='izq',
+  texto='''
+<p>Tarde del 20 de enero de 1996. Llueve a cántaros en <strong>Varginha</strong>, una ciudad tranquila del sur de Minas Gerais. Las hermanas <strong>Liliane y Valquíria Silva</strong> y su amiga <strong>Kátia Xavier</strong> vuelven a casa atajando por un descampado cuando se quedan heladas.</p>
+<p>Agachada junto a un muro hay <strong>una criatura</strong> que no se parece a nada. Mide como metro y medio, tiene la piel marrón y brillante, una cabeza enorme, el cuerpo flaquísimo y <strong>unos ojos rojos, grandes</strong>, que las miran. Parece herida, o enferma. Las chicas salen corriendo y no paran hasta llegar a casa.</p>
+<p>Lo que vino después convirtió el caso en <strong>el «Roswell brasileño»</strong>. Empezaron los rumores: que los bomberos habían capturado a una criatura esa misma mañana, que camiones del Ejército habían cruzado la ciudad, que «algo» había pasado por un hospital antes de que se lo llevaran militares. Una pareja de granjeros contó que esa misma madrugada habían visto <strong>un objeto flotando sobre su ganado</strong> durante unos cuarenta minutos.</p>
+<p>El gobierno lo negó todo. Pero Varginha decidió que, si el ET no se quedaba, al menos se quedaría la fama: hoy tiene <strong>paradas de autobús con forma de nave espacial</strong>, un depósito de agua con forma de platillo y extraterrestres hasta en la publicidad del ayuntamiento.</p>''',
+  esceptico='''Una investigación militar concluyó en 2010 que los bomberos y los camiones eran <strong>servicios normales mal interpretados</strong>, y que lo que vieron las chicas probablemente fue <strong>un hombre sin hogar, con problemas mentales y cubierto de barro</strong>, conocido en el barrio como «Mudinho», al que se veía a menudo agachado junto a ese muro.''',
+  trollaco='En Varginha tienen paradas de autobús con forma de ovni. En mi barrio la parada no tiene ni techo. Quiero un ET ya.'),
+ dict(id='operacion-plato', img='colares', titulo='Operación Plato: las luces de Colares', sub='Cuando la Fuerza Aérea brasileña salió a cazar ovnis en la Amazonía',
+  lugar='Isla de Colares, Pará (Brasil)', cuando='Octubre a diciembre de 1977', metro='—',
+  lat=-0.9369, lng=-48.2803, nivel=5, icono='🔦', pose='linterna', lado='der',
+  texto='''
+<p>1977. En <strong>Colares</strong>, una isla de pescadores en la desembocadura del Amazonas, la gente tiene miedo de salir de noche. Hablan de <strong>luces que bajan del cielo</strong> y persiguen a los que están fuera. Las llaman <strong>«chupa-chupa»</strong>, porque hay vecinos que aseguran que les dejaron marcas en la piel.</p>
+<p>El miedo es tan grande que el pueblo entero hace guardia por las noches: <strong>encienden hogueras, lanzan cohetes</strong>, golpean ollas. Lo que sea para espantar a las luces. El alcalde no sabe qué hacer y pide ayuda a quien puede: la <strong>Fuerza Aérea Brasileña</strong>.</p>
+<p>Y la Fuerza Aérea manda a un equipo. Lo dirige el capitán <strong>Uyrangê Hollanda</strong>. La misión tiene un nombre que parece un chiste, pero es real: <strong>«Operação Prato»</strong>, Operación Plato. Durante semanas, militares con cámaras y prismáticos pasan noches enteras vigilando el cielo de la Amazonía. Y sacan <strong>fotos de luces</strong> que no saben explicar.</p>
+<p>Veinte años después, ya retirado, Hollanda contó en una entrevista que lo que había visto allí no tenía explicación. <strong>Murió tres meses después</strong>. Su muerte, y los informes y fotos que la Fuerza Aérea guardó en secreto durante décadas, convirtieron Colares en una leyenda.</p>''',
+  esceptico='''La operación terminó <strong>sin encontrar nada fuera de lo normal</strong>. Las fotos muestran luces, pero no objetos. Para los escépticos, el miedo colectivo, la falta de luz eléctrica en la isla y fenómenos naturales o aviones explican la histeria; las «marcas» nunca se estudiaron con rigor médico.''',
+  trollaco='Operación Plato. Yo también monto una todos los domingos cuando hay paella. Y también acaba sin pruebas.'),
+ dict(id='noche-de-los-ovnis', img='nochebrasil', titulo='La Noche Oficial de los Ovnis', sub='21 objetos en el radar y cinco cazas persiguiéndolos sobre Brasil',
+  lugar='São Paulo, Río de Janeiro, Minas Gerais y Goiás (Brasil)', cuando='19 de mayo de 1986', metro='—',
+  lat=-23.1791, lng=-45.8872, nivel=5, icono='📡', pose='ovni', lado='izq',
+  texto='''
+<p>Noche del lunes 19 de mayo de 1986. Los radares de defensa aérea de Brasil empiezan a pitar. Hay ecos donde no debería haber nada. No uno ni dos: <strong>veintiuno</strong>.</p>
+<p>Los objetos aparecen sobre <strong>São José dos Campos</strong>, donde están algunos de los centros aeroespaciales más importantes del país, y se extienden hacia Río de Janeiro, Minas Gerais y Goiás. La Fuerza Aérea hace algo que casi ningún país ha reconocido nunca: manda <strong>cinco cazas</strong> a interceptarlos.</p>
+<p>Los pilotos cuentan cosas que ponen los pelos de punta: luces que <strong>cambian de color</strong>, que se quedan quietas en el aire, que giran en ángulo recto, que vuelan en formación y que, cuando los aviones se acercan, <strong>desaparecen del radar</strong> para volver a aparecer en otro sitio.</p>
+<p>Cuatro días después, el ministro de Aeronáutica, <strong>Octávio Moreira Lima</strong>, compareció ante la prensa y dijo una frase que hoy es historia de la ufología: técnicamente, <strong>no tenían explicación</strong>. Prometió un informe en treinta días. Tardó <strong>23 años</strong> en ver la luz.</p>''',
+  esceptico='''No hay explicación oficial definitiva. Los escépticos señalan que los ecos de radar pueden deberse a <strong>fenómenos atmosféricos</strong> y que los pilotos, de noche, pudieron confundir estrellas y planetas brillantes con objetos que les seguían. Ninguna de las dos explicaciones convence a todo el mundo.''',
+  trollaco='Veintiún ovnis a la vez y el ministro dice «no tenemos explicación». Por fin un político sincero. Eso sí que es un fenómeno paranormal.'),
+ dict(id='la-joya-peru', img='lajoya', titulo='El piloto que disparó a un ovni', sub='Un caza de la Fuerza Aérea del Perú contra una esfera sobre Arequipa',
+  lugar='Base aérea de La Joya, Arequipa (Perú)', cuando='11 de abril de 1980', metro='—',
+  lat=-16.7781, lng=-71.8858, nivel=4, icono='🎯', pose='camara', lado='der',
+  texto='''
+<p>11 de abril de 1980. En la base aérea de <strong>La Joya</strong>, en Arequipa, alguien señala al cielo. Hay algo quieto sobre la base. Parece <strong>un globo</strong>. Pero no se mueve con el viento.</p>
+<p>Los mandos no se lo piensan: mandan a por él a un caza <strong>Sukhoi</strong> pilotado por el teniente <strong>Óscar Santa María Huertas</strong>. Su orden es clara: derribarlo.</p>
+<p>Santa María se coloca detrás y dispara. <strong>Sesenta y cuatro proyectiles</strong>. Y no pasa nada. El objeto ni se inmuta. Entonces empieza a subir, y él lo sigue. Durante unos veinte minutos lo persigue cielo arriba, hasta que el caza llega a una altura que casi no puede soportar. Y al acercarse por fin, lo ve bien: una <strong>esfera</strong> con una cúpula brillante encima y una base ancha y metálica. <strong>Sin alas. Sin motores. Sin ventanas.</strong></p>
+<p>Con poco combustible, tuvo que volver a la base. El caso llegó hasta un documento del <strong>Departamento de Defensa de Estados Unidos</strong>, titulado «Ovni avistado en Perú». Santa María lo contó durante el resto de su vida.</p>''',
+  esceptico='''La explicación más repetida es la más sencilla: <strong>un globo</strong>, quizá meteorológico o de investigación, que a gran altura puede parecer quieto y resistir disparos sin reventar del todo. El radar de la base, según los militares, no registró el objeto.''',
+  trollaco='Sesenta y cuatro disparos y ni un rasguño. Ese globo ha ido al gimnasio más que yo.'),
+ dict(id='cabo-valdes', img='putre', titulo='El cabo Valdés: 15 minutos que duraron cinco días', sub='Un soldado desaparece frente a su patrulla en el altiplano chileno',
+  lugar='Pampa Lluscuma, cerca de Putre (Chile)', cuando='25 de abril de 1977', metro='—',
+  lat=-18.1960, lng=-69.5600, nivel=5, icono='⌚', pose='fantasma', lado='izq',
+  texto='''
+<p>Madrugada del 25 de abril de 1977. Altiplano chileno, a más de 3.500 metros de altura, cerca de <strong>Putre</strong> y de la frontera con Bolivia. Una patrulla del Ejército hace guardia en la pampa: el <strong>cabo Armando Valdés</strong> y varios soldados jóvenes. Hace un frío que corta la piel.</p>
+<p>De repente, un centinela da la voz de alarma. Sobre los cerros hay <strong>dos luces</strong>. Una de ellas baja y se acerca. Es ovalada, tiene dos puntos rojos en los extremos y lo ilumina todo con una <strong>luz violeta</strong>.</p>
+<p>El cabo Valdés hace lo que haría un jefe: ir a ver qué es. Camina hacia la luz unos quinientos metros… y <strong>desaparece</strong> delante de sus hombres. La luz también se va.</p>
+<p>Unos <strong>quince minutos</strong> después, Valdés vuelve a aparecer. Está como en trance, con la voz cambiada, y se desploma. Y aquí viene lo que nadie ha sabido explicar: el cabo, que se había afeitado antes de la guardia, tiene <strong>barba de varios días</strong>. Su reloj se ha parado a las 4:30. Y su calendario marca <strong>el 30 de abril</strong>. Cinco días más tarde. No recuerda nada.</p>''',
+  esceptico='''No hay más prueba que el relato de la patrulla, y los detalles cambian según quién lo cuente: cuántos soldados eran, qué vieron y qué dijo Valdés al volver. Nadie midió nada esa noche. Para los escépticos, el frío extremo, el cansancio y el miedo, a esa altura, bastan para explicar <strong>una noche de pánico</strong> que la prensa convirtió en leyenda.''',
+  trollaco='Desaparezco quince minutos y vuelvo con barba de cinco días. Eso a mí me pasa todos los lunes y nadie me hace un expediente.'),
+ dict(id='ovnis-de-campeche', img='campeche', titulo='Los once ovnis de Campeche', sub='El vídeo infrarrojo de la Fuerza Aérea Mexicana que dio la vuelta al mundo',
+  lugar='Cielo del sur de Campeche (México)', cuando='5 de marzo de 2004', metro='—',
+  lat=18.6000, lng=-90.7500, nivel=4, icono='🌡️', pose='expediente', lado='der',
+  texto='''
+<p>5 de marzo de 2004. Un avión de la <strong>Fuerza Aérea Mexicana</strong> patrulla el cielo del sur de Campeche buscando avionetas del narcotráfico. Lleva una <strong>cámara infrarroja</strong>, de las que ven el calor en plena oscuridad.</p>
+<p>Y la cámara ve algo. Primero una luz. Luego otra. Al final, <strong>once objetos brillantes</strong> que se mueven a unos 3.500 metros de altura y parecen cambiar de posición alrededor del avión. A simple vista, los tripulantes no ven nada. Pero en la pantalla, los puntos están ahí, cambiando de posición, como si jugaran con ellos.</p>
+<p>Lo increíble llegó dos meses después: en mayo de 2004, la Secretaría de la Defensa Nacional <strong>hizo público el vídeo</strong>. Un ejército reconociendo que sus pilotos habían grabado algo que no sabían identificar. El periodista <strong>Jaime Maussan</strong> lo presentó en televisión como la prueba definitiva de la visita extraterrestre, y las imágenes dieron la vuelta al mundo.</p>''',
+  esceptico='''Varios expertos señalaron que las luces coinciden con <strong>las llamaradas de las plataformas petroleras</strong> del golfo de México, que queman gas día y noche y en infrarrojo brillan muchísimo, aunque a simple vista estén demasiado lejos para verse. Además, los relatos de los testigos variaban bastante entre sí.''',
+  trollaco='Once luces que solo se ven en infrarrojo. Como los mosquitos de mi habitación: no los ves, pero están ahí.'),
+ dict(id='ovni-de-bariloche', img='bariloche', titulo='El ovni de Bariloche', sub='Un avión con 102 pasajeros, una ciudad a oscuras y un objeto que lo acompañó en el aterrizaje',
+  lugar='San Carlos de Bariloche, Río Negro (Argentina)', cuando='31 de julio de 1995', metro='—',
+  lat=-41.1512, lng=-71.1578, nivel=5, icono='✈️', pose='ovni', lado='izq',
+  texto='''
+<p>Noche del 31 de julio de 1995. El vuelo <strong>674 de Aerolíneas Argentinas</strong>, un Boeing 727 con <strong>102 pasajeros</strong>, se prepara para aterrizar en <strong>Bariloche</strong>, entre lagos y montañas nevadas. A los mandos, el comandante <strong>Jorge Polanco</strong>.</p>
+<p>Durante la aproximación, Polanco ve a su derecha <strong>un objeto con luces</strong> que parpadean, una de ellas roja en el centro, volando en paralelo al avión. En ese momento, <strong>las luces de la ciudad y de la pista se apagan</strong>. Polanco tiene que abortar el aterrizaje y dar la vuelta. El objeto se queda flotando en el aire, sube en vertical y, al final, se aleja a toda velocidad hacia la cordillera.</p>
+<p>No fue el único que lo vio. Pilotos de un vuelo sanitario de Gendarmería, la torre de control y el personal del aeropuerto contaron que habían visto luces raras esa noche. Polanco lo dijo sin rodeos por radio: <strong>creían que era un plato volador</strong>.</p>
+<p>Treinta años después, el caso sigue vivo: el gobierno argentino desclasificó los documentos en 2020 y, en mayo de 2026, el vuelo volvió a aparecer en <strong>archivos sobre ovnis publicados por el Departamento de Defensa de Estados Unidos</strong>.</p>''',
+  esceptico='''En 2018, un informe oficial argentino <strong>descartó que se tratara de una nave extraterrestre</strong>. Los escépticos señalan que el apagón y las luces pudieron coincidir sin tener nada que ver, y que de noche, en plena maniobra, es muy fácil confundir luces de otros aviones o de tierra.''',
+  trollaco='Llega un ovni y se va la luz. Igualito que en mi casa cuando enciendo a la vez el microondas y la plancha.'),
+]

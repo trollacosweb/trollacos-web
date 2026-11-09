@@ -324,3 +324,143 @@ L['luces-de-phoenix'] = dict(
  esceptico='''<p>La explicación oficial separa los dos fenómenos. La <strong>formación en V</strong> eran cinco aviones A-10 de la Guardia Nacional (operación Snowbird) volando en formación con sus luces de navegación, y un astrónomo aficionado, Mitch Stanley, vio con su telescopio que eran aviones. Las <strong>luces quietas</strong> de las diez eran <strong>bengalas</strong> lanzadas por A-10 de la Guardia Nacional de Maryland en unas maniobras: con los paracaídas, bajaban tan despacio que parecían flotar. En 2007, uno de los pilotos lo confirmó.</p>''',
  visitar='''<p><strong>Phoenix</strong> (Arizona) es una ciudad enorme en pleno desierto, con cielos muy despejados. Al sur está el campo de tiro Barry M. Goldwater, donde se lanzaron las bengalas: no se puede visitar, pero desde las afueras se ven unos cielos estrellados espectaculares.</p>''',
  fuentes='Wikipedia (Phoenix Lights), Guardia Nacional Aérea de Maryland, Fife Symington (2007)')
+
+# ===== Ampliación 9 nov 2026: ovnis en España y Latinoamérica =====
+L['talavera-la-real'] = dict(
+ secciones=[
+  ('Una guardia de noviembre', '''
+<p>La base aérea de <strong>Talavera la Real</strong>, a pocos kilómetros de Badajoz, es en 1976 un lugar donde no suele pasar nada por las noches. Los reclutas hacen rondas por el perímetro, se mueren de frío y cuentan las horas. La madrugada del <strong>12 de noviembre</strong>, a eso de las dos menos cuarto, empieza una ronda más. La hacen dos soldados: <strong>José María Trejo</strong> y <strong>Juan Carrizosa</strong>.</p>'''),
+  ('La figura de luz', '''
+<p>Lo que contaron después es uno de los relatos más extraños de la ufología española. Junto a la zona de matorrales vieron <strong>una luz verde con forma humana</strong>. Altísima: cerca de <strong>tres metros</strong>. Con una cabeza pequeña, parecida a un casco, y unos brazos larguísimos que no terminaban en manos. Tampoco tenía pies a la vista. Estaba salpicada de pequeños puntos de luz, como si brillara por dentro.</p>
+<p>Un tercer guardia se unió a ellos con un perro. Y entonces pasó lo que convirtió el caso en leyenda: los soldados <strong>abrieron fuego</strong>. Dispararon entre cuarenta y cincuenta balas contra la figura. Y la figura, según su relato, <strong>se desvaneció</strong>.</p>'''),
+  ('La búsqueda de la mañana', '''
+<p>Al amanecer, unos <strong>cincuenta hombres</strong> registraron la zona palmo a palmo. No encontraron rastros de la criatura. Ni huellas, ni marcas, ni restos. Pero el Ejército del Aire sí dejó claro un punto: los soldados <strong>habían disparado de verdad</strong>. Algo los había aterrorizado lo suficiente como para vaciar sus armas en mitad de la noche.</p>
+<p>Desde entonces, al caso se le conoce como el del <strong>«hombre verde»</strong> de Talavera, y aparece en todas las listas de los grandes misterios ovni de España junto a Manises y Canarias.</p>'''),
+ ],
+ cronologia=[('12/11/1976', 'Hacia las 01:45 empieza la ronda de Trejo y Carrizosa.'),('Madrugada', 'Ven la figura verde, se les une un tercer guardia con un perro y disparan entre 40 y 50 veces.'),('Por la mañana', 'Unos 50 hombres registran la zona sin encontrar nada.'),('Hoy', 'Es uno de los casos más citados de la ufología española.')],
+ flipar=['La figura medía cerca de <strong>tres metros</strong>.','Los soldados dispararon <strong>entre 40 y 50 balas</strong>.','Al día siguiente la buscaron <strong>unos 50 hombres</strong>.','No tenía <strong>manos ni pies</strong> visibles, según los testigos.'],
+ esceptico='<p>No hay fotografías, ni restos, ni impactos de bala en ningún objetivo. Los escépticos creen que se trató de <strong>una alucinación o de un episodio de pánico</strong>: guardia nocturna, frío, oscuridad, sueño y unos chavales que se contagian el miedo. Otros recuerdan que, con esa tensión, una sombra o un reflejo pueden parecer cualquier cosa.</p>',
+ visitar='<p>La base aérea de Talavera la Real es una instalación militar y <strong>no se puede visitar</strong>. Badajoz y su Alcazaba sí. Y si de noche ves una luz verde en la carretera… es un semáforo. Probablemente.</p>',
+ fuentes='Wikipedia (UFO sightings in Spain), prensa española sobre el caso, archivos ovni del Ejército del Aire')
+
+L['varginha'] = dict(
+ secciones=[
+  ('Una tarde de lluvia en Minas Gerais', '''
+<p><strong>Varginha</strong> es una ciudad mediana del sur de Minas Gerais, conocida por su café. El <strong>20 de enero de 1996</strong> llueve con fuerza y sopla un viento desagradable. Las hermanas <strong>Liliane y Valquíria Silva</strong> y su amiga <strong>Kátia Andrade Xavier</strong>, de entre 14 y 22 años, atajan por un descampado del barrio de Jardim Andere.</p>'''),
+  ('La criatura del muro', '''
+<p>Junto a un muro, agachada, ven algo que no se parece a nada conocido. Mide alrededor de <strong>1,60 metros</strong>, tiene una <strong>cabeza enorme</strong>, un cuerpo muy delgado, la piel marrón y brillante, los pies en forma de «V» y <strong>unos ojos rojos grandes</strong>. Se mueve con torpeza, como si estuviera herida o enferma.</p>
+<p>Las chicas salen corriendo. Cuando llegan a casa, cuentan lo que han visto. Cuando alguien vuelve al lugar, ya no hay nada.</p>'''),
+  ('Bomberos, camiones y rumores', '''
+<p>En pocos días, Varginha es un hervidero. Se dice que esa misma mañana <strong>los bomberos habían capturado una criatura</strong>, que se vieron <strong>camiones militares</strong> por la ciudad, que «algo» pasó por un centro médico antes de que se lo llevaran militares. Una pareja de granjeros, Oralina y Eurico de Freitas, cuenta que de madrugada vieron <strong>un objeto flotando sobre su campo</strong> durante unos cuarenta minutos. Meses después, la muerte de varios animales del zoo municipal se sumó a la lista de misterios.</p>
+<p>El gobierno brasileño negó haber participado en nada. Pero los rumores no pararon, y el caso se convirtió en <strong>el más famoso de Brasil</strong>.</p>'''),
+  ('La ciudad del ET', '''
+<p>Varginha supo sacarle partido: hoy tiene <strong>paradas de autobús con forma de nave</strong>, un depósito de agua con forma de platillo volante, muñecos de extraterrestres por todas partes y el ET hasta en la publicidad municipal. En 2026 se cumplieron <strong>30 años</strong> del caso, con documental incluido.</p>'''),
+ ],
+ cronologia=[('20/01/1996 (madrugada)', 'Una pareja de granjeros dice ver un objeto sobre su campo.'),('20/01/1996 (tarde)', 'Liliane, Valquíria y Kátia ven a la criatura junto a un muro.'),('Días siguientes', 'Rumores de capturas por bomberos y militares.'),('2010', 'Una investigación militar atribuye el caso a malentendidos y a «Mudinho».'),('2026', '30 años del caso.')],
+ flipar=['La criatura medía alrededor de <strong>1,60 metros</strong>.','Varginha tiene <strong>paradas de autobús con forma de nave espacial</strong>.','Hay un <strong>depósito de agua con forma de platillo</strong>.','Se le llama <strong>el «Roswell brasileño»</strong>.'],
+ esceptico='<p>Una investigación militar de 2010 concluyó que los bomberos y los camiones eran <strong>actividades rutinarias mal interpretadas</strong>. Y propuso que las chicas vieron a un hombre del barrio con problemas mentales, al que llamaban <strong>«Mudinho»</strong>, que solía agacharse junto a ese muro y que ese día estaba cubierto de barro por la lluvia. El ufólogo Kevin Randle reconoció la falta de pruebas físicas.</p>',
+ visitar='<p>Varginha está en el sur de Minas Gerais, a unas cuatro horas en coche de São Paulo. Pasea por la ciudad, hazte una foto en una parada-nave y, si ves una criatura junto a un muro, invítale a un café: es lo que produce la zona.</p>',
+ fuentes='Wikipedia (Varginha UFO incident), Christian Science Monitor (1996), prensa brasileña en el 30 aniversario')
+
+L['operacion-plato'] = dict(
+ secciones=[
+  ('Una isla con miedo', '''
+<p><strong>Colares</strong> es una isla del estado de Pará, en la desembocadura del Amazonas, donde en 1977 vivían pescadores y campesinos, muchos sin luz eléctrica. Ese año empezó a correr una historia: de noche bajaban <strong>luces del cielo</strong> que perseguían a la gente. Las llamaron <strong>«chupa-chupa»</strong>. Algunos vecinos mostraban <strong>marcas en la piel</strong> y decían que eran de esas luces.</p>
+<p>El miedo llegó a tal punto que los vecinos hacían <strong>vigilias nocturnas</strong>: encendían hogueras, lanzaban fuegos artificiales y hacían ruido para espantarlas.</p>'''),
+  ('El alcalde llama a la Fuerza Aérea', '''
+<p>Desbordado, el alcalde <strong>José Ildone Favacho Soeiro</strong> pidió ayuda a la <strong>Fuerza Aérea Brasileña</strong>. La respuesta fue una misión militar con un nombre que hoy suena a broma: <strong>Operação Prato</strong>, «Operación Plato», por los platillos volantes. La dirigió el capitán <strong>Uyrangê Hollanda</strong>, y participó también el servicio de información del Estado.</p>
+<p>Hubo dos fases, entre <strong>octubre y diciembre de 1977</strong>. Los militares pasaron noches enteras con cámaras y prismáticos vigilando el cielo. Tomaron <strong>fotografías de luces</strong> y redactaron informes. La operación se cerró sin encontrar, oficialmente, ningún fenómeno inusual.</p>'''),
+  ('La entrevista y el final', '''
+<p>En 1997, ya retirado, Hollanda concedió una entrevista a los ufólogos Ademar José Gevaerd y Marco Antônio Petit en la que habló de lo que había visto en Colares. <strong>Tres meses después murió</strong>, y su muerte alimentó todo tipo de teorías.</p>
+<p>Los documentos de la operación acabaron en el <strong>Archivo Nacional de Brasil</strong> y se fueron conociendo a partir de 2009. Para muchos ufólogos, Colares es el caso más inquietante de Sudamérica.</p>'''),
+ ],
+ cronologia=[('1977', 'Los vecinos de Colares hablan de las luces «chupa-chupa».'),('20/10/1977', 'Empieza la primera fase de la Operação Prato.'),('Diciembre de 1977', 'Termina la segunda fase.'),('1997', 'Entrevista del capitán Hollanda; muere tres meses después.'),('2009-2010', 'Se conocen documentos de la operación.')],
+ flipar=['La misión se llamaba, literalmente, <strong>«Operación Plato»</strong>.','Los vecinos <strong>lanzaban fuegos artificiales</strong> para espantar a las luces.','La Fuerza Aérea tomó <strong>fotos de luces</strong> que no supo identificar.','Los papeles acabaron en el <strong>Archivo Nacional de Brasil</strong>.'],
+ esceptico='<p>La operación terminó <strong>sin hallar nada fuera de lo normal</strong>, y las fotos muestran luces, no objetos. Los escépticos apuntan a un caso de <strong>pánico colectivo</strong> en una zona aislada y sin electricidad, alimentado por rumores, y a que las marcas en la piel nunca se estudiaron con rigor médico. Las afirmaciones de muertes y heridas graves proceden de ufólogos, no de la operación.</p>',
+ visitar='<p>Colares está a unas dos horas de Belém por carretera. Tiene playas de río y un ambiente muy tranquilo. Hoy, de noche, las únicas luces que verás serán las de los barcos de pesca. Y las de los móviles de los turistas buscando ovnis.</p>',
+ fuentes='Wikipedia (Operação Prato), Portal Amazônia, Diário do Pará, documentos del Archivo Nacional de Brasil')
+
+L['noche-de-los-ovnis'] = dict(
+ secciones=[
+  ('Ecos en el radar', '''
+<p>El <strong>19 de mayo de 1986</strong>, un lunes por la noche, los radares del sistema de defensa aérea de Brasil detectaron objetos sólidos donde no debería haber nada. Fueron apareciendo hasta sumar <strong>21</strong>, sobre los estados de <strong>São Paulo, Río de Janeiro, Minas Gerais y Goiás</strong>.</p>
+<p>Y no estaban en cualquier sitio: sobrevolaban lugares sensibles como el <strong>Instituto Nacional de Investigaciones Espaciales</strong> y el centro aeroespacial de <strong>São José dos Campos</strong>, y la Academia de la Fuerza Aérea en Pirassununga.</p>'''),
+  ('Cinco cazas en el aire', '''
+<p>El centro de defensa aérea mandó despegar <strong>cinco cazas</strong> para interceptarlos de forma pacífica. Los pilotos describieron cosas difíciles de creer: objetos que <strong>se quedaban quietos</strong>, que zigzagueaban, que hacían <strong>giros en ángulo recto</strong>, que cambiaban de color y que alcanzaban velocidades enormes. Al acercarse, desaparecían del radar y de la vista… y reaparecían en otro lugar.</p>
+<p>Un fotógrafo de prensa, Adenir Britto, consiguió fotografiar luces de colores. Un mes después, sus negativos fueron recogidos por dos oficiales y <strong>nunca se los devolvieron</strong>.</p>'''),
+  ('«No tenemos explicación»', '''
+<p>El <strong>23 de mayo de 1986</strong>, el ministro de Aeronáutica, <strong>Octávio Moreira Lima</strong>, reconoció ante la prensa que cinco cazas habían perseguido 21 objetos y dijo que, técnicamente, <strong>no tenían explicación</strong>. Prometió un informe en treinta días. Tardó <strong>23 años</strong> en hacerse público.</p>
+<p>El informe, firmado el 2 de junio de 1986, concluía que los fenómenos eran <strong>sólidos</strong> y que, en cierto modo, mostraban <strong>inteligencia</strong>, porque mantenían la distancia y volaban en formación. Hoy la Fuerza Aérea dice que todo el material está en el Archivo Nacional.</p>'''),
+ ],
+ cronologia=[('19/05/1986', 'Los radares detectan 21 objetos y despegan cinco cazas.'),('23/05/1986', 'El ministro Moreira Lima admite que no tienen explicación.'),('02/06/1986', 'Se firma el informe militar del caso.'),('Años después', 'El informe se hace público, 23 años más tarde.'),('19/05/2026', 'Se cumplen 40 años de la noche.')],
+ flipar=['Fueron <strong>21 objetos</strong> en el radar.','Despegaron <strong>cinco cazas</strong> de la Fuerza Aérea Brasileña.','El informe tardó <strong>23 años</strong> en publicarse.','Un ministro dijo en público: <strong>«no tenemos explicación»</strong>.','A un fotógrafo le <strong>requisaron los negativos</strong> y no se los devolvieron.'],
+ esceptico='<p>No hay explicación oficial. Los escépticos recuerdan que los radares de los años ochenta podían mostrar <strong>ecos falsos</strong> por fenómenos atmosféricos, y que de noche, sin referencias, los pilotos pueden confundir <strong>estrellas o planetas brillantes</strong> con luces que se mueven. La coincidencia entre radar y testigos es lo que mantiene vivo el caso.</p>',
+ visitar='<p>São José dos Campos está a una hora y media de São Paulo y es la capital aeroespacial de Brasil: allí puedes visitar el <strong>Memorial Aeroespacial Brasileño</strong>. Y mirar al cielo, que es gratis.</p>',
+ fuentes='Olhar Digital (40 años de la Noche de los Ovnis), Correio Braziliense, informe de la Fuerza Aérea Brasileña en el Archivo Nacional')
+
+L['la-joya-peru'] = dict(
+ secciones=[
+  ('Algo sobre la base', '''
+<p>El <strong>11 de abril de 1980</strong>, en la base aérea de <strong>La Joya</strong>, cerca de Arequipa, los militares vieron algo quieto sobre las instalaciones. Parecía <strong>un globo</strong> y daba la impresión de estar vigilando la base. No respondía a nada.</p>
+<p>La decisión fue rápida: mandar un caza a derribarlo. Despegó un <strong>Sukhoi</strong> de la Fuerza Aérea del Perú pilotado por el teniente <strong>Óscar Santa María Huertas</strong>.</p>'''),
+  ('64 disparos y nada', '''
+<p>Santa María se colocó en posición y abrió fuego: <strong>64 proyectiles</strong>. El objeto <strong>no sufrió ningún daño</strong>. En lugar de caer, empezó a subir, y el piloto lo persiguió durante unos <strong>veinte minutos</strong>, cada vez más alto.</p>
+<p>Según su relato, llegó a unos <strong>19.000 metros</strong>, por encima de lo que el avión podía soportar, y el caza empezó a perder potencia. Fue entonces cuando lo vio de cerca: una <strong>esfera</strong> con una especie de cúpula brillante arriba y una base ancha y metálica. Sin alas, sin ventanas, sin antenas, con la superficie lisísima. Sin combustible suficiente, tuvo que regresar.</p>'''),
+  ('Un papel en Washington', '''
+<p>En tierra, los militares dijeron que el radar de la base <strong>no había registrado el objeto</strong>. Pero el caso no se quedó en Perú: un documento del <strong>Departamento de Defensa de Estados Unidos</strong>, titulado «Ovni avistado en Perú», recogió el incidente y se compartió con otras agencias estadounidenses.</p>
+<p>Santa María Huertas lo contó durante décadas en entrevistas, siempre con la misma idea: aquello no era un globo normal.</p>'''),
+ ],
+ cronologia=[('11/04/1980', 'Aparece el objeto sobre la base de La Joya.'),('Minutos después', 'Despega el Sukhoi y dispara 64 proyectiles.'),('Unos 20 minutos', 'Persecución hasta cerca de 19.000 metros.'),('1980', 'Un documento del Departamento de Defensa de EE. UU. recoge el caso.')],
+ flipar=['El piloto disparó <strong>64 proyectiles</strong>.','Lo persiguió durante unos <strong>20 minutos</strong>.','Subió hasta unos <strong>19.000 metros</strong>.','Llegó a un documento oficial de <strong>Estados Unidos</strong>.','Es uno de los <strong>pocos casos en que un piloto dispara a un ovni</strong>.'],
+ esceptico='<p>La explicación más repetida es <strong>un globo</strong> (meteorológico, de investigación o de espionaje), que a gran altura parece inmóvil, puede subir mucho y, si es grande, no revienta con unos cuantos impactos. Que el radar de la base no lo detectara encaja con un objeto de tela o plástico. Para el piloto, no lo era.</p>',
+ visitar='<p>La base de La Joya es militar y no se visita, pero <strong>Arequipa</strong>, la «Ciudad Blanca», está a menos de una hora y es preciosa. Desde allí, con el Misti al fondo, cualquier nube con forma rara parece un ovni.</p>',
+ fuentes='La República (Perú), Diario Correo (Arequipa), documento del Departamento de Defensa de EE. UU. «UFO sighted in Peru»')
+
+L['cabo-valdes'] = dict(
+ secciones=[
+  ('Guardia en el altiplano', '''
+<p>Abril de 1977. En el norte de Chile, cerca de <strong>Putre</strong>, a unos 150 kilómetros de Arica y en plena precordillera, una patrulla del Ejército hace guardia en la pampa. Al mando está el <strong>cabo Armando Valdés</strong>, con varios conscriptos. Es la madrugada del <strong>25 de abril</strong>.</p>'''),
+  ('Dos luces sobre los cerros', '''
+<p>Uno de los centinelas ve <strong>dos luces</strong> sobre los cerros. Una de ellas se acerca a la patrulla: tiene forma ovalada, dos puntos rojos muy intensos en los extremos, y baña todo de una <strong>luz violeta</strong>. La otra se queda a lo lejos.</p>
+<p>Valdés decide acercarse. Camina unos <strong>500 metros</strong> hacia la luz y, hacia las <strong>4:15</strong>, <strong>desaparece</strong> de la vista de sus hombres.</p>'''),
+  ('La vuelta del cabo', '''
+<p>Unos <strong>quince minutos</strong> después, reaparece. Está como en trance, con la voz cambiada, y se desploma. Sus soldados se dan cuenta enseguida de algo imposible: el cabo, que se había afeitado antes de la guardia, tiene <strong>barba de unos cinco días</strong>. Su reloj está parado a las <strong>4:30</strong>, y el calendario del reloj marca el <strong>30 de abril</strong>: cinco días después.</p>
+<p>Valdés no recordaba qué había pasado. La noticia saltó a la prensa chilena y, en pocas semanas, a periódicos de medio mundo. El caso inspiró incluso <em>Lluscuma</em>, una novela del escritor chileno Jorge Baradit.</p>'''),
+ ],
+ cronologia=[('25/04/1977, madrugada', 'La patrulla ve dos luces cerca de Putre.'),('Hacia las 4:15', 'El cabo Valdés desaparece al acercarse a una de ellas.'),('Unos 15 minutos después', 'Reaparece con barba de días; su reloj marca el 30 de abril.'),('Mayo de 1977', 'El caso llega a la prensa internacional.')],
+ flipar=['Estuvo fuera <strong>unos 15 minutos</strong>…','…pero volvió con <strong>barba de cinco días</strong>.','Su reloj marcaba <strong>el 30 de abril</strong>.','La patrulla estaba a <strong>más de 3.500 metros</strong> de altura.','Inspiró la novela <strong><em>Lluscuma</em></strong>, de Jorge Baradit.'],
+ esceptico='<p>Todo se basa en el testimonio de la patrulla, y los detalles varían según la fuente: el número de soldados, lo que se vio y lo que dijo Valdés al volver. Nadie midió nada esa noche ni hubo pruebas físicas. A esa altura, con frío extremo, falta de oxígeno y cansancio, el cuerpo y la percepción pueden jugar malas pasadas, y una noche de miedo puede crecer mucho al contarse.</p>',
+ visitar='<p>Putre es un pueblo andino precioso, puerta del <strong>Parque Nacional Lauca</strong> y del lago Chungará. Ve con calma: a esa altura hay que aclimatarse. Y si te sale barba de cinco días en una noche, no es un ovni: es el soroche.</p>',
+ fuentes='El Mercurio (Emol), Le Provençal (18/05/1977), prensa chilena de la época')
+
+L['ovnis-de-campeche'] = dict(
+ secciones=[
+  ('Una patrulla antidroga', '''
+<p>El <strong>5 de marzo de 2004</strong>, un avión de la <strong>Fuerza Aérea Mexicana</strong> vuela sobre el sur de Campeche en una misión contra el narcotráfico: buscar avionetas que transportan droga. Lleva equipo de <strong>visión infrarroja</strong>, capaz de detectar el calor en plena noche.</p>'''),
+  ('Once puntos de calor', '''
+<p>Durante el vuelo, la cámara capta <strong>luces brillantes</strong> que se mueven a unos <strong>3.500 metros</strong> de altura. Primero una, luego varias. Al final cuentan <strong>once</strong>. A simple vista no se ven, pero en la pantalla infrarroja están ahí, cambiando de posición alrededor del avión.</p>'''),
+  ('Un ejército que publica su vídeo', '''
+<p>En <strong>mayo de 2004</strong>, el Ministerio de Defensa mexicano difundió el vídeo a la prensa. Que un ejército hiciera público algo así era casi inédito. El periodista <strong>Jaime Maussan</strong>, la cara más conocida de los ovnis en México, lo presentó como <strong>prueba de una visita extraterrestre</strong>, y las imágenes recorrieron televisiones de todo el mundo.</p>'''),
+ ],
+ cronologia=[('05/03/2004', 'Un avión de la Fuerza Aérea Mexicana graba once luces en infrarrojo.'),('Mayo de 2004', 'Defensa difunde el vídeo; Jaime Maussan lo presenta en televisión.'),('Semanas después', 'Expertos proponen las llamaradas de plataformas petroleras.')],
+ flipar=['Fueron <strong>11 luces</strong>.','Volaban a unos <strong>3.500 metros</strong>.','Solo se veían en <strong>infrarrojo</strong>.','Lo publicó <strong>el propio ejército</strong> mexicano.'],
+ esceptico='<p>La explicación más aceptada es que las luces eran <strong>llamaradas de las plataformas petroleras</strong> del golfo de México, que queman gas sin parar: en infrarrojo brillan muchísimo aunque estén a decenas de kilómetros, y el movimiento del avión hace que parezcan desplazarse. El divulgador escéptico Michael Shermer criticó además que los relatos de los testigos variaban mucho.</p>',
+ visitar='<p>Campeche tiene una ciudad amurallada preciosa, Patrimonio de la Humanidad, y playas en el golfo. Si miras al mar de noche y ves luces lejanas, ya sabes: o son plataformas petroleras… o el expediente sigue abierto.</p>',
+ fuentes='Wikipedia (UFO sightings in Mexico), La Jornada y prensa mexicana de mayo de 2004')
+
+L['ovni-de-bariloche'] = dict(
+ secciones=[
+  ('Aproximación a Bariloche', '''
+<p>Noche del <strong>31 de julio de 1995</strong>, invierno en la Patagonia. El vuelo <strong>AR 674 de Aerolíneas Argentinas</strong>, un Boeing 727 con <strong>102 pasajeros</strong> y su tripulación, se prepara para aterrizar en <strong>San Carlos de Bariloche</strong>. Al mando, el comandante <strong>Jorge Polanco</strong>.</p>'''),
+  ('Las luces y el apagón', '''
+<p>Pasadas las ocho de la noche, Polanco ve a su derecha <strong>un objeto con luces</strong> que destellan, una de ellas <strong>roja en el centro</strong>, que vuela en paralelo al avión. En ese momento, <strong>la ciudad y el aeropuerto se quedan a oscuras</strong>: falla el suministro eléctrico y se apagan las luces de la pista.</p>
+<p>Polanco tiene que <strong>abortar la maniobra</strong> y dar una vuelta. Según su relato, el objeto se queda suspendido, sube en vertical a gran velocidad, se mantiene a unos 3.000 metros y, cuando el avión desciende, se aleja hacia la cordillera de los Andes. Por radio, la frase quedó para la historia: <strong>creían que era un plato volador</strong>.</p>'''),
+  ('Más testigos y más papeles', '''
+<p>No estaba solo. Pilotos de <strong>Gendarmería</strong> que hacían un vuelo sanitario, la torre de control, el jefe del aeropuerto y personal de pista contaron que habían visto luces extrañas esa noche.</p>
+<p>En <strong>2018</strong>, un informe oficial argentino descartó que fuera una nave extraterrestre. En <strong>2020</strong>, el gobierno desclasificó los documentos a petición de la comisión de estudio del fenómeno ovni del país. Y en <strong>mayo de 2026</strong>, el vuelo 674 reapareció en los archivos sobre ovnis que publicó el <strong>Departamento de Defensa de Estados Unidos</strong>.</p>'''),
+ ],
+ cronologia=[('31/07/1995, 20:17', 'Polanco ve el objeto durante la aproximación.'),('Minutos después', 'Apagón en la ciudad y el aeropuerto; el avión aborta el aterrizaje.'),('Hacia las 20:31', 'El objeto se aleja hacia los Andes.'),('2018', 'Un informe oficial argentino descarta una nave extraterrestre.'),('2020', 'Argentina desclasifica los documentos.'),('Mayo de 2026', 'El caso aparece en archivos publicados por el Pentágono.')],
+ flipar=['Iban <strong>102 pasajeros</strong> a bordo.','Coincidió con un <strong>apagón</strong> de la ciudad y el aeropuerto.','Lo vieron también <strong>pilotos de Gendarmería</strong> y la torre de control.','En 2026 apareció en <strong>archivos del Pentágono</strong>.'],
+ esceptico='<p>El informe oficial argentino de 2018 <strong>descartó una nave extraterrestre</strong>. Los escépticos señalan que el apagón pudo ser una coincidencia, y que de noche, en plena maniobra de aproximación entre montañas, las luces de otros aviones, de tierra o incluso reflejos pueden parecer un objeto que te acompaña.</p>',
+ visitar='<p>Bariloche es uno de los destinos más bonitos de Argentina: lagos, chocolate, esquí y el Nahuel Huapi. Si aterrizas de noche, mira por la ventanilla derecha. Por si acaso.</p>',
+ fuentes='La Capital (Rosario), Buenos Aires Times (mayo de 2026), documentos desclasificados por el gobierno argentino (2020)')

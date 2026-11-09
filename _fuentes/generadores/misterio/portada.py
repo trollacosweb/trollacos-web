@@ -13,7 +13,8 @@ def ilus(img):
 def limpio(t): return re.sub(r'<[^>]+>', '', t).strip()
 
 REG = [('📍 MADRID', '/misterio/', C.CASOS + C.SIERRA, 'Palacios malditos, ovnis en Aluche y una estación fantasma en la línea 1.'),
-       ('🇪🇸 ESPAÑA', '/misterio/espana/', C.ESPANA, 'Las caras de Bélmez, el avión que huyó de unas luces en Manises y la esfera de Canarias.'),
+       ('🇪🇸 ESPAÑA', '/misterio/espana/', C.ESPANA, 'El avión que huyó de unas luces en Manises, el «hombre verde» de Talavera y las caras de Bélmez.'),
+       ('🌎 LATINOAMÉRICA', '/misterio/latinoamerica/', C.LATAM, 'El ET de Varginha, el ovni de Bariloche, las luces de Campeche y el piloto que disparó a un ovni.'),
        ('🌍 EL MUNDO', '/misterio/mundo/', C.MUNDO, 'Roswell, el «Tic Tac» que grabó la Marina de EE. UU. y las luces de Phoenix.')]
 todos = []
 for nombre, url, L, _ in REG:
@@ -35,7 +36,7 @@ bloque = f'''<!--MIS:INICIO-->
   <div class="mis-cab">
     <img class="px mis-tr" src="/misterio/img/trollaco-linterna.png" alt="El Trollaco con una linterna" width="64" height="64">
     <div><span class="mis-k">&gt; ARCHIVO CLASIFICADO · {total} CASOS_</span><h2>Expediente Trollaco</h2>
-    <p class="mis-int">Fantasmas, ovnis y sucesos que nadie supo explicar, de Madrid al resto del planeta. Te contamos cada caso como lo cuenta la leyenda… y luego lo que dicen los escépticos. <b>Tú decides qué creerte.</b></p>
+    <p class="mis-int">Fantasmas, ovnis y sucesos que nadie supo explicar, de Madrid a Latinoamérica y al resto del planeta. Te contamos cada caso como lo cuenta la leyenda… y luego lo que dicen los escépticos. <b>Tú decides qué creerte.</b></p>
     <p class="mis-firma"><img src="/img/aris.jpg" alt="" width="34" height="34"> Investiga: <a href="/misterio/aris-v-torres/">el Dr. Aris V. Torres</a></p></div>
   </div>
   <a class="mis-caso" id="mis-caso" href="{c0['u']}">
@@ -86,7 +87,7 @@ CSS = '''<!--MISCSS:INICIO--><style>
 .mis-niv{font-family:'VT323',monospace;font-size:18px;color:#cfe9db}.mi-off{opacity:.2}
 .mis-dice{font-size:15px;color:#e9e6ff;font-style:italic;border-left:3px solid #7cffb2;padding-left:10px}
 .mis-btn{align-self:flex-start;margin-top:4px;padding:8px 14px;border:2px solid #7cffb2;border-radius:8px;color:#7cffb2;font-weight:700;font-size:15px}
-.mis-regs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:980px;margin:14px auto 0}
+.mis-regs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:980px;margin:14px auto 0}
 .mi-reg{display:flex;flex-direction:column;text-decoration:none;border:1px solid rgba(124,255,178,.45);border-radius:12px;overflow:hidden;background:rgba(124,255,178,.05)}
 .mi-reg:hover{border-color:#7cffb2;box-shadow:0 0 16px rgba(124,255,178,.35)}
 .mi-reg img{width:100%;height:110px;object-fit:cover;display:block;filter:saturate(.9) brightness(.85)}

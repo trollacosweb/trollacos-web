@@ -9,7 +9,7 @@ RAIZ = '/home/claude/trollacos-web'
 base = open(f'{RAIZ}/misterio/index.html', encoding='utf-8').read()
 style = base[base.find('<style>'):base.find('</style>') + 8]
 foot = base[base.find('<footer>'):base.find('</footer>') + 9]
-REG = [('Madrid', '/misterio/', C.CASOS + C.SIERRA), ('España', '/misterio/espana/', C.ESPANA), ('El mundo', '/misterio/mundo/', C.MUNDO)]
+REG = [('Madrid', '/misterio/', C.CASOS + C.SIERRA), ('España', '/misterio/espana/', C.ESPANA), ('Latinoamérica', '/misterio/latinoamerica/', C.LATAM), ('El mundo', '/misterio/mundo/', C.MUNDO)]
 todos = [(c, r, u) for r, u, Ls in REG for c in Ls]
 
 extra = '''
@@ -99,7 +99,7 @@ for i, (c, reg, ureg) in enumerate(todos):
 <body>
 <nav class="top">
   <a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a>
-  <a href="{ureg}">‹ {reg.upper()}</a>
+  <a href="{ureg}">‹ {({"Latinoamérica": "LATAM"}).get(reg, reg.upper())}</a>
 </nav>
 <main class="exp">
 <p class="migas"><a href="/misterio/">Expediente Trollaco</a> › <a href="{ureg}">{reg}</a> ›</p>
@@ -187,7 +187,7 @@ bio = f'''<!doctype html>
   <h2>Áreas de investigación</h2>
   <ul class="crono" style="border-left-color:var(--verde)">
    <li><b>Arqueología y civilizaciones antiguas</b>Estructuras monumentales, vestigios precolombinos y enigmas arquitectónicos repartidos por todo el planeta.</li>
-   <li><b>Ufología y fenómenos anómalos</b>Los registros sobre fenómenos aéreos no identificados, de Manises a Roswell, y los límites de la exploración espacial.</li>
+   <li><b>Ufología y fenómenos anómalos</b>Los registros sobre fenómenos aéreos no identificados, de Manises a Bariloche y Roswell, y los límites de la exploración espacial.</li>
    <li><b>Enigmas paranormales</b>Sucesos insólitos y manifestaciones que escapan a la explicación científica tradicional, del Palacio de Linares a las caras de Bélmez.</li>
   </ul>
   <h2>Divulgación</h2>
