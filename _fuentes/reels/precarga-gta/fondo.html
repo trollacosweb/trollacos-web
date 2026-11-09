@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:540px;height:960px;overflow:hidden;background:#07021a}
+#c{position:absolute;inset:0;background:linear-gradient(#07021a 0%,#1a0638 40%,#3a0a5a 62%,#07021a 62.3%)}
+#sol{position:absolute;left:150px;top:470px;width:240px;height:240px;border-radius:50%;background:linear-gradient(#ffd23f,#ff2bd6 75%);clip-path:inset(0 0 48% 0);opacity:.7}
+#sol::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 14px,#3a0a5a 14px 19px)}
+svg{position:absolute;left:0;top:598px}
+</style></head><body><div id="c"></div><div id="sol"></div>
+<svg width="540" height="362"><g stroke="#ff2bd6" stroke-opacity=".55" stroke-width="1.5">
+<script>document.write([...Array(13)].map((_,i)=>{const y=Math.pow(i/12,1.8)*362;return `<line x1="0" y1="${y}" x2="540" y2="${y}"/>`}).join('')+[...Array(23)].map((_,i)=>{const x=-600+i*80;return `<line x1="270" y1="0" x2="${x}" y2="362"/>`}).join(''))</script></g></svg>
+</body></html>
