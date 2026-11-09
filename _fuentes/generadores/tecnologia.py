@@ -91,10 +91,10 @@ extra = """
 style2 = style.replace('</style>', extra)
 
 def firma():
-    return (f'<div class="firma"><img src="/img/danna.jpg?v=3" alt="Danna" width="56" height="56"><div><b>Por Danna</b>'
+    return (f'<div class="firma"><img src="/img/danna.jpg?v=4" alt="Danna" width="56" height="56"><div><b>Por Danna</b>'
             f'<span>Tu reportera del otro lado de la pantalla · <a href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">📸 @{DANNA_IG}</a> · <a href="/danna/">¿Quién es?</a></span></div></div>')
 def autora():
-    return (f'<div class="autora"><img src="/img/danna.jpg?v=3" alt="Danna" width="96" height="96"><div><span>&gt; ESTE ARTÍCULO TE LO HA CONTADO_</span><b>Danna</b>'
+    return (f'<div class="autora"><img src="/img/danna.jpg?v=4" alt="Danna" width="96" height="96"><div><span>&gt; ESTE ARTÍCULO TE LO HA CONTADO_</span><b>Danna</b>'
             f'<p>Tu reportera del otro lado de la pantalla. Tecnología y videojuegos, sin rodeos y con guasa.</p>'
             f'<a class="btn-ig" href="https://www.instagram.com/{DANNA_IG}/" target="_blank" rel="noopener">📸 Sigue a Danna en Instagram · @{DANNA_IG}</a></div></div>')
 

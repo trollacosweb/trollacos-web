@@ -33,7 +33,7 @@ page = f'''<!doctype html>
 <title>Danna, reportera de Trollacos: gaming, redes y eventos | Trollacos</title>
 <meta name="description" content="Quién es Danna, la reportera de Trollacos: noticias de GTA VI y videojuegos, tecnología, redes sociales, streamings y eventos. Con guasa y sin rodeos.">
 <link rel="canonical" href="https://trollacos.com/danna/">
-<meta property="og:title" content="Danna, la reportera de Trollacos"><meta property="og:image" content="https://trollacos.com/img/danna-setup.webp?v=2">
+<meta property="og:title" content="Danna, la reportera de Trollacos"><meta property="og:image" content="https://trollacos.com/img/danna-setup.webp?v=3">
 <link rel="icon" href="/icono.png">
 {style.replace('</style>', extra)}
 </head><body>
@@ -43,7 +43,7 @@ page = f'''<!doctype html>
   <p class="k">&gt; FICHA DE LA REDACCIÓN_</p>
   <h1>Danna</h1>
   <p class="cargo">Editora de gaming, redes y tendencias · Tu reportera del otro lado de la pantalla</p>
-  <figure class="foto"><img src="/img/danna-setup.webp?v=2" alt="Danna en su setup" width="1100" height="1100"></figure>
+  <figure class="foto"><img src="/img/danna-setup.webp?v=3" alt="Danna en su setup" width="1024" height="805"></figure>
   <p><strong>Danna</strong> es la cara fresca, rápida y con el mando siempre cargado de Trollacos. Se encarga de contarte lo último de los videojuegos y la tecnología antes que tu primo «el que se entera de todo», y de que en nuestras redes nunca falte el salseo. Si el Dr. Aris V. Torres es el archivo polvoriento de los misterios, Danna es la notificación que te vibra en el bolsillo.</p>
   <ul class="ficha-d">
     <li><b>📍 Base de operaciones</b>Un setup rosa y cian con más ledes que una feria</li>
