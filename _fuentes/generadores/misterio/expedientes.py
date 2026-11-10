@@ -83,11 +83,11 @@ for i, (c, reg, ureg) in enumerate(todos):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(limpio(c["titulo"]))}: {html.escape(limpio(c["sub"]))} | Expediente Trollaco</title>
+<title>{html.escape(limpio(c["titulo"]))}: {html.escape(limpio(c["sub"]))} | Archivos Secretos</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="{html.escape(limpio(c['titulo']))} · Expediente Trollaco">
+<meta property="og:title" content="{html.escape(limpio(c['titulo']))} · Archivos Secretos">
 <meta property="og:description" content="{html.escape(limpio(c['sub']))}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="https://trollacos.com{ilus(c['img'])}">
@@ -102,7 +102,7 @@ for i, (c, reg, ureg) in enumerate(todos):
   <a href="{ureg}">‹ {({"Latinoamérica": "LATAM"}).get(reg, reg.upper())}</a>
 </nav>
 <main class="exp">
-<p class="migas"><a href="/misterio/">Expediente Trollaco</a> › <a href="{ureg}">{reg}</a> ›</p>
+<p class="migas"><a href="/misterio/">Archivos Secretos</a> › <a href="{ureg}">{reg}</a> ›</p>
 <article class="caso" id="{c['id']}">
   <div class="sello">EXPEDIENTE {i + 1:02d}/{len(todos)}</div>
   <h1>{c['titulo']}</h1>
@@ -127,7 +127,7 @@ for i, (c, reg, ureg) in enumerate(todos):
   <h2>📍 Cómo visitarlo</h2>
   <div class="visita">{x['visitar']}</div>
   <p class="comp"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={url}" target="_blank" rel="noopener">Telegram</a></p>
-  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios del Expediente Trollaco. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios dlos Archivos Secretos. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
   <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
 </article>
 <nav class="navexp" aria-label="Más expedientes">
@@ -166,14 +166,14 @@ print(f'expedientes: {len(todos)} páginas')
 # ---------- ficha del Dr. Aris V. Torres ----------
 bio = f'''<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dr. Aris V. Torres, investigador de los misterios | Expediente Trollaco</title>
+<title>Dr. Aris V. Torres, investigador de los misterios | Archivos Secretos</title>
 <meta name="description" content="Quién es el Dr. Aris V. Torres, el personaje que firma los expedientes de misterio de Trollacos: arqueología, ovnis y enigmas paranormales.">
 <link rel="canonical" href="https://trollacos.com/misterio/aris-v-torres/">
 <meta property="og:image" content="https://trollacos.com/misterio/img/aris-despacho.webp">
 <link rel="icon" href="/icono.png">
 {style.replace('</style>', extra)}
 </head><body>
-<nav class="top"><a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a><a href="/misterio/">‹ EXPEDIENTE TROLLACO</a></nav>
+<nav class="top"><a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a><a href="/misterio/">‹ ARCHIVOS SECRETOS</a></nav>
 <main class="exp">
 <article class="caso">
   <div class="sello">FICHA DEL INVESTIGADOR</div>
@@ -181,7 +181,7 @@ bio = f'''<!doctype html>
   <p class="subt">Investigación y fronteras del misterio</p>
   <figure class="ilus"><img src="/misterio/img/aris-despacho.webp" alt="El Dr. Aris V. Torres en su despacho" width="1200" height="544"></figure>
   <div class="sec">
-  <p>El <strong>Dr. Aris V. Torres</strong> encabeza la sección de investigación de Trollacos y firma todos los casos del <a href="/misterio/">Expediente Trollaco</a>. Aporta rigor y una mirada abierta al análisis de los grandes enigmas que han desconcertado a la humanidad, convencido de que tanto los vestigios del pasado como los fenómenos más extraños de la realidad guardan respuestas que la historia convencional aún no ha descifrado del todo.</p>
+  <p>El <strong>Dr. Aris V. Torres</strong> encabeza la sección de investigación de Trollacos y firma todos los casos de los <a href="/misterio/">Archivos Secretos</a>. Aporta rigor y una mirada abierta al análisis de los grandes enigmas que han desconcertado a la humanidad, convencido de que tanto los vestigios del pasado como los fenómenos más extraños de la realidad guardan respuestas que la historia convencional aún no ha descifrado del todo.</p>
   <h2>Rigor ante todo</h2>
   <p>Su trayectoria se mueve entre la Historia Antigua, la Antropología y la Arqueología. Su norma es sencilla: <strong>primero las fuentes, después las conclusiones</strong>. Antes de opinar sobre cualquier hecho anómalo examina con lupa los documentos, los testimonios y las pruebas físicas. Por eso cada expediente termina con lo que dicen los escépticos: el doctor cree que un buen misterio aguanta cualquier pregunta.</p>
   <h2>Áreas de investigación</h2>

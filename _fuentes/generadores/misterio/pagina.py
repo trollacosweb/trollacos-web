@@ -55,11 +55,11 @@ page = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Expediente Trollaco</title>
+<title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Archivos Secretos</title>
 <meta name="description" content="El Palacio de Linares, la Casa de las Siete Chimeneas, el Ángel Caído, la estación fantasma de Chamberí, el caso Ummo y el caso Vallecas. Los misterios de Madrid, con mapa interactivo.">
 <link rel="canonical" href="https://trollacos.com/misterio/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Expediente Trollaco: el Madrid que da miedo">
+<meta property="og:title" content="Archivos Secretos: el Madrid que da miedo">
 <meta property="og:description" content="7 lugares de Madrid con historia oscura, en un mapa interactivo. ¿Te atreves?">
 <meta property="og:url" content="https://trollacos.com/misterio/">
 <meta property="og:image" content="https://trollacos.com/misterio/portada.jpg">
@@ -183,7 +183,7 @@ footer a{{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-d
 <header class="cab">
   <img class="px ovni-cab" src="img/ovni.png" alt="" aria-hidden="true">
   <div class="k">&gt; ARCHIVO CLASIFICADO_</div>
-  <h1>EXPEDIENTE TROLLACO<br>El Madrid que da miedo</h1>
+  <h1>ARCHIVOS SECRETOS<br>El Madrid que da miedo</h1>
   <p class="ent">Siete lugares por los que pasas cada día. Siete historias que nadie te contó en el colegio. Algunas son leyenda. Otras dejaron informes policiales. <strong>Tú decides cuáles creerte.</strong></p>
   <img class="px tr-cab" src="img/trollaco-linterna.png" alt="El Trollaco con una linterna">
   <div class="niebla"></div>

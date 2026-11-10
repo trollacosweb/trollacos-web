@@ -1,4 +1,4 @@
-# Reel vertical «Expediente Trollaco»: fotogramas con PIL -> ffmpeg
+# Reel vertical «Archivos Secretos»: fotogramas con PIL -> ffmpeg
 import sys, subprocess, re, numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 sys.path.insert(0,'/home/claude/trollacos-web/_fuentes/generadores/misterio'); import casos as C
@@ -54,7 +54,7 @@ def frame_caso(i,cid,t):
     sd.text((22,12),f'CASO {i+1:02d}/17',font=F(M,40),fill=(255,255,255)); s=s.rotate(5,expand=True,resample=Image.BICUBIC)
     fr.paste(s,(x0-14,y0-44),s)
     d=ImageDraw.Draw(fr)
-    centro(d,150,'> EXPEDIENTE TROLLACO_',F(M,46),VERDE)
+    centro(d,150,'> ARCHIVOS SECRETOS_',F(M,46),VERDE)
     y=y0+bh+50
     centro(d,y,REG[cid]+' · '+limpio(c['cuando']).upper()[:24],F(M,34),VERDE); y+=62
     for l in wrap(d,c['titulo'],F(B,72),980): centro(d,y,l,F(B,72),(255,255,255)); y+=88

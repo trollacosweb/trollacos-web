@@ -1,4 +1,4 @@
-"""Genera las tres páginas del Expediente Trollaco a partir de la plantilla pagina.py."""
+"""Genera las tres páginas dlos Archivos Secretos a partir de la plantilla pagina.py."""
 import re
 BASE = open('/home/claude/trollaco/misterio/pagina.py').read()
 
@@ -8,38 +8,38 @@ TABS = '''<nav class="tabs" aria-label="Expedientes">
 
 REGIONES = [
  dict(var='CASOS + SIERRA', out='/home/claude/trollacos-web/misterio/index.html', url='https://trollacos.com/misterio/', tab='m',
-  title='Lugares encantados de Madrid: 9 casos paranormales con mapa | Expediente Trollaco',
+  title='Lugares encantados de Madrid: 9 casos paranormales con mapa | Archivos Secretos',
   desc='El Palacio de Linares, la Casa de las Siete Chimeneas, el Ángel Caído, Chamberí, Ummo, el caso Vallecas y los sanatorios de La Barranca y la Marina. Los misterios de Madrid, con mapa interactivo.',
-  ogt='Expediente Trollaco: el Madrid que da miedo', ogd='9 lugares de Madrid con historia oscura, en un mapa interactivo. ¿Te atreves?', ogi='https://trollacos.com/misterio/portada.jpg',
+  ogt='Archivos Secretos: el Madrid que da miedo', ogd='9 lugares de Madrid con historia oscura, en un mapa interactivo. ¿Te atreves?', ogi='https://trollacos.com/misterio/portada.jpg',
   headline='Lugares encantados de Madrid: 9 casos paranormales con mapa',
-  h1='EXPEDIENTE TROLLACO<br>El Madrid que da miedo',
+  h1='ARCHIVOS SECRETOS<br>El Madrid que da miedo',
   ent='Nueve lugares de Madrid, de Cibeles a la sierra. Nueve historias que nadie te contó en el colegio. Algunas son leyenda. Otras dejaron informes policiales. <strong>Tú decides cuáles creerte.</strong>',
   aviso='⚠️ Contamos cada caso como lo cuenta la leyenda y, al final, lo que dicen los escépticos. En el mapa solo marcamos lugares públicos o visibles desde fuera; el caso Vallecas va solo por barrio, por respeto a sus vecinos. Los sanatorios abandonados son peligrosos: no entres.',
   mapa='Pincha en cada icono para abrir su expediente. Haz zoom, muévete y apunta: algunos los tienes más cerca de lo que crees. Aleja el mapa para ver los de la sierra.'),
  dict(var='ESPANA', out='/home/claude/trollacos-web/misterio/espana/index.html', url='https://trollacos.com/misterio/espana/', tab='e',
-  title='Casos paranormales y ovnis de España: Manises, Talavera, Bélmez, Canarias y más | Expediente Trollaco',
+  title='Casos paranormales y ovnis de España: Manises, Talavera, Bélmez, Canarias y más | Archivos Secretos',
   desc='Los misterios más sonados de España: el incidente ovni de Manises, el «hombre verde» de Talavera la Real, las caras de Bélmez, la esfera de Canarias y el Hospital del Tórax. Con mapa interactivo y lo que dicen los escépticos.',
-  ogt='Expediente Trollaco: la España del misterio', ogd='Manises, Talavera, Bélmez, Canarias y el Tórax. Los grandes casos de España, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/espana/portada.jpg',
+  ogt='Archivos Secretos: la España del misterio', ogd='Manises, Talavera, Bélmez, Canarias y el Tórax. Los grandes casos de España, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/espana/portada.jpg',
   headline='Casos paranormales y ovnis de España: Manises, Talavera la Real, Bélmez, Canarias y el Hospital del Tórax',
-  h1='EXPEDIENTE TROLLACO<br>La España del misterio',
+  h1='ARCHIVOS SECRETOS<br>La España del misterio',
   ent='Un avión que tuvo que huir de unas luces. Tres soldados disparando a una figura verde de tres metros. Caras que salían del suelo de una cocina. Una esfera que vio medio archipiélago. <strong>Los casos que paralizaron España.</strong>',
   aviso='⚠️ Contamos cada caso como lo cuenta la leyenda y, al final, lo que dicen los escépticos. Si visitas algún lugar, respeta a los vecinos y la propiedad privada.',
   mapa='Pincha en cada icono para abrir su expediente. De Valencia a Canarias, pasando por Badajoz, Jaén y Terrassa.'),
  dict(var='LATAM', out='/home/claude/trollacos-web/misterio/latinoamerica/index.html', url='https://trollacos.com/misterio/latinoamerica/', tab='l',
-  title='Los casos ovni más famosos de Latinoamérica: Varginha, Bariloche, Campeche y más | Expediente Trollaco',
+  title='Los casos ovni más famosos de Latinoamérica: Varginha, Bariloche, Campeche y más | Archivos Secretos',
   desc='El ET de Varginha, la Operación Plato, la Noche Oficial de los Ovnis en Brasil, el piloto peruano que disparó a un ovni, el cabo Valdés en Chile, las luces de Campeche y el ovni de Bariloche. Con mapa interactivo y lo que dicen los escépticos.',
-  ogt='Expediente Trollaco: ovnis de Latinoamérica', ogd='Varginha, Colares, Bariloche, Campeche, Putre y La Joya. Los grandes casos ovni de Latinoamérica, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/latinoamerica/portada.jpg',
+  ogt='Archivos Secretos: ovnis de Latinoamérica', ogd='Varginha, Colares, Bariloche, Campeche, Putre y La Joya. Los grandes casos ovni de Latinoamérica, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/latinoamerica/portada.jpg',
   headline='Los casos ovni más famosos de Latinoamérica: Varginha, Bariloche, Campeche y más',
-  h1='EXPEDIENTE TROLLACO<br>Ovnis de Latinoamérica',
+  h1='ARCHIVOS SECRETOS<br>Ovnis de Latinoamérica',
   ent='Una criatura de ojos rojos bajo la lluvia. Cinco cazas persiguiendo 21 luces. Un piloto que vació su cañón contra una esfera. Un soldado que volvió con barba de cinco días. <strong>Los casos que nadie ha sabido cerrar, de México a la Patagonia.</strong>',
   aviso='⚠️ Contamos cada caso como lo cuenta la leyenda y, al final, lo que dicen los escépticos. Las bases militares no se pueden visitar: el resto, con respeto a los vecinos.',
   mapa='Pincha en cada icono para abrir su expediente. De Campeche a la Patagonia, pasando por Brasil, Perú y Chile.'),
  dict(var='MUNDO', out='/home/claude/trollacos-web/misterio/mundo/index.html', url='https://trollacos.com/misterio/mundo/', tab='w',
-  title='Los casos ovni más famosos del mundo: Roswell, Rendlesham, el Tic Tac y Phoenix | Expediente Trollaco',
+  title='Los casos ovni más famosos del mundo: Roswell, Rendlesham, el Tic Tac y Phoenix | Archivos Secretos',
   desc='Roswell, el bosque de Rendlesham, el "Tic Tac" de la Marina de EE. UU. y las luces de Phoenix. Los grandes casos ovni del mundo, contados con intriga y con mapa interactivo.',
-  ogt='Expediente Trollaco: ovnis del mundo', ogd='Roswell, Rendlesham, el Tic Tac del Pentágono y las luces de Phoenix, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/mundo/portada.jpg',
+  ogt='Archivos Secretos: ovnis del mundo', ogd='Roswell, Rendlesham, el Tic Tac del Pentágono y las luces de Phoenix, en un mapa. ¿Te atreves?', ogi='https://trollacos.com/misterio/mundo/portada.jpg',
   headline='Los casos ovni más famosos del mundo: Roswell, Rendlesham, el Tic Tac y Phoenix',
-  h1='EXPEDIENTE TROLLACO<br>Ovnis del mundo',
+  h1='ARCHIVOS SECRETOS<br>Ovnis del mundo',
   ent='Un "platillo" que el ejército anunció y luego negó. Militares persiguiendo luces en un bosque. Un vídeo publicado por el Pentágono. <strong>Los casos que siguen sin cerrarse.</strong>',
   aviso='⚠️ Contamos cada caso como lo cuenta la leyenda y, al final, lo que dicen los escépticos.',
   mapa='Pincha en cada icono para abrir su expediente. Mueve el mapa: estos casos están repartidos por el planeta.'),
@@ -53,16 +53,16 @@ for R in REGIONES:
     s = BASE
     s = rep(s, 'from casos import CASOS, PROXIMOS', 'from casos import *\nCASOS = ' + R['var'])
     s = rep(s, 'src="img/', 'src="/misterio/img/')
-    s = rep(s, '<title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Expediente Trollaco</title>', f'<title>{R["title"]}</title>')
+    s = rep(s, '<title>Lugares encantados de Madrid: 7 casos paranormales con mapa | Archivos Secretos</title>', f'<title>{R["title"]}</title>')
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{R["desc"]}">', s, count=1)
     s = rep(s, '<link rel="canonical" href="https://trollacos.com/misterio/">', f'<link rel="canonical" href="{R["url"]}">')
-    s = rep(s, '<meta property="og:title" content="Expediente Trollaco: el Madrid que da miedo">', f'<meta property="og:title" content="{R["ogt"]}">')
+    s = rep(s, '<meta property="og:title" content="Archivos Secretos: el Madrid que da miedo">', f'<meta property="og:title" content="{R["ogt"]}">')
     s = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{R["ogd"]}">', s, count=1)
     s = rep(s, '<meta property="og:url" content="https://trollacos.com/misterio/">', f'<meta property="og:url" content="{R["url"]}">')
     s = rep(s, '<meta property="og:image" content="https://trollacos.com/misterio/portada.jpg">', f'<meta property="og:image" content="{R["ogi"]}">')
     s = rep(s, '"headline": "Lugares encantados de Madrid: 7 casos paranormales con mapa"', f'"headline": "{R["headline"]}"')
     s = rep(s, '"mainEntityOfPage": "https://trollacos.com/misterio/"', f'"mainEntityOfPage": "{R["url"]}"')
-    s = rep(s, '<h1>EXPEDIENTE TROLLACO<br>El Madrid que da miedo</h1>', f'<h1>{R["h1"]}</h1>')
+    s = rep(s, '<h1>ARCHIVOS SECRETOS<br>El Madrid que da miedo</h1>', f'<h1>{R["h1"]}</h1>')
     s = re.sub(r'<p class="ent">.*?</p>', f'<p class="ent">{R["ent"]}</p>', s, count=1, flags=re.S)
     s = re.sub(r'<p class="aviso">.*?</p>', f'<p class="aviso">{R["aviso"]}</p>', s, count=1, flags=re.S)
     s = rep(s, '<p>Pincha en cada icono para abrir su expediente. Haz zoom, muévete y apunta: algunos los tienes más cerca de lo que crees.</p>', f'<p>{R["mapa"]}</p>')

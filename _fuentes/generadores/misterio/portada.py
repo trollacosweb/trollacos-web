@@ -1,4 +1,4 @@
-"""Bloque «Expediente Trollaco» de la portada (entre <!--MIS:INICIO--> y <!--MIS:FIN-->).
+"""Bloque «Archivos Secretos» de la portada (entre <!--MIS:INICIO--> y <!--MIS:FIN-->).
 Caso de la semana (cambia solo cada lunes), accesos a Madrid, España y el mundo y un «caso al azar».
 Uso: python3 _fuentes/generadores/misterio/portada.py   (lo llama también generar.py)"""
 import os, re, sys, json, html
@@ -35,7 +35,7 @@ bloque = f'''<!--MIS:INICIO-->
 <section class="block mis" id="misterio">
   <div class="mis-cab">
     <img class="px mis-tr" src="/misterio/img/trollaco-linterna.png" alt="El Trollaco con una linterna" width="64" height="64">
-    <div><span class="mis-k">&gt; ARCHIVO CLASIFICADO · {total} CASOS_</span><h2>Expediente Trollaco</h2>
+    <div><span class="mis-k">&gt; ARCHIVO CLASIFICADO · {total} CASOS_</span><h2>Archivos Secretos</h2>
     <p class="mis-int">Fantasmas, ovnis y sucesos que nadie supo explicar, de Madrid a Latinoamérica y al resto del planeta. Te contamos cada caso como lo cuenta la leyenda… y luego lo que dicen los escépticos. <b>Tú decides qué creerte.</b></p>
     <p class="mis-firma"><img src="/img/aris.jpg" alt="" width="34" height="34"> Investiga: <a href="/misterio/aris-v-torres/">el Dr. Aris V. Torres</a></p></div>
   </div>
@@ -113,4 +113,4 @@ if '<!--MISCSS:INICIO-->' in s:
 else:
     s = s.replace('</head>', CSS + '\n</head>', 1)
 open(p, 'w', encoding='utf-8').write(s)
-print(f'portada: Expediente Trollaco con {total} casos')
+print(f'portada: Archivos Secretos con {total} casos')

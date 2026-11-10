@@ -84,7 +84,7 @@ aviso = f'''
 <p>trollacos.com es una web de <b>{TITULAR}</b>. Contacto: <a href="mailto:{CONTACTO}">{CONTACTO}</a>.</p>
 
 <h2>Qué es Trollacos</h2>
-<p>Una web de entretenimiento: humor, videojuegos, la guía de GTA VI, el arcade Trollaco Run, el Expediente Trollaco y La Porra Trollaca.</p>
+<p>Una web de entretenimiento: humor, videojuegos, la guía de GTA VI, el arcade Trollaco Run, los Archivos Secretos y La Porra Trollaca.</p>
 
 <h2>Enlaces de afiliado</h2>
 <p>Como Afiliado de Amazon, Trollacos obtiene ingresos por las compras adscritas que cumplen los requisitos aplicables. Si compras desde nuestros enlaces, a ti no te cuesta nada más.</p>
@@ -97,7 +97,7 @@ aviso = f'''
 <ul>
 <li>La marca y el nombre <b>Trollacos</b>, el logotipo, el estilo y el diseño de la web.</li>
 <li>Los personajes: <b>el Trollaco</b>, <b>Danna</b>, el <b>Dr. Aris V. Torres</b>, <b>Héctor «El Caimán» Varga</b>, la Princesa Neón, Míster Glitch y todos los demás.</li>
-<li>Los juegos: <b>Trollaco Run</b> (el modo «Supera el récord» y el modo historia, con sus capítulos, guiones, diálogos, gráficos, música y efectos), <b>La Porra Trollaca</b> y su sistema de fichas, y el <b>Expediente Trollaco</b>.</li>
+<li>Los juegos: <b>Trollaco Run</b> (el modo «Supera el récord» y el modo historia, con sus capítulos, guiones, diálogos, gráficos, música y efectos), <b>La Porra Trollaca</b> y su sistema de fichas, y los <b>Archivos Secretos</b> (antes «Archivos Secretos»).</li>
 <li>Los textos, las noticias, la guía de GTA VI, las ilustraciones, los vídeos, la música y el código fuente de la web.</li>
 </ul>
 <p><b>Queda prohibido</b> copiar, reproducir, distribuir, publicar, transformar o usar con fines comerciales cualquiera de estos contenidos, total o parcialmente, sin nuestro permiso por escrito. Si quieres usar algo (por ejemplo, citar una noticia o compartir una captura del juego), puedes enlazar a la página original citando a Trollacos. Para cualquier otra cosa, pídenos permiso en <a href="mailto:{CONTACTO}">{CONTACTO}</a>.</p>

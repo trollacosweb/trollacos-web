@@ -1,4 +1,4 @@
-# Contenido del Expediente Trollaco: Madrid
+# Contenido dlos Archivos Secretos: Madrid
 CASOS = [
  dict(id='palacio-de-linares', img='linares', titulo='El Palacio de Linares', sub='La niña que nunca se fue',
   lugar='Plaza de Cibeles, 2 (hoy Casa de América)', cuando='Finales del siglo XIX', metro='Banco de España',
