@@ -1,5 +1,23 @@
 [
  {
+  "slug": "gta-6-ps5-pro-pssr-trazado-de-rayos-30-fps",
+  "fecha": "2026-11-10",
+  "emoji": "🎮",
+  "titulo": "GTA VI en PS5: Rockstar confirma 30 fps en consola, y la PS5 Pro tendrá PSSR y sombras con trazado de rayos",
+  "entradilla": "Segundo vídeo del día: PlayStation enseña lo que aprovecha el juego en PS5 y Rockstar pone por fin los datos técnicos por escrito. Spoiler: los 60 fps no aparecen por ningún lado.",
+  "cuerpo": [
+   "El 10 de noviembre ha dado para mucho. Por la mañana llegó el anuncio «Pre-Load Now» y por la tarde, un segundo vídeo: el <strong>tráiler de funciones de PS5</strong>, que PlayStation ha publicado junto a una entrada en su blog oficial. Ojo: <strong>las escenas no son nuevas</strong>, la gracia está en lo que cuenta.",
+   "<strong>Lo que hace en PS5:</strong> usa el <strong>DualSense</strong> a fondo (vibración háptica, gatillos adaptativos y sonidos por el altavoz del mando, todo regulable en las opciones de accesibilidad), suena con <strong>Tempest 3D Audio</strong> para que sepas de dónde viene cada tiro y <strong>carga más rápido</strong> gracias al SSD.",
+   "<strong>Lo que añade la PS5 Pro:</strong> imagen más nítida con <strong>PSSR</strong> (el reescalado de Sony) y <strong>sombras con trazado de rayos</strong>, que según Rockstar son <strong>exclusivas de la PS5 Pro</strong>.",
+   "<strong>¿Y los fps?</strong> Rockstar lo pone por escrito en su web: el juego apunta a <strong>30 fotogramas por segundo</strong> en las consolas actuales. Es lo mismo que contó Rob Nelson a finales de octubre, pero ahora es oficial. De un modo a 60 fps, <strong>ni una palabra</strong>.",
+   "<strong>Más cosas:</strong> se podrá jugar en <strong>Xbox Cloud Gaming</strong> desde Xbox Series X|S y también desde <strong>Xbox One</strong> (en la nube, con los ajustes gráficos de la Series S), y tendrá <strong>juego remoto</strong> en PlayStation y Xbox. Además, PlayStation asegura que GTA VI ya es <strong>el juego más reservado de la historia de la PlayStation Store</strong>."
+  ],
+  "opina": "PSSR, trazado de rayos, Tempest 3D… y luego te lo pones a 30 fps. Es como comprarte un Ferrari y que te pongan un limitador de patinete. Que da igual, lo vamos a jugar igual hasta las cinco de la mañana.",
+  "fuente": "PlayStation Blog y Rockstar Newswire (10 de noviembre de 2026), recogido por Gematsu y Libertad Digital",
+  "guia": "/gta-6/#versiones",
+  "guia_txt": "Idiomas, PS5 Pro y PC"
+ },
+ {
   "slug": "gta-6-anuncio-precarga-pre-load-now",
   "fecha": "2026-11-10",
   "emoji": "🎬",
