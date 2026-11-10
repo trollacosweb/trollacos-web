@@ -1,5 +1,42 @@
 [
  {
+  "slug": "gta-6-desarrollo-terminado-take-two",
+  "fecha": "2026-11-10",
+  "emoji": "🏁",
+  "titulo": "GTA VI ya está terminado: Take-Two confirma que Rockstar ha acabado el desarrollo y las reservas van «muy por encima» de lo previsto",
+  "entradilla": "A diez días del lanzamiento, el jefe de Take-Two lo dice claro: el juego está acabado y el 19 de noviembre sigue en pie. Lo que no da es ni una cifra de reservas.",
+  "cuerpo": [
+   "Respira, que esta vez va en serio. En la presentación de resultados de Take-Two del <strong>9 de noviembre</strong>, su consejero delegado, <strong>Strauss Zelnick</strong>, dijo que <strong>Rockstar ha terminado el desarrollo de GTA VI</strong>. Es lo que en el mundillo se llama «ir a gold»: la versión de lanzamiento está cerrada y lista para que las consolas la certifiquen. Eso sí, Take-Two no usó la palabra «gold»: lo de «gold» lo ha puesto la prensa.",
+   "Zelnick añadió que en Rockstar han hecho <strong>su mejor trabajo</strong>, que la campaña de marketing también está «totalmente cocinada» y que ahora lo que toca es que el juego llegue a los jugadores sin problemas técnicos. La fecha no se mueve: <strong>19 de noviembre de 2026 en PS5 y Xbox Series X|S</strong>.",
+   "<strong>¿Y las reservas?</strong> Según Zelnick, van <strong>«muy por encima» de lo que esperaban</strong>, y la directora financiera, Lainie Goldstein, las calificó de «extraordinarias». Ahora bien, <strong>no han dado ni una sola cifra</strong>, y el propio Zelnick prefirió no cantar victoria antes de tiempo.",
+   "Que el juego esté terminado no quita que pueda llegar con un <strong>parche el día 1</strong>, algo habitual en los lanzamientos grandes. De la versión de PC, ni una palabra: sigue sin anunciarse.",
+   "Y mientras tanto, la <strong>precarga ya está en marcha</strong> desde la medianoche: si tienes la versión digital (o el código de la caja, desde el 12), ve dejando hueco, que pide hasta 212 GB."
+  ],
+  "opina": "Después de dos retrasos, que el jefe de Take-Two diga «está terminado» es lo más bonito que he oído este año. Lo de las reservas «muy por encima» sin dar cifras me recuerda a mí diciendo que he batido mi récord en Trollaco Run… sin enseñar la captura.",
+  "fuente": "Take-Two Interactive, presentación de resultados del segundo trimestre fiscal (9 de noviembre de 2026), recogido por Output Lag y Beebom",
+  "guia": "/gta-6/#basico",
+  "guia_txt": "Lo básico: fecha, precio y ediciones"
+ },
+ {
+  "slug": "gta-6-festival-miami-travis-scott-cardi-b-justice",
+  "fecha": "2026-11-10",
+  "emoji": "🎤",
+  "titulo": "GTA VI tendrá su propio festival de música en Miami: Travis Scott, Cardi B y Justice, el 21 de noviembre",
+  "entradilla": "Rockstar y PlayStation montan «Grand Theft Auto VI: The Festival» dos días después del lanzamiento. Las entradas no se compran sin más: hay que ganar un sorteo, y se cierra hoy mismo.",
+  "cuerpo": [
+   "Rockstar no se conforma con sacar el juego: también quiere fiesta. Junto a PlayStation ha anunciado <strong>«Grand Theft Auto VI: The Festival»</strong>, un festival de un solo día para celebrar el lanzamiento con <strong>la música de Vice City y Leonida</strong>, es decir, con artistas que salen en el juego y en su banda sonora oficial.",
+   "<strong>¿Cuándo y dónde?</strong> El <strong>sábado 21 de noviembre</strong>, dos días después de que salga GTA VI, en <strong>Mana Wynwood</strong>, en el barrio de Wynwood de <strong>Miami</strong> (la Vice City de verdad, vaya). Habrá dos escenarios y lo organizan los creadores del festival III Points.",
+   "<strong>El cartel:</strong>",
+   "<ul><li><b>Travis Scott</b>, con su sello Cactus Jack y los suyos: Don Toliver, Kodak Black y Sofaygo.</li><li><b>Cardi B</b>.</li><li><b>Justice</b>, en sesión de DJ (los autores de la banda sonora original del juego).</li><li><b>Metro Boomin</b>, <b>Tainy</b>, <b>Rauw &amp; Friends</b> y <b>Ca7riel &amp; Paco Amoroso</b>.</li><li>Y más sesiones: Nick León con DJ Python, Prospa con Skream, The Dare con Fcukers y Suero.</li></ul>",
+   "<strong>Las entradas, por sorteo.</strong> Aquí está el truco: no basta con tener dinero. Primero hay que apuntarse a un <strong>sorteo en la web oficial del festival</strong>, que se cierra <strong>hoy, martes 10 de noviembre, a las 22:00 hora peninsular</strong>. A los ganadores les llega un código y pueden comprar las entradas el <strong>miércoles 11 a las 18:00</strong> (hora peninsular) en DICE, como mucho <strong>dos por persona</strong> y sin poder revenderlas.",
+   "<strong>Requisitos:</strong> hay que tener <strong>17 años o más</strong> y llevar documento con foto (y 21 para beber alcohol, que esto es Estados Unidos). No hay aparcamiento, así que toca ir en coche compartido o taxi. De momento <strong>Rockstar no ha dicho que se vaya a emitir en directo</strong> por internet, así que desde España, salvo que te pille de vacaciones en Florida, toca mirarlo por las redes."
+  ],
+  "opina": "Un festival en Miami con Travis Scott y Cardi B y yo aquí, con la precarga al 34 % y una bolsa de pipas. Si alguien gana el sorteo, que me grabe un vídeo… vertical, por favor.",
+  "fuente": "Rockstar Games, web oficial del festival (9 de noviembre de 2026), recogido por Billboard, Consequence y Forbes",
+  "guia": "/gta-6/#musica",
+  "guia_txt": "La música de GTA VI"
+ },
+ {
   "slug": "gta-6-precarga-10-noviembre-212-gb",
   "fecha": "2026-11-03",
   "emoji": "⬇️",
