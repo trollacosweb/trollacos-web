@@ -185,6 +185,15 @@
   }
   .btn:hover{background:var(--pink);color:#000;text-shadow:none}
   .btn.alt{border-color:var(--cyan);box-shadow:0 0 10px var(--cyan),inset 0 0 10px var(--cyan);text-shadow:0 0 6px var(--cyan);background:rgba(31,242,255,.06)}
+  .menu-esp{position:relative;display:inline-block}
+  .cta:has(.menu-esp[open]){z-index:50}
+  .menu-esp>summary{list-style:none;cursor:pointer}.menu-esp>summary::-webkit-details-marker{display:none}
+  .menu-esp[open]>summary{background:var(--cyan)!important;color:#000!important}
+  .menu-esp-l{position:absolute;left:0;top:calc(100% + 10px);z-index:60;width:min(320px,calc(100vw - 32px));display:flex;flex-direction:column;gap:6px;padding:10px;border:2px solid var(--cyan);border-radius:14px;background:#0b0430;box-shadow:0 0 22px rgba(31,242,255,.45)}
+  .menu-esp-l a,.menu-esp-l .pronto{display:block;padding:10px 12px;border-radius:10px;font-family:'VT323',monospace;font-size:21px;color:#fff;text-decoration:none;text-align:left;background:rgba(31,242,255,.07)}
+  .menu-esp-l a:hover{background:var(--cyan);color:#000}
+  .menu-esp-l .pronto{color:#9c93c4;background:rgba(255,255,255,.04)}
+  .menu-esp-l .todos{color:var(--yellow);background:none}
   .btn.alt:hover{background:var(--cyan);color:#000}
 
   /* scanlines */
@@ -399,7 +408,14 @@
     <a class="btn alt" href="#misterio" style="border-color:#7cffb2;color:#7cffb2;box-shadow:0 0 12px rgba(124,255,178,.45)">👽 EXPEDIENTE TROLLACO</a>
     <a class="btn alt" href="/merch/" style="border-color:#ff2bd6;color:#fff;background:rgba(7,2,26,.75);box-shadow:0 0 12px rgba(255,43,214,.45)">👕 MERCH</a>
     <a class="btn alt" href="/cine/" style="border-color:#ffb347;color:#ffb347;background:rgba(7,2,26,.75);box-shadow:0 0 12px rgba(255,179,71,.45)">🎬 CINE</a>
-    <a class="btn alt" href="/especiales/juegos-de-futbol/" style="border-color:#1ff2ff;color:#1ff2ff;background:rgba(7,2,26,.75);box-shadow:0 0 12px rgba(31,242,255,.45)">⚽ ESPECIAL FÚTBOL</a>
+    <details class="menu-esp"><summary class="btn alt" style="border-color:#1ff2ff;color:#1ff2ff;background:rgba(7,2,26,.75);box-shadow:0 0 12px rgba(31,242,255,.45)">📚 ESPECIALES ▾</summary>
+      <div class="menu-esp-l">
+        <a href="/especiales/juegos-de-futbol/">⚽ Especial videojuegos de fútbol</a>
+        <a href="/especiales/aventuras-graficas/">🖱️ Especial aventuras gráficas</a>
+        <span class="pronto">🌴 Especial GTA · PRÓXIMAMENTE</span>
+        <a href="/especiales/" class="todos">Ver todos los especiales ›</a>
+      </div>
+    </details>
     <a class="btn alt" href="#tienda">TIENDA</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#tecnologia">TECNOLOGÍA</a>
@@ -751,6 +767,7 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
   });
 })();
 </script>
+<script>document.addEventListener('click',function(e){document.querySelectorAll('details.menu-esp[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});</script>
 </body>
 </html>
 <!-- portada 202610311836 -->
