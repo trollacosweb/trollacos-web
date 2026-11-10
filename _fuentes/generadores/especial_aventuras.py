@@ -24,7 +24,7 @@ TIEMPO = [
     ('1992', 'Indiana Jones and the Fate of Atlantis', 'La aventura más vendida de LucasArts: más de un millón de copias.', 'indiana-jones-atlantis'),
     ('1993', 'Day of the Tentacle, Myst y Gabriel Knight', 'El año más bestia del género: tentáculos, islas misteriosas y vudú en Nueva Orleans.', 'day-of-the-tentacle'),
     ('1994', 'Igor: Objetivo Uikokahonia', 'Pendulo Studios firma la primera aventura gráfica hecha en España.', 'igor'),
-    ('1996', 'Broken Sword y Dráscula', 'Templarios en París y un vampiro muy español.', 'broken-sword'),
+    ('1996', 'Broken Sword y Dráscula', 'Templarios en París (el primero de cinco Broken Sword) y un vampiro muy español.', 'broken-sword'),
     ('1997', 'Hollywood Monsters y The Curse of Monkey Island', 'Dinamic Multimedia lanza el gran éxito de Pendulo; Guybrush se hace dibujo animado.', 'hollywood-monsters'),
     ('1998', 'Grim Fandango', 'La obra maestra que no vendió lo suficiente… y el principio del fin de LucasArts en el género.', 'grim-fandango'),
     ('2001', 'Runaway y la caída de Dinamic Multimedia', 'Sale Runaway en julio; en septiembre Dinamic anuncia su liquidación.', 'runaway'),
@@ -206,15 +206,24 @@ ficha('myst', 'Myst', 'La isla que vendió CD-ROM', '1993', 'Mac, Windows', 'Cya
       'Estuve tres horas en Myst sin saber qué hacer. Luego me dijeron que esa era la gracia.',
       ['Wikiwand/Wikipedia (en inglés), «Myst»'])
 
-ficha('broken-sword', 'Broken Sword: La leyenda de los templarios', 'Templarios en París', '1996', 'MS-DOS, Windows, Mac, PlayStation… (Director\'s Cut en 2009)', 'Revolution Software · Charles Cecil', '⚔️',
-      'George Stobbart, un turista estadounidense, está tomando algo en una terraza de París cuando un payaso hace estallar el café. Investigando la explosión '
-      'acaba metido en una conspiración de los templarios que le lleva por media Europa y Oriente Medio.',
-      ['Vendió alrededor de <strong>un millón de copias</strong> hasta 2001.',
-       'En Estados Unidos se llamó <em>Circle of Blood</em>.',
-       'La música es de <strong>Barrington Pheloung</strong>, el de la serie <em>Inspector Morse</em>.',
-       'La saga sigue viva: cinco juegos, un Director\'s Cut y una versión remasterizada anunciada en 2023.'],
+ficha('broken-sword', 'Broken Sword: la saga de los templarios', 'Cinco juegos (y contando)', '1996–2024', 'PC, PlayStation, PS2, Xbox, GBA, DS, Wii, móviles, PS4, Switch…', 'Revolution Software · Charles Cecil', '⚔️',
+      'George Stobbart, un turista estadounidense, está tomando algo en una terraza de París cuando un payaso hace estallar el café. Investigando la explosión, '
+      'y con la periodista francesa <strong>Nico Collard</strong>, acaba metido en una conspiración templaria que le lleva por media Europa y Oriente Medio. '
+      'Fue el principio de una de las sagas más queridas del género, con <strong>cinco juegos</strong>:'
+      '<ul class="saga">'
+      '<li><b>1996 · La leyenda de los templarios</b> (<em>The Shadow of the Templars</em>): el original, dibujado a mano. Vendió alrededor de <strong>un millón de copias</strong> hasta 2001.</li>'
+      '<li><b>1997 · Las fuerzas del mal</b> (<em>The Smoking Mirror</em>): segunda parte, también en 2D, con una piedra maya de por medio.</li>'
+      '<li><b>2003 · El sueño del dragón</b> (<em>The Sleeping Dragon</em>): salto al <strong>3D</strong> y a más acción. Dividió a los fans.</li>'
+      '<li><b>2006 · El ángel de la muerte</b> (<em>The Angel of Death</em>): sigue en 3D; fue la entrega menos querida.</li>'
+      '<li><b>2013 · La maldición de la serpiente</b> (<em>The Serpent\'s Curse</em>): <strong>vuelta al 2D</strong>, pagada por los fans en Kickstarter.</li>'
+      '</ul>',
+      ['Entre las cinco, la saga ha pasado por <strong>más de quince sistemas</strong>: de la primera PlayStation a la Game Boy Advance, la Nintendo DS, la Wii, los móviles y la Switch.',
+       'En el <strong>Director\'s Cut</strong> de 2009 (un remake del primero) por fin se podía <strong>jugar con Nico</strong>. En la versión original de 1996, no.',
+       'La quinta parte se financió en Kickstarter en 2012: pedían unos 400.000 dólares y acabaron con <strong>más de 800.000</strong>, el doble.',
+       'El <strong>19 de septiembre de 2024</strong> salió <em>Shadow of the Templars – Reforged</em>, el primero remasterizado en alta definición para PC y consolas.',
+       'En Estados Unidos el primero se llamó <em>Circle of Blood</em>, y la música es de <strong>Barrington Pheloung</strong>, el de la serie <em>Inspector Morse</em>.'],
       'Todo empieza con un payaso que revienta una cafetería. Y luego dicen que yo exagero.',
-      [WP + '«Broken Sword: The Shadow of the Templars»'])
+      [WP + '«Broken Sword» y «Broken Sword: The Shadow of the Templars»', 'PCGamesN y VideoGamer (Kickstarter de Broken Sword 5, septiembre de 2012)', 'GamingOnLinux y Game Developer (lanzamiento de Reforged, 2024)'])
 
 ficha('the-longest-journey', 'The Longest Journey', 'Entre dos mundos', '1999', 'Windows', 'Funcom · Ragnar Tørnquist', '🌗',
       'April Ryan, una estudiante de arte de 18 años, descubre que puede saltar entre dos mundos: Stark, una Tierra futurista e industrial, y Arcadia, '
@@ -382,7 +391,7 @@ style = g[g.find('<style>'):g.find('</style>') + 8]
 foot = g[g.find('<footer>'):g.find('</footer>') + 9]
 fut = open('_fuentes/generadores/especial_futbol.py', encoding='utf-8').read()
 extra = fut[fut.find("extra = '''") + 11:fut.find("</style>'''", fut.find("extra = '''"))]
-style2 = style.replace('</style>', extra + '</style>')
+style2 = style.replace('</style>', extra + '.intro{font-size:19px;line-height:1.65;margin:1em 0}.saga{margin:10px 0 0;padding-left:20px}.saga li{font-size:18px;margin-bottom:8px}.saga b{color:var(--yellow)}\n@media(max-width:700px){.intro{font-size:18px}.saga li{font-size:17px}}</style>')
 
 def portada(x):
     p = f'{IMG}/{x["slug"]}.webp'
@@ -397,7 +406,7 @@ def html_ficha(x):
     return f'''<section class="ficha-j" id="{x['slug']}">
 <div class="cab">{portada(x)}<div><span class="sub">&gt; {esc(x['sub'].upper())}_</span><h3>{esc(x['titulo'])}</h3>
 <dl><dt>AÑO</dt><dd>{x['anio']}</dd><dt>DÓNDE</dt><dd>{esc(x['plataformas'])}</dd><dt>QUIÉN</dt><dd>{esc(x['estudio'])}</dd></dl></div></div>
-<p>{x['intro']}</p>
+{('<div class="intro">' + x['intro'] + '</div>') if '<ul' in x['intro'] else '<p>' + x['intro'] + '</p>'}
 <div class="flipar"><b class="t">🤯 DATOS PARA FLIPAR</b><ul>{datos}</ul></div>
 <div class="nota"><img src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {esc(x['troll'])}</p></div>
 {pie}<p class="fu">Fuentes: {fu}.</p>
