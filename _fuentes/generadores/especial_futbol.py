@@ -570,14 +570,6 @@ def guarda(ruta, txt):
 
 guarda('especiales/juegos-de-futbol', pagina(titulo, desc, URL, cuerpo, ld, volver=('/especiales/', '‹ ESPECIALES')))
 
-# portada de especiales
-hub = f'''<p class="migas"><a href="/">Portada</a> › Especiales</p>
-<div class="hero-f"><p class="k">&gt; ESPECIALES TROLLACOS_</p><h1>Especiales</h1><p>Contenido largo, nostálgico y con datos: para leer con calma y con el mando cerca.</p></div>
-<section class="ficha-j"><div class="cab"><div class="port" aria-hidden="true">⚽</div><div><span class="sub">&gt; NUEVO_</span><h2><a href="{URL}" style="color:#fff">{esc(titulo)}</a></h2>
-<p style="margin:6px 0 0;font-size:17px">{esc(desc)}</p><p style="margin:12px 0 0"><a class="btn" href="{URL}">LEER EL ESPECIAL</a></p></div></div></section>'''
-guarda('especiales', pagina('Especiales de Trollacos', 'Especiales largos y nostálgicos de Trollacos sobre videojuegos.', '/especiales/', hub))
-
-sm = open('sitemap.xml', encoding='utf-8').read()
-nuevas = ''.join(f'  <url><loc>https://trollacos.com{u}</loc><changefreq>monthly</changefreq></url>\n' for u in ('/especiales/', URL) if f'https://trollacos.com{u}<' not in sm)
-if nuevas: open('sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', nuevas + '</urlset>'))
+# portada de especiales (+ sitemap): común a todos los especiales
+exec(open('_fuentes/generadores/especiales_hub.py', encoding='utf-8').read())
 print(f'especial fútbol: {len(F)} fichas + PC Fútbol, {len(TIEMPO)} hitos, {len(FUENTES)} fuentes')
