@@ -119,7 +119,6 @@ h2.sec{font-family:'Righteous',sans-serif;font-weight:400;font-size:clamp(28px,6
 footer{border-top:2px solid var(--verde);text-align:center;padding:26px 16px 36px;color:var(--muted);font-size:16px}
 footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-decoration:none;margin:0 8px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-.leer{margin:16px 0 4px}.leer a{display:inline-block;padding:11px 18px;border:2px solid var(--verde);border-radius:10px;color:#eafff3;font-family:'VT323',monospace;font-size:22px;text-decoration:none;background:rgba(124,255,178,.08);box-shadow:0 0 14px rgba(124,255,178,.25)}.leer a:hover{background:rgba(124,255,178,.18)}
 
 .exp{max-width:820px;margin:0 auto;padding:0 16px}
 .exp .caso{margin-top:24px}
@@ -144,6 +143,21 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-de
 .navexp a.sig{text-align:right}
 .migas{font-family:'VT323',monospace;font-size:19px;margin:18px 0 0}.migas a{color:var(--verde)}
 @media(max-width:560px){.navexp{grid-template-columns:1fr}.navexp a.sig{text-align:left}}
+.tucaso{display:flex;gap:16px;align-items:center;margin:0 0 28px;padding:16px 18px;border:3px dashed #ffd23f;border-radius:16px;background:rgba(255,210,63,.07);text-decoration:none;color:#fff}
+.tucaso:hover{background:rgba(255,210,63,.14)}.tucaso>span{font-size:44px;flex:none}
+.tucaso small{font-family:'VT323',monospace;font-size:19px;color:#ffd23f}.tucaso b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:25px}
+.tucaso p{margin:4px 0 0;font-size:16px;color:#e9e3c4}
+.form-caso{display:grid;gap:14px;margin:18px 0}.form-caso label{display:grid;gap:6px;font-size:17px;font-weight:700}
+.form-caso label span{font-weight:400;font-size:15px;color:var(--muted)}
+.form-caso input[type=text],.form-caso input[type=email],.form-caso textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:2px solid rgba(124,255,178,.5);border-radius:10px;background:#0b0430;color:#fff;font:inherit;font-size:17px}
+.form-caso textarea{min-height:220px;resize:vertical}.form-caso input:focus,.form-caso textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 12px rgba(124,255,178,.4)}
+.form-caso .dos{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+.form-caso .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:16px}.form-caso .chk input{width:22px;height:22px;flex:none;margin-top:2px}
+.form-caso .trampa{position:absolute;left:-9999px}
+.form-caso button{justify-self:start;cursor:pointer;padding:14px 26px;border:0;border-radius:12px;background:linear-gradient(90deg,#7cffb2,#1ff2ff);color:#07021a;font-weight:700;font-size:20px;font-family:inherit}
+.form-caso button:disabled{opacity:.6;cursor:wait}
+.res-caso{padding:14px 16px;border-radius:10px;font-size:17px}.res-caso.ok{border:2px solid var(--verde);background:rgba(124,255,178,.1)}.res-caso.mal{border:2px solid #ff5c7a;background:rgba(255,92,122,.1)}
+@media(max-width:560px){.form-caso .dos{grid-template-columns:1fr}.tucaso{flex-direction:column;text-align:center}}
 .firma-a{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
 .firma-a img{width:58px;height:58px;border-radius:50%;border:3px solid var(--verde);box-shadow:0 0 12px rgba(124,255,178,.5);object-fit:cover}
 .firma-a b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:20px;color:#fff}
@@ -195,7 +209,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-de
   <h2>📍 Cómo visitarlo</h2>
   <div class="visita"><p>Aluche y San José de Valderas son hoy barrios con bloques de pisos y parques; de los descampados de los 60 no queda nada. Si te apetece el plan friki, el <strong>Parque de los Castillos</strong> de Alcorcón está a un paseo de donde se hicieron las fotos. Del Café Lion, en la calle de Alcalá, queda el recuerdo.</p></div>
   <p class="comp"><a href="https://wa.me/?text=Ummo: los extraterrestres de Aluche: El ovni que engañó a media España https://trollacos.com/misterio/caso-ummo/" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url=https://trollacos.com/misterio/caso-ummo/" target="_blank" rel="noopener">Telegram</a></p>
-  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios dlos Archivos Secretos. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios de los Archivos Secretos. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <a class="tucaso" href="/misterio/tu-caso/"><span>📨</span><div><small>&gt; ¿TE HA PASADO ALGO RARO?_</small><b>Cuéntanos tu caso</b><p>Casas que crujen, luces en el cielo, cosas que nadie supo explicar. El Dr. Aris lee todos y publica los mejores.</p></div></a>
   <p class="fuentes">Fuentes consultadas: Wikipedia (Ummo), Manuel Carballal, Jacques Vallée. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
 </article>
 <nav class="navexp" aria-label="Más expedientes">

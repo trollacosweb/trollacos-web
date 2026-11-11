@@ -1,4 +1,4 @@
-"""Genera las tres páginas dlos Archivos Secretos a partir de la plantilla pagina.py."""
+"""Genera las tres páginas de los Archivos Secretos a partir de la plantilla pagina.py."""
 import re
 BASE = open('/home/claude/trollaco/misterio/pagina.py').read()
 

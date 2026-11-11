@@ -207,11 +207,13 @@ footer a{{font-family:'VT323',monospace;font-size:22px;color:var(--verde);text-d
 {prox}
   </div>
 
+  <p style="text-align:center;margin:26px 0"><a href="/misterio/tu-caso/" style="display:inline-block;padding:14px 22px;border:3px dashed #ffd23f;border-radius:14px;color:#ffd23f;text-decoration:none;font-family:'VT323',monospace;font-size:24px;background:rgba(255,210,63,.07)">📨 ¿TE HA PASADO ALGO RARO? CUÉNTANOS TU CASO</a></p>
+
   <div class="compartir">
     <b>&gt; ¿TIENES UN AMIGO QUE NO CREE EN NADA? MÁNDASELO_</b>
-    <a href="https://wa.me/?text=Expediente%20Trollaco%3A%20los%20lugares%20encantados%20de%20Madrid%2C%20con%20mapa%20%F0%9F%91%BB%20https%3A%2F%2Ftrollacos.com%2Fmisterio%2F" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="https://t.me/share/url?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2F&amp;text=Expediente%20Trollaco%3A%20el%20Madrid%20que%20da%20miedo" target="_blank" rel="noopener">Telegram</a>
-    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2F&amp;text=Expediente%20Trollaco%3A%20el%20Madrid%20que%20da%20miedo%20%F0%9F%91%BB" target="_blank" rel="noopener">X</a>
+    <a href="https://wa.me/?text=Archivos%20Secretos%3A%20los%20lugares%20encantados%20de%20Madrid%2C%20con%20mapa%20%F0%9F%91%BB%20https%3A%2F%2Ftrollacos.com%2Fmisterio%2F" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://t.me/share/url?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2F&amp;text=Archivos%20Secretos%3A%20el%20Madrid%20que%20da%20miedo" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftrollacos.com%2Fmisterio%2F&amp;text=Archivos%20Secretos%3A%20el%20Madrid%20que%20da%20miedo%20%F0%9F%91%BB" target="_blank" rel="noopener">X</a>
     <button type="button" id="copiar">Copiar enlace</button>
   </div>
 

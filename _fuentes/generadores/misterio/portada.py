@@ -52,7 +52,7 @@ bloque = f'''<!--MIS:INICIO-->
     </div>
   </a>
   <div class="mis-regs">{regiones}</div>
-  <p class="mis-pie"><button type="button" class="mis-azar" id="mis-azar">🎲 Ábreme un caso al azar</button> <a href="/misterio/#mapa">🗺️ Ver el mapa de Madrid</a></p>
+  <p class="mis-pie"><button type="button" class="mis-azar" id="mis-azar">🎲 Ábreme un caso al azar</button> <a href="/misterio/#mapa">🗺️ Ver el mapa de Madrid</a> <a href="/misterio/tu-caso/">📨 Cuéntanos tu caso</a></p>
 </section>
 <script>
 (function(){{var C={json.dumps(todos, ensure_ascii=False)};

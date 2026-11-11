@@ -36,6 +36,21 @@ extra = '''
 .navexp a.sig{text-align:right}
 .migas{font-family:'VT323',monospace;font-size:19px;margin:18px 0 0}.migas a{color:var(--verde)}
 @media(max-width:560px){.navexp{grid-template-columns:1fr}.navexp a.sig{text-align:left}}
+.tucaso{display:flex;gap:16px;align-items:center;margin:0 0 28px;padding:16px 18px;border:3px dashed #ffd23f;border-radius:16px;background:rgba(255,210,63,.07);text-decoration:none;color:#fff}
+.tucaso:hover{background:rgba(255,210,63,.14)}.tucaso>span{font-size:44px;flex:none}
+.tucaso small{font-family:'VT323',monospace;font-size:19px;color:#ffd23f}.tucaso b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:25px}
+.tucaso p{margin:4px 0 0;font-size:16px;color:#e9e3c4}
+.form-caso{display:grid;gap:14px;margin:18px 0}.form-caso label{display:grid;gap:6px;font-size:17px;font-weight:700}
+.form-caso label span{font-weight:400;font-size:15px;color:var(--muted)}
+.form-caso input[type=text],.form-caso input[type=email],.form-caso textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:2px solid rgba(124,255,178,.5);border-radius:10px;background:#0b0430;color:#fff;font:inherit;font-size:17px}
+.form-caso textarea{min-height:220px;resize:vertical}.form-caso input:focus,.form-caso textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 12px rgba(124,255,178,.4)}
+.form-caso .dos{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+.form-caso .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:16px}.form-caso .chk input{width:22px;height:22px;flex:none;margin-top:2px}
+.form-caso .trampa{position:absolute;left:-9999px}
+.form-caso button{justify-self:start;cursor:pointer;padding:14px 26px;border:0;border-radius:12px;background:linear-gradient(90deg,#7cffb2,#1ff2ff);color:#07021a;font-weight:700;font-size:20px;font-family:inherit}
+.form-caso button:disabled{opacity:.6;cursor:wait}
+.res-caso{padding:14px 16px;border-radius:10px;font-size:17px}.res-caso.ok{border:2px solid var(--verde);background:rgba(124,255,178,.1)}.res-caso.mal{border:2px solid #ff5c7a;background:rgba(255,92,122,.1)}
+@media(max-width:560px){.form-caso .dos{grid-template-columns:1fr}.tucaso{flex-direction:column;text-align:center}}
 .firma-a{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
 .firma-a img{width:58px;height:58px;border-radius:50%;border:3px solid var(--verde);box-shadow:0 0 12px rgba(124,255,178,.5);object-fit:cover}
 .firma-a b{display:block;font-family:'Righteous',sans-serif;font-weight:400;font-size:20px;color:#fff}
@@ -127,7 +142,8 @@ for i, (c, reg, ureg) in enumerate(todos):
   <h2>📍 Cómo visitarlo</h2>
   <div class="visita">{x['visitar']}</div>
   <p class="comp"><a href="https://wa.me/?text={share}" target="_blank" rel="noopener">Compartir por WhatsApp</a><a href="https://t.me/share/url?url={url}" target="_blank" rel="noopener">Telegram</a></p>
-  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios dlos Archivos Secretos. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <div class="autor-a"><img src="/img/aris.jpg" alt="Dr. Aris V. Torres" width="100" height="100"><div><small>&gt; ESTE EXPEDIENTE LO HA INVESTIGADO_</small><b>Dr. Aris V. Torres</b><p>Investigador de los misterios de los Archivos Secretos. Llega del otro lado para contarnos los casos que la historia todavía no ha resuelto.</p><a href="/misterio/aris-v-torres/">Conoce al doctor ›</a></div></div>
+  <a class="tucaso" href="/misterio/tu-caso/"><span>📨</span><div><small>&gt; ¿TE HA PASADO ALGO RARO?_</small><b>Cuéntanos tu caso</b><p>Casas que crujen, luces en el cielo, cosas que nadie supo explicar. El Dr. Aris lee todos y publica los mejores.</p></div></a>
   <p class="fuentes">Fuentes consultadas: {x['fuentes']}. Texto e ilustración de Trollacos. Contamos la leyenda como leyenda y, al final, lo que dicen los escépticos.</p>
 </article>
 <nav class="navexp" aria-label="Más expedientes">
@@ -207,3 +223,66 @@ sm = open(f'{RAIZ}/sitemap.xml', encoding='utf-8').read()
 if '/misterio/aris-v-torres/' not in sm:
     open(f'{RAIZ}/sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', '  <url><loc>https://trollacos.com/misterio/aris-v-torres/</loc><changefreq>yearly</changefreq></url>\n</urlset>'))
 print('ficha del doctor ok')
+
+
+# ---------- «Cuéntanos tu caso» ----------
+tucaso = f'''<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuéntanos tu caso: tu historia de misterio | Archivos Secretos</title>
+<meta name="description" content="¿Te ha pasado algo que nadie supo explicar? Mándanos tu historia de misterio, fantasmas u ovnis. El Dr. Aris V. Torres las lee todas y publica las mejores en los Archivos Secretos.">
+<link rel="canonical" href="https://trollacos.com/misterio/tu-caso/">
+<meta property="og:image" content="https://trollacos.com/misterio/img/aris-despacho.webp">
+<link rel="icon" href="/icono.png">
+{style.replace('</style>', extra)}
+</head><body>
+<nav class="top"><a href="/"><img class="px" src="/logo.webp" alt="Trollacos" width="1600" height="161"></a><a href="/misterio/">‹ ARCHIVOS SECRETOS</a></nav>
+<main class="exp">
+<article class="caso">
+  <div class="sello">BUZÓN DEL DOCTOR</div>
+  <h1>Cuéntanos tu caso</h1>
+  <p class="subt">Los Archivos Secretos también los escribís vosotros</p>
+  <div class="sec">
+  <p>¿Una casa en la que pasaban cosas raras? ¿Unas luces en el cielo que no eran un avión? ¿Una historia que se cuenta en tu pueblo desde siempre? El <strong>Dr. Aris V. Torres</strong> lee todos los casos que le llegan, los investiga y <strong>publica los mejores</strong> en los Archivos Secretos.</p>
+  <p>Cuéntalo con tus palabras y con todos los detalles que recuerdes: cuándo fue, dónde, quién estaba y qué pasó. Si se publica, saldrá con el alias que elijas (o sin firma) y <strong>sin nombres de nadie</strong>, ni direcciones, ni nada que permita identificar a una persona.</p>
+  </div>
+  <form class="form-caso" id="form-caso" novalidate>
+    <div class="dos">
+      <label>¿Dónde pasó? *<span>Pueblo, ciudad, provincia o país. No pongas direcciones exactas.</span><input type="text" name="lugar" maxlength="100" required placeholder="Ej.: un pueblo de Cuenca"></label>
+      <label>¿Cuándo?<span>Año o época</span><input type="text" name="anio" maxlength="30" placeholder="Ej.: verano de 1998"></label>
+    </div>
+    <label>Tu historia *<span>Mínimo un par de frases. Máximo 4.000 caracteres.</span><textarea name="relato" maxlength="4000" required placeholder="Era una noche de agosto y…"></textarea></label>
+    <div class="dos">
+      <label>Alias para firmar<span>Opcional. Si lo dejas vacío, se publica sin firma.</span><input type="text" name="alias" maxlength="40" placeholder="Ej.: El de Cuenca"></label>
+      <label>Tu email<span>Opcional, por si el doctor quiere preguntarte algo. No se publica nunca.</span><input type="email" name="email" maxlength="120" placeholder="tu@email.com"></label>
+    </div>
+    <label class="trampa" aria-hidden="true">No rellenes esto<input type="text" name="web" tabindex="-1" autocomplete="off"></label>
+    <label class="chk"><input type="checkbox" name="acepto" required><span style="color:inherit;font-size:16px">Tengo <b>14 años o más</b>, la historia es mía (o me la han contado y la cuento con mis palabras), y acepto que Trollacos la publique editada, con mi alias o sin firma. He leído la <a href="/privacidad/" style="color:var(--verde)">política de privacidad</a>.</span></label>
+    <button type="submit">📨 MANDAR MI CASO AL DOCTOR</button>
+    <div class="res-caso" id="res-caso" hidden></div>
+  </form>
+  <div class="opina"><img class="px" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> Yo le mandé lo del calcetín que desaparece en la lavadora y me dijo que eso no es paranormal, que es estadística. Vosotros mandad cosas serias.</p></div>
+  <p class="fuentes">Antes de publicar un caso lo revisamos y lo editamos. No publicamos nada que pueda hacer daño a personas reales ni datos que permitan identificar a nadie. Si mandas un caso y luego quieres retirarlo, escríbenos a info@trollacos.com.</p>
+</article>
+</main>
+{foot}
+<script>
+(function(){{var f=document.getElementById('form-caso'),r=document.getElementById('res-caso');
+f.addEventListener('submit',function(e){{e.preventDefault();var b=f.querySelector('button');
+var d={{lugar:f.lugar.value,anio:f.anio.value,relato:f.relato.value,alias:f.alias.value,email:f.email.value,web:f.web.value,acepto:f.acepto.checked}};
+function msg(t,ok){{r.hidden=false;r.className='res-caso '+(ok?'ok':'mal');r.textContent=t;}}
+if(!d.acepto){{msg('Tienes que marcar la casilla para mandarlo.',false);return;}}
+if(d.relato.trim().length<80){{msg('Cuéntanos un poco más: al menos un par de frases.',false);return;}}
+b.disabled=true;b.textContent='Enviando…';
+fetch('/api/casos.php',{{method:'POST',headers:{{'Content-Type':'application/json'}},body:JSON.stringify(d)}}).then(function(x){{return x.json()}}).then(function(j){{
+if(j.ok){{f.querySelectorAll('input,textarea').forEach(function(i){{if(i.type!=='checkbox')i.value='';else i.checked=false}});msg('📂 ¡Recibido! Tu caso ya está en la mesa del Dr. Aris. Si se publica, lo verás en los Archivos Secretos.',true);}}
+else msg(j.mensaje||'No se ha podido mandar. Prueba otra vez en un rato.',false);
+}}).catch(function(){{msg('No se ha podido mandar. Revisa la conexión y prueba otra vez.',false)}}).finally(function(){{b.disabled=false;b.textContent='📨 MANDAR MI CASO AL DOCTOR'}});
+}});}})();
+</script>
+</body></html>'''
+os.makedirs(f'{RAIZ}/misterio/tu-caso', exist_ok=True)
+open(f'{RAIZ}/misterio/tu-caso/index.html', 'w', encoding='utf-8').write(tucaso)
+sm = open(f'{RAIZ}/sitemap.xml', encoding='utf-8').read()
+if '/misterio/tu-caso/' not in sm:
+    open(f'{RAIZ}/sitemap.xml', 'w', encoding='utf-8').write(sm.replace('</urlset>', '  <url><loc>https://trollacos.com/misterio/tu-caso/</loc><changefreq>yearly</changefreq></url>\n</urlset>'))
+print('cuéntanos tu caso ok')
