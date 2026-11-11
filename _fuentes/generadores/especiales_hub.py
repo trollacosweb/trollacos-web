@@ -2,6 +2,8 @@
 # usa pagina() y esc() del script que lo llama. Para añadir un especial: añadirlo a ESPECIALES (el más nuevo primero).
 import os as _os
 ESPECIALES = [
+    ('/especiales/historia-gta/', '🌴', 'De Liberty City a Leonida: la historia de GTA',
+     'Toda la saga Grand Theft Auto, de GTA 1 (1997) a Vice City, San Andreas, GTA IV, GTA V y GTA VI. Récords, ventas y curiosidades.'),
     ('/especiales/aventuras-graficas/', '🖱️', 'De Monkey Island a Runaway: la historia de las aventuras gráficas',
      '28 aventuras gráficas, de Mystery House y King\'s Quest a Monkey Island, Grim Fandango, Broken Sword, Hollywood Monsters y Runaway. Con Dinamic, Pendulo y la aventura española.'),
     ('/especiales/juegos-de-futbol/', '⚽', 'De ISS a EA Sports FC: la historia de los juegos de fútbol',
