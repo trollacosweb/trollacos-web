@@ -6,7 +6,7 @@ import os, html, json, sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RAIZ)
 sys.path.insert(0, os.path.join(RAIZ, '_fuentes', 'generadores'))
-from especial_gta_datos import TIEMPO, F, ROCKSTAR, RADIO, FUENTES_EXTRA
+from especial_gta_datos import TIEMPO, F, ROCKSTAR, RADIO, FUENTES_EXTRA, VIDEOS
 URL = '/especiales/historia-gta/'
 FECHA = '11 de noviembre de 2026'
 IMG = 'img/especiales/gta'
@@ -18,13 +18,20 @@ style = g[g.find('<style>'):g.find('</style>') + 8]
 foot = g[g.find('<footer>'):g.find('</footer>') + 9]
 fut = open('_fuentes/generadores/especial_futbol.py', encoding='utf-8').read()
 extra = fut[fut.find("extra = '''") + 11:fut.find("</style>'''", fut.find("extra = '''"))]
-style2 = style.replace('</style>', extra + '.intro{font-size:19px;line-height:1.65;margin:1em 0}.saga{margin:10px 0 0;padding-left:20px}.saga li{font-size:18px;margin-bottom:8px}.saga b{color:var(--yellow)}\n@media(max-width:700px){.intro{font-size:18px}.saga li{font-size:17px}}</style>')
+style2 = style.replace('</style>', extra + '.vids-esp{display:grid;gap:14px;margin:16px 0}.vids-esp.dos{grid-template-columns:1fr 1fr}@media(max-width:700px){.vids-esp.dos{grid-template-columns:1fr}}' + '.intro{font-size:19px;line-height:1.65;margin:1em 0}.saga{margin:10px 0 0;padding-left:20px}.saga li{font-size:18px;margin-bottom:8px}.saga b{color:var(--yellow)}\n@media(max-width:700px){.intro{font-size:18px}.saga li{font-size:17px}}</style>')
 
 def portada(x):
     p = f'{IMG}/{x["slug"]}.webp'
     if os.path.exists(p):
         return f'<div class="port"><img src="/{p}" alt="Portada de {esc(x["titulo"])}" width="220" height="293" loading="lazy"></div>'
     return f'<div class="port" aria-hidden="true">{x["icono"]}</div>'
+
+def videos_de(slug):
+    vs = VIDEOS.get(slug, [])
+    if not vs: return ''
+    t = ''.join(f'''<div class="vid"><button type="button" class="vid-play" data-id="{i}" aria-label="Ver {esc(n)}"><img src="https://i.ytimg.com/vi/{i}/hqdefault.jpg" alt="{esc(n)}" loading="lazy" referrerpolicy="no-referrer"><span>▶</span></button>
+<div class="vid-txt"><span class="rol">🎬 VÍDEO</span><h3 style="margin:2px 0 0;font-size:19px">{esc(n)}</h3><p>{esc(p)}</p><a class="yt" href="https://www.youtube.com/watch?v={i}" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube ↗</a></div></div>''' for i, n, p in vs)
+    return f'<div class="vids-esp{" dos" if len(vs) > 1 else ""}">{t}</div>'
 
 def html_ficha(x):
     datos = ''.join(f'<li>{d}</li>' for d in x['datos'])
@@ -34,6 +41,7 @@ def html_ficha(x):
 <div class="cab">{portada(x)}<div><span class="sub">&gt; {esc(x['sub'].upper())}_</span><h3>{esc(x['titulo'])}</h3>
 <dl><dt>AÑO</dt><dd>{x['anio']}</dd><dt>DÓNDE</dt><dd>{esc(x['plataformas'])}</dd><dt>QUIÉN</dt><dd>{esc(x['estudio'])}</dd></dl></div></div>
 {('<div class="intro">' + x['intro'] + '</div>') if '<ul' in x['intro'] else '<p>' + x['intro'] + '</p>'}
+{videos_de(x['slug'])}
 <div class="flipar"><b class="t">🤯 DATOS PARA FLIPAR</b><ul>{datos}</ul></div>
 <div class="nota"><img src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {esc(x['troll'])}</p></div>
 {pie}<p class="fu">Fuentes: {fu}.</p>
@@ -97,6 +105,12 @@ trece años esperando a GTA VI. Datos con su fuente, opinión nuestra y mucha no
 <h2>📚 Fuentes de los datos</h2>
 <p style="font-size:16px">Los datos salen de estas fuentes, citadas por su nombre. La opinión, las bromas y la nostalgia son nuestras.</p>
 <ul class="fuentes-l">{fuentes}</ul>
+<p class="fu">Los vídeos son de YouTube y se cargan solo si los pulsas. © sus titulares.</p>
+<script>
+document.querySelectorAll('.vid-play').forEach(function(b){{b.addEventListener('click',function(){{
+  var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-id')+'?autoplay=1&rel=0';
+  f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=b.getAttribute('aria-label');b.replaceWith(f)}})}});
+</script>
 <p class="fu">Grand Theft Auto, Rockstar Games y el resto de nombres y marcas citados son de sus respectivos dueños. Trollacos no tiene relación con ellos.</p>'''
 ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': titulo, 'datePublished': '2026-11-11',
       'author': {'@type': 'Person', 'name': 'Danna', 'url': 'https://trollacos.com/danna/'},

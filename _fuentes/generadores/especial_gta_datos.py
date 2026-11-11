@@ -108,7 +108,7 @@ ficha('gta-5', 'Grand Theft Auto V', 'El juego que no se acaba nunca', '2013', '
 ficha('gta-6', 'Grand Theft Auto VI', 'La vuelta a Vice City', '2026', 'PS5, Xbox Series X|S (y en la nube de Xbox)', 'Rockstar Games', '🌴',
       'Lucía y Jason, una pareja atrapada en una conspiración criminal, en Vice City y el estado de Leonida, la versión de Rockstar de Florida. '
       'Trece años después de GTA V, el juego más esperado de la historia sale el <strong>19 de noviembre de 2026</strong>.',
-      ['El <strong>tráiler 1</strong> salió el 6 de diciembre de 2023 y tuvo <strong>90 millones de visitas en 24 horas</strong>.',
+      ['El <strong>tráiler 1</strong> salió el 5 de diciembre de 2023 (hora española) y tuvo <strong>90 millones de visitas en 24 horas</strong>.',
        'Se llevó <strong>tres récords Guinness</strong>: la presentación de un videojuego más vista en YouTube en 24 horas, el tráiler de videojuego con más «me gusta» y el vídeo no musical más visto en 24 horas.',
        'Por primera vez desde que GTA es en 3D, uno de los protagonistas es una mujer: <strong>Lucía</strong>.',
        'Todo lo demás (personajes, mapa, versiones, música y fechas) lo tienes al día en <a href="/gta-6/">nuestra guía de GTA VI</a>.'],
@@ -133,3 +133,13 @@ programas completos: música con licencia, anuncios inventados que se ríen de l
 '''
 
 FUENTES_EXTRA = [WP + '«Rockstar Games»']
+
+# Vídeos de YouTube por ficha (slug -> [(id, título, pie)]). Se cargan solo al pulsar (youtube-nocookie).
+VIDEOS = {
+    'gta-3': [('PtbUORusNvo', 'GTA III: vídeo del 10.º aniversario', 'Rockstar lo publicó en 2011 para celebrar los diez años del juego.')],
+    'vice-city': [('B5__UznSRs0', 'Vice City: tráiler del 10.º aniversario', 'El tráiler de 2012 de la versión para móviles, con la estética de siempre.')],
+    'san-andreas': [('D71cBUeAL58', 'The Trilogy – Definitive Edition: tráiler', 'GTA III, Vice City y San Andreas remasterizados en 2021.')],
+    'gta-4': [('M80K51DosFo', 'GTA IV: tráiler 1, «Things Will Be Different»', 'El primer tráiler, de 2007: Niko llega a Liberty City.')],
+    'gta-5': [('1_uFM-j4WlI', 'GTA V: «The Official Trailer»', 'El tráiler de agosto de 2013, un mes antes del lanzamiento.')],
+    'gta-6': [('QdBZY2fkU-0', 'GTA VI: tráiler 1', 'El de los 90 millones de visitas en 24 horas.'), ('VQRLujxTm3c', 'GTA VI: tráiler 2', 'El segundo tráiler, con Jason y Lucía.')],
+}
