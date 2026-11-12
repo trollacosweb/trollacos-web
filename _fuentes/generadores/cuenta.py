@@ -109,8 +109,8 @@ $('f-admin').onsubmit=function(e){e.preventDefault();msg('m-admin','Comprobando.
     $('aviso-txt').innerHTML='🛠️ Cuenta recuperada. Código nuevo (por si acaso):';$('nuevo-codigo').textContent=j.codigo;$('aviso-codigo').hidden=false;try{localStorage.setItem('trollacoRunNombre',j.nombre)}catch(e){}carga();window.scrollTo(0,0);
   }).catch(function(){msg('m-admin','Error de conexión.')})};
 
-var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche de los zombis',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30',c6:'6 · Hora punta'};
-var CAPS=[['🧟','La noche de los zombis'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30'],['🛵','Hora punta']];
+var NOMBRES={run:'🔥 Supera el récord',c1:'1 · La noche de los zombis',c2:'2 · Bar La Verja',c3:'3 · Trollaco Club',c4:'4 · El edificio abandonado',c5:'5 · Túneles de la M-30',c6:'6 · Hora punta',c7:'7 · Luces de Navidad',c8:'8 · Rescate en Cibeles'};
+var CAPS=[['🧟','La noche de los zombis'],['🍺','Bar La Verja'],['🪩','Trollaco Club'],['🔦','El edificio abandonado'],['🚔','Túneles de la M-30'],['🛵','Hora punta'],['🎄','Luces de Navidad'],['💍','Rescate en Cibeles']];
 function n(x){return Number(x||0).toLocaleString('es-ES')}
 function pinta(j){
   $('sin-cuenta').hidden=!!j;$('con-cuenta').hidden=!j;$('stats').hidden=!j;
@@ -150,7 +150,7 @@ function pinta(j){
   var ins=[
     ['🎟️','Fundador','Cuenta creada en 2026',j.alta<'2027-01-01'],
     ['🧟','Cazazombis','Supera el capítulo 1',caps>=1],['🍺','Sin gritar','Supera el capítulo 2',caps>=2],
-    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],['🚔','Rey de la M-30','Supera el capítulo 5',caps>=5],['🛵','Esquivariders','Supera el capítulo 6',caps>=6],
+    ['🪩','Rey de la pista','Supera el capítulo 3',caps>=3],['🔦','Sin miedo','Supera el capítulo 4',caps>=4],['🚔','Rey de la M-30','Supera el capítulo 5',caps>=5],['🛵','Esquivariders','Supera el capítulo 6',caps>=6],['🎄','Espíritu navideño','Supera el capítulo 7',caps>=7],['💍','Héroe de Cibeles','Completa la temporada 1',caps>=8],
     ['🕹️','Viciado','Juega 50 partidas',j.partidas>=50],['🪙','Hucha','Llega a 100 fichas',j.fichas>=100],['💰','Ricachón','Llega a 100.000 fichas',j.fichas>=100000],
     ['🏆','Top 10','Entra en un top 10 del arcade',top10],['🔥','Número 1','Sé el primero en un ranking',uno],
     ['⚽','Primer gol','Acierta un pronóstico',pr.ganada>=1],['🔮','Adivino','Acierta 10 pronósticos',pr.ganada>=10],['🎯','Francotirador','Acierta un resultado exacto',pr.exactos>=1]

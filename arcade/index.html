@@ -127,6 +127,8 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="cap" data-cap="c4"><b>4 · El edificio abandonado</b><span class="bloq">🔒 Supera el capítulo 3 para entrar. </span>Pasillos a oscuras, linterna y algo que no debería estar ahí.</div>
     <div class="cap" data-cap="c5"><b>5 · Túneles de la M-30</b><span class="bloq">🔒 Supera el capítulo 4 para entrar. </span>Coches, bots de Glitch y motos de la Municipal. ¡Que no se escape Glitch!</div>
     <div class="cap" data-cap="c6"><b>6 · Hora punta</b><span class="bloq">🔒 Supera el capítulo 5 para entrar. </span>De la M-30 a la Gran Vía entre riders de Glitch Express, palomas y obras.</div>
+    <div class="cap" data-cap="c7"><b>7 · Luces de Navidad</b><span class="bloq">🔒 Supera el capítulo 6 para entrar. </span>La Gran Vía iluminada: coches, turistas, castañeras y regalos.</div>
+    <div class="cap" data-cap="c8"><b>8 · Rescate en Cibeles</b><span class="bloq">🔒 Supera el capítulo 7 para entrar. </span>El gran final de la temporada 1: el Ayuntamiento, los bots de Glitch… y Barajas.</div>
   </div>
   <p class="fama-nota" id="admin-aviso" hidden style="color:#39ff88">🔓 Modo administrador: todos los capítulos abiertos · <a href="?admin=off">desactivar</a></p>
   <p class="monedero" id="monedero"></p>
@@ -322,6 +324,7 @@ reiniciar();
 function accion(){
   if(!fForm.hidden)return;
   if(estado==='dialogo'){avanzaDialogo(false);return}
+  if(estado==='cine'){var tc=(performance.now()-cine.t0)/1000;if(tc>14)terminaCine();else if(tc>1)cine.t0=performance.now()-14000;return}
   if(estado==='menu'){var empieza=function(){estado='juego';reiniciar();pideFicha();pitido(440,880,.15)};
     if(HISTORIA[modo]){reiniciar();abreDialogo(HISTORIA[modo].intro,empieza)}else empieza();return}
   if(estado==='victoria'&&CAPS[modo]&&CAPS[modo].siguiente&&performance.now()-t0>500){cambiaModo(CAPS[modo].siguiente);return}
@@ -353,7 +356,7 @@ function cambiaModo(m){
   document.getElementById('fama-tit').textContent=modo==='run'?'🔥 SALÓN DE LA FAMA · SUPERA EL RÉCORD':'🏆 SALÓN DE LA FAMA · CAPÍTULO '+CAPS[modo].n;
   ultimoGuardado=null;cierraGuardar();ocultaCompartir();estado='menu';reiniciar();cargaRecord();cargaFama();pintaCapitulos();
 }
-function capituloActual(){return 'c'+Math.min(6,progreso+1)}
+function capituloActual(){return 'c'+Math.min(8,progreso+1)}
 document.querySelectorAll('.modos button').forEach(function(b){b.onclick=function(){
   if(b.dataset.modo==='run')cambiaModo('run');else if(modo==='run')cambiaModo(capituloActual());
 }});
@@ -762,7 +765,7 @@ function puertaFinal(){
   rect(gx+38,SUELO-178,64,22,'#1d7a2e');texto('SALIDA',gx+70,SUELO-161,20,'#fff','center','#0a3a14');
 }
 
-var PISABLES=['zombi','camarero','lanzador','malote','portero','sombra','bot','coche','furgo'];
+var PISABLES=['zombi','camarero','lanzador','malote','portero','sombra','bot','coche','furgo','dronG'];
 // rejas o láseres que cuelgan del techo: se pasan por debajo sin saltar
 function colgante(tipo,techo){return {tipo:tipo,w:44,h:SUELO-82-techo,y:techo}}
 
@@ -1183,10 +1186,219 @@ function playaFinal(tt){
   princesa(W*.72,SUELO+2-(1-bo)*3,1.7,tt);
 }
 
+// ================= CAPÍTULO 7: LUCES DE NAVIDAD (la Gran Vía de noche, hacia Alcalá) =================
+var TRAMOS7=[{p:0,n:'GRAN VÍA',m:'rascacielos'},{p:.18,n:'RED DE SAN LUIS',m:'metro'},{p:.38,n:'GRAN VÍA',m:'metropolis'},
+  {p:.60,n:'CALLE DE ALCALÁ',m:'circulo'},{p:.80,n:'CALLE DE ALCALÁ',m:'bancos'}];
+function tramo7(){var p=dist/META,t=TRAMOS7[0];TRAMOS7.forEach(function(e){if(p>=e.p)t=e});return t}
+function calle7(){return tramo7().n}
+function monumento7(m,x,tt){
+  var b=SUELO;
+  if(m==='rascacielos')monumento6('rascacielos',x,tt);
+  else if(m==='metro'){rect(x,b-120,120,120,'#c9b8a0');rect(x-6,b-128,132,10,'#8a7a64');rect(x+20,b-90,80,90,'#2a2030');
+    rect(x+30,b-180,60,40,K);rect(x+32,b-178,56,36,'#c0302a');texto('METRO',x+60,b-152,18,'#fff','center','rgba(0,0,0,0)');rect(x+58,b-140,4,20,'#5a5a5a')}
+  else if(m==='metropolis'){rect(x,b-200,170,200,'#efe6d4');rect(x+20,b-230,130,30,'#e8dcc8');
+    cx.fillStyle='#1a1a22';cx.beginPath();cx.ellipse(x+85,b-232,58,46,0,Math.PI,0);cx.fill();for(var c=0;c<5;c++)rect(x+40+c*22,b-270,3,30,'#c8a040');
+    rect(x+80,b-300,10,22,'#c8a040');rect(x+70,b-298,30,4,'#c8a040');rect(x+64,b-308,10,6,'#c8a040');rect(x+96,b-308,10,6,'#c8a040');
+    for(var fy=b-185;fy<b-30;fy+=30)for(var fx=x+14;fx<x+156;fx+=26)rect(fx,fy,12,20,(fx+fy)%3?'#3a2a3a':'#ffd98a')}
+  else if(m==='circulo'){rect(x,b-180,150,180,'#e8dccc');rect(x+30,b-240,90,60,'#e0d4c0');rect(x+50,b-262,50,22,'#d8ccb8');rect(x+70,b-292,10,30,'#5a5a5a');rect(x+64,b-298,22,8,'#5a5a5a');
+    for(var fy2=b-165;fy2<b-30;fy2+=28)for(var fx2=x+12;fx2<x+140;fx2+=24)rect(fx2,fy2,10,18,(fx2*fy2)%5?'#3a2a3a':'#ffd98a')}
+  else if(m==='bancos'){for(var k=0;k<2;k++){var bx=x+k*200;rect(bx,b-190,180,190,'#ddd2be');for(var col=0;col<6;col++)rect(bx+14+col*28,b-170,12,150,'#cfc4ae');rect(bx-4,b-198,188,10,'#bfb39c')}
+    texto('→ CIBELES',x+190,b-206,20,'#ffd23f','center')}
+}
+var REGALOS=['#ff2bd6','#1ff2ff','#ffd23f','#39ff88'];
+function guirnaldas(tt,par){ // las luces de Navidad cruzando la calle
+  var o=(dist*par)%220;
+  for(var g=-1;g<W/220+2;g++){var gx=g*220-o;cx.strokeStyle='rgba(255,230,170,.5)';cx.lineWidth=1.5;cx.beginPath();cx.moveTo(gx,36);cx.quadraticCurveTo(gx+110,78,gx+220,36);cx.stroke();
+    for(var q=0;q<12;q++){var t=q/11,px=gx+t*220,py=36+Math.sin(t*Math.PI)*21;var on=(q+g+Math.floor(tt*4))%3;cx.fillStyle=on===0?'#ffffff':on===1?'#ffd98a':'#ff5ccf';cx.beginPath();cx.arc(px,py,2.6,0,7);cx.fill();
+      cx.globalAlpha=.18;cx.beginPath();cx.arc(px,py,7,0,7);cx.fill();cx.globalAlpha=1}
+    // adorno colgante: estrella en el centro de cada guirnalda
+    var sx=gx+110,sy=60;cx.fillStyle=(Math.floor(tt*2)+g)%2?'#ffd23f':'#fff3c0';cx.beginPath();for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5,rr=i%2?5:12;cx.lineTo(sx+Math.cos(a)*rr,sy+Math.sin(a)*rr)}cx.fill()}
+}
+function nieve(tt){for(var i=0;i<40;i++){var x=(i*137+tt*18*(1+i%3))%W,y=(i*71+tt*40*(1+i%2))%SUELO;rect(x,y,2,2,'rgba(255,255,255,.55)')}}
+function fondoC7(tt){
+  var g=cx.createLinearGradient(0,0,0,SUELO);g.addColorStop(0,'#05021a');g.addColorStop(.6,'#1a0b4a');g.addColorStop(1,'#3a1a5a');cx.fillStyle=g;cx.fillRect(0,0,W,SUELO);
+  var o1=(dist*.08)%400;for(var i=-1;i<W/80+2;i++){var hx=(i*80-o1%80),hh=60+((i*37+Math.floor(dist*.08/80))%5)*14;rect(hx,SUELO-90-hh,72,hh+90,'rgba(40,10,70,.8)')}
+  var off=(dist*.35)%CALLE6.largo;
+  for(var k=0;k<2;k++)CALLE6.c.forEach(function(e){var x=e.x-off+k*CALLE6.largo;if(x>W+20||x+e.w<-20)return;
+    var top=SUELO-e.h;rect(x,top,e.w,e.h,e.c);rect(x-3,top-4,e.w+6,5,'#7a5a40');
+    for(var fy=top+18;fy<SUELO-40;fy+=34)for(var fx=x+12;fx<x+e.w-22;fx+=28){rect(fx,fy,14,20,(fx+fy)%4?'#ffd98a':'#3a2a3a');rect(fx-3,fy+20,20,3,'#2a2a2a')}
+    rect(x+e.w/2-12,SUELO-36,24,36,'#ffcf6a')});
+  cx.fillStyle='rgba(10,4,40,.55)';cx.fillRect(0,0,W,SUELO); // de noche: fachadas oscuras, ventanas encendidas
+  TRAMOS7.forEach(function(t){var mx=W*.55+(t.p*META+META*.06-dist)*.35;if(mx<W+40&&mx>-600){monumento7(t.m,mx,tt);cx.fillStyle='rgba(10,4,40,.35)';cx.fillRect(mx-60,0,660,SUELO)}});
+  guirnaldas(tt,.35);
+  var op=(dist*.35)%640;for(var q=-1;q<W/640+2;q++)placa(q*640-op+250,SUELO-112,calle7());
+  // tráfico al fondo: faros y pilotos
+  var ot=(tt*120)%W;for(var c=0;c<6;c++){var tx=(c*170+ot)%(W+80)-40;rect(tx,SUELO-14,30,10,'#2a2a3a');rect(tx+26,SUELO-12,4,3,'#fff6c0');rect(tx,SUELO-12,3,3,'#ff3030')}
+  var of=(dist*.6)%260;for(var l=-1;l<W/260+2;l++){var lx=l*260-of;rect(lx,SUELO-120,4,120,'#1a1a22');rect(lx-8,SUELO-128,20,10,'#1a1a22');cx.globalAlpha=.35;cx.fillStyle='#ffd98a';cx.beginPath();cx.arc(lx+2,SUELO-118,22,0,7);cx.fill();cx.globalAlpha=1}
+  nieve(tt);
+  rect(0,SUELO,W,H-SUELO,'#2c2c36');rect(0,SUELO,W,4,'#c8c4b8');
+  var od=dist%90;for(var n=-1;n<W/90+2;n++)rect(n*90-od,SUELO+30,48,3,'#f4f1e0');
+}
+function turista(o,tt){
+  var x=o.x,y=o.y,fl=Math.floor(tt*3+o.fase)%4===0;
+  rect(x+8,y+30,8,22,'#2a3a6a');rect(x+18,y+30,8,22,'#2a3a6a');rect(x+4,y+10,26,22,o.color);rect(x+8,y,18,12,'#e8b890');rect(x+6,y-3,22,5,'#e84a4a');
+  rect(x+28,y+6,4,14,'#e8b890');rect(x+24,y+2,10,8,K);if(fl){cx.globalAlpha=.6;cx.fillStyle='#fff';cx.beginPath();cx.arc(x+29,y+6,14,0,7);cx.fill();cx.globalAlpha=1}
+  if(o.x<W-60&&o.x>jug.x+50)bocadillo(x+16,y-10,'¡FOTO!');
+}
+function castanas(o,tt){
+  var x=o.x,y=o.y;rect(x,y+14,o.w,o.h-14,'#5a3a2a');rect(x-2,y+10,o.w+4,6,'#3a2a1a');rect(x+6,y+18,o.w-12,10,'#2a1a10');
+  for(var i=0;i<4;i++)rect(x+10+i*8,y+20,5,4,'#8a4a20');rect(x+o.w-12,y-16,6,30,'#3a3a3a');
+  for(var h=0;h<3;h++){cx.globalAlpha=.35;cx.fillStyle='#ddd';cx.beginPath();cx.arc(x+o.w-9+Math.sin(tt*3+h)*4,y-22-h*10-(tt*20%10),5+h,0,7);cx.fill();cx.globalAlpha=1}
+  texto('CASTAÑAS',x+o.w/2,y+8,13,'#ffd23f','center');
+}
+function regalo(o,tt){if(o.ko)return;var x=o.x,bob=Math.sin(tt*5+o.fase)*3,y=o.y+bob,c=REGALOS[Math.floor(o.fase)%4];
+  cx.globalAlpha=.3;cx.fillStyle=c;cx.beginPath();cx.arc(x+13,y+10,20,0,7);cx.fill();cx.globalAlpha=1;
+  rect(x-1,y-1,28,22,K);rect(x,y,26,20,c);rect(x+11,y,4,20,'#fff');rect(x,y+8,26,4,'#fff');rect(x+7,y-6,6,6,'#fff');rect(x+13,y-6,6,6,'#fff');texto('+3',x+13,y-10,14,'#ffd23f','center')}
+function obstaculoC7(o,tt){
+  if(o.tipo==='coche')coche(o,tt);else if(o.tipo==='bot')bot(o,tt);else if(o.tipo==='rider')rider(o,tt);
+  else if(o.tipo==='turista')turista(o,tt);else if(o.tipo==='castanas')castanas(o,tt);else if(o.tipo==='regalo')regalo(o,tt);
+}
+function nuevoObstaculoC7(){
+  if(dist>META-1500){sigObst=1e9;return}
+  var p=dist/META,r=Math.random(),o,extra=0;
+  if(r<.22)o={tipo:'coche',w:84,h:44,andar:50+Math.random()*70,color:COLORES[Math.floor(Math.random()*6)]};
+  else if(r<.40)o={tipo:'turista',w:34,h:52,color:['#3a9a4a','#e8c020','#2a6bd1','#ff8a3a'][Math.floor(Math.random()*4)]};
+  else if(r<.54)o={tipo:'bot',w:32,h:44,andar:30+Math.random()*30};
+  else if(r<.66&&p>.1)o={tipo:'rider',w:62,h:58,andar:110+Math.random()*80+p*70,grito:GRITOS[Math.floor(Math.random()*GRITOS.length)]};
+  else if(r<.78)o={tipo:'castanas',w:44,h:40};
+  else o={tipo:'regalo',w:26,h:20,vuelo:true,alto:(Math.random()<.5?8:100)};
+  o.x=W+20;o.y=o.vuelo?SUELO-o.alto-o.h:SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
+  sigObst=Math.max(250,390+Math.random()*320-p*130)+vel*.22+extra;
+}
+function fuenteCibeles(x,b,tt,s){ // la diosa en su carro tirado por leones, versión pixel
+  s=s||1;rect(x-70*s,b-14*s,140*s,14*s,'#cfc6b4');for(var j=0;j<6;j++){cx.globalAlpha=.55;rect(x-60*s+j*24*s,b-14*s-Math.abs(Math.sin(tt*4+j))*26*s,3*s,Math.abs(Math.sin(tt*4+j))*26*s,'#bfefff');cx.globalAlpha=1}
+  rect(x-34*s,b-46*s,68*s,32*s,'#d8d0c0');rect(x-50*s,b-40*s,18*s,26*s,'#c8b890');rect(x+32*s,b-40*s,18*s,26*s,'#c8b890');
+  rect(x-6*s,b-86*s,14*s,40*s,'#d8d0c0');rect(x-9*s,b-96*s,20*s,12*s,'#d8d0c0');rect(x-7*s,b-104*s,16*s,8*s,'#c8a040')}
+function alcalaFinal(tt){
+  var gx=jug.x-50+(META-dist); if(gx>W+40)return;
+  fuenteCibeles(gx+160,SUELO,tt,1.3);placa(gx-120,SUELO-150,'PLAZA DE CIBELES',1.3);
+}
+
+// ================= CAPÍTULO 8: RESCATE EN CIBELES (el Ayuntamiento) =================
+function palacioCibeles(x,b,tt,s){
+  s=s||1;var cl='#f2ede2',sm='#d8d0c0';
+  rect(x,b-170*s,360*s,170*s,cl);for(var t=0;t<3;t++){var tx=x+(t===0?10:t===1?150:290)*s,th=t===1?260:210;rect(tx,b-th*s,60*s,(th-170)*s,cl);rect(tx+6*s,b-(th+14)*s,48*s,14*s,sm);rect(tx+26*s,b-(th+40)*s,8*s,26*s,'#5a5a5a')}
+  for(var fy=b-155*s;fy<b-40*s;fy+=30*s)for(var fx=x+20*s;fx<x+340*s;fx+=26*s)rect(fx,fy,12*s,20*s,((fx+fy)|0)%3?'#ffe9a8':'#3a3040');
+  rect(x+120*s,b-60*s,120*s,60*s,'#3a2a2a');for(var a=0;a<4;a++){cx.fillStyle='#3a2a2a';cx.beginPath();cx.arc(x+135*s+a*30*s,b-60*s,13*s,Math.PI,0);cx.fill()}
+  // pancarta y balcón
+  rect(x+150*s,b-120*s,60*s,6*s,sm);texto('AYUNTAMIENTO',x+180*s,b-176*s,14*s,'#1d3f8a','center','rgba(0,0,0,0)');
+}
+function arbolNavidad(x,b,tt,s){s=s||1;for(var i=0;i<5;i++){cx.fillStyle='#1a6b3a';cx.beginPath();cx.moveTo(x,b-200*s+i*30*s);cx.lineTo(x+(30+i*14)*s,b-150*s+i*30*s);cx.lineTo(x-(30+i*14)*s,b-150*s+i*30*s);cx.fill()}
+  rect(x-8*s,b-30*s,16*s,30*s,'#5a3a2a');for(var l=0;l<26;l++){var ly=b-190*s+(l%13)*12*s,lx=x+Math.sin(l*2.3)*((ly-(b-200*s))/200*s*90);cx.fillStyle=NEON[(l+Math.floor(tt*3))%5];cx.beginPath();cx.arc(lx,ly,3*s,0,7);cx.fill()}
+  cx.fillStyle='#ffd23f';cx.beginPath();for(var k=0;k<10;k++){var an=-Math.PI/2+k*Math.PI/5,rr=k%2?6*s:14*s;cx.lineTo(x+Math.cos(an)*rr,b-206*s+Math.sin(an)*rr)}cx.fill()}
+function fondoC8(tt){
+  var p=dist/META;
+  var g=cx.createLinearGradient(0,0,0,SUELO);g.addColorStop(0,'#05021a');g.addColorStop(.7,'#2a0b5a');g.addColorStop(1,'#5a1a6a');cx.fillStyle=g;cx.fillRect(0,0,W,SUELO);
+  for(var e=0;e<30;e++){rect((e*97)%W,(e*53)%(SUELO-120),2,2,'rgba(255,255,255,.6)')}
+  // el Palacio de Cibeles se acerca poco a poco
+  var px=W*1.02-p*W*.8;palacioCibeles(px,SUELO,tt,.9);
+  if(p>.78){rect(px+130,SUELO-120,84,8,'#d8d0c0');for(var bl=0;bl<7;bl++)rect(px+134+bl*12,SUELO-138,3,18,'#d8d0c0');princesaVestida(px+150,SUELO-118,1.2,tt,false);if(Math.floor(tt*2)%2)bocadillo(px+170,SUELO-200,'¡TROLLACO, AQUÍ!')}
+  arbolNavidad(px+420,SUELO,tt,.9);
+  guirnaldas(tt,.3);
+  var of=(dist*.6)%260;for(var l=-1;l<W/260+2;l++){var lx=l*260-of;rect(lx,SUELO-120,4,120,'#1a1a22');rect(lx-8,SUELO-128,20,10,'#1a1a22');cx.globalAlpha=.35;cx.fillStyle='#ffd98a';cx.beginPath();cx.arc(lx+2,SUELO-118,22,0,7);cx.fill();cx.globalAlpha=1}
+  // la fuente de Cibeles al principio
+  var fx=380-dist*.6;if(fx>-200)fuenteCibeles(fx,SUELO,tt,1.3);
+  nieve(tt);
+  rect(0,SUELO,W,H-SUELO,'#3a3640');rect(0,SUELO,W,4,'#d8d0c0');for(var q=0;q<W/40+2;q++)rect(q*40-(dist%40),SUELO+20,20,2,'#4a4652');
+  var op=(dist*.35)%640;for(var r=-1;r<W/640+2;r++)placa(r*640-op+250,SUELO-112,'PLAZA DE CIBELES');
+}
+function dronG(o,tt){var x=o.x,bob=Math.sin(tt*6+o.fase)*4,y=o.y+bob;rect(x,y+6,o.w,10,'#2a0e44');rect(x+4,y+8,o.w-8,3,'#1ff2ff');rect(x-6,y,14,3,'#5a5a66');rect(x+o.w-8,y,14,3,'#5a5a66');
+  rect(x+o.w/2-3,y+16,6,4,'#ff3030');if(o.x<W-60&&o.x>jug.x+50)bocadillo(x+o.w/2,y-8,'BZZZ L4G')}
+function vallaNavidad(o,tt){var x=o.x,y=o.y;rect(x,y,o.w,6,'#c0c8d0');rect(x,y+o.h-6,o.w,6,'#c0c8d0');for(var i=0;i<o.w;i+=8)rect(x+i,y,3,o.h,'#a0a8b0');
+  rect(x+4,y+10,o.w-8,14,'#c0302a');texto('PROHIBIDO PASAR',x+o.w/2,y+21,10,'#fff','center','rgba(0,0,0,0)')}
+function obstaculoC8(o,tt){
+  if(o.tipo==='bot')bot(o,tt);else if(o.tipo==='coche')coche(o,tt);else if(o.tipo==='dronG')dronG(o,tt);
+  else if(o.tipo==='valla8')vallaNavidad(o,tt);else if(o.tipo==='turista')turista(o,tt);else if(o.tipo==='regalo')regalo(o,tt);
+}
+function nuevoObstaculoC8(){
+  if(dist>META-1500){sigObst=1e9;return}
+  var p=dist/META,r=Math.random(),o,extra=0;
+  if(r<.32)o={tipo:'bot',w:32,h:44,andar:40+Math.random()*40+p*30};
+  else if(r<.46)o={tipo:'dronG',w:44,h:20,vuelo:true,alto:(Math.random()<.55?70:130),andar:60};
+  else if(r<.60)o={tipo:'valla8',w:58,h:40};
+  else if(r<.72)o={tipo:'coche',w:84,h:44,andar:60+Math.random()*60,color:COLORES[Math.floor(Math.random()*6)]};
+  else if(r<.84)o={tipo:'turista',w:34,h:52,color:['#3a9a4a','#e8c020','#2a6bd1'][Math.floor(Math.random()*3)]};
+  else o={tipo:'regalo',w:26,h:20,vuelo:true,alto:(Math.random()<.5?8:100)};
+  o.x=W+20;o.y=o.vuelo?SUELO-o.alto-o.h:SUELO-o.h;o.fase=Math.random()*6;obst.push(o);
+  sigObst=Math.max(240,370+Math.random()*300-p*140)+vel*.22+extra;
+}
+function princesaVestida(x,y,s,tt,novia){ // y = pies
+  var p=function(a,b,w,h,c){rect(x+a*s,y-(54-b)*s,w*s,h*s,c)};var bo=Math.floor(tt*4)%2;
+  if(novia){cx.globalAlpha=.55;p(4,2,24,30,'#ffffff');cx.globalAlpha=1}
+  p(8,0+bo,16,4,'#ffd23f');p(8,-3+bo,3,3,'#ffd23f');p(14,-4+bo,4,4,'#ffd23f');p(21,-3+bo,3,3,'#ffd23f');p(15,-3+bo,2,2,'#ff2bd6');
+  p(6,4,20,16,'#ff5ccf');p(4,8,4,22,'#ff5ccf');p(24,8,4,22,'#ff5ccf');
+  p(9,7,14,13,'#f2c6a0');p(11,11,3,3,K);p(18,11,3,3,K);p(13,16,6,2,'#c0306a');
+  var ves=novia?'#ffffff':'#1ff2ff';p(13,20,6,3,'#f2c6a0');p(9,23,14,10,ves);p(7,33,18,19,ves);p(5,24,4,12,'#f2c6a0');p(23,24,4,12,'#f2c6a0');
+  if(novia){p(7,48,18,4,'#f0e8ff');p(26,26,5,5,'#ff5ccf');p(27,25,3,2,'#39ff88')}
+  p(10,52,6,2,'#ff2bd6');p(17,52,6,2,'#ff2bd6');
+}
+function glitchCuerpo(x,y,s,tt,disfraz){ // y = pies
+  var p=function(a,b,w,h,c){rect(x+a*s,y-(56-b)*s,w*s,h*s,c)};var j=Math.floor(tt*10)%5===0?2:0;
+  p(7+j,0,18,20,'#2a0e44');p(5-j,5,18,3,'#1ff2ff');p(9+j,14,18,2,'#ff2bd6');p(10,7,4,4,'#ff3030');p(19,7,4,4,'#ff3030');p(4,-2,24,3,'#9d4dff');
+  var tr=disfraz?'#1d3f8a':'#3a1a5a';p(6,20,20,20,tr);p(2,22,5,14,tr);p(25,22,5,14,tr);p(8,40,7,14,'#1a0a2a');p(17,40,7,14,'#1a0a2a');
+  if(disfraz){p(6,-6,20,6,'#1d3f8a');p(12,-5,8,3,'#ffd23f');p(13,22,6,3,'#ffd23f')}
+}
+
+// ---------- vídeo final: Barajas, el viaje de novios y Glitch otra vez ----------
+var cine=null;
+function empiezaCine(){cine={t0:performance.now()};estado='cine';pitido(523,1046,.3,'square',.05)}
+function terminaCine(){cine=null;estado='victoria';t0=performance.now()}
+function avion(x,y,s,tt){
+  rect(x,y,200*s,30*s,'#f4f4f8');cx.fillStyle='#f4f4f8';cx.beginPath();cx.ellipse(x+200*s,y+15*s,26*s,15*s,0,-Math.PI/2,Math.PI/2);cx.fill();
+  cx.beginPath();cx.moveTo(x+10*s,y);cx.lineTo(x-14*s,y-46*s);cx.lineTo(x+30*s,y-46*s);cx.lineTo(x+50*s,y);cx.fill();rect(x-14*s,y-46*s,44*s,12*s,'#ff2bd6');
+  texto('TROLLACO AIR',x+100*s,y+20*s,14*s,'#9d4dff','center','rgba(0,0,0,0)');for(var v=0;v<9;v++)rect(x+60*s+v*14*s,y+6*s,6*s,6*s,'#3a6a9a');
+  rect(x+80*s,y+26*s,70*s,10*s,'#c8c8d0')}
+function pintaCine(tt){
+  var t=(performance.now()-cine.t0)/1000;
+  // terminal T4: techo ondulado y pilares de colores
+  var g=cx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#2a1a10');g.addColorStop(1,'#5a3a20');cx.fillStyle=g;cx.fillRect(0,0,W,H);
+  cx.fillStyle='#c89a5a';cx.beginPath();cx.moveTo(0,0);for(var x=0;x<=W;x+=20)cx.lineTo(x,40+Math.sin(x/90)*16);cx.lineTo(W,0);cx.fill();
+  for(var r=0;r<W;r+=16){cx.strokeStyle='rgba(120,80,40,.6)';cx.beginPath();cx.moveTo(r,0);cx.lineTo(r,40+Math.sin(r/90)*16);cx.stroke()}
+  // ventanal con la pista
+  rect(0,80,W,150,'#8ac4ff');rect(0,200,W,30,'#5a5a66');for(var m=0;m<W;m+=60)rect(m+((t*40)%60),214,30,3,'#fff');
+  var PIL=['#ffd23f','#ffb347','#ff8a3a','#ff5c5c','#ff2bd6','#9d4dff','#2a6bd1','#1ff2ff','#39ff88'];
+  for(var k=0;k<5;k++){var px=40+k*(W/5);rect(px,30,14,H-60,PIL[k*2%9]);cx.fillStyle=PIL[k*2%9];cx.beginPath();cx.moveTo(px-20,40);cx.lineTo(px+7,90);cx.lineTo(px+34,40);cx.fill()}
+  // el avión (en la pista y, al final, despegando)
+  var ax=W*.45,ay=150;if(t>9.5){var d=t-9.5;ax+=d*120;ay-=d*d*14}avion(ax,ay,.9,tt);
+  // suelo de la terminal
+  rect(0,SUELO,W,H-SUELO,'#d8d0c0');for(var q=0;q<W;q+=48)rect(q,SUELO,2,H-SUELO,'#bfb6a4');
+  // panel de salidas
+  rect(W-200,96,186,60,K);rect(W-198,98,182,56,'#05020c');texto('SALIDAS',W-107,114,16,'#ffd23f','center','rgba(0,0,0,0)');
+  var dest=t<6.5?'VIAJE DE NOVIOS':(Math.floor(tt*8)%2?'D3ST1N0: ???':'LATINOAMÉRICA ?');texto(dest,W-107,134,15,t<6.5?'#39ff88':'#ff3030','center','rgba(0,0,0,0)');texto(t<6.5?'PUERTA J-19 · EMBARCANDO':'PUERTA J-19 · ERROR',W-107,150,12,'#fff','center','rgba(0,0,0,0)');
+  // los recién casados con la maleta
+  var tx=Math.min(W*.18+t*30,W*.34);var bo=Math.floor(tt*4)%2;
+  if(spr.complete&&spr.naturalWidth)cx.drawImage(spr,0,0,32,40,tx,SUELO-40*ESC-4-bo*2,32*ESC,40*ESC);
+  rect(tx-34,SUELO-34,28,34,'#ff2bd6');rect(tx-26,SUELO-40,12,6,K);texto('RECIÉN CASADOS',tx-20,SUELO-14,9,'#fff','center','rgba(0,0,0,0)');
+  var prX=tx+52,prY=SUELO+2;
+  if(t<6.5){princesaVestida(prX,prY,1.5,tt,true)}
+  else if(t<9.5){ // Glitch, disfrazado de piloto, se la lleva
+    var gx=W*.62-(Math.min(1,(t-6.5)/1.2))*(W*.62-prX-50);if(t>7.7)gx=prX+50+(t-7.7)*170;
+    var llevada=t>7.7;princesaVestida(llevada?gx-34:prX,prY-(llevada?10:0),1.5,tt,true);glitchCuerpo(gx,SUELO+2,1.6,tt,true);
+    if(t>6.6&&t<7.8)bocadillo(gx+26,SUELO-104,'¡TARJETAS DE EMBARQUE!');if(t>7.8)bocadillo(gx-10,SUELO-110,'¡SOCORROOO!');
+  }
+  // texto del vídeo (subtítulos)
+  var sub=t<3?['AEROPUERTO DE BARAJAS · T4','El Trollaco y la Princesa Neón se van de viaje de novios']:
+          t<6.5?['PRINCESA NEÓN','«¡Por fin solos! Sin lag, sin Glitch… solo playa y mojitos sin alcohol.»']:
+          t<8?['¿¿PILOTO??','«Su tarjeta de embarque, señora… ¡JEJEJE! ¡LAG PARA TODOS!»']:
+          t<11.5?['¡MÍSTER GLITCH!','Se lleva a la princesa en el avión… ¡con destino desconocido!']:
+                 ['TROLLACO','«Glitch… me da igual dónde te escondas. Voy a por ti.»'];
+  rect(0,H-58,W,58,'rgba(7,2,26,.82)');texto(sub[0],W/2,H-36,W<600?20:22,'#ffd23f','center');texto(sub[1],W/2,H-12,W<600?16:19,'#fff','center');
+  if(t>8&&t<8.4){cx.fillStyle='rgba(255,43,214,.25)';cx.fillRect(0,0,W,H)}
+  // fundido y «continuará»
+  if(t>13){var a=Math.min(1,(t-13)/1.2);cx.fillStyle='rgba(7,2,26,'+a+')';cx.fillRect(0,0,W,H);
+    if(t>14){texto('CONTINUARÁ…',W/2,110,W<600?44:58,'#ff2bd6','center');texto('TEMPORADA 2: EL TROLLACO CRUZA EL CHARCO',W/2,156,W<600?20:26,'#1ff2ff','center');
+      texto('Latinoamérica · Ovnis · Y la Princesa Neón, otra vez en apuros',W/2,188,W<600?16:20,'#fff','center');
+      if(Math.floor(tt*2)%2)texto('TOCA PARA CONTINUAR',W/2,240,22,'#ffd23f','center')}}
+  else texto('SALTAR ⏭',W-14,22,18,'#a59dd0','right');
+  // la música del vídeo, nota a nota
+  var n=Math.floor(t*3);if(n!==cine.ult&&t<13){cine.ult=n;var esc=[523,659,784,659,880,784,659,587];pitido(esc[n%8],esc[n%8]*1.01,.12,'square',.03)}
+  if(t>20)terminaCine();
+}
+
 // ---------- diálogos del modo historia ----------
 var GENTE={
   TROLLACO:{c:'#39ff88'},PRINCESA:{c:'#ff5ccf',n:'PRINCESA NEÓN'},GLITCH:{c:'#9d4dff',n:'MÍSTER GLITCH'},CAMARERO:{c:'#ffd23f'},
-  PORTERO:{c:'#ff9d3c'},FANTASMA:{c:'#e8f0ff'},AGENTE:{c:'#7fb3ff',n:'AGENTE MUNICIPAL'},RIDER:{c:'#ffd23f',n:'RIDER DE GLITCH EXPRESS'},NOTA:{c:'#e8e4c8',n:'NOTA EN LA PUERTA'}};
+  PORTERO:{c:'#ff9d3c'},FANTASMA:{c:'#e8f0ff'},AGENTE:{c:'#7fb3ff',n:'AGENTE MUNICIPAL'},RIDER:{c:'#ffd23f',n:'RIDER DE GLITCH EXPRESS'},NOTA:{c:'#e8e4c8',n:'NOTA EN LA PUERTA'},CASTANERA:{c:'#ff9d3c',n:'CASTAÑERA'}};
 function retrato(q,x,y,s){
   var p=function(a,b,w,h,c){rect(x+a*s,y+b*s,w*s,h*s,c)};var t=performance.now()/1000;
   rect(x-3,y-3,32*s+6,32*s+6,K);rect(x,y,32*s,32*s,'#1a0640');
@@ -1203,6 +1415,7 @@ function retrato(q,x,y,s){
     p(6,24,20,8,'#1c2a5a');p(14,24,4,8,'#ffd23f')}
   else if(q==='RIDER'){p(9,9,14,15,'#e8b890');p(7,3,18,8,'#ffd23f');p(7,9,18,2,'#c8a020');p(11,13,3,3,K);p(18,13,3,3,K);p(13,19,6,2,'#a03030');p(6,24,20,8,'#3a3a4a');
     p(22,18,9,12,'#ffd23f');texto('G',x+26.5*s,y+28*s,9*s,'#ff2bd6','center','rgba(0,0,0,0)')}
+  else if(q==='CASTANERA'){p(9,9,14,15,'#e8b890');p(7,4,18,7,'#6a3a8a');p(11,13,3,3,K);p(18,13,3,3,K);p(13,19,6,2,'#a03030');p(6,24,20,8,'#8a4a20');p(4,26,24,3,'#c0302a')}
   else if(q==='NOTA'){p(6,4,20,24,'#e8e4c8');for(var r=0;r<5;r++)p(9,8+r*4,14-(r%2)*4,1,'#5a5040');p(19,22,4,3,'#9d4dff')}
 }
 function partirTexto(t,ancho,tam){cx.font=tam+'px VT323, monospace';var pal=t.split(' '),l=[],a='';
@@ -1248,7 +1461,13 @@ var CAPS={
       siguiente:'c6',sig:'Capítulo 6 · Hora punta',gana:'¡He cruzado los túneles de la M-30',pierde:'Me he quedado tirado en la M-30'},
   c6:{n:6,nombre:'HORA PUNTA',hud:'CAP. 6 · HORA PUNTA',color:'#ffe14d',meta:40000,fondo:fondoC6,nuevo:nuevoObstaculoC6,dibuja:obstaculoC6,final:granViaFinal,lugar:calle6,
       l1:'Sal de la M-30 y llega a la Gran Vía',l2:'Salta los riders · pisa los bots · coge los pedidos (+3)',
-      siguiente:null,sig:'Capítulo 7… muy pronto',gana:'¡He llegado a la Gran Vía',pierde:'Me ha atropellado un rider de Glitch Express'}
+      siguiente:'c7',sig:'Capítulo 7 · Luces de Navidad',gana:'¡He llegado a la Gran Vía',pierde:'Me ha atropellado un rider de Glitch Express'},
+  c7:{n:7,nombre:'LUCES DE NAVIDAD',hud:'CAP. 7 · NAVIDAD',color:'#ffd98a',meta:42000,fondo:fondoC7,nuevo:nuevoObstaculoC7,dibuja:obstaculoC7,final:alcalaFinal,lugar:calle7,
+      l1:'Cruza la Gran Vía iluminada hasta Cibeles',l2:'Salta coches, turistas y castañeras · coge los regalos (+3)',
+      siguiente:'c8',sig:'Capítulo 8 · Rescate en Cibeles',gana:'¡He cruzado la Gran Vía de Navidad',pierde:'Me he perdido entre las luces de la Gran Vía'},
+  c8:{n:8,nombre:'RESCATE EN CIBELES',hud:'CAP. 8 · CIBELES',color:'#ff5ccf',meta:44000,fondo:fondoC8,nuevo:nuevoObstaculoC8,dibuja:obstaculoC8,final:function(){},
+      l1:'Llega al Ayuntamiento y rescata a la Princesa Neón',l2:'El ejército de bots de Glitch · drones · vallas',
+      siguiente:null,sig:'Temporada 2 · El Trollaco cruza el charco (muy pronto)',gana:'¡He rescatado a la Princesa Neón en Cibeles',pierde:'Los bots de Glitch me han parado en Cibeles'}
 };
 
 // ---------- la historia: diálogos al empezar y al terminar cada capítulo ----------
@@ -1306,7 +1525,25 @@ var HISTORIA={
              ['TROLLACO','¡La corona de la princesa! ¿Hacia dónde han ido?'],
              ['RIDER','Ni idea, yo solo reparto. Pero el de la furgoneta preguntaba dónde se ven mejor las luces de Navidad…'],
              ['GLITCH','(Mensaje de voz) Bonita corona, Trollaco. Quédatela. La princesa ya no la va a necesitar… de momento. ¡Jejeje!'],
-             ['TROLLACO','Las luces de la Gran Vía… Princesa, aguanta. Esta noche te encuentro.']]}
+             ['TROLLACO','Las luces de la Gran Vía… Princesa, aguanta. Esta noche te encuentro.']]},
+  c7:{intro:[['CASTANERA','¡Castañas calentitas! ¡A euro la docena! …Bueno, a tres, que la vida está muy cara.'],
+             ['TROLLACO','Señora, ¿ha visto pasar una furgoneta morada con una chica de pelo rosa?'],
+             ['CASTANERA','¿La del tío pixelado? Sí, hijo, sí. Se han parado a ver las luces y luego han tirado Gran Vía abajo, hacia Cibeles.'],
+             ['GLITCH','(Mensaje de voz) Bonitas luces, ¿verdad, Trollaco? Las he hackeado: cada vez que parpadean, mis bots se multiplican. ¡Jejeje!'],
+             ['TROLLACO','Pues a Cibeles. Y que alguien apague a ese pesado.']],
+      outro:[['TROLLACO','¡La Cibeles! Y ahí detrás… el Ayuntamiento.'],
+             ['PRINCESA','(desde un balcón) ¡Trollacooo! ¡Estoy aquí arriba! ¡Glitch dice que se va a quedar con Madrid!'],
+             ['GLITCH','¡Jejeje! Esta noche el Ayuntamiento es MÍO. Y la princesa, también. Bots… ¡a por él!'],
+             ['TROLLACO','Glitch, has elegido mal la plaza. Aquí se celebra lo que gana Madrid. Y hoy gano yo.']]},
+  c8:{intro:[['GLITCH','¡Bienvenido a Cibeles, Trollaco! Mi ejército de bots te espera. Todos con 300 de ping.'],
+             ['PRINCESA','¡Ánimo, Trollaco! ¡Pisa a esos cacharros, que ya me tienen harta!'],
+             ['TROLLACO','Aguanta, princesa. Esta vez no se escapa.']],
+      outro:[['GLITCH','¡No… NO! ¡Mis bots! ¡Error 404, error 404…! ¡Me desconectooo…!'],
+             ['PRINCESA','¡Trollaco! ¡Has venido a por mí desde la mansión hasta Cibeles!'],
+             ['TROLLACO','Princesa, me he cruzado medio Madrid, he esquivado riders, castañeras y la M-30 en hora punta…'],
+             ['TROLLACO','…así que, ya que estamos en el Ayuntamiento: ¿te casas conmigo?'],
+             ['PRINCESA','¡SÍ! ¡Y de viaje de novios nos vamos lejos, lejos, donde no haya ni rastro de Glitch!'],
+             ['TROLLACO','Hecho. Mañana mismo, a Barajas.']]}
 };
 
 // ---------- bucle ----------
@@ -1331,11 +1568,11 @@ function bucle(ahora){
     // colisiones (caja de choque algo más pequeña que el dibujo, para ser justos)
     var jx=jug.x+9,jw=32*ESC-18,jy=jug.y-54*ESC+8,jh=54*ESC-10;
     for(var i=0;i<obst.length;i++){var o=obst[i]; if(o.ko)continue;
-      var vuela=o.tipo==='dron'||o.tipo==='murci'||o.tipo==='paloma'||o.tipo==='pedido';
+      var vuela=o.tipo==='dron'||o.tipo==='murci'||o.tipo==='paloma'||o.tipo==='pedido'||o.tipo==='regalo'||o.tipo==='dronG';
       var oy=o.y+(vuela?Math.sin(tt*6+o.fase)*4+6:4), oh=vuela?o.h-6:o.h-4;
       if(jx<o.x+o.w-5&&jx+jw>o.x+5&&jy<oy+oh&&jy+jh>oy){
         // un pedido de Glitch Express que se le ha caído a un rider: +3 fichas
-        if(o.tipo==='pedido'){o.ko=true;fichas+=3;pitido(700,1400,.12,'square',.06);for(var k2=0;k2<8;k2++)parts.push({x:o.x+15,y:o.y,vx:(Math.random()-.5)*220,vy:-Math.random()*220,v:.5});continue}
+        if(o.tipo==='pedido'||o.tipo==='regalo'){o.ko=true;fichas+=3;pitido(700,1400,.12,'square',.06);for(var k2=0;k2<8;k2++)parts.push({x:o.x+15,y:o.y,vx:(Math.random()-.5)*220,vy:-Math.random()*220,v:.5});continue}
         // ¡pisotón! cayendo encima de un zombi lo dejas KO
         if((PISABLES.indexOf(o.tipo)>-1)&&jug.vy>0&&jug.y-jug.vy*dt<=o.y+14){
           o.ko=true;jug.vy=-560;jug.saltos=1;fichas+=2;pitido(200,900,.18,'square',.08);
@@ -1371,8 +1608,9 @@ function bucle(ahora){
   }
   parts.forEach(function(p){if(p.fuego){var c=p.v>.4?'#fff3a0':p.v>.25?'#ffb000':p.v>.12?'#ff5a00':'#b81d00';var t=p.v>.3?6:4;rect(p.x,p.y,t,t,c)}else rect(p.x,p.y,3,3,'#ffd23f')});
   cx.restore();
-  if(estado!=='menu'&&estado!=='dialogo'&&!playa){if(modo==='run')hud(tt);else hudC1()}
+  if(estado!=='menu'&&estado!=='dialogo'&&estado!=='cine'&&!playa){if(modo==='run')hud(tt);else hudC1()}
   if(estado==='dialogo'&&dlg)pintaDialogo(tt);
+  if(estado==='cine'&&cine)pintaCine(tt);
   if(estado==='menu'&&modo!=='run'){
     cx.fillStyle='rgba(7,2,26,.55)';cx.fillRect(0,0,W,H);
     var cm=CAPS[modo];
@@ -1385,7 +1623,7 @@ function bucle(ahora){
   } else if(estado==='victoria'){
     cx.fillStyle='rgba(7,2,26,.6)';cx.fillRect(0,0,W,H);
     var cv2=CAPS[modo];
-    texto('¡CAPÍTULO '+cv2.n+' SUPERADO!',W/2,92,W<600?40:54,'#ffd23f','center');
+    texto(cv2.n===8?'¡TEMPORADA 1 COMPLETADA!':'¡CAPÍTULO '+cv2.n+' SUPERADO!',W/2,92,W<600?36:54,'#ffd23f','center');
     texto(puntos+' PUNTOS · '+fichas+' FICHAS',W/2,134,28,'#fff','center');
     texto(nuevoRecord?'¡NUEVO RÉCORD!':'RÉCORD: '+record,W/2,168,26,nuevoRecord?'#ffd23f':'#1ff2ff','center');
     texto('Próximo: '+cv2.sig,W/2,204,W<600?18:22,'#ffb347','center');
@@ -1414,7 +1652,7 @@ function bucle(ahora){
 }
 function fin(gana){
   estado=gana?'victoria':'fin';t0=performance.now();
-  if(gana&&HISTORIA[modo])abreDialogo(HISTORIA[modo].outro,function(){estado='victoria';t0=performance.now()});
+  if(gana&&HISTORIA[modo])abreDialogo(HISTORIA[modo].outro,function(){if(modo==='c8')empiezaCine();else{estado='victoria';t0=performance.now()}});
   if(gana){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){pitido(f,f*1.01,.18,'square',.07)},i*140)});
     if(progreso<CAPS[modo].n){progreso=CAPS[modo].n;try{localStorage.setItem('trollacoHistoria',String(progreso))}catch(e){}pintaCapitulos()}}
   else{temblor=.25;pitido(400,60,.45,'sawtooth',.1)}
