@@ -1,0 +1,51 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Righteous';src:url(righteous.woff2)}@font-face{font-family:'VT323';src:url(vt323.woff2)}@font-face{font-family:'Rajdhani';src:url(rajdhani-700.woff2);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:540px;height:960px;overflow:hidden;background:#07021a}
+#esc{position:relative;width:540px;height:960px;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;overflow:hidden}
+#foto{position:absolute;left:0;top:175px;width:540px;height:887px;object-fit:cover;transform-origin:50% 30%}
+#sombra{position:absolute;inset:0;background:linear-gradient(180deg,#07021a 0,#07021a 17%,rgba(7,2,26,0) 30%,rgba(7,2,26,0) 58%,rgba(7,2,26,.85) 82%,#07021a 100%)}
+#logo{position:absolute;top:22px;left:150px;width:240px}
+#t{position:absolute;top:66px;left:0;right:0;text-align:center}
+#t .a{font-family:'VT323';font-size:30px;color:#1ff2ff;text-shadow:0 0 10px #1ff2ff;letter-spacing:2px}
+#t .b{font-family:'Righteous';font-size:50px;line-height:1;color:#fff;text-shadow:3px 3px 0 #ff2bd6,0 0 22px #ff2bd6;margin-top:2px}
+#t .b span{color:#ffd23f}
+#bo{position:absolute;left:26px;right:26px;top:700px;background:#fff;color:#07021a;font-size:31px;padding:14px 20px;border-radius:20px;border:4px solid #07021a;box-shadow:6px 6px 0 #ff2bd6;line-height:1.1;text-align:center;transform-origin:50% 0}
+#bo::before{content:'';position:absolute;left:60%;top:-26px;border:12px solid transparent;border-bottom:16px solid #07021a}
+#quien{position:absolute;left:34px;top:672px;font-family:'VT323';font-size:24px;color:#ffd23f;text-shadow:0 0 6px #000}
+#troll{position:absolute;left:18px;top:762px;width:104px;image-rendering:pixelated;transform-origin:50% 100%;opacity:0}
+#cta{position:absolute;left:0;right:0;top:870px;text-align:center;font-family:'VT323';font-size:34px;color:#1ff2ff;text-shadow:0 0 10px #1ff2ff}
+#cta b{color:#ffd23f;font-weight:400}
+#afi{position:absolute;left:0;right:0;top:912px;text-align:center;font-size:15px;color:rgba(255,255,255,.65)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="esc">
+<img id="foto" src="danna-neon.jpg"><div id="sombra"></div>
+<img id="logo" src="logo.webp">
+<div id="t"><div class="a" id="ta">🖤 BLACK FRIDAY 2026_</div><div class="b" id="tb">LAS OFERTAS<br><span>MÁS TROLLERAS</span></div></div>
+<div id="quien">DANNA DICE:</div><div id="bo"></div>
+<img id="troll" src="trollaco-grande.png">
+<div id="cta">📲 <b>TROLLACOS.COM</b>/TECNOLOGIA</div>
+<div id="afi">Contiene enlaces de afiliado de Amazon</div>
+<canvas id="cv" width="1080" height="1920" style="width:540px;height:960px"></canvas><div id="flash"></div>
+</div><script>
+const $=i=>document.getElementById(i),G=12.2,DUR=17;
+const cv=$('cv'),cx=cv.getContext('2d');cx.scale(2,2);
+const COL=['#ff2bd6','#1ff2ff','#ffd23f','#39ff88','#ffffff','#b06aff'];
+let r=777;const rnd=()=>{r=(r*9301+49297)%233280;return r/233280};
+const P=[];
+function rafaga(t0,n,x0,y0,dir){for(let i=0;i<n;i++){const a=(-90+dir*(15+rnd()*40))*Math.PI/180,v=380+rnd()*420;P.push({t0,x0,y0,vx:Math.cos(a)*v,vy:Math.sin(a)*v,c:COL[i%6],w:5+rnd()*5,h:8+rnd()*8,rot:rnd()*6,vr:(rnd()-.5)*14,d:rnd()*.15})}}
+rafaga(G,90,40,840,1);rafaga(G,90,500,820,-1);rafaga(G+.4,60,100,850,1);rafaga(G+.4,60,440,850,-1);
+const F=[[0,'¡Ey! Soy Danna 👋'],[2.2,'Llega el Black Friday 🖤'],[4.6,'Consolas, móviles, gadgets…'],[7,'Las mejores ofertas de Amazon, elegidas una a una 🔍'],[10,'Sin humo y sin precios inflados 😉'],[G,'¡Te las dejo todas en trollacos.com! 🎉']];
+window.pinta=function(t){
+ $('foto').style.transform=`scale(${1.04+t*.008}) translateY(${-t*1.2}px)`;
+ let i=0;F.forEach((f,k)=>{if(t>=f[0])i=k});const u=t-F[i][0],txt=F[i][1],n=Math.min(txt.length,Math.floor(u*38));
+ const bo=$('bo');bo.textContent=[...txt].slice(0,n).join('')||' ';bo.style.transform=`scale(${u<.18?.6+u/.18*.4:1}) rotate(${Math.sin(t*2)*1}deg)`;bo.style.background=i===F.length-1?'#ffd23f':'#fff';
+ $('tb').style.transform=`scale(${1+.03*Math.sin(t*4)})`;
+ const B=t>=G,tr=$('troll');tr.style.opacity=B?1:0;if(B){const v=t-G;tr.style.transform=`translateY(${-Math.abs(Math.sin(v*7))*(v<3?50:18)}px) rotate(${Math.sin(v*7)*8}deg)`}
+ $('cta').style.transform=`scale(${B?1+.06*Math.abs(Math.sin((t-G)*4)):1})`;
+ $('flash').style.opacity=B?Math.max(0,.6-(t-G)*2.5):0;
+ cx.clearRect(0,0,540,960);
+ for(const p of P){const v=t-p.t0-p.d;if(v<0||v>5)continue;const x=p.x0+p.vx*v*.6+Math.sin(v*3+p.rot)*12,y=p.y0+p.vy*v+260*v*v;if(y>980)continue;
+  cx.save();cx.globalAlpha=v>4?5-v:1;cx.translate(x,y);cx.rotate(p.rot+p.vr*v);cx.scale(1,Math.abs(Math.cos(v*6+p.rot))+.15);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()}
+};
+</script></body></html>
