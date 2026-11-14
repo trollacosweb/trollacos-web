@@ -1,5 +1,41 @@
 [
  {
+  "slug": "gta-6-actualizacion-1-002-000-ps5-xbox",
+  "fecha": "2026-11-14",
+  "emoji": "🔄",
+  "titulo": "GTA VI recibe su primera actualización antes de salir: la 1.002.000, de 1 GB en PS5 y 2,2 GB en Xbox",
+  "entradilla": "A seis días del estreno, a quien ya tiene la precarga le ha llegado el primer parche. Pesa poco, no trae notas y Rockstar no ha dicho ni pío.",
+  "cuerpo": [
+   "Si tienes GTA VI precargado y has encendido la consola estos días, igual te has encontrado una sorpresa en la cola de descargas: el <strong>13 de noviembre</strong> llegó la <strong>actualización 1.002.000</strong> (en algunas listas aparece como 01.002.000). Es el primer parche del juego, y llega <strong>antes incluso de que se pueda jugar</strong>.",
+   "<strong>Lo que pesa.</strong> Según las capturas de la cola de descargas que han publicado los rastreadores de la PlayStation Store y de Xbox, son unos <strong>1,07 GB en PS5</strong> y alrededor de <strong>2,2 GB en Xbox Series X|S</strong>. Nada que ver con los hasta 212 GB de la precarga: comparado con eso, esto es un aperitivo.",
+   "<strong>Llegó por tandas.</strong> En PS5 se repartió en dos oleadas: primero a la mitad de los jugadores y, unas once horas después, al resto. En Xbox apareció unas horas más tarde que en PlayStation. Así que si a tu colega le salió antes que a ti, tranquilidad: no te han castigado.",
+   "<strong>¿Qué cambia?</strong> Misterio. <strong>Rockstar no ha publicado notas del parche</strong> ni lo ha anunciado en su web. Algunos usuarios que han comparado archivos dicen que toca ficheros de la historia, de los scripts y del ejecutable, pero eso no es oficial y no sabemos qué arregla. Tampoco está confirmado que sea obligatorio para jugar, aunque lo normal es que la consola te pida instalarlo.",
+   "<strong>Lo que tienes que hacer:</strong> dejar la consola en reposo con las descargas automáticas activadas y asegurarte de que tienes <strong>un poco de espacio extra</strong> además de lo que ocupa el juego. Así el 19 de noviembre, a medianoche, entras directamente a Vice City sin barra de progreso de por medio."
+  ],
+  "opina": "Un parche de 1 GB en un juego que todavía no ha salido es como que te llamen del restaurante para decirte que han cambiado la sal antes de que llegues. ¿Qué arregla? Ni idea. ¿Lo vamos a descargar? Más rápido que Lucía saliendo de una joyería.",
+  "fuente": "PlayStation LifeStyle, PlayStation Game Size y RockstarINTEL (13 de noviembre de 2026); Rockstar no ha publicado notas del parche",
+  "guia": "/gta-6/#jugar",
+  "guia_txt": "Qué necesitas para jugarlo"
+ },
+ {
+  "slug": "gta-6-macca-and-friends-serie-dibujos-weazel",
+  "fecha": "2026-11-14",
+  "emoji": "🐊",
+  "titulo": "«Macca & Friends»: el primer teaser de la serie de dibujos que veremos en la tele de GTA VI",
+  "entradilla": "Un caimán, sus amigos del pantano y una serie de dibujos animados que se emitirá en Weazel, la cadena de televisión del juego. Rockstar no la ha presentado oficialmente, pero el teaser ya está dando vueltas.",
+  "cuerpo": [
+   "GTA VI tendrá tele, y la tele tendrá dibujos. El <strong>13 de noviembre</strong> apareció el primer teaser de <strong>«Macca & Friends»</strong>, una <strong>serie de animación que existe dentro del juego</strong>. Lo difundió en exclusiva el medio DiscussingFilm y lo han recogido medios como Gematsu, PC Gamer e Insider Gaming.",
+   "<strong>¿De qué va?</strong> El protagonista es <strong>Macca, un caimán</strong>, que vive aventuras con su pandilla de animales del pantano de Leonida (sí, la versión de Rockstar de Florida, donde los caimanes son prácticamente vecinos). Según la lectura de PC Gamer, los animales hacen además de policías, con un compañero bastante cachas.",
+   "<strong>Ya lo habíamos visto venir.</strong> No es la primera vez que aparece Macca: en la campaña de lanzamiento de Miami ya salió un mural suyo en el Burger Shot de verdad del Kaseya Center y una valla publicitaria en la ciudad. Las dos decían lo mismo: <strong>«coming November 19 on Weazel»</strong>, es decir, que se estrena el día del lanzamiento en <strong>Weazel</strong>, la cadena de televisión del universo GTA.",
+   "<strong>Lo que no sabemos.</strong> <strong>Rockstar no ha dicho nada</strong> sobre la serie: ni cuántos episodios tiene, ni cuánto duran, ni si se podrá ver desde el sofá de Jason y Lucía o solo de fondo en las teles del juego. Toca esperar al 19 para comprobarlo con el mando en la mano.",
+   "Lo que sí está claro es que Rockstar sigue con su costumbre de rellenar el mundo de programas, anuncios y series de mentira que dan para horas. En GTA V ya podías tirarte un buen rato viendo la tele del sofá; en GTA VI, por lo visto, habrá hasta dibujos para los sábados por la mañana."
+  ],
+  "opina": "Un caimán policía con amigos del pantano. En Leonida los caimanes salen en los dibujos, en los anuncios y, si te descuidas, en la piscina de tu casa. Ya tenemos plan para cuando nos persiga la policía con seis estrellas: escondernos en el sofá y poner Macca hasta que se les pase.",
+  "fuente": "DiscussingFilm (13 de noviembre de 2026), recogido por Gematsu, PC Gamer e Insider Gaming; Rockstar no ha comentado la serie",
+  "guia": "/gta-6/#jugabilidad",
+  "guia_txt": "Jugabilidad: un mundo vivo"
+ },
+ {
   "slug": "gta-6-xbox-cloud-gaming-xbox-one-reservas-record-take-two",
   "fecha": "2026-11-12",
   "emoji": "☁️",
