@@ -1,22 +1,22 @@
 {
- "actualizado": "2026-11-14T17:46:38Z",
- "fuente": "TheSportsDB",
- "temporada": "2026-2027",
+ "actualizado": "2026-11-14T20:49:54Z",
+ "fuente": "football-data.org",
+ "temporada": "2026",
  "jornada": 13,
  "partidos": [
   {
-   "id": "2506271",
+   "id": "564737",
    "j": 11,
    "fecha": "2026-10-30T20:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Villarreal",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+    "c": "https://crests.football-data.org/94.png",
     "tla": "VIL"
    },
    "visit": {
     "n": "Espanyol",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "c": "https://crests.football-data.org/80.png",
     "tla": "ESP"
    },
    "gl": 0,
@@ -28,18 +28,18 @@
    }
   },
   {
-   "id": "2506272",
+   "id": "564730",
    "j": 11,
    "fecha": "2026-10-31T13:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Levante",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "c": "https://crests.football-data.org/88.png",
     "tla": "LEV"
    },
    "visit": {
-    "n": "Atlético Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+    "n": "Atleti",
+    "c": "https://crests.football-data.org/78.png",
     "tla": "ATL"
    },
    "gl": 0,
@@ -51,18 +51,18 @@
    }
   },
   {
-   "id": "2506276",
+   "id": "564735",
    "j": 11,
    "fecha": "2026-10-31T15:15:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Rayo Vallecano",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "c": "https://crests.football-data.org/87.png",
     "tla": "RAY"
    },
    "visit": {
-    "n": "Celta Vigo",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "n": "Celta",
+    "c": "https://crests.football-data.org/558.png",
     "tla": "CEL"
    },
    "gl": 3,
@@ -74,19 +74,19 @@
    }
   },
   {
-   "id": "2506273",
+   "id": "564736",
    "j": 11,
    "fecha": "2026-10-31T17:30:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Real Betis",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/90.png",
+    "tla": "BET"
    },
    "visit": {
     "n": "Málaga",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
-    "tla": "MÁL"
+    "c": "https://crests.football-data.org/84.png",
+    "tla": "MAL"
    },
    "gl": 2,
    "gv": 1,
@@ -97,19 +97,19 @@
    }
   },
   {
-   "id": "2506269",
+   "id": "564732",
    "j": 11,
    "fecha": "2026-10-31T20:00:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Barcelona",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
-    "tla": "BAR"
+    "n": "Barça",
+    "c": "https://crests.football-data.org/81.png",
+    "tla": "FCB"
    },
    "visit": {
-    "n": "Deportivo Alavés",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
-    "tla": "DEP"
+    "n": "Alavés",
+    "c": "https://crests.football-data.org/263.png",
+    "tla": "ALA"
    },
    "gl": 6,
    "gv": 1,
@@ -120,18 +120,18 @@
    }
   },
   {
-   "id": "2506275",
+   "id": "564733",
    "j": 11,
    "fecha": "2026-11-01T13:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Getafe",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
+    "c": "https://crests.football-data.org/82.png",
     "tla": "GET"
    },
    "visit": {
-    "n": "Sevilla",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
+    "n": "Sevilla FC",
+    "c": "https://crests.football-data.org/559.png",
     "tla": "SEV"
    },
    "gl": 3,
@@ -143,19 +143,19 @@
    }
   },
   {
-   "id": "2506278",
+   "id": "564734",
    "j": 11,
    "fecha": "2026-11-01T15:15:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Racing de Santander",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
-    "tla": "RAC"
+    "n": "Santander",
+    "c": "https://crests.football-data.org/5335.png",
+    "tla": "SAN"
    },
    "visit": {
     "n": "Real Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/86.png",
+    "tla": "RMA"
    },
    "gl": 0,
    "gv": 3,
@@ -166,18 +166,18 @@
    }
   },
   {
-   "id": "2506277",
+   "id": "564728",
    "j": 11,
    "fecha": "2026-11-01T17:30:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Elche",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "c": "https://crests.football-data.org/285.png",
     "tla": "ELC"
    },
    "visit": {
     "n": "Valencia",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+    "c": "https://crests.football-data.org/95.png",
     "tla": "VAL"
    },
    "gl": 0,
@@ -189,19 +189,19 @@
    }
   },
   {
-   "id": "2506270",
+   "id": "564729",
    "j": 11,
    "fecha": "2026-11-01T20:00:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Athletic Bilbao",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
+    "n": "Athletic",
+    "c": "https://crests.football-data.org/77.png",
     "tla": "ATH"
    },
    "visit": {
     "n": "Real Sociedad",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/92.png",
+    "tla": "RSO"
    },
    "gl": 2,
    "gv": 1,
@@ -212,18 +212,18 @@
    }
   },
   {
-   "id": "2506274",
+   "id": "564731",
    "j": 11,
    "fecha": "2026-11-02T20:00:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Deportivo de A Coruña",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
+    "n": "Deportivo",
+    "c": "https://crests.football-data.org/560.png",
     "tla": "DEP"
    },
    "visit": {
     "n": "Osasuna",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "c": "https://crests.football-data.org/79.png",
     "tla": "OSA"
    },
    "gl": 2,
@@ -235,19 +235,19 @@
    }
   },
   {
-   "id": "2506283",
+   "id": "564740",
    "j": 12,
    "fecha": "2026-11-06T20:00:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Sevilla",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
+    "n": "Sevilla FC",
+    "c": "https://crests.football-data.org/559.png",
     "tla": "SEV"
    },
    "visit": {
-    "n": "Deportivo Alavés",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
-    "tla": "DEP"
+    "n": "Alavés",
+    "c": "https://crests.football-data.org/263.png",
+    "tla": "ALA"
    },
    "gl": 0,
    "gv": 0,
@@ -258,19 +258,19 @@
    }
   },
   {
-   "id": "2506282",
+   "id": "564744",
    "j": 12,
    "fecha": "2026-11-07T13:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Málaga",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
-    "tla": "MÁL"
+    "c": "https://crests.football-data.org/84.png",
+    "tla": "MAL"
    },
    "visit": {
-    "n": "Racing de Santander",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
-    "tla": "RAC"
+    "n": "Santander",
+    "c": "https://crests.football-data.org/5335.png",
+    "tla": "SAN"
    },
    "gl": 1,
    "gv": 2,
@@ -281,18 +281,18 @@
    }
   },
   {
-   "id": "2506285",
+   "id": "564745",
    "j": 12,
    "fecha": "2026-11-07T15:15:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Espanyol",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "c": "https://crests.football-data.org/80.png",
     "tla": "ESP"
    },
    "visit": {
-    "n": "Deportivo de A Coruña",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
+    "n": "Deportivo",
+    "c": "https://crests.football-data.org/560.png",
     "tla": "DEP"
    },
    "gl": 0,
@@ -304,18 +304,18 @@
    }
   },
   {
-   "id": "2506287",
+   "id": "564739",
    "j": 12,
    "fecha": "2026-11-07T17:30:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Osasuna",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "c": "https://crests.football-data.org/79.png",
     "tla": "OSA"
    },
    "visit": {
-    "n": "Athletic Bilbao",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
+    "n": "Athletic",
+    "c": "https://crests.football-data.org/77.png",
     "tla": "ATH"
    },
    "gl": 1,
@@ -327,19 +327,19 @@
    }
   },
   {
-   "id": "2506280",
+   "id": "564741",
    "j": 12,
    "fecha": "2026-11-07T20:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Valencia",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+    "c": "https://crests.football-data.org/95.png",
     "tla": "VAL"
    },
    "visit": {
     "n": "Real Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/86.png",
+    "tla": "RMA"
    },
    "gl": 0,
    "gv": 3,
@@ -350,19 +350,19 @@
    }
   },
   {
-   "id": "2506288",
+   "id": "564738",
    "j": 12,
    "fecha": "2026-11-08T13:00:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Elche",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "c": "https://crests.football-data.org/285.png",
     "tla": "ELC"
    },
    "visit": {
     "n": "Real Betis",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/90.png",
+    "tla": "BET"
    },
    "gl": 0,
    "gv": 2,
@@ -373,18 +373,18 @@
    }
   },
   {
-   "id": "2506286",
+   "id": "564743",
    "j": 12,
    "fecha": "2026-11-08T15:15:00Z",
    "estado": "FINISHED",
    "local": {
     "n": "Real Sociedad",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/92.png",
+    "tla": "RSO"
    },
    "visit": {
     "n": "Rayo Vallecano",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "c": "https://crests.football-data.org/87.png",
     "tla": "RAY"
    },
    "gl": 1,
@@ -396,41 +396,18 @@
    }
   },
   {
-   "id": "2506281",
+   "id": "564742",
    "j": 12,
    "fecha": "2026-11-08T17:30:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Villarreal",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
-    "tla": "VIL"
-   },
-   "visit": {
-    "n": "Getafe",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
-    "tla": "GET"
-   },
-   "gl": 2,
-   "gv": 0,
-   "cuotas": {
-    "1": 2.0,
-    "X": 3.7,
-    "2": 3.5
-   }
-  },
-  {
-   "id": "2506284",
-   "j": 12,
-   "fecha": "2026-11-08T17:30:00Z",
-   "estado": "FINISHED",
-   "local": {
-    "n": "Celta Vigo",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "n": "Celta",
+    "c": "https://crests.football-data.org/558.png",
     "tla": "CEL"
    },
    "visit": {
     "n": "Levante",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "c": "https://crests.football-data.org/88.png",
     "tla": "LEV"
    },
    "gl": 0,
@@ -442,19 +419,42 @@
    }
   },
   {
-   "id": "2506279",
+   "id": "564747",
+   "j": 12,
+   "fecha": "2026-11-08T17:30:00Z",
+   "estado": "FINISHED",
+   "local": {
+    "n": "Villarreal",
+    "c": "https://crests.football-data.org/94.png",
+    "tla": "VIL"
+   },
+   "visit": {
+    "n": "Getafe",
+    "c": "https://crests.football-data.org/82.png",
+    "tla": "GET"
+   },
+   "gl": 2,
+   "gv": 0,
+   "cuotas": {
+    "1": 2.0,
+    "X": 3.7,
+    "2": 3.5
+   }
+  },
+  {
+   "id": "564746",
    "j": 12,
    "fecha": "2026-11-08T20:00:00Z",
    "estado": "FINISHED",
    "local": {
-    "n": "Atlético Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+    "n": "Atleti",
+    "c": "https://crests.football-data.org/78.png",
     "tla": "ATL"
    },
    "visit": {
-    "n": "Barcelona",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
-    "tla": "BAR"
+    "n": "Barça",
+    "c": "https://crests.football-data.org/81.png",
+    "tla": "FCB"
    },
    "gl": 1,
    "gv": 2,
@@ -465,18 +465,18 @@
    }
   },
   {
-   "id": "2506290",
+   "id": "564748",
    "j": 13,
    "fecha": "2026-11-20T20:00:00Z",
    "estado": "TIMED",
    "local": {
-    "n": "Athletic Bilbao",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/68w7fe1639408210.png",
+    "n": "Athletic",
+    "c": "https://crests.football-data.org/77.png",
     "tla": "ATH"
    },
    "visit": {
     "n": "Espanyol",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "c": "https://crests.football-data.org/80.png",
     "tla": "ESP"
    },
    "gl": null,
@@ -488,18 +488,18 @@
    }
   },
   {
-   "id": "2506294",
+   "id": "564755",
    "j": 13,
    "fecha": "2026-11-21T13:00:00Z",
    "estado": "TIMED",
    "local": {
-    "n": "Deportivo Alavés",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
-    "tla": "DEP"
+    "n": "Alavés",
+    "c": "https://crests.football-data.org/263.png",
+    "tla": "ALA"
    },
    "visit": {
-    "n": "Deportivo de A Coruña",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
+    "n": "Deportivo",
+    "c": "https://crests.football-data.org/560.png",
     "tla": "DEP"
    },
    "gl": null,
@@ -511,18 +511,18 @@
    }
   },
   {
-   "id": "2506297",
+   "id": "564751",
    "j": 13,
    "fecha": "2026-11-21T15:15:00Z",
    "estado": "TIMED",
    "local": {
     "n": "Rayo Vallecano",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "c": "https://crests.football-data.org/87.png",
     "tla": "RAY"
    },
    "visit": {
     "n": "Valencia",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+    "c": "https://crests.football-data.org/95.png",
     "tla": "VAL"
    },
    "gl": null,
@@ -534,19 +534,19 @@
    }
   },
   {
-   "id": "2506291",
+   "id": "564756",
    "j": 13,
    "fecha": "2026-11-21T17:30:00Z",
    "estado": "TIMED",
    "local": {
-    "n": "Sevilla",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png",
+    "n": "Sevilla FC",
+    "c": "https://crests.football-data.org/559.png",
     "tla": "SEV"
    },
    "visit": {
     "n": "Real Betis",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/90.png",
+    "tla": "BET"
    },
    "gl": null,
    "gv": null,
@@ -557,18 +557,18 @@
    }
   },
   {
-   "id": "2506293",
+   "id": "564754",
    "j": 13,
    "fecha": "2026-11-21T20:00:00Z",
    "estado": "TIMED",
    "local": {
     "n": "Real Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/86.png",
+    "tla": "RMA"
    },
    "visit": {
-    "n": "Celta Vigo",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "n": "Celta",
+    "c": "https://crests.football-data.org/558.png",
     "tla": "CEL"
    },
    "gl": null,
@@ -580,18 +580,18 @@
    }
   },
   {
-   "id": "2506289",
+   "id": "564749",
    "j": 13,
    "fecha": "2026-11-22T13:00:00Z",
    "estado": "TIMED",
    "local": {
-    "n": "Barcelona",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
-    "tla": "BAR"
+    "n": "Barça",
+    "c": "https://crests.football-data.org/81.png",
+    "tla": "FCB"
    },
    "visit": {
     "n": "Villarreal",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
+    "c": "https://crests.football-data.org/94.png",
     "tla": "VIL"
    },
    "gl": null,
@@ -603,19 +603,19 @@
    }
   },
   {
-   "id": "2506298",
+   "id": "564750",
    "j": 13,
    "fecha": "2026-11-22T15:15:00Z",
    "estado": "TIMED",
    "local": {
-    "n": "Racing de Santander",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
-    "tla": "RAC"
+    "n": "Santander",
+    "c": "https://crests.football-data.org/5335.png",
+    "tla": "SAN"
    },
    "visit": {
     "n": "Real Sociedad",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
-    "tla": "REA"
+    "c": "https://crests.football-data.org/92.png",
+    "tla": "RSO"
    },
    "gl": null,
    "gv": null,
@@ -626,19 +626,19 @@
    }
   },
   {
-   "id": "2506296",
+   "id": "564752",
    "j": 13,
    "fecha": "2026-11-22T17:30:00Z",
    "estado": "TIMED",
    "local": {
     "n": "Osasuna",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "c": "https://crests.football-data.org/79.png",
     "tla": "OSA"
    },
    "visit": {
     "n": "Málaga",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
-    "tla": "MÁL"
+    "c": "https://crests.football-data.org/84.png",
+    "tla": "MAL"
    },
    "gl": null,
    "gv": null,
@@ -649,18 +649,18 @@
    }
   },
   {
-   "id": "2506295",
+   "id": "564753",
    "j": 13,
    "fecha": "2026-11-22T20:00:00Z",
    "estado": "TIMED",
    "local": {
     "n": "Getafe",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
+    "c": "https://crests.football-data.org/82.png",
     "tla": "GET"
    },
    "visit": {
-    "n": "Atlético Madrid",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+    "n": "Atleti",
+    "c": "https://crests.football-data.org/78.png",
     "tla": "ATL"
    },
    "gl": null,
@@ -672,18 +672,18 @@
    }
   },
   {
-   "id": "2506292",
+   "id": "564757",
    "j": 13,
    "fecha": "2026-11-23T20:00:00Z",
    "estado": "TIMED",
    "local": {
     "n": "Levante",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "c": "https://crests.football-data.org/88.png",
     "tla": "LEV"
    },
    "visit": {
     "n": "Elche",
-    "c": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "c": "https://crests.football-data.org/285.png",
     "tla": "ELC"
    },
    "gl": null,
@@ -692,6 +692,236 @@
     "1": 2.2,
     "X": 3.6,
     "2": 3.15
+   }
+  },
+  {
+   "id": "564765",
+   "j": 14,
+   "fecha": "2026-11-27T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Levante",
+    "c": "https://crests.football-data.org/88.png",
+    "tla": "LEV"
+   },
+   "visit": {
+    "n": "Santander",
+    "c": "https://crests.football-data.org/5335.png",
+    "tla": "SAN"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.65,
+    "X": 3.4,
+    "2": 2.65
+   }
+  },
+  {
+   "id": "564760",
+   "j": 14,
+   "fecha": "2026-11-28T13:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Real Betis",
+    "c": "https://crests.football-data.org/90.png",
+    "tla": "BET"
+   },
+   "visit": {
+    "n": "Rayo Vallecano",
+    "c": "https://crests.football-data.org/87.png",
+    "tla": "RAY"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.5,
+    "X": 4.4,
+    "2": 6.55
+   }
+  },
+  {
+   "id": "564767",
+   "j": 14,
+   "fecha": "2026-11-28T15:15:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Málaga",
+    "c": "https://crests.football-data.org/84.png",
+    "tla": "MAL"
+   },
+   "visit": {
+    "n": "Athletic",
+    "c": "https://crests.football-data.org/77.png",
+    "tla": "ATH"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 4.3,
+    "X": 3.9,
+    "2": 1.75
+   }
+  },
+  {
+   "id": "564759",
+   "j": 14,
+   "fecha": "2026-11-28T17:30:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Elche",
+    "c": "https://crests.football-data.org/285.png",
+    "tla": "ELC"
+   },
+   "visit": {
+    "n": "Atleti",
+    "c": "https://crests.football-data.org/78.png",
+    "tla": "ATL"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 6.15,
+    "X": 4.3,
+    "2": 1.5
+   }
+  },
+  {
+   "id": "564762",
+   "j": 14,
+   "fecha": "2026-11-28T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Real Madrid",
+    "c": "https://crests.football-data.org/86.png",
+    "tla": "RMA"
+   },
+   "visit": {
+    "n": "Alavés",
+    "c": "https://crests.football-data.org/263.png",
+    "tla": "ALA"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.35,
+    "X": 4.75,
+    "2": 8.85
+   }
+  },
+  {
+   "id": "564761",
+   "j": 14,
+   "fecha": "2026-11-29T13:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Valencia",
+    "c": "https://crests.football-data.org/95.png",
+    "tla": "VAL"
+   },
+   "visit": {
+    "n": "Osasuna",
+    "c": "https://crests.football-data.org/79.png",
+    "tla": "OSA"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.65,
+    "X": 3.4,
+    "2": 2.65
+   }
+  },
+  {
+   "id": "564766",
+   "j": 14,
+   "fecha": "2026-11-29T15:15:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Deportivo",
+    "c": "https://crests.football-data.org/560.png",
+    "tla": "DEP"
+   },
+   "visit": {
+    "n": "Barça",
+    "c": "https://crests.football-data.org/81.png",
+    "tla": "FCB"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 6.15,
+    "X": 4.3,
+    "2": 1.5
+   }
+  },
+  {
+   "id": "564758",
+   "j": 14,
+   "fecha": "2026-11-29T17:30:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Celta",
+    "c": "https://crests.football-data.org/558.png",
+    "tla": "CEL"
+   },
+   "visit": {
+    "n": "Villarreal",
+    "c": "https://crests.football-data.org/94.png",
+    "tla": "VIL"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.5,
+    "X": 3.45,
+    "2": 2.75
+   }
+  },
+  {
+   "id": "564764",
+   "j": 14,
+   "fecha": "2026-11-29T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Real Sociedad",
+    "c": "https://crests.football-data.org/92.png",
+    "tla": "RSO"
+   },
+   "visit": {
+    "n": "Sevilla FC",
+    "c": "https://crests.football-data.org/559.png",
+    "tla": "SEV"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 1.95,
+    "X": 3.75,
+    "2": 3.7
+   }
+  },
+  {
+   "id": "564763",
+   "j": 14,
+   "fecha": "2026-11-30T20:00:00Z",
+   "estado": "TIMED",
+   "local": {
+    "n": "Espanyol",
+    "c": "https://crests.football-data.org/80.png",
+    "tla": "ESP"
+   },
+   "visit": {
+    "n": "Getafe",
+    "c": "https://crests.football-data.org/82.png",
+    "tla": "GET"
+   },
+   "gl": null,
+   "gv": null,
+   "cuotas": {
+    "1": 2.3,
+    "X": 3.55,
+    "2": 3.0
    }
   }
  ],
