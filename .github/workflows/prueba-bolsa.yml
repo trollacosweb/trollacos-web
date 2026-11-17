@@ -1,0 +1,14 @@
+name: Prueba Stooq
+on:
+  push:
+    branches: [prueba-bolsa]
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for s in ttwo.us ea.us sony.us ntdoy.us rblx.us aapl.us msft.us nvda.us amzn.us tsla.us meta.us googl.us nflx.us 7974.jp 6758.jp 9697.jp ubi.fr ubi.pa itx.es itx.mc san.es tef.es bbva.es ibe.es rep.es ^ibex ^spx; do
+            r=$(curl -s -m 20 -A "Mozilla/5.0" "https://stooq.com/q/d/l/?s=$s&i=d" | tail -n 2 | tr '\n' '|')
+            echo "::notice::$s -> ${r:0:160}"
+          done
+          echo "::notice::lote -> $(curl -s -m 20 'https://stooq.com/q/l/?s=ttwo.us+7974.jp+itx.es&f=sd2t2ohlcv&h&e=csv' | tr '\n' '|' | head -c 300)"
