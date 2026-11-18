@@ -31,6 +31,7 @@ def strip(t):
 extra = """
 .art{max-width:760px;margin:0 auto}
 .art .meta{font-family:'VT323',monospace;font-size:21px;color:var(--cyan);margin:0 0 14px}
+.foto-not{margin:0 0 20px}.foto-not img{width:100%;height:auto;border-radius:12px;border:3px solid var(--pink);box-shadow:0 0 16px rgba(255,43,214,.45);display:block}.foto-not figcaption{font-family:'VT323',monospace;font-size:19px;color:var(--cyan);margin-top:6px}
 .art .lead{font-size:22px;color:#fff;font-weight:700;margin-bottom:18px}
 .art p{font-size:19px}
 .guia-cta{display:block;margin:26px 0;padding:18px 20px;border:3px solid var(--pink);border-radius:14px;text-decoration:none;background:rgba(255,43,214,.1);box-shadow:0 0 22px rgba(255,43,214,.3)}
@@ -107,6 +108,7 @@ for i, n in enumerate(N):
   <h1>{esc(n["titulo"])}</h1>
   <p class="lead">{esc(n["entradilla"])}</p>
   {firma()}
+  {(f'<figure class="foto-not"><img src="{n["foto"]}" alt="{esc(n.get("foto_txt",""))}" width="800" height="800"><figcaption>{esc(n.get("foto_txt",""))}</figcaption></figure>' if n.get("foto") else '')}
   {''.join(f'<p>{p}</p>' for p in n["cuerpo"])}
   <div class="nota"><img class="troll" src="/img/trollaco.png" alt=""><p><b>EL TROLLACO OPINA:</b> {n["opina"]}</p></div>
   {tarjeta_danna()}
@@ -119,7 +121,7 @@ for i, n in enumerate(N):
 </article></main>'''
     ld = {"@context": "https://schema.org", "@type": "NewsArticle", "headline": n["titulo"], "description": n["entradilla"],
           "datePublished": n["fecha"], "dateModified": n["fecha"], "inLanguage": "es", "mainEntityOfPage": url,
-          "image": "https://trollacos.com/gta-6/portada.jpg", "author": {"@type": "Organization", "name": "Trollacos"},
+          "image": "https://trollacos.com" + n["foto"] if n.get("foto") else "https://trollacos.com/gta-6/portada.jpg", "author": {"@type": "Organization", "name": "Trollacos"},
           "publisher": {"@type": "Organization", "name": "Trollacos", "logo": {"@type": "ImageObject", "url": "https://trollacos.com/icono-512.png"}}}
     os.makedirs(f'gta-6/noticias/{n["slug"]}', exist_ok=True)
     open(f'gta-6/noticias/{n["slug"]}/index.html', 'w', encoding='utf-8').write(pagina(n["titulo"], n["entradilla"], url, cuerpo, ld))
