@@ -491,7 +491,7 @@ usadas = [s for e in ERAS for s in e[3]]
 assert sorted(usadas) == sorted(x['slug'] for x in F), set(x['slug'] for x in F) ^ set(usadas)
 indice = ''.join(f'<a href="#{i}">{t}</a>' for i, t in [('linea', '🕰️ Línea del tiempo'), ('pc-futbol', '💾 PC Fútbol')] + [(e[0], e[1]) for e in ERAS] +
     [('voces', '🎙️ Las voces'), ('licencias', '🏷️ Licencias'), ('comunidad', '🛠️ Parches y mods'), ('numeros', '📊 Los números')])
-FIRMA = ('<div class="firma"><img src="/img/danna.jpg?v=4" alt="Danna" width="56" height="56"><div><b>Por Danna</b>'
+FIRMA = ('<div class="firma"><img src="/img/danna.jpg?v=5" alt="Danna" width="56" height="56"><div><b>Por Danna</b>'
          f'<span>Tu reportera del otro lado de la pantalla · <a href="https://www.instagram.com/dannapixel/" target="_blank" rel="noopener">📸 @dannapixel</a> · <a href="/danna/">¿Quién es?</a> · {FECHA}</span></div></div>')
 def html_era(e):
     fichas = ''.join(html_ficha(next(x for x in F if x['slug'] == sl)) for sl in e[3])

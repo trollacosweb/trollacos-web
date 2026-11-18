@@ -65,11 +65,14 @@ const NOT=[
   troll:'Ve despidiéndote del Fortnite de tu primo 🫡'},
  {gancho:'No os lo vais a creer 🤣',g:'💩',s:'Gameplay nuevo de GTA VI… ¡en South Park!',
   datos:['📺 Episodio «Guinea Pig on a Stick»','🏖️ Jason tira caca de perro en una playa de Vice City','✅ Los créditos lo confirman: imágenes de Rockstar'],
-  troll:'Es justo el humor que esperábamos. Orgullosísimos 🥲'}
+  troll:'Es justo el humor que esperábamos. Orgullosísimos 🥲'},
+ {gancho:'¡Lo de hoy es HISTÓRICO! 😱',g:'99',s:'en Metacritic: empata con Zelda: Ocarina of Time',
+  datos:['🏆 Un 10 en IGN, GameSpot y Vandal','✅ El 100 % de los críticos lo recomienda','🌴 Esta noche a las 00:00, Vice City'],
+  troll:'Trece años esperando… y yo con un 5 raspado en mates 😭',foto:'danna-micro.jpg',fecha:'🌴 ESTA NOCHE · 00:00 🌴'}
 ];
 const D=NOT[+location.hash.slice(1)||0];
 const $=id=>document.getElementById(id);
-$('gancho').textContent=D.gancho;document.querySelector('#grande .g').textContent=D.g;document.querySelector('#grande .s').textContent=D.s;
+if(D.foto)document.querySelector('#foto img').src=D.foto;if(D.fecha)document.querySelector('#final .t7').textContent=D.fecha;$('gancho').textContent=D.gancho;document.querySelector('#grande .g').textContent=D.g;document.querySelector('#grande .s').textContent=D.s;
 $('datos').innerHTML=D.datos.map(x=>`<div class="dato">${x}</div>`).join('');$('trollb').querySelector('span').textContent=D.troll;
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));const ease=x=>{x=cl(x);return 1-Math.pow(1-x,3)};
 const back=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
