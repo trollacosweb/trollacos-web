@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mapa de Leonida · Trollacos</title>
+<style>
+@font-face{font-family:'Righteous';src:url(righteous.woff2)}
+@font-face{font-family:'VT323';src:url(vt323.woff2)}
+@font-face{font-family:'Rajdhani';src:url(rajdhani-700.woff2);font-weight:700}
+@page{size:297mm 420mm;margin:0}
+:root{--fondo:#07021a;--mar1:#0b0630;--mar2:#14094a;--tierra:#1b0f45;--borde:#ff2bd6;--cian:#1ff2ff;--amarillo:#ffd23f;--rosa:#ff2bd6;--texto:#f4eaff;--suave:#b9a8e6;--carta:rgba(20,9,74,.82);--rejilla:rgba(31,242,255,.10)}
+body.claro{--fondo:#ffffff;--mar1:#eef9fd;--mar2:#e3f4fb;--tierra:#fff7ea;--borde:#d4148f;--cian:#0b8fa3;--amarillo:#c98a00;--rosa:#d4148f;--texto:#1a0f3d;--suave:#4b3f73;--carta:#ffffff;--rejilla:rgba(11,143,163,.10)}
+*{box-sizing:border-box}
+html,body{margin:0;width:297mm;height:420mm;background:var(--fondo);color:var(--texto);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hoja{position:relative;width:297mm;height:420mm;overflow:hidden;padding:14mm 14mm 10mm}
+.cab{text-align:center}
+.cab small{font:400 7mm 'VT323',monospace;letter-spacing:1.2mm;color:var(--cian)}
+.cab h1{margin:0;font:400 30mm/0.95 'Righteous',sans-serif;letter-spacing:2mm;color:var(--rosa);text-shadow:0 0 4mm rgba(255,43,214,.55)}
+body.claro .cab h1{text-shadow:none}
+.cab p{margin:1.5mm 0 0;font:700 6.2mm 'Rajdhani',sans-serif;color:var(--texto);letter-spacing:.4mm}
+.cab p b{color:var(--amarillo)}
+svg.mapa{display:block;width:269mm;height:252mm;margin:4mm auto 0}
+.leyenda{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3.2mm;margin-top:3mm}
+.z{background:var(--carta);border:.5mm solid var(--borde);border-radius:3mm;padding:2.6mm 3mm 2.8mm}
+.z h3{margin:0;font:400 6mm 'Righteous',sans-serif;color:var(--texto);display:flex;align-items:center;gap:2mm}
+.z h3 i{font-style:normal;display:inline-grid;place-items:center;width:7mm;height:7mm;border-radius:50%;background:var(--rosa);color:#fff;font:400 5mm 'Righteous',sans-serif;flex:none}
+.z small{display:block;font:400 4.6mm 'VT323',monospace;color:var(--cian);letter-spacing:.3mm;margin:.6mm 0 .8mm}
+.z p{margin:0;font:700 4.1mm/1.18 'Rajdhani',sans-serif;color:var(--suave)}
+.pie{position:absolute;left:14mm;right:14mm;bottom:9mm;display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
+.aviso{font:700 3.4mm/1.25 'Rajdhani',sans-serif;color:var(--suave);max-width:150mm}
+.marca{display:flex;align-items:flex-end;gap:4mm}
+.bocadillo{position:relative;background:var(--carta);border:.5mm solid var(--cian);border-radius:3mm;padding:2mm 3mm;font:400 5.2mm/1 'VT323',monospace;color:var(--texto);margin-bottom:10mm}
+.bocadillo:after{content:'';position:absolute;right:-3mm;bottom:3mm;border:2mm solid transparent;border-left-color:var(--cian)}
+.marca .web{font:400 9mm 'Righteous',sans-serif;color:var(--rosa);line-height:1;text-align:right}
+.marca .web span{color:var(--cian)}
+.marca .web small{display:block;font:400 4.6mm 'VT323',monospace;color:var(--suave);letter-spacing:.4mm;margin-top:1mm}
+.marca img{width:30mm;image-rendering:pixelated}
+</style></head>
+<body>
+<div class="hoja">
+ <div class="cab">
+  <small>&gt; GUÍA TROLLACOS DE GTA VI_</small>
+  <h1>LEONIDA</h1>
+  <p>El estado de <b>GTA VI</b>, zona a zona · Mapa ilustrado para imprimir</p>
+ </div>
+
+ <svg class="mapa" viewBox="0 0 1000 937" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+   <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--mar2)"/><stop offset="1" stop-color="var(--mar1)"/></linearGradient>
+   <pattern id="rej" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="var(--rejilla)" stroke-width="2"/></pattern>
+   <pattern id="pantano" width="26" height="22" patternUnits="userSpaceOnUse"><path d="M3 15q4-6 8 0M14 8q4-6 8 0" fill="none" stroke="var(--cian)" stroke-width="2" opacity=".6"/></pattern>
+   <filter id="brillo" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1000" height="937" rx="22" fill="url(#mar)"/>
+  <rect width="1000" height="937" rx="22" fill="url(#rej)"/>
+  <g fill="none" stroke="var(--cian)" stroke-width="3" opacity=".35">
+   <path d="M90 560q14-10 28 0t28 0"/><path d="M160 640q14-10 28 0t28 0"/><path d="M900 380q14-10 28 0t28 0"/><path d="M920 640q14-10 28 0t28 0"/><path d="M330 820q14-10 28 0t28 0"/><path d="M880 860q14-10 28 0t28 0"/>
+  </g>
+  <text x="250" y="500" font-family="VT323" font-size="36" fill="var(--suave)" opacity=".85" text-anchor="middle">GOLFO</text>
+  <text x="915" y="300" font-family="VT323" font-size="36" fill="var(--suave)" opacity=".85" text-anchor="middle">OCÉANO</text>
+
+  <path d="M50 60 L600 66 C650 68 682 84 702 112 C742 202 772 302 802 402 C832 502 864 602 864 690 C862 770 822 820 760 826 C702 830 660 800 640 748 C616 686 592 626 560 574 C530 524 500 482 468 444 C436 404 398 374 350 354 C300 334 240 324 170 320 C110 318 70 312 50 300 Z"
+        fill="var(--tierra)" stroke="var(--borde)" stroke-width="5" filter="url(#brillo)"/>
+  <g fill="var(--tierra)" stroke="var(--borde)" stroke-width="4">
+   <ellipse cx="720" cy="866" rx="22" ry="9"/><ellipse cx="668" cy="884" rx="20" ry="8"/><ellipse cx="616" cy="896" rx="18" ry="7"/><ellipse cx="566" cy="902" rx="16" ry="7"/><ellipse cx="520" cy="902" rx="14" ry="6"/>
+  </g>
+  <path d="M738 858 L520 902" stroke="var(--amarillo)" stroke-width="3" stroke-dasharray="8 7" fill="none" opacity=".9"/>
+
+  <ellipse cx="730" cy="470" rx="50" ry="40" fill="url(#mar)" stroke="var(--cian)" stroke-width="4"/>
+  <text x="730" y="477" font-family="VT323" font-size="24" fill="var(--cian)" text-anchor="middle">LAGO</text>
+  <path transform="translate(-14 40)" d="M660 560 C690 536 750 540 770 572 C788 612 796 690 770 722 C740 748 700 742 680 714 C660 682 648 606 660 560 Z" fill="url(#pantano)" stroke="var(--cian)" stroke-width="2" stroke-dasharray="6 6"/>
+  <g fill="none" stroke="var(--amarillo)" stroke-width="5" stroke-linejoin="round">
+   <path d="M210 210 L250 150 L290 210"/><path d="M260 210 L310 128 L360 210"/><path d="M330 210 L365 162 L400 210"/>
+  </g>
+  <g stroke="var(--cian)" stroke-width="3" fill="none" opacity=".7"><path d="M150 100 q30 30 10 60 q-20 30 20 70"/><path d="M470 90 q-20 40 10 70 q30 30 0 70"/></g>
+  <g fill="var(--cian)" opacity=".6"><path d="M110 230 l10-26 10 26z"/><path d="M420 236 l10-26 10 26z"/><path d="M520 150 l10-26 10 26z"/><path d="M540 178 l10-26 10 26z"/><path d="M90 160 l10-26 10 26z"/></g>
+  <g fill="var(--amarillo)"><rect x="590" y="420" width="14" height="40"/><rect x="610" y="404" width="14" height="56"/><rect x="630" y="430" width="22" height="30"/></g>
+  <g fill="var(--suave)" opacity=".7"><circle cx="617" cy="392" r="7"/><circle cx="625" cy="378" r="9"/></g>
+  <g stroke="var(--amarillo)" stroke-width="3" fill="none"><circle cx="612" cy="580" r="24"/><path d="M612 556v48M588 580h48M595 563l34 34M629 563l-34 34"/><path d="M602 606l10-26 10 26"/></g>
+  <g fill="var(--rosa)">
+   <rect x="784" y="570" width="12" height="44"/><rect x="800" y="550" width="14" height="64"/><rect x="818" y="564" width="10" height="50"/><rect x="832" y="540" width="14" height="74"/>
+  </g>
+  <g stroke="#2bd67b" stroke-width="4" fill="none"><path d="M772 614 q4-26 0-40"/><path d="M772 574 q-14-4-22 6M772 574 q14-4 22 6M772 574 q-6-12-18-14M772 574 q6-12 18-14"/></g>
+  <g opacity=".85"><circle cx="905" cy="105" r="52" fill="var(--amarillo)"/><g fill="url(#mar)"><rect x="850" y="112" width="110" height="6"/><rect x="850" y="126" width="110" height="7"/><rect x="850" y="141" width="110" height="9"/></g></g>
+
+  <g font-family="Righteous" font-size="30" text-anchor="middle">
+   <g><circle cx="830" cy="660" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="830" y="671" fill="#fff">1</text></g>
+   <g><circle cx="612" cy="856" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="612" y="867" fill="#fff">2</text></g>
+   <g><circle cx="712" cy="682" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="712" y="693" fill="#fff">3</text></g>
+   <g><circle cx="618" cy="642" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="618" y="653" fill="#fff">4</text></g>
+   <g><circle cx="560" cy="380" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="560" y="391" fill="#fff">5</text></g>
+   <g><circle cx="310" cy="96" r="24" fill="var(--rosa)" stroke="#fff" stroke-width="4"/><text x="310" y="107" fill="#fff">6</text></g>
+  </g>
+  <g font-family="Righteous" font-size="27" fill="var(--texto)">
+   <text x="920" y="530" text-anchor="middle">VICE CITY</text>
+   <text x="520" y="860" text-anchor="end">CAYOS</text>
+   <text x="730" y="795" text-anchor="middle" font-size="23">GRASSRIVERS</text>
+   <text x="578" y="596" text-anchor="end" font-size="25">PORT GELLHORN</text>
+   <text x="560" y="335" text-anchor="middle" font-size="25">AMBROSIA</text>
+   <text x="305" y="262" text-anchor="middle" font-size="24">MOUNT KALAGA</text>
+  </g>
+  <path d="M884 540 L850 548" stroke="var(--texto)" stroke-width="2" opacity=".6"/>
+  <g transform="translate(150 740)" font-family="Righteous" font-size="26" text-anchor="middle">
+   <circle r="52" fill="none" stroke="var(--cian)" stroke-width="3"/>
+   <path d="M0-48 L12 0 L0 48 L-12 0Z" fill="var(--rosa)"/><path d="M-48 0 L0 12 L48 0 L0-12Z" fill="var(--cian)" opacity=".8"/>
+   <text y="-60" fill="var(--texto)">N</text>
+  </g>
+  <text x="28" y="918" font-family="VT323" font-size="25" fill="var(--suave)">Ilustración orientativa · no a escala</text>
+ </svg>
+
+ <div class="leyenda">
+  <div class="z"><h3><i>1</i>Vice City</h3><small>INSPIRADA EN MIAMI</small><p>Playas, rascacielos, fiesta y crimen. La gran ciudad del juego.</p></div>
+  <div class="z"><h3><i>2</i>Cayos de Leonida</h3><small>LOS CAYOS DE FLORIDA</small><p>Islas unidas por puentes, barcos y contrabando. La zona de Jason.</p></div>
+  <div class="z"><h3><i>3</i>Grassrivers</h3><small>LOS EVERGLADES</small><p>Pantanos, manglares, caimanes e hidrodeslizadores.</p></div>
+  <div class="z"><h3><i>4</i>Port Gellhorn</h3><small>COSTA OESTE</small><p>Pueblo costero venido a menos: moteles, centros comerciales y puerto.</p></div>
+  <div class="z"><h3><i>5</i>Ambrosia</h3><small>INTERIOR</small><p>El corazón industrial junto al lago, con su enorme refinería de azúcar.</p></div>
+  <div class="z"><h3><i>6</i>Mount Kalaga</h3><small>EL NORTE SALVAJE</small><p>Parque nacional: bosques, cañones y ríos para huir de todo.</p></div>
+ </div>
+
+ <div class="pie">
+  <div class="aviso">Ilustración de Trollacos hecha por fans, orientativa y no oficial: las zonas son las que presentó Rockstar Games y su posición es aproximada. Grand Theft Auto VI, Leonida y Vice City son marcas de Rockstar Games / Take-Two Interactive. © 2026 Trollacos. Uso personal: imprímelo y cuélgalo donde quieras.</div>
+  <div class="marca">
+   <div class="bocadillo">¡Aquí no se pierde<br>ni Jason!</div>
+   <div class="web">TROLLACOS<span>.COM</span><small>LA GUÍA COMPLETA DE GTA VI</small></div>
+   <img src="trollaco.png" alt="El Trollaco">
+  </div>
+ </div>
+</div>
+<script>if(location.hash==='#claro')document.body.classList.add('claro')</script>
+</body></html>
