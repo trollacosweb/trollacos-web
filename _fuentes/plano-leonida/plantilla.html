@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Plano de Leonida · Trollacos</title>
+<style>
+@font-face{font-family:'Righteous';src:url(righteous.woff2)}
+@font-face{font-family:'VT323';src:url(vt323.woff2)}
+@font-face{font-family:'Rajdhani';src:url(rajdhani-700.woff2);font-weight:700}
+@page{size:297mm 420mm;margin:0}
+:root{--fondo:#07021a;--mar1:#0a0530;--mar2:#130a48;--tierra:#24124f;--urb:#4a1d6e;--urb2:#ff2bd6;--borde:#ff2bd6;--cian:#1ff2ff;--amarillo:#ffd23f;--rosa:#ff2bd6;--texto:#f6eeff;--suave:#b9a8e6;--carta:#14094a;--rejilla:rgba(31,242,255,.16)}
+body.claro{--fondo:#ffffff;--mar1:#e6f6fb;--mar2:#eef9fd;--tierra:#fff6e6;--urb:#fbe0f1;--urb2:#f2a6d6;--borde:#d4148f;--cian:#0b8fa3;--amarillo:#b77d00;--rosa:#d4148f;--texto:#1a0f3d;--suave:#4b3f73;--carta:#ffffff;--rejilla:rgba(11,143,163,.22)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--texto);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hoja{position:relative;width:297mm;height:420mm;overflow:hidden;padding:11mm 14mm 0;page-break-after:always;background:var(--fondo)}
+.cab{display:flex;align-items:flex-end;justify-content:space-between;gap:6mm}
+.cab h1{margin:0;font:400 21mm/0.9 'Righteous',sans-serif;letter-spacing:1.5mm;color:var(--rosa);text-shadow:0 0 3mm rgba(255,43,214,.55)}
+body.claro .cab h1{text-shadow:none}
+.cab .sub{font:700 5.6mm/1.1 'Rajdhani',sans-serif;text-align:right;color:var(--texto)}
+.cab .sub small{display:block;font:400 5mm 'VT323',monospace;color:var(--cian);letter-spacing:.8mm}
+svg.plano{display:block;width:257mm;height:352.7mm;margin:4mm auto 0}
+.rej{stroke:var(--rejilla);stroke-width:2}
+.marco{fill:none;stroke:var(--cian);stroke-width:3}
+.coord{font:400 30px 'Righteous';fill:var(--cian);text-anchor:middle}
+.costa{fill:none;stroke:var(--borde);stroke-width:7;opacity:.85}
+.tierra{fill:var(--tierra);stroke:var(--borde);stroke-width:2.2}
+.urb{fill:url(#urb);stroke:var(--urb2);stroke-width:1.2;opacity:.95}
+.monte{fill:none;stroke:var(--amarillo);stroke-width:4;stroke-linejoin:round;opacity:.75}
+.pantano{fill:none;stroke:var(--cian);stroke-width:3;opacity:.75}
+.ctra-f{fill:none;stroke:var(--fondo);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+body.claro .ctra-f{stroke:#fff;opacity:1}
+.ctra{fill:none;stroke:var(--amarillo);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
+.ctra.cz{stroke-dasharray:10 8}
+.escudo rect{fill:var(--amarillo);stroke:var(--fondo);stroke-width:3}
+.escudo text{font:400 21px 'Righteous';fill:#1a0f3d;text-anchor:middle}
+.ico{font:400 34px sans-serif;fill:var(--cian);text-anchor:middle}
+text{paint-order:stroke;stroke:var(--mar1);stroke-width:5px;stroke-linejoin:round}
+.escudo text,.coord,.ico{stroke:none}
+.t-condado{font:400 34px 'Righteous';letter-spacing:5px;fill:var(--texto);opacity:.3;text-anchor:middle;stroke:none}
+.t-capital{font:400 46px 'Righteous';fill:var(--rosa);text-anchor:middle;stroke-width:8px}
+.t-ciudad{font:700 29px 'Rajdhani';fill:var(--texto);text-anchor:middle;stroke-width:6px}
+.t-barrio{font:700 20px 'Rajdhani';fill:var(--cian);text-anchor:middle}
+.t-lugar{font:700 21px 'Rajdhani';fill:var(--amarillo);text-anchor:middle}
+.t-isla{font:700 19px 'Rajdhani';fill:var(--suave);text-anchor:middle;font-style:italic}
+.t-agua{font:400 24px 'VT323';fill:var(--cian);text-anchor:middle;letter-spacing:1px;opacity:.9}
+.t-mar{font:400 38px 'VT323';fill:var(--cian);text-anchor:middle;letter-spacing:4px;opacity:.8;stroke:none}
+.rosa circle{fill:none;stroke:var(--cian);stroke-width:3}.rosa .r1{fill:var(--rosa)}.rosa .r2{fill:var(--cian);opacity:.8}.rosa text{font:400 30px 'Righteous';fill:var(--texto);text-anchor:middle;stroke:none}
+.mm1{font:400 64px 'Righteous';fill:var(--rosa);text-anchor:middle;stroke:none}.mm2{fill:var(--cian)}
+.mm3{font:400 26px 'VT323';fill:var(--suave);text-anchor:middle;letter-spacing:2px;stroke:none}
+.boca rect{fill:var(--carta);stroke:var(--cian);stroke-width:3}.boca text{font:400 27px 'VT323';fill:var(--texto);text-anchor:middle;stroke:none}
+.pie{position:absolute;left:14mm;right:14mm;bottom:6mm;font:700 3.2mm/1.25 'Rajdhani',sans-serif;color:var(--suave);text-align:center}
+/* página 2 */
+.h2{font:400 15mm/1 'Righteous',sans-serif;color:var(--rosa);margin:2mm 0 1mm}
+.intro{font:700 5mm/1.3 'Rajdhani',sans-serif;color:var(--texto);margin:0 0 5mm;max-width:250mm}
+.indice{columns:3;column-gap:8mm;list-style:none;margin:0;padding:0}
+.indice li{display:flex;align-items:baseline;gap:2mm;break-inside:avoid;padding:1.25mm 0;border-bottom:.3mm dashed var(--rejilla)}
+.indice b{font:700 4.6mm 'Rajdhani',sans-serif;color:var(--texto)}
+.indice i{font:400 3.8mm 'VT323',monospace;color:var(--suave);font-style:normal;flex:1}
+.indice span{font:400 4.6mm 'Righteous',sans-serif;color:var(--amarillo)}
+.ley{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:7mm}
+.ley div{background:var(--carta);border:.5mm solid var(--borde);border-radius:3mm;padding:3mm;font:700 4.3mm/1.2 'Rajdhani',sans-serif;color:var(--texto);display:flex;align-items:center;gap:3mm}
+.ley svg{flex:none}.ley svg text{stroke:none}
+.cierre{position:absolute;left:14mm;right:14mm;bottom:12mm;display:flex;align-items:flex-end;justify-content:space-between;gap:8mm}
+.cierre .aviso{font:700 3.6mm/1.3 'Rajdhani',sans-serif;color:var(--suave);max-width:170mm}
+.cierre .web{font:400 11mm 'Righteous',sans-serif;color:var(--rosa);text-align:right;line-height:1}
+.cierre .web span{color:var(--cian)}.cierre .web small{display:block;font:400 4.8mm 'VT323',monospace;color:var(--suave);letter-spacing:.5mm;margin-top:1.5mm}
+.cierre img{width:30mm;image-rendering:pixelated}
+</style></head>
+<body>
+<div class="hoja">
+ <div class="cab">
+  <h1>LEONIDA</h1>
+  <div class="sub"><small>&gt; GUÍA TROLLACOS DE GTA VI_</small>El plano para imprimir · condados, ciudades, barrios y autopistas</div>
+ </div>
+ <!--SVG-->
+ <div class="pie">Plano dibujado por Trollacos a partir del mapa oficial «Visit Leonida»: costa y zonas urbanas simplificadas, posiciones aproximadas. Hecho por fans, no oficial y gratuito. Grand Theft Auto VI, Leonida, Vice City y sus nombres de lugares son de Rockstar Games / Take-Two Interactive.</div>
+</div>
+<div class="hoja">
+ <div class="h2">ÍNDICE DE LUGARES</div>
+ <p class="intro">Busca el sitio, mira la casilla y localízalo en el plano: la letra es la fila (A–M) y el número, la columna (1–9). <!--N--> lugares, de la A a la Z.</p>
+ <ul class="indice"><!--INDICE--></ul>
+ <div class="ley">
+  <div><svg width="44" height="20"><path d="M2 10H42" stroke="var(--amarillo)" stroke-width="5" stroke-linecap="round"/></svg>Autopistas y carreteras principales</div>
+  <div><svg width="44" height="26"><rect x="2" y="3" width="40" height="20" rx="6" fill="var(--amarillo)"/><text x="22" y="18" font-family="Righteous" font-size="13" text-anchor="middle" fill="#1a0f3d">97</text></svg>Número de la carretera</div>
+  <div><svg width="44" height="26"><rect x="2" y="2" width="40" height="22" fill="var(--urb)" stroke="var(--urb2)"/><path d="M8 24L24 2M20 24L36 2" stroke="var(--urb2)" stroke-width="2"/></svg>Zona urbana</div>
+  <div><svg width="44" height="26"><text x="22" y="22" font-size="22" text-anchor="middle" fill="var(--cian)">✈</text></svg>Aeropuerto</div>
+ </div>
+ <div class="cierre">
+  <div class="aviso">Plano dibujado por Trollacos a partir del mapa oficial «Visit Leonida» de Rockstar Games: costa y zonas urbanas simplificadas, posiciones aproximadas. Hecho por fans, no oficial y gratuito: imprímelo y cuélgalo donde quieras, pero no lo vendas. Grand Theft Auto VI, Leonida, Vice City y los nombres de sus lugares son marcas de Rockstar Games / Take-Two Interactive. Diseño © 2026 Trollacos.</div>
+  <div style="display:flex;align-items:flex-end;gap:4mm"><div class="web">TROLLACOS<span>.COM</span><small>LA GUÍA COMPLETA DE GTA VI</small></div><img src="trollaco.png" alt="El Trollaco"></div>
+ </div>
+</div>
+<script>if(location.hash==='#claro')document.body.classList.add('claro')</script>
+</body></html>

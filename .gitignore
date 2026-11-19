@@ -2,3 +2,5 @@ api/datos/
 api/smtp.php
 __pycache__/
 _fuentes/mapa-leonida/*.png
+_fuentes/plano-leonida/*.png
+_fuentes/plano-leonida/referencia-*.jpg
