@@ -77,9 +77,14 @@ L = [
  ('Capri Sound', 316, 1013, 'agua'), ('Borrachero Sound', 330, 820, 'agua'), ('Draper Bay', 370, 688, 'agua'), ('Catalan Bay', 1215, 1152, 'agua'), ('Leonida Bay', 550, 1522, 'agua'),
 ]
 COLS, FILAS = 9, 13
+# misma cuadrícula que el mapa oficial: columnas iguales; filas con A y M más cortas (líneas cada 152,3 px de pantalla desde y=165)
+BF = [(165 + 152.3 * k) * K - OY for k in range(12)]          # 12 líneas horizontales
+def fila_bordes(j):
+    a = 0 if j == 0 else BF[j - 1]; b = H if j == 12 else BF[j]; return a, b
 def celda(x, y):
-    c = min(COLS, int(x / (W / COLS)) + 1); f = 'ABCDEFGHIJKLM'[min(FILAS - 1, int(y / (H / FILAS)))]
-    return f'{f}{c}'
+    c = min(COLS, int(x / (W / COLS)) + 1)
+    f = sum(1 for b in BF if y >= b)
+    return f'{"ABCDEFGHIJKLM"[f]}{c}'
 
 def svg(claro=False):
     o = []
@@ -90,8 +95,8 @@ def svg(claro=False):
     o.append(f'<rect x="0" y="0" width="{W}" height="{H}" fill="url(#mar)"/>')
     for i in range(1, COLS):
         x = i * W / COLS; o.append(f'<line x1="{x:.0f}" y1="0" x2="{x:.0f}" y2="{H}" class="rej"/>')
-    for j in range(1, FILAS):
-        y = j * H / FILAS; o.append(f'<line x1="0" y1="{y:.0f}" x2="{W}" y2="{y:.0f}" class="rej"/>')
+    for y in BF:
+        o.append(f'<line x1="0" y1="{y:.0f}" x2="{W}" y2="{y:.0f}" class="rej"/>')
     o.append(f'<path d="{d_tierra}" class="costa" fill-rule="evenodd" filter="url(#brillo)"/>')
     o.append(f'<path d="{d_tierra}" class="tierra" fill-rule="evenodd"/>')
     o.append(f'<path d="{d_urb}" class="urb" fill-rule="evenodd"/>')
@@ -115,7 +120,7 @@ def svg(claro=False):
         x = (i + .5) * W / COLS
         o.append(f'<text x="{x:.0f}" y="-14" class="coord">{i+1}</text><text x="{x:.0f}" y="{H+36}" class="coord">{i+1}</text>')
     for j in range(FILAS):
-        y = (j + .5) * H / FILAS + 9
+        a, b = fila_bordes(j); y = (a + b) / 2 + 10
         o.append(f'<text x="-24" y="{y:.0f}" class="coord">{"ABCDEFGHIJKLM"[j]}</text><text x="{W+24}" y="{y:.0f}" class="coord">{"ABCDEFGHIJKLM"[j]}</text>')
     o.append(f'<rect x="0" y="0" width="{W}" height="{H}" class="marco"/>')
     # rosa de los vientos en el golfo
@@ -135,4 +140,5 @@ filas_idx = ''.join(f'<li><b>{html.escape(t)}</b><i>{tipo_txt}</i><span>{c}</spa
 
 plantilla = open('plantilla.html', encoding='utf-8').read()
 open('plano.html', 'w', encoding='utf-8').write(plantilla.replace('<!--SVG-->', svg()).replace('<!--INDICE-->', filas_idx).replace('<!--N-->', str(len(indice))))
+json.dump([{'n':t,'c':c,'t':TIPO_TXT[tp]} for t,c,tp in indice],open('indice.json','w',encoding='utf-8'),ensure_ascii=False)
 print('ok', len(d_tierra), len(d_urb), len(indice))
