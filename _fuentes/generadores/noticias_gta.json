@@ -1,5 +1,23 @@
 [
  {
+  "slug": "gta-6-ventas-primer-dia-record-estimacion",
+  "fecha": "2026-11-20",
+  "emoji": "💰",
+  "titulo": "GTA VI arrasa en su estreno: más de 24 millones de copias y 2.360 millones de dólares el primer día, según las estimaciones",
+  "entradilla": "Todavía no hay cifra oficial, pero los cálculos de la consultora Sensor Tower apuntan a un estreno nunca visto en los videojuegos. Y en directo, récord también: casi 8 millones de personas viendo a otros jugar a la vez.",
+  "cuerpo": [
+   "Primer día en la calle y primeros números de vértigo. Según las estimaciones de <strong>Sensor Tower</strong>, una consultora que sigue las ventas digitales, <strong>GTA VI habría vendido unos 24,6 millones de copias</strong> y facturado unos <strong>2.360 millones de dólares</strong> al cierre del 19 de noviembre, contando las reservas. Lo han recogido medios como <strong>Reuters</strong>, <strong>CNBC</strong> y <strong>TweakTown</strong>.",
+   "Las cifras han ido subiendo a lo largo del día: el miércoles por la mañana se hablaba de <strong>17,1 millones</strong> (unos 1.650 millones de dólares) y el jueves por la mañana de <strong>19,1 millones</strong> (unos 1.840 millones). Según ese mismo cálculo, alrededor del <strong>75 % de las ventas serían en PlayStation</strong> y el 25 % en Xbox.",
+   "<strong>Ojo, que esto es una estimación.</strong> Ni <strong>Rockstar</strong> ni <strong>Take-Two</strong> han dado una cifra oficial de ventas, y el cálculo no descuenta devoluciones. Para que te hagas una idea, en 2013 Take-Two anunció que <strong>GTA V</strong> había superado los <strong>800 millones de dólares en sus primeras 24 horas</strong>. Lo que sí ha dicho Take-Two es que espera un trimestre récord: <strong>8.100 millones de dólares</strong> en reservas netas.",
+   "<strong>Récord también en directo.</strong> Según <strong>Streams Charts</strong>, el estreno llegó a <strong>7,91 millones de espectadores a la vez</strong> sumando Twitch, YouTube y Kick, la mayor audiencia que ha medido nunca para el lanzamiento de un videojuego.",
+   "<strong>¿Y los problemas?</strong> Hubo ratos en los que muchos jugadores de PS5 <strong>no podían iniciar sesión en PlayStation Network</strong>, con cientos de avisos en Downdetector, aunque la página de estado de PSN lo dio por resuelto en pocas horas y Sony no lo ha atribuido a GTA VI. Si te pasa, espera un rato y vuelve a probar, y asegúrate de tener el sistema en la versión <strong>14.23</strong> y las dos actualizaciones del juego instaladas."
+  ],
+  "opina": "Veinticuatro millones de copias en un día. Yo en un día vendo… dos pegatinas, y una me la compra mi madre. Eso sí: hasta que Take-Two no saque la cifra oficial, esto es como el marcador de La Porra antes del pitido final. Pinta a goleada, pero no se celebra hasta que lo diga el árbitro.",
+  "fuente": "Sensor Tower (estimaciones), recogidas por Reuters, CNBC y TweakTown; Streams Charts; Take-Two (previsión del trimestre); El Siglo de Durango y Axios (estado de PSN)",
+  "guia": "/gta-6/#basico",
+  "guia_txt": "Lo básico: fecha, precio y ediciones"
+ },
+ {
   "slug": "gta-6-ya-a-la-venta-lanzamiento",
   "fecha": "2026-11-19",
   "emoji": "🚀",
