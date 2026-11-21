@@ -29,6 +29,38 @@
   /* ---------- TROLLACO (mascota) ---------- */
   .px{image-rendering:pixelated;image-rendering:crisp-edges}
   img.troll{height:auto!important;max-height:none!important;object-fit:contain!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;aspect-ratio:auto!important}
+
+  /* ===== NAVIDAD 2026 (se oculta sola a partir del 8 de enero: ver script al final) ===== */
+  .guirnalda{position:absolute;left:0;right:0;top:0;z-index:4;display:flex;justify-content:space-between;padding:0 10px;height:30px;pointer-events:none;border-top:3px solid #0f5c3a}
+  .guirnalda i{display:block;width:10px;height:15px;margin-top:3px;border-radius:5px 5px 7px 7px;position:relative;animation:bombilla 1.6s steps(1) infinite}
+  .guirnalda i::before{content:'';position:absolute;left:2px;top:-5px;width:6px;height:5px;background:#1c3b2c;border-radius:1px}
+  .guirnalda i:nth-child(4n+1){background:#ff2bd6;color:#ff2bd6}.guirnalda i:nth-child(4n+2){background:#1ff2ff;color:#1ff2ff;animation-delay:.4s}
+  .guirnalda i:nth-child(4n+3){background:#ffd23f;color:#ffd23f;animation-delay:.8s}.guirnalda i:nth-child(4n+4){background:#ff3b4f;color:#ff3b4f;animation-delay:1.2s}
+  .guirnalda i:nth-child(even){margin-top:9px}
+  @keyframes bombilla{0%{box-shadow:0 0 10px 3px currentColor;opacity:1}50%{box-shadow:none;opacity:.45}}
+  .nieve{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+  .nieve b{position:absolute;top:-10px;width:4px;height:4px;background:#fff;opacity:.75;animation:copo linear infinite}
+  @keyframes copo{to{transform:translate(18px,640px)}}
+  @media (max-width:640px){.guirnalda i:nth-child(n+19){display:none}}
+  @media (prefers-reduced-motion:reduce){.guirnalda i,.nieve b{animation:none}.nieve{display:none}}
+  .btn.btn-navidad{border-color:#ffd23f!important;color:#07021a!important;background:linear-gradient(90deg,#ffd23f,#ff8fd6)!important;box-shadow:0 0 16px rgba(255,210,63,.6)!important;font-weight:700}
+  .navidad-tienda{position:relative;border:3px solid #ffd23f;border-radius:18px;background:radial-gradient(circle at 15% 0,rgba(255,43,214,.22),transparent 55%),radial-gradient(circle at 90% 100%,rgba(31,242,255,.18),transparent 55%),rgba(7,2,26,.85);box-shadow:0 0 26px rgba(255,210,63,.35);padding:44px 22px 26px;overflow:hidden}
+  .navidad-tienda .guirnalda{border-top-color:#0f5c3a}
+  .nav-cab{display:flex;align-items:center;gap:18px;justify-content:center;margin-bottom:18px}
+  .nav-cab img{width:82px;height:auto;flex:none;image-rendering:pixelated;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
+  .nav-cab h2{margin:0;color:#ffd23f;text-shadow:0 0 12px rgba(255,210,63,.6)}
+  .nav-cab p{margin:6px 0 0;font-size:18px}
+  .nav-cab .bocadillo{position:static;display:inline-block;margin-top:10px;font-size:17px;box-shadow:3px 3px 0 var(--pink)}
+  .nav-cab .bocadillo::after{display:none}
+  .nav-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .nav-card{display:block;text-decoration:none;color:#fff;background:rgba(20,9,74,.85);border:2px solid #1ff2ff;border-radius:14px;padding:14px 12px;text-align:center;transition:transform .15s,box-shadow .15s}
+  .nav-card:hover{transform:translateY(-3px);box-shadow:0 0 16px rgba(31,242,255,.55)}
+  .nav-card .ic{font-size:34px;display:block}.nav-card b{display:block;font-size:19px;margin:6px 0 4px;color:#ffd23f}.nav-card span{font-size:15px;opacity:.9}
+  .nav-card.bf{border-color:#ff2bd6;background:linear-gradient(160deg,rgba(255,43,214,.3),rgba(20,9,74,.9))}
+  .nav-aviso{font-size:13px;opacity:.7;text-align:center;margin:14px 0 0}
+  @media (max-width:640px){.nav-cab{flex-direction:column;text-align:center}}
+  .tienda-xmas{display:inline-block;margin:0 auto 12px;padding:4px 12px;border-radius:20px;background:#ff3b4f;color:#fff;font-weight:700;letter-spacing:1px;font-size:14px;box-shadow:0 0 12px rgba(255,59,79,.6)}
+  html.fin-navidad .xmas{display:none!important}
   .troll-hero{position:absolute;z-index:3;right:6%;bottom:22px;width:136px;cursor:pointer;background:none;border:0;padding:0}
   .troll-hero img{width:100%;height:auto;display:block;animation:bote 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
   .troll-hero.salto img{animation:salto .5s ease-out}
@@ -393,6 +425,8 @@
 <div class="scan"></div>
 
 <header class="hero">
+  <div class="guirnalda xmas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="nieve xmas" aria-hidden="true"><b style="left:0%;animation-duration:7s;animation-delay:-0s;width:3px;height:3px;"></b><b style="left:37%;animation-duration:12s;animation-delay:-3s;"></b><b style="left:74%;animation-duration:8s;animation-delay:-6s;"></b><b style="left:11%;animation-duration:13s;animation-delay:-9s;width:3px;height:3px;"></b><b style="left:48%;animation-duration:9s;animation-delay:-1s;"></b><b style="left:85%;animation-duration:14s;animation-delay:-4s;"></b><b style="left:22%;animation-duration:10s;animation-delay:-7s;width:3px;height:3px;"></b><b style="left:59%;animation-duration:15s;animation-delay:-10s;"></b><b style="left:96%;animation-duration:11s;animation-delay:-2s;"></b><b style="left:33%;animation-duration:7s;animation-delay:-5s;width:3px;height:3px;"></b><b style="left:70%;animation-duration:12s;animation-delay:-8s;"></b><b style="left:7%;animation-duration:8s;animation-delay:-0s;"></b><b style="left:44%;animation-duration:13s;animation-delay:-3s;width:3px;height:3px;"></b><b style="left:81%;animation-duration:9s;animation-delay:-6s;"></b><b style="left:18%;animation-duration:14s;animation-delay:-9s;"></b><b style="left:55%;animation-duration:10s;animation-delay:-1s;width:3px;height:3px;"></b><b style="left:92%;animation-duration:15s;animation-delay:-4s;"></b><b style="left:29%;animation-duration:11s;animation-delay:-7s;"></b><b style="left:66%;animation-duration:7s;animation-delay:-10s;width:3px;height:3px;"></b><b style="left:3%;animation-duration:12s;animation-delay:-2s;"></b><b style="left:40%;animation-duration:8s;animation-delay:-5s;"></b><b style="left:77%;animation-duration:13s;animation-delay:-8s;width:3px;height:3px;"></b></div>
   <div class="stars"></div>
   <div class="sun"></div>
   <div class="grid"></div>
@@ -416,7 +450,7 @@
         <a href="/especiales/" class="todos">Ver todos los especiales ›</a>
       </div>
     </details>
-    <a class="btn alt" href="#tienda">TIENDA</a>
+    <a class="btn alt btn-navidad" href="#navidad" id="btn-tienda">🎁 TIENDA DE NAVIDAD</a>
     <a class="btn alt" href="#videojuegos">VIDEOJUEGOS</a>
     <a class="btn alt" href="#tecnologia">TECNOLOGÍA</a>
     <a class="btn alt" href="#noticias">NOTICIAS</a>
@@ -426,10 +460,30 @@
 
   <button class="troll-hero" id="trollaco" type="button" aria-label="El Trollaco: pulsa para que diga otra cosa">
     <span class="bocadillo" id="troll-dice">¿Te atreves a salvar a la Princesa Neón? Abajo te espero.</span>
-    <img class="px troll" src="img/trollaco.png" alt="El Trollaco, la mascota de Trollacos" width="34" height="56">
+    <img class="px troll" id="troll-img" src="img/trollaco-navidad.png" alt="El Trollaco, la mascota de Trollacos, con gorro de Papá Noel" width="34" height="62">
   </button>
 </header>
 
+<!--NAVIDAD:INICIO-->
+<section class="block navidad-tienda xmas" id="navidad">
+  <div class="guirnalda" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="nav-cab">
+    <img src="/img/trollaco-navidad.png" alt="El Trollaco con gorro de Papá Noel" width="34" height="62">
+    <div><h2>🎄 LA NAVIDAD GAMER YA ESTÁ AQUÍ</h2>
+    <p>Regalos para gamers, tecnología para regalar y nuestra merch. Y el <b>27 de noviembre es Black Friday</b>: aquí tienes los atajos.</p>
+    <span class="bocadillo">¿Te has portado bien este año? Da igual, pídelo igualmente.</span></div>
+  </div>
+  <div class="nav-grid">
+    <a class="nav-card" href="#tienda"><span class="ic">🎮</span><b>Consolas y mandos</b><span>PS5, Xbox, Switch 2 y todo para jugar</span></a>
+    <a class="nav-card" href="#tienda-juegos"><span class="ic">💿</span><b>Videojuegos</b><span>El regalo que nunca falla</span></a>
+    <a class="nav-card" href="/gta-6/que-comprar/"><span class="ic">🌴</span><b>Todo para GTA VI</b><span>Tele, SSD, auriculares… a tope en Leonida</span></a>
+    <a class="nav-card" href="/tecnologia/"><span class="ic">🔊</span><b>Tecnología para regalar</b><span>Móviles, altavoces y gadgets con guasa</span></a>
+    <a class="nav-card" href="/merch/"><span class="ic">👕</span><b>Merch Trollacos</b><span>Camisetas y sudaderas con el Trollaco</span></a>
+    <a class="nav-card bf" href="https://www.amazon.es/s?k=black+friday+videojuegos&amp;tag=trollacos-21" target="_blank" rel="sponsored nofollow noopener"><span class="ic">🛍️</span><b>Black Friday gamer</b><span>Mira las ofertas de videojuegos en Amazon</span></a>
+  </div>
+  <p class="nav-aviso">Algunos enlaces son de afiliado de Amazon: si compras, nos llevamos una pequeña comisión y a ti no te cuesta nada más.</p>
+</section>
+<!--NAVIDAD:FIN-->
 <!--RETOS:INICIO-->
 <section class="block retos" id="retos">
   <a class="reto r-arc" href="/arcade/">
@@ -555,8 +609,9 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
   <div class="tienda-cab">
     <img class="px troll" src="img/trollaco-mando.png" alt="El Trollaco con un mando" width="34" height="56">
     <h2>La tienda del gamer</h2>
-    <span class="bocadillo">¡Este me lo quedo!</span>
+    <span class="bocadillo" id="tienda-bo">¡Este me lo pido para Reyes!</span>
   </div>
+  <p style="text-align:center;margin:-18px 0 6px" class="xmas"><span class="tienda-xmas">🎄 EDICIÓN NAVIDAD</span></p>
   <p class="small" style="margin:-14px 0 24px">Lo que necesitas para trollear como es debido.</p>
   <a class="guia-cta" href="/gta-6/que-comprar/" style="margin:0 auto 22px;border-color:var(--yellow);box-shadow:0 0 16px rgba(255,210,63,.35)"><span style="color:var(--yellow)">🛒 ¿QUÉ NECESITAS PARA GTA VI?</span>Consola, espacio, tele y sonido: la guía de compra sin gastar de más ›</a>
   <h3 class="sub-tienda">🎮 Consolas y accesorios</h3>
@@ -756,6 +811,7 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
 <script>
 (function(){
   var frases=[
+    '¿Ya tienes los regalos? Abajo está la tienda de Navidad 🎁','Querida Princesa Neón: este año he sido bueno. Más o menos.','Este año pido GTA VI. Otra vez.',
     '¿Te atreves a salvar a la Princesa Neón? Abajo te espero.','¿Mi mando? Lo tengo yo.','¿Sabes más de fútbol que yo? Lo dudo. Demuéstralo en La Porra.','¿Has reservado GTA VI? Yo tres veces.','No es lag, te estoy trolleando.','He escondido tus pilas del mando.',
     'Guardar partida: NO. Total, ¿qué puede salir mal?','Pulsa otra vez. Te reto.','Si pierdes, échale la culpa al mando.'
   ];
@@ -768,6 +824,7 @@ document.getElementById('mis-azar').addEventListener('click',function(){location
 })();
 </script>
 <script>document.addEventListener('click',function(e){document.querySelectorAll('details.menu-esp[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});</script>
+<script>(function(){var hoy=new Date(),fin=new Date(2027,0,8);if(hoy>=fin){document.documentElement.classList.add('fin-navidad');var t=document.getElementById('troll-img');if(t){t.src='img/trollaco.png';t.height=56;t.alt='El Trollaco, la mascota de Trollacos'}var b=document.getElementById('btn-tienda');if(b){b.textContent='TIENDA';b.href='#tienda';b.classList.remove('btn-navidad')}var o=document.getElementById('tienda-bo');if(o)o.textContent='¡Este me lo quedo!'}})();</script>
 </body>
 </html>
 <!-- portada 202610311836 -->
