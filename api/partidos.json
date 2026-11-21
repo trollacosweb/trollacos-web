@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-21T07:40:41Z",
+ "actualizado": "2026-11-21T13:13:03Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 13,
@@ -491,7 +491,7 @@
    "id": "2506294",
    "j": 13,
    "fecha": "2026-11-21T13:00:00Z",
-   "estado": "TIMED",
+   "estado": "IN_PLAY",
    "local": {
     "n": "Deportivo Alavés",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
@@ -502,8 +502,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/62bvwv1783013156.png",
     "tla": "DEP"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 1,
+   "gv": 0,
    "cuotas": {
     "1": 2.5,
     "X": 3.45,
