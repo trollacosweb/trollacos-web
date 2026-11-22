@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-22T13:01:06Z",
+ "actualizado": "2026-11-22T18:30:48Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 13,
@@ -22,9 +22,9 @@
    "gl": 0,
    "gv": 1,
    "cuotas": {
-    "1": 2.15,
-    "X": 3.6,
-    "2": 3.2
+    "1": 2.3,
+    "X": 3.55,
+    "2": 3.0
    }
   },
   {
@@ -115,7 +115,7 @@
    "gv": 1,
    "cuotas": {
     "1": 1.35,
-    "X": 4.85,
+    "X": 4.9,
     "2": 9.0
    }
   },
@@ -160,9 +160,9 @@
    "gl": 0,
    "gv": 3,
    "cuotas": {
-    "1": 5.6,
-    "X": 4.2,
-    "2": 1.55
+    "1": 5.05,
+    "X": 4.1,
+    "2": 1.65
    }
   },
   {
@@ -206,9 +206,9 @@
    "gl": 2,
    "gv": 1,
    "cuotas": {
-    "1": 3.0,
-    "X": 3.55,
-    "2": 2.3
+    "1": 2.8,
+    "X": 3.45,
+    "2": 2.45
    }
   },
   {
@@ -275,9 +275,9 @@
    "gl": 1,
    "gv": 2,
    "cuotas": {
-    "1": 3.5,
-    "X": 3.7,
-    "2": 2.0
+    "1": 3.85,
+    "X": 3.8,
+    "2": 1.9
    }
   },
   {
@@ -390,9 +390,9 @@
    "gl": 1,
    "gv": 0,
    "cuotas": {
-    "1": 1.6,
-    "X": 4.15,
-    "2": 5.35
+    "1": 1.65,
+    "X": 4.05,
+    "2": 4.85
    }
   },
   {
@@ -413,9 +413,9 @@
    "gl": 2,
    "gv": 0,
    "cuotas": {
-    "1": 2.0,
-    "X": 3.7,
-    "2": 3.5
+    "1": 2.1,
+    "X": 3.65,
+    "2": 3.3
    }
   },
   {
@@ -459,9 +459,9 @@
    "gl": 1,
    "gv": 2,
    "cuotas": {
-    "1": 2.9,
+    "1": 2.95,
     "X": 3.5,
-    "2": 2.4
+    "2": 2.35
    }
   },
   {
@@ -583,7 +583,7 @@
    "id": "2506289",
    "j": 13,
    "fecha": "2026-11-22T13:00:00Z",
-   "estado": "TIMED",
+   "estado": "FINISHED",
    "local": {
     "n": "Barcelona",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png",
@@ -594,11 +594,11 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png",
     "tla": "VIL"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 3,
+   "gv": 2,
    "cuotas": {
-    "1": 1.35,
-    "X": 4.85,
+    "1": 1.3,
+    "X": 5.0,
     "2": 9.0
    }
   },
@@ -606,7 +606,7 @@
    "id": "2506298",
    "j": 13,
    "fecha": "2026-11-22T15:15:00Z",
-   "estado": "TIMED",
+   "estado": "FINISHED",
    "local": {
     "n": "Racing de Santander",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
@@ -617,19 +617,19 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png",
     "tla": "REA"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 3,
+   "gv": 2,
    "cuotas": {
-    "1": 3.35,
-    "X": 3.65,
-    "2": 2.1
+    "1": 2.85,
+    "X": 3.5,
+    "2": 2.4
    }
   },
   {
    "id": "2506296",
    "j": 13,
    "fecha": "2026-11-22T17:30:00Z",
-   "estado": "TIMED",
+   "estado": "PAUSED",
    "local": {
     "n": "Osasuna",
     "c": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
@@ -640,8 +640,8 @@
     "c": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
     "tla": "MÁL"
    },
-   "gl": null,
-   "gv": null,
+   "gl": 1,
+   "gv": 0,
    "cuotas": {
     "1": 1.75,
     "X": 3.95,
@@ -712,9 +712,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 2.65,
-    "X": 3.4,
-    "2": 2.65
+    "1": 2.85,
+    "X": 3.5,
+    "2": 2.45
    }
   },
   {
@@ -850,9 +850,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 6.7,
-    "X": 4.4,
-    "2": 1.5
+    "1": 6.95,
+    "X": 4.45,
+    "2": 1.45
    }
   },
   {
@@ -873,9 +873,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 2.65,
-    "X": 3.4,
-    "2": 2.65
+    "1": 2.5,
+    "X": 3.45,
+    "2": 2.75
    }
   },
   {
@@ -896,9 +896,9 @@
    "gl": null,
    "gv": null,
    "cuotas": {
-    "1": 1.9,
-    "X": 3.8,
-    "2": 3.8
+    "1": 2.0,
+    "X": 3.7,
+    "2": 3.5
    }
   },
   {
