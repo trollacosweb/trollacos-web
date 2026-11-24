@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-24T17:49:57Z",
+ "actualizado": "2026-11-24T18:38:22Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 14,
@@ -704,7 +704,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T17:45:00Z",
-    "estado": "IN_PLAY",
+    "estado": "PAUSED",
     "local": {
      "n": "Bodø/Glimt",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
@@ -728,7 +728,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T17:45:00Z",
-    "estado": "IN_PLAY",
+    "estado": "PAUSED",
     "local": {
      "n": "Galatasaray",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png",
