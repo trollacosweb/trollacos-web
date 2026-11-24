@@ -482,7 +482,7 @@ Datos con su fuente, opinión nuestra y mucha nostalgia. Coge el ratón, que emp
 <h2>📚 Fuentes de los datos</h2>
 <p style="font-size:16px">Los datos salen de estas fuentes, citadas por su nombre. La opinión, las bromas y la nostalgia son nuestras.</p>
 <ul class="fuentes-l">{fuentes}</ul>
-<p class="fu">Monkey Island, Grim Fandango, King's Quest, Broken Sword, Runaway, Hollywood Monsters y el resto de nombres y marcas citados son de sus respectivos dueños. Trollacos no tiene relación con ellos.</p>
+<p class="fu">Monkey Island, Grim Fandango, King's Quest, Broken Sword, Runaway, Hollywood Monsters y el resto de nombres y marcas citados son de sus respectivos dueños.</p>
 <p class="aviso-c">🧯 Aquí no enlazamos descargas ni copias de juegos. Muchos de estos clásicos se venden hoy en tiendas digitales, y algunos (como Igor o Dráscula) los liberaron sus propios creadores.</p>'''
 
 ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': titulo, 'datePublished': '2026-11-10',

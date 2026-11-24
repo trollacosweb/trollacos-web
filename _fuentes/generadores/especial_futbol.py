@@ -537,7 +537,7 @@ una comunidad que no se rinde. Datos con su fuente, opinión nuestra y mucha nos
 <h2>📚 Fuentes de los datos</h2>
 <p style="font-size:16px">Los datos salen de estas fuentes, citadas por su nombre. La opinión, las bromas y la nostalgia son nuestras.</p>
 <ul class="fuentes-l">{fuentes}</ul>
-<p class="fu">FIFA, PES, eFootball, EA Sports FC, PC Fútbol y el resto de nombres y marcas citados son de sus respectivos dueños. Trollacos no tiene relación con ellos.</p>'''
+<p class="fu">FIFA, PES, eFootball, EA Sports FC, PC Fútbol y el resto de nombres y marcas citados son de sus respectivos dueños.</p>'''
 
 ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': titulo, 'datePublished': '2026-11-05',
       'author': {'@type': 'Person', 'name': 'Danna', 'url': 'https://trollacos.com/danna/'},

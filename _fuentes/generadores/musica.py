@@ -165,7 +165,7 @@ page = f'''<!doctype html>
   <h2 id="faq">Preguntas rápidas</h2>
 {faq_html}
 
-  <p class="ojo">Lista hecha con la información oficial de Rockstar y las canciones identificadas por medios especializados en los vídeos publicados. Los botones buscan cada canción en Spotify. Fuentes: <a href="https://www.rockstargames.com/VI/music" target="_blank" rel="noopener">música de GTA VI (Rockstar)</a>, <a href="https://www.gamespot.com/articles/gta-6-soundtrack-all-confirmed-songs-so-far/" target="_blank" rel="noopener">GameSpot</a>, <a href="https://www.redbull.com/us-en/gta-6-soundtrack-songs-music-radio" target="_blank" rel="noopener">Red Bull</a>, <a href="https://www.vice.com/en/article/every-song-confirmed-in-gta6-extended-look/" target="_blank" rel="noopener">VICE</a>. Trollacos no tiene relación con Rockstar Games ni con Take-Two Interactive.</p>
+  <p class="ojo">Lista hecha con la información oficial de Rockstar y las canciones identificadas por medios especializados en los vídeos publicados. Los botones buscan cada canción en Spotify. Fuentes: <a href="https://www.rockstargames.com/VI/music" target="_blank" rel="noopener">música de GTA VI (Rockstar)</a>, <a href="https://www.gamespot.com/articles/gta-6-soundtrack-all-confirmed-songs-so-far/" target="_blank" rel="noopener">GameSpot</a>, <a href="https://www.redbull.com/us-en/gta-6-soundtrack-songs-music-radio" target="_blank" rel="noopener">Red Bull</a>, <a href="https://www.vice.com/en/article/every-song-confirmed-in-gta6-extended-look/" target="_blank" rel="noopener">VICE</a>.</p>
   <p style="text-align:center;margin-top:26px"><a href="/gta-6/" style="font-family:'VT323',monospace;font-size:24px;color:var(--cyan)">‹ Volver a la guía completa de GTA VI</a></p>
 </main>
 {foot}

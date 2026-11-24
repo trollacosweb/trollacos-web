@@ -148,7 +148,7 @@ body = f'''
   <h2 id="faq">Preguntas rápidas</h2>
 {faq_html}
 
-  <p class="ojo">Datos de Rockstar Games, Sony, Microsoft y medios especializados, actualizados a octubre de 2026. Los precios cambian a menudo: comprueba siempre el precio final en la tienda. Trollacos no tiene relación con Rockstar Games, Take-Two, Sony ni Microsoft.</p>
+  <p class="ojo">Datos de Rockstar Games, Sony, Microsoft y medios especializados, actualizados a octubre de 2026. Los precios cambian a menudo: comprueba siempre el precio final en la tienda.</p>
   <p style="text-align:center;margin-top:26px"><a href="/gta-6/" style="font-family:'VT323',monospace;font-size:24px;color:var(--cyan)">‹ Volver a la guía completa de GTA VI</a></p>
 </main>'''
 

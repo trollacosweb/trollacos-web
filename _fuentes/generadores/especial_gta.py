@@ -111,7 +111,7 @@ document.querySelectorAll('.vid-play').forEach(function(b){{b.addEventListener('
   var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-id')+'?autoplay=1&rel=0';
   f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=b.getAttribute('aria-label');b.replaceWith(f)}})}});
 </script>
-<p class="fu">Grand Theft Auto, Rockstar Games y el resto de nombres y marcas citados son de sus respectivos dueños. Trollacos no tiene relación con ellos.</p>'''
+<p class="fu">Grand Theft Auto, Rockstar Games y el resto de nombres y marcas citados son de sus respectivos dueños.</p>'''
 ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': titulo, 'datePublished': '2026-11-11',
       'author': {'@type': 'Person', 'name': 'Danna', 'url': 'https://trollacos.com/danna/'},
       'publisher': {'@type': 'Organization', 'name': 'Trollacos'}, 'description': desc}

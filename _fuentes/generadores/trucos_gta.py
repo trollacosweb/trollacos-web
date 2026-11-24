@@ -91,7 +91,6 @@ page = f'''<!doctype html>
   <div class="tr-ind">{''.join(idx)}</div>
   <p style="opacity:.8;font-size:16px">Mandos: PS5 / Xbox. Las cifras de coches y armas son las de la ficha del juego, sobre 10.</p>
   {''.join(secciones)}
-  <p class="ojo">Datos contrastados en varias guías ({esc(FUENTES)}). Trollacos no tiene relación con Rockstar Games ni Take-Two. Si ves algo que ha cambiado con un parche, avísanos en info@trollacos.com.</p>
   <p style="text-align:center;margin-top:26px"><a href="/gta-6/" style="font-family:'VT323',monospace;font-size:24px;color:var(--cyan)">‹ Volver a la guía completa de GTA VI</a></p>
 </main>
 {foot}
