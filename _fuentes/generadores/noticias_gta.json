@@ -1,5 +1,22 @@
 [
  {
+  "slug": "gta-6-pc-port-no-oficial-project-leonida-cerrado",
+  "fecha": "2026-11-25",
+  "emoji": "💻",
+  "titulo": "Se acabó el GTA VI «pirata» para PC: cierran el Discord de Project Leonida y sus responsables lo dejan",
+  "entradilla": "Un grupo intentaba hacer funcionar en ordenador la versión filtrada de Xbox. Apenas había conseguido una pantalla en negro cuando su servidor desapareció tras un aviso de copyright. La versión oficial de PC sigue sin fecha.",
+  "cuerpo": [
+   "GTA VI solo ha salido en <strong>PS5 y Xbox Series X|S</strong>, pero eso no ha frenado a quienes quieren jugarlo ya en PC. El más sonado era <strong>Project Leonida</strong>, un proyecto de aficionados que intentaba <strong>recompilar para ordenador la versión de Xbox filtrada</strong> del juego. Su servidor de Discord tenía <strong>casi 180.000 miembros</strong>, según Tom's Hardware.",
+   "<strong>Lo que ha pasado.</strong> Entre el <strong>23 y el 24 de noviembre</strong>, justo cuando el equipo presumía de que el juego «casi arrancaba» (pantalla negra y el audio que se cortaba), el <strong>servidor de Discord desapareció</strong>. Su responsable enseñó un <strong>aviso de infracción de copyright</strong> y una suspensión de su cuenta <strong>hasta 2028</strong>, y poco después anunció que lo dejaba. El otro líder del proyecto borró sus mensajes en redes y el repositorio original de GitHub también ha desaparecido, aunque circulan copias.",
+   "<strong>Lo que no se sabe.</strong> Ni Rockstar ni Take-Two han dicho nada en público: PC Gamer les ha pedido explicaciones y no ha tenido respuesta. Que el aviso venga de ellos lo cuenta el propio responsable del proyecto, que además ha dicho que el cierre fue «solo parte del motivo» para abandonar.",
+   "<strong>Lo que tienes que saber:</strong> la <strong>versión oficial de PC no está anunciada</strong>. Lo de principios de 2027 sigue siendo un rumor. Y cualquier «GTA VI para PC» que veas por ahí es una copia filtrada: además de ilegal, es la forma más rápida de meterle un virus al ordenador. Toca esperar o jugarlo en consola."
+  ],
+  "opina": "180.000 personas en un Discord para ver una pantalla en negro. Eso lo tengo yo gratis cuando se me funde la tele. Si tanta prisa tienes por Leonida, el mando de la consola de tu primo no muerde.",
+  "fuente": "Tom's Hardware, PC Gamer, Dexerto y GamesRadar+ (24 de noviembre de 2026)",
+  "guia": "/gta-6/#versiones",
+  "guia_txt": "Idiomas, PS5 Pro y PC"
+ },
+ {
   "slug": "gta-6-actualizacion-1-002-002-llamadas-guardado-parche",
   "fecha": "2026-11-24",
   "emoji": "🔧",
