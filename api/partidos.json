@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-24T18:43:14Z",
+ "actualizado": "2026-11-25T01:14:05Z",
  "fuente": "TheSportsDB",
  "temporada": "2026-2027",
  "jornada": 14,
@@ -704,7 +704,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T17:45:00Z",
-    "estado": "PAUSED",
+    "estado": "FINISHED",
     "local": {
      "n": "Bodø/Glimt",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
@@ -715,12 +715,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png",
      "tla": "LAS"
     },
-    "gl": 0,
+    "gl": 1,
     "gv": 0,
     "cuotas": {
-     "1": 2.8,
-     "X": 3.45,
-     "2": 2.45
+     "1": 2.1,
+     "X": 3.65,
+     "2": 3.3
     }
    },
    {
@@ -728,7 +728,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T17:45:00Z",
-    "estado": "PAUSED",
+    "estado": "FINISHED",
     "local": {
      "n": "Galatasaray",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png",
@@ -739,12 +739,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uwzw561787679026.png",
      "tla": "AST"
     },
-    "gl": 0,
+    "gl": 1,
     "gv": 0,
     "cuotas": {
-     "1": 3.1,
+     "1": 2.3,
      "X": 3.55,
-     "2": 2.25
+     "2": 3.0
     }
    },
    {
@@ -752,7 +752,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Arsenal",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png",
@@ -763,12 +763,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
      "tla": "BOR"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 1,
+    "gv": 1,
     "cuotas": {
      "1": 2.1,
      "X": 3.65,
-     "2": 3.35
+     "2": 3.3
     }
    },
    {
@@ -776,7 +776,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Manchester City",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
@@ -787,12 +787,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/l8qyxv1742982541.png",
      "tla": "NAP"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 2,
+    "gv": 2,
     "cuotas": {
-     "1": 1.5,
-     "X": 4.4,
-     "2": 6.55
+     "1": 1.55,
+     "X": 4.25,
+     "2": 5.85
     }
    },
    {
@@ -800,7 +800,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "RB Leipzig",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/zjgapo1594244951.png",
@@ -811,12 +811,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
      "tla": "LEN"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 3,
+    "gv": 1,
     "cuotas": {
-     "1": 2.3,
-     "X": 3.55,
-     "2": 3.0
+     "1": 1.8,
+     "X": 3.85,
+     "2": 4.1
     }
    },
    {
@@ -824,7 +824,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Feyenoord",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uturtx1473534803.png",
@@ -835,12 +835,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/xu47rb1628855600.png",
      "tla": "POR"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 0,
+    "gv": 1,
     "cuotas": {
-     "1": 2.3,
+     "1": 2.95,
      "X": 3.55,
-     "2": 3.0
+     "2": 2.3
     }
    },
    {
@@ -848,7 +848,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Real Madrid",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png",
@@ -859,12 +859,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/xfsz6i1721297428.png",
      "tla": "PSV"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 5,
+    "gv": 1,
     "cuotas": {
-     "1": 1.35,
-     "X": 4.75,
-     "2": 8.95
+     "1": 1.3,
+     "X": 5.1,
+     "2": 9.0
     }
    },
    {
@@ -872,7 +872,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Slovan Bratislava",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/uzkg701781199823.png",
@@ -883,12 +883,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
      "tla": "REA"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 0,
+    "gv": 2,
     "cuotas": {
-     "1": 6.75,
-     "X": 4.4,
-     "2": 1.45
+     "1": 8.55,
+     "X": 4.7,
+     "2": 1.4
     }
    },
    {
@@ -896,7 +896,7 @@
     "j": "C5",
     "comp": "champions",
     "fecha": "2026-11-24T20:00:00Z",
-    "estado": "TIMED",
+    "estado": "FINISHED",
     "local": {
      "n": "Como",
      "c": "https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png",
@@ -907,12 +907,12 @@
      "c": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
      "tla": "AEK"
     },
-    "gl": null,
-    "gv": null,
+    "gl": 1,
+    "gv": 0,
     "cuotas": {
-     "1": 1.5,
-     "X": 4.4,
-     "2": 6.55
+     "1": 1.35,
+     "X": 4.75,
+     "2": 8.8
     }
    },
    {
@@ -1174,9 +1174,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.1,
-     "X": 3.65,
-     "2": 3.35
+     "1": 1.95,
+     "X": 3.75,
+     "2": 3.75
     }
    },
    {
@@ -1198,9 +1198,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 1.75,
-     "X": 3.9,
-     "2": 4.3
+     "1": 2.05,
+     "X": 3.7,
+     "2": 3.45
     }
    },
    {
@@ -1222,9 +1222,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 3.1,
-     "X": 3.55,
-     "2": 2.25
+     "1": 3.7,
+     "X": 3.75,
+     "2": 1.95
     }
    },
    {
@@ -1318,9 +1318,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.3,
-     "X": 3.55,
-     "2": 3.0
+     "1": 2.1,
+     "X": 3.65,
+     "2": 3.25
     }
    },
    {
@@ -1342,9 +1342,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 3.1,
-     "X": 3.55,
-     "2": 2.25
+     "1": 4.0,
+     "X": 3.85,
+     "2": 1.85
     }
    },
    {
@@ -1390,9 +1390,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 3.45,
-     "X": 3.7,
-     "2": 2.05
+     "1": 3.65,
+     "X": 3.75,
+     "2": 1.95
     }
    },
    {
@@ -1414,9 +1414,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 1.5,
-     "X": 4.4,
-     "2": 6.55
+     "1": 1.65,
+     "X": 4.1,
+     "2": 5.1
     }
    },
    {
@@ -1438,9 +1438,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.8,
-     "X": 3.45,
-     "2": 2.45
+     "1": 3.25,
+     "X": 3.65,
+     "2": 2.15
     }
    },
    {
@@ -1462,9 +1462,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.55,
-     "X": 3.45,
-     "2": 2.75
+     "1": 3.25,
+     "X": 3.65,
+     "2": 2.15
     }
    },
    {
@@ -1486,9 +1486,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 1.75,
-     "X": 3.9,
-     "2": 4.3
+     "1": 1.9,
+     "X": 3.8,
+     "2": 3.9
     }
    },
    {
@@ -1534,9 +1534,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.3,
-     "X": 3.55,
-     "2": 3.0
+     "1": 2.55,
+     "X": 3.45,
+     "2": 2.75
     }
    },
    {
@@ -1558,9 +1558,9 @@
     "gl": null,
     "gv": null,
     "cuotas": {
-     "1": 2.1,
-     "X": 3.65,
-     "2": 3.35
+     "1": 2.35,
+     "X": 3.5,
+     "2": 2.95
     }
    }
   ]
