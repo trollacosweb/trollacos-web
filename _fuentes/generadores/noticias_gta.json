@@ -1,5 +1,40 @@
 [
  {
+  "slug": "gta-6-digital-foundry-xbox-series-x-mejor-que-ps5",
+  "fecha": "2026-11-26",
+  "emoji": "📊",
+  "titulo": "Digital Foundry lo confirma: GTA VI va más fino en Xbox Series X que en PS5 (y la PS5 Pro es la reina)",
+  "entradilla": "El análisis técnico de las cuatro consolas deja a la PS5 Pro arriba, la Series X segunda, la PS5 normal tercera y la Series S, a la cola. Todas apuntan a 30 fps.",
+  "cuerpo": [
+   "Los de <strong>Digital Foundry</strong>, los que miden los fotogramas con lupa, ya han pasado GTA VI por sus pruebas en las <strong>cuatro consolas</strong> donde se puede jugar. Y el resultado ha sorprendido a más de uno: la <strong>Xbox Series X</strong> ofrece una experiencia <strong>más estable que la PS5 normal</strong>.",
+   "<strong>El ranking.</strong> 1.º <strong>PS5 Pro</strong>, que se mantiene casi siempre en 30 fps y no baja de 20 ni en las escenas más cargadas; 2.º <strong>Xbox Series X</strong>; 3.º <strong>PS5</strong>; y 4.º <strong>Xbox Series S</strong>, que según el análisis «no da para más»: le cuesta mucho más mantener el ritmo y carga los objetos más tarde a la vista.",
+   "<strong>Dónde se nota.</strong> En la PS5 normal las caídas de fotogramas son más frecuentes al <strong>conducir rápido</strong> por la ciudad y en zonas con mucha gente, como el aeropuerto. Oliver Mackenzie, de Digital Foundry, cree que la culpa es que ambas consolas usan <strong>los mismos ajustes</strong>, y eso aprieta más a la PS5, que tiene una gráfica algo menos potente.",
+   "<strong>Resolución.</strong> Todas las consolas trabajan a <strong>1440p</strong>, salvo la Series S, que parte de <strong>720p</strong> y se reescala a 1080p. Además, en la Series S detectaron un fallo breve en el que <strong>se corta el sonido</strong>.",
+   "<strong>Lo que tienes que saber:</strong> esto es un análisis independiente, no un dato de Rockstar, que sigue sin anunciar un modo a 60 fps. Si juegas en PS5 o en Series S, mantén el juego actualizado: los parches suelen pulir estas cosas."
+  ],
+  "opina": "Rockstar dijo que donde mejor se veía era en PS5, y luego llega Digital Foundry con la regla y el cronómetro. A mí me da igual: yo voy a 30 fps de serie desde que nací y aquí sigo, tan guapo.",
+  "fuente": "Digital Foundry, según recogen TechRadar, Kotaku, Wccftech y Windows Central (25 de noviembre de 2026)",
+  "guia": "/gta-6/#versiones",
+  "guia_txt": "Idiomas, PS5 Pro y PC"
+ },
+ {
+  "slug": "gta-6-sonido-dialogos-overmono-banda-sonora-rockstar",
+  "fecha": "2026-11-26",
+  "emoji": "🎧",
+  "titulo": "Así suena Leonida: Rockstar cuenta su nuevo sistema de diálogos y que Overmono también firma la banda sonora",
+  "entradilla": "El jefe de audio de Rockstar, Alastair MacGregor, explica cómo han grabado y «movido» por el aire las voces de la gente, y confirma que la música que acompaña a la acción la han hecho Justice y Overmono.",
+  "cuerpo": [
+   "Ahora que medio planeta está paseando por Leonida, Rockstar empieza a contar cómo se hizo. <strong>Alastair MacGregor</strong>, vicepresidente de audio del estudio, ha explicado a <strong>TechRadar</strong> que para GTA VI construyeron <strong>un sistema de sonido nuevo</strong> para las voces de la calle.",
+   "<strong>Voces que viajan.</strong> La idea es que las conversaciones no suenen todas igual de alto: el sistema recoge desde un susurro hasta un grito y calcula <strong>cómo se propaga la voz por el espacio</strong>. Grabaron a <strong>decenas de personas en una cámara anecoica</strong> (una sala sin eco) e incluso midieron cómo suena <strong>el ascensor de la oficina</strong>. Resultado: oyes trozos de charlas que llegan más o menos lejos según el sitio y hasta el viento.",
+   "<strong>La música de la acción.</strong> En otra entrevista, con la web Final Weapon, MacGregor cuenta que la <strong>música adaptativa</strong> (la que cambia según lo que pasa, sin contar la radio) deja atrás el viejo sistema de pistas por capas y es <strong>menos lineal</strong>. Y la han compuesto <strong>Justice</strong> y el dúo electrónico británico <strong>Overmono</strong>.",
+   "En esa misma charla, otros responsables de Rockstar cuentan que viajaron por Florida para documentarse (Miami, Cayo Largo, motos de agua incluidas), que los interiores se diseñaron con <strong>arquitectos e interioristas</strong> y que el apuntado por defecto ya no es el fijado automático de siempre, sino <strong>apuntado libre con ayuda</strong>."
+  ],
+  "opina": "Una cámara sin eco para grabar a gente hablando. Yo en mi casa tengo lo contrario: una cámara con eco donde mi madre me grita que baje a cenar y se oye hasta en Vice City.",
+  "fuente": "TechRadar (25-26 de noviembre de 2026) y Final Weapon (25 de noviembre de 2026), con declaraciones de Alastair MacGregor (Rockstar)",
+  "guia": "/gta-6/#musica",
+  "guia_txt": "La música"
+ },
+ {
   "slug": "gta-6-pc-port-no-oficial-project-leonida-cerrado",
   "fecha": "2026-11-25",
   "emoji": "💻",
