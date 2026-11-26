@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Righteous';src:url(righteous.woff2)}@font-face{font-family:'VT323';src:url(vt323.woff2)}@font-face{font-family:'Rajdhani';src:url(rajdhani-700.woff2);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:540px;height:960px;overflow:hidden;background:#07021a}
+#esc{position:relative;width:540px;height:960px;font-family:'Rajdhani',sans-serif;font-weight:700;color:#fff;overflow:hidden}
+canvas{position:absolute;inset:0}
+#logo{position:absolute;top:22px;left:150px;width:240px}
+#t{position:absolute;top:66px;left:0;right:0;text-align:center}
+#t .a{font-family:'VT323';font-size:30px;color:#1ff2ff;text-shadow:0 0 10px #1ff2ff;letter-spacing:2px}
+#t .b{font-family:'Righteous';font-size:50px;line-height:1.02;color:#fff;text-shadow:3px 3px 0 #ff2bd6,0 0 22px #ff2bd6;margin-top:4px}
+#t .b span{color:#b06aff;text-shadow:3px 3px 0 #1ff2ff,0 0 22px #b06aff}
+#movil{position:absolute;left:110px;top:250px;width:320px;height:220px;border:6px solid #1ff2ff;border-radius:12px;background:linear-gradient(#1a0640,#07021a);box-shadow:0 0 26px #1ff2ff;text-align:center;transform-origin:50% 60%}
+#movil .ic{font-size:70px;margin-top:26px}#movil .q{font-family:'VT323';font-size:26px;color:#ffd23f;text-shadow:0 0 8px #ffd23f;margin-top:6px}
+#movil .bt{display:flex;justify-content:space-around;margin-top:34px}#movil .bt i{width:54px;height:54px;border-radius:50%;font-style:normal;font-size:30px;line-height:54px}
+#ver{position:absolute;left:0;right:0;top:236px;text-align:center;white-space:nowrap;font-family:'Righteous';font-size:46px;color:#ffd23f;text-shadow:0 0 22px #ffd23f,3px 3px 0 #ff2bd6;opacity:0}
+#ver small{display:block;font-family:'VT323';font-size:28px;color:#1ff2ff;text-shadow:0 0 8px #1ff2ff}
+#lista{position:absolute;left:56px;right:30px;top:350px;font-size:27px;line-height:1.25}
+#lista div{opacity:0;margin:7px 0;text-shadow:2px 2px 0 #07021a}#lista b{color:#ff2bd6;font-weight:700}
+#voz{position:absolute;left:0;right:0;top:620px;text-align:center;font-family:'VT323';font-size:26px;color:#fff;text-shadow:0 0 8px #ff2bd6;opacity:0}
+#voz b{color:#ffd23f;font-weight:400}
+#bo{position:absolute;left:150px;right:24px;top:670px;background:#fff;color:#07021a;font-size:29px;padding:14px 18px;border-radius:20px;border:4px solid #07021a;box-shadow:6px 6px 0 #ff2bd6;line-height:1.1;text-align:center;transform-origin:0 50%}
+#bo::before{content:'';position:absolute;left:-28px;top:40px;border:12px solid transparent;border-right:18px solid #07021a}
+#troll{position:absolute;left:16px;top:670px;width:124px;image-rendering:pixelated;transform-origin:50% 100%}
+#cta{position:absolute;left:0;right:0;top:868px;text-align:center;font-family:'VT323';font-size:34px;color:#1ff2ff;text-shadow:0 0 10px #1ff2ff}
+#cta b{color:#ffd23f;font-weight:400}
+#nota{position:absolute;left:0;right:0;top:914px;text-align:center;font-size:15px;color:rgba(255,255,255,.6)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+</style></head><body><div id="esc">
+<canvas id="cv" width="1080" height="1920" style="width:540px;height:960px"></canvas>
+<img id="logo" src="logo.webp">
+<div id="t"><div class="a">📊 GTA VI · ANÁLISIS TÉCNICO_</div><div class="b" id="tb">¿DÓNDE VA<br><span>MEJOR GTA VI?</span></div></div>
+<div id="movil"><div class="ic">🎮</div><div class="q">MIDIENDO FPS…</div></div>
+<div id="ver">XBOX SERIES X &gt; PS5<small>SEGÚN DIGITAL FOUNDRY · 25 NOV</small></div>
+<div id="lista"><div><b>1.º</b> PS5 Pro: casi siempre a 30 fps 👑</div><div><b>2.º</b> Xbox Series X 🟩</div><div><b>3.º</b> PS5: más tirones al conducir 🚗</div><div><b>4.º</b> Series S: 720p reescalado 🐢</div><div><b>▸</b> Todas a 1440p (menos la S) 🖥️</div><div><b>▸</b> ¿60 fps? Ni rastro ⏳</div></div>
+<div id="voz" style="display:none"></div>
+<img id="troll" src="trollaco-grande.png"><div id="bo"></div>
+<div id="cta">📲 <b>TROLLACOS.COM</b> · ENLACE EN LA BIO</div>
+<div id="nota">Análisis de Digital Foundry (25 nov 2026).</div>
+<div id="flash"></div>
+</div><script>
+const $=i=>document.getElementById(i),G=11.6;
+const cv=$('cv'),cx=cv.getContext('2d');cx.scale(2,2);
+const COL=['#ff2bd6','#1ff2ff','#ffd23f','#39ff88','#ffffff','#b06aff'];
+let r=777;const rnd=()=>{r=(r*9301+49297)%233280;return r/233280};
+const P=[];function rafaga(t0,n,x0,y0,dir){for(let i=0;i<n;i++){const a=(-90+dir*(15+rnd()*40))*Math.PI/180,v=380+rnd()*420;P.push({t0,x0,y0,vx:Math.cos(a)*v,vy:Math.sin(a)*v,c:COL[i%6],w:5+rnd()*5,h:8+rnd()*8,rot:rnd()*6,vr:(rnd()-.5)*14,d:rnd()*.15})}}
+rafaga(G,70,40,840,1);rafaga(G,70,500,820,-1);
+const E=[];for(let i=0;i<70;i++)E.push([rnd()*540,rnd()*420,rnd()*1.5+.5,rnd()*6]);
+const F=[[0,'¿PS5 o Xbox? Vamos a medir 📏'],[2.6,'Se le ha caído un fotograma 😬'],[5.2,'¡Gana la Series X a la PS5! 🟩'],[8.2,'Yo voy a 30 fps de serie 😎'],[G,'Toda la noticia en trollacos.com 📲']];
+function fondo(t){
+ const g=cx.createLinearGradient(0,0,0,960);g.addColorStop(0,'#07021a');g.addColorStop(.55,'#2a0845');g.addColorStop(.62,'#07021a');g.addColorStop(1,'#07021a');cx.fillStyle=g;cx.fillRect(0,0,540,960);
+ for(const e of E){cx.globalAlpha=.4+.6*Math.abs(Math.sin(t*1.5+e[3]));cx.fillStyle='#fff';cx.fillRect(e[0],e[1],e[2],e[2])}cx.globalAlpha=1;
+ const sy=640,sr=150;const sg=cx.createLinearGradient(0,sy-sr,0,sy);sg.addColorStop(0,'#b06aff');sg.addColorStop(1,'#ff2bd6');
+ cx.save();cx.beginPath();cx.arc(270,sy,sr,Math.PI,0);cx.closePath();cx.clip();cx.fillStyle=sg;cx.fillRect(120,sy-sr,300,sr);
+ cx.fillStyle='#2a0845';for(let k=0;k<7;k++){const y=sy-10-k*14-((t*12)%14);cx.fillRect(120,y,300,2+k*.3)}cx.restore();
+ cx.strokeStyle='rgba(255,43,214,.75)';cx.lineWidth=1.5;const hz=640;
+ for(let k=-12;k<=12;k++){cx.beginPath();cx.moveTo(270+k*12,hz);cx.lineTo(270+k*110,960);cx.stroke()}
+ for(let k=0;k<14;k++){const z=((k+(t*1.6)%1)/14);const y=hz+Math.pow(z,2.2)*320;cx.globalAlpha=Math.min(1,z*2);cx.beginPath();cx.moveTo(0,y);cx.lineTo(540,y);cx.stroke()}cx.globalAlpha=1;
+}
+window.pinta=function(t){
+ cx.clearRect(0,0,540,960);fondo(t);
+ const mv=$('movil');const om=t<4.6?1:Math.max(0,1-(t-4.6)*4);mv.style.opacity=om;
+ mv.style.transform=t<2.6?`scale(1)`:`translateX(${t<3.2?Math.sin(t*60)*6:0}px)`;
+ mv.style.background=t>=2.6?'#000':'linear-gradient(#1a0640,#07021a)';mv.querySelector('.ic').style.visibility=t>=2.6?'hidden':'visible';mv.querySelector('.q').innerHTML=t>=2.6?'<br>⚠️ ¡TIRÓN!':'MIDIENDO FPS'+'.'.repeat(1+Math.floor(t*3)%3);
+ const vv=$('ver');vv.style.opacity=t>=4.9?Math.min(1,(t-4.9)*3):0;vv.style.transform=`scale(${t>=4.9?Math.min(1,.5+(t-4.9)*2)+.03*Math.sin(t*5):0})`;
+ [...$('lista').children].forEach((d,k)=>{const t0=5.6+k*.75;d.style.opacity=t>=t0?Math.min(1,(t-t0)*4):0;d.style.transform=`translateX(${t>=t0?Math.max(0,1-(t-t0)*4)*-60:-60}px)`});
+ let i=0;F.forEach((f,k)=>{if(t>=f[0])i=k});const u=t-F[i][0],txt=F[i][1],n=Math.min(txt.length,Math.floor(u*36));
+ const bo=$('bo');bo.textContent=[...txt].slice(0,n).join('')||' ';bo.style.transform=`scale(${u<.18?.6+u/.18*.4:1}) rotate(${Math.sin(t*2)*1}deg)`;bo.style.background=i===F.length-1?'#ffd23f':'#fff';
+ $('tb').style.transform=`scale(${1+.04*Math.sin(t*5)})`;
+ const B=t>=G,tr=$('troll');
+ if(B){const v=t-G;tr.style.transform=`translateY(${-Math.abs(Math.sin(v*7))*(v<2.5?50:18)}px) rotate(${Math.sin(v*7)*8}deg)`}
+ else tr.style.transform=`translateY(${-Math.abs(Math.sin(t*6))*6}px) rotate(${Math.sin(t*3)*3}deg)`;
+ $('cta').style.transform=`scale(${B?1+.06*Math.abs(Math.sin((t-G)*4)):1})`;
+ const fl=t>=2.6&&t<3.4?.5-(t-2.6)*2:(B?.6-(t-G)*2.5:0);$('flash').style.opacity=Math.max(0,fl);
+ for(const p of P){const v=t-p.t0-p.d;if(v<0||v>5)continue;const x=p.x0+p.vx*v*.6+Math.sin(v*3+p.rot)*12,y=p.y0+p.vy*v+260*v*v;if(y>980)continue;
+  cx.save();cx.globalAlpha=v>4?5-v:1;cx.translate(x,y);cx.rotate(p.rot+p.vr*v);cx.scale(1,Math.abs(Math.cos(v*6+p.rot))+.15);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()}
+};
+</script></body></html>
