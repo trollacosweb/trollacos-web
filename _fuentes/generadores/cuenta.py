@@ -155,8 +155,12 @@ function pinta(j){
     ['🏆','Top 10','Entra en un top 10 del arcade',top10],['🔥','Número 1','Sé el primero en un ranking',uno],
     ['⚽','Primer gol','Acierta un pronóstico',pr.ganada>=1],['🔮','Adivino','Acierta 10 pronósticos',pr.ganada>=10],['🎯','Francotirador','Acierta un resultado exacto',pr.exactos>=1]
   ];
+  var leyL=(window.LEYENDAS_TROLLACAS||{})[j.nombre];
+  var leyenda=!!leyL||ins.every(function(i){return i[3]});
+  ins.push(['👑','Leyenda Trollaca',leyL?'Nº '+leyL.n+(leyL.n===1?': el primero en conseguirlas todas':''):'Consigue todas las insignias',leyenda]);
   var conseguidas=ins.filter(function(i){return i[3]}).length;
   $('n-ins').textContent=conseguidas+' de '+ins.length;
+  if(leyenda&&window.fiestaTrollaca)window.fiestaTrollaca(j.nombre);
   $('insignias').innerHTML=ins.map(function(i){return '<div class="ins'+(i[3]?'':' no')+'" title="'+esc(i[2])+'"><i>'+i[0]+'</i><b>'+i[1]+'</b><span>'+i[2]+'</span></div>'}).join('');
   // últimos pronósticos
   var ult=(j.pronosticos||[]).slice(0,5);
@@ -290,6 +294,15 @@ body = """
     <div class="tabla" id="ultimos"></div>
   </div>
 
+  <section class="panel salon" id="salon">
+    <h2>👑 Salón de las Leyendas</h2>
+    <p>Los que han conseguido <b>todas</b> las insignias de Trollacos. Por orden de llegada y para siempre.</p>
+    <ol class="leyendas">
+      <li><span class="ln">Nº 1</span><b>JAM85</b><em>27 de noviembre de 2026 · el primero de la historia</em></li>
+    </ol>
+    <p style="font-size:15px;color:var(--muted)">¿Quieres tu nombre aquí? Supera los 8 capítulos, acierta en La Porra y no pares hasta tenerlas todas.</p>
+  </section>
+
   <p style="text-align:right;font-size:14px"><a href="#" id="soy-admin" style="color:var(--muted)">🛠️ Administrador</a></p>
   <form class="mail" id="f-admin" hidden>
     <h3>🛠️ Recuperar una cuenta</h3>
@@ -300,6 +313,7 @@ body = """
   <p class="ojo">Tu cuenta guarda tu nombre de jugador, tus fichas y tus partidas. El email es opcional y se guarda cifrado. Las fichas son de juego: no se compran ni se canjean por nada. <a href="/privacidad/">Política de privacidad</a>.</p>
 </main>"""
 
+css_salon = '''<style>.salon{border-color:#ffd23f}.leyendas{list-style:none;padding:0;margin:12px 0}.leyendas li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:10px 12px;border:2px solid #ffd23f;background:rgba(255,210,63,.08);margin-bottom:8px}.leyendas .ln{font-family:'VT323',monospace;font-size:22px;color:#ff2bd6}.leyendas b{font-family:'VT323',monospace;font-size:34px;color:#ffd23f;text-shadow:0 0 10px rgba(255,210,63,.6)}.leyendas em{font-style:normal;color:var(--muted);font-size:15px}</style>'''
 page = f'''<!doctype html>
 <html lang="es">
 <head>
@@ -313,6 +327,8 @@ page = f'''<!doctype html>
 <meta property="og:title" content="Mi cuenta de jugador | Trollacos">
 <meta property="og:image" content="https://trollacos.com/portada.jpg">
 <link rel="icon" href="/icono.png">
+<script src="/js/fiesta.js"></script>
+{css_salon}
 {style2}
 </head>
 <body>

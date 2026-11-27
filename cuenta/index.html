@@ -11,6 +11,8 @@
 <meta property="og:title" content="Mi cuenta de jugador | Trollacos">
 <meta property="og:image" content="https://trollacos.com/portada.jpg">
 <link rel="icon" href="/icono.png">
+<script src="/js/fiesta.js"></script>
+<style>.salon{border-color:#ffd23f}.leyendas{list-style:none;padding:0;margin:12px 0}.leyendas li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:10px 12px;border:2px solid #ffd23f;background:rgba(255,210,63,.08);margin-bottom:8px}.leyendas .ln{font-family:'VT323',monospace;font-size:22px;color:#ff2bd6}.leyendas b{font-family:'VT323',monospace;font-size:34px;color:#ffd23f;text-shadow:0 0 10px rgba(255,210,63,.6)}.leyendas em{font-style:normal;color:var(--muted);font-size:15px}</style>
 <style>
 @font-face{font-family:'Righteous';src:url(/fuentes/righteous.woff2) format('woff2');font-display:swap}
 @font-face{font-family:'VT323';src:url(/fuentes/vt323.woff2) format('woff2');font-display:swap}
@@ -67,6 +69,7 @@ th{font-family:'VT323',monospace;font-size:20px;color:var(--cyan);font-weight:40
 .pj .rol{font-family:'VT323',monospace;font-size:18px;color:var(--orange);letter-spacing:.05em}
 .pj p{font-size:17.5px;color:var(--muted);margin:6px 0 0}
 .pj.prota{border-color:var(--pink);box-shadow:0 0 18px rgba(255,43,214,.2)}
+.mapa-of{margin:10px 0 6px}.mapa-of img{width:100%;height:auto;border-radius:12px;border:3px solid var(--cyan);display:block}.mapa-of figcaption{font-size:14px;opacity:.85;margin-top:6px}.mapa-bot{margin:4px 0 12px}.indice-lug{background:rgba(31,242,255,.06);border:2px solid var(--cyan);border-radius:12px;padding:10px 14px;margin:10px 0 16px}.indice-lug summary{cursor:pointer;font-weight:700;color:var(--cyan)}.indice-lug ul{columns:3 180px;column-gap:18px;list-style:none;padding:0;margin:8px 0 0}.indice-lug li{break-inside:avoid;padding:3px 0;border-bottom:1px dashed rgba(31,242,255,.2);display:flex;gap:6px;align-items:baseline}.indice-lug li i{font-style:normal;opacity:.6;font-size:13px;flex:1}.indice-lug li span{color:var(--yellow);font-weight:700}.plano-tr{display:flex;gap:16px;align-items:center;background:rgba(255,43,214,.07);border:2px solid var(--pink);border-radius:12px;padding:12px;margin:14px 0}.plano-tr img{width:160px;height:auto;border-radius:8px;flex:none}.plano-tr p{margin:6px 0 10px}.plano-tr .amz{margin:3px 4px 3px 0}@media(max-width:560px){.plano-tr{flex-direction:column}.plano-tr img{width:70%}}
 .zonas{display:grid;gap:12px;margin:8px 0 18px}
 .zona{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;padding:14px 16px;border-left:3px solid var(--orange);background:rgba(255,157,60,.06);border-radius:0 8px 8px 0}
 .zona .n{font-size:30px;line-height:1}
@@ -275,6 +278,15 @@ footer a{font-family:'VT323',monospace;font-size:22px;color:var(--cyan);text-dec
     <div class="tabla" id="ultimos"></div>
   </div>
 
+  <section class="panel salon" id="salon">
+    <h2>👑 Salón de las Leyendas</h2>
+    <p>Los que han conseguido <b>todas</b> las insignias de Trollacos. Por orden de llegada y para siempre.</p>
+    <ol class="leyendas">
+      <li><span class="ln">Nº 1</span><b>JAM85</b><em>27 de noviembre de 2026 · el primero de la historia</em></li>
+    </ol>
+    <p style="font-size:15px;color:var(--muted)">¿Quieres tu nombre aquí? Supera los 8 capítulos, acierta en La Porra y no pares hasta tenerlas todas.</p>
+  </section>
+
   <p style="text-align:right;font-size:14px"><a href="#" id="soy-admin" style="color:var(--muted)">🛠️ Administrador</a></p>
   <form class="mail" id="f-admin" hidden>
     <h3>🛠️ Recuperar una cuenta</h3>
@@ -393,8 +405,12 @@ function pinta(j){
     ['🏆','Top 10','Entra en un top 10 del arcade',top10],['🔥','Número 1','Sé el primero en un ranking',uno],
     ['⚽','Primer gol','Acierta un pronóstico',pr.ganada>=1],['🔮','Adivino','Acierta 10 pronósticos',pr.ganada>=10],['🎯','Francotirador','Acierta un resultado exacto',pr.exactos>=1]
   ];
+  var leyL=(window.LEYENDAS_TROLLACAS||{})[j.nombre];
+  var leyenda=!!leyL||ins.every(function(i){return i[3]});
+  ins.push(['👑','Leyenda Trollaca',leyL?'Nº '+leyL.n+(leyL.n===1?': el primero en conseguirlas todas':''):'Consigue todas las insignias',leyenda]);
   var conseguidas=ins.filter(function(i){return i[3]}).length;
   $('n-ins').textContent=conseguidas+' de '+ins.length;
+  if(leyenda&&window.fiestaTrollaca)window.fiestaTrollaca(j.nombre);
   $('insignias').innerHTML=ins.map(function(i){return '<div class="ins'+(i[3]?'':' no')+'" title="'+esc(i[2])+'"><i>'+i[0]+'</i><b>'+i[1]+'</b><span>'+i[2]+'</span></div>'}).join('');
   // últimos pronósticos
   var ult=(j.pronosticos||[]).slice(0,5);
